@@ -5,8 +5,12 @@
 #'
 #' @param t vector of points to calculate pdf for. 
 #' @param mode \itemize{
-#'   \item 0 = square
-#'   \item 1 = cube
+#'    \item 0 square, with side length parameters[0]
+#'    \item 1 disk, with radius parameters[0]
+#'    \item 2 hyper-ball, dimension parameters[0], radius parameters[1]
+#'    \item 3 rectangle, side lengths parameters[0], parameters[1]
+#'    \item 4 line, length parameters[0]
+#'    \item 5 cube, side length parameters[0]
 #' }
 #' @return data
 #' @author Matt Roughan, Jono Tuke

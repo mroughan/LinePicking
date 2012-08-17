@@ -386,7 +386,6 @@ int distance_dist(double *t, double *g, int *N, int *mode, double* parameters, i
 	for (i=0; i<*N; i++) 
 	{
 	    g[i] = SquareDistanceDensity(t[i], parameters);
-	    Rprintf("t[i] is %g\n",t[i]);
 	}
     } else if (*mode == 1) /* disk, with radius parameters[0] */
     {

@@ -3,12 +3,10 @@
 \alias{linepdf}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+Give probability density function for distance between to Poisson points in space
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+Takes a vector of points and gives probability density function for those distances
 }
 \details{
 \tabular{ll}{
@@ -16,26 +14,18 @@ Package: \tab linepdf\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
 Date: \tab 2012-08-17\cr
-License: \tab What license is it under?\cr
+License: \tab GPL 3.0\cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
 }
 \author{
-Who wrote it
+Matt Roughan, Jono Tuke, Eric Parsonage
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Maintainer: Who to complain to <simon.tuke@adelaide.edu.au>
 }
 \references{
-~~ Literature or other references for background information ~~
+Matt and Eric paper
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation ~~
-~~ directory ~~
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
 \examples{
-~~ simple examples of the most important functions ~~
+GetDistance(t=1:100,mode=0,para=50)
 }
