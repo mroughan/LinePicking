@@ -13,18 +13,27 @@
   parameters[1] \item 3 rectangle, side lengths
   parameters[0], parameters[1] \item 4 line, length
   parameters[0] \item 5 cube, side length parameters[0] }}
+
+  \item{para}{the parameter necessary to describe the space
+  given by mode.}
 }
 \value{
-  data
+  vector of probability density function values for each
+  element in t.
 }
 \description{
-  to do sum of them
+  Give a shape (square, disk, ...) and parameters defining
+  the shape, this function will give a the probability
+  density function for the distances between two Poisson
+  distributed points in the space.
 }
 \note{
   August 17 2012
 }
 \examples{
-GetDistance(t=1:100,mode=0,para=50)
+t <- seq(0,1,l=1000)
+y <- GetDistance(t=t,mode=0,para=1)
+plot(t,y,type='l')
 }
 \author{
   Matt Roughan, Jono Tuke

@@ -1,7 +1,8 @@
 #' Get pdf for distance between two random points
 #'
-#' to do
-#' sum of them
+#' Give a shape (square, disk, ...) and parameters defining the shape, this 
+#' function will give a the probability density function for the distances
+#' between two Poisson distributed points in the space.
 #'
 #' @param t vector of points to calculate pdf for. 
 #' @param mode \itemize{
@@ -12,21 +13,26 @@
 #'    \item 4 line, length parameters[0]
 #'    \item 5 cube, side length parameters[0]
 #' }
-#' @return data
+#' @param para the parameter necessary to describe the space given by mode.
+#' @return vector of probability density function values for each
+#' element in t.
 #' @author Matt Roughan, Jono Tuke
 #' @export
+#' @useDynLib linepdf
 #' @note August 17 2012
 #' @examples
-#' GetDistance(t=1:100,mode=0,para=50)
+#' t <- seq(0,1,l=1000)
+#' y <- GetDistance(t=t,mode=0,para=1)
+#' plot(t,y,type='l')
 GetDistance <-
 function(t,mode=0,para){
   n <- length(t)
   tmp <- .C('distance_dist',
             t = as.double(t),
-            tab = as.double(rep(0,n)),
+            pdf = as.double(rep(0,n)),
             n = as.integer(n),
             mode = as.integer(mode),
             para = as.double(para),
             Npar = as.integer(length(para)))
-  return(tmp)
+  return(tmp$pdf)
 }
