@@ -1,6 +1,7 @@
 *.eps
 *.png
 *.o
+*.so
 *.mexa64
 distance_dist
 *~
