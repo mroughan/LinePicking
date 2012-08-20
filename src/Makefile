@@ -30,6 +30,7 @@ HEADERS = $(shell ls *.h)
 
 MEX = distance_dist.mexa64
 O = distance_dist.o beta.o
+SO = distance_dist.so beta.so
 STAND_ALONE = distance_dist 
 
 all: ${STAND_ALONE}
@@ -37,14 +38,20 @@ all: ${STAND_ALONE}
 test: distance_dist
 	distance_dist -f distance_dist_test.inp -m 1 
 
-$(MEX): %.mexa64: %.c beta.o ${HEADERS}
-	$(MX)  $< beta.o -D_MEX
-
 $(O): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE
 
 $(STAND_ALONE): %: %.o beta.o
 	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE
+
+# use to create MEX library for MATLAB
+$(MEX): %.mexa64: %.c beta.o ${HEADERS}
+	$(MX)  $< beta.o -D_MEX
+
+# shared libraries are used by R, so use R's standard command to define
+#    see R CMD SHLIB beta.c, for example
+$(SO): %.so: %.c ${HEADERS}
+	$(CC) -std=gnu99 -shared $< -o $@ -D_R -I/usr/include/ -I/usr/share/R/include/ -L/usr/lib64/R/lib -lR
 
 # $(O): %.o: %.c ${HEADERS}
 # 	$(CC) $< -c -o $@ -I/usr/include/ -I/usr/local/matlab/extern/include/ 

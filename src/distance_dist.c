@@ -82,7 +82,7 @@ void distance_dist_support(double *t, int *mode, double* parameters, int *Npar, 
 	    *result=2;
 	    return;
 	}
-	t[0] = 0;
+	t[0] = 0; 
 	t[1] = parameters[0]*sqrt(2);
     } else if (*mode == 1) /* disk, with radius parameters[0] */
     {
@@ -90,9 +90,9 @@ void distance_dist_support(double *t, int *mode, double* parameters, int *Npar, 
 	    *result=3;
 	    return;
 	}
-	if (parameters[0] <= 0) {
+	if (parameters[0] <= 0) { 
 	    *result=2;
-	    return;
+	    return; 
 	}
 	t[0] = 0;
 	t[1] = 2*parameters[0];

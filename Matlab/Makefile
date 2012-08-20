@@ -20,6 +20,9 @@
 
 MEX = distance_dist.mexa64
 
+.PHONY: mex $(MEX)
+mex: $(MEX)
+
 $(MEX): FORCE
 	cd ../src/; $(MAKE) $@; cp $@ ../Matlab/
 

@@ -18,8 +18,20 @@
 #
 #=============================================================================
 
+# load these libraries into R using 
+#     dyn.load(‘‘beta.so’’)
+#     dyn.load(‘‘distance_dist.so’’)
+# and call using
+#     
+#
 
-R CMD SHLIB foo.c
+R = distance_dist.so beta.so
+
+.PHONY: r $(R)
+r: $(R)
+
+$(R): FORCE
+	cd ../src/; $(MAKE) $@; cp $@ ../R/
 
 # cause something to always remake when you put this in its dependencies
 FORCE:
