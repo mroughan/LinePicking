@@ -1,8 +1,20 @@
 #=============================================================================
 # Makefile: for line picking problem
-# Matthew Roughan (c) 2012
-#     this program is distributed under the terms of the 
-#     GNU General Public License
+#
+# Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+#     This program is free software: you can redistribute it and/or modify
+#     it under the terms of the GNU General Public License as published by
+#     the Free Software Foundation, either version 3 of the License, or
+#     (at your option) any later version.
+# 
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
 #
 #=============================================================================
 
@@ -29,10 +41,10 @@ $(MEX): %.mexa64: %.c ${HEADERS}
 	$(MX)  $< -D_MEX
 
 $(O): %.o: %.c ${HEADERS}
-	$(CC) $< -c -o $@ -I/usr/include/
+	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE
 
 $(STAND_ALONE): %: %.o
-	$(CC) $< -o $@ -lm -lstdc++
+	$(CC) $< -o $@ -lm -lstdc++ -D_STANDALONE
 
 # $(O): %.o: %.c ${HEADERS}
 # 	$(CC) $< -c -o $@ -I/usr/include/ -I/usr/local/matlab/extern/include/ 
