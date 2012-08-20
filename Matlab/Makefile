@@ -18,29 +18,20 @@
 #
 #=============================================================================
 
-# recursive structure from
-#   http://lackof.org/taggart/hacking/make-example/
-# which also appears in gnu makes docs: http://www.gnu.org/software/make/manual/make.html#Phony-Targets
-# 
+MEX = distance_dist.mexa64
 
-SUBDIRS = src Matlab  R man 
-
-.PHONY: subdirs $(SUBDIRS)
-subdirs: $(SUBDIRS)
-
-$(SUBDIRS): FORCE
-	$(MAKE) -C $@
+$(MEX): FORCE
+	cd ../src/; $(MAKE) $@; cp $@ ../Matlab/
 
 # cause something to always remake when you put this in its dependencies
 FORCE:
 
-# standard cleanup
-.PHONY: clean
+# standard cleanup etc
+.PHONY : clean
 clean: 
-	echo cleaning up in .
-	-for d in $(SUBDIRS); do (cd $$d; $(MAKE) clean ); done
+	- $(RM) *~
 
+.PHONY : distclean
+distclean: 
+	- $(RM) *.mex* Plots/distance_dist*
 
-# don't build Matlab, or R until after src is built
-Matlab: src
-R: src

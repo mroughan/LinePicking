@@ -22,9 +22,9 @@
 #' @note August 17 2012
 #' @examples
 #' t <- seq(0,1,l=1000)
-#' y <- GetDistance(t=t,mode=0,para=1)
+#' y <- DistanceDist(t=t,mode=0,para=1)
 #' plot(t,y,type='l')
-GetDistance <-
+DistanceDist <-
 function(t,mode=0,para){
   n <- length(t)
   tmp <- .C('distance_dist',

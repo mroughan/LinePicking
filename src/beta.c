@@ -16,7 +16,8 @@
  */
 #include <math.h>
 #include <stdio.h>
-
+#include <stdlib.h>
+ 
 /* 
    Incomplete beta function fusing information from
 @article{Didonato:1992:ASD:131766.131776,
@@ -92,17 +93,17 @@ double beta_inc(double a, double b, double x)
     if (x < 0.0 || x > 1.0) 
     {
 	fprintf(stderr, "beta_inc: x (=%.3f) must be in the interval [0,1]\n", x);
-	exit(1);
+	exit(EXIT_FAILURE);
     }
     if (a < 0)
     {
 	fprintf(stderr, "beta_inc: a (=%.3f) must be > 0\n", a);
-	exit(1);
+	exit(EXIT_FAILURE);
     }
     if (b < 0)
     {
 	fprintf(stderr, "beta_inc: b (=%.3f) must be > 0\n", b);
-	exit(1);
+	exit(EXIT_FAILURE);
     }
     /* printf("    a=%.2f, b=%.2f, x=%6f, (a+1.0)/(a+b+2.0)=%6f\n", a, b, x,(a+1.0)/(a+b+2.0));     */
 	

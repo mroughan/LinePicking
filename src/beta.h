@@ -16,6 +16,7 @@
  */
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #ifndef _BETA_H
 #define _BETA_H

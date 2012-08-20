@@ -18,29 +18,49 @@
 #
 #=============================================================================
 
-# recursive structure from
-#   http://lackof.org/taggart/hacking/make-example/
-# which also appears in gnu makes docs: http://www.gnu.org/software/make/manual/make.html#Phony-Targets
-# 
+default: all
 
-SUBDIRS = src Matlab  R man 
+#-----------------------------------------------------------------------------
 
-.PHONY: subdirs $(SUBDIRS)
-subdirs: $(SUBDIRS)
+MX=mex -O -largeArrayDims 
+CC=gcc -O -fPIC
 
-$(SUBDIRS): FORCE
-	$(MAKE) -C $@
+C = $(shell ls *.c)
+HEADERS = $(shell ls *.h)
+
+MEX = distance_dist.mexa64
+O = distance_dist.o beta.o
+STAND_ALONE = distance_dist 
+
+all: ${STAND_ALONE}
+
+test: distance_dist
+	distance_dist -f distance_dist_test.inp -m 1 
+
+$(MEX): %.mexa64: %.c beta.o ${HEADERS}
+	$(MX)  $< beta.o -D_MEX
+
+$(O): %.o: %.c ${HEADERS}
+	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE
+
+$(STAND_ALONE): %: %.o beta.o
+	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE
+
+# $(O): %.o: %.c ${HEADERS}
+# 	$(CC) $< -c -o $@ -I/usr/include/ -I/usr/local/matlab/extern/include/ 
+
+# $(STAND_ALONE): %: %.o
+# 	$(CC) $< -o $@ -L/usr/local/matlab/bin/glnxa64 -lmx -lmex -lmat -lm -lstdc++
 
 # cause something to always remake when you put this in its dependencies
 FORCE:
 
-# standard cleanup
-.PHONY: clean
+# standard cleanup etc
+.PHONY : clean
 clean: 
-	echo cleaning up in .
-	-for d in $(SUBDIRS); do (cd $$d; $(MAKE) clean ); done
+	- $(RM) *.dll *.oct *.o *~
 
+.PHONY : distclean
+distclean: 
+	- $(RM) distance_dist *.mex* *.dll *.oct *.o *~
 
-# don't build Matlab, or R until after src is built
-Matlab: src
-R: src

@@ -6,6 +6,8 @@ density functions for the "line picking" problem.
 
 Details:
 
+ src/
+
     distribution_dist.h
 
         Contains C library routines to compute the densities for "line
@@ -20,6 +22,9 @@ Details:
         Contains bridges to allow the routines in .h to be called from
         another C program, Matlab (through MEX) and eventually through R.
 
+
+ Matlab/ - Matlab code and location for mex files
+
     distance_dist_test.m
 
        Matlab code to show how to call the MEX routines, and to test
@@ -30,6 +35,16 @@ Details:
        A comparison of exact computations with simulation-based
        estimates. 
 
+ R/ - 
+    DistanceDist.R
+ 
+      R wrapper function
+
+    ????
+
+      Example of how to call the function in R
+
+ man/ - documentation
 
 
 Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
