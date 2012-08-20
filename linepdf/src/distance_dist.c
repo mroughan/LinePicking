@@ -5,7 +5,7 @@
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *   
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -34,103 +34,125 @@
  *    4: line, length parameters[0]
  *    5: cube, side length parameters[0]
  *
- *
+ * 
  */
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h> 
 #include <string.h>
 #include <stdio.h>
+#include "distance_dist.h"
+#include "beta.h" 
+  
 #include <R.h>
 
+#ifdef _MEX
+#include "mex.h"
+#include "matrix.h"
+#endif
 
- double beta(double a, double b)
+int distance_dist(double *t, double *g, int *N, int *mode, double* parameters, int *Npar)
+/* computer distance density g(t) (at points t) between two points in a region.
+ *
+ * t = array of points at which to calculate density
+ * g = array to store output
+ * mode = 
+ *    0: square, with side length parameters[0]
+ *    1: disk, with radius parameters[0]
+ *    2: hyper-ball, dimension parameters[0], radius parameters[1]
+ *    3: rectangle, side lengths parameters[0], parameters[1]
+ *    4: line, length parameters[0]
+ *    5: cube, side length parameters[0]
+ * parameters = parameters of the region (see above)
+ * Npar = number of parameters
+ *  
+ */
 {
-    /* C gamma function is deprecated, use tgamma instead */
-    return( exp( lgamma(a) + lgamma(b) - lgamma(a+b)) );
+    int i;
+    Rprintf("Hello Jono\n");
 
-}
-
-
-/* beta continued fraction calculation 
-      don't use this directly -- its used below
-*/
- double beta_cont_frac(double a, double b, double x)
-{
-    double d, cf=0;
-    int i, m;
-    int n = 10;
-    for (i=n; i>=1; i--) {
-	m = i/2;
-	if (i % 2 == 0) {
-	    /* even case */
-	    d = m*(b-m)*x / ((a+2*m-1)*(a+2*m));
-	} else {
-	    /* odd case */
-	    d = - (a+m)*(a+b+m)*x / ( (a+2*m)*(a+2*m+1) );
+    /* calculate the distribution */
+    if (*mode == 0) /* square, with side length parameters[0] */
+    {
+	if (*Npar < 1) {
+	    return(3);
 	}
-	cf = d / (1 + cf);
-    }
-    cf = 1 / (1 + cf);
-    return(cf);
-}
-
-/* regularized incomplete beta function */
- double beta_inc(double a, double b, double x)
-{
-    double cf;
-
-    /* check input arguments */
-    if (x < 0.0 || x > 1.0) 
+	if (parameters[0] <= 0) {
+	    return(2);
+	}
+	for (i=0; i<*N; i++) 
+	{
+	    g[i] = SquareDistanceDensity(t[i], parameters);
+	}
+    } else if (*mode == 1) /* disk, with radius parameters[0] */
     {
-	fprintf(stderr, "beta_inc: x (=%.3f) must be in the interval [0,1]\n", x);
-	exit(1);
-    }
-    if (a < 0)
+	if (*Npar < 1) {
+	    return(3);
+	}
+	if (parameters[0] <= 0) {
+	    return(2);
+	}
+	for (i=0; i<*N; i++) 
+	{
+	    g[i] = DiskDistanceDensity(t[i], parameters);
+	}
+    } else if (*mode == 2) /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
     {
-	fprintf(stderr, "beta_inc: a (=%.3f) must be > 0\n", a);
-	exit(1);
-    }
-    if (b < 0)
+	if (*Npar < 2) {
+	    return(3);
+	}
+	if (parameters[0] < 1) {
+	    return(2);
+	}
+	if (parameters[1] <= 0) {  
+	    return(2);
+	}
+	for (i=0; i<*N; i++) 
+	{
+	    g[i] = HyperballDistanceDensity(t[i], parameters);
+	}
+    } else if (*mode == 3) /* rectangle, side lengths parameters[0], parameters[1] */
     {
-	fprintf(stderr, "beta_inc: b (=%.3f) must be > 0\n", b);
-	exit(1);
-    }
-    /* printf("    a=%.2f, b=%.2f, x=%6f, (a+1.0)/(a+b+2.0)=%6f\n", a, b, x,(a+1.0)/(a+b+2.0));     */
-	
-    /* deal with some extreme cases */
-    if (x==0.0) return(0.0);
-    else if (x==1.0) return(1.0);
- 
-    if (a==0.0) return(1.0);
-    else if (b==0.0) return(0.0);
-
-    if (a==1.0 && b==1.0) return (x);
-    else if (a==1.0) return( (1 - pow(1-x,b))/(b*beta(a,b)) );
-    else if (b==1.0) return( pow(x,a)/(a*beta(a,b)) );
-
-    /* use identities to get a>1 and b>1  */
-    if (a < 1 && b < 1) {
-	return( (a*beta_inc(a+1,b,x) + b*beta_inc(a,b+1,x))/(a+b)  );
-    } else if (a < 1) {
-	return( beta_inc(a+1,b,x) + pow(x,a)*pow(1-x,b)/(a*beta(a,b)) );
-    } else if (b < 1) {
-	return( beta_inc(a,b+1,x) - pow(x,a)*pow(1-x,b)/(b*beta(a,b)) );
-    }
-
-    /* get started */
-    if (x <= (a+1.0)/(a+b+2.0)) {
-	/* use continued fractions */
-	cf = beta_cont_frac(a,b,x);
-	return( pow(x,a)*pow(1-x,b)*cf/(a*beta(a,b)) );
+	if (*Npar < 2) {
+	    return(3);
+	}
+	if (parameters[0] <= 0 || parameters[1] <= 0) {
+	    return(2);
+	}
+	for (i=0; i<*N; i++) 
+	{
+	    g[i] = RectangleDistanceDensity(t[i], parameters);
+	}
+    } else if (*mode == 4) /* line, length parameters[0] */
+    {
+	if (*Npar < 1) {
+	    return(3);
+	}
+	if (parameters[0] <= 0) {
+	    return(2);
+	}
+	for (i=0; i<*N; i++) 
+	{
+	    g[i] = LineDistanceDensity(t[i], parameters);
+	}
+    } else if (*mode == 5) /* cube, side length parameters[0] */
+    {
+	if (*Npar < 1) {
+	    return(3);
+	}
+	if (parameters[0] <= 0) {
+	    return(2);
+	}
+	for (i=0; i<*N; i++) 
+	{
+	    g[i] = CubeDistanceDensity(t[i], parameters);
+	}
     } else {
-	/* look at complement */
-	/* cf = beta_cont_frac(b, a, 1-x); */
-	/* return( 1.0 -  pow(x,a)*pow(1-x,b)*cf/(b*beta(b,a)) );*/
-	return( 1.0 - beta_inc(b, a, 1.0-x) ); 
+	return(1); /* first type of error */
     }
-    
+    return(0); /* correctly executed */
 }
+
 
 double RectangleDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a rectangle size a times b */
@@ -227,7 +249,7 @@ double LineDistanceDensity(double t, double* parameters)
     }
 }
 
- double CubeDistanceDensity(double t, double* parameters)
+double CubeDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a unit cube */
 /*    http://mathworld.wolfram.com/CubeLinePicking.html */
 /*    from Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. 
@@ -276,7 +298,7 @@ double LineDistanceDensity(double t, double* parameters)
  
 }
 
- double DiskDistanceDensity(double t, double* parameters)
+double DiskDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a disk radius r */
 /*    http://mathworld.wolfram.com/BallLinePicking.html */
 {
@@ -299,7 +321,7 @@ double LineDistanceDensity(double t, double* parameters)
     return(part1 - part2);
 }
 
- double HyperballDistanceDensity(double t, double* parameters)
+double HyperballDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a hyperball, 
    dimension n, radius r */
 /*    http://mathworld.wolfram.com/BallLinePicking.html */
@@ -355,104 +377,165 @@ double LineDistanceDensity(double t, double* parameters)
 }
 
 
-int distance_dist(double *t, double *g, int *N, int *mode, double* parameters, int *Npar)
-/* computer distance density g(t) (at points t) between two points in a region.
- *
- * t = array of points at which to calculate density
- * g = array to store output
- * mode = 
- *    0: square, with side length parameters[0]
- *    1: disk, with radius parameters[0]
- *    2: hyper-ball, dimension parameters[0], radius parameters[1]
- *    3: rectangle, side lengths parameters[0], parameters[1]
- *    4: line, length parameters[0]
- *    5: cube, side length parameters[0]
- * parameters = parameters of the region (see above)
- * Npar = number of parameters
- *  
- */
-{
-    int i;
 
-    /* calculate the distribution */
-    if (*mode == 0) /* square, with side length parameters[0] */
-    {
-	if (*Npar < 1) {
-	    return(3);
-	}
-	if (parameters[0] <= 0) {
-	    return(2);
-	}
-	for (i=0; i<*N; i++) 
-	{
-	    g[i] = SquareDistanceDensity(t[i], parameters);
-	}
-    } else if (*mode == 1) /* disk, with radius parameters[0] */
-    {
-	if (*Npar < 1) {
-	    return(3);
-	}
-	if (parameters[0] <= 0) {
-	    return(2);
-	}
-	for (i=0; i<*N; i++) 
-	{
-	    g[i] = DiskDistanceDensity(t[i], parameters);
-	}
-    } else if (*mode == 2) /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
-    {
-	if (*Npar < 2) {
-	    return(3);
-	}
-	if (parameters[0] < 1) {
-	    return(2);
-	}
-	if (parameters[1] <= 0) {  
-	    return(2);
-	}
-	for (i=0; i<*N; i++) 
-	{
-	    g[i] = HyperballDistanceDensity(t[i], parameters);
-	}
-    } else if (*mode == 3) /* rectangle, side lengths parameters[0], parameters[1] */
-    {
-	if (*Npar < 2) {
-	    return(3);
-	}
-	if (parameters[0] <= 0 || parameters[1] <= 0) {
-	    return(2);
-	}
-	for (i=0; i<*N; i++) 
-	{
-	    g[i] = RectangleDistanceDensity(t[i], parameters);
-	}
-    } else if (*mode == 4) /* line, length parameters[0] */
-    {
-	if (*Npar < 1) {
-	    return(3);
-	}
-	if (parameters[0] <= 0) {
-	    return(2);
-	}
-	for (i=0; i<*N; i++) 
-	{
-	    g[i] = LineDistanceDensity(t[i], parameters);
-	}
-    } else if (*mode == 5) /* cube, side length parameters[0] */
-    {
-	if (*Npar < 1) {
-	    return(3);
-	}
-	if (parameters[0] <= 0) {
-	    return(2);
-	}
-	for (i=0; i<*N; i++) 
-	{
-	    g[i] = CubeDistanceDensity(t[i], parameters);
-	}
-    } else {
-	Rprintf("Mode is unknown\n");
-    }
-    return(0); /* correctly executed */
+
+
+
+
+#ifdef _MEX
+
+/*
+ * Matlab parts
+ *
+ */
+
+void mexFunction(
+        int nlhs,       mxArray *plhs[],
+        int nrhs, const mxArray *prhs[]
+        )
+{
+  
+  double *t; /* points at which to calculate the distribution */
+  double *g; /* value of the distribution at the points t */
+  uint32_t N, M;    /* number of points */
+  uint32_t Npar, Mpar;    /* number of parmeters */
+  int i;					
+  int mode;    /* the type of region on which to calculate the distribution */
+  double *parameters; /*  input parameter vector  
+			       note that meaning of parameters depends on the mode */
+  int result;
+
+  /* Check for proper number of input and output arguments. */    
+  if (nrhs < 1)
+       mexErrMsgTxt("distance_dist: Not enough input arguments: [g] = distance_dist(t, mode, parameters).");
+  if (nlhs > 1) 
+       mexErrMsgTxt("distance_dist: Too many output arguments: [g] = distance_dist(t, mode, parameters).");
+  
+  /* Get the input arguments */
+  t = mxGetPr(prhs[0]);       /*  */
+  N = (uint32_t) mxGetN(prhs[0]); /*  */
+  M = (uint32_t) mxGetM(prhs[0]); /*  */
+  if (N<1 || M>1) 
+       mexErrMsgTxt("distance_dist: t should be an Nx1 matrix.");
+
+  if (nrhs < 2) 
+  {
+      mode = 1; /* default mode is a square */
+  } else {
+      mode = (int) mxGetScalar(prhs[1]);
+  }
+
+  Npar = (uint32_t) mxGetN(prhs[2]);
+  Mpar = (uint32_t) mxGetM(prhs[2]);
+  if (nrhs < 3 || Npar*Mpar<1)
+  {
+      parameters = (double *) malloc((size_t) sizeof(double)*3);
+	  /* allocate three, even though at the moment we only need 2 */
+      parameters[0] = 1;
+      parameters[1] = 1;
+      parameters[2] = 1;
+  } else {
+      parameters = mxGetPr(prhs[2]); 
+  }
+  
+  /* create output matrices */
+  plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
+  g = mxGetPr(plhs[0]);
+
+  result = distance_dist(t, g, N, mode, parameters, Mpar*Npar);
+  if (result == 0) {
+      /* this means it returned correctly */
+  } else if (result == 1) {
+      mexErrMsgTxt("distance_dist: unsupported mode.");
+  } else if (result == 2) {
+      mexErrMsgTxt("distance_dist: parameters out of range.");
+  } else if (result == 3) {
+      mexErrMsgTxt("distance_dist: not enough parameters were entered.");
+  }
+
 }
+#endif
+
+
+#ifdef _STANDALONE
+/*
+ * bits needed to run this as a stand alone command-line function
+ *
+ */
+static void 
+usage_distance_dist()
+{
+  fprintf(stderr, "Usage: distance_dist -f input_file -m mode -p parameter0 -P parameter1 \n");
+  fprintf(stderr, "           input_file contains a list of points t.\n");
+  exit(1);
+}
+
+static void 
+set_pars_distance_dist(int argc, char *argv[], char **file, int *mode, double *parameters)
+{
+  char c;
+  extern char    *optarg;
+  extern int      optind;
+  int F;
+
+  /* defaults */
+  *mode = 0;
+  *file = (char *) malloc((size_t) sizeof(char)*256); /* longest file name is 256 characters */
+  /* *parameters = (double *) malloc((size_t) sizeof(double)*3); */
+  /* (*parameters)[0] = 1.1; */
+  /* (*parameters)[1] = 1.2; */
+  /* (*parameters)[2] = 1.3; */
+  parameters[0] = 1.0; 
+  parameters[1] = 1.0;
+  parameters[2] = 1.0; 
+  
+  while ((c=getopt(argc,argv,"f:m:p:q:s:z")) != EOF)
+      switch ((char)c) { 
+      case 'f': 
+	  if (sscanf(optarg,"%s",*file) != 1) usage_distance_dist(); 
+	  break; 
+      case 'm':  
+	  if (sscanf(optarg,"%d",mode) != 1) usage_distance_dist(); 
+	  break; 
+      case 'p': 
+	  if (sscanf(optarg,"%lf",&(parameters[0])) != 1) usage_distance_dist(); 
+	  break; 
+      case 'q': 
+	  if (sscanf(optarg,"%lf",&(parameters[1])) != 1) usage_distance_dist(); 
+	  break;  
+      case 's': 
+	  if (sscanf(optarg,"%lf",&(parameters[2])) != 1) usage_distance_dist(); 
+	  break;  
+      case 'h':;
+      default: 
+	  usage_distance_dist(); 
+      }
+}
+ 
+int main(int argc, char *argv[])
+{
+  int i=0;
+  char *readbuf;
+  double epsilon;
+  int mode;
+  double parameters[3];
+  char *version = "version 1.0";
+  char *file;
+
+  /*print out program name and version*/
+  fprintf(stderr,"%% %s: %s \n", *argv, version);
+
+  /* read in programs options  */
+  set_pars_distance_dist(argc, argv, 
+			 &file, &mode, parameters);
+  fprintf(stderr,"%%   file=%s, mode=%d, ", file, mode);
+  for (i=0;i<3;i++) {
+      fprintf(stderr, " p[%d]=%.3f", i, parameters[i]);
+  }
+  fprintf(stderr, "\n");
+
+  return(0);
+}
+#endif
+
 
