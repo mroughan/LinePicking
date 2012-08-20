@@ -65,9 +65,9 @@ FORCE:
 # standard cleanup etc
 .PHONY : clean
 clean: 
-	- $(RM) *.dll *.oct *.o *~
+	- $(RM) *.dll *.oct *.o *.so *~
 
 .PHONY : distclean
 distclean: 
-	- $(RM) distance_dist *.mex* *.dll *.oct *.o *~
+	- $(RM) distance_dist *.mex* *.dll *.oct *.o *.so *~
 
