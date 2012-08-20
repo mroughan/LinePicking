@@ -27,24 +27,24 @@ CC=gcc -O -fPIC
 
 C = $(shell ls *.c)
 HEADERS = $(shell ls *.h)
-MEX := $(shell ls *.mexa64)
-O = $(MEX:.mexa64=.o)
-STAND_ALONE = $(MEX:.mexa64=)
 
+MEX = distance_dist.mexa64
+O = distance_dist.o beta.o
+STAND_ALONE = distance_dist 
 
 all: ${MEX} ${STAND_ALONE}
 
 test: distance_dist
 	distance_dist -f distance_dist_test.inp -m 1 
 
-$(MEX): %.mexa64: %.c ${HEADERS}
-	$(MX)  $< -D_MEX
+$(MEX): %.mexa64: %.c beta.o ${HEADERS}
+	$(MX)  $< beta.o -D_MEX
 
 $(O): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE
 
-$(STAND_ALONE): %: %.o
-	$(CC) $< -o $@ -lm -lstdc++ -D_STANDALONE
+$(STAND_ALONE): %: %.o beta.o
+	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE
 
 # $(O): %.o: %.c ${HEADERS}
 # 	$(CC) $< -c -o $@ -I/usr/include/ -I/usr/local/matlab/extern/include/ 
@@ -62,5 +62,5 @@ clean:
 
 .PHONY : distclean
 distclean: 
-	- $(RM) *.mex* *.dll *.oct *.o
+	- $(RM) *.mex* *.dll *.oct *.o Plots/*
 
