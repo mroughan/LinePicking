@@ -53,105 +53,225 @@
 #include "matrix.h"
 #endif
 
-int distance_dist(double *t, double *g, int N, int mode, double* parameters, int Npar)
-/* computer distance density g(t) (at points t) between two points in a region.
+void distance_dist_support(double *t, int *mode, double* parameters, int *Npar, int *result) 
+/* compute support of distance density g(t) (at points t) between two points in a region.
  *
- * t = array of points at which to calculate density
- * g = array to store output
- * mode = 
- *    0: square, with side length parameters[0]
- *    1: disk, with radius parameters[0]
- *    2: hyper-ball, dimension parameters[0], radius parameters[1]
- *    3: rectangle, side lengths parameters[0], parameters[1]
- *    4: line, length parameters[0]
- *    5: cube, side length parameters[0]
- * parameters = parameters of the region (see above)
+ * t = [t_min, t_max]    : assumes 2 spaces are allocated!!!!!
+ * mode = type of region
+ *    0: square, with side length parameters[0] 
+ *    1: disk, with radius parameters[0] 
+ *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
+ *    3: rectangle, side lengths parameters[0], parameters[1] 
+ *    4: line, length parameters[0] 
+ *    5: cube, side length parameters[0] parameters = parameters of the region
  * Npar = number of parameters
- *  
+ * result = exit code
+ *
+ * Note that N, mode and Npar are all passed in by reference so R can cope, and similarly, 
+ * the function must return void, so we return the exit code in the last argument.
+ */
+{
+    /* calculate the distribution */
+    if (*mode == 0) /* square, with side length parameters[0] */
+    {
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
+	}
+	if (parameters[0] <= 0) {
+	    *result=2;
+	    return;
+	}
+	t[0] = 0;
+	t[1] = parameters[0]*sqrt(2);
+    } else if (*mode == 1) /* disk, with radius parameters[0] */
+    {
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
+	}
+	if (parameters[0] <= 0) {
+	    *result=2;
+	    return;
+	}
+	t[0] = 0;
+	t[1] = 2*parameters[0];
+    } else if (*mode == 2) /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
+    {
+	if (*Npar < 2) {
+	    *result=3;
+	    return;
+	}
+	if (parameters[0] < 1) {
+	    *result=2;
+	    return;
+	}
+	if (parameters[1] <= 0) {  
+	    *result=2;
+	    return;
+	}
+	t[0] = 0;
+	t[1] = 2*parameters[0];
+    } else if (*mode == 3) /* rectangle, side lengths parameters[0], parameters[1] */
+    {
+	if (*Npar < 2) {
+	    *result=3;
+	    return;
+	}
+	if (parameters[0] <= 0 || parameters[1] <= 0) {
+	    *result=2;
+	    return;
+	}
+	t[0] = 0;
+	t[1] = sqrt(parameters[0]*parameters[0] + parameters[1]*parameters[1]);
+    } else if (*mode == 4) /* line, length parameters[0] */
+    {
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
+	}
+	if (parameters[0] <= 0) {
+	    *result=2;
+	    return;
+	}
+	t[0] = 0;
+	t[1] = parameters[0];
+    } else if (*mode == 5) /* cube, side length parameters[0] */
+    {
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
+	}
+	if (parameters[0] <= 0) {
+	    *result=2;
+	    return;
+	}
+	t[0] = 0;
+	t[1] = parameters[0]*sqrt(3);
+    } else {
+	*result=1;
+	return; /* first type of error */
+    }
+    *result=0;
+    return; /* correctly executed */
+}
+
+void distance_dist(double *t, double *g, int *N, int *mode, double* parameters, int *Npar, int *result) 
+/* compute distance density g(t) (at points t) between two points in a region.
+ *
+ * t = array of points at which to calculate density 
+ * g = array to store output 
+ * mode = type of region
+ *    0: square, with side length parameters[0] 
+ *    1: disk, with radius parameters[0] 
+ *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
+ *    3: rectangle, side lengths parameters[0], parameters[1] 
+ *    4: line, length parameters[0] 
+ *    5: cube, side length parameters[0] parameters = parameters of the region
+ * Npar = number of parameters
+ * result = exit code
+ *
+ * Note that N, mode and Npar are all passed in by reference so R can cope, and similarly, 
+ * the function must return void, so we return the exit code in the last argument.
  */
 {
     int i;
 
     /* calculate the distribution */
-    if (mode == 0) /* square, with side length parameters[0] */
+    if (*mode == 0) /* square, with side length parameters[0] */
     {
-	if (Npar < 1) {
-	    return(3);
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
 	}
 	if (parameters[0] <= 0) {
-	    return(2);
+	    *result=2;
+	    return;
 	}
-	for (i=0; i<N; i++) 
+	for (i=0; i<*N; i++) 
 	{
 	    g[i] = SquareDistanceDensity(t[i], parameters);
 	}
-    } else if (mode == 1) /* disk, with radius parameters[0] */
+    } else if (*mode == 1) /* disk, with radius parameters[0] */
     {
-	if (Npar < 1) {
-	    return(3);
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
 	}
 	if (parameters[0] <= 0) {
-	    return(2);
+	    *result=2;
+	    return;
 	}
-	for (i=0; i<N; i++) 
+	for (i=0; i<*N; i++) 
 	{
 	    g[i] = DiskDistanceDensity(t[i], parameters);
 	}
-    } else if (mode == 2) /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
+    } else if (*mode == 2) /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
     {
-	if (Npar < 2) {
-	    return(3);
+	if (*Npar < 2) {
+	    *result=3;
+	    return;
 	}
 	if (parameters[0] < 1) {
-	    return(2);
+	    *result=2;
+	    return;
 	}
 	if (parameters[1] <= 0) {  
-	    return(2);
+	    *result=2;
+	    return;
 	}
-	for (i=0; i<N; i++) 
+	for (i=0; i<*N; i++) 
 	{
 	    g[i] = HyperballDistanceDensity(t[i], parameters);
 	}
-    } else if (mode == 3) /* rectangle, side lengths parameters[0], parameters[1] */
+    } else if (*mode == 3) /* rectangle, side lengths parameters[0], parameters[1] */
     {
-	if (Npar < 2) {
-	    return(3);
+	if (*Npar < 2) {
+	    *result=3;
+	    return;
 	}
 	if (parameters[0] <= 0 || parameters[1] <= 0) {
-	    return(2);
+	    *result=2;
+	    return;
 	}
-	for (i=0; i<N; i++) 
+	for (i=0; i<*N; i++) 
 	{
 	    g[i] = RectangleDistanceDensity(t[i], parameters);
 	}
-    } else if (mode == 4) /* line, length parameters[0] */
+    } else if (*mode == 4) /* line, length parameters[0] */
     {
-	if (Npar < 1) {
-	    return(3);
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
 	}
 	if (parameters[0] <= 0) {
-	    return(2);
+	    *result=2;
+	    return;
 	}
-	for (i=0; i<N; i++) 
+	for (i=0; i<*N; i++) 
 	{
 	    g[i] = LineDistanceDensity(t[i], parameters);
 	}
-    } else if (mode == 5) /* cube, side length parameters[0] */
+    } else if (*mode == 5) /* cube, side length parameters[0] */
     {
-	if (Npar < 1) {
-	    return(3);
+	if (*Npar < 1) {
+	    *result=3;
+	    return;
 	}
 	if (parameters[0] <= 0) {
-	    return(2);
+	    *result=2;
+	    return;
 	}
-	for (i=0; i<N; i++) 
+	for (i=0; i<*N; i++) 
 	{
 	    g[i] = CubeDistanceDensity(t[i], parameters);
 	}
     } else {
-	return(1); /* first type of error */
+	*result=1;
+	return; /* first type of error */
     }
-    return(0); /* correctly executed */
+    *result=0;
+    return; /* correctly executed */
 }
 
 
@@ -398,8 +518,8 @@ void mexFunction(
   
   double *t; /* points at which to calculate the distribution */
   double *g; /* value of the distribution at the points t */
-  uint32_t N, M;    /* number of points */
-  uint32_t Npar, Mpar;    /* number of parmeters */
+  int N, M;    /* number of points */
+  int Npar, Mpar;    /* number of parmeters */
   int i;					
   int mode;    /* the type of region on which to calculate the distribution */
   double *parameters; /*  input parameter vector  
@@ -414,8 +534,8 @@ void mexFunction(
   
   /* Get the input arguments */
   t = mxGetPr(prhs[0]);       /*  */
-  N = (uint32_t) mxGetN(prhs[0]); /*  */
-  M = (uint32_t) mxGetM(prhs[0]); /*  */
+  N = (int) mxGetN(prhs[0]); /*  */
+  M = (int) mxGetM(prhs[0]); /*  */
   if (N<1 || M>1) 
        mexErrMsgTxt("distance_dist: t should be an Nx1 matrix.");
 
@@ -426,15 +546,16 @@ void mexFunction(
       mode = (int) mxGetScalar(prhs[1]);
   }
 
-  Npar = (uint32_t) mxGetN(prhs[2]);
-  Mpar = (uint32_t) mxGetM(prhs[2]);
+  Npar = (int) mxGetN(prhs[2]);
+  Mpar = (int) mxGetM(prhs[2]);
+  Npar = Mpar*Npar;
   if (nrhs < 3 || Npar*Mpar<1)
   {
       parameters = (double *) malloc((size_t) sizeof(double)*3);
 	  /* allocate three, even though at the moment we only need 2 */
       parameters[0] = 1;
       parameters[1] = 1;
-      parameters[2] = 1;
+      parameters[2] = 1; 
   } else {
       parameters = mxGetPr(prhs[2]); 
   }
@@ -443,7 +564,7 @@ void mexFunction(
   plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
   g = mxGetPr(plhs[0]);
 
-  result = distance_dist(t, g, N, mode, parameters, Mpar*Npar);
+  distance_dist(t, g, &N, &mode, parameters, &Npar, &result);
   if (result == 0) {
       /* this means it returned correctly */
   } else if (result == 1) {

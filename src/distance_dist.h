@@ -31,8 +31,11 @@
 #ifndef _DISTANCE_DIST_H
 #define _DISTANCE_DIST_H
  
+/* compute support of the density */
+void distance_dist_support(double *, int *, double*, int *, int*);
+
 /* primary function for calling any region through a uniform interface, for multiple t values */
-int distance_dist(double *, double *, int, int, double*, int);
+void distance_dist(double *, double *, int *, int *, double*, int *, int*);
 
 /* functions that actually implement each region, for a single t value */
 double RectangleDistanceDensity(double, double*);

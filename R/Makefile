@@ -18,6 +18,9 @@
 #
 #=============================================================================
 
+
+R CMD SHLIB foo.c
+
 # cause something to always remake when you put this in its dependencies
 FORCE:
 
