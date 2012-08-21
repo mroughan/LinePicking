@@ -40,26 +40,52 @@ void LinePickingSupport(double *, int *, double*, int *, int *, char **);
 /* primary function for calculating PDF for any region through a uniform interface, for multiple t values */
 void LinePickingPDF(double *, double *, int *, int *, double*, int *, int*, char **);
 
+/* primary function for calculating CDF for any region through a uniform interface, for multiple t values */
+void LinePickingCDF(double *, double *, int *, int *, double*, int *, int*, char **);
+
 /* primary function for calculating Mean line length for any region */
 void LinePickingMean(double *, int *, double*, int *, int*, char **);
+
+/* primary function for calculating Mean line length for any region */
+void LinePickingVar(double *, int *, double*, int *, int*, char **);
 
 /* functions that actually implement each region, for a single t value */
 /*    but don't call these directly, as they don't check for valid inputs 
       call via LinePickingPDF */ 
-double RectangleDistanceDensity(double, double*);
-double SquareDistanceDensity(double, double*);
-double LineDistanceDensity(double, double*);
-double CubeDistanceDensity(double, double*);
-double DiskDistanceDensity(double, double*);
-double HyperballDistanceDensity(double, double*);
+double UnknownDistancePDF(double, double*);
+double SquareDistancePDF(double, double*);
+double DiskDistancePDF(double, double*);
+double HyperballDistancePDF(double, double*);
+double RectangleDistancePDF(double, double*);
+double LineDistancePDF(double, double*);
+double CubeDistancePDF(double, double*);
 
 /* means */
-double RectangleDistanceMean(double*);
+double UnknownDistanceMean(double*);
 double SquareDistanceMean(double*);
-double LineDistanceMean(double*);
-double CubeDistanceMean(double*);
 double DiskDistanceMean(double*);
 double HyperballDistanceMean(double*);
+double RectangleDistanceMean(double*);
+double LineDistanceMean(double*);
+double CubeDistanceMean(double*);
+
+/* Cumulative Distribution Functions, where known */
+double UnknownDistanceCDF(double, double*);
+double SquareDistanceCDF(double, double*);
+/* double DiskDistanceCDF(double, double*); */
+/* double HyperballDistanceCDF(double, double*); */
+/* double RectangleDistanceCDF(double, double*); */
+double LineDistanceCDF(double, double*);
+/* double CubeDistanceCDF(double, double*); */
+
+/* variances, where known */
+double UnknownDistanceVar(double*);
+double SquareDistanceVar(double*);
+/* double DiskDistanceVar(double*); */
+/* double HyperballDistanceVar(double*); */
+double RectangleDistanceVar(double*);
+double LineDistanceVar(double*);
+/* double CubeDistanceVar(double*); */
 
 
 #ifdef _STANDALONE

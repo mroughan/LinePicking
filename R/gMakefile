@@ -38,7 +38,7 @@ R =
 r: $(R)
 
 $(R): FORCE
-	cd ../src/; $(MAKE) $@; cp $@ ../R/
+	cd ../src/; $(MAKE) $@ -f gMakefile; cp $@ ../R/
 
 # cause something to always remake when you put this in its dependencies
 FORCE:

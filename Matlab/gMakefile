@@ -29,7 +29,7 @@ MEX = LinePicking.mexa64
 mex: $(MEX)
 
 $(MEX): FORCE
-	cd ../src/; $(MAKE) $@; cp $@ ../Matlab/
+	cd ../src/; $(MAKE) $@ -f gMakefile; cp $@ ../Matlab/
 
 # cause something to always remake when you put this in its dependencies
 FORCE:
