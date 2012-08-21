@@ -52,7 +52,7 @@ double HyperballDistanceDensity(double, double*);
  *
  */
 static void usage_distance_dist();
-static void set_pars_distance_dist(int argc, char *argv[], char **file, int *mode, double *parameters);
+static void set_pars_distance_dist(int argc, char *argv[], char **, int *, double *, int *);
 int main(int argc, char *argv[]);
 #endif
 

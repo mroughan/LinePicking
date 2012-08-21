@@ -178,6 +178,7 @@ void distance_dist(double *t, double *g, int *N, int *mode, double* parameters, 
     int i;
 
     /* calculate the distribution */
+    /*   do basic checks of parameters here, so as to avoid repeating them for each t[i] */
     if (*mode == 0) /* square, with side length parameters[0] */
     {
 	if (*Npar < 1) {
@@ -216,6 +217,7 @@ void distance_dist(double *t, double *g, int *N, int *mode, double* parameters, 
 	    *result=2;
 	    return;
 	}
+	parameters[0] = ceil(parameters[0]); /* parameter is a dimension */
 	if (parameters[1] <= 0) {  
 	    *result=2;
 	    return;
@@ -587,18 +589,17 @@ void mexFunction(
 static void 
 usage_distance_dist()
 {
-  fprintf(stderr, "Usage: distance_dist -f input_file -m mode -p parameter0 -P parameter1 \n");
+  fprintf(stderr, "Usage: distance_dist -f input_file -m mode -p parameter[0] -q parameter[1] -s parameter[2] \n");
   fprintf(stderr, "           input_file contains a list of points t.\n");
   exit(1);
 }
 
 static void 
-set_pars_distance_dist(int argc, char *argv[], char **file, int *mode, double *parameters)
+set_pars_distance_dist(int argc, char *argv[], char **file, int *mode, double *parameters, int *Npar)
 {
   char c;
   extern char    *optarg;
   extern int      optind;
-  int F;
 
   /* defaults */
   *mode = 0;
@@ -632,6 +633,27 @@ set_pars_distance_dist(int argc, char *argv[], char **file, int *mode, double *p
       default: 
 	  usage_distance_dist(); 
       }
+
+  switch (*mode) {
+  case 0:/* square, with side length parameters[0] */
+      *Npar = 1;
+      break;
+  case 1:/* disk, with radius parameters[0] */
+      *Npar = 1;
+      break;
+  case 2: /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
+      *Npar = 2;
+      break;
+  case 3:/* rectangle, side lengths parameters[0], parameters[1] */
+      *Npar = 2;
+      break;
+  case 4: /* line, length parameters[0] */
+      *Npar = 1;
+      break;
+  case 5: /* cube, side length parameters[0] */
+      *Npar = 1;
+      break;
+  }
 }
  
 int main(int argc, char *argv[])
@@ -643,21 +665,59 @@ int main(int argc, char *argv[])
   double parameters[3];
   char *version = "version 1.0";
   char *file;
+  FILE *fp;    
+  double t, g;
+  int N=1;
+  int result, Npar;
 
   /*print out program name and version*/
   fprintf(stderr,"%% %s: %s \n", *argv, version);
 
   /* read in programs options  */
   set_pars_distance_dist(argc, argv, 
-			 &file, &mode, parameters);
-  fprintf(stderr,"%%   file=%s, mode=%d, ", file, mode);
-  for (i=0;i<3;i++) {
+			 &file, &mode, parameters, &Npar);
+  fprintf(stderr,"%%   file=%s, mode=%d, Npar=%d,", file, mode, Npar);
+  for (i=0;i<Npar;i++) {
       fprintf(stderr, " p[%d]=%.3f", i, parameters[i]);
   }
   fprintf(stderr, "\n");
 
+  /* read in the input file, and output the results */
+  fp = fopen(file, "r");  /* open the file for reading */
+  if (fp == NULL) {
+      fprintf(stderr, "distance_dist: invalid file!\n");
+      exit(1);
+  }
+  while(fscanf(fp, "%lf", &t) == 1) /* test that we read in exactly one double */
+  {
+      distance_dist(&t, &g, &N, &mode, parameters, &Npar, &result);
+      if (result == 0) {
+	  fprintf(stdout, "%lf, %lf\n", t, g);
+      } else {
+	  switch (result) {
+	  case 1:
+	      fprintf(stderr, "distance_dist: error, unsupported mode.\n");
+	      exit(result);
+	      break;
+	  case 2:
+	      fprintf(stderr, "distance_dist: error, parameters out of range.\n");
+	      exit(result);
+	      break;
+	  case 3:
+	      fprintf(stderr, "distance_dist: error, not enough parameters were entered.\n");
+	      exit(result);
+	      break;
+	  default:
+	      fprintf(stderr, "distance_dist: error, unexpected error.\n");
+	      exit(result);
+	  }
+      }
+  }
+  fclose(fp);
+
   return(0);
 }
+
 #endif
 
 
