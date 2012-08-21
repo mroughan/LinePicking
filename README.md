@@ -24,7 +24,7 @@ Details:
         another C program, Matlab (through MEX) and eventually through R.
 
 
- Matlab/ - Matlab code and location for mex files
+ Matlab/ - Matlab wrapper functions and compilation rules
 
     LinePicking_test.m
 
@@ -36,17 +36,25 @@ Details:
        A comparison of exact computations with simulation-based
        estimates. 
 
- R/ - 
-    DistanceDist.R
+ R/ - R wrapper functions and compilation rules
+
+    LinePickingPDF.R
  
       R wrapper function
 
-    ????
+    LinePicking_test.R
 
       Example of how to call the function in R
 
- man/ - documentation
+ man/ - Documentation
 
+    *.RD
+
+      R documentation
+
+    LinePicking.pdf
+
+      A description of the formulas with references.
 
 Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
 
