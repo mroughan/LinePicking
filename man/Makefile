@@ -18,18 +18,57 @@
 #
 #=============================================================================
 
-all: 
+BIBTEX = /usr/bin/bibtex -min-crossrefs=50 
+LATEX  = /usr/bin/latex -interaction=nonstopmode
+PS2PDF = /usr/bin/ps2pdf
+DVIPS = /usr/bin/dvips
+
+SRCFILES := $(shell ls *.tex)
+ROOT = $(SRCFILES:.tex=)
+PS = $(SRCFILES:.tex=.ps)
+PDF = $(SRCFILES:.tex=.pdf)
+BIB = $(SRCFILES:.tex=.bib)
+BBL = $(SRCFILES:.tex=.bbl)
+DVI = $(SRCFILES:.tex=.dvi)
 
 
-# cause something to always remake when you put this in its dependencies
+all: pdf
+pdf: ${PDF} 
+ps: ${PS}
+dvi: ${DVI}
+bbl: ${BBL}
+bib: ${BIB}
+
+# rules for slides
+$(PS): %.ps: %.dvi
+	${DVIPS} -f $^ > $@  
+
+$(PDF): %.pdf: %.ps
+	${PS2PDF} $^ $@ 
+
+$(DVI): %.dvi: %.tex FORCE
+	${LATEX} $< 
+	${LATEX} $< 
+	-${BIBTEX} $(<:.tex=)
+	${LATEX} $< 
+
+# other latex files
+%.bbl: %.tex ${BIB}
+	-${BIBTEX} $(<:.tex=)
+
+%.bib: %.tex ${BIB}
+	/home/mroughan/bin/bibextract.pl $< > $@
+
+# cause latex to run every time I type make
 FORCE:
 
 # standard cleanup etc
 .PHONY : clean
 clean: 
-	- $(RM) *~
+	-rm *.dvi *.out *.log *.aux *~
 
 .PHONY : distclean
 distclean: 
-	- $(RM) *~
+	-rm *.dvi *.log *.aux *.ps *.pdf *~
+
 

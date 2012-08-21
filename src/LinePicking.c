@@ -247,12 +247,12 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 	PDF = &RectangleDistanceDensity;
 	break;
     case 4: /* line, length parameters[0] */
-	PDF = &CubeDistanceDensity;
+	PDF = &LineDistanceDensity;
 	break;
     case 5: /* cube, side length parameters[0] */
 	PDF = &CubeDistanceDensity;
 	break;
-    }
+    } 
 
     /* calculate the distribution */
     for (i=0; i<*N; i++) 

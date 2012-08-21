@@ -1,0 +1,66 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: LinePicking.aux
+The style file: ieeetr.bst
+Database file #1: queueing_theory.bib
+Database file #2: books.bib
+Database file #3: ip_traffic.bib
+Database file #4: time_series.bib
+Database file #5: reliability.bib
+Database file #6: tcp.bib
+Database file #7: ospf.bib
+Database file #8: lrd.bib
+Database file #9: worms.bib
+Database file #10: internet.bib
+Database file #11: routing.bib
+Database file #12: bgp.bib
+Database file #13: topology.bib
+Database file #14: network.bib
+Database file #15: traffic_engineering.bib
+Database file #16: algorithms.bib
+Database file #17: optimization.bib
+Database file #18: history.bib
+Database file #19: graph.bib
+Warning--empty publisher in mathai_geom
+Warning--empty year in mathai_geom
+You've used 8 entries,
+            1876 wiz_defined-function locations,
+            644 strings with 6733 characters,
+and the built_in function-call counts, 1352 in all, are:
+= -- 124
+> -- 36
+< -- 0
++ -- 17
+- -- 9
+* -- 70
+:= -- 192
+add.period$ -- 8
+call.type$ -- 8
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 61
+empty$ -- 167
+format.name$ -- 9
+if$ -- 341
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 4
+newline$ -- 27
+num.names$ -- 8
+pop$ -- 37
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 55
+stack$ -- 0
+substring$ -- 48
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 2
+while$ -- 12
+width$ -- 9
+write$ -- 65
+(There were 2 warnings)
