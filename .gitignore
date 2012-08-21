@@ -7,3 +7,8 @@ distance_dist
 *~
 .Rproj.user
 linepdf/src-*/*
+*dvi
+*log
+*aux
+*blg
+*ps
