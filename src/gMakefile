@@ -33,7 +33,7 @@ O = LinePicking.o beta.o
 SO = LinePicking.so beta.so
 STAND_ALONE = LinePicking 
 
-all: ${STAND_ALONE}
+all: ${STAND_ALONE} ${SO}
 
 test: LinePicking
 	LinePicking -f test.dat -m 1 

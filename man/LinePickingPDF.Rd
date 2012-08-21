@@ -1,8 +1,8 @@
-\name{GetDistance}
-\alias{GetDistance}
+\name{LinePickingPDF}
+\alias{LinePickingPDF}
 \title{Get pdf for distance between two random points}
 \usage{
-  GetDistance(t, mode = 0, para)
+  LinePickingPDF(t, mode = 0, para)
 }
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
@@ -32,7 +32,7 @@
 }
 \examples{
 t <- seq(0,1,l=1000)
-y <- GetDistance(t=t,mode=0,para=1)
+y <- LinePickingPDF(t=t,mode=0,para=1)
 plot(t,y,type='l')
 }
 \author{

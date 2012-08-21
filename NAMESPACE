@@ -1,2 +1,2 @@
-export(GetDistance)
-useDynLib(linepdf)
+export(LinePickingPDF)
+useDynLib(LinePicking)

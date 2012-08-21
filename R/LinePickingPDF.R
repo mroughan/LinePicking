@@ -18,14 +18,14 @@
 #' element in t.
 #' @author Matt Roughan, Jono Tuke
 #' @export
-#' @useDynLib linepdf
+#' @useDynLib LinePicking
 #' @note August 17 2012
 #' @examples
 #' t <- seq(0,1,l=1000)
 #' y <- LinePickingPDF(t=t,mode=0,para=1)
 #' plot(t,y,type='l')
 LinePickingPDF <-
-function(t,mode=0,para,results,error_str){
+function(t,mode=0,para){
   n <- length(t)
   tmp <- .C('LinePickingPDF',
             t = as.double(t),
@@ -34,7 +34,8 @@ function(t,mode=0,para,results,error_str){
             mode = as.integer(mode),
             para = as.double(para),
             Npar = as.integer(length(para)),
-	    results = as.integer(results),
-	    error_str = as.string(error_str))
+	    results = as.integer(0),
+	    error_str = as.character(""))
+  print(tmp)
   return(tmp$pdf)
 }
