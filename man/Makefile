@@ -65,10 +65,10 @@ FORCE:
 # standard cleanup etc
 .PHONY : clean
 clean: 
-	-rm *.dvi *.out *.log *.aux *~
+	-rm *.dvi *.out *.log *.aux *.ps *~
 
 .PHONY : distclean
 distclean: 
-	-rm *.dvi *.log *.aux *.ps *.pdf *~
+	-rm *.dvi *.out *.log *.aux *.ps *~ *.pdf
 
 
