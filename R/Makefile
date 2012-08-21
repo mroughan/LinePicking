@@ -20,12 +20,12 @@
 
 # load these libraries into R using 
 #     dyn.load(‘‘beta.so’’)
-#     dyn.load(‘‘distance_dist.so’’)
+#     dyn.load(‘‘LinePicking.so’’)
 # and call using
 #     
 #
 
-R = distance_dist.so beta.so
+R = LinePicking.so beta.so
 
 .PHONY: r $(R)
 r: $(R)
