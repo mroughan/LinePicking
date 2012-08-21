@@ -17,6 +17,11 @@
 # 
 #
 #=============================================================================
+#
+#
+# NB: this is called gMakefile to allow R to install without hindrance
+#     call this e.g., by make -f gMakefile
+#
 
 default: all
 
@@ -33,31 +38,26 @@ O = LinePicking.o beta.o
 SO = LinePicking.so beta.so
 STAND_ALONE = LinePicking 
 
-all: ${STAND_ALONE} ${SO}
+all: ${STAND_ALONE}
 
 test: LinePicking
 	LinePicking -f test.dat -m 1 
 
 $(O): %.o: %.c ${HEADERS}
-	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE
+	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE -D_NOTR
 
 $(STAND_ALONE): %: %.o beta.o
-	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE
+	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
 $(MEX): %.mexa64: %.c beta.o ${HEADERS}
-	$(MX)  $< beta.o -D_MEX
+	$(MX)  $< beta.o -D_MEX -D_NOTR
 
 # shared libraries are used by R, so use R's standard command to define
 #    see R CMD SHLIB beta.c, for example
-$(SO): %.so: %.c ${HEADERS}
-	$(CC) -std=gnu99 -shared $< -o $@ -D_R -I/usr/include/ -I/usr/share/R/include/ -L/usr/lib64/R/lib -lR
-
-# $(O): %.o: %.c ${HEADERS}
-# 	$(CC) $< -c -o $@ -I/usr/include/ -I/usr/local/matlab/extern/include/ 
-
-# $(STAND_ALONE): %: %.o
-# 	$(CC) $< -o $@ -L/usr/local/matlab/bin/glnxa64 -lmx -lmex -lmat -lm -lstdc++
+# $(SO): %.so: %.c ${HEADERS}
+#	$(CC) -std=gnu99 -shared $< -o $@ -I/usr/include/ -I/usr/share/R/include/ -L/usr/lib64/R/lib -lR
+# but actually should allow R-installer to do this
 
 # cause something to always remake when you put this in its dependencies
 FORCE:
@@ -70,4 +70,14 @@ clean:
 .PHONY : distclean
 distclean: 
 	- $(RM) LinePicking *.mex* *.dll *.oct *.o *.so *~
+
+
+
+
+
+# $(O): %.o: %.c ${HEADERS}
+# 	$(CC) $< -c -o $@ -I/usr/include/ -I/usr/local/matlab/extern/include/ 
+
+# $(STAND_ALONE): %: %.o
+# 	$(CC) $< -o $@ -L/usr/local/matlab/bin/glnxa64 -lmx -lmex -lmat -lm -lstdc++
 

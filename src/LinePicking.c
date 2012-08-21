@@ -17,14 +17,13 @@
  * Compute the distance distribution between two point in a region, 
  * often called the "line picking problem".
  *
- * MEX Call as:   [g] = LinePicking(t, mode, parameters)
+ * MEX Call as:   [g] = LinePicking( ??? )
  *                   remember: parameter(1) (in matlab) == parameter[0] (in C)
  *
- * C Call as:     result = LinePicking(t, g, N, mode, parameters, Npar);
+ * C Call as:     result = LinePicking( ??? );
  *
  * Unix command line call as:  
- *            LinePicking -f input_file -m mode -p parameter0 -P parameter1
- *                   but this isn't finished yet
+ *            LinePicking -f input_file -m mode -p parameter0 -q parameter1 -s parameter2
  *    
  * Various regions are supported:
  *    0: square, with side length parameters[0]
@@ -44,8 +43,8 @@
 #include "LinePicking.h"
 #include "beta.h" 
   
-#ifdef _R
-#include <R.h>
+#ifndef _NOTR
+#include <R.h> /* only include this if we are compiling for R */
 #endif
 
 #ifdef _MEX
@@ -270,6 +269,75 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 }
 
 
+void LinePickingMean(double *mean, int *mode, double* parameters, int *Npar, int *result, char **error_str) 
+/* compute distance density g(t) (at points t) between two points in a region.
+ *
+ * t = array of points at which to calculate density 
+ * mean = mean line length
+ * mode = type of region
+ *    0: square, with side length parameters[0] 
+ *    1: disk, with radius parameters[0] 
+ *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
+ *    3: rectangle, side lengths parameters[0], parameters[1] 
+ *    4: line, length parameters[0] 
+ *    5: cube, side length parameters[0] parameters = parameters of the region
+ * Npar = number of parameters
+ * result = exit code
+ *    0: parameters are valid
+ *    1: unsupported mode
+ *    2: parameters out of range.
+ *    3: not enough parameters were entered.
+ *    4: other error.
+ * error_str: a message explaining the error
+ *
+ * Note that mode and Npar are all passed in by reference so R can cope, and similarly, 
+ * the function must return void, so we return the exit code in the last argument.
+ */
+{
+    int i;
+    double support[2];
+    double (*MEAN)(double*)=NULL;
+
+    /* now calculate the support of the distribution,
+       which will incidentally check that the parameters are valid
+    */
+    LinePickingSupport(support, mode, parameters, Npar, result, error_str);
+    if (*result != 0) {
+	/* something was wrong with parameters */
+	return;
+    }
+    
+    /* select the function to call */
+    switch (*mode) {
+    case 0:/* square, with side length parameters[0] */
+	MEAN = &SquareDistanceMean;
+	break;
+    case 1:/* disk, with radius parameters[0] */
+	MEAN = &DiskDistanceMean;
+	break;
+    case 2: /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
+	MEAN = &HyperballDistanceMean;
+	break;
+    case 3:/* rectangle, side lengths parameters[0], parameters[1] */
+	MEAN = &RectangleDistanceMean;
+	break;
+    case 4: /* line, length parameters[0] */
+	MEAN = &LineDistanceMean;
+	break;
+    case 5: /* cube, side length parameters[0] */
+	MEAN = &CubeDistanceMean;
+	break;
+    } 
+
+    /* calculate the distribution */
+    *mean = (*MEAN)(parameters);
+
+    /* correctly executed */
+    *result=0;
+    return;
+}
+
+
 double RectangleDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a rectangle size a times b */
 /*   "Random Distances Within a Rectangle and Between Two Rectangles", B. Ghosh,
@@ -324,6 +392,25 @@ double RectangleDistanceDensity(double t, double* parameters)
 
 }
 
+double RectangleDistanceMean(double* parameters)
+/* mean distance between two points in a rectangle size a times b */
+/*   "Random Distances Within a Rectangle and Between Two Rectangles", B. Ghosh,
+               Bulletin of the Calcutta Mathematical Society, Col.43 (1), p.17-24, 1951.
+     "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI - R MOSCHOPOULOS -G. PEDERZOLI
+               RENDICONT1 DEL CIRCOLO MATEMATICO DI PALERMO, Serie 11, Tomo XLVIII (1999), pp. 163-190
+   */
+{
+    double a = parameters[0];
+    double b = parameters[1];
+    double a2 = a*a;
+    double b2 = b*b;
+    double L2 = a2 + b2;
+    double L = sqrt(L2);
+    double tmp;
+
+    return(0);
+}
+
 
 double SquareDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a unit square */
@@ -350,6 +437,15 @@ double SquareDistanceDensity(double t, double* parameters)
 
 }
 
+double SquareDistanceMean(double* parameters)
+/* distance density (at t) between two points in a unit square */
+/*    http://mathworld.wolfram.com/SquareLinePicking.html */
+{
+    double L = M_SQRT2;
+
+    return(0);
+}
+
 double LineDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points on a unit line */
 /*    http://mathworld.wolfram.com/LineLinePicking.html */
@@ -365,6 +461,14 @@ double LineDistanceDensity(double t, double* parameters)
     }
 }
 
+double LineDistanceMean(double* parameters)
+/* distance density (at t) between two points on a unit line */
+/*    http://mathworld.wolfram.com/LineLinePicking.html */
+{
+    double L = parameters[0];
+    return(0);
+}
+
 double CubeDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a unit cube */
 /*    http://mathworld.wolfram.com/CubeLinePicking.html */
@@ -372,8 +476,6 @@ double CubeDistanceDensity(double t, double* parameters)
        "Distance between Random Points in a Cube." J. Statistica 59, 61-81, 1999.
       but with 'corrected typos'
  */
-
-/* middle section isn't working though */
 {
     double L = M_SQRT2;
     double L3 = sqrt(3);
@@ -414,6 +516,21 @@ double CubeDistanceDensity(double t, double* parameters)
  
 }
 
+double CubeDistanceMean(double* parameters)
+/* mean distance between two points in a unit cube */
+/*    http://mathworld.wolfram.com/CubeLinePicking.html */
+/*    from Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. 
+       "Distance between Random Points in a Cube." J. Statistica 59, 61-81, 1999.
+      but with 'corrected typos'
+ */
+{
+    double L = M_SQRT2;
+    double L3 = sqrt(3);
+    double tmp;
+
+    return(0);
+}
+
 double DiskDistanceDensity(double t, double* parameters)
 /* distance density (at t) between two points in a disk radius r */
 /*    http://mathworld.wolfram.com/BallLinePicking.html */
@@ -435,6 +552,18 @@ double DiskDistanceDensity(double t, double* parameters)
     part1 = 4*t*c / (M_PI*r2);
     part2 = 2*t2*sqrt(1 - (t2/(4*r2)))/(M_PI*r*r2);
     return(part1 - part2);
+}
+
+double DiskDistanceMean(double* parameters)
+/* mean distance between two points in a disk radius r */
+/*    http://mathworld.wolfram.com/BallLinePicking.html */
+{
+    double r = parameters[0];
+    double d = 2*r;
+    double r2 = r*r;
+    double part1, part2, c;
+
+    return(0);
 }
 
 double HyperballDistanceDensity(double t, double* parameters)
@@ -493,6 +622,21 @@ double HyperballDistanceDensity(double t, double* parameters)
 }
 
 
+double HyperballDistanceMean(double* parameters)
+/* mean distance between two points in a hyperball, 
+   dimension n, radius r */
+/*    http://mathworld.wolfram.com/BallLinePicking.html */
+{
+    double n = ceil(parameters[0]); 
+    double r = parameters[1];
+    double d = 2*r;
+    double r2 = r*r;
+    double p, q, x, Ix, Ix2;
+
+    return(0);
+}
+
+
 
 
 
@@ -514,7 +658,7 @@ void mexFunction(
   double *t; /* points at which to calculate the distribution */
   double *g; /* value of the distribution at the points t */
   int N, M;    /* number of points */
-  int Npar, Mpar;    /* number of parmeters */
+  int Npar, Mpar;    /* number of parameters */
   int i;					
   int mode;    /* the type of region on which to calculate the distribution */
   double *parameters; /*  input parameter vector  
@@ -545,8 +689,9 @@ void mexFunction(
   Npar = (int) mxGetN(prhs[2]);
   Mpar = (int) mxGetM(prhs[2]);
   Npar = Mpar*Npar;
-  if (nrhs < 3 || Npar*Mpar<1)
+  if (nrhs < 3 || Npar<1)
   {
+      /* set defaults */
       parameters = (double *) malloc((size_t) sizeof(double)*3);
 	  /* allocate three, even though at the moment we only need 2 */
       parameters[0] = 1;
@@ -650,7 +795,7 @@ int main(int argc, char *argv[])
   char *version = "version 1.0";
   char *file;
   FILE *fp;    
-  double t, g;
+  double t, g, mean;
   int N=1;
   int result, Npar;
   char *error_str;
@@ -672,6 +817,15 @@ int main(int argc, char *argv[])
   if (result != 0) {
       fprintf(stderr, "LinePicking: %s\n", error_str);
       exit(1);
+  }
+
+  /* calculate the mean */
+  LinePickingMean(&mean, &mode, parameters, &Npar, &result, &error_str);
+  if (result == 0) {
+      fprintf(stderr, "%%    mean line length = %lf\n", mean);
+  } else {
+      fprintf(stderr, "LinePicking: error, unexpected error.\n");
+      exit(result);
   }
 
   /* read in the input file, and output the results */

@@ -37,8 +37,11 @@ void LinePickingCheckParameters(int *, double *, int *, int *, char **);
 /* compute support of the density */
 void LinePickingSupport(double *, int *, double*, int *, int *, char **);
 
-/* primary function for calling any region through a uniform interface, for multiple t values */
+/* primary function for calculating PDF for any region through a uniform interface, for multiple t values */
 void LinePickingPDF(double *, double *, int *, int *, double*, int *, int*, char **);
+
+/* primary function for calculating Mean line length for any region */
+void LinePickingMean(double *, int *, double*, int *, int*, char **);
 
 /* functions that actually implement each region, for a single t value */
 /*    but don't call these directly, as they don't check for valid inputs 
@@ -49,6 +52,14 @@ double LineDistanceDensity(double, double*);
 double CubeDistanceDensity(double, double*);
 double DiskDistanceDensity(double, double*);
 double HyperballDistanceDensity(double, double*);
+
+/* means */
+double RectangleDistanceMean(double*);
+double SquareDistanceMean(double*);
+double LineDistanceMean(double*);
+double CubeDistanceMean(double*);
+double DiskDistanceMean(double*);
+double HyperballDistanceMean(double*);
 
 
 #ifdef _STANDALONE

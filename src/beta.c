@@ -17,7 +17,11 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
- 
+   
+#ifndef _NOTR 
+#include <R.h> /* only include this if we are compiling for R */
+#endif
+
 /* 
    Incomplete beta function fusing information from
 @article{Didonato:1992:ASD:131766.131776,

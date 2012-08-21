@@ -29,7 +29,7 @@ SUBDIRS = src Matlab  R man
 subdirs: $(SUBDIRS)
 
 $(SUBDIRS): FORCE
-	$(MAKE) -C $@
+	$(MAKE) -C $@ -f gMakefile
 
 # cause something to always remake when you put this in its dependencies
 FORCE:
@@ -38,7 +38,7 @@ FORCE:
 .PHONY: clean
 clean: 
 	echo cleaning up in .
-	-for d in $(SUBDIRS); do (cd $$d; $(MAKE) clean ); done
+	-for d in $(SUBDIRS); do (cd $$d; $(MAKE) -f gMakefile clean ); done
 
 
 # don't build Matlab, or R until after src is built

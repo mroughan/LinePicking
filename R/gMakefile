@@ -17,6 +17,15 @@
 # 
 #
 #=============================================================================
+#
+#
+# NB: this is called gMakefile to allow R to install without hindrance
+#     call this e.g., by make -f gMakefile
+#
+# but this shouldn't be needed if the R installer is used
+#
+R = 
+# R = LinePicking.so beta.so
 
 # load these libraries into R using 
 #     dyn.load(‘‘beta.so’’)
@@ -24,8 +33,6 @@
 # and call using
 #     
 #
-
-R = LinePicking.so beta.so
 
 .PHONY: r $(R)
 r: $(R)
