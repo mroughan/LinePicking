@@ -18,7 +18,7 @@
 #
 #=============================================================================
 
-MEX = distance_dist.mexa64
+MEX = LinePicking.mexa64
 
 .PHONY: mex $(MEX)
 mex: $(MEX)
@@ -36,5 +36,5 @@ clean:
 
 .PHONY : distclean
 distclean: 
-	- $(RM) *.mex* Plots/distance_dist*
+	- $(RM) *.mex* Plots/LinePicking*
 

@@ -28,15 +28,15 @@ CC=gcc -O -fPIC
 C = $(shell ls *.c)
 HEADERS = $(shell ls *.h)
 
-MEX = distance_dist.mexa64
-O = distance_dist.o beta.o
-SO = distance_dist.so beta.so
-STAND_ALONE = distance_dist 
+MEX = LinePicking.mexa64
+O = LinePicking.o beta.o
+SO = LinePicking.so beta.so
+STAND_ALONE = LinePicking 
 
 all: ${STAND_ALONE}
 
-test: distance_dist
-	distance_dist -f distance_dist_test.inp -m 1 
+test: LinePicking
+	LinePicking -f test.dat -m 1 
 
 $(O): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE
@@ -69,5 +69,5 @@ clean:
 
 .PHONY : distclean
 distclean: 
-	- $(RM) distance_dist *.mex* *.dll *.oct *.o *.so *~
+	- $(RM) LinePicking *.mex* *.dll *.oct *.o *.so *~
 
