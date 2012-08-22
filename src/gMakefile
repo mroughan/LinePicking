@@ -2,6 +2,7 @@
 # Makefile: for line picking problem
 #
 # Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+# Copyright 2012 Eric Paronage <eric.parsonage@adelaide.edu.au>
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
 #     the Free Software Foundation, either version 3 of the License, or
@@ -27,13 +28,60 @@ default: all
 
 #-----------------------------------------------------------------------------
 
+#=============================================================================
+# This section works out what operating system Matlab is going to target 
+# and the extension it will use for its mex files
+#=============================================================================
+MATLAB_ARCH=''
+MATLAB_EXT=''
+
+# get the OS 
+UNAME = $(shell uname -s)
+
+ifeq ("$(UNAME)","Darwin")
+# Darwin always reports i386 as architecture if kernel is i386 
+# so we check how manybits are in a long
+  LBITS := $(shell getconf LONG_BIT)
+  ifeq ($(LBITS),64)
+    MATLAB_ARCH = "maci64"
+    MATLAB_EXT = "mexmaci64"
+  else
+    MATLAB_ARCH = "maci"
+    MATLAB_EXT = "mexmaci"
+  endif
+endif
+
+ifeq ("$(UNAME)","SunOS")
+  MACH_ARCH = $(shell uname -p)
+  ifeq ("$(MACH_ARCH)","sparc")
+    MATLAB_ARCH =  "sol64"
+    MATLAB_EXT = "mexsol"
+  endif
+  ifeq ("$(MACH_ARCH)","I386")
+    MATLAB_ARCH =  "sola64"
+    MATLAB_EXT = "mexs64" 
+  endif
+endif
+
+ifeq ("$(UNAME)","Linux")
+  MACH_ARCH = $(shell uname -p)
+  ifeq ("$(MACH_ARCH)","i*86")
+    MATLAB_ARCH =  "glnx86"
+    MATLAB_EXT = "mexglx"
+  endif
+  ifeq ("$(MACH_ARCH)","x86_64")
+    MATLAB_ARCH =  "glnxa64"
+    MATLAB_EXT = "mexa64"
+  endif
+endif
+
 MX=mex -O -largeArrayDims 
 CC=gcc -O -fPIC
 
 C = $(shell ls *.c)
 HEADERS = $(shell ls *.h)
 
-MEX = LinePicking.mexa64
+MEX = LinePicking.$(MATLAB_EXT)
 O = LinePicking.o beta.o
 SO = LinePicking.so beta.so
 STAND_ALONE = LinePicking 
@@ -50,7 +98,7 @@ $(STAND_ALONE): %: %.o beta.o
 	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
-$(MEX): %.mexa64: %.c beta.o ${HEADERS}
+$(MEX): %.$(MATLAB_EXT): %.c beta.o ${HEADERS}
 	$(MX)  $< beta.o -D_MEX -D_NOTR
 
 # shared libraries are used by R, so use R's standard command to define
