@@ -382,8 +382,8 @@ void LinePickingMean(double *mean, int *mode, double* parameters, int *Npar, int
     LinePickingSupport(support, mode, parameters, Npar, result, error_str);
     if (*result != 0) {
 	/* something was wrong with parameters */
-	return;
-    }
+	return; 
+    } 
     
     /* select the function to call */
     switch (*mode) {
