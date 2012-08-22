@@ -32,7 +32,7 @@
  *    3: rectangle, side lengths parameters[0], parameters[1]
  *    4: line, length parameters[0]
  *    5: cube, side length parameters[0]
- *
+ * with LinePickingModeLookup providing the map from number to name.
  * 
  */
 #include <math.h>
@@ -74,13 +74,7 @@ void LinePickingAllmodes()
 void LinePickingCheckParameters(int *mode, double* parameters, int *Npar, int *result, char **error_str)
 /* check that a mode and a set of parameters are valid
  *
- * mode = type of region
- *    0: square, with side length parameters[0] 
- *    1: disk, with radius parameters[0] 
- *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
- *    3: rectangle, side lengths parameters[0], parameters[1] 
- *    4: line, length parameters[0] 
- *    5: cube, side length parameters[0] parameters = parameters of the region
+ * mode = type of region (LinePickingModeLookup providing the map from number to region)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
@@ -154,13 +148,7 @@ void LinePickingSupport(double *t, int *mode, double* parameters, int *Npar, int
 /* compute support of distance density g(t) (at points t) between two points in a region.
  *
  * t = [t_min, t_max]    : assumes 2 spaces are allocated!!!!!
- * mode = type of region
- *    0: square, with side length parameters[0] 
- *    1: disk, with radius parameters[0] 
- *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
- *    3: rectangle, side lengths parameters[0], parameters[1] 
- *    4: line, length parameters[0] 
- *    5: cube, side length parameters[0] parameters = parameters of the region
+ * mode = type of region (LinePickingModeLookup providing the map from number to region)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
@@ -216,13 +204,7 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
  *
  * t = array of points at which to calculate density 
  * g = array to store output 
- * mode = type of region
- *    0: square, with side length parameters[0] 
- *    1: disk, with radius parameters[0] 
- *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
- *    3: rectangle, side lengths parameters[0], parameters[1] 
- *    4: line, length parameters[0] 
- *    5: cube, side length parameters[0] parameters = parameters of the region
+ * mode = type of region (LinePickingModeLookup providing the map from number to region)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
@@ -302,13 +284,7 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode, double* parameters,
  *
  * t = array of points at which to calculate density 
  * g = array to store output 
- * mode = type of region
- *    0: square, with side length parameters[0] 
- *    1: disk, with radius parameters[0] 
- *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
- *    3: rectangle, side lengths parameters[0], parameters[1] 
- *    4: line, length parameters[0] 
- *    5: cube, side length parameters[0] parameters = parameters of the region
+ * mode = type of region (LinePickingModeLookup providing the map from number to region)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
@@ -380,13 +356,7 @@ void LinePickingMean(double *mean, int *mode, double* parameters, int *Npar, int
  *
  * t = array of points at which to calculate density 
  * mean = mean line length
- * mode = type of region
- *    0: square, with side length parameters[0] 
- *    1: disk, with radius parameters[0] 
- *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
- *    3: rectangle, side lengths parameters[0], parameters[1] 
- *    4: line, length parameters[0] 
- *    5: cube, side length parameters[0] parameters = parameters of the region
+ * mode = type of region (LinePickingModeLookup providing the map from number to region)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
@@ -449,13 +419,7 @@ void LinePickingVar(double *var, int *mode, double* parameters, int *Npar, int *
  *
  * t = array of points at which to calculate density 
  * var = var line length
- * mode = type of region
- *    0: square, with side length parameters[0] 
- *    1: disk, with radius parameters[0] 
- *    2: hyper-ball, dimension parameters[0], radius parameters[1] 
- *    3: rectangle, side lengths parameters[0], parameters[1] 
- *    4: line, length parameters[0] 
- *    5: cube, side length parameters[0] parameters = parameters of the region
+ * mode = type of region (LinePickingModeLookup providing the map from number to region)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
