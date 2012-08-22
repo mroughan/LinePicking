@@ -31,6 +31,24 @@
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
+/* arrays to map modes to name  */
+#define NUMBER_OF_MODES 6
+char *mode_name[NUMBER_OF_MODES] = {"square", "disk", "hyper-ball", "rectangle", "line", "cube"};
+char *mode_description[NUMBER_OF_MODES] = {
+    "square, with side length parameters[0]",
+    "disk, with radius parameters[0]",
+    "hyper-ball, with dimension parameters[0], and radius parameters[1] ",
+    "rectangle, side lengths parameters[0], parameters[1]",
+    "line, length parameters[0]",
+    "cube, side length parameters[0]",
+};
+/* how many parameters each mode takes */
+int mode_pars[NUMBER_OF_MODES] = {1, 1, 2, 2, 1, 1}; 
+
+/* give details of a mode */
+void LinePickingModeLookup(int *, char**, char**);
+void LinePickingAllmodes();
+
 /* check that a mode and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
 

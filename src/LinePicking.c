@@ -52,6 +52,25 @@
 #include "matrix.h"
 #endif
 
+void LinePickingModeLookup(int *mode, char **name, char **description) 
+/* give details of a mode */
+{
+    *name = mode_name[*mode];
+    *description = mode_description[*mode];
+    return;
+}
+
+void LinePickingAllmodes()
+/* write out the list of modes */
+{
+    int i;
+    for (i=0;i<NUMBER_OF_MODES;i++) {
+	fprintf(stdout, " mode[%d] = %s\n", i, mode_name[i]);
+    }
+    return;
+}
+
+
 void LinePickingCheckParameters(int *mode, double* parameters, int *Npar, int *result, char **error_str)
 /* check that a mode and a set of parameters are valid
  *
@@ -76,22 +95,21 @@ void LinePickingCheckParameters(int *mode, double* parameters, int *Npar, int *r
  */
 {
     int i;
-    static int npars[6] = {1, 1, 2, 2, 1, 1}; 
     
     *error_str  = (char *) malloc((size_t) sizeof(char)*256); /* longest error string is 255 characters */
 
     /* check the mode is supported */
-    if (*mode<0 || *mode>5) {
+    if (*mode<0 || *mode>NUMBER_OF_MODES-1) {
 	*result=1;
 	sprintf(*error_str, "LinePickingCheckParameters: the mode %d is unsupported.", *mode);
 	return;
     }
 
     /* check that there are the right number of parameters */
-    if (*Npar != npars[*mode]) {
+    if (*Npar != mode_pars[*mode]) {
 	*result=3;
 	sprintf(*error_str, "LinePickingCheckParameters: mode %d requires %d parameters (%d were input).", 
-		*mode, npars[*mode], *Npar);
+		*mode, mode_pars[*mode], *Npar);
 	return;
     }
 
@@ -221,6 +239,14 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
     int i;
     double support[2];
     double (*PDF)(double, double*)=NULL;
+    double (*PDF1[NUMBER_OF_MODES])(double, double*) = {
+	&SquareDistancePDF,
+	&DiskDistancePDF,
+	&HyperballDistancePDF,
+	&RectangleDistancePDF,
+	&LineDistancePDF,
+	&CubeDistancePDF
+    };
 
     /* now calculate the support of the distribution,
        which will incidentally check that the parameters are valid
@@ -230,7 +256,8 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 	/* something was wrong with parameters */
 	return;
     }
-    
+
+
     /* select the function to call */
     switch (*mode) {
     case 0:/* square, with side length parameters[0] */
@@ -259,7 +286,8 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 	if (t[i] < support[0] || t[i] > support[1]) {
 	    g[i] = 0;
 	} else {
-	    g[i] = (*PDF)(t[i], parameters);
+	    /* g[i] = (*PDF)(t[i], parameters); */
+	    g[i] = (*PDF1[*mode])(t[i], parameters);
 	}
     }
 
@@ -1052,9 +1080,12 @@ int main(int argc, char *argv[])
   int N=1;
   int result, Npar;
   char *error_str;
+  char *mode_name;
+  char *mode_description;
 
   /*print out program name and version*/
   fprintf(stderr,"%% %s: %s \n", *argv, version);
+  LinePickingAllmodes();
 
   /* read in programs options  */
   set_pars_LinePicking(argc, argv, 
@@ -1071,6 +1102,9 @@ int main(int argc, char *argv[])
       fprintf(stderr, "LinePicking: %s\n", error_str);
       exit(1);
   }
+  /* get the mode's name and description */
+  LinePickingModeLookup(&mode, &mode_name, &mode_description);
+  fprintf(stderr, "%%    mode=%d, %s (%s)\n", mode, mode_name, mode_description);
 
   /* calculate the mean and variance */
   LinePickingMean(&mean, &mode, parameters, &Npar, &result, &error_str);
