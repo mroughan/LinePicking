@@ -60,7 +60,7 @@ $(DVI): %.dvi: %.tex FORCE
 %.bbl: %.tex ${BIB}
 	-${BIBTEX} $(<:.tex=)
 
-%.bib: %.tex ${BIB}
+%.bib: %.tex
 	/home/mroughan/bin/bibextract.pl $< > $@
 
 # cause latex to run every time I type make
