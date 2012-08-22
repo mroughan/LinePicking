@@ -1,6 +1,6 @@
 *.o
 *.so
-*.mexa64
+*.mex*
 *~
 .Rproj.user
 linepdf/src-*/*
