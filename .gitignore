@@ -3,7 +3,6 @@
 *.mex*
 *~
 .Rproj.user
-linepdf/src-*/*
 *.dvi
 *.log
 *.aux

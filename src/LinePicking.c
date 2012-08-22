@@ -220,8 +220,8 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 {
     int i;
     double support[2];
-    double (*PDF)(double, double*)=NULL;
-    double (*PDF1[NUMBER_OF_MODES])(double, double*) = {
+    /* an array of points to the right function for each mode */
+    double (*PDF[NUMBER_OF_MODES])(double, double*) = {
 	&SquareDistancePDF,
 	&DiskDistancePDF,
 	&HyperballDistancePDF,
@@ -239,29 +239,6 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 	return;
     }
 
-
-    /* select the function to call */
-    switch (*mode) {
-    case 0:/* square, with side length parameters[0] */
-	PDF = &SquareDistancePDF;
-	break;
-    case 1:/* disk, with radius parameters[0] */
-	PDF = &DiskDistancePDF;
-	break;
-    case 2: /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
-	PDF = &HyperballDistancePDF;
-	break;
-    case 3:/* rectangle, side lengths parameters[0], parameters[1] */
-	PDF = &RectangleDistancePDF;
-	break;
-    case 4: /* line, length parameters[0] */
-	PDF = &LineDistancePDF;
-	break;
-    case 5: /* cube, side length parameters[0] */
-	PDF = &CubeDistancePDF;
-	break;
-    } 
-
     /* calculate the distribution */
     for (i=0; i<*N; i++) 
     {
@@ -269,7 +246,7 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode, double* parameters,
 	    g[i] = 0;
 	} else {
 	    /* g[i] = (*PDF)(t[i], parameters); */
-	    g[i] = (*PDF1[*mode])(t[i], parameters);
+	    g[i] = (*PDF[*mode])(t[i], parameters);
 	}
     }
 
