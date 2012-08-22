@@ -88,8 +88,19 @@ STAND_ALONE = LinePicking
 
 all: ${STAND_ALONE}
 
-test: LinePicking
-	LinePicking -f test.dat -m 1 
+test: ${STAND_ALONE}
+	./LinePicking -f TestData/test.dat -m 0 > tmp/test.0.out
+	./LinePicking -f TestData/test.dat -m 1 > tmp/test.1.out
+	./LinePicking -f TestData/test.dat -m 2 > tmp/test.2.out
+	./LinePicking -f TestData/test.dat -m 3 > tmp/test.3.out
+	./LinePicking -f TestData/test.dat -m 4 > tmp/test.4.out
+	./LinePicking -f TestData/test.dat -m 5 > tmp/test.5.out
+	diff TestData/test.0.out tmp/test.0.out
+	diff TestData/test.1.out tmp/test.1.out
+	diff TestData/test.2.out tmp/test.2.out
+	diff TestData/test.3.out tmp/test.3.out
+	diff TestData/test.4.out tmp/test.4.out
+	diff TestData/test.5.out tmp/test.5.out
 
 $(O): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE -D_NOTR
