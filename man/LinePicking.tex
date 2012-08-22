@@ -83,10 +83,41 @@ a wide variety of systems.
 
 \section{Problem Definition}
 
-formalities
+Start with a space $\Omega$, from which we can draw points $x$ at
+random. Typical examples include a rectangle in $R^2$, or a hyperball
+in $R^n$.
 
-  -- 2 points, uniformly chosen at random (though there are
-  generalizations)
+Draw two IID (Independently, Identically Distributed) points from the
+space, and draw a line between the points. The line could refer to the
+natural geodesic on the space, or something more complicated such as
+a geodesic in a higher dimensional Euclidean space in which $\Omega$
+is embedded. For instance, we might consider simple straight lines
+between points chosen in a rectangle, or straight lines in $R^n$
+between points chosen on the surface of a sphere, or geodesics on the
+surface of the same sphere.
+
+Another way to frame this is to assume we have a distance metic
+$d(\cdot, \cdot)$ on the space $\Omega$. The typical distance metric
+used in these problems is the Euclidean distance, but others are
+possible.
+
+So a {\em line picking problem} consists of 3 components:
+\begin{itemize}
+
+\item $\Omega$ (typically a subset of $R^n$)
+
+\item The measure $\mu$ on $\Omega$ describing the choice of points
+  (typically uniform)
+
+\item The space in which we draw lines (geodesics) and its related
+  distance metric.
+
+\end{itemize}
+so we describe these problems by the triple: $(\Omega, \mu, d)$. Given
+that the typical case of $\mu$ is uniform, and of $d$ is Euclidean, we
+often ommit these from the problem statement.
+
+EXAMPLE FIGURES: square, surface of sphere, manhattan distance
 
 
 \section{Known Results}
