@@ -488,10 +488,10 @@ void LinePickingVar(double *var, int *mode, double* parameters, int *Npar, int *
 	VAR = &SquareDistanceVar;
 	break;
     case 1:/* disk, with radius parameters[0] */
-	VAR = &UnknownDistanceVar;
+	VAR = &DiskDistanceVar;
 	break;
     case 2: /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
-	VAR = &UnknownDistanceVar;
+	VAR = &HyperballDistanceVar;
 	break;
     case 3:/* rectangle, side lengths parameters[0], parameters[1] */
 	VAR = &RectangleDistanceVar;
@@ -500,7 +500,7 @@ void LinePickingVar(double *var, int *mode, double* parameters, int *Npar, int *
 	VAR = &LineDistanceVar;
 	break;
     case 5: /* cube, side length parameters[0] */
-	VAR = &UnknownDistanceVar;
+	VAR = &CubeDistanceVar;
 	break;
     } 
 
@@ -632,6 +632,13 @@ double DiskDistanceMean(double* parameters)
     return(parameters[0]*128.0/(45.0*M_PI));
 }
 
+double DiskDistanceVar(double* parameters)
+/* variance distance between two points in a disk radius r */
+/*    calculated numerically */
+{
+    return(parameters[0]*parameters[0]*0.180224062826);
+}
+
 double HyperballDistancePDF(double t, double* parameters)
 /* distance density (at t) between two points in a hyperball, 
    dimension n, radius r */
@@ -706,6 +713,43 @@ double HyperballDistanceMean(double* parameters)
 	break;
     case 4:
 	return(parameters[1] * 16384.0/(4725*M_PI));
+	break;
+    case 5: /* calculated numerically */
+	return(parameters[1] * 1.154401161607);
+	break;
+    case 6: /* calculated numerically */
+	return(parameters[1] * 1.190852402194);
+	break;
+    default:
+	return(-1);
+	break;
+    }
+}
+
+double HyperballDistanceVar(double* parameters)
+/* variance of distance between two points in a hyperball, 
+   dimension n, radius r */
+/*    http://mathworld.wolfram.com/BallLinePicking.html */
+{
+    int n = ceil(parameters[0]); 
+    switch (n) {
+    case 1:
+	return(parameters[1] * parameters[1] * 0.222222222222);
+	break;
+    case 2:
+	return(parameters[1] * parameters[1] * 0.180224062826);
+	break;
+    case 3:
+	return(parameters[1] * parameters[1] * 0.142040815734);
+	break;
+    case 4:
+	return(parameters[1] * parameters[1] * 0.115083085418);
+	break;
+    case 5:
+	return(parameters[1] * parameters[1] * 0.095929395933);
+	break;
+    case 6:
+	return(parameters[1] * parameters[1] * 0.081870574293);
 	break;
     default:
 	return(-1);
@@ -922,6 +966,14 @@ double CubeDistanceMean(double* parameters)
 }
 
 
+double CubeDistanceVar(double* parameters)
+/* mean distance between two points in a unit cube */
+/*    calculated numerically */
+{
+    return(parameters[0]*parameters[0]*0.062143604936);
+}
+
+
 
 #ifdef _MEX
 
@@ -1043,27 +1095,7 @@ set_pars_LinePicking(int argc, char *argv[], char **file, int *mode, double *par
       default: 
 	  usage_LinePicking(); 
       }
-
-  switch (*mode) {
-  case 0:/* square, with side length parameters[0] */
-      *Npar = 1;
-      break;
-  case 1:/* disk, with radius parameters[0] */
-      *Npar = 1;
-      break;
-  case 2: /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
-      *Npar = 2;
-      break;
-  case 3:/* rectangle, side lengths parameters[0], parameters[1] */
-      *Npar = 2;
-      break;
-  case 4: /* line, length parameters[0] */
-      *Npar = 1;
-      break;
-  case 5: /* cube, side length parameters[0] */
-      *Npar = 1;
-      break;
-  }
+  *Npar = mode_pars[*mode];
 }
  
 int main(int argc, char *argv[])
@@ -1085,7 +1117,6 @@ int main(int argc, char *argv[])
 
   /*print out program name and version*/
   fprintf(stderr,"%% %s: %s \n", *argv, version);
-  LinePickingAllmodes();
 
   /* read in programs options  */
   set_pars_LinePicking(argc, argv, 

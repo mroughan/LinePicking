@@ -99,11 +99,11 @@ double LineDistanceCDF(double, double*);
 /* variances, where known */
 double UnknownDistanceVar(double*);
 double SquareDistanceVar(double*);
-/* double DiskDistanceVar(double*); */
-/* double HyperballDistanceVar(double*); */
+double DiskDistanceVar(double*);
+double HyperballDistanceVar(double*);
 double RectangleDistanceVar(double*);
 double LineDistanceVar(double*);
-/* double CubeDistanceVar(double*); */
+double CubeDistanceVar(double*);
 
 
 #ifdef _STANDALONE
