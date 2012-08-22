@@ -4,9 +4,9 @@
 *~
 .Rproj.user
 linepdf/src-*/*
-*dvi
-*log
-*aux
-*blg
-*ps
+*.dvi
+*.log
+*.aux
+*.blg
+*.ps
 LinePicking
