@@ -120,6 +120,29 @@ often ommit these from the problem statement.
 EXAMPLE FIGURES: square, surface of sphere, manhattan distance
 
 
+\section{Region Transforms}
+\label{sec:scaling}
+
+Many of the standard problems use a uniform point distribution and
+Euclidean distances on some convex region of $R^n$. In these cases,
+there is are easy scaling and trasnlation laws that means once we know
+the distribution for some size region, we can compute it for any size.
+
+Translation is trivial. Given the uniform distribution of point,
+translation has no affect on the line-length distribution.
+
+Scaling is almost as simple: if the region $\Omega$ is scaled in all
+dimensions by $L$, then the problem is identical under a scaling of
+the distance metric by $L$. We can therefore scale the density
+functions as follows
+\[ g_L(t) = \frac{1}{L} g_1\left(\frac{t}{L} \right). \]
+
+
+
+Non-uniform scaling is not, however, simple as we shall see in the
+results below.
+
+
 \section{Known Results}
 \label{sec:known}
 
