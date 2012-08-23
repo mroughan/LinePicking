@@ -38,7 +38,7 @@
 \def\RR{\mathds{R}}
 \def\CC{\mathds{C}}
 
-\newcommand{\titlestr}{Known Results for the Line Picking Problem}
+\newcommand{\titlestr}{Known Results for the Line-Picking Problem}
 \rhead[]{{\small \titlestr}}
 \lhead[{\small }]{}
 \cfoot{}
@@ -67,7 +67,7 @@
 
 \section{Introduction}
 
-The {\em line picking} problem is a standard problem in stochastic
+The {\em line-picking} problem is a standard problem in stochastic
 geometry, where we pick lines at random from some region. The typical
 questions one asks are what will then mean line length be? What will
 the Probability Density Function (PDF) be?
@@ -101,7 +101,7 @@ $d(\cdot, \cdot)$ on the space $\Omega$. The typical distance metric
 used in these problems is the Euclidean distance, but others are
 possible.
 
-So a {\em line picking problem} consists of 3 components:
+So a {\em line-picking problem} consists of 3 components:
 \begin{itemize}
 
 \item $\Omega$ (typically a subset of $R^n$)
@@ -139,10 +139,8 @@ functions as follows
  g_L(t) = \frac{1}{L} g_1\left(\frac{t}{L} \right). 
 \end{equation}
 
-
-
-Non-uniform scaling is not, however, simple as we shall see in the
-results below.
+Non-uniform scaling is not so simple as we shall see in the results
+below.
 
 
 \section{Known Results}
@@ -243,20 +241,25 @@ rectangles~\cite{b.ghosh51:_random_rect}.
 The other obvious region on which to solve the line-picking problem is
 the ball in $n$-dimensions~\cite{tu00:_circle_line} (equations
 (27-31)). For a $n$-dimensional ball of radius $R$,
-\[ g^{nD-{\rm ball}}_R(t) = n \frac{t^{n-1}}{R^n} I_x\left( 
+\begin{equation}
+ g^{nD-{\rm ball}}_R(t) = n \frac{t^{n-1}}{R^n} I_x\left( 
   \frac{1}{2} (n+1), \frac{1}{2}
                       \right),
-\]
+\end{equation}
 where
-\[ x = 1 - \frac{t^2}{4 R^2}, \]
+\begin{equation}
+ x = 1 - \frac{t^2}{4 R^2}, 
+\end{equation}
 and $I_x(p,q)$ is a {\em regularized beta function}
-\[  I_x(p,q) = \frac{ B(x; p,q)}{B(p,q)}, \]
+\begin{equation}
+   I_x(p,q) = \frac{ B(x; p,q)}{B(p,q)},
+\end{equation}
 where $B(x; p,q)$ is an incomplete beta function, and $B(p,q)$ is a
 beta function, i.e., 
-\begin{eqnarray*}
+\begin{eqnarray}
   B(p,q)    & = & \int_0^1 t^{p-1} (1 - t)^{q-1} \, dt, \\
   B(x; p,q) & = & \int_0^x t^{p-1} (1 - t)^{q-1} \, dt.
-\end{eqnarray*}
+\end{eqnarray}
 The first few of these are \cite{tu00:_circle_line} ($P_2$ in (5) and
 (17), $P_3$ in (9) and (19), $P_4$ in (18) and $P_5$ in (20), general
 even form in (15), general odd form in (16)):
@@ -558,17 +561,7 @@ The simulation-based approach is not as accurate as the exact
 numerical approach, however, it accuracy should be sufficient for most
 estimation problems, without increasing the computational workload
 unduly.
-
-\begin{figure}[tbp]
-  \begin{center}
-    \subfloat[Mean relative error in $-G'(\hat{s})/G(\hat{s})$.]{\includegraphics[width=0.49\columnwidth]{../Matlab/Plots/LinePicking_numerical_rel_error.eps}}
-    \subfloat[Relative computation time of the simulation-based
-    approach, with respect to the exact approach.]{\includegraphics[width=0.49\columnwidth]{../Matlab/Plots/LinePicking_numerical_time.eps}}
-    \caption{A comparison of simulation-based Laplace transform
-      calculation with the exact approach.\label{fig:simulated_laplace}}
-  \end{center} 
-\vspace{-4mm}
-\end{figure}
+make
 
 
 \section{Programs}
@@ -576,7 +569,64 @@ unduly.
 
 \subsection{A Rough Guide}
 
+The code is arranged to be usable as
+\begin{enumerate}
+
+\item Directly, as a command-line function;
+
+\item By linking into a larger set of code;
+
+\item Called through a {\tt Matlab} MEX wrapper; or 
+
+\item Called through a {\tt R} wrapper function.
+
+\end{enumerate}
+It is designed to be as independent of external libraries as possible,
+needing only the C standard libraries. So compilation should be
+straight forward on the majority of machines.
+
+Ideally, typing {\tt make} in the top level directory should make all
+of the targets, however, {\tt R} users may find it easier to install
+using standard {\tt R} installation procedures (but not that these
+won't necessarily construct the other components, need for instance
+for Matlab).
+
+The makefiles in the subdirectories are named {\tt gMakefile} to avoid
+conflicts with the way {\tt R} interprets them, so if you wish to
+remake a specific subdirectory, enter the directory and type: 
+\verb|make -f gMakefile|.
+
+There are a large number of functions defined in the code, for each of
+the cases discussed above, however, there are a small set of functions
+that you may need to be aware of, that allow one to call all of the
+others through a simple, uniform interface.
+
+....
+
+
 \subsection{Numerical Issues}
+
+Most of the computations in the code involve simple calculations, with
+no obvious numerical issues (other than the obvious fact that floating
+point arithmetic is being used).
+
+The computations on the $n$-D ball, however, require calculation of
+the incomplete beta function. We have provided a separate library to
+perform this computation, but users may find they can obtain more
+accurate results using third party library functions. 
+
+...
+
+Estimates of errors ...
+
+
+\subsection{Tests}
+
+The tools come with a set of tests to compare performance on your
+system with ours, and ensure everything is working ...
+
+
+
 
 
 \section{Correlations}
