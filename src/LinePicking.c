@@ -583,7 +583,14 @@ double DiskDistanceVar(double* parameters)
 double HyperballDistancePDF(double t, double* parameters)
 /* distance density (at t) between two points in a hyperball, 
    dimension n, radius r */
-/*    http://mathworld.wolfram.com/BallLinePicking.html */
+/*  
+@Misc{tu00:_circle_line,
+  author = 	 {Tu, S.-J. and Fischbach, E.},
+  title = 	 {A New Geometric Probability Technique for an {N}-Dimensional Sphere and Its Applications},
+  year = 	 2000,
+  howpublished = {arXiv:math-ph/0004021v3, \url{http://arxiv.org/abs/math-ph/0004021}}}
+
+  http://mathworld.wolfram.com/BallLinePicking.html */
 {
     double n = ceil(parameters[0]); 
     double r = parameters[1];
@@ -639,63 +646,86 @@ double HyperballDistancePDF(double t, double* parameters)
 double HyperballDistanceMean(double* parameters)
 /* mean distance between two points in a hyperball, 
    dimension n, radius r */
-/*    http://mathworld.wolfram.com/BallLinePicking.html */
+/*  
+ @Misc{tu00:_circle_line,
+   author = 	 {Tu, S.-J. and Fischbach, E.},
+   title = 	 {A New Geometric Probability Technique for an {N}-Dimensional Sphere and Its Applications},
+   year = 	 2000,
+   howpublished = {arXiv:math-ph/0004021v3, \url{http://arxiv.org/abs/math-ph/0004021}}}
+ */
 {
-    int n = ceil(parameters[0]); 
-    switch (n) {
-    case 1:
-	return(parameters[1] * 2.0/3.0);
-	break;
-    case 2:
-	return(parameters[1] * 128.0/(45*M_PI));
-	break;
-    case 3:
-	return(parameters[1] * 36.0/35.0);
-	break;
-    case 4:
-	return(parameters[1] * 16384.0/(4725*M_PI));
-	break;
-    case 5: /* calculated numerically */
-	return(parameters[1] * 1.154401161607);
-	break;
-    case 6: /* calculated numerically */
-	return(parameters[1] * 1.190852402194);
-	break;
-    default:
-	return(-1);
-	break;
-    }
+    double n = ceil(parameters[0]); 
+    double m = 1;
+    double tmp = pow((n/(n+m)),2.0) * pow(parameters[1],m)
+	*tgamma(n+m+1.0)*tgamma(n/2.0)/( tgamma((n+m)/2.0)*tgamma(n+1 + m/2.0) );
+    return( tmp );
+
+    /* switch (n) { */
+    /* case 1: */
+    /* 	return(parameters[1] * 2.0/3.0); */
+    /* 	break; */
+    /* case 2: */
+    /* 	return(parameters[1] * 128.0/(45*M_PI)); */
+    /* 	break; */
+    /* case 3: */
+    /* 	return(parameters[1] * 36.0/35.0); */
+    /* 	break; */
+    /* case 4: */
+    /* 	return(parameters[1] * 16384.0/(4725*M_PI)); */
+    /* 	break; */
+    /* case 5: /\* calculated numerically *\/ */
+    /* 	return(parameters[1] * 1.154401161607); */
+    /* 	break; */
+    /* case 6: /\* calculated numerically *\/ */
+    /* 	return(parameters[1] * 1.190852402194); */
+    /* 	break; */
+    /* default: */
+    /* 	return(-1); */
+    /* 	break; */
+    /* } */
 }
 
 double HyperballDistanceVar(double* parameters)
 /* variance of distance between two points in a hyperball, 
    dimension n, radius r */
-/*    http://mathworld.wolfram.com/BallLinePicking.html */
+/*  
+  @Misc{tu00:_circle_line,
+    author = 	 {Tu, S.-J. and Fischbach, E.},
+    title = 	 {A New Geometric Probability Technique for an {N}-Dimensional Sphere and Its Applications},
+    year = 	 2000,
+    howpublished = {arXiv:math-ph/0004021v3, \url{http://arxiv.org/abs/math-ph/0004021}}}
+ */
 {
-    int n = ceil(parameters[0]); 
-    switch (n) {
-    case 1:
-	return(parameters[1] * parameters[1] * 0.222222222222);
-	break;
-    case 2:
-	return(parameters[1] * parameters[1] * 0.180224062826);
-	break;
-    case 3:
-	return(parameters[1] * parameters[1] * 0.142040815734);
-	break;
-    case 4:
-	return(parameters[1] * parameters[1] * 0.115083085418);
-	break;
-    case 5:
-	return(parameters[1] * parameters[1] * 0.095929395933);
-	break;
-    case 6:
-	return(parameters[1] * parameters[1] * 0.081870574293);
-	break;
-    default:
-	return(-1);
-	break;
-    }
+    double n = ceil(parameters[0]); 
+    double m = 2;
+    double tmp = pow((n/(n+m)),2.0) * pow(parameters[1],m)
+	*tgamma(n+m+1.0)*tgamma(n/2.0)/( tgamma((n+m)/2.0)*tgamma(n+1 + m/2.0) );
+    return( tmp - pow(HyperballDistanceMean(parameters),2.0));
+
+    
+    /* switch (n) { */
+    /* case 1: */
+    /* 	return(parameters[1] * parameters[1] * 0.222222222222); */
+    /* 	break; */
+    /* case 2: */
+    /* 	return(parameters[1] * parameters[1] * 0.180224062826); */
+    /* 	break; */
+    /* case 3: */
+    /* 	return(parameters[1] * parameters[1] * 0.142040815734); */
+    /* 	break; */
+    /* case 4: */
+    /* 	return(parameters[1] * parameters[1] * 0.115083085418); */
+    /* 	break; */
+    /* case 5: */
+    /* 	return(parameters[1] * parameters[1] * 0.095929395933); */
+    /* 	break; */
+    /* case 6: */
+    /* 	return(parameters[1] * parameters[1] * 0.081870574293); */
+    /* 	break; */
+    /* default: */
+    /* 	return(-1); */
+    /* 	break; */
+    /* } */
 }
 
 
