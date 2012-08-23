@@ -21,6 +21,7 @@
 \usepackage{amsmath}
 \usepackage{ifthen}
 \usepackage{verbatim}
+\usepackage{cite}
 
 \setlength{\headheight}{10mm}
 \setlength{\headsep}{10mm}
@@ -81,6 +82,18 @@ suitable wrapper functions for Matlab and R, to allow it to be run on
 a wide variety of systems.
 
 
+
+Motivation: examples of uses
+\begin{itemize}
+
+\item Modelling a PNNI hierarchical routing protocol for ATM packet
+  telecommunication networks~\cite{Rosenberg200499} (length of lines
+  in rectangles);
+
+\item 
+
+\end{itemize}
+
 \section{Problem Definition}
 
 Start with a space $\Omega$, from which we can draw points $x$ at
@@ -118,6 +131,14 @@ that the typical case of $\mu$ is uniform, and of $d$ is Euclidean, we
 often ommit these from the problem statement.
 
 EXAMPLE FIGURES: square, surface of sphere, manhattan distance
+
+
+
+Bertrand's Paradox of 1889, ``Does a random chord on a circle has
+length exceeding the length of a side of an inscribed equilateral
+triangle?''
+% http://www.sciencedirect.com/science/article/pii/S0167637703000725
+
 
 
 \section{Region Transforms}
@@ -319,7 +340,10 @@ the line-length distribution for the rectangle.
 where $M = \sqrt{a^2 + b^2}$, from which we can derive the special
 cases of the square and line (though these can also be derived
 directly). Obvious central moments such as mean, and variance, etc.,
-can be derived from these, though forumlas will be complex.
+can be derived from these, though forumlas will be
+complex. Rosenberg~\cite{Rosenberg200499} derives a similar result,
+but under different assumptions of the random selection of lines (he
+assumes we first choose a random angle, then choose the line.
 
 The mean for the cube, known as the {\em Robbins constant}, is given
 in \cite{robbins78:_constant,weisstein:_cube_line_picking} as
