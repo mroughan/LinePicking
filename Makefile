@@ -40,6 +40,10 @@ clean:
 	echo cleaning up in .
 	-for d in $(SUBDIRS); do (cd $$d; $(MAKE) -f gMakefile clean ); done
 
+.PHONY: distclean
+distclean:
+	echo cleaning up in .
+	-for d in $(SUBDIRS); do (cd $$d; $(MAKE) -f gMakefile distclean ); done
 
 # don't build Matlab, or R until after src is built
 Matlab: src
