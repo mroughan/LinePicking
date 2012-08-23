@@ -184,11 +184,12 @@ any advantage, though we shall see later that this would have been
 completely appropriate if the region have been a circle.
 
 There are two obvious special cases of the above -- the line, and the
-square -- both of which have been addressed separately, but which also
-result from limits of the above formula. The probability density
-function of distances between two (uniformly) randomly chosen points
-on the unit square is given in \cite{weisstein:_squar_line_picking},
-as
+square -- both of which have been addressed separately (e.g., see
+\cite{philip:_probab_distr_distan_between_two,weisstein:_squar_line_picking}),
+but which also result from limits of the above formula. The
+probability density function of distances between two (uniformly)
+randomly chosen points on the unit square is given in
+\cite{weisstein:_squar_line_picking}, as
 \begin{equation}
   \label{eq:square_line}
   g^{\rm square}(t) = \left\{ \begin{array}{ll}
@@ -212,14 +213,16 @@ or for a line of length $L$ as
   g^{\rm line}_L(t) = \frac{2}{L} \left( 1-\frac{t}{L} \right).
 \end{equation}
 
-
 The results have also been extended into 3D, with the probability
 density function of distances between two (uniformly) randomly chosen
 points in the unit cube is given in
-\cite{weisstein:_cube_line_picking}, by a yet more complicated, but
-again easily evaluated formula. Other results are also known, for
-instance the distribution when the points are chosen on the sides of
-the square (but lines are drawn across it), and the distribution of
+\cite{mathai99:_distan,philip:_probab_distr_distan_between_two,weisstein:_cube_line_picking},
+by a yet more complicated, but again easily evaluated
+formula. Likewise they have been extended to 4- and
+5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}. Other
+results are also known, for instance the distribution when the points
+are chosen on the sides of the square (but lines are drawn across it)
+or faces of a cube!\cite{mathai99:_distan}, and the distribution of
 distances between points chosen in two different
 rectangles~\cite{b.ghosh51:_random_rect}.
 
@@ -315,16 +318,23 @@ directly). Obvious central moments such as mean, and variance, etc.,
 can be derived from these, though forumlas will be complex.
 
 The mean for the cube, known as the {\em Robbins constant}, is given
-in \cite{weisstein:_cube_line_picking} as 
-\[ \mu^{\rm cube} = \frac{1}{105} \left[ 
+in \cite{robbins78:_constant,weisstein:_cube_line_picking} as
+\begin{equation}
+   \label{eq:cube_mean}
+ \mu^{\rm cube} = \frac{1}{105} \left[ 
                              4 + 17 \sqrt{2}- 6 \sqrt{3}  +
                              21 \ln(1+\sqrt{2}) + 
                              42 \ln(2+\sqrt{3}) - 7 \pi
                       \right]
 	=	0.66170...
- \]
+\end{equation}
 but a closed form for the variance does not appear (only even moments
-are reported).
+are reported). Even more complicated results appear for 4- and 5-Cubes in
+5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}:
+\begin{eqnarray}
+ \mu^{\rm 4-cube} & = & 0.7776656535 ...    \label{eq:4-cube}, \\
+ \mu^{\rm 4-cube} & = & 0.8785309152 ...     \label{eq:5-cube}.
+\end{eqnarray}
 
 The means for the $n$-dimensional ball (with radius 1) are given in
 \cite{weisstein:_ball_line_picking} as
@@ -601,8 +611,8 @@ Empirical measurement (see triples.m)
 
 \setlength{\parskip}{1mm}
 \bibliographystyle{ieeetr}
-\bibliography{queueing_theory,books,ip_traffic,time_series,reliability,tcp,ospf,lrd,worms,internet,routing,bgp,topology,network,traffic_engineering,algorithms,optimization,history,graph}
-% \bibliography{LinePicking}
+% \bibliography{queueing_theory,books,ip_traffic,time_series,reliability,tcp,ospf,lrd,worms,internet,routing,bgp,topology,network,traffic_engineering,algorithms,optimization,history,graph}
+\bibliography{LinePicking}
 
 \end{document}
 
