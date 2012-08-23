@@ -21,6 +21,7 @@
 \usepackage{amsmath}
 \usepackage{ifthen}
 \usepackage{verbatim}
+\usepackage{cite}
 
 \setlength{\headheight}{10mm}
 \setlength{\headsep}{10mm}
@@ -38,7 +39,7 @@
 \def\RR{\mathds{R}}
 \def\CC{\mathds{C}}
 
-\newcommand{\titlestr}{Known Results for the Line Picking Problem}
+\newcommand{\titlestr}{Known Results for the Line-Picking Problem}
 \rhead[]{{\small \titlestr}}
 \lhead[{\small }]{}
 \cfoot{}
@@ -67,7 +68,7 @@
 
 \section{Introduction}
 
-The {\em line picking} problem is a standard problem in stochastic
+The {\em line-picking} problem is a standard problem in stochastic
 geometry, where we pick lines at random from some region. The typical
 questions one asks are what will then mean line length be? What will
 the Probability Density Function (PDF) be?
@@ -80,6 +81,18 @@ The code is written in C with minimal external dependencies, and with
 suitable wrapper functions for Matlab and R, to allow it to be run on
 a wide variety of systems.
 
+
+
+Motivation: examples of uses
+\begin{itemize}
+
+\item Modelling a PNNI hierarchical routing protocol for ATM packet
+  telecommunication networks~\cite{Rosenberg200499} (length of lines
+  in rectangles);
+
+\item 
+
+\end{itemize}
 
 \section{Problem Definition}
 
@@ -101,7 +114,7 @@ $d(\cdot, \cdot)$ on the space $\Omega$. The typical distance metric
 used in these problems is the Euclidean distance, but others are
 possible.
 
-So a {\em line picking problem} consists of 3 components:
+So a {\em line-picking problem} consists of 3 components:
 \begin{itemize}
 
 \item $\Omega$ (typically a subset of $R^n$)
@@ -120,6 +133,14 @@ often ommit these from the problem statement.
 EXAMPLE FIGURES: square, surface of sphere, manhattan distance
 
 
+
+Bertrand's Paradox of 1889, ``Does a random chord on a circle has
+length exceeding the length of a side of an inscribed equilateral
+triangle?''
+% http://www.sciencedirect.com/science/article/pii/S0167637703000725
+
+
+
 \section{Region Transforms}
 \label{sec:scaling}
 
@@ -135,88 +156,22 @@ Scaling is almost as simple: if the region $\Omega$ is scaled in all
 dimensions by $L$, then the problem is identical under a scaling of
 the distance metric by $L$. We can therefore scale the density
 functions as follows
-\[ g_L(t) = \frac{1}{L} g_1\left(\frac{t}{L} \right). \]
+\begin{equation}
+ g_L(t) = \frac{1}{L} g_1\left(\frac{t}{L} \right). 
+\end{equation}
 
-
-
-Non-uniform scaling is not, however, simple as we shall see in the
-results below.
+Non-uniform scaling is not so simple as we shall see in the results
+below.
 
 
 \section{Known Results}
 \label{sec:known}
 
-
-The Waxman graph has been analysed in some detail, starting first with
-analysis of points chosen randomly in the plane. Such points form a
-spatial Poisson process across the region of interest. Much analysis
-has considered such processes, and we will only repeat directly
-relevant results here. The most recondite result concerns the
-distribution of distances between two points chosen randomly in the
-unit square.  The probability density function of distances between
-two (uniformly) randomly chosen points on the unit square is given in
-\cite{weisstein:_squar_line_picking}, as
+The first result we present is that for the rectangle: given in
+\cite[Theorem 2.4.4]{mathai_geom} and \cite[Theorem
+2]{b.ghosh51:_random_rect}
 \begin{equation}
-  \label{eq:square_line}
-  g(t) = \left\{ \begin{array}{ll}
-      2t (t^2-4t+\pi), & \mbox{ for } 0 \leq t \leq 1, \\
-      2t \left[4 \sqrt{t^2-1} - (t^2+2-\pi) - 4 \tan^{-1} \left(\sqrt{t^2-1} \right)\right], 
-               & \mbox{ for } 1 \leq t \leq \sqrt{2} . \\ 
-    \end{array} \right.
-\end{equation}
-% http://mathworld.wolfram.com/SquareLinePicking.html
-This is a rather complicated expression, but is easily evaluated
-numerically. Alternatively, in
-\cite{m.naldi05:_connec_of_waxman_graph} this expression was
-approximated with a $\beta$ function, though given the requirements to
-numerically evaluate that function there hardly seems any advantage.
-Figure~\ref{fig:LinePicking} shows the shape of this distribution.
-It is noteworthy that the distance distribution between two points
-will also give the distribution of the distances of links in an
-Erd\H{o}s-R\'enyi random graph constructed on a set of random points
-on the square.
-
-% In high dimensions, the points are spread ``more thinnly'' in the
-% sense that their density on $n$-dimensional volumes will be lower, and
-% hence, the distances between points will be larger. As a result,
-% Waxman graphs in higher dimensions may become more sparse.
-
-The general problem of choosing a line from some space has been called
-a {\em line picking} problem, with many examples having been studied.
-
-Numerically it is straight-forward to calculate the function $g(t)$
-and its Laplace transform where the nodes are placed on irregular
-regions of the plane. It simply requires computation of a double
-integral. Note however, that even if we constrain nodes to lie in the
-region, if the region is non-convex the links may cross the boundaries
-of the regions. A simple example is the Waxman graph on a circular disc
-of radius $R$. It has the advantage of isometry, or rotational
-symmetry.  When we restrict the vertices (and edges) to a circle the
-problem is still relatively easy to solve. The distance distribution
-between random points in the a circle radius $R$ is given by
-\cite{tu00:_circle_line} as
-\begin{equation}
-   g_R(t)= \frac{4t}{\pi R^2} \cos^{-1}\left( \frac{t}{2R} \right)
-          - \frac{2t^2}{\pi R^3} \sqrt{ 1- \frac{t^2}{4 R^2} }. 
-  \label{eqn:circle}
-\end{equation}
-This function is also shown (for $R=0.5$) in
-Figure~\ref{fig:LinePicking} for comparison with the function on the
-unit square. Interesting, despite noticable differences in these
-functions, we found little difference between the critical ration
-$-G'(s)/G(s)$ for large $s$ (small $\alpha$) suggesting the in these
-cases the exact form of the region may be fairly unimportant.
-
-Note that the asymptotic expansion of $\cos^{-1}(x) = \frac{\pi}{2} -
-O(x)$, so the small $t$ expansion of $g_R(t) = 2 t/R^2$, which is
-identical per unit area to the small $\alpha$ approximation for the square.
-
-Another example, an approximation of which appears in
-\cite{m.naldi05:_connec_of_waxman_graph} is the rectangle. The precise
-form of the distance density for this case is given in \cite[Theorem
-2.4.4]{mathai_geom} as
-\begin{equation}
-  g_{a,b}(t) = \frac{4 t}{a^2 b^2} \phi_{a,b}(t),
+  g^{\rm rect}_{a,b}(t) = \frac{4 t}{a^2 b^2} \phi_{a,b}(t),
   \label{eqn:rectangle}   
 \end{equation}
 where
@@ -235,8 +190,61 @@ where
          & \mbox{ otherwise}, \\
     \end{array} \right. 
 \end{equation}
-where the rectangle has sides of length $a \leq b$. Figure~\ref{fig:rect_density}
+where the rectangle has sides of length $a \leq
+b$. Figure~\ref{fig:rect_density} shows these for various cases,
+chosen such that $\sqrt{a^2 + b^2} = 1$ to allow comparison. We label
+these rectangles by their aspect ratio $a: b$.
 
+This is a rather complicated expression, but is easily evaluated
+numerically.  Naldi \cite{m.naldi05:_connec_of_waxman_graph}
+approximated this expression with a $\beta$ function, though given the
+requirements to numerically evaluate that function there hardly seems
+any advantage, though we shall see later that this would have been
+completely appropriate if the region have been a circle.
+
+There are two obvious special cases of the above -- the line, and the
+square -- both of which have been addressed separately (e.g., see
+\cite{philip:_probab_distr_distan_between_two,weisstein:_squar_line_picking}),
+but which also result from limits of the above formula. The
+probability density function of distances between two (uniformly)
+randomly chosen points on the unit square is given in
+\cite{weisstein:_squar_line_picking}, as
+\begin{equation}
+  \label{eq:square_line}
+  g^{\rm square}(t) = \left\{ \begin{array}{ll}
+      2t (t^2-4t+\pi), & \mbox{ for } 0 \leq t \leq 1, \\
+      2t \left[4 \sqrt{t^2-1} - (t^2+2-\pi) - 4 \tan^{-1} \left(\sqrt{t^2-1} \right)\right], 
+               & \mbox{ for } 1 \leq t \leq \sqrt{2} . \\ 
+    \end{array} \right.
+\end{equation}
+% http://mathworld.wolfram.com/SquareLinePicking.html
+
+The probability density function of distances between two (uniformly)
+randomly chosen points on the unit line is given in
+\cite{weisstein:_line_line_picking,b.ghosh51:_random_rect}, as
+\begin{equation}
+  \label{eq:line_line}
+  g^{\rm line}(t) = 2(1-t),
+\end{equation}
+or for a line of length $L$ as
+\begin{equation}
+  \label{eq:line_line}
+  g^{\rm line}_L(t) = \frac{2}{L} \left( 1-\frac{t}{L} \right).
+\end{equation}
+
+The results have also been extended into 3D, with the probability
+density function of distances between two (uniformly) randomly chosen
+points in the unit cube is given in
+\cite{mathai99:_distan,weisstein:_cube_line_picking}, by a yet more
+complicated, but again easily evaluated formula. Likewise the formula
+have been calculated for a box (with sides $a,b$ and
+$c$)~\cite{philip:_probab_distr_distan_between_two} and 4- and
+5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}. Other
+results are also known, for instance the distribution when the points
+are chosen on the sides of the square (but lines are drawn across it)
+or faces of a cube!\cite{mathai99:_distan}, and the distribution of
+distances between points chosen in two different
+rectangles~\cite{b.ghosh51:_random_rect}.
 
 \begin{figure}[tbp]
   \begin{center}
@@ -250,6 +258,156 @@ where the rectangle has sides of length $a \leq b$. Figure~\ref{fig:rect_density
   \end{center} 
 \vspace{-4mm}
 \end{figure}
+
+
+The other obvious region on which to solve the line-picking problem is
+the ball in $n$-dimensions~\cite{tu00:_circle_line} (equations
+(27-31)). For a $n$-dimensional ball of radius $R$,
+\begin{equation}
+ g^{nD-{\rm ball}}_R(t) = n \frac{t^{n-1}}{R^n} I_x\left( 
+  \frac{1}{2} (n+1), \frac{1}{2}
+                      \right),
+\end{equation}
+where
+\begin{equation}
+ x = 1 - \frac{t^2}{4 R^2}, 
+\end{equation}
+and $I_x(p,q)$ is a {\em regularized beta function}
+\begin{equation}
+   I_x(p,q) = \frac{ B(x; p,q)}{B(p,q)},
+\end{equation}
+where $B(x; p,q)$ is an incomplete beta function, and $B(p,q)$ is a
+beta function, i.e., 
+\begin{eqnarray}
+  B(p,q)    & = & \int_0^1 t^{p-1} (1 - t)^{q-1} \, dt, \\
+  B(x; p,q) & = & \int_0^x t^{p-1} (1 - t)^{q-1} \, dt.
+\end{eqnarray}
+The first few of these are \cite{tu00:_circle_line} ($P_2$ in (5) and
+(17), $P_3$ in (9) and (19), $P_4$ in (18) and $P_5$ in (20), general
+even form in (15), general odd form in (16)):
+\begin{eqnarray}
+  \label{eq:ball_line_picking}
+  g^{1D-{\rm ball}}_R(t) & = & \frac{1}{R} - \frac{t}{2 R}   \label{eq:line_line_picking}, \\
+  g^{2D-{\rm ball}}_R(t) & = & \frac{4 t}{\pi R^2} \cos^{-1} \left( \frac{t}{2R} \right)
+               - \frac{2 t^2}{\pi R^3} \sqrt{1 - \frac{t^2}{4 R^2} } \label{eq:2dball_line_picking} , \\
+          & = & \frac{2 t}{R^2} 
+               - \frac{2 t^2}{\pi R^3} \sqrt{1 - \frac{t^2}{4 R^2} }
+               - \frac{4 t}{\pi R^2} \sin^{-1} \left( \frac{t}{2R} \right) \label{eq:2dball_line_picking2} ,  \\
+  g^{3D-{\rm ball}}_R(t) & = & \frac{3 t^2}{R^3} - \frac{9 t^3}{4 R^4} + \frac{3 t^5}{16 R^6}   \label{eq:sphere_line_picking}  , \\
+  g^{4D-{\rm ball}}_R(t) & = &  \frac{8 t^3}{\pi R^4} \cos^{-1} \left( \frac{t}{2R} \right) 
+              - \frac{8 t^4}{3 \pi R^5} \left( 1 - \frac{t^2}{4 R^2} \right)^{3/2}
+               - \frac{4 t^4}{\pi R^5} \sqrt{1 - \frac{t^2}{4 R^2} } \\
+  g^{5D-{\rm ball}}_R(t) & = & \frac{5 t^4}{R^5} - \frac{75 t^6}{16 R^6} + \frac{25 t^7}{32 R^8} - \frac{15 t^9}{256 R^{10}} .
+  \label{eq:ball_line_picking-end}
+\end{eqnarray}
+Tu and Fischbach \cite{tu00:_circle_line} also extend these results to
+cases with non-uniform point distributions.
+ 
+Figure~\ref{fig:b_balls} shows a comparison of line picking on
+balls of various dimensions, and Figure~\ref{fig:various} shows a
+comparison of the 2D and 3D balls to the square and cube. We can see
+that as long as the areas (volumes) are matched, they appear quite
+similar, respectively, though the rectangle varies considerably more.
+% plot is similar to http://mathworld.wolfram.com/BallLinePicking.html
+
+
+
+
+\subsection{Moments}
+
+Ghosh \cite{b.ghosh51:_random_rect} gives the first four moments of
+the line-length distribution for the rectangle.
+\begin{eqnarray}
+  \label{eq:rect_moments} 
+  \alpha_1 & = & \frac{1}{6} \left[ 
+                        \frac{b^2}{a} \cosh^{-1}\left( M/b \right) +
+                        \frac{a^2}{b} \cosh^{-1}\left( M/a \right) 
+                 \right]
+                  + \frac{1}{15} \left[ \frac{a^3}{b^2} + \frac{b^3}{a^2} \right]
+                  - \frac{M}{15} \left[ \frac{a^2}{b^2} + \frac{b^2}{a^2} -3 \right],
+\\
+  \alpha_2 & = & \frac{1}{6} M^2, \\
+  \alpha_3 & = & \frac{1}{20} \left[ 
+                        \frac{b^4}{a} \cosh^{-1}\left( M/b \right) +
+                        \frac{a^4}{b} \cosh^{-1}\left( M/a \right) 
+                 \right]
+                  + \frac{2}{105} \left[ \frac{a^5}{b^2} + \frac{b^5}{a^2} \right]
+                  - \frac{2M}{105} \left[ \frac{a^4}{b^2} + \frac{b^4}{a^2}\right]
+                        - \frac{5}{84} M^3, 
+\\
+  \alpha_4 & = & \frac{1}{15} a^4 + \frac{1}{18} a^2 b^2 + \frac{1}{15} b^4,
+\end{eqnarray}
+where $M = \sqrt{a^2 + b^2}$, from which we can derive the special
+cases of the square and line (though these can also be derived
+directly). Obvious central moments such as mean, and variance, etc.,
+can be derived from these, though forumlas will be
+complex. Rosenberg~\cite{Rosenberg200499} derives a similar result,
+but under different assumptions of the random selection of lines (he
+assumes we first choose a random angle, then choose the line.
+
+The mean for the cube, known as the {\em Robbins constant}, is given
+in \cite{robbins78:_constant,weisstein:_cube_line_picking} as
+\begin{equation}
+   \label{eq:cube_mean}
+ \mu^{\rm cube} = \frac{1}{105} \left[ 
+                             4 + 17 \sqrt{2}- 6 \sqrt{3}  +
+                             21 \ln(1+\sqrt{2}) + 
+                             42 \ln(2+\sqrt{3}) - 7 \pi
+                      \right]
+	=	0.66170...
+\end{equation}
+but a closed form for the variance does not appear (only even moments
+are reported). Even more complicated results appear for 4- and 5-Cubes in
+5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}:
+\begin{eqnarray}
+ \mu^{\rm 4-cube} & = & 0.7776656535 ...    \label{eq:4-cube}, \\
+ \mu^{\rm 4-cube} & = & 0.8785309152 ...     \label{eq:5-cube}.
+\end{eqnarray}
+
+The means for the $n$-dimensional ball (with radius 1) are given in
+\cite{weisstein:_ball_line_picking} as
+\begin{eqnarray}
+  \label{eq:ball-ndim-mean}
+  \mu^{1D-{\rm ball}} & = & \frac{2}{3}, \\
+  \mu^{2D-{\rm ball}} & = & \frac{128}{45 \pi},\\
+  \mu^{3D-{\rm ball}} & = & \frac{36}{35}, \\
+  \mu^{4D-{\rm ball}} & = & \frac{16384}{4725 \pi}.
+\end{eqnarray}
+The more general form for higher order moments is given in
+\cite{tu00:_circle_line} (equation (138-141)) as
+\begin{eqnarray}
+  \label{eq:ball-ndim-moments}
+  \alpha_m^{nD-{\rm ball}} & = &
+     \frac{n 2^{m+n}}{m+n} \frac{B\left(\frac{n+1}{2}, \frac{n+m+1}{2}  \right)}{B\left(\frac{n+1}{2}, \frac{1}{2} \right)} R^m, \\
+       & = & \left( \frac{n}{n+m} \right)^2 
+                 \frac{\Gamma\left( n+m+1 \right) \Gamma\left( n/2 \right) }
+                      {\Gamma\left( (n+m)/2 \right) \Gamma\left( n+1 + m/2 \right) } R^m.  
+\end{eqnarray}
+for and $n$-dimensional ball of radius $R$.
+
+
+
+\subsection{CDF}
+
+
+Cumulative distribution functions are also known ...
+
+Can be calculated by integration, but ...
+
+
+
+\subsection{Approximations}
+
+
+
+
+% In high dimensions, the points are spread ``more thinnly'' in the
+% sense that their density on $n$-dimensional volumes will be lower, and
+% hence, the distances between points will be larger. As a result,
+% Waxman graphs in higher dimensions may become more sparse.
+
+
+
 
 
 
@@ -273,55 +431,6 @@ where $A$ is the area of the region of interest and $d$ is the scaled
 distance $d = t/A$. Notice that this scaling is different from the one
 used in the Waxman distance function where we scale by the maximum
 distnace $L$. 
-
-The above result generalize immediately to Waxman graphs on $n$
-dimensional spaces. We simply need to calculate $g(t)$ on the space in
-question. For instance, generalizations of $g(t)$ on the
-$n$-dimensional ball exist~\cite{tu00:_circle_line}, called the ``ball
-line picking'', i.e., for a $n$-dimensional ball of radius $R$,
-\[ g_n(t) = n \frac{t^{n-1}}{R^n} I_x\left( 
-  \frac{1}{2} (n+1), \frac{1}{2}
-                      \right),
-\]
-where
-\[ x = 1 - \frac{t^2}{4 R^2}, \]
-and $I_x(p,q)$ is a {\em regularized beta function}
-\[  I_x(p,q) = \frac{ B(x; p,q)}{B(p,q)}, \]
-where $B(x; p,q)$ is an incomplete beta function, and $B(p,q)$ is a
-beta function, i.e., 
-\begin{eqnarray*}
-  B(p,q)    & = & \int_0^1 t^{p-1} (1 - t)^{q-1} \, dt, \\
-  B(x; p,q) & = & \int_0^x t^{p-1} (1 - t)^{q-1} \, dt, \\
-\end{eqnarray*}
-The first few of these are \cite{tu00:_circle_line} ($P_2$ in (5) and
-(17), $P_3$ in (9) and (19), $P_4$ in (18) and $P_5$ in (20), general
-even form in (15), general odd form in (16)):
-\begin{eqnarray}
-  \label{eq:ball_line_picking}
-  g_1(t) & = & \frac{1}{R} - \frac{t}{2 R}   \label{eq:line_line_picking} \\
-  g_2(t) & = & \frac{4 t}{\pi R^2} \cos^{-1} \left( \frac{t}{2R} \right) 
-               - \frac{2 t^2}{\pi R^3} \sqrt{1 - \frac{t^2}{4 R^2} } \label{eq:2dball_line_picking} \\
-          & = & \frac{2 t}{R^2} 
-               - \frac{2 t^2}{\pi R^3} \sqrt{1 - \frac{t^2}{4 R^2} }
-               - \frac{4 t}{\pi R^2} \sin^{-1} \left( \frac{t}{2R} \right) \label{eq:2dball_line_picking2}  \\
-  g_3(t) & = & \frac{3 t^2}{R^3} - \frac{9 t^3}{4 R^4} + \frac{3 t^5}{16 R^6}   \label{eq:sphere_line_picking}  \\
-  g_4(t) & = &  \frac{8 t^3}{\pi R^4} \cos^{-1} \left( \frac{t}{2R} \right) 
-               - \frac{8 t^4}{3 \pi R^5} \left( 1 - \frac{t^2}{4 R^2} \right)^{3/2}
-               - \frac{4 t^4}{\pi R^5} \sqrt{1 - \frac{t^2}{4 R^2} } \\
-  g_5(t) & = & \frac{5 t^4}{R^5} - \frac{75 t^6}{16 R^6} + \frac{25 t^7}{32 R^8} - \frac{15 t^9}{256 R^{10}}  
-  \label{eq:ball_line_picking-end}
-\end{eqnarray}
-The above cases for which we know the form of the distribution are
-straight-forward to compute, but note that the derivation of $g(t)$
-just involves a set of integrals that could be numerically
-pre-computed for any region of interest.  
- 
-Figure~\ref{fig:b_balls} shows a comparison of line picking on
-balls of various dimensions, and Figure~\ref{fig:various} shows a
-comparison of the 2D and 3D balls to the square and cube. We can see
-that as long as the areas (volumes) are matched, they appear quite
-similar, respectively, though the rectangle varies considerably more.
-% plot is similar to http://mathworld.wolfram.com/BallLinePicking.html
 
 It is also numerically straight-forward to compute $g(t)$ where the
 points are placed non-uniformly in the region of interest. Some
@@ -398,13 +507,32 @@ INCIDENTALLY -- limit n -> infty for balls, has almost fixed distances
 between nodes, so it approaches ER graph
 
 
+
+
 \section{Numerical Computation by Simulation}
 \label{sec:numerical}
 
-It may be possible that one wishes to compute distributions, and
-resulting Laplace transforms on irregular regions, for which there is
-no closed form solution. This can be easily accomplished numerically,
-by simulating a cases.
+It may be possible that one wishes to compute distributions, on
+irregular regions, for which there is no closed form solution.
+Numerically it is straight-forward to calculate the function
+$g(t)$. There are two obvious approaches:
+\begin{itemize}
+
+\item Numerical computation of a $n$-dimensional integral over
+  $\Omega$, or
+
+\item Simulation of the problem, and estimation of the density from
+  simulated results. 
+
+\end{itemize}
+The two approaches have different advantages and disadvantages. The
+former approach has no stochastic component, and so errors are
+predictable and regular. 
+
+The later approach allows complex, potentially non-convex,
+non-uniform, problems to be solved as long as they can be
+simulated. Given the stochastic nature of the latter, it may help to
+say a little more:
 
 The general process is as follows:
 \begin{enumerate}
@@ -421,18 +549,7 @@ The general process is as follows:
   kernal smoothing technique, but in fact, we don't need direct access
   to the density as the estimator uses the Laplace transform.
 
-\item We can estimate the Laplace transform as follows:
-\begin{equation}
-    \label{eq:numerical_laplace}
-  \begin{array}{rclcl}
-    G(s) & = & \displaystyle \int_0^t g(t) \, dt     & = & \displaystyle \frac{1}{n} \sum_{i=1}^{N} e^{-s t_i}, \\
-    G'(s) & = & \displaystyle  \int_0^t t g(t) \, dt & = & \displaystyle \frac{1}{n} \sum_{i=1}^{N} t_i e^{-s t_i}, \\    
-  \end{array}
-\end{equation}
-
 \end{enumerate}
-Note that only one set of points need be generated to estimate the
-Laplace transforms for a large set of values of $s$. 
 
 We have tested the above approach, running it 30 times (with different
 seeds), in Matlab for various values of $N$. The results are shown in
@@ -441,6 +558,13 @@ the mean relative absolute error of the estimated Laplace transforms
 over the range $S \in [0, 50]$. We can see from the fitted straight
 line, that the errors decrease as $1/\sqrt{N}$, dropping to around 1\%
 at around $N=100,000$.
+
+
+....
+
+
+
+
 
 The second plot shows the computation times\footnote{Both algorithms
   were implemented in Matlab, the exact method using Matlab's {\tt
@@ -462,43 +586,7 @@ The simulation-based approach is not as accurate as the exact
 numerical approach, however, it accuracy should be sufficient for most
 estimation problems, without increasing the computational workload
 unduly.
-
-\begin{figure}[tbp]
-  \begin{center}
-    \subfloat[Mean relative error in $-G'(\hat{s})/G(\hat{s})$.]{\includegraphics[width=0.49\columnwidth]{../Matlab/Plots/LinePicking_numerical_rel_error.eps}}
-    \subfloat[Relative computation time of the simulation-based
-    approach, with respect to the exact approach.]{\includegraphics[width=0.49\columnwidth]{../Matlab/Plots/LinePicking_numerical_time.eps}}
-    \caption{A comparison of simulation-based Laplace transform
-      calculation with the exact approach.\label{fig:simulated_laplace}}
-  \end{center} 
-\vspace{-4mm}
-\end{figure}
-
-We could further use the above in the estimator as follows: we aim to
-find the value $\hat{s}$ such that $-G'(\hat{s})/G(\hat{s}) = \bar{d}$,
-so 
-\begin{eqnarray*}
-  -G'(\hat{s}) & = & \bar{d} G(\hat{s}) \\
-  \frac{1}{n} \sum_{i=1}^{N} t_i e^{-s t_i}    & = & \bar{d} \frac{1}{n} \sum_{i=1}^{N} e^{-s t_i} \\
-  \sum_{i=1}^{N} (t_i - \bar{d} ) e^{-s t_i}  & = & 0
-\end{eqnarray*}
-We could feed this new function directly into our search algorithm to
-find the estimate, avoiding the need to calculate both $-G'(\hat{s})$
-and $G(\hat{s})$ for multiple values of $s$. This approach has other
-advantages as well:
-\begin{itemize}
-
-\item The gradient of this function is immediately obvious, and not
-  problem specific as it is for closed form solutions, leading to
-  generic estimation functions;
-
-\item We could approach the estimation iterative, for intance, by
-  generating $M$ point, performing an estimate, and then refining it
-  with the next $M$ points, continuing until the results converge on a
-  solution with some desired tolerance.
-
-\end{itemize}
-
+make
 
 
 \section{Programs}
@@ -506,7 +594,64 @@ advantages as well:
 
 \subsection{A Rough Guide}
 
+The code is arranged to be usable as
+\begin{enumerate}
+
+\item Directly, as a command-line function;
+
+\item By linking into a larger set of code;
+
+\item Called through a {\tt Matlab} MEX wrapper; or 
+
+\item Called through a {\tt R} wrapper function.
+
+\end{enumerate}
+It is designed to be as independent of external libraries as possible,
+needing only the C standard libraries. So compilation should be
+straight forward on the majority of machines.
+
+Ideally, typing {\tt make} in the top level directory should make all
+of the targets, however, {\tt R} users may find it easier to install
+using standard {\tt R} installation procedures (but not that these
+won't necessarily construct the other components, need for instance
+for Matlab).
+
+The makefiles in the subdirectories are named {\tt gMakefile} to avoid
+conflicts with the way {\tt R} interprets them, so if you wish to
+remake a specific subdirectory, enter the directory and type: 
+\verb|make -f gMakefile|.
+
+There are a large number of functions defined in the code, for each of
+the cases discussed above, however, there are a small set of functions
+that you may need to be aware of, that allow one to call all of the
+others through a simple, uniform interface.
+
+....
+
+
 \subsection{Numerical Issues}
+
+Most of the computations in the code involve simple calculations, with
+no obvious numerical issues (other than the obvious fact that floating
+point arithmetic is being used).
+
+The computations on the $n$-D ball, however, require calculation of
+the incomplete beta function. We have provided a separate library to
+perform this computation, but users may find they can obtain more
+accurate results using third party library functions. 
+
+...
+
+Estimates of errors ...
+
+
+\subsection{Tests}
+
+The tools come with a set of tests to compare performance on your
+system with ours, and ensure everything is working ...
+
+
+
 
 
 \section{Correlations}
