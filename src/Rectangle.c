@@ -25,23 +25,6 @@ char *RectangleDistanceDescription = "rectangle, side lengths parameters[0],"
 " parameters[1]";
 int RectangleDistanceNpar = 2;
 
-void RectangleDistanceSupport(double *t, double *parameters)
-{
-    /* rectangle, side lengths parameters[0], parameters[1] */
-    t[0] = 0;
-    t[1] = sqrt(parameters[0]*parameters[0] + parameters[1]*parameters[1]);
-}
-
-
-void RectangleDistanceCheckParameters(double *parameters, int *result, 
-                                      char *error_str)
-{
-    /* rectangle, side lengths parameters[0], parameters[1] */
-    /* TODO pretty sure one side has to be shorter than the 
-     other in order for this to work properly we can force that here */
-    *result=0;
-}
-
 
 double RectangleDistancePDF(double t, double* parameters)
 /* distance density (at t) between two points in a rectangle size a times b */
@@ -146,4 +129,21 @@ double RectangleDistanceVar(double* parameters)
     double tmp = RectangleDistanceMean(parameters);
     
     return( M2/6.0 - tmp*tmp );
+}
+
+void RectangleDistanceSupport(double *t, double *parameters)
+{
+    /* rectangle, side lengths parameters[0], parameters[1] */
+    t[0] = 0;
+    t[1] = sqrt(parameters[0]*parameters[0] + parameters[1]*parameters[1]);
+}
+
+
+void RectangleDistanceCheckParameters(double *parameters, int *result, 
+                                      char *error_str)
+{
+    /* rectangle, side lengths parameters[0], parameters[1] */
+    /* TODO pretty sure one side has to be shorter than the 
+     other in order for this to work properly we can force that here */
+    *result=0;
 }
