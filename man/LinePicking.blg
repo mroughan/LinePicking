@@ -1,47 +1,66 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: LinePicking.aux
 The style file: ieeetr.bst
-Database file #1: LinePicking.bib
-Warning--I didn't find a database entry for "mathai_geom"
-You've used 7 entries,
+Database file #1: queueing_theory.bib
+Database file #2: books.bib
+Database file #3: ip_traffic.bib
+Database file #4: time_series.bib
+Database file #5: reliability.bib
+Database file #6: tcp.bib
+Database file #7: ospf.bib
+Database file #8: lrd.bib
+Database file #9: worms.bib
+Database file #10: internet.bib
+Database file #11: routing.bib
+Database file #12: bgp.bib
+Database file #13: topology.bib
+Database file #14: network.bib
+Database file #15: traffic_engineering.bib
+Database file #16: algorithms.bib
+Database file #17: optimization.bib
+Database file #18: history.bib
+Database file #19: graph.bib
+Warning--empty publisher in mathai_geom
+Warning--empty year in mathai_geom
+You've used 11 entries,
             1876 wiz_defined-function locations,
-            510 strings with 4491 characters,
-and the built_in function-call counts, 1214 in all, are:
-= -- 114
-> -- 32
+            657 strings with 7159 characters,
+and the built_in function-call counts, 1862 in all, are:
+= -- 173
+> -- 48
 < -- 0
-+ -- 15
-- -- 8
-* -- 61
-:= -- 174
-add.period$ -- 7
-call.type$ -- 7
-change.case$ -- 7
++ -- 23
+- -- 12
+* -- 96
+:= -- 264
+add.period$ -- 11
+call.type$ -- 11
+change.case$ -- 10
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 52
-empty$ -- 148
-format.name$ -- 8
-if$ -- 308
+cite$ -- 13
+duplicate$ -- 84
+empty$ -- 230
+format.name$ -- 12
+if$ -- 472
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 2
-newline$ -- 24
-num.names$ -- 7
-pop$ -- 29
+int.to.str$ -- 11
+missing$ -- 5
+newline$ -- 36
+num.names$ -- 11
+pop$ -- 48
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 54
+skip$ -- 77
 stack$ -- 0
-substring$ -- 48
-swap$ -- 16
+substring$ -- 68
+swap$ -- 24
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 11
-width$ -- 8
-write$ -- 59
-(There was 1 warning)
+warning$ -- 2
+while$ -- 17
+width$ -- 13
+write$ -- 90
+(There were 2 warnings)
