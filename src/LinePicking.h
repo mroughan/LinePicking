@@ -28,22 +28,52 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "Square.h"
+#include "Disk.h"
+#include "Hyperball.h"
+#include "Rectangle.h"
+#include "Line.h"	
+#include "Cube.h"
+
+
+
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
-/* arrays to map modes to name  */
-#define NUMBER_OF_MODES 6
-char *mode_name[NUMBER_OF_MODES] = {"square", "disk", "hyper-ball", "rectangle", "line", "cube"};
-char *mode_description[NUMBER_OF_MODES] = {
-    "square, with side length parameters[0]",
-    "disk, with radius parameters[0]",
-    "hyper-ball, with dimension parameters[0], and radius parameters[1] ",
-    "rectangle, side lengths parameters[0], parameters[1]",
-    "line, length parameters[0]",
-    "cube, side length parameters[0]",
+typedef struct 
+{
+    double (* PDF)(double, double *); 
+    double (* CDF)(double, double *);
+    double (* MEAN)(double *);
+    double (* VAR)(double *);
+    void   (* SUPPORT)(double*, double *);
+    void   (* CHECK_PAR)(double*, int *, char *);
+    int *Npar;
+    char ** name;
+    char ** description;
+    
+} LinePickingRec;
+
+
+#define ExpandFields(_x) &_x##DistancePDF,&_x##DistanceCDF,\
+&_x##DistanceMean,&_x##DistanceVar,\
+&_x##DistanceSupport,&_x##DistanceCheckParameters,\
+&_x##DistanceNpar,&_x##DistanceName,\
+&_x##DistanceDescription
+
+LinePickingRec LinePickingFields[] = 
+{ 
+    {ExpandFields(Square)},
+    {ExpandFields(Disk)},
+    {ExpandFields(Hyperball)},
+    {ExpandFields(Rectangle)},
+    {ExpandFields(Line)},
+    {ExpandFields(Cube)} 
 };
-/* how many parameters each mode takes */
-int mode_pars[NUMBER_OF_MODES] = {1, 1, 2, 2, 1, 1}; 
+
+#define elements(x)  (sizeof(x) / sizeof(x[0]))
+#define NUMBER_OF_MODES elements(LinePickingFields)
+
 
 /* give details of a mode */
 void LinePickingModeLookup(int *, char**, char**);
@@ -66,44 +96,6 @@ void LinePickingMean(double *, int *, double*, int *, int*, char **);
 
 /* primary function for calculating Mean line length for any region */
 void LinePickingVar(double *, int *, double*, int *, int*, char **);
-
-/* functions that actually implement each region, for a single t value */
-/*    but don't call these directly, as they don't check for valid inputs 
-      call via LinePickingPDF */ 
-double UnknownDistancePDF(double, double*);
-double SquareDistancePDF(double, double*);
-double DiskDistancePDF(double, double*);
-double HyperballDistancePDF(double, double*);
-double RectangleDistancePDF(double, double*);
-double LineDistancePDF(double, double*);
-double CubeDistancePDF(double, double*);
-
-/* means */
-double UnknownDistanceMean(double*);
-double SquareDistanceMean(double*);
-double DiskDistanceMean(double*);
-double HyperballDistanceMean(double*);
-double RectangleDistanceMean(double*);
-double LineDistanceMean(double*);
-double CubeDistanceMean(double*);
-
-/* Cumulative Distribution Functions, where known */
-double UnknownDistanceCDF(double, double*);
-double SquareDistanceCDF(double, double*);
-/* double DiskDistanceCDF(double, double*); */
-/* double HyperballDistanceCDF(double, double*); */
-/* double RectangleDistanceCDF(double, double*); */
-double LineDistanceCDF(double, double*);
-/* double CubeDistanceCDF(double, double*); */
-
-/* variances, where known */
-double UnknownDistanceVar(double*);
-double SquareDistanceVar(double*);
-double DiskDistanceVar(double*);
-double HyperballDistanceVar(double*);
-double RectangleDistanceVar(double*);
-double LineDistanceVar(double*);
-double CubeDistanceVar(double*);
 
 
 #ifdef _STANDALONE

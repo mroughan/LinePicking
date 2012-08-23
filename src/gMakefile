@@ -83,6 +83,7 @@ HEADERS = $(shell ls *.h)
 
 MEX = LinePicking.$(MATLAB_EXT)
 O = LinePicking.o beta.o
+O2 =  Square.o Disk.o Hyperball.o Rectangle.o Line.o Cube.o
 SO = LinePicking.so beta.so
 STAND_ALONE = LinePicking 
 
@@ -104,13 +105,17 @@ test: ${STAND_ALONE}
 
 $(O): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE -D_NOTR
+    
+$(O2): %.o: %.c ${HEADERS}
+	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE -D_NOTR
+        
 
-$(STAND_ALONE): %: %.o beta.o
-	$(CC) $< -o $@ beta.o -lm -lstdc++ -D_STANDALONE -D_NOTR
+$(STAND_ALONE): %: %.o beta.o $(O2)
+	$(CC) $< -o $@ beta.o $(O2) -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
-$(MEX): %.$(MATLAB_EXT): %.c beta.o ${HEADERS}
-	$(MX)  $< beta.o -D_MEX -D_NOTR
+$(MEX): %.$(MATLAB_EXT): %.c beta.o $(O2) ${HEADERS}
+	$(MX)  $< beta.o $(O2) -D_MEX -D_NOTR
 
 # shared libraries are used by R, so use R's standard command to define
 #    see R CMD SHLIB beta.c, for example
