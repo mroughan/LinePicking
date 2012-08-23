@@ -414,7 +414,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         parameters[0] = 1;
         parameters[1] = 1;
         parameters[2] = 1; 
-    } else 
+    } 
+    else 
     {
         parameters = mxGetPr(prhs[2]); 
     }
@@ -512,14 +513,16 @@ int main(int argc, char *argv[])
     set_pars_LinePicking(argc, argv, 
                          &file, &mode, parameters, &Npar);
     fprintf(stderr,"%%   file=%s, mode=%d, Npar=%d,", file, mode, Npar);
-    for (i=0;i<Npar;i++) {
+    for (i=0;i<Npar;i++) 
+    {
         fprintf(stderr, " p[%d]=%.3f", i, parameters[i]);
     }
     fprintf(stderr, "\n");
     
     /* check the mode and parameters are valid */
     LinePickingCheckParameters(&mode, parameters, &Npar, &result, &error_str);
-    if (result != 0) {
+    if (result != 0) 
+    {
         fprintf(stderr, "LinePicking: %s\n", error_str);
         exit(1);
     }
@@ -531,17 +534,21 @@ int main(int argc, char *argv[])
     /* calculate the mean and variance */
     LinePickingMean(&mean, &mode, parameters, &Npar, &result, &error_str);
     LinePickingVar(&var, &mode, parameters, &Npar, &result, &error_str);
-    if (result == 0) {
+    if (result == 0) 
+    {
         fprintf(stderr, 
                 "%%  mean line length = %.12lf and var = %.12lf\n", mean, var);
-    } else {
+    } 
+    else 
+    {
         fprintf(stderr, "LinePicking: error, unexpected error.\n");
         exit(result);
     }
     
     /* read in the input file, and output the results */
     fp = fopen(file, "r");  /* open the file for reading */
-    if (fp == NULL) {
+    if (fp == NULL) 
+    {
         fprintf(stderr, "LinePicking: invalid file!\n");
         exit(1);
     }
@@ -553,9 +560,12 @@ int main(int argc, char *argv[])
                        parameters, &Npar, &result, &error_str);
         LinePickingCDF(&t, &G, &N, &mode, 
                        parameters, &Npar, &result, &error_str);
-        if (result == 0) {
+        if (result == 0) 
+        {
             fprintf(stdout, "%lf, %lf, %lf\n", t, g, G);
-        } else {
+        } 
+        else 
+        {
             fprintf(stderr, "LinePicking: error, unexpected error.\n");
             exit(result);
         }
