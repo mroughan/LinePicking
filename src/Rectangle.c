@@ -82,7 +82,10 @@ double RectangleDistancePDF(double t, double* parameters)
 
 
 double RectangleDistanceCDF(double w, double* parameters)
-/* TODO calculated by Eric Parsonage and yet to be published */
+/* culmative density (at t) between two points on a H x L rectangle */
+/* TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * soon to be written up somewhere
+ */
 {
     
     double L = parameters[0];

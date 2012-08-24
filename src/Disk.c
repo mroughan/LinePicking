@@ -34,9 +34,12 @@ double DiskDistancePDF(double t, double* parameters)
     double t2 = t*t;			     
     double part1, part2, c;
     
-    if (t<=0) {
+    if (t <= 0) 
+    {
         return(0);
-    } else if (t >= d) {
+    } 
+    else if (t >= d) 
+    {
         return(0);
     }
     
@@ -47,9 +50,32 @@ double DiskDistancePDF(double t, double* parameters)
     return(part1 - part2);
 }
 
-double DiskDistanceCDF(double a, double* b)
-{
-    return(-1);
+double DiskDistanceCDF(double s, double* parameters)
+    /* culmative density (at t) between two points in a disk radius r */
+    /* TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+     * soon to be written up somewhere
+     */
+{    
+    double R = parameters[0];
+    double R2 = R*R;
+    double R3 = R2 * R;
+    double s2 = s*s;			     
+    double s3 = s2 * s;
+    
+    if (s <= 0) 
+    {
+        return(0);
+    } 
+    else if (s >= R + R) 
+    {
+        return(1);
+    }
+     
+    return  (
+                -(sqrt(4 - s2 / R2) * (2 * R2 * s + s3)) / 4. + 
+                2 * R * s2 * acos(s / (2. * R)) + 
+                2 * R3 * asin(s / (2. * R))
+            ) / (M_PI * R3);
 }
 
 double DiskDistanceMean(double* parameters)
