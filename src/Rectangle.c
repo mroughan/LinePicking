@@ -81,9 +81,68 @@ double RectangleDistancePDF(double t, double* parameters)
 }
 
 
-double RectangleDistanceCDF(double a, double* b)
+double RectangleDistanceCDF(double w, double* parameters)
+/* TODO calculated by Eric Parsonage and yet to be published */
 {
-    return(-1);
+    
+    double L = parameters[0];
+    double H = parameters[1];
+    double L2 = L * L;
+    double H2 = H * H;
+    double M = sqrt(L2 + H2);
+    double tmp;
+    double w2 = w * w;
+   
+    if (w<=0) 
+        return(0);
+    else
+    {    
+        if (w >= M) 
+            return(0);
+    }
+    
+    /* make sure H < L */
+    if (H > L) 
+    {
+        tmp = L;
+        L = H;
+        H = tmp;
+        L2 = L * L;
+        H2 = H * H;
+    }
+    
+    /* three cases */
+    if (w <= H)
+    {
+        return (w2 * (6 * H * L * M_PI - 8*(H + L)* w + 3 * w2)) / 
+                (6.* H2 * L2);
+    } 
+    else if (w > H && w <= L) 
+    {
+        return  (
+                    (H2 * H2) + 
+                    8 * L * w2 * (sqrt(w2- H2) - w) + 
+                    H2 * (-6 * w2 + 4 * L * sqrt(w2 - H2)) + 
+                    12 * H * L * w2 * atan( H / sqrt(w2 - H2))
+                ) / (6. * H2 * L2);        
+        
+    }
+    else 
+    {
+        return  (
+                    (H2 * H2) + (L2 * L2) + 
+                    4 * H * sqrt(w2 - L2) * (L2 + 2 * w2) + 
+                    H2 * (-6 * w2 + 4 * L * sqrt(w2 - H2)) + 
+                    w2 * (-6 * L2 - 3 * w2 + 8 * L * sqrt(w2 - H2)) + 
+                    12 * H * L * w2 * (
+                                            atan(L / sqrt(w2 - L2)) -
+                                            (M_PI / 2) +
+                                            atan(H / sqrt(w2 - H2))
+                                        )
+                 ) / (6.* H2 * L2);
+ 
+    }
+   
 }
 
 
