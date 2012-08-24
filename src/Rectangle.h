@@ -25,7 +25,7 @@ extern int RectangleDistanceNpar;
 
 double RectangleDistancePDF(double t, double* parameters);
 
-double RectangleDistanceCDF(double a, double* b);
+double RectangleDistanceCDF(double t, double* parameters);
 
 double RectangleDistanceMean(double* parameters);
 

@@ -269,7 +269,7 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode,
             if (t[i] >= support[1]) 
                 g[i] = 1.0;
             else 
-                g[i] = (*LinePickingFields[*mode].PDF)(t[i], parameters);
+                g[i] = (*LinePickingFields[*mode].CDF)(t[i], parameters);
         }
     }
     

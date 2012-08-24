@@ -98,7 +98,7 @@ double RectangleDistanceCDF(double w, double* parameters)
     else
     {    
         if (w >= M) 
-            return(0);
+            return(1);
     }
     
     /* make sure H < L */
