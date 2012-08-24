@@ -20,9 +20,9 @@
 #define _YYY_H
 
 
-char * XXXDistanceName;
-char * XXXDistanceDescription;
-int XXXDistanceNpar;
+extern char * XXXDistanceName;
+extern char * XXXDistanceDescription;
+extern int XXXDistanceNpar;
 
 
 double XXXDistancePDF(double t, double* parameters);
