@@ -51,7 +51,7 @@ double DiskDistancePDF(double t, double* parameters)
 }
 
 double DiskDistanceCDF(double s, double* parameters)
-    /* culmative density (at t) between two points in a disk radius r */
+    /* culmative density function */
     /* TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
      * soon to be written up somewhere
      */

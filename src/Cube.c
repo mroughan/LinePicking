@@ -40,9 +40,12 @@ double CubeDistancePDF(double t, double* parameters)
     t = t/parameters[0]; /* rescale points to unit square */
     t2 = t*t;
     
-    if (t<=0) {
+    if (t<=0) 
+    {
         return(0);
-    } else if (t >= L3) {
+    } 
+    else if (t >= L3) 
+    {
         return(0);
     }
     
@@ -72,9 +75,64 @@ double CubeDistancePDF(double t, double* parameters)
     
 }
 
-double CubeDistanceCDF(double a, double* b)
+double CubeDistanceCDF(double t, double* parameters)
+/* culmative density function */
+/* TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * soon to be written up somewhere
+ */
 {
-    return(-1);
+ 
+    double t2;
+    double t3;
+    double t4;
+    double t6;
+
+    t = t / parameters[0]; /* rescale points to unit cube */    
+    
+    if (t<=0)
+    {    
+        return(0);
+    } 
+    else if (t >= sqrt(3.0)) 
+    {
+        return(1);
+    }
+    
+    t2 = t*t;
+    t3 = t2*t;
+    t4 = t2 * t2;
+    t6 = t4 * t2;
+    /* three cases */
+    
+    if (t <= 1)
+    {
+        return (t3 * (5 * M_PI *(8 - 9 * t) + (48 - 5 * t) * t2)) / 30.;
+    } 
+    else if (t <= M_SQRT2) 
+    {
+        return  (
+                    3 + 10 * t6 +24 * sqrt(-1 + t2) - 
+                    5 * M_PI * (3 + 2*t2*(-9 + 8*t)) + 
+                    t4 * (45 - 96 * sqrt(-1 + t2)) - 
+                    3 * t2 * (5 + 36 * sqrt(-1 + t2)) + 
+                    180 * t4 * acos(1 / t)
+                ) / 30.;
+    } 
+    else 
+    {
+       
+        return  (
+                    3 * (9 + 5 * M_PI) + 15 * (-5 + 6 * M_PI) * t2 + 
+                    45 * (-1 + M_PI) * t4 - 5 * t6 + 
+                    12 * sqrt(-2 + t2) + 108 * t2 * sqrt(-2 + t2) + 
+                    48 * t4 * sqrt(-2 + t2) + 
+                    30 * atan((-2 + t) / sqrt(-2 + t2)) - 
+                    30 * atan((2 + t) / sqrt(-2 + t2)) - 
+                    20 * t2 * (8 * t * asin(1 / sqrt(2 - 2 / t2)) + 
+                    9 * (2 + t2) * atan(sqrt(-2 + t2)) - 
+                    8 * t * atan(t * sqrt(-2 + t2)))
+                ) / 30.;  
+    }
 }
 
 
