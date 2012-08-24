@@ -383,7 +383,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     char *error_str;
     
     /* Check for proper number of input and output arguments. */    
-    if (nrhs < 1)
+    if (nrhs < 3)
         mexErrMsgTxt("LinePicking: Not enough input arguments:"
                      " [g] = LinePicking(t, mode, parameters).");
     if (nlhs > 1) 
