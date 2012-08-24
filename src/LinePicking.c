@@ -438,6 +438,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
  * bits needed to run this as a stand alone command-line function
  *
  */
+
 static void 
 usage_LinePicking()
 {
