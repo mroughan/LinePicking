@@ -19,6 +19,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "Hyperball.h"
+#include "beta.h" 
 
 char *HyperballDistanceName = "hyper-ball";
 char *HyperballDistanceDescription = "hyper-ball, with dimension parameters[0]"

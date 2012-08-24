@@ -18,7 +18,7 @@
 
 #include <math.h>
 
-#include "line.h"
+#include "Line.h"
 
 char *LineDistanceName = "line";
 char *LineDistanceDescription = "line, length parameters[0]";

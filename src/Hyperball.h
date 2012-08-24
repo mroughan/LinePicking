@@ -34,6 +34,6 @@ double HyperballDistanceVar(double* parameters);
 void HyperballDistanceSupport(double *t, double *parameters);
 
 void HyperballDistanceCheckParameters(double *parameters, int *result, 
-                                char *error_str);
+				      char *error_str);
 
 #endif /* _HYPERBALL_H */
