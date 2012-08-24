@@ -123,7 +123,8 @@ double RectangleDistanceCDF(double w, double* parameters)
                     (H2 * H2) + 
                     8 * L * w2 * (sqrt(w2- H2) - w) + 
                     H2 * (-6 * w2 + 4 * L * sqrt(w2 - H2)) + 
-                    12 * H * L * w2 * atan( H / sqrt(w2 - H2))
+                    /* 12 * H * L * w2 * atan( H / sqrt(w2 - H2)) */
+                    12 * H * L * w2 * asin(H / w)
                 ) / (6. * H2 * L2);        
         
     }
@@ -135,9 +136,11 @@ double RectangleDistanceCDF(double w, double* parameters)
                     H2 * (-6 * w2 + 4 * L * sqrt(w2 - H2)) + 
                     w2 * (-6 * L2 - 3 * w2 + 8 * L * sqrt(w2 - H2)) + 
                     12 * H * L * w2 * (
-                                            atan(L / sqrt(w2 - L2)) -
+                                            /* atan(L / sqrt(w2 - L2)) - */ 
+                                            asin(L / w) -
                                             (M_PI / 2) +
-                                            atan(H / sqrt(w2 - H2))
+                                            /* atan(H / sqrt(w2 - H2)) */
+                                            asin(H / w)
                                         )
                  ) / (6.* H2 * L2);
  
