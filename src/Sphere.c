@@ -75,6 +75,9 @@ double SphereDistanceVar(double* parameters)
     return (2. *  R * R) / 9.;
 }
 
+/* suppport for PDF and CDF of distance between two points on the  
+ * surface of a sphere of radius given in parameters[0] 
+ */
 void SphereDistanceSupport(double *t, double *parameters)
 {
 
