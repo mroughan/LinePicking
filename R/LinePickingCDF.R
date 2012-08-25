@@ -1,4 +1,4 @@
-#' Get pdf for distance between two random points
+#' Get cdf for distance between two random points
 #'
 #' Give a shape (square, disk, ...) and 
 #' parameters defining the shape, this 
@@ -25,12 +25,12 @@
 #' @note August 25 2012
 #' @examples
 #' t <- seq(0,1,l=1000)
-#' y <- LinePickingPDF(t=t,mode=0,para=1)
+#' y <- LinePickingCDF(t=t,mode=0,para=1)
 #' plot(t,y,type='l')
-LinePickingPDF <-
+LinePickingCDF <-
 function(t,mode=0,para){
   n <- length(t)
-  tmp <- .C('LinePickingPDF',
+  tmp <- .C('LinePickingCDF',
             t = as.double(t),
             pdf = as.double(rep(0,n)),
             n = as.integer(n),
