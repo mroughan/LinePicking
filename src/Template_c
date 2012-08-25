@@ -1,6 +1,6 @@
 /* XXX.c	
  *
- * Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -26,7 +26,7 @@ double XXXDistancePDF(double t, double* parameters)
     return -1;
 }
 
-double XXXDistanceCDF(double a, double* b)
+double XXXDistanceCDF(double t, double* parameters)
 {
     return -1;
 }
