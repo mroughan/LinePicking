@@ -126,8 +126,34 @@ double PrismGeodesicDistanceCDF(double w, double* parameters)
  */
 double PrismGeodesicDistanceMean(double* parameters)
 {
+    double L = parameters[0];
+    double P = parameters[1];
+    double L2 = L * L;
+    double L3 = L2 * L;
+    double L4 = L3 * L;
+    double L5 = L4 * L;
     
-    return -1;
+    double P2 = P * P;
+    double P3 = P2 * P;
+    double P4 = P3 * P;
+    double P5 = P4 * P;
+
+    
+    return  (24 * L4 * P + 2 * L2 * P3 - P5 + 
+             P4 * sqrt(4 * L2 + P2) - 64 * L5 * M_PI - 
+             32 * (L2  *  L) * P2 * M_PI - 4 * L * P4 * M_PI + 
+             8 * L * pow(4 * L2 + P2, 2) * 
+             asin((2 * L) / sqrt(4 * L2 + P2)) + 
+             8 * L * pow(4 * L2 + P2, 2) * 
+             asin(P / sqrt(4 * L2 + P2)) - 
+             L4 * sqrt(4 * L2 + P2) * log(256) - 
+             8 * L4 * sqrt(4 * L2 + P2) * log(L) - 
+             4 * L * P3 * sqrt(4 * L2 + P2) * log(P) + 
+             4 * L * P3 * sqrt(4 * L2 + P2) * 
+             log(2 * L + sqrt(4 * L2 + P2)) + 
+             8 * L4 * sqrt(4 * L2 + P2) * 
+             log(P + sqrt(4 * L2 + P2))) / 
+            (48. * L2 * P * sqrt(4 * L2 + P2));
 }
 
 /* variance of distance between two points on the surface of an
