@@ -83,7 +83,7 @@ HEADERS = $(shell ls *.h)
 
 MEX = LinePicking.$(MATLAB_EXT)
 O = LinePicking.o beta.o
-O2 =  Square.o Disk.o Hyperball.o Rectangle.o Line.o Cube.o Sphere.o SphereGeodesic.o
+O2 =  Square.o Disk.o Hyperball.o Rectangle.o Line.o Cube.o Sphere.o SphereGeodesic.o TubeGeodesic.o
 SO = LinePicking.so beta.so
 STAND_ALONE = LinePicking 
 
