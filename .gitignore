@@ -10,3 +10,4 @@
 *.ps
 LinePicking
 .DS_Store
+*src-*

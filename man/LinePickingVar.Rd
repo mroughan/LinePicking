@@ -1,12 +1,10 @@
-\name{LinePickingPDF}
-\alias{LinePickingPDF}
-\title{Get pdf for distance between two random points}
+\name{LinePickingVar}
+\alias{LinePickingVar}
+\title{Get variance for given mode and parameters}
 \usage{
-  LinePickingPDF(t, mode = 0, para)
+  LinePickingVar(mode = 0, para)
 }
 \arguments{
-  \item{t}{vector of points to calculate pdf for.}
-
   \item{mode}{\itemize{ \item 0 square, with side length
   parameters[0] \item 1 disk, with radius parameters[0]
   \item 2 hyper-ball, dimension parameters[0], radius
@@ -18,22 +16,16 @@
   given by mode.}
 }
 \value{
-  vector of probability density function values for each
-  element in t.
+  variance
 }
 \description{
-  Give a shape (square, disk, ...) and parameters defining
-  the shape, this function will give a the probability
-  density function for the distances between two Poisson
-  distributed points in the space.
+  For a given mode and parameters gives the variance
 }
 \note{
   August 25 2012
 }
 \examples{
-t <- seq(0,1,l=1000)
-y <- LinePickingPDF(t=t,mode=0,para=1)
-plot(t,y,type='l')
+LinePickingVar(mode=0,para=10)
 }
 \author{
   Matt Roughan, Jono Tuke, Eric Parsonage

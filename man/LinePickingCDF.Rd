@@ -1,8 +1,8 @@
-\name{LinePickingPDF}
-\alias{LinePickingPDF}
-\title{Get pdf for distance between two random points}
+\name{LinePickingCDF}
+\alias{LinePickingCDF}
+\title{Get cdf for distance between two random points}
 \usage{
-  LinePickingPDF(t, mode = 0, para)
+  LinePickingCDF(t, mode = 0, para)
 }
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
@@ -32,7 +32,7 @@
 }
 \examples{
 t <- seq(0,1,l=1000)
-y <- LinePickingPDF(t=t,mode=0,para=1)
+y <- LinePickingCDF(t=t,mode=0,para=1)
 plot(t,y,type='l')
 }
 \author{
