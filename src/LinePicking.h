@@ -1,6 +1,7 @@
 /* LinePicking.h
  *
  * Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+ * Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -34,6 +35,8 @@
 #include "Rectangle.h"
 #include "Line.h"	
 #include "Cube.h"
+#include "Sphere.h"
+#include "SphereGeodesic.h"
 
 
 
@@ -68,7 +71,9 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(Hyperball)},
     {ExpandFields(Rectangle)},
     {ExpandFields(Line)},
-    {ExpandFields(Cube)} 
+    {ExpandFields(Cube)},
+    {ExpandFields(Sphere)}, 
+    {ExpandFields(SphereGeodesic)} 
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
