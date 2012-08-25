@@ -36,6 +36,7 @@
 #include "Line.h"	
 #include "Cube.h"
 #include "Sphere.h"
+#include "SphereGeodesic.h"
 
 
 
@@ -71,7 +72,8 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(Rectangle)},
     {ExpandFields(Line)},
     {ExpandFields(Cube)},
-    {ExpandFields(Sphere)} 
+    {ExpandFields(Sphere)}, 
+    {ExpandFields(SphereGeodesic)} 
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
