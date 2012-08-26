@@ -16,7 +16,7 @@
 tmp <- CreateLinePicking(mode=0,para=10)
 tmp
 }
-\seealso{
-  \code{\link{print}}
+\author{
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

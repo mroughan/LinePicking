@@ -2,18 +2,11 @@
 #'
 #' Given a mode see \link{LinePickingPDF} and parameters gives the range
 #' distance t such that the pdf is non-zero
-#' @param mode \itemize{
-#'    \item 0 square, with side length parameters[0]
-#'    \item 1 disk, with radius parameters[0]
-#'    \item 2 hyper-ball, dimension parameters[0], radius parameters[1]
-#'    \item 3 rectangle, side lengths parameters[0], parameters[1]
-#'    \item 4 line, length parameters[0]
-#'    \item 5 cube, side length parameters[0]
-#' }
+#' @param mode
 #' @param para the parameter necessary to describe 
 #' the space given by mode.
 #' @return min and max values of support
-#' @author Matt Roughan, Jono Tuke, Eric Parsonage
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012

@@ -9,13 +9,13 @@
 #' @docType methods
 #' @rdname print-methods
 #' @export
-#' @seealso \code{\link{print}}
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
 #' tmp <- CreateLinePicking(mode=0,para=10)
 #' tmp
 setMethod("show", "linepicking", function(object){
   cat("A LinePicking object with\n")
-  cat("Mode:",mode(object),"\n")
+  cat("Mode:",space(object),"\n")
   LinePickingAllmodes()
   cat("Parameters:", para(object),"\n")
   cat("Support: ", support(object)[1],"-",

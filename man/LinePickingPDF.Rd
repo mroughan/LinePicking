@@ -7,12 +7,15 @@
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
 
-  \item{mode}{\itemize{ \item 0 square, with side length
-  parameters[0] \item 1 disk, with radius parameters[0]
-  \item 2 hyper-ball, dimension parameters[0], radius
-  parameters[1] \item 3 rectangle, side lengths
-  parameters[0], parameters[1] \item 4 line, length
-  parameters[0] \item 5 cube, side length parameters[0] }}
+  \item{mode}{\itemize{ \item 0 Square, with side length
+  parameters[0] \item 1 Disk, with radius parameters[0]
+  \item 2 Hyper-ball, dimension parameters[0], radius
+  parameters[1] \item 3 Rectangle, side lengths
+  parameters[0], parameters[1] \item 4 Line, length
+  parameters[0] \item 5 Cube, side length parameters[0]
+  \item 6 Sphere, with radius parameters[0] \item 7
+  SphereGeodesic, with radius parameters[0] \item 8
+  PrismGeodesic, TBA }}
 
   \item{para}{the parameter necessary to describe the space
   given by mode.}
@@ -36,6 +39,6 @@ y <- LinePickingPDF(t=t,mode=0,para=1)
 plot(t,y,type='l')
 }
 \author{
-  Matt Roughan, Jono Tuke, Eric Parsonage
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

@@ -8,7 +8,7 @@
 #' @docType methods
 #' @rdname plot-methods
 #' @export
-#' @seealso \code{\link{plot}}
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
 #' tmp <- CreateLinePicking(mode=0,para=10)
 #' plot(tmp)

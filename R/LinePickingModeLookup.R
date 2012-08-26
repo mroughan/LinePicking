@@ -3,9 +3,9 @@
 #' Modes are integers describing possible geometries for the line picking
 #' problem. This function gives you the information for a given mode.
 #' 
-#' @param mode integer from 0 to 5
+#' @param mode
 #' @return prints out information
-#' @author Matt Roughan, Jono Tuke, Eric Parsonage
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012

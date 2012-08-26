@@ -19,7 +19,7 @@ tmp <- CreateLinePicking(mode=0,para=10)
 plot(tmp)
 plot(tmp,dist="cdf")
 }
-\seealso{
-  \code{\link{plot}}
+\author{
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

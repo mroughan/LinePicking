@@ -19,6 +19,6 @@
 LinePickingAllmodes()
 }
 \author{
-  Matt Roughan, Jono Tuke, Eric Parsonage
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 
