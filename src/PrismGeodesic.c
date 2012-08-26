@@ -19,9 +19,9 @@
 #include <stdio.h>
 #include "PrismGeodesic.h"
 
-char *PrismGeodesicDistanceName = "PrismGeodesic";
+char *PrismGeodesicDistanceName = "prism geodesic";
 char *PrismGeodesicDistanceDescription = 
-            "Prism, Length parameters[0], and Perimeter parameters[1]."
+            "prism geodesic, with length parameters[0], and perimeter parameters[1]."
             "Perimeter is used as the prism can have any cross section.";
 
 int PrismGeodesicDistanceNpar = 2;

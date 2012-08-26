@@ -18,9 +18,9 @@
 #include <math.h>
 #include "SphereGeodesic.h"
 
-char *SphereGeodesicDistanceName = "SphereGeodesic";
+char *SphereGeodesicDistanceName = "sphere geodesic";
 char *SphereGeodesicDistanceDescription = 
-                                "SphereGeodesic, with radius parameters[0]";
+                                "sphere geodesic, with radius parameters[0]";
 int SphereGeodesicDistanceNpar = 1;
 
 

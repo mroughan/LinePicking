@@ -17,8 +17,8 @@
 
 #include "Sphere.h"
 
-char *SphereDistanceName = "Sphere";
-char *SphereDistanceDescription = "Sphere, with radius parameters[0]";
+char *SphereDistanceName = "sphere";
+char *SphereDistanceDescription = "sphere, with radius parameters[0]";
 int SphereDistanceNpar = 1;
 
 

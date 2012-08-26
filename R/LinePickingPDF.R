@@ -14,6 +14,9 @@
 #'    \item 3 rectangle, side lengths parameters[0], parameters[1]
 #'    \item 4 line, length parameters[0]
 #'    \item 5 cube, side length parameters[0]
+#'    \item 6 sphere, with radius parameters[0]
+#'    \item 7 sphere geodesic, with radius parameters[0]
+#'    \item 8 prism geodesic, with length parameters[0], and perimeter parameters[1]
 #' }
 #' @param para the parameter necessary to describe 
 #' the space given by mode.
