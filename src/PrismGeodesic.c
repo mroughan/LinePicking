@@ -290,7 +290,8 @@ double PrismGeodesicDistanceVar(double* parameters)
              13824 * L9 * P2 * log(L) - 1152 * L7 * P4 * log(L) + 
              576 * L5 * P6 * log(L) - 
              576 * L5 * P5 * sqrt(4 * L2 + P2) * log(L) + 
-             41472 * L10 * P * M_PI * log(L) + 19968 * L8 * P3 * M_PI * log(L)+ 
+             41472 * L10 * P * M_PI * log(L) + 
+             19968 * L8 * P3 * M_PI * log(L) + 
              2208 * L6 * P5 * M_PI * log(L) - 
              48 * L4 * P7 * M_PI * log(L) + 
              192 * L6 * P4 * sqrt(4 * L2 + P2) * M_PI * log(L) + 
@@ -331,10 +332,9 @@ double PrismGeodesicDistanceVar(double* parameters)
              log(P) - 192 * L5 * P5 * sqrt(4 * L2 + P2) * M_PI * 
              log(2) * log(P) - 1536 * L7 * P3 * 
              sqrt(4 * L2 + P2) * asin(P / (2 * L)) * log(2) * log(P) - 
-             96 * L6 * P4 * sqrt(4 * L2 + P2) * log(256) * 
-             log(P) + 8 * L4 * P6 * sqrt(4 * L2 + P2) * 
-             log(256) * log(P) + 48 * L5 * P4 * 
-             sqrt(16 * L4 - P4) * log(256) * log(P) + 
+             96 * L6 * P4 * sqrt(4 * L2 + P2) * log(256) * log(P) + 
+             8 * L4 * P6 * sqrt(4 * L2 + P2) * log(256) * log(P) + 
+             48 * L5 * P4 * sqrt(16 * L4 - P4) * log(256) * log(P) + 
              192 * L7 * P3 * sqrt(4 * L2 + P2) * 
              asin(P / (2 * L)) * log(256) * log(P) + 
              3072 * L6 * P4 * sqrt(4 * L2 + P2) * log(L) * 
