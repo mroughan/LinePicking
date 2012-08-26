@@ -42,18 +42,13 @@ double PrismGeodesicDistancePDF(double w, double* parameters)
     double P2 = P * P;
     double M = sqrt(L2 + (P2 / 4.));
     double w2 = w * w;
-    
-    if (w <= 0) 
-        return 0;
-    else if (w >= M) 
-        return 0;
-    
+        
     /* three cases */
     if (w <= P / 2)
     {
         return (2 * (L * M_PI - 2 * w)* w) / (L2 * P);
     } 
-    else if ((w > P / 2) && w <= L) 
+    else if (w <= L) 
     {
         return  (-2 * w) / L2 + (4 * w * asin(P / (2 * w))) / (L * P);        
     }
@@ -83,17 +78,13 @@ double PrismGeodesicDistanceCDF(double w, double* parameters)
     double M = sqrt(L2 + (P2 / 4.));
     double w2 = w * w;
     
-    if (w <= 0) 
-        return 0;
-    else if (w >= M) 
-        return 1;
     
     /* three cases */
     if (w <= P / 2)
     {
         return (-4 * w * w2 + 3 * L * M_PI * w * sqrt(w2)) / (3. * L2 * P);
     } 
-    else if ((w > P / 2) && w <= L) 
+    else if (w <= L) 
     {
         return  (P2 - 12 * w2) / (12. * L2) + 
                 sqrt(4 * w2 - P2) / (2. * L) + 
@@ -101,8 +92,6 @@ double PrismGeodesicDistanceCDF(double w, double* parameters)
     }
     else 
     {
-        
-        
         return  (P2 - 12 * w2) / (12. * L2) + 
                 (2 * sqrt(w2 -L2)) / (3. * P) + 
                 (4 * w2 * sqrt(w2 - L2)) / (3. * L2 * P) + 
@@ -163,10 +152,6 @@ double PrismGeodesicDistanceMean(double* parameters)
              log(P + sqrt(4 * L2 + P2))) / 
             (48. * L2 * P * sqrt(4 * L2 + P2));
 }
-
-/* TODO re-erive the variance without using the three part PDF as a basis 
- * I am sure a simpler result can be found using a similar methods to 
- * that used on the rectangle this result is comical !!! */
 
 /* variance of distance between two points on the surface of an
  * upright prism of length and perimeter given in parameters[0] and 
@@ -819,7 +804,7 @@ void PrismGeodesicDistanceSupport(double *t, double *parameters)
 {
 
     t[0] = 0;
-    t[1] = sqrt(pow(parameters[0] / 2, 2) + pow(parameters[1], 2));
+    t[1] = sqrt(pow(parameters[0], 2) + pow(parameters[1]/2, 2));
 }
 
 void PrismGeodesicDistanceCheckParameters(double *parameters, int *result, 

@@ -39,7 +39,7 @@ function g =  LinePickingMean(mode, parameters)
 %         
 %
 % See Also LinePickingPDF, LinePickingCDF, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
-g = LinePicking(1, mode, parameters);
+g = LinePicking(2, mode, parameters);
 
 
 

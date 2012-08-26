@@ -23,4 +23,4 @@ function LinePickingAllModes
 % See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup 
 %         
 %
-LinePicking(1, 1, [1]);
+LinePicking(6);

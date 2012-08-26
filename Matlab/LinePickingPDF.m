@@ -39,4 +39,4 @@ function g =  LinePickingPDF(t, mode, parameters)
 %         
 %
 % See Also LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
-g = LinePicking(t, mode, parameters);
+g = LinePicking(0, t, mode, parameters);

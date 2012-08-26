@@ -40,6 +40,6 @@ function g = LinePickingSupport(mode, parameters)
 %
 % See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
 
-g = LinePicking(1, mode, parameters);
+g = LinePicking(4, mode, parameters);
 
 

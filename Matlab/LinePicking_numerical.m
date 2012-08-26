@@ -39,7 +39,7 @@ colors = [[1 0 0];
 % first do the density
 
 % unit square density
-[g_square] = LinePicking(t, 0, 1);
+[g_square] = LinePickingPDF(t, 0, 1);
 
 figure(1)
 hold off
@@ -84,11 +84,11 @@ hold on
 tic
 for i=1:length(Ss)
   s = Ss(i);
-  g_square = @(t) exp(-s*t) .* LinePicking(t, 0, 1);
+  g_square = @(t) exp(-s*t) .* LinePickingPDF(t, 0, 1);
   [q_square, errbnd] = quadgk(g_square, t_min, t_max);
   G_square(i) = q_square;
 
-  g_square = @(t) t .* exp(-s*t) .* LinePicking(t, 0, 1);
+  g_square = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 0, 1);
   [q_square, errbnd] = quadgk(g_square, t_min, t_max);
   Gd_square(i) = -q_square;
   

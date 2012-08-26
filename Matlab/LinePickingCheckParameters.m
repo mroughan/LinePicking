@@ -49,6 +49,6 @@ function [results error_str] =  LinePickingCheckParameters(mode, parameters)
 %         
 %
 
-[results error_str] = LinePicking(1, mode, parameters);
+[results error_str] = LinePicking(7, mode, parameters);
 
 

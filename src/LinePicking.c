@@ -70,8 +70,14 @@ void LinePickingAllmodes(void)
 {
     int i;
     
-    for (i=0; i < NUMBER_OF_MODES; i++) 
+    for (i=0; i < NUMBER_OF_MODES; i++)
+    {
+#ifdef _MEX
+        mexPrintf(" mode[%d] = %s\n", i, *LinePickingFields[i].name);
+#else /* MEX */
         fprintf(stdout, " mode[%d] = %s\n", i, *LinePickingFields[i].name);
+#endif
+    }
     
     return;
 }
@@ -97,6 +103,8 @@ void LinePickingCheckParameters(int *mode, double* parameters,
  */
 {
     int i;
+    
+    *result = 0;
     
     /* longest error string is 255 characters */
     *error_str  = (char *) malloc((size_t) sizeof(char)*256); 
@@ -173,8 +181,6 @@ void LinePickingSupport(double *t, int *mode,
     /* compute the lower and upper end of the support */
     (*LinePickingFields[*mode].SUPPORT)(t, parameters);
     
-    /* correctly executed */
-    *result=0;
     return; 
 }
 
@@ -219,8 +225,6 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode,
             g[i] = (*LinePickingFields[*mode].PDF)(t[i], parameters);
     }
     
-    /* correctly executed */
-    *result=0;
     return;
 }
 
@@ -273,8 +277,6 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode,
         }
     }
     
-    /* correctly executed */
-    *result=0;
     return;
 }
 
@@ -314,8 +316,7 @@ void LinePickingMean(double *mean, int *mode,
     
     /* calculate the mean */
     *mean = (*LinePickingFields[*mode].MEAN)(parameters);
-    /* correctly executed */
-    *result=0;
+
     return;
 }
 
@@ -355,8 +356,6 @@ void LinePickingVar(double *var, int *mode,
     /* calculate the variance */
     *var = (*LinePickingFields[*mode].VAR)(parameters);
     
-    /* correctly executed */
-    *result=0;
     return;
 }
 
@@ -368,66 +367,260 @@ void LinePickingVar(double *var, int *mode,
  *
  */
 
+/* if we fail this we exit with a message */
+void CheckNumberInputArg(int nrhs, int required, char* entry_str)
+{
+    char buffer[256];
+    
+    if (nrhs == required) return;
+    sprintf(buffer,
+            "\n%s entry point: requires exactly %d input parameter(s).",
+            entry_str, required);
+    mexErrMsgTxt(buffer);  
+}
+            
+            
+/* if we fail this we exit with a message */
+void CheckNumberOutputArg(int nlhs, int max, char* entry_str)
+{
+    char buffer[256];
+    
+    if (nlhs <= max) return;
+    sprintf(buffer,
+            "\n%s entry point: requires at most %d output parameter(s), "
+            "%d were provided",
+            entry_str, max, nlhs);
+    mexErrMsgTxt(buffer);  
+}
+
+/* if we fail this we exit with a message */            
+void CheckMode(int mode, char* entry_str)
+{
+    char buffer[256];
+    if (mode < 0 || mode >= NUMBER_OF_MODES) 
+    {
+        sprintf(buffer, 
+                "\n%s entry point: "
+                "the mode %d is unsupported.", 
+                entry_str, mode);
+        
+        mexErrMsgTxt(buffer);  
+    }
+}
+
+
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
     
     double *t; /* points at which to calculate the distribution */
     double *g; /* value of the distribution at the points t */
     int N, M;    /* number of points */
-    int Npar, Mpar;    /* number of parameters */
+    int Npar;    /* number of parameters */
     int i;					
     int mode;    /* the type of region on which to calculate the distribution */
     double *parameters; /*  input parameter vector  
                          note that meaning of parameters depends on the mode */
+    int entry;
+    
     int result;
     char *error_str;
     
-    /* Check for proper number of input and output arguments. */    
-    if (nrhs < 3)
-        mexErrMsgTxt("LinePicking: Not enough input arguments:"
-                     " [g] = LinePicking(t, mode, parameters).");
-    if (nlhs > 1) 
-        mexErrMsgTxt("LinePicking: Too many output arguments:"
-                     " [g] = LinePicking(t, mode, parameters).");
-    
-    /* Get the input arguments */
-    t = mxGetPr(prhs[0]);       /*  */
-    N = (int) mxGetN(prhs[0]); /*  */
-    M = (int) mxGetM(prhs[0]); /*  */
-    if (N<1 || M>1) 
-        mexErrMsgTxt("LinePicking: t should be an Nx1 matrix.");
-    
-    if (nrhs < 2) 
-        mode = 1; /* default mode is a square */
-    else 
-        mode = (int) mxGetScalar(prhs[1]);
+    double stat;
+
     
     
-    Npar = (int) mxGetN(prhs[2]);
-    Mpar = (int) mxGetM(prhs[2]);
-    Npar = Mpar*Npar;
-    if (nrhs < 3 || Npar<1)
-    {
-        /* set defaults */
-        parameters = (double *) malloc((size_t) sizeof(double)*3);
-        /* allocate three, even though at the moment we only need 2 */
-        parameters[0] = 1;
-        parameters[1] = 1;
-        parameters[2] = 1; 
-    } 
-    else 
-    {
-        parameters = mxGetPr(prhs[2]); 
+    if (nrhs < 1)
+        mexErrMsgTxt("LinePicking needs at least one input parameter.");
+        
+    
+    /* the first parameter is an integer 
+     * indicating which function should be called 
+     * i.e., which entry point to use
+     */
+    
+    entry = (int)mxGetScalar(prhs[0]);
+    
+    switch (entry) {
+        case 0: /* LinePickingPDF */
+            /* TODO the previous handling of default values 
+             * to be implemented in LinePickingPDF.m
+             */
+             
+            CheckNumberInputArg(nrhs, 4, "LinePickingPDF");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingPDF");
+            
+                   
+            N = (int) mxGetN(prhs[1]); 
+            M = (int) mxGetM(prhs[1]); 
+            if (N<1 || M>1) 
+                mexErrMsgTxt("LinePickingPDF entry point: "
+                             "t should be an Nx1 matrix.");
+            
+            t = mxGetPr(prhs[1]);
+            
+            mode = (int)mxGetScalar(prhs[2]);
+            CheckMode(mode, "LinePickingCDF");
+            
+            Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
+            parameters = mxGetPr(prhs[3]);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
+            g = mxGetPr(plhs[0]);
+                
+            LinePickingPDF(t, g, &N, &mode, parameters, 
+                           &Npar, &result, &error_str);
+
+            break;
+            
+        case 1: /* LinePickingCDF */
+            
+            CheckNumberInputArg(nrhs, 4, "LinePickingCDF");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingCDF");
+            
+            
+            N = (int) mxGetN(prhs[1]); 
+            M = (int) mxGetM(prhs[1]); 
+            if (N<1 || M>1) 
+                mexErrMsgTxt("LinePickingCDF entry point: "
+                             "t should be an Nx1 matrix.");
+            
+            t = mxGetPr(prhs[1]);
+            
+            mode = (int)mxGetScalar(prhs[2]);
+            CheckMode(mode, "LinePickingCDF");
+            
+            Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
+            parameters = mxGetPr(prhs[3]);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
+            g = mxGetPr(plhs[0]);
+            
+            LinePickingCDF(t, g, &N, &mode, parameters, 
+                           &Npar, &result, &error_str);
+            
+            break;
+             
+        case 2: /* LinePickingMean */
+            CheckNumberInputArg(nrhs, 3, "LinePickingMean");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingMean");
+            
+            /* three parameters the second is the mode */
+            mode = (int)mxGetScalar(prhs[1]);
+            
+            CheckMode(mode, "LinePickingMean");
+            
+            /* three parameters the third are the region parameters */
+            Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
+            parameters = mxGetPr(prhs[2]);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+            g = mxGetPr(plhs[0]);;
+        
+            LinePickingMean(g, &mode, parameters, &Npar, &result, 
+                            &error_str); 
+            
+            break;
+            
+        case 3: /* LinePickingVar */
+            CheckNumberInputArg(nrhs, 3, "LinePickingVar");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingVar");
+            /* three parameters the second is the mode */
+            mode = (int)mxGetScalar(prhs[1]);
+            
+            CheckMode(mode, "LinePickingVar");
+            
+            /* three parameters the third are the region parameters */
+            Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
+            parameters = mxGetPr(prhs[2]);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+            g = mxGetPr(plhs[0]);;
+            
+            LinePickingVar(g, &mode, parameters, &Npar, &result, 
+                            &error_str);
+            break;
+            
+        case 4: /* LinePickingSupport */
+            CheckNumberInputArg(nrhs, 3, "LinePickingSupport");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingSupport");
+            
+            /* three parameters the second is the mode */
+            mode = (int)mxGetScalar(prhs[1]);
+            
+            CheckMode(mode, "LinePickingSupport");
+            
+            /* three parameters the third are the region parameters */
+            Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
+            parameters = mxGetPr(prhs[2]);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, 2, mxREAL);
+            g = mxGetPr(plhs[0]);
+            
+            LinePickingSupport(g, &mode, parameters, &Npar, &result, 
+                           &error_str);
+            
+            break;
+            
+        case 5: /* LinePickingModeLookup */
+            
+            CheckNumberInputArg(nrhs, 2, "LinePickingModeLookup");
+            CheckNumberOutputArg(nlhs, 2, "LinePickingModeLookup");
+               
+            /* two parameters the second is the mode */
+            mode = (int)mxGetScalar(prhs[1]);
+            
+            CheckMode(mode, "LinePickingModeLookup");
+            
+            /* success */ 
+            {
+                char *name;
+                char *description;
+                
+                LinePickingModeLookup(&mode, &name, &description);
+                
+                plhs[0] = mxCreateString(name);
+                plhs[1] = mxCreateString(description);
+            }
+            return;
+            
+        case 6: /* LinePickingAllModes */
+            CheckNumberInputArg(nrhs, 2, "LinePickingAllModes");
+            CheckNumberOutputArg(nlhs, 0, "LinePickingAllModes");
+            LinePickingAllmodes();
+                       
+            return;
+            
+        case 7: /*  LinePickingCheckParameters */
+            CheckNumberInputArg(nrhs, 3, "LinePickingCheckParameters");
+            CheckNumberOutputArg(nlhs, 2, "LinePickingCheckParameters");
+            
+            /* three parameters the second is the mode */
+            mode = (int)mxGetScalar(prhs[1]);
+            
+            /* three parameters the third are the region parameters */
+            Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
+            parameters = mxGetPr(prhs[2]);
+            
+            
+            LinePickingCheckParameters(&mode, parameters, &Npar, &result, 
+                           &error_str);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+            g = mxGetPr(plhs[0]);
+            g[0] = result;
+            plhs[1] = mxCreateString(error_str);
+            
+            // reset it so we can carry on
+            result = 0;
+            break;
+            
+        default:
+                mexErrMsgTxt("LinePicking unknown entry point requested.");
+            
     }
     
-    /* create output matrices */
-    plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
-    g = mxGetPr(plhs[0]);
-    
-    LinePickingPDF(t, g, &N, &mode, parameters, &Npar, &result, &error_str);
-    if (result != 0) {
+    if (result != 0) 
         mexErrMsgTxt(error_str);
-    }
     
 }
 #endif /* _MEX */
