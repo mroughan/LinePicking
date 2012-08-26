@@ -1,7 +1,7 @@
 /* LinePicking.h
  *
- * Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
- * Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
+ *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -37,7 +37,7 @@
 #include "Cube.h"
 #include "Sphere.h"
 #include "SphereGeodesic.h"
-
+#include "PrismGeodesic.h"
 
 
 #ifndef _LINEPICKING_H
@@ -73,7 +73,8 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(Line)},
     {ExpandFields(Cube)},
     {ExpandFields(Sphere)}, 
-    {ExpandFields(SphereGeodesic)} 
+    {ExpandFields(SphereGeodesic)},
+    {ExpandFields(PrismGeodesic)}
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
@@ -90,11 +91,17 @@ void LinePickingCheckParameters(int *, double *, int *, int *, char **);
 /* compute support of the density */
 void LinePickingSupport(double *, int *, double*, int *, int *, char **);
 
-/* primary function for calculating PDF for any region through a uniform interface, for multiple t values */
-void LinePickingPDF(double *, double *, int *, int *, double*, int *, int*, char **);
+/* primary function for calculating PDF for any region 
+ * through a uniform interface, for multiple t values 
+ */
+void LinePickingPDF(double *, double *, int *,
+                    int *, double*, int *, int*, char **);
 
-/* primary function for calculating CDF for any region through a uniform interface, for multiple t values */
-void LinePickingCDF(double *, double *, int *, int *, double*, int *, int*, char **);
+/* primary function for calculating CDF for any region 
+ * through a uniform interface, for multiple t values 
+ */
+void LinePickingCDF(double *, double *, int *,
+                    int *, double*, int *, int*, char **);
 
 /* primary function for calculating Mean line length for any region */
 void LinePickingMean(double *, int *, double*, int *, int*, char **);
@@ -109,11 +116,12 @@ void LinePickingVar(double *, int *, double*, int *, int*, char **);
  *
  */
 static void usage_LinePicking();
-static void set_pars_LinePicking(int argc, char *argv[], char **, int *, double *, int *);
+static void set_pars_LinePicking(int argc, char *argv[],
+                                 char **, int *, double *, int *);
 int main(int argc, char *argv[]);
-#endif
+#endif /* _STANDALONE */
 
 
-#endif
+#endif /* _LINEPICKING_H */
 
 

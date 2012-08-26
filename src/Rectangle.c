@@ -1,7 +1,7 @@
 /* Rectangle.c	
  *
- * Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
- * Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -207,8 +207,6 @@ void RectangleDistanceSupport(double *t, double *parameters)
 void RectangleDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {
-    /* rectangle, side lengths parameters[0], parameters[1] */
-    /* TODO pretty sure one side has to be shorter than the 
-     other in order for this to work properly we can force that here */
+    /* no further checks needed */
     *result=0;
 }

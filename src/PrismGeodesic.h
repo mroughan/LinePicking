@@ -1,6 +1,6 @@
-/* XXX.h	
+/* PrismGeodesic.h	
  *
- * Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -16,27 +16,27 @@
  */
 
 
-#ifndef _YYY_H
-#define _YYY_H
+#ifndef _PRISM_GEODESIC_H
+#define _PRISM_GEODESIC_H
 
 
-extern char * XXXDistanceName;
-extern char * XXXDistanceDescription;
-extern int XXXDistanceNpar;
+extern char * PrismGeodesicDistanceName;
+extern char * PrismGeodesicDistanceDescription;
+extern int PrismGeodesicDistanceNpar;
 
 
-double XXXDistancePDF(double t, double* parameters);
+double PrismGeodesicDistancePDF(double t, double* parameters);
 
-double XXXDistanceCDF(double a, double* b);
+double PrismGeodesicDistanceCDF(double t, double* parameters);;
 
-double XXXDistanceMean(double* parameters);
+double PrismGeodesicDistanceMean(double* parameters);
 
-double XXXDistanceVar(double* parameters);
+double PrismGeodesicDistanceVar(double* parameters);
 
-void XXXDistanceSupport(double *t, double *parameters);
+void PrismGeodesicDistanceSupport(double *t, double *parameters);
 
-void XXXDistanceCheckParameters(double *parameters, int *result, 
+void PrismGeodesicDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
-#endif /* _YYY_H */
+#endif /* _Prism_GEODESIC_H */
 
