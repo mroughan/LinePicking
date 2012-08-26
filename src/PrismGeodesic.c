@@ -20,8 +20,11 @@
 #include "PrismGeodesic.h"
 
 char *PrismGeodesicDistanceName = "PrismGeodesic";
-char *PrismGeodesicDistanceDescription = "PrismGeodesic description";
-int PrismGeodesicDistanceNpar = 1;
+char *PrismGeodesicDistanceDescription = 
+            "Prism, Length parameters[0], and Perimeter parameters[1]."
+            "Perimeter is used as the prism can have any cross section.";
+
+int PrismGeodesicDistanceNpar = 2;
 
 
 /* distance density (at w) between two points on the surface of an
