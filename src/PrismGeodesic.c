@@ -120,6 +120,11 @@ double PrismGeodesicDistanceCDF(double w, double* parameters)
     }
 }
 
+
+/* TODO re-erive the mean without using the three part PDF as a basis 
+ * I am sure a simpler result can be found using a similar methods to 
+ * that used on the rectangle */
+
 /* mean distance between two points on the surface of an
  * upright prism of length and perimeter given in parameters[0] and 
  * parameters[1] respectively. The distance is measured around the   
@@ -158,6 +163,10 @@ double PrismGeodesicDistanceMean(double* parameters)
              log(P + sqrt(4 * L2 + P2))) / 
             (48. * L2 * P * sqrt(4 * L2 + P2));
 }
+
+/* TODO re-erive the variance without using the three part PDF as a basis 
+ * I am sure a simpler result can be found using a similar methods to 
+ * that used on the rectangle this result is comical !!! */
 
 /* variance of distance between two points on the surface of an
  * upright prism of length and perimeter given in parameters[0] and 
