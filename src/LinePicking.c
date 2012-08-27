@@ -217,10 +217,10 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode,
     
     /* calculate the support and check parameters are valid */
     LinePickingSupport(support, mode, parameters, Npar, result, error_str);
-    
+
     if (*result != 0) /* something was wrong with the parameters */
-        return;
-    
+        return;    
+
     /* calculate the distribution */
     for (i=0; i<*N; i++) 
     {

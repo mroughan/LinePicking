@@ -52,7 +52,7 @@ double HyperballDistancePDF(double t, double* parameters)
     x = 1.0 - t2/(4.0*r2);
     p = (n+1.0)/2.0;
     q = 1.0/2.0;
-    
+ 
     /* call matlab to get values for incomplete beta function */
     /* /\* Matlab BETAINC(X,Z,W) computes the incomplete beta function *\/ */
     /* /\* result = mexCallMATLAB(int nlhs, mxArray *plhs[], int nrhs,  mxArray *prhs[], const char *functionName); */
@@ -180,7 +180,7 @@ void HyperballDistanceSupport(double *t, double *parameters)
 {
     /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
     t[0] = 0;
-    t[1] = 2*parameters[0];
+    t[1] = 2*parameters[1];
 }
 
 void HyperballDistanceCheckParameters(double *parameters, int *result, 
@@ -191,8 +191,8 @@ void HyperballDistanceCheckParameters(double *parameters, int *result,
     if (parameters[0] < 1) 
     {
         sprintf(error_str, 
-                "LinePickingCheckParameters: in mode 2,"
-                " we must have parameter[0]>=1, but  parameter[0]=%lf", 
+                "LinePickingCheckParameters: hyperball,"
+                " must have parameter[0]>=1, but  parameter[0]=%lf", 
                 parameters[0]);
         *result=2;
     }
