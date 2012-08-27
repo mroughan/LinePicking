@@ -516,18 +516,43 @@ noting that for a $n$-dimensional ball of radius $R$,
   \frac{1}{2} (n+1), \frac{1}{2}
                       \right),
 \end{equation}
-rememeber $x = 1 - t^2/4R^2$, $b=1/2$, and from
-\cite[26.5.6]{Abramowitz_and_Stegun} for integer $a$ (i.e., $n$ odd) 
+rememeber $x = 1 - t^2/4R^2$, $a=(n+1)/2$, and $b=1/2$, and from
+\cite[26.5.4]{Abramowitz_and_Stegun}
 \begin{eqnarray}
   \label{eq:Ix}
-  I_x(a,b) & = & \frac{(1 -x)^b}{B(a,b)}
-                 \sum_{i=0}^{a-1} (-1)^i \binom{a-1}{i} \frac{(1-x)^i}{b+i},
+  I_x(a,b)
+ & = & 1 - I_{1-x}(b,a)
                     \nonumber \\
- & = & \frac{t/2R}{B(a,b)}
-                 \sum_{i=0}^{a-1} (-1)^i \binom{a-1}{i} \frac{(t^2/4R^4)^i}{b+i},
-                    \nonumber \\
+ & = & 1 - \frac{(1-x)^b x^a}{b B(b,a)}  \left\{ 
+               1 +
+               \sum_{i=0}^{\infty} \frac{B(b+1,i+1)}{B(a+b,i+1)} (1-x)^{i+1}
+           \right\} 
+               \nonumber \\
+ & = & 1 - \frac{2 (t/2R) (1 - t^2/4R^2)^a}{B(b,a)}  \left\{ 
+               1 +
+               \sum_{i=0}^{\infty} \frac{B(b+1,i+1)}{B(a+b,i+1)} (t/2R)^{2(i+1)}
+           \right\} 
+               \nonumber \\
+ & \simeq & 1 - \frac{t/R}{B(1/2,(n+1)/2)}.
 \end{eqnarray}
-
+The Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
+\begin{eqnarray}
+  \label{eq:gamma}
+  \Gamma(1/2) & = & \pi^{1/2}, \\
+  \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
+  \Gamma(k+1) & = & k!, \\
+  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!}, \\
+\end{eqnarray}
+% last one comes from Wiki, but could be derived simply from A&S
+so we can derive
+\begin{eqnarray}
+  \label{eq:beta_specified_vals}
+  B(1/2,(n+1)/2) & = & \frac{\Gamma(1/2) \Gamma((n+1)/2)}{\Gamma(n/2 + 1)} \nonumber \\
+  & = & \left\{ \begin{array}{ll}
+      \frac{\Gamma(1/2) \Gamma((n+1)/2)}{\Gamma(n/2 + 1)} & n \mbox{ odd, i.e., } n=2k+1,\\
+      \frac{\Gamma(1/2) \Gamma((n+1)/2)}{\Gamma(n/2 + 1)} & n \mbox{ even, i.e., } n=2k.\\
+    \end{array} \right.
+\end{eqnarray}
 
 so  the asymptotic form of these distributions for $t
 \rightarrow 0$, i.e., 
@@ -601,33 +626,65 @@ the possible second points that lie at distance $t$. We can correct by
 subtracting the number of such points that would actuall lie outside
 the region.
 
-Formally, in 2D, consider the first point lies at distance $l<t$ from
-the boundary, then there will be an arc of the circle of radius $t$
-that lies outside the circle (see Figure~\ref{}). 
+Formally, in 2D, consider the first point lies at distance $\ell<t$
+from the boundary, then there will be an arc of the circle of radius
+$t$ that lies outside the circle (see
+Figure~\ref{fig:perimeter}). Then the length of the arc in question
+will be
+\begin{equation}
+  \label{eq:arc_len}
+  s = 2 \theta = 2 \cos^{-1} (\ell / t).
+\end{equation}
+We then have to integrate over the possible distances $\ell$, i.e., 
+\begin{eqnarray}
+  \label{eq:correction_2nd_order}
+   h(t) & = & \int_0^t 2 \cos^{-1} (\ell / t)  \, d\ell \nonumber \\
+        & = &  - 2 t \int_{\pi/2}^0 \theta  \sin \theta \, d\theta  \nonumber \\
+        & = &  2 t \int^{\pi/2}_0 \theta  \sin \theta \, d\theta  \nonumber \\
+        & = &  2 t \left\{ \left[ -\theta  \cos \theta \right]^{\pi/2}_0 + 
+                      \int^{\pi/2}_0  \cos \theta \, d\theta
+                   \right\}  \nonumber \\
+        & = &  2 t \left[ \sin \theta \right]^{\pi/2}_0  \nonumber \\
+        & = &  2 t,
+\end{eqnarray}
+using the substitution $\theta = \cos^{-1} (\ell / t)$, or $\ell = t
+\cos(\theta)$, so that $d \ell = - t \sin \theta$, and we integate by
+parts. This must be multiplied by the probability that the first point
+lies in the boundary region --- the area of the boundary divided by the
+total boundary, i.e., $t P/A$, and divided by $A$ again to get the
+probability that the second point would lie on the arc, if there were
+no boundary, so the corrected form of $g(t)$ in 2D is
+\begin{equation}
+  g(t) \sim  \frac{2 \pi}{A} t - \frac{2 P}{A} t^2,
+\end{equation}
+which again matches the results for the rectangle and disk.
 
+\begin{figure}[tbp]
+  \begin{center}
+    \includegraphics[width=0.33\columnwidth]{Figs/perimeter.eps}
+    \caption{.}
+    \label{fig:perimeter}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
 
+The next order correction would then build in the fact that the border
+is not straight, e.g., in the case of a disk it is round, and in the
+case of the square it has corners. However, as this term is very
+dependent on shape and not general characteristics we won't calculate
+it here.
 
+We can go through exactly the same process in higher dimensions, to
+obtain the same types of approximations, but computing the integrals
+is somewhat redundant as we can see the correct forms of
+approximatiosn directly from the hyperball distribution. Intuitively,
+in high dimensions, the points are spread ``more thinly'' in the sense
+that their density on $n$-dimensional volumes will be lower, and
+hence, the distances between points will be larger. In particular the
+chance of very short lines decreases, and we see this in the fact that
+the first non-zero term in the Taylor series above has order $n-1$ for
+the $n$-dimensional problem.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-
-
-Intuitively, in high dimensions, the points are spread ``more
-thinly'' in the sense that their density on $n$-dimensional volumes
-will be lower, and hence, the distances between points will be
-larger. In particular the chance of very short lines decreases.
-
-
-
-This result is now obvious for the sphere, but for non-spherical (but
-convex) regions, we simply need to consider $s$ large enough that the
-probability of links longer than $\epsilon$ is negligable, where
-$\epsilon$ is chosen so that the chance of intersecting with a
-boundary is negligable, and so we can use a spherical
-approximation. For instance, the {\em cube line picking} problem has
-probability distribution given by \cite{weisstein:_cube_line_picking},
-which has first non-zero term of $O(t)$, which is correct for a 2D
-space.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
