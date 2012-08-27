@@ -17,8 +17,8 @@
 
 #include "Sphere.h"
 
-char *SphereDistanceName = "Sphere";
-char *SphereDistanceDescription = "Sphere, with radius parameters[0]";
+char *SphereDistanceName = "sphere";
+char *SphereDistanceDescription = "sphere, with radius parameters[0]";
 int SphereDistanceNpar = 1;
 
 
@@ -32,7 +32,7 @@ double SphereDistancePDF(double s, double* parameters)
     
     if (s <= 0) 
         return 0;
-    else if (s >= 2. * R) 
+    else if (s > 2. * R) 
         return 0;
     
     return s / (2. * R * R);    
@@ -49,7 +49,7 @@ double SphereDistanceCDF(double s, double* parameters)
     
     if (s <= 0) 
         return 0;
-    else if (s >= 2 * R) 
+    else if (s > 2 * R) 
         return 1;
 
     return (s * s) / (4. * R * R);

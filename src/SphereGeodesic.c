@@ -18,9 +18,9 @@
 #include <math.h>
 #include "SphereGeodesic.h"
 
-char *SphereGeodesicDistanceName = "SphereGeodesic";
+char *SphereGeodesicDistanceName = "sphere geodesic";
 char *SphereGeodesicDistanceDescription = 
-                                "SphereGeodesic, with radius parameters[0]";
+                                "sphere geodesic, with radius parameters[0]";
 int SphereGeodesicDistanceNpar = 1;
 
 
@@ -36,7 +36,7 @@ double SphereGeodesicDistancePDF(double d, double* parameters)
     
     if (d <= 0) 
         return 0;
-    else if (d >= M_PI * R) 
+    else if (d > M_PI * R) 
         return 0;
     
     return sin(d / R) / ( 2. * R);
@@ -55,7 +55,7 @@ double SphereGeodesicDistanceCDF(double d, double* parameters)
     
     if (d <= 0) 
         return 0;
-    else if (d >= M_PI * R) 
+    else if (d > M_PI * R) 
         return 1;
     
     return pow(sin(d / (2. * R)), 2);

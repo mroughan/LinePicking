@@ -22,8 +22,8 @@ t = -0.1:dt:2.1;
 
 
 % compare ball-line picking in 1D, with line-line picking
-[g1] = LinePicking(t, 2, [1, 1]);
-[g2] = LinePicking(t, 4, 2);
+[g1] = LinePickingPDF(t, 2, [1, 1]);
+[g2] = LinePickingPDF(t, 4, 2);
 figure(1)
 hold off
 p1 = plot(t, g1, 'linewidth', 2);
@@ -36,8 +36,8 @@ xlabel('t');
 ylabel('g(t)');
 
 % compare ball-line picking in 2D, with disk-line picking
-[g1] = LinePicking(t, 1, 1);
-[g2] = LinePicking(t, 2, [2, 1]);
+[g1] = LinePickingPDF(t, 1, 1);
+[g2] = LinePickingPDF(t, 2, [2, 1]);
 figure(2)
 hold off
 p1 = plot(t, g1, 'linewidth', 2);
@@ -50,8 +50,8 @@ xlabel('t');
 ylabel('g(t)');
 
 % compare rectangle (with square parameters) with square
-[g1] = LinePicking(t, 0, 1);
-[g2] = LinePicking(t, 3, [1, 1]);
+[g1] = LinePickingPDF(t, 0, 1);
+[g2] = LinePickingPDF(t, 3, [1, 1]);
 figure(3)
 hold off
 p1 = plot(t, g1, 'linewidth', 2);
@@ -64,8 +64,8 @@ xlabel('t');
 ylabel('g(t)');
 
 % compare long, thin rectangle with line
-[g1] = LinePicking(t, 4, 1);
-[g2] = LinePicking(t, 3, [0.00001, 1]);
+[g1] = LinePickingPDF(t, 4, 1);
+[g2] = LinePickingPDF(t, 3, [0.00001, 1]);
 figure(4)
 hold off
 p1 = plot(t, g1, 'linewidth', 2);
@@ -95,7 +95,7 @@ hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g] = LinePicking(t, 2, [n, 1]);
+  [g] = LinePickingPDF(t, 2, [n, 1]);
   p5(n) = plot(t,g,'color', colors(n,:), 'linewidth', 2);
   legend_str(n,:) = sprintf('n = %2d', n);
 end
@@ -112,12 +112,12 @@ print('-depsc', 'Plots/LinePicking_test_balls.eps');
 % do nice plots comparing sphere, line, disk and square
 %
 %  scale so that all have same MAX(length)
-[g_square] = LinePicking(t, 0, 1/sqrt(2));
-[g_disk] = LinePicking(t, 1, 0.5);
-[g_sphere] = LinePicking(t, 2, [3,0.5]);
-[g_rect] = LinePicking(t, 3, [0.5,1]/sqrt(1.25));
-[g_line] = LinePicking(t, 4, 1);
-[g_cube] = LinePicking(t, 5, 1/sqrt(3));
+[g_square] = LinePickingPDF(t, 0, 1/sqrt(2));
+[g_disk] = LinePickingPDF(t, 1, 0.5);
+[g_sphere] = LinePickingPDF(t, 2, [3,0.5]);
+[g_rect] = LinePickingPDF(t, 3, [0.5,1]/sqrt(1.25));
+[g_line] = LinePickingPDF(t, 4, 1);
+[g_cube] = LinePickingPDF(t, 5, 1/sqrt(3));
 figure(6)
 hold off
 plot(0,0)
@@ -141,12 +141,12 @@ print('-depsc', 'Plots/LinePicking_test_fix_max_len.eps');
 %  scale so that all have the same area
 dt = 0.001;
 t = -0.1:dt:3.1;
-[g_square] = LinePicking(t, 0, 1);
-[g_disk] = LinePicking(t, 1, 1/sqrt(pi));
-[g_sphere] = LinePicking(t, 2, [3,(3/(4*pi))^(1/3)]);
-[g_rect] = LinePicking(t, 3, [0.5,1]*2);
-[g_line] = LinePicking(t, 4, 1);
-[g_cube] = LinePicking(t, 5, 1);
+[g_square] = LinePickingPDF(t, 0, 1);
+[g_disk] = LinePickingPDF(t, 1, 1/sqrt(pi));
+[g_sphere] = LinePickingPDF(t, 2, [3,(3/(4*pi))^(1/3)]);
+[g_rect] = LinePickingPDF(t, 3, [0.5,1]*2);
+[g_line] = LinePickingPDF(t, 4, 1);
+[g_cube] = LinePickingPDF(t, 5, 1);
 figure(7)
 hold off
 plot(0,0)
@@ -177,7 +177,7 @@ hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g_rect] = LinePicking(t, 3, [n,1]/sqrt(1+n^2));
+  [g_rect] = LinePickingPDF(t, 3, [n,1]/sqrt(1+n^2));
   p8(n) = plot(t,g_rect,'color', colors(n,:), 'linewidth', 2);
   legend_str8(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
@@ -195,34 +195,34 @@ print('-depsc', 'Plots/LinePicking_test_rect.eps');
 dt = 0.001;
 t = -0.1:dt:10.1;
 
-[g1] = LinePicking(t, 0, 1);
-[g5] = LinePicking(t, 0, 5);
+[g1] = LinePickingPDF(t, 0, 1);
+[g5] = LinePickingPDF(t, 0, 5);
 sum_square_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_square_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
-[g1] = LinePicking(t, 1, 1);
-[g5] = LinePicking(t, 1, 5);
+[g1] = LinePickingPDF(t, 1, 1);
+[g5] = LinePickingPDF(t, 1, 5);
 sum_disk_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_disk_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
-[g1] = LinePicking(t, 2, [3,1]);
-[g5] = LinePicking(t, 2, [3,5]);
+[g1] = LinePickingPDF(t, 2, [3,1]);
+[g5] = LinePickingPDF(t, 2, [3,5]);
 sum__1 = sum(g1*dt)
 sum_ball3_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_ball3_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
-[g1] = LinePicking(t, 3, [0.5,1]);
-[g5] = LinePicking(t, 3, [2.5,5]);
+[g1] = LinePickingPDF(t, 3, [0.5,1]);
+[g5] = LinePickingPDF(t, 3, [2.5,5]);
 sum_rect_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_rect_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
-[g1] = LinePicking(t, 4, 1);
-[g5] = LinePicking(t, 4, 5);
+[g1] = LinePickingPDF(t, 4, 1);
+[g5] = LinePickingPDF(t, 4, 5);
 sum_line_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_line_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
-[g1] = LinePicking(t, 5, 1);
-[g5] = LinePicking(t, 5, 5);
+[g1] = LinePickingPDF(t, 5, 1);
+[g5] = LinePickingPDF(t, 5, 5);
 sum_cube_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_cube_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
@@ -246,12 +246,12 @@ Ss = [0:0.2:100];
 R = 1/sqrt(pi);
 for i=1:length(Ss)
   s = Ss(i);
-  g_square = @(t) exp(-s*t) .* LinePicking(t, 0, 1);
-  g_disk = @(t) exp(-s*t) .* LinePicking(t, 1, R);
-  g_sphere = @(t) exp(-s*t) .* LinePicking(t, 2, [3,(3/(4*pi))^(1/3)]);
-  g_rect = @(t) exp(-s*t) .* LinePicking(t, 3, [0.5,1]*2);
-  g_line = @(t) exp(-s*t) .* LinePicking(t, 4, 1);
-  g_cube = @(t) exp(-s*t) .* LinePicking(t, 5, 1);
+  g_square = @(t) exp(-s*t) .* LinePickingPDF(t, 0, 1);
+  g_disk = @(t) exp(-s*t) .* LinePickingPDF(t, 1, R);
+  g_sphere = @(t) exp(-s*t) .* LinePickingPDF(t, 2, [3,(3/(4*pi))^(1/3)]);
+  g_rect = @(t) exp(-s*t) .* LinePickingPDF(t, 3, [0.5,1]*2);
+  g_line = @(t) exp(-s*t) .* LinePickingPDF(t, 4, 1);
+  g_cube = @(t) exp(-s*t) .* LinePickingPDF(t, 5, 1);
   [q_square, errbnd] = quadgk(g_square, t_min, t_max);
   [q_disk, errbnd] = quadgk(g_disk, t_min, t_max);
   [q_sphere, errbnd] = quadgk(g_sphere, t_min, t_max);
@@ -286,12 +286,12 @@ print('-depsc', 'Plots/LinePicking_test_laplace_tranforms.eps');
 
 for i=1:length(Ss)
   s = Ss(i);
-  g_square = @(t) t .* exp(-s*t) .* LinePicking(t, 0, 1);
-  g_disk = @(t) t .* exp(-s*t) .* LinePicking(t, 1, R);
-  g_sphere = @(t) t .* exp(-s*t) .* LinePicking(t, 2, [3,(3/(4*pi))^(1/3)]);
-  g_rect = @(t) t .* exp(-s*t) .* LinePicking(t, 3, [0.5,1]*2);
-  g_line = @(t) t .* exp(-s*t) .* LinePicking(t, 4, 1);
-  g_cube = @(t) t .* exp(-s*t) .* LinePicking(t, 5, 1);
+  g_square = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 0, 1);
+  g_disk = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 1, R);
+  g_sphere = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 2, [3,(3/(4*pi))^(1/3)]);
+  g_rect = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 3, [0.5,1]*2);
+  g_line = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 4, 1);
+  g_cube = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 5, 1);
   [q_square, errbnd] = quadgk(g_square, t_min, t_max);
   [q_disk, errbnd] = quadgk(g_disk, t_min, t_max);
   [q_sphere, errbnd] = quadgk(g_sphere, t_min, t_max);
