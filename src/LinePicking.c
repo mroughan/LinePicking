@@ -1,7 +1,7 @@
 /* LinePicking.c	
  *
  *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
- *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -87,6 +87,34 @@ void LinePickingAllmodes(void)
     return;
 }
 
+
+
+/**
+ * Summary here; one sentence on one line (should not, but can exceed 80 chars).
+ *
+ * A more detailed description goes here.
+ *
+ * A blank line forms a paragraph. There should be no trailing white-space
+ * anywhere.
+ *
+ * @param $first
+ *   "@param" is a Doxygen directive to describe a function parameter. Like some
+ *   other directives, it takes a term/summary on the same line and a
+ *   description (this text) indented by 2 spaces on the next line. All
+ *   descriptive text should wrap at 80 chars, without going over.
+ *   Newlines are NOT supported within directives; if a newline would be before
+ *   this text, it would be appended to the general description above.
+ * @param $second
+ *   There should be no newline between multiple directives (of the same type).
+ * @param $third
+ *   (optional) TRUE if Third should be done. Defaults to FALSE.
+ *   Only optional parameters are explicitly stated as such. The description
+ *   should clarify the default value if omitted.
+ *
+ * @return
+ *   "@return" is a different Doxygen directive to describe the return value of
+ *   a function, if there is any.
+ */
 
 void LinePickingCheckParameters(int *mode, double* parameters, 
                                 int *Npar, int *result, char **error_str)

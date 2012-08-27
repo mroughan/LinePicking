@@ -14,53 +14,28 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "beta.h"
    
 #ifndef _NOTR 
 #include <R.h> /* only include this if we are compiling for R */
 #endif
 
-/* 
-   Incomplete beta function fusing information from
-@article{Didonato:1992:ASD:131766.131776,
- author = {Didonato, Armido R. and Morris,Jr., Alfred H.},
- title = {Algorithm 708: Significant digit computation of the incomplete beta function ratios},
- journal = {ACM Trans. Math. Softw.},
- issue_date = {Sept. 1992},
- volume = {18},
- number = {3},
- month = sep,
- year = {1992},
- issn = {0098-3500},
- pages = {360--373},
- numpages = {14},
- url = {http://doi.acm.org/10.1145/131766.131776},
- doi = {10.1145/131766.131776},
- acmid = {131776},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {F-distribution, continued fractions, minimax approximations},
-} 
-
-and http://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html
-
-but mainly from http://dlmf.nist.gov/8.17
-
-HOWEVER NOTE
-
-   this is all pretty crude, perhaps you're better off using a public library like
-      http://www.mymathlib.com/functions/gamma_beta.html
-      http://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html
-
+/**
+ * Implements the beta function. i.e., the Euler integral of the first kind, 
+ * defined by \f$ \mathrm{B}(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}\,dt \f$.
+ * 
+ * @param $x in \f$ \mathrm{B}(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}\,dt \f$.
+ * @param $y in \f$ \mathrm{B}(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}\,dt \f$.
+ *
+ * @return
+ * The result of evaluating Eulers integral of the first 
+ * kind with the given parameters.
  */
-
-/* beta function in terms of gamma functions */
-double beta(double a, double b)
+double beta(double x, double y)
 {
     /* C gamma function is deprecated, use tgamma instead */
-    return( exp( lgamma(a) + lgamma(b) - lgamma(a+b)) );
+    return( exp( lgamma(x) + lgamma(y) - lgamma(x+y)) );
 
 }
 
@@ -88,6 +63,22 @@ double beta_cont_frac(double a, double b, double x)
     return(cf);
 }
 
+
+/**
+ * Implements the regularized incomplete beta function. 
+ * Defined as \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$ Where 
+ * \f$ \mathrm{B}(a,b) = \int_0^1t^{a-1}(1-t)^{b-1}\,dt \f$ and
+ * \f$ B(x;\,a,b) = \int_0^x t^{a-1}\,(1-t)^{b-1}\,dt. \f$ \n
+ * @see http://doi.acm.org/10.1145/131766.131776 
+ * @see http://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html 
+ * @see http://dlmf.nist.gov/8.17
+ * @param $a in \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$
+ * @param $b in  \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$
+ * @param $x in  \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$
+ * @return
+ * The result of evaluating the incomplete beta function with 
+ * the given parameters. 
+ */
 /* regularized incomplete beta function */
 double beta_inc(double a, double b, double x)
 {
@@ -109,7 +100,6 @@ double beta_inc(double a, double b, double x)
 	fprintf(stderr, "beta_inc: b (=%.3f) must be > 0\n", b);
 	exit(EXIT_FAILURE);
     }
-    /* printf("    a=%.2f, b=%.2f, x=%6f, (a+1.0)/(a+b+2.0)=%6f\n", a, b, x,(a+1.0)/(a+b+2.0));     */
 	
     /* deal with some extreme cases */
     if (x==0.0) return(0.0);

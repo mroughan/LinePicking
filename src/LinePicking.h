@@ -1,12 +1,23 @@
-/* LinePicking.h
+/**
+ * @file LinePicking.h
+ * @brief Exposes to matlab and R a set of functions that implement PDF, CDF,   
+ * mean and variance of the distance between two random points 
+ * in various geometries.
  *
+ * @author Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @author Matthew Roughan <matthew.roughan@adelaide.edu.au> 
+ * @date 22/09/2012
+ */
+
+/*
+ *
+ *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au> 
  *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
- *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
  *     (at your option) any later version.
- * 
+ *   
  *     This program is distributed in the hope that it will be useful,
  *     but WITHOUT ANY WARRANTY; without even the implied warranty of
  *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -14,14 +25,6 @@
  *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Compute the
- *   Distance distribution between two random points in a region.
- *
- * Most of the actual distributions are included here as inline
- * function (as most are pretty short).
- *
- * $Header$
  */
 #include <math.h>
 #include <stdlib.h>
@@ -43,6 +46,7 @@
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
+/** structure thingo test */
 typedef struct 
 {
     double (* PDF)(double, double *); 

@@ -1,6 +1,6 @@
 /* PrismGeodesic.c	
  *
- *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -27,7 +27,7 @@ char *PrismGeodesicDistanceDescription =
 int PrismGeodesicDistanceNpar = 2;
 
 
-/* distance density (at w) between two points on the surface of an
+/** distance density (at w) between two points on the surface of an
  * upright prism of length and perimeter given in parameters[0] and 
  * parameters[1] respectively. The distance is measured around the   
  * the surface of the prism (i.e., a geodesic) 

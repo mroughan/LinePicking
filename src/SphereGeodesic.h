@@ -1,6 +1,16 @@
-/* SphereGeodesic.h	
+/**
+ * @file SphereGeodesic.h
+ * @brief Functions to provide PDF, CDF, mean and variance of the  
+ * distance between two random points on the surface of a sphere.
+ * The distance is measured around the surface of the sphere i.e.,
+ * it is a geodesic
+ * @author Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @date 22/09/2012
+ */
+
+/*
  *
- *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
