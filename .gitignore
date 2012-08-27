@@ -11,3 +11,4 @@
 LinePicking
 .DS_Store
 *src-*
+tmp/*
