@@ -1,8 +1,8 @@
-\name{LinePickingAllmodes}
-\alias{LinePickingAllmodes}
+\name{LinePickingAllModes}
+\alias{LinePickingAllModes}
 \title{Prints list of all modes}
 \usage{
-  LinePickingAllmodes()
+  LinePickingAllModes()
 }
 \value{
   prints out information
@@ -16,7 +16,7 @@
   August 25 2012
 }
 \examples{
-LinePickingAllmodes()
+LinePickingAllModes()
 }
 \author{
   Eric Parsonage, Matt Roughan, Jono Tuke
