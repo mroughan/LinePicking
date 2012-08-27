@@ -58,12 +58,16 @@
 void LinePickingModeLookup(int *mode, char **name, char **description) 
 /* give details of a mode */
 {
+    if (*mode<0 || *mode>=NUMBER_OF_MODES) {
+	*name = "Unsupported mode!";
+	*description = "The entered mode number does not correspond to anything.";
+    }
+
     *name = *LinePickingFields[*mode].name;
     *description = *LinePickingFields[*mode].description;
     
     return;
 }
-
 
 void LinePickingAllmodes(void)
 /* write out the list of modes */

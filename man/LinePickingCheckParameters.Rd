@@ -5,7 +5,7 @@
   LinePickingCheckParameters(mode = 0, parameters)
 }
 \arguments{
-  \item{mode}{integer from 0 to 5}
+  \item{mode}{see \code{\link{LinePickingPDF}}}
 
   \item{parameters}{numeric vector of parameter describing
   mode}
@@ -31,6 +31,6 @@ LinePickingCheckParameters(mode=0, parameters=c(1,2))
 LinePickingCheckParameters(mode=3, parameters=c(1))
 }
 \author{
-  Matt Roughan, Jono Tuke, Eric Parsonage
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

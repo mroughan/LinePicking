@@ -4,7 +4,7 @@
 #' problem. This function prints all possible modes.
 #' 
 #' @return prints out information
-#' @author Matt Roughan, Jono Tuke, Eric Parsonage
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012

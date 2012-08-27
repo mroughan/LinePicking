@@ -5,12 +5,7 @@
   LinePickingSupport(mode = 0, parameters)
 }
 \arguments{
-  \item{mode}{\itemize{ \item 0 square, with side length
-  parameters[0] \item 1 disk, with radius parameters[0]
-  \item 2 hyper-ball, dimension parameters[0], radius
-  parameters[1] \item 3 rectangle, side lengths
-  parameters[0], parameters[1] \item 4 line, length
-  parameters[0] \item 5 cube, side length parameters[0] }}
+  \item{mode}{}
 
   \item{para}{the parameter necessary to describe the space
   given by mode.}
@@ -29,6 +24,6 @@
 LinePickingSupport(mode=0,parameters=10)
 }
 \author{
-  Matt Roughan, Jono Tuke, Eric Parsonage
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

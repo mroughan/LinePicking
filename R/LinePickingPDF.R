@@ -8,21 +8,21 @@
 #'
 #' @param t vector of points to calculate pdf for. 
 #' @param mode \itemize{
-#'    \item 0 square, with side length parameters[0]
-#'    \item 1 disk, with radius parameters[0]
-#'    \item 2 hyper-ball, dimension parameters[0], radius parameters[1]
-#'    \item 3 rectangle, side lengths parameters[0], parameters[1]
-#'    \item 4 line, length parameters[0]
-#'    \item 5 cube, side length parameters[0]
-#'    \item 6 sphere, with radius parameters[0]
-#'    \item 7 sphere geodesic, with radius parameters[0]
-#'    \item 8 prism geodesic, with length parameters[0], and perimeter parameters[1]
+#'    \item 0 Square, with side length parameters[0]
+#'    \item 1 Disk, with radius parameters[0]
+#'    \item 2 Hyper-ball, dimension parameters[0], radius parameters[1]
+#'    \item 3 Rectangle, side lengths parameters[0], parameters[1]
+#'    \item 4 Line, length parameters[0]
+#'    \item 5 Cube, side length parameters[0]
+#'    \item 6 Sphere, with radius parameters[0]
+#'    \item 7 SphereGeodesic, with radius parameters[0]
+#'    \item 8 PrismGeodesic, TBA
 #' }
 #' @param para the parameter necessary to describe 
 #' the space given by mode.
 #' @return vector of probability density function values for each
 #' element in t.
-#' @author Matt Roughan, Jono Tuke, Eric Parsonage
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012

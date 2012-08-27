@@ -5,7 +5,7 @@
   LinePickingModeLookup(mode = 0)
 }
 \arguments{
-  \item{mode}{integer from 0 to 5}
+  \item{mode}{}
 }
 \value{
   prints out information
@@ -22,6 +22,6 @@
 LinePickingModeLookup(mode=0)
 }
 \author{
-  Matt Roughan, Jono Tuke, Eric Parsonage
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

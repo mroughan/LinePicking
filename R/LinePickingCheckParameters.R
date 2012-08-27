@@ -4,7 +4,7 @@
 #' problem. This function takes a mode and a parameter vector and checks if 
 #' valid
 #' 
-#' @param mode integer from 0 to 5
+#' @param mode see \code{\link{LinePickingPDF}}
 #' @param parameters numeric vector of parameter describing mode
 #' @return exit code \itemize{
 #' \item 0: parameters are valid
@@ -13,7 +13,7 @@
 #' \item 3: not enough parameters were entered.
 #' \item 4: other error.
 #' }
-#' @author Matt Roughan, Jono Tuke, Eric Parsonage
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012

@@ -398,74 +398,226 @@ Can be calculated by integration, but ...
 
 \subsection{Approximations}
 
+For some problems, it may be interesting to understand the behaviour
+of these distributions for small $t$. 
+
+For the line we need no approximation:
+\begin{equation}
+  \label{eq:line_line}
+  g^{\rm line}_L(t) = \frac{2}{L} - \frac{2}{L^2} t.
+\end{equation}
+
+For the rectangle (and square) we need only restrict our attention to
+the case $t<a$ (the smaller side length), to get a simple polynomial
+expression: 
+\begin{eqnarray}
+  g^{\rm rect}_{a,b}(t) & = & 
+           \frac{4 t}{a^2 b^2}  
+         \left[ \frac{ab \pi}{2} - (a+b) t + \frac{t^2}{2} \right],
+          \nonumber \\
+                         & = & \frac{2 \pi}{A} t 
+                              - \frac{2 P}{A^2} t^2
+                              + \frac{2}{A^2} t^3,
+\end{eqnarray}
+where $A = ab$ is the area of the rectangle, and $P = a+b$ is the perimeter.
+
+The affect of changing the scale must be obvious, in that we know area
+scales quadratically, and perimeter linearly with the size of the
+region, so simple dimensional analysis suggests a form such as that
+above must occur, but it is perhaps suprising that it is so clean. 
+
+For the cube~\cite{weisstein:_cube_line_picking}, for small $t$,
+\begin{eqnarray}
+  g^{\rm cube}_{1}(t) & = &  -t^2 \left[ (t-8)t^2 + \pi (6 t - 4) \right], \nonumber \\
+                    & = & 4 \pi t^2 - 6 \pi t^3 + 8 t^4 - t^5.
+\end{eqnarray}
+For the box~\cite{philip:_probab_distr_distan_between_two} with $t < a
+\leq b \leq c$, we first see the distribution  of $u=t^2$ (using $g(t)
+= 2 t h(t^2)$, 
+\begin{eqnarray}
+  h^{\rm box}_{a,b,c}(u) & = &
+  \frac{1}{6 a^2 b^2 c^2} \left[
+    - 6 \pi b c u + 8 b u^{3/2}
+    +12 \pi a b c \sqrt u - 6 \pi a(b + c)u + 8(a + c) u^{3/2} - 3 u^2
+    \right], \nonumber \\
+  g^{\rm box}_{a,b,c}(t)  & = &
+  \frac{t }{3 a^2 b^2 c^2} \left[
+    - 6 \pi b c t^2 + 8 b t^{3}
+    +12 \pi a b c t - 6 \pi a(b + c)t^2 + 8(a + c) t^{3} - 3 t^4
+    \right], \nonumber \\
+ & = & \frac{4 \pi}{V} t^2
+       + \frac{\pi }{3 V^2} \left[ -6 b c - 6 a (b+c) \right] t^3
+       + \frac{1}{3 V^2} \left[ 8 b + 8 (a+c) \right] t^4
+       + \frac{1}{3 V^2} \left[ - 3 \right] t^5, \nonumber \\
+ & = & \frac{4 \pi}{V} t^2
+       - \frac{2 \pi }{ V^2} \left[ a b + bc + a c \right] t^3
+       + \frac{8}{3 V^2} \left[ a + b + c \right] t^4
+       - \frac{1}{V^2} t^5,  \nonumber \\
+ & = & \frac{4 \pi}{V} t^2
+       - \frac{\pi S}{ V^2} t^3
+       + \frac{2 P}{3 V^2}  t^4
+       - \frac{1}{V^2} t^5, 
+\end{eqnarray}
+for volume $V = a b c$, surface area $S = 2(a b + bc + a c)$ and edge
+perimeter $P = 4(a + b + c)$>
 
 
+For the $n$-dimensional hyperball, simple approximations are available
+by use of Taylor series. Ignoring the 1D case (which is the same as
+the line), we see the 2D disk
+from~\cite{tu00:_circle_line,weisstein:_circle_line_picking}: 
+\[
+   g^{2D-{\rm ball}}_R(t) 
+     =  \frac{4 t}{\pi R^2} \cos^{-1} \left( \frac{t}{2R} \right) 
+               - \frac{2 t^2}{\pi R^3} \sqrt{1 - \frac{t^2}{4 R^2} }          
+\]
+and we use
+\begin{eqnarray*}
+  \cos^{-1}(x)  & = & \frac{1}{2} \pi - x - \frac{1}{6} x^{3} + \cdots \\
+  \sqrt{1 - x^2} & = & 1 - \frac{x^2}{2} - \frac{x^4}{8}  + \cdots.
+\end{eqnarray*}
+% http://www.wolframalpha.com/input/?i=Taylor+series+of+%288%2F%28pi*R%29%29*%28x*arccos%28x%29+-+x^2*sqrt%281-x^2%29+%29
+% http://www.wolframalpha.com/input/?i=Taylor+series+of+%288%2F%28pi*R%29%29*%28%28t%2F%282*R%29*arccos%28t%2F%282*R%29%29+-+%28t%2F%282*R%29%29^2*sqrt%281-%28t%2F%282*R%29%29^2%29+%29
+to derive
+\begin{eqnarray}
+  g^{2D-{\rm ball}}_R(t) 
+         & = & \frac{4 t}{\pi R^2} \cos^{-1} \left( \frac{t}{2R} \right) 
+               - \frac{2 t^2}{\pi R^3} \sqrt{1 - \frac{t^2}{4 R^2} }
+               \nonumber \\
+         & = & \frac{4 t}{\pi R^2} \left( \frac{1}{2} \pi - \frac{t}{2R} \right)
+                   -  \frac{2 t^2}{\pi R^3} + O(t^4)  \nonumber \\
+         & = &  \frac{2 t}{R^2} -  \frac{4 t^2}{\pi R^3}  + O(t^4) \nonumber \\
+         & = &  \frac{2 \pi}{A} t -  \frac{2 P}{A^2} t^2 + O(t^4) 
+\end{eqnarray}
+where once again $A=\pi R^2$ and $P = 2 \pi R$ are area and perimeter,
+respectively. We note that this is very similar to the formula
+obtained for the square for small $t$. The first two terms are, in
+fact, identical.
 
-% In high dimensions, the points are spread ``more thinnly'' in the
-% sense that their density on $n$-dimensional volumes will be lower, and
-% hence, the distances between points will be larger. As a result,
-% Waxman graphs in higher dimensions may become more sparse.
+For the 3D ball we already have the expression as a polynomial:
+\begin{eqnarray}
+  g^{3D-{\rm ball}}_R(t) 
+        & = & \frac{3 t^2}{R^3} - \frac{9 t^3}{4 R^4} + \frac{3 t^5}{16 R^6}  \nonumber , \\
+        & = & \frac{4 \pi}{V} t^2 - \frac{\pi S}{V^2} t^3 + \frac{3}{16 R^6} t^5,
+\end{eqnarray}
+where again $V=4 \pi R^3/3$ and $S = 4 \pi R^2$ are the volume and
+surface area. Interestingly, these are identical to those terms for
+the cube, and even the forth order term is the same if we say that the
+sphere has zero edges.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 
+The more general expression for the $n$-D ball can be derived by
+noting that for a $n$-dimensional ball of radius $R$,
+\begin{equation}
+ g^{nD-{\rm ball}}_R(t) = n \frac{t^{n-1}}{R^n} I_x\left( 
+  \frac{1}{2} (n+1), \frac{1}{2}
+                      \right),
+\end{equation}
+rememeber $x = 1 - t^2/4R^2$, $b=1/2$, and from
+\cite[26.5.6]{Abramowitz_and_Stegun} for integer $a$ (i.e., $n$ odd) 
+\begin{eqnarray}
+  \label{eq:Ix}
+  I_x(a,b) & = & \frac{(1 -x)^b}{B(a,b)}
+                 \sum_{i=0}^{a-1} (-1)^i \binom{a-1}{i} \frac{(1-x)^i}{b+i},
+                    \nonumber \\
+ & = & \frac{t/2R}{B(a,b)}
+                 \sum_{i=0}^{a-1} (-1)^i \binom{a-1}{i} \frac{(t^2/4R^4)^i}{b+i},
+                    \nonumber \\
+\end{eqnarray}
 
 
-Note that once again we can derive a small $t$ approximation,
-namely, 
-\[ g_{a,b}(t) \simeq \frac{4 t}{a^2 b^2} \frac{ab \pi}{2}
-            = \frac{2 \pi t}{a b} \]
-though here we must assume that the scale-length implied by $\alpha$
-is smaller than $a$, the minimum dimension of the rectangle.  Once
-again, the approximation is the same as that of the rectangle and
-disk, with respect to unit area.
-
-
-
-
-The universality of the small $t$ expansions (used for deriving small
-$\alpha$ approximations to the length distributiohn) suggests a
-general form
-\[ g(t) \simeq \frac{2 \pi t}{A} = 2 \pi d, \]
-where $A$ is the area of the region of interest and $d$ is the scaled
-distance $d = t/A$. Notice that this scaling is different from the one
-used in the Waxman distance function where we scale by the maximum
-distnace $L$. 
-
-It is also numerically straight-forward to compute $g(t)$ where the
-points are placed non-uniformly in the region of interest. Some
-analytic cases are treated in \cite{tu00:_circle_line}, but for
-instance dealing with an inhomogeneous Poisson process used to model
-``burstiness'' or clustering of points, and thence with a somewhat
-different structure than the standard Waxman graph.
-
-
-We also know the asymptotic form of these distributions for $t
+so  the asymptotic form of these distributions for $t
 \rightarrow 0$, i.e., 
 \begin{equation}
   \label{eq:asympt_line_picking}
-  g_n(t) \simeq n \frac{t^{n-1}}{R^n}
+  g^{nD-{\rm ball}}_R(t) = n \frac{t^{n-1}}{R^n} + O(t^{n}).
 \end{equation}
-because we can write % http://en.wikipedia.org/wiki/Beta_function
-\begin{eqnarray*} 
-   I_x(a,b) 
-& = & \sum_{j=a}^{a+b-1} {(a+b-1)! \over j!(a+b-1-j)!} x^j (1-x)^{a+b-1-j} \\
-& = & \sum_{j=a}^{a+b-1} {(a+b-1)! \over j!(a+b-1-j)!} 
-        \left(1 - \frac{t^2}{4 R^2}\right)^j \left( \frac{t^2}{4 R^2} \right)^{a+b-1-j} \\
-& = & \left(1 - \frac{t^2}{4 R^2}\right)^{a+b-1}
-       + \sum_{j=a}^{a+b-2} {(a+b-1)! \over j!(a+b-1-j)!} 
-        \left(1 - \frac{t^2}{4 R^2}\right)^j \left( \frac{t^2}{4 R^2} \right)^{a+b-1-j} \\
-& = & 1 + O(t),
-\end{eqnarray*}
-and this is directly useful for calculating large $s$ (small $\alpha$)
-approximations of the estimator.
 
-For instance, from before, we know that if the $j$th derivative of
-$g(t)$ at $t = 0$ is the first non-zero derivative, then the ratio of
-Laplace transforms takes the form $\sim (j+1)/s$, so here, it is
-immediately obvious that
-\[ -G_n(s)/G_n(s) \rightarrow n/s, \]
-for large $s$. 
+the generalized volume of the $n$-D hyperball is
+\[ V_n(R) = C_n R^n, \]
+where
+\begin{equation}
+  \label{eq:cn}
+   C_n = \frac{ \pi^{n/2} }{\Gamma(n/2 + 1)},
+\end{equation}
+so we can write
+\begin{equation}
+  \label{eq:asympt_line_picking}
+  g^{nD-{\rm ball}}_R(t) \simeq  \frac{n C_b}{V_n} t^{n-1}.
+\end{equation}
+
+
+
+ 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+
+
+It seems as if there is a general pattern here.  That makes a good
+deal of sense because for small $t$, the boundaries have little
+affect. Hence, we would expect the shape of the region to only affect
+the (small) line lengths through macro-properties such as the area and
+perimeter.
+
+Formally, consider a convex region in 2D, for $t$ small, we might
+first assume that a random point is unlikely to be within distance $t$
+of the boundary of the region, and so the probability density
+function, to first order, is simply the probability that the second
+point lies on the circle around this of radius $t$.
+\begin{equation}
+  g(t) \sim \frac{2 \pi}{A} t, 
+\end{equation}
+Likewise for a region of 3D Euclidean space, we look at the
+probability that the point lies on the surface of a sphere of radius
+$t$, i.e.,
+\begin{equation}
+  g(t) \sim \frac{4 \pi}{V} t^2, 
+\end{equation}
+We can naturally generalize to $n$-D Euclidean spaces, by noting that
+the generalized surface are of the $n$-D hyperball is
+\begin{equation}
+  \label{eq:surface_hyperball}
+  S_{n} = \frac{dV_n}{dR} = n C_n R^{n-1}.
+\end{equation}
+where $V_n$ is its volume, and $C_n$ is defined in \eqref{eqn:cn}, so
+the first order term of any expansion (for small $t$) of the density
+function will take the form
+\begin{equation}
+  g(t) \sim \frac{n C_n}{V} t^{n-1}, 
+\end{equation}
+where $V$ is the $n$-D volume of the region of interest.
+
+We can obtain a more accurate approximation by again assuming $t$ is
+small, so that we can approximate the boundary by a straight line. In
+this case, imagine the initial point was chosen (at random) to lie
+with distance $t/2$ of the boundary. We can see that we over-estimate
+the possible second points that lie at distance $t$. We can correct by
+subtracting the number of such points that would actuall lie outside
+the region.
+
+Formally, in 2D, consider the first point lies at distance $l<t$ from
+the boundary, then there will be an arc of the circle of radius $t$
+that lies outside the circle (see Figure~\ref{}). 
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+
+Intuitively, in high dimensions, the points are spread ``more
+thinly'' in the sense that their density on $n$-dimensional volumes
+will be lower, and hence, the distances between points will be
+larger. In particular the chance of very short lines decreases.
+
+
 
 This result is now obvious for the sphere, but for non-spherical (but
 convex) regions, we simply need to consider $s$ large enough that the
@@ -476,6 +628,8 @@ approximation. For instance, the {\em cube line picking} problem has
 probability distribution given by \cite{weisstein:_cube_line_picking},
 which has first non-zero term of $O(t)$, which is correct for a 2D
 space.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 We can extend some of this insight into other problems, for instance,
 the {\em circle line picking} problem, where pairs of points are
