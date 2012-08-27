@@ -43,12 +43,6 @@ double RectangleDistancePDF(double t, double* parameters)
     double t2 = t*t;
     double tmp;
     
-    if (t<=0) {
-        return(0);
-    } else if (t >= L) {
-        return(0);
-    }
-    
     /* make sure a < b */
     if (a > b) 
     {
@@ -96,14 +90,6 @@ double RectangleDistanceCDF(double w, double* parameters)
     double tmp;
     double w2 = w * w;
    
-    if (w<=0) 
-        return(0);
-    else
-    {    
-        if (w >= M) 
-            return(1);
-    }
-    
     /* make sure H < L */
     if (H > L) 
     {

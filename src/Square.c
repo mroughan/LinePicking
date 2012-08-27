@@ -33,11 +33,6 @@ double SquareDistancePDF(double t, double* parameters)
     t = t/parameters[0]; /* rescale points to unit square */
     t2 = t*t;
     
-    if (t <= 0) 
-        return 0;
-    else if (t >= L) 
-        return 0;
-    
     /* two cases */
     if (t <= 1)
         return 2 * t * (t2 - 4 * t + M_PI) / parameters[0];
@@ -56,11 +51,6 @@ double SquareDistanceCDF(double t, double* parameters)
     double t2, tmp;
     t = t/parameters[0]; /* rescale points to unit square */
     t2 = t*t;
-    
-    if (t <= 0) 
-        return 0;
-    else if (t >= L) 
-        return 1;
     
     /* two cases */
     if (t <= 1) 

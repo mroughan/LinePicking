@@ -30,11 +30,6 @@ double SphereDistancePDF(double s, double* parameters)
 {
     double R = parameters[0];
     
-    if (s <= 0) 
-        return 0;
-    else if (s > 2. * R) 
-        return 0;
-    
     return s / (2. * R * R);    
 }
 
@@ -46,11 +41,6 @@ double SphereDistancePDF(double s, double* parameters)
 double SphereDistanceCDF(double s, double* parameters)
 {
     double R = parameters[0];
-    
-    if (s <= 0) 
-        return 0;
-    else if (s > 2 * R) 
-        return 1;
 
     return (s * s) / (4. * R * R);
 }
