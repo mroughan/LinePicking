@@ -16,7 +16,7 @@ CreateLinePicking <- function(mode, para, n=1000){
   exit <- LinePickingCheckParameters(mode=mode, para=para)
   if(exit == 1){
     cat("Possible modes are :\n")
-    LinePickingAllmodes()
+    LinePickingAllModes()
     return(NULL)
   }
   if(exit > 1) return(NULL)

@@ -70,7 +70,7 @@ void LinePickingModeLookup(int *mode, char **name, char **description)
     return;
 }
 
-void LinePickingAllmodes(void)
+void LinePickingAllModes(void)
 /* write out the list of modes */
 {
     int i;

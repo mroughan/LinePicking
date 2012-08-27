@@ -16,7 +16,7 @@
 setMethod("show", "linepicking", function(object){
   cat("A LinePicking object with\n")
   cat("Mode:",space(object),"\n")
-  LinePickingAllmodes()
+  LinePickingAllModes()
   cat("Parameters:", para(object),"\n")
   cat("Support: ", support(object)[1],"-",
       support(object)[2],"\n",sep='')
