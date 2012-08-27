@@ -395,6 +395,44 @@ Cumulative distribution functions are also known ...
 Can be calculated by integration, but ...
 
 
+\subsubsection{Hyperball}
+
+As before
+\begin{equation}
+ g^{nD-{\rm ball}}_R(t) = n \frac{t^{n-1}}{R^n} I_x\left( 
+  \frac{1}{2} (n+1), \frac{1}{2}
+                      \right),
+\end{equation}
+where
+\begin{equation}
+ x = 1 - \frac{t^2}{4 R^2}, 
+\end{equation}
+and $I_x(p,q)$ is a {\em regularized beta function}
+\begin{equation}
+   I_x(p,q) = \frac{ B(x; p,q)}{B(p,q)},
+\end{equation}
+where $B(x; p,q)$ is an incomplete beta function, and $B(p,q)$ is a
+beta function, i.e., 
+\begin{eqnarray}
+  B(p,q)    & = & \int_0^1 t^{p-1} (1 - t)^{q-1} \, dt, \\
+  B(x; p,q) & = & \int_0^x t^{p-1} (1 - t)^{q-1} \, dt.
+\end{eqnarray}
+
+So we need to calculate terms like
+\begin{eqnarray}
+  \label{eq:int_incomp_beta}
+  \int_0^t \tau^{n-1}  B(\tau; p,q) \, d\tau
+       & = & \int_0^t \tau^{n-1}  \int_0^\tau s^{p-1} (1 - s)^{q-1} \, ds \, d\tau \nonumber \\
+       & = & \int_0^t \int_0^\tau \tau^{n-1}  s^{p-1} (1 - s)^{q-1} \, ds \, d\tau \nonumber \\
+       & = & \int_0^t \int_s^t \tau^{n-1}  s^{p-1} (1 - s)^{q-1} \, d\tau  \, ds \nonumber \\
+       & = & \int_0^t  s^{p-1} (1 - s)^{q-1} \int_s^t \tau^{n-1} \, d\tau  \, ds \nonumber \\
+       & = & \frac{1}{n} \int_0^t  s^{p-1} (1 - s)^{q-1} \left[ \tau^{n} \right]_s^t  \, ds \nonumber \\
+       & = & \frac{t^n}{n} \int_0^t  s^{p-1} (1 - s)^{q-1} \, ds -
+             \frac{1}{n} \int_0^t  s^{n+p-1} (1 - s)^{q-1} \, ds \nonumber \\
+       & = & \frac{t^n}{n} B(t; p,q) - \frac{1}{n} B(t; p+n,q).
+\end{eqnarray}
+Now we need adapt this to the above case, where we calculate
+$g^{nD-{\rm ball}}_R(t)$ ...
 
 \section{New Results}
 
