@@ -1,0 +1,154 @@
+\hypertarget{_line_picking_8h}{\section{Line\-Picking.\-h File Reference}
+\label{_line_picking_8h}\index{Line\-Picking.\-h@{Line\-Picking.\-h}}
+}
+
+
+Exposes to matlab and R a set of functions that implement P\-D\-F, C\-D\-F, mean and variance of the distance between two random points in various geometries.  
+
+
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$stdint.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}Square.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Disk.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Hyperball.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Rectangle.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Line.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Cube.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Sphere.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Sphere\-Geodesic.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Prism\-Geodesic.\-h\char`\"{}}\\*
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_line_picking_8h_a2f07c1ea1fa674c2803d2563b5527500}{\#define {\bfseries \-\_\-\-L\-I\-N\-E\-P\-I\-C\-K\-I\-N\-G\-\_\-\-H}}\label{_line_picking_8h_a2f07c1ea1fa674c2803d2563b5527500}
+
+\item 
+\#define {\bfseries Expand\-Fields}(\-\_\-x)
+\item 
+\hypertarget{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}{\#define {\bfseries elements}(x)~(sizeof(x) / sizeof(x\mbox{[}0\mbox{]}))}\label{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}
+
+\item 
+\hypertarget{_line_picking_8h_ae92d66c34581750be2b6f639d3de4c90}{\#define {\bfseries N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-M\-O\-D\-E\-S}~elements(Line\-Picking\-Fields)}\label{_line_picking_8h_ae92d66c34581750be2b6f639d3de4c90}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}{void {\bfseries Line\-Picking\-Mode\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}
+
+\item 
+\hypertarget{_line_picking_8h_af30d6aa4b8de60573d68a23bb703e47f}{void {\bfseries Line\-Picking\-Allmodes} ()}\label{_line_picking_8h_af30d6aa4b8de60573d68a23bb703e47f}
+
+\item 
+void \hyperlink{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}{Line\-Picking\-Check\-Parameters} (int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+\item 
+\hypertarget{_line_picking_8h_a0aec0b2f87903f4bf4ad3011a99b3446}{void {\bfseries Line\-Picking\-Support} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a0aec0b2f87903f4bf4ad3011a99b3446}
+
+\item 
+\hypertarget{_line_picking_8h_a8feba9835984bd74f3d919f51389e573}{void {\bfseries Line\-Picking\-P\-D\-F} (double $\ast$, double $\ast$, int $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a8feba9835984bd74f3d919f51389e573}
+
+\item 
+\hypertarget{_line_picking_8h_a445ba2c007d60d789747cecbd5f874b9}{void {\bfseries Line\-Picking\-C\-D\-F} (double $\ast$, double $\ast$, int $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a445ba2c007d60d789747cecbd5f874b9}
+
+\item 
+\hypertarget{_line_picking_8h_a39879835a11f7af8bf65699f9d83a5cb}{void {\bfseries Line\-Picking\-Mean} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a39879835a11f7af8bf65699f9d83a5cb}
+
+\item 
+\hypertarget{_line_picking_8h_a08fecba488534373e8d1710f273bc49c}{void {\bfseries Line\-Picking\-Var} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a08fecba488534373e8d1710f273bc49c}
+
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec} {\bfseries Line\-Picking\-Fields} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Exposes to matlab and R a set of functions that implement P\-D\-F, C\-D\-F, mean and variance of the distance between two random points in various geometries. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+
+Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roughan@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_line_picking_8h_a6d2b25c9cf223b79d7dd1dfd28d3f821}{\index{Line\-Picking.\-h@{Line\-Picking.\-h}!Expand\-Fields@{Expand\-Fields}}
+\index{Expand\-Fields@{Expand\-Fields}!LinePicking.h@{Line\-Picking.\-h}}
+\subsubsection[{Expand\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}\#define Expand\-Fields(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-x}
+\end{DoxyParamCaption}
+)}}\label{_line_picking_8h_a6d2b25c9cf223b79d7dd1dfd28d3f821}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+&\_x##DistancePDF,&\_x##DistanceCDF,\(\backslash\)
+&\_x##DistanceMean,&\_x##DistanceVar,\(\backslash\)
+&\_x##DistanceSupport,&\_x##DistanceCheckParameters,\(\backslash\)
+&\_x##DistanceNpar,&\_x##DistanceName,\(\backslash\)
+&\_x##DistanceDescription
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}{\index{Line\-Picking.\-h@{Line\-Picking.\-h}!Line\-Picking\-Check\-Parameters@{Line\-Picking\-Check\-Parameters}}
+\index{Line\-Picking\-Check\-Parameters@{Line\-Picking\-Check\-Parameters}!LinePicking.h@{Line\-Picking.\-h}}
+\subsubsection[{Line\-Picking\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{mode, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}
+Summary here; one sentence on one line (should not, but can exceed 80 chars).
+
+A more detailed description goes here.
+
+A blank line forms a paragraph. There should be no trailing white-\/space anywhere.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$first} & \char`\"{}@param\char`\"{} is a Doxygen directive to describe a function parameter. Like some other directives, it takes a term/summary on the same line and a description (this text) indented by 2 spaces on the next line. All descriptive text should wrap at 80 chars, without going over. Newlines are N\-O\-T supported within directives; if a newline would be before this text, it would be appended to the general description above. \\
+\hline
+{\em \$second} & There should be no newline between multiple directives (of the same type). \\
+\hline
+{\em \$third} & (optional) T\-R\-U\-E if Third should be done. Defaults to F\-A\-L\-S\-E. Only optional parameters are explicitly stated as such. The description should clarify the default value if omitted.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}@return\char`\"{} is a different Doxygen directive to describe the return value of a function, if there is any. 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\hypertarget{_line_picking_8h_a2215e439d645c546083e4ca5ededdb1e}{\index{Line\-Picking.\-h@{Line\-Picking.\-h}!Line\-Picking\-Fields@{Line\-Picking\-Fields}}
+\index{Line\-Picking\-Fields@{Line\-Picking\-Fields}!LinePicking.h@{Line\-Picking.\-h}}
+\subsubsection[{Line\-Picking\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Line\-Picking\-Rec} Line\-Picking\-Fields\mbox{[}$\,$\mbox{]}}}\label{_line_picking_8h_a2215e439d645c546083e4ca5ededdb1e}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= 
+\{ 
+    \{ExpandFields(Square)\},
+    \{ExpandFields(Disk)\},
+    \{ExpandFields(Hyperball)\},
+    \{ExpandFields(Rectangle)\},
+    \{ExpandFields(Line)\},
+    \{ExpandFields(Cube)\},
+    \{ExpandFields(Sphere)\}, 
+    \{ExpandFields(SphereGeodesic)\},
+    \{ExpandFields(PrismGeodesic)\}
+\}
+\end{DoxyCode}
