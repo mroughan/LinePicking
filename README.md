@@ -56,6 +56,11 @@ Details:
 
       A description of the formulas with references.
 
+ mathematica/ -- Mathematical worksheets for deriving some of the
+                 formula
+
+
+
 Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
 
     This program is free software: you can redistribute it and/or modify
