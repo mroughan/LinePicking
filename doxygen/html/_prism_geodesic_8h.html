@@ -109,8 +109,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistan
 <tr class="memitem:af2117caebb235b8823a466c181520309"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af2117caebb235b8823a466c181520309"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceSupport</b> (double *t, double *parameters)</td></tr>
 <tr class="separator:af2117caebb235b8823a466c181520309"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11a61ee69a6e43eaedc3e6ff5f686f42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a11a61ee69a6e43eaedc3e6ff5f686f42"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceCheckParameters</b> (double *parameters, int *result, char *error_str)</td></tr>
+<tr class="memitem:a11a61ee69a6e43eaedc3e6ff5f686f42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_prism_geodesic_8h.html#a11a61ee69a6e43eaedc3e6ff5f686f42">PrismGeodesicDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
 <tr class="separator:a11a61ee69a6e43eaedc3e6ff5f686f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -130,6 +129,48 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceN
 <dl class="section author"><dt>Author</dt><dd>Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/09/2012 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a11a61ee69a6e43eaedc3e6ff5f686f42"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PrismGeodesicDistanceCheckParameters </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determines if the parameters supplied are valid input to the other functions implemented in this file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$parameters[0]</td><td>Contains the length of the prism under consideration and $parameters[1] the perimeter of the prism under consideration. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer to storage for an integer indicating any errors in the supplied parameters. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>Pointer to storage for a message explaining any errors in the supplied parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Any error conditions are indicated by placing a value other than 0 in the location pointed to by $result and a message explaining the error is copied in to the location pointed to $error_str The only condition this function needs to check is that the length of the prism is at least as long as half the perimeter </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a674a98341a80a5b8589352280f89173c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -160,7 +201,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceN
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 28 2012 00:22:19 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 28 2012 00:58:32 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

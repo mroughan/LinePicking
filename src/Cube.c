@@ -203,7 +203,7 @@ void CubeDistanceSupport(double *t, double *parameters)
  * this is merely a place holder to allow for a complete implementation 
  * in geometries that have more complex relationships between parameters.
  *
- * @param $parameters[0] Contains the length of the side of the cube under
+ * @param $parameters parameters[0] is the length of the side of the cube under
  * consideration.
  * @param $result Pointer to storage for an integer indicating any errors  
  * in the supplied parameters.

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linepickingcheckparameters',['LinePickingCheckParameters',['../_line_picking_8h.html#ac55d1d166b33c8906ceccbb37010ddb0',1,'LinePicking.c']]]
+  ['linedistancecheckparameters',['LineDistanceCheckParameters',['../_line_8h.html#a01d9022f81145b6616123cd7649507b8',1,'Line.c']]]
 ];

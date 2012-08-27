@@ -807,6 +807,24 @@ void PrismGeodesicDistanceSupport(double *t, double *parameters)
     t[1] = sqrt(pow(parameters[0], 2) + pow(parameters[1]/2, 2));
 }
 
+
+
+/**
+ * Determines if the parameters supplied are valid input 
+ * to the other functions implemented in this file.
+ * @param $parameters parameters[0] is the length of the prism under 
+ * consideration and parameters[1] is the perimeter of the prism under
+ * consideration.
+ * @param $result Pointer to storage for an integer indicating any errors  
+ * in the supplied parameters.
+ * @param $error_str Pointer to storage for a message explaining any errors
+ * in the supplied parameters. 
+ * @return Any error conditions are indicated by placing a value other than 0 
+ * in the location pointed to by $result and a message explaining the error 
+ * is copied in to the location pointed to $error_str
+ * The only condition this function needs to check is that the length of the  
+ * prism is at least as long as half the perimeter
+ */
 void PrismGeodesicDistanceCheckParameters(double *parameters, int *result, 
                                  char *error_str)
 {

@@ -23,8 +23,7 @@ double \hyperlink{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}{Prism\-G
 \hypertarget{_prism_geodesic_8h_af2117caebb235b8823a466c181520309}{void {\bfseries Prism\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_prism_geodesic_8h_af2117caebb235b8823a466c181520309}
 
 \item 
-\hypertarget{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}{void {\bfseries Prism\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)}\label{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}
-
+void \hyperlink{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}{Prism\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -50,6 +49,27 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 
 
 \subsection{Function Documentation}
+\hypertarget{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Check\-Parameters@{Prism\-Geodesic\-Distance\-Check\-Parameters}}
+\index{Prism\-Geodesic\-Distance\-Check\-Parameters@{Prism\-Geodesic\-Distance\-Check\-Parameters}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
+\subsubsection[{Prism\-Geodesic\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Prism\-Geodesic\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}
+Determines if the parameters supplied are valid input to the other functions implemented in this file. 
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & Contains the length of the prism under consideration and \$parameters\mbox{[}1\mbox{]} the perimeter of the prism under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str The only condition this function needs to check is that the length of the prism is at least as long as half the perimeter 
+\end{DoxyReturn}
 \hypertarget{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-P\-D\-F@{Prism\-Geodesic\-Distance\-P\-D\-F}}
 \index{Prism\-Geodesic\-Distance\-P\-D\-F@{Prism\-Geodesic\-Distance\-P\-D\-F}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
 \subsubsection[{Prism\-Geodesic\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Prism\-Geodesic\-Distance\-P\-D\-F (

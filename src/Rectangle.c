@@ -190,6 +190,23 @@ void RectangleDistanceSupport(double *t, double *parameters)
 }
 
 
+/**
+* Intended to determine if the parameters supplied are valid input 
+* to the other functions implemented in this file. However as 
+* the calling function checks that the supplied parameters are positive 
+* this is merely a place holder to allow for a complete implementation 
+* in geometries that have more complex relationships between parameters.
+*
+* @param $parameters  parameters[0] and parameters[1] are the lengths 
+* of the sides of the rectangle under consideration.
+* @param $result Pointer to storage for an integer indicating any errors  
+* in the supplied parameters.
+* @param $error_str Pointer to storage for a message explaining any errors
+* in the supplied parameters. 
+* @return Any error conditions are indicated by placing a value other than 0 
+* in the location pointed to by $result and a message explaining the error 
+* is copied in to the location pointed to $error_str 
+*/
 void RectangleDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {

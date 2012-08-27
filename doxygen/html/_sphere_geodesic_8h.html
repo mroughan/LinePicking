@@ -110,8 +110,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>SphereGeodesicDista
 <tr class="memitem:aa5edd08b36e87835366a0789ca247785"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5edd08b36e87835366a0789ca247785"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>SphereGeodesicDistanceSupport</b> (double *t, double *parameters)</td></tr>
 <tr class="separator:aa5edd08b36e87835366a0789ca247785"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2753f6846132cd3d18ffbe5cf281059f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2753f6846132cd3d18ffbe5cf281059f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>SphereGeodesicDistanceCheckParameters</b> (double *parameters, int *result, char *error_str)</td></tr>
+<tr class="memitem:a2753f6846132cd3d18ffbe5cf281059f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sphere_geodesic_8h.html#a2753f6846132cd3d18ffbe5cf281059f">SphereGeodesicDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
 <tr class="separator:a2753f6846132cd3d18ffbe5cf281059f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -130,10 +129,53 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>SphereGeodesicDistance
 <div class="textblock"><p>Functions to provide PDF, CDF, mean and variance of the distance between two random points on the surface of a sphere. The distance is measured around the surface of the sphere i.e., it is a geodesic. </p>
 <dl class="section author"><dt>Author</dt><dd>Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/09/2012 </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a2753f6846132cd3d18ffbe5cf281059f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SphereGeodesicDistanceCheckParameters </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$parameters[0]</td><td>Contains the diameter of the sphere under consideration. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer to storage for an integer indicating any errors in the supplied parameters. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>Pointer to storage for a message explaining any errors in the supplied parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Any error conditions are indicated by placing a value other than 0 in the location pointed to by $result and a message explaining the error is copied in to the location pointed to $error_str </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 28 2012 00:22:19 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 28 2012 00:58:32 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
