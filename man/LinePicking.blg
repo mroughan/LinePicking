@@ -1,48 +1,66 @@
 This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: LinePicking.aux
 The style file: ieeetr.bst
-Database file #1: LinePicking.bib
-Warning--I didn't find a database entry for "mathai_geom"
-Warning--I didn't find a database entry for "Abramowitz_and_Stegun"
-You've used 15 entries,
+Database file #1: queueing_theory.bib
+Database file #2: books.bib
+Database file #3: ip_traffic.bib
+Database file #4: time_series.bib
+Database file #5: reliability.bib
+Database file #6: tcp.bib
+Database file #7: ospf.bib
+Database file #8: lrd.bib
+Database file #9: worms.bib
+Database file #10: internet.bib
+Database file #11: routing.bib
+Database file #12: bgp.bib
+Database file #13: topology.bib
+Database file #14: network.bib
+Database file #15: traffic_engineering.bib
+Database file #16: algorithms.bib
+Database file #17: optimization.bib
+Database file #18: history.bib
+Database file #19: graph.bib
+Warning--empty publisher in mathai_geom
+Warning--empty year in mathai_geom
+You've used 17 entries,
             1876 wiz_defined-function locations,
-            554 strings with 5660 characters,
-and the built_in function-call counts, 2748 in all, are:
-= -- 265
-> -- 71
+            691 strings with 8046 characters,
+and the built_in function-call counts, 3050 in all, are:
+= -- 290
+> -- 83
 < -- 0
-+ -- 33
-- -- 18
-* -- 148
-:= -- 388
-add.period$ -- 15
-call.type$ -- 15
++ -- 38
+- -- 21
+* -- 164
+:= -- 430
+add.period$ -- 18
+call.type$ -- 17
 change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 15
-duplicate$ -- 128
-empty$ -- 323
-format.name$ -- 18
-if$ -- 702
+cite$ -- 19
+duplicate$ -- 146
+empty$ -- 362
+format.name$ -- 21
+if$ -- 777
 int.to.chr$ -- 0
-int.to.str$ -- 15
-missing$ -- 6
-newline$ -- 48
-num.names$ -- 15
-pop$ -- 55
+int.to.str$ -- 17
+missing$ -- 10
+newline$ -- 55
+num.names$ -- 17
+pop$ -- 69
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 120
+skip$ -- 123
 stack$ -- 0
 substring$ -- 117
-swap$ -- 44
+swap$ -- 46
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 26
-width$ -- 17
-write$ -- 130
+warning$ -- 2
+while$ -- 28
+width$ -- 19
+write$ -- 145
 (There were 2 warnings)

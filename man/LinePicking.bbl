@@ -4,6 +4,9 @@
 E.~Rosenberg, ``The expected length of a random line segment in a rectangle,''
   {\em Operations Research Letters}, vol.~32, no.~2, pp.~99--102, 2004.
 
+\bibitem{mathai_geom}
+A.~Mathai, {\em An Introduction to Geometrical Probability}.
+
 \bibitem{b.ghosh51:_random_rect}
 B.Ghosh, ``Random distance within a rectangle and between two rectangles,''
   {\em Bulletin of the Calcutta Mathematical Society}, vol.~43, no.~1,
@@ -53,6 +56,11 @@ E.~W. Weisstein, ``Ball line picking.'' From MathWorld--A Wolfram Web Resource.
 \bibitem{weisstein:_circle_line_picking}
 E.~W. Weisstein, ``Circle line picking.'' From MathWorld--A Wolfram Web
   Resource. \url{http://mathworld.wolfram.com/CircleLinePicking.html}.
+
+\bibitem{Abramowitz_and_Stegun}
+M.~Abramowitz and I.~Stegun, {\em Handbook of Mathematical Functions with
+  Formulas, Graphs, and Mathematical Tables}.
+\newblock Dover Publications, Inc., New York, 1964.
 
 \bibitem{weisstein:_sphere_line_picking}
 E.~W. Weisstein, ``Sphere line picking.'' From MathWorld--A Wolfram Web
