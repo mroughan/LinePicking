@@ -34,14 +34,6 @@ double DiskDistancePDF(double t, double* parameters)
     double t2 = t*t;			     
     double part1, part2, c;
     
-    if (t <= 0) 
-    {
-        return(0);
-    } 
-    else if (t >= d) 
-    {
-        return(0);
-    }
     
     /* two cases */
     c = acos(t/(2*r));
@@ -62,15 +54,6 @@ double DiskDistanceCDF(double s, double* parameters)
     double s2 = s*s;			     
     double s3 = s2 * s;
     
-    if (s <= 0) 
-    {
-        return(0);
-    } 
-    else if (s >= R + R) 
-    {
-        return(1);
-    }
-     
     return  (
                 -(sqrt(4 - s2 / R2) * (2 * R2 * s + s3)) / 4. + 
                 2 * R * s2 * acos(s / (2. * R)) + 

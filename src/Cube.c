@@ -40,15 +40,6 @@ double CubeDistancePDF(double t, double* parameters)
     t = t/parameters[0]; /* rescale points to unit square */
     t2 = t*t;
     
-    if (t<=0) 
-    {
-        return(0);
-    } 
-    else if (t >= L3) 
-    {
-        return(0);
-    }
-    
     /* three cases */
     if (t <= 1)
     {
@@ -88,15 +79,6 @@ double CubeDistanceCDF(double t, double* parameters)
     double t6;
 
     t = t / parameters[0]; /* rescale points to unit cube */    
-    
-    if (t<=0)
-    {    
-        return(0);
-    } 
-    else if (t >= sqrt(3.0)) 
-    {
-        return(1);
-    }
     
     t2 = t*t;
     t3 = t2*t;

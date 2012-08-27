@@ -30,13 +30,8 @@ double LineDistancePDF(double t, double* parameters)
 {
     double L = parameters[0];
     
-    if (t<0) {
-        return(0);
-    } else if (t >= L) {
-        return(0);
-    } else {
-        return(2*(1-t/L)/L);
-    }
+
+    return(2*(1-t/L)/L);
 }
 
 double LineDistanceCDF(double t, double* parameters)
@@ -46,13 +41,8 @@ double LineDistanceCDF(double t, double* parameters)
     double L = parameters[0];
     t = t / L;
     
-    if (t<0) {
-        return(0);
-    } else if (t >= L) {
-        return(1);
-    } else {
-        return(t*(2.0-t));
-    }
+    return(t*(2.0-t));
+
 }
 
 double LineDistanceMean(double* parameters)

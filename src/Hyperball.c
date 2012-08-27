@@ -49,12 +49,6 @@ double HyperballDistancePDF(double t, double* parameters)
     /* mxArray *rhs[3], *lhs[1]; /\* arrays for passing parameters back to Matlab */
     /* 				 to compute incomplete beta function *\/ */
     
-    if (t<=0) {
-        return(0);
-    } else if (t >= d) {
-        return(0);
-    }
-    
     x = 1.0 - t2/(4.0*r2);
     p = (n+1.0)/2.0;
     q = 1.0/2.0;

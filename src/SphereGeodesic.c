@@ -33,12 +33,7 @@ int SphereGeodesicDistanceNpar = 1;
 double SphereGeodesicDistancePDF(double d, double* parameters)
 {
     double R = parameters[0];
-    
-    if (d <= 0) 
-        return 0;
-    else if (d > M_PI * R) 
-        return 0;
-    
+        
     return sin(d / R) / ( 2. * R);
 }
 
@@ -52,11 +47,6 @@ double SphereGeodesicDistancePDF(double d, double* parameters)
 double SphereGeodesicDistanceCDF(double d, double* parameters)
 {
     double R = parameters[0];
-    
-    if (d <= 0) 
-        return 0;
-    else if (d > M_PI * R) 
-        return 1;
     
     return pow(sin(d / (2. * R)), 2);
 }
