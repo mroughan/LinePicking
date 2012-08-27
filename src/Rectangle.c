@@ -1,7 +1,7 @@
 /* Rectangle.c	
  *
- * Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
- * Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -81,9 +81,74 @@ double RectangleDistancePDF(double t, double* parameters)
 }
 
 
-double RectangleDistanceCDF(double a, double* b)
+double RectangleDistanceCDF(double w, double* parameters)
+/* culmative density function */
+/* TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * soon to be written up somewhere
+ */
 {
-    return(-1);
+    
+    double L = parameters[0];
+    double H = parameters[1];
+    double L2 = L * L;
+    double H2 = H * H;
+    double M = sqrt(L2 + H2);
+    double tmp;
+    double w2 = w * w;
+   
+    if (w<=0) 
+        return(0);
+    else
+    {    
+        if (w >= M) 
+            return(1);
+    }
+    
+    /* make sure H < L */
+    if (H > L) 
+    {
+        tmp = L;
+        L = H;
+        H = tmp;
+        L2 = L * L;
+        H2 = H * H;
+    }
+    
+    /* three cases */
+    if (w <= H)
+    {
+        return (w2 * (6 * H * L * M_PI - 8*(H + L)* w + 3 * w2)) / 
+                (6.* H2 * L2);
+    } 
+    else if (w > H && w <= L) 
+    {
+        return  (
+                    (H2 * H2) + 
+                    8 * L * w2 * (sqrt(w2- H2) - w) + 
+                    H2 * (-6 * w2 + 4 * L * sqrt(w2 - H2)) + 
+                    /* 12 * H * L * w2 * atan( H / sqrt(w2 - H2)) */
+                    12 * H * L * w2 * asin(H / w)
+                ) / (6. * H2 * L2);        
+        
+    }
+    else 
+    {
+        return  (
+                    (H2 * H2) + (L2 * L2) + 
+                    4 * H * sqrt(w2 - L2) * (L2 + 2 * w2) + 
+                    H2 * (-6 * w2 + 4 * L * sqrt(w2 - H2)) + 
+                    w2 * (-6 * L2 - 3 * w2 + 8 * L * sqrt(w2 - H2)) + 
+                    12 * H * L * w2 * (
+                                            /* atan(L / sqrt(w2 - L2)) - */ 
+                                            asin(L / w) -
+                                            (M_PI / 2) +
+                                            /* atan(H / sqrt(w2 - H2)) */
+                                            asin(H / w)
+                                        )
+                 ) / (6.* H2 * L2);
+ 
+    }
+   
 }
 
 
@@ -142,8 +207,6 @@ void RectangleDistanceSupport(double *t, double *parameters)
 void RectangleDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {
-    /* rectangle, side lengths parameters[0], parameters[1] */
-    /* TODO pretty sure one side has to be shorter than the 
-     other in order for this to work properly we can force that here */
+    /* no further checks needed */
     *result=0;
 }

@@ -14,20 +14,20 @@ t_max = 4; % just use an upper bound guaranteed to be outside support in all cas
 tolerance = 1.0e-14;
 trace = 0;
 
-g_line = @(t) t .* LinePicking(t, 4, 1);
-g_square = @(t) t .* LinePicking(t, 0, 1);
-g_cube = @(t) t .* LinePicking(t, 5, 1);
-g_rect21 = @(t) t .* LinePicking(t, 3, [2,1]);
+g_line = @(t) t .* LinePickingPDF(t, 4, 1);
+g_square = @(t) t .* LinePickingPDF(t, 0, 1);
+g_cube = @(t) t .* LinePickingPDF(t, 5, 1);
+g_rect21 = @(t) t .* LinePickingPDF(t, 3, [2,1]);
 
 [mean_line, fn_count] = quad(g_line, t_min, t_max, tolerance, trace);
 [mean_square, fn_count] = quad(g_square, t_min, t_max, tolerance, trace);
 [mean_cube, fn_count] = quad(g_cube, t_min, t_max, tolerance, trace);
 [mean_rect21, fn_count] = quad(g_rect21, t_min, t_max, tolerance, trace);
 
-g_line = @(t) t.^2 .* LinePicking(t, 4, 1);
-g_square = @(t) t.^2 .* LinePicking(t, 0, 1);
-g_cube = @(t) t.^2 .* LinePicking(t, 5, 1);
-g_rect21 = @(t) t.^2 .* LinePicking(t, 3, [2,1]);
+g_line = @(t) t.^2 .* LinePickingPDF(t, 4, 1);
+g_square = @(t) t.^2 .* LinePickingPDF(t, 0, 1);
+g_cube = @(t) t.^2 .* LinePickingPDF(t, 5, 1);
+g_rect21 = @(t) t.^2 .* LinePickingPDF(t, 3, [2,1]);
 [mu2_line, fn_count] = quad(g_line, t_min, t_max, tolerance, trace);
 [mu2_square, fn_count] = quad(g_square, t_min, t_max, tolerance, trace);
 [mu2_cube, fn_count] = quad(g_cube, t_min, t_max, tolerance, trace);
@@ -45,10 +45,10 @@ fprintf('cube      has mean=%.12f and var=%.12f\n', mean_cube, var_cube);
 fprintf('rect(2,1) has mean=%.12f and var=%.12f\n', mean_rect21, var_rect21);
 
 for i=1:10
-  g_ball = @(t) t .* LinePicking(t, 2, [i,1]);
+  g_ball = @(t) t .* LinePickingPDF(t, 2, [i,1]);
   [meanb, fn_count] = quad(g_ball, t_min, t_max, tolerance, trace);
   mean_ball(i) = meanb;
-  g_ball = @(t) t.^2 .* LinePicking(t, 2, [i,1]);
+  g_ball = @(t) t.^2 .* LinePickingPDF(t, 2, [i,1]);
   [mu2, fn_count] = quad(g_ball, t_min, t_max, tolerance, trace);
   var_ball(i) = mu2 - meanb.^2;
   fprintf('%3dD ball has mean=%.12f and var=%.12f\n', i, mean_ball(i), var_ball(i));

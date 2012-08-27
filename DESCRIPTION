@@ -2,11 +2,23 @@ Package: LinePicking
 Type: Package
 Title: Probability density function for distance between points
 Version: 1.0
-Date: 2012-08-17
-Author: Matt Roughan, Jono Tuke
+Date: 2012-08-25
+Author: Eric Parsonage, Matt Roughan, Jono Tuke
 Maintainer: Jono Tuke <simon.tuke@adelaide.edu.au>
 Description: Given Poisson points in a space, gives
     the probability density function for the distance between these points.
 License: GPL 3.0
 Collate:
     'LinePickingPDF.R'
+    'LinePickingModeLookup.R'
+    'LinePickingAllmodes.R'
+    'LinePickingCheckParameters.R'
+    'LinePickingCDF.R'
+    'LinePickingMean.R'
+    'LinePickingSupport.R'
+    'LinePickingVar.R'
+    'LPclasses.R'
+    'initialize.R'
+    'LPaccessors.R'
+    'LPplot.R'
+    'LPshow.R'
