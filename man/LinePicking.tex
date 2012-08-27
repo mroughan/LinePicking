@@ -586,7 +586,10 @@ rememeber $x = 1 - t^2/4R^2$, $a=(n+1)/2$, and $b=1/2$, and from
                \sum_{i=0}^{\infty} \frac{B(b+1,i+1)}{B(a+b,i+1)} (t/2R)^{2(i+1)}
            \right\} 
                \nonumber \\
- & \simeq & 1 - \frac{t/R}{B(1/2,(n+1)/2)}.
+ & \simeq & 1 - \frac{t/R}{B(1/2,(n+1)/2)} 
+               + \frac{2}{B(1/2,(n+1)/2)} 
+                   \left[ \frac{n+1}{2}
+                          -\frac{B(3/2,1)}{B(n/2+1,1)} \right] (t/2R)^{3}.
 \end{eqnarray}
 The Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
 \begin{eqnarray}
