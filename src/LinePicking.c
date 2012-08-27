@@ -614,7 +614,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             g[0] = result;
             plhs[1] = mxCreateString(error_str);
             
-            // reset it so we can carry on
+            /* reset it so we can carry on */
             result = 0;
             break;
             
