@@ -1,0 +1,75 @@
+\hypertarget{_sphere_geodesic_8h}{\section{Sphere\-Geodesic.\-h File Reference}
+\label{_sphere_geodesic_8h}\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on the surface of a sphere. The distance is measured around the surface of the sphere i.\-e., it is a geodesic.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_sphere_geodesic_8h_a147644268f82fdbb8fd3f69a4aee1045}{double {\bfseries Sphere\-Geodesic\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_sphere_geodesic_8h_a147644268f82fdbb8fd3f69a4aee1045}
+
+\item 
+\hypertarget{_sphere_geodesic_8h_a26f0baf792ad7ec2ca5d0f834b62fdf2}{double {\bfseries Sphere\-Geodesic\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_sphere_geodesic_8h_a26f0baf792ad7ec2ca5d0f834b62fdf2}
+
+\item 
+\hypertarget{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}{double {\bfseries Sphere\-Geodesic\-Distance\-Mean} (double $\ast$parameters)}\label{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}
+
+\item 
+\hypertarget{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}{double {\bfseries Sphere\-Geodesic\-Distance\-Var} (double $\ast$parameters)}\label{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}
+
+\item 
+\hypertarget{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}{void {\bfseries Sphere\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}
+
+\item 
+void \hyperlink{_sphere_geodesic_8h_a2753f6846132cd3d18ffbe5cf281059f}{Sphere\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_sphere_geodesic_8h_ac37e33c5eae89b38909a4509f2a61329}{char $\ast$ {\bfseries Sphere\-Geodesic\-Distance\-Name}}\label{_sphere_geodesic_8h_ac37e33c5eae89b38909a4509f2a61329}
+
+\item 
+\hypertarget{_sphere_geodesic_8h_a8ddca02fc3c1f5733f1a9f0b0acce1ca}{char $\ast$ {\bfseries Sphere\-Geodesic\-Distance\-Description}}\label{_sphere_geodesic_8h_a8ddca02fc3c1f5733f1a9f0b0acce1ca}
+
+\item 
+\hypertarget{_sphere_geodesic_8h_af98b54935f435f9db977edb6a2b4117c}{int {\bfseries Sphere\-Geodesic\-Distance\-Npar}}\label{_sphere_geodesic_8h_af98b54935f435f9db977edb6a2b4117c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on the surface of a sphere. The distance is measured around the surface of the sphere i.\-e., it is a geodesic. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_sphere_geodesic_8h_a2753f6846132cd3d18ffbe5cf281059f}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Check\-Parameters@{Sphere\-Geodesic\-Distance\-Check\-Parameters}}
+\index{Sphere\-Geodesic\-Distance\-Check\-Parameters@{Sphere\-Geodesic\-Distance\-Check\-Parameters}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
+\subsubsection[{Sphere\-Geodesic\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Sphere\-Geodesic\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_sphere_geodesic_8h_a2753f6846132cd3d18ffbe5cf281059f}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & Contains the diameter of the sphere under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}

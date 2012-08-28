@@ -1,0 +1,75 @@
+\hypertarget{_rectangle_8h}{\section{Rectangle.\-h File Reference}
+\label{_rectangle_8h}\index{Rectangle.\-h@{Rectangle.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a rectangle.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rectangle_8h_afa023c61f4035f333b56ba078da13329}{double {\bfseries Rectangle\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_rectangle_8h_afa023c61f4035f333b56ba078da13329}
+
+\item 
+\hypertarget{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}{double {\bfseries Rectangle\-Distance\-C\-D\-F} (double t, double $\ast$parameters)}\label{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}
+
+\item 
+\hypertarget{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}{double {\bfseries Rectangle\-Distance\-Mean} (double $\ast$parameters)}\label{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}
+
+\item 
+\hypertarget{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}{double {\bfseries Rectangle\-Distance\-Var} (double $\ast$parameters)}\label{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}
+
+\item 
+\hypertarget{_rectangle_8h_a066999772cca84018acd363d1995f1ab}{void {\bfseries Rectangle\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_rectangle_8h_a066999772cca84018acd363d1995f1ab}
+
+\item 
+void \hyperlink{_rectangle_8h_aaa3db867bac79e5aea4a7c6df6fec726}{Rectangle\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rectangle_8h_a9c091f64563e8622414905509b62caf6}{char $\ast$ {\bfseries Rectangle\-Distance\-Name}}\label{_rectangle_8h_a9c091f64563e8622414905509b62caf6}
+
+\item 
+\hypertarget{_rectangle_8h_a11b07322249816f4bd1b7f62b241fba1}{char $\ast$ {\bfseries Rectangle\-Distance\-Description}}\label{_rectangle_8h_a11b07322249816f4bd1b7f62b241fba1}
+
+\item 
+\hypertarget{_rectangle_8h_aeda52128b8e1ca1e5d5032c9a5ab13c9}{int {\bfseries Rectangle\-Distance\-Npar}}\label{_rectangle_8h_aeda52128b8e1ca1e5d5032c9a5ab13c9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a rectangle. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_rectangle_8h_aaa3db867bac79e5aea4a7c6df6fec726}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Check\-Parameters@{Rectangle\-Distance\-Check\-Parameters}}
+\index{Rectangle\-Distance\-Check\-Parameters@{Rectangle\-Distance\-Check\-Parameters}!Rectangle.h@{Rectangle.\-h}}
+\subsubsection[{Rectangle\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_8h_aaa3db867bac79e5aea4a7c6df6fec726}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as the calling function checks that the supplied parameters are positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & and \$parameters\mbox{[}1\mbox{]} Contain the lengths of the sides of the rectangle under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}

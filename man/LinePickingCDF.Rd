@@ -26,7 +26,7 @@
 }
 \description{
   Give a shape (square, disk, ...) and parameters defining
-  the shape, this function will give a the probability
+  the shape, this function will give the probability
   density function for the distances between two Poisson
   distributed points in the space.
 }

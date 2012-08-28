@@ -1,0 +1,75 @@
+\hypertarget{_disk_8h}{\section{Disk.\-h File Reference}
+\label{_disk_8h}\index{Disk.\-h@{Disk.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a disk.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_disk_8h_af380a0fb907ad9d5b932cfeaaa812ce3}{double {\bfseries Disk\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_disk_8h_af380a0fb907ad9d5b932cfeaaa812ce3}
+
+\item 
+\hypertarget{_disk_8h_a8958adae00c0c55d68c1e81deb51c06b}{double {\bfseries Disk\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_disk_8h_a8958adae00c0c55d68c1e81deb51c06b}
+
+\item 
+\hypertarget{_disk_8h_afb64f95ed30e47f774035e444899ecaf}{double {\bfseries Disk\-Distance\-Mean} (double $\ast$parameters)}\label{_disk_8h_afb64f95ed30e47f774035e444899ecaf}
+
+\item 
+\hypertarget{_disk_8h_a156ab336770f189207572a9282158392}{double {\bfseries Disk\-Distance\-Var} (double $\ast$parameters)}\label{_disk_8h_a156ab336770f189207572a9282158392}
+
+\item 
+\hypertarget{_disk_8h_ac4bf32a1a301d1a73a6aba771b4b6924}{void {\bfseries Disk\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_disk_8h_ac4bf32a1a301d1a73a6aba771b4b6924}
+
+\item 
+void \hyperlink{_disk_8h_a00d7ffaa41fc12193012b4fa03606ac1}{Disk\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_disk_8h_a2d9662db6a2edc4f8aafa8947bc030b2}{char $\ast$ {\bfseries Disk\-Distance\-Name}}\label{_disk_8h_a2d9662db6a2edc4f8aafa8947bc030b2}
+
+\item 
+\hypertarget{_disk_8h_aca8cb88c327c3f5489f49475a4dcc5d0}{char $\ast$ {\bfseries Disk\-Distance\-Description}}\label{_disk_8h_aca8cb88c327c3f5489f49475a4dcc5d0}
+
+\item 
+\hypertarget{_disk_8h_aaf2096b18929ba46064b3f62e75b77a1}{int {\bfseries Disk\-Distance\-Npar}}\label{_disk_8h_aaf2096b18929ba46064b3f62e75b77a1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a disk. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_disk_8h_a00d7ffaa41fc12193012b4fa03606ac1}{\index{Disk.\-h@{Disk.\-h}!Disk\-Distance\-Check\-Parameters@{Disk\-Distance\-Check\-Parameters}}
+\index{Disk\-Distance\-Check\-Parameters@{Disk\-Distance\-Check\-Parameters}!Disk.h@{Disk.\-h}}
+\subsubsection[{Disk\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Disk\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_disk_8h_a00d7ffaa41fc12193012b4fa03606ac1}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & Contains the diameter of the disk under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}

@@ -1,7 +1,7 @@
 /* LinePicking.c	
  *
  *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
- *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -70,7 +70,7 @@ void LinePickingModeLookup(int *mode, char **name, char **description)
     return;
 }
 
-void LinePickingAllmodes(void)
+void LinePickingAllModes(void)
 /* write out the list of modes */
 {
     int i;
@@ -591,7 +591,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         case 6: /* LinePickingAllModes */
             CheckNumberInputArg(nrhs, 2, "LinePickingAllModes");
             CheckNumberOutputArg(nlhs, 0, "LinePickingAllModes");
-            LinePickingAllmodes();
+            LinePickingAllModes();
                        
             return;
             

@@ -9,8 +9,8 @@
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' LinePickingAllmodes()
-LinePickingAllmodes <- function(){
-  .C("LinePickingAllmodes")
+#' LinePickingAllModes()
+LinePickingAllModes <- function(){
+  .C("LinePickingAllModes")
   return()
 }

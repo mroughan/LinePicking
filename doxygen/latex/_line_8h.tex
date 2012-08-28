@@ -1,0 +1,75 @@
+\hypertarget{_line_8h}{\section{Line.\-h File Reference}
+\label{_line_8h}\index{Line.\-h@{Line.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a line.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_line_8h_a6bb12bb4fc56025afe7ad1e4c021dd89}{double {\bfseries Line\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_line_8h_a6bb12bb4fc56025afe7ad1e4c021dd89}
+
+\item 
+\hypertarget{_line_8h_a12f8b0167c0f458ea8afcfcb35a4c6e6}{double {\bfseries Line\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_line_8h_a12f8b0167c0f458ea8afcfcb35a4c6e6}
+
+\item 
+\hypertarget{_line_8h_aa1b7f15d9ffde98fc7ebc9bea927d429}{double {\bfseries Line\-Distance\-Mean} (double $\ast$parameters)}\label{_line_8h_aa1b7f15d9ffde98fc7ebc9bea927d429}
+
+\item 
+\hypertarget{_line_8h_a8229023d8ebfc3a8ab2f621bd63d520d}{double {\bfseries Line\-Distance\-Var} (double $\ast$parameters)}\label{_line_8h_a8229023d8ebfc3a8ab2f621bd63d520d}
+
+\item 
+\hypertarget{_line_8h_a114af70fcbf9b173fba90b7a3c1c25a5}{void {\bfseries Line\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_line_8h_a114af70fcbf9b173fba90b7a3c1c25a5}
+
+\item 
+void \hyperlink{_line_8h_a01d9022f81145b6616123cd7649507b8}{Line\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_line_8h_a064c0b2e36340931aba062e02350afed}{char $\ast$ {\bfseries Line\-Distance\-Name}}\label{_line_8h_a064c0b2e36340931aba062e02350afed}
+
+\item 
+\hypertarget{_line_8h_a028c7e4a53830cf5743d5f5ef2f408a8}{char $\ast$ {\bfseries Line\-Distance\-Description}}\label{_line_8h_a028c7e4a53830cf5743d5f5ef2f408a8}
+
+\item 
+\hypertarget{_line_8h_a575b8c9525b4177d1d3182ee0c08fcd9}{int {\bfseries Line\-Distance\-Npar}}\label{_line_8h_a575b8c9525b4177d1d3182ee0c08fcd9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a line. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_line_8h_a01d9022f81145b6616123cd7649507b8}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-Check\-Parameters@{Line\-Distance\-Check\-Parameters}}
+\index{Line\-Distance\-Check\-Parameters@{Line\-Distance\-Check\-Parameters}!Line.h@{Line.\-h}}
+\subsubsection[{Line\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_line_8h_a01d9022f81145b6616123cd7649507b8}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & Contains the length of the line under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}

@@ -1,5 +1,5 @@
 export(CreateLinePicking)
-export(LinePickingAllmodes)
+export(LinePickingAllModes)
 export(LinePickingCDF)
 export(LinePickingCheckParameters)
 export(LinePickingMean)

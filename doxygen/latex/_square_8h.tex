@@ -1,0 +1,75 @@
+\hypertarget{_square_8h}{\section{Square.\-h File Reference}
+\label{_square_8h}\index{Square.\-h@{Square.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a square.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_square_8h_a68e95e7440f8bf397433fe927269ec88}{double {\bfseries Square\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_square_8h_a68e95e7440f8bf397433fe927269ec88}
+
+\item 
+\hypertarget{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}{double {\bfseries Square\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}
+
+\item 
+\hypertarget{_square_8h_a6111729489478f1612c62c5f34f79695}{double {\bfseries Square\-Distance\-Mean} (double $\ast$parameters)}\label{_square_8h_a6111729489478f1612c62c5f34f79695}
+
+\item 
+\hypertarget{_square_8h_afbc676954944a54a8068a8c16afcc044}{double {\bfseries Square\-Distance\-Var} (double $\ast$parameters)}\label{_square_8h_afbc676954944a54a8068a8c16afcc044}
+
+\item 
+\hypertarget{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{void {\bfseries Square\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}
+
+\item 
+void \hyperlink{_square_8h_ad0b790be76a72cdb8223d04da0774084}{Square\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_square_8h_aec57e1fc0b73635a4cf4f9e5539556ca}{char $\ast$ {\bfseries Square\-Distance\-Name}}\label{_square_8h_aec57e1fc0b73635a4cf4f9e5539556ca}
+
+\item 
+\hypertarget{_square_8h_a268f70e787774698b60566fbe73b3e7f}{char $\ast$ {\bfseries Square\-Distance\-Description}}\label{_square_8h_a268f70e787774698b60566fbe73b3e7f}
+
+\item 
+\hypertarget{_square_8h_a83c99c64850f73f12aa71ab0b3efc456}{int {\bfseries Square\-Distance\-Npar}}\label{_square_8h_a83c99c64850f73f12aa71ab0b3efc456}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a square. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_square_8h_ad0b790be76a72cdb8223d04da0774084}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Check\-Parameters@{Square\-Distance\-Check\-Parameters}}
+\index{Square\-Distance\-Check\-Parameters@{Square\-Distance\-Check\-Parameters}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_ad0b790be76a72cdb8223d04da0774084}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & Contains the length of the sides of the square under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}

@@ -1,7 +1,7 @@
 /* Hyperball.c	
  *
  *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
- *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or
@@ -176,6 +176,7 @@ double HyperballDistanceVar(double* parameters)
     /* } */
 }
 
+
 void HyperballDistanceSupport(double *t, double *parameters)
 {
     /* hyper-ball, with dimension parameters[0], and radius parameters[1] */
@@ -183,6 +184,22 @@ void HyperballDistanceSupport(double *t, double *parameters)
     t[1] = 2*parameters[1];
 }
 
+/**
+ * Determines if the parameters supplied are valid input 
+ * to the other functions implemented in this file.
+ * @param $parameters parameters[0] is the dimension of the hyper-ball under 
+ * consideration and parameters[1] the diameter of the hyper-ball under
+ * consideration.
+ * @param $result Pointer to storage for an integer indicating any errors  
+ * in the supplied parameters.
+ * @param $error_str Pointer to storage for a message explaining any errors
+ * in the supplied parameters. 
+ * @return Any error conditions are indicated by placing a value other than 0 
+ * in the location pointed to by $result and a message explaining the error 
+ * is copied in to the location pointed to $error_str
+ * The only condition this function needs to check is that the dimesnion
+ * of the hyper-ball consider is at least 1.
+ */
 void HyperballDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {

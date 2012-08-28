@@ -1,0 +1,81 @@
+\hypertarget{_prism_geodesic_8h}{\section{Prism\-Geodesic.\-h File Reference}
+\label{_prism_geodesic_8h}\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on the surface (not including the ends) of an upright prism of any cross section. The distance is measured around the surface i.\-e., it is a geodesic.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}{Prism\-Geodesic\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
+\item 
+\hypertarget{_prism_geodesic_8h_a8fb219075b27e66757a3b5c234097c4d}{double {\bfseries Prism\-Geodesic\-Distance\-C\-D\-F} (double t, double $\ast$parameters)}\label{_prism_geodesic_8h_a8fb219075b27e66757a3b5c234097c4d}
+
+\item 
+\hypertarget{_prism_geodesic_8h_a8ac24433806e383dec481431b92b4606}{double {\bfseries Prism\-Geodesic\-Distance\-Mean} (double $\ast$parameters)}\label{_prism_geodesic_8h_a8ac24433806e383dec481431b92b4606}
+
+\item 
+\hypertarget{_prism_geodesic_8h_ac804282eeada51c4b8b2e2ae636d1bab}{double {\bfseries Prism\-Geodesic\-Distance\-Var} (double $\ast$parameters)}\label{_prism_geodesic_8h_ac804282eeada51c4b8b2e2ae636d1bab}
+
+\item 
+\hypertarget{_prism_geodesic_8h_af2117caebb235b8823a466c181520309}{void {\bfseries Prism\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_prism_geodesic_8h_af2117caebb235b8823a466c181520309}
+
+\item 
+void \hyperlink{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}{Prism\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_prism_geodesic_8h_a1c6e9d6c0367d037764f7714d9530273}{char $\ast$ {\bfseries Prism\-Geodesic\-Distance\-Name}}\label{_prism_geodesic_8h_a1c6e9d6c0367d037764f7714d9530273}
+
+\item 
+\hypertarget{_prism_geodesic_8h_a6388a45fbed82a228afc7c20deedd632}{char $\ast$ {\bfseries Prism\-Geodesic\-Distance\-Description}}\label{_prism_geodesic_8h_a6388a45fbed82a228afc7c20deedd632}
+
+\item 
+\hypertarget{_prism_geodesic_8h_ae7637fcc44f13aceeef62af8fa004066}{int {\bfseries Prism\-Geodesic\-Distance\-Npar}}\label{_prism_geodesic_8h_ae7637fcc44f13aceeef62af8fa004066}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on the surface (not including the ends) of an upright prism of any cross section. The distance is measured around the surface i.\-e., it is a geodesic. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Check\-Parameters@{Prism\-Geodesic\-Distance\-Check\-Parameters}}
+\index{Prism\-Geodesic\-Distance\-Check\-Parameters@{Prism\-Geodesic\-Distance\-Check\-Parameters}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
+\subsubsection[{Prism\-Geodesic\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Prism\-Geodesic\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}
+Determines if the parameters supplied are valid input to the other functions implemented in this file. 
+\begin{DoxyParams}{Parameters}
+{\em \$parameters\mbox{[}0\mbox{]}} & Contains the length of the prism under consideration and \$parameters\mbox{[}1\mbox{]} the perimeter of the prism under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str The only condition this function needs to check is that the length of the prism is at least as long as half the perimeter 
+\end{DoxyReturn}
+\hypertarget{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-P\-D\-F@{Prism\-Geodesic\-Distance\-P\-D\-F}}
+\index{Prism\-Geodesic\-Distance\-P\-D\-F@{Prism\-Geodesic\-Distance\-P\-D\-F}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
+\subsubsection[{Prism\-Geodesic\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Prism\-Geodesic\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{w, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}
+distance density (at w) between two points on the surface of an upright prism of length and perimeter given in parameters\mbox{[}0\mbox{]} and parameters\mbox{[}1\mbox{]} respectively. The distance is measured around the the surface of the prism (i.\-e., a geodesic) T\-O\-D\-O Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} soon to be written up somewhere 

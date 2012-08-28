@@ -1,6 +1,17 @@
-/* PrismGeodesic.h	
+/**
+ * @file PrismGeodesic.h
+ * @brief Functions to provide PDF, CDF, mean and variance of the  
+ * distance between two random points on the surface (not including the ends)
+ * of an upright prism of any cross section. The distance is measured around 
+ * the surface i.e., it is a geodesic.
  *
- *     Copyright 2012 Eric Parsonage <eric.parsonagen@adelaide.edu.au>
+ * @author Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @date 22/09/2012
+ */
+
+/*
+ *
+ *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
  *     the Free Software Foundation, either version 3 of the License, or

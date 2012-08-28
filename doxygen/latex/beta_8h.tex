@@ -1,0 +1,79 @@
+\hypertarget{beta_8h}{\section{beta.\-h File Reference}
+\label{beta_8h}\index{beta.\-h@{beta.\-h}}
+}
+
+
+Implements the beta function and the regularized incomplete beta function.  
+
+
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{beta_8h_a8acd908df0c9f383f67d0cc269ffe160}{beta} (double, double)
+\item 
+double \hyperlink{beta_8h_adf8f53297621a938306cf528fac3f9d3}{beta\-\_\-inc} (double, double, double)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements the beta function and the regularized incomplete beta function. \begin{DoxyAuthor}{Author}
+Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roughan@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{beta_8h_a8acd908df0c9f383f67d0cc269ffe160}{\index{beta.\-h@{beta.\-h}!beta@{beta}}
+\index{beta@{beta}!beta.h@{beta.\-h}}
+\subsubsection[{beta}]{\setlength{\rightskip}{0pt plus 5cm}double beta (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}}\label{beta_8h_a8acd908df0c9f383f67d0cc269ffe160}
+Implements the beta function. i.\-e., the Euler integral of the first kind, defined by $ \mathrm{B}(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}\,dt $.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$x} & in $ \mathrm{B}(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}\,dt $. \\
+\hline
+{\em \$y} & in $ \mathrm{B}(x,y) = \int_0^1t^{x-1}(1-t)^{y-1}\,dt $.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of evaluating Eulers integral of the first kind with the given parameters. 
+\end{DoxyReturn}
+\hypertarget{beta_8h_adf8f53297621a938306cf528fac3f9d3}{\index{beta.\-h@{beta.\-h}!beta\-\_\-inc@{beta\-\_\-inc}}
+\index{beta\-\_\-inc@{beta\-\_\-inc}!beta.h@{beta.\-h}}
+\subsubsection[{beta\-\_\-inc}]{\setlength{\rightskip}{0pt plus 5cm}double beta\-\_\-inc (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{double}]{x}
+\end{DoxyParamCaption}
+)}}\label{beta_8h_adf8f53297621a938306cf528fac3f9d3}
+Implements the regularized incomplete beta function. Defined as $ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $ Where $ \mathrm{B}(a,b) = \int_0^1t^{a-1}(1-t)^{b-1}\,dt $ and $ B(x;\,a,b) = \int_0^x t^{a-1}\,(1-t)^{b-1}\,dt. $ \par
+ \begin{DoxySeeAlso}{See Also}
+\href{http://doi.acm.org/10.1145/131766.131776}{\tt http\-://doi.\-acm.\-org/10.\-1145/131766.\-131776} 
+
+\href{http://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html}{\tt http\-://www.\-boost.\-org/doc/libs/1\-\_\-38\-\_\-0/libs/math/doc/sf\-\_\-and\-\_\-dist/html/math\-\_\-toolkit/special/sf\-\_\-beta/ibeta\-\_\-function.\-html} 
+
+\href{http://dlmf.nist.gov/8.17}{\tt http\-://dlmf.\-nist.\-gov/8.\-17} 
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}{Parameters}
+{\em \$a} & in $ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $ \\
+\hline
+{\em \$b} & in $ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $ \\
+\hline
+{\em \$x} & in $ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $ \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of evaluating the incomplete beta function with the given parameters. 
+\end{DoxyReturn}
