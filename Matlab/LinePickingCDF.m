@@ -37,5 +37,5 @@ function g =  LinePickingCDF(t, mode, parameters)
 % OUTPUTS:        
 %    g(t) = vector of calculated cumulative densities      
 %         
-% See Also LinePickingPDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes  
+% See Also LinePickingPDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes  
 g = LinePicking(1, t, mode, parameters);

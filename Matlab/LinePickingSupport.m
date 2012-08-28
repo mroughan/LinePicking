@@ -38,7 +38,7 @@ function g = LinePickingSupport(mode, parameters)
 %    g = range of t for which the pdf is non-zero
 %
 %
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
 
 g = LinePicking(4, mode, parameters);
 

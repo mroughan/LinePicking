@@ -1,4 +1,4 @@
-function [name description] =  LinePickingModeLookup(mode) 
+function LinePickingPrintAllModes 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,19 +14,13 @@ function [name description] =  LinePickingModeLookup(mode)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingModeLookup(mode) gets information for a given mode
+% LinePickingPrintAllModes Prints list of all modes
+%    Modes are integers describing possible geometries for the line picking
+%    problem. This function prints all possible modes.
 %
-% INPUTS:       
-%    mode = region type to get information about
-%         
-% OUTPUTS:
-%    [name description] strings with name and description of region refered to by mode
 %
 %     
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllModes, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllmodes
 %         
 %
-
-[names descriptions] = LinePicking(8);
-
-
+LinePicking(6);

@@ -38,6 +38,6 @@ function g =  LinePickingVar(mode, parameters)
 %    g = variance for given mode and parameters 
 %         
 %
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
 g = LinePicking(3, mode, parameters);
 
