@@ -2,13 +2,6 @@
 \alias{LinePickingPDF}
 \title{Get pdf for distance between two random points}
 \usage{
-
-cumulative 
-culmultive
-
-cumulative
-
-
   LinePickingPDF(t, mode = 0, para)
 }
 \arguments{
