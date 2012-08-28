@@ -25,11 +25,19 @@ Details:
 
 
  Matlab/ - Matlab wrapper functions and compilation rules
+ 
+    LinePickingXXX.m
+
+       Callbacks to the MEX routine for various functions.
 
     LinePicking_test.m
 
        Matlab code to show how to call the MEX routines, and to test
        out various cases, compute Laplace transforms, and draw plots.
+
+    LinePicking_test_sim.m
+
+       Matlab code to compare calculated distributions with simulations.
 
     LinePicking_numerical.m
 
