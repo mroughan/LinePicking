@@ -7,7 +7,9 @@ Author: Eric Parsonage, Matt Roughan, Jono Tuke
 Maintainer: Jono Tuke <simon.tuke@adelaide.edu.au>
 Description: Given Poisson points in a space, gives
     the probability density function for the distance between these points.
-License: GPL 3.0
+License: GPL-3
+Imports:
+    methods
 Collate:
     'LinePickingPDF.R'
     'LinePickingModeLookup.R'

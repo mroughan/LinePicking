@@ -4,6 +4,13 @@
 \usage{
   CreateLinePicking(mode, para, n = 1000)
 }
+\arguments{
+  \item{mode}{see \code{\link{LinePickingPDF}}}
+
+  \item{para}{parameters for mode.}
+
+  \item{n}{number of points for plots.}
+}
 \value{
   an instance of \code{linepicking} class
 }

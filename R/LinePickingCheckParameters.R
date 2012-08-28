@@ -19,7 +19,7 @@
 #' @note August 25 2012
 #' @examples
 #' LinePickingCheckParameters(mode=0, parameters=c(10))
-#' LinePickingCheckParameters(mode=99)
+#' LinePickingCheckParameters(mode=99,parameters=c(10))
 #' LinePickingCheckParameters(mode=0, parameters=c(1,2))
 #' LinePickingCheckParameters(mode=3, parameters=c(1))
 LinePickingCheckParameters <- function(mode=0,parameters){

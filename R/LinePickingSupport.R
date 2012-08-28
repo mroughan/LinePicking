@@ -2,8 +2,8 @@
 #'
 #' Given a mode see \link{LinePickingPDF} and parameters gives the range
 #' distance t such that the pdf is non-zero
-#' @param mode
-#' @param para the parameter necessary to describe 
+#' @param mode see \code{\link{LinePickingPDF}}
+#' @param parameters the parameter necessary to describe 
 #' the space given by mode.
 #' @return min and max values of support
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
