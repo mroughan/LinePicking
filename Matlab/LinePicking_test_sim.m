@@ -494,5 +494,46 @@ ylabel('g(t)');
 title('sphere-geodesic-line picking density');
 print('-deps','Plots/LinePicking_test_sim_sphere_geodesic.eps');
 
-% figure(geometry+101)
-% haven't implemented drawing this one yet
+figure(geometry+101)
+hold on
+theta = 0:pi/40:2*pi;
+x_theta = R*cos(theta);
+y_theta = R*sin(theta);
+plot3(0,0,0);
+hold on
+plot3(x_theta, y_theta, zeros(size(theta)), 'k-', 'linewidth', 2);
+plot3(x_theta, zeros(size(theta)), y_theta, 'k-', 'linewidth', 2);
+plot3(zeros(size(theta)), x_theta, y_theta, 'k-', 'linewidth', 2);
+
+n=10;
+points = randn(3,n);
+normals = 1./sum(points.^2).^(1/2);
+v1 = [normals.*points(1,:); normals.*points(2,:); normals.*points(3,:)];
+
+points = randn(3,n);
+normals = 1./sum(points.^2).^(1/2);
+v2 = [normals.*points(1,:); normals.*points(2,:); normals.*points(3,:)];
+
+
+% plot dots at the ends of the lines
+plot3(v1(1,:),v1(2,:),v1(3,:),'.b');
+plot3(v2(1,:),v2(2,:),v2(3,:),'.b');
+
+% draw the great circle lines 
+[rows cols] = size(v1);
+for i = 1:cols    
+  v3 = cross(cross(v1(:,i),v2(:,i)),v1(:,i)); % v3 lies in plane of v1 & v2 and is orthog. to v1
+  v3 = v3/norm(v3); % Make v3 of length r
+  % Let t range through the inner angle between v1 and v2
+  t = linspace(0,atan2(norm(cross(v1(:,i),v2(:,i))),dot(v1(:,i),v2(:,i))));
+  v = v1(:,i)*cos(t)+v3*sin(t); % v traces great circle path, relative to center
+  plot3(v(1,:),v(2,:),v(3,:),'b-', 'linewidth', 2); % Plot it in 3D
+end
+
+set(gca, 'xlim', [-R-0.1, R+0.1]);
+set(gca, 'ylim', [-R-0.1, R+0.1]);
+set(gca, 'zlim', [-R-0.1, R+0.1]);
+axis equal
+az = -120; el = 20;
+view([az, el]);
+hold off
