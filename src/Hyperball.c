@@ -67,10 +67,10 @@ double HyperballDistancePDF(double t, double* parameters)
  * Not yet implemented.
  *
  * @todo Implement!
- * @param $t The distance to calculate the density for.
+ * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
  * $parameters[1] is the radius of the hyper-ball. 
- * @return The culmative density at $t, currently -1 for all $t.
+ * @return The cumulative density at $t, currently -1 for all $t.
  */
 double HyperballDistanceCDF(double a, double* b)
 {    
@@ -87,7 +87,7 @@ double HyperballDistanceCDF(double a, double* b)
  *
  * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
  * $parameters[1] is the radius of the hyper-ball. 
- * @return The mean distance between wo random points in a hyper-ball.
+ * @return The mean distance between two random points in a hyper-ball.
  * @see  http://arxiv.org/abs/math-ph/0004021
  * @see  http://mathworld.wolfram.com/BallLinePicking.html
  */

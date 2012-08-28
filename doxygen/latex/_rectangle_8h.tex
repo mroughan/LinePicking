@@ -9,20 +9,15 @@ Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_rectangle_8h_afa023c61f4035f333b56ba078da13329}{double {\bfseries Rectangle\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_rectangle_8h_afa023c61f4035f333b56ba078da13329}
-
+double \hyperlink{_rectangle_8h_afa023c61f4035f333b56ba078da13329}{Rectangle\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
 \item 
-\hypertarget{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}{double {\bfseries Rectangle\-Distance\-C\-D\-F} (double t, double $\ast$parameters)}\label{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}
-
+double \hyperlink{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}{Rectangle\-Distance\-C\-D\-F} (double t, double $\ast$parameters)
 \item 
-\hypertarget{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}{double {\bfseries Rectangle\-Distance\-Mean} (double $\ast$parameters)}\label{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}
-
+double \hyperlink{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}{Rectangle\-Distance\-Mean} (double $\ast$parameters)
 \item 
-\hypertarget{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}{double {\bfseries Rectangle\-Distance\-Var} (double $\ast$parameters)}\label{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}
-
+double \hyperlink{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}{Rectangle\-Distance\-Var} (double $\ast$parameters)
 \item 
-\hypertarget{_rectangle_8h_a066999772cca84018acd363d1995f1ab}{void {\bfseries Rectangle\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_rectangle_8h_a066999772cca84018acd363d1995f1ab}
-
+void \hyperlink{_rectangle_8h_a066999772cca84018acd363d1995f1ab}{Rectangle\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_rectangle_8h_aaa3db867bac79e5aea4a7c6df6fec726}{Rectangle\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
 \end{DoxyCompactItemize}
@@ -50,6 +45,28 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 
 
 \subsection{Function Documentation}
+\hypertarget{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-C\-D\-F@{Rectangle\-Distance\-C\-D\-F}}
+\index{Rectangle\-Distance\-C\-D\-F@{Rectangle\-Distance\-C\-D\-F}!Rectangle.h@{Rectangle.\-h}}
+\subsubsection[{Rectangle\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{w, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_8h_a1efe7711b068562816ebbe0af282f20b}
+Implements the C\-D\-F of the distance between two random points on a rectangle.
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000010}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$w} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative density at \$w. 
+\end{DoxyReturn}
 \hypertarget{_rectangle_8h_aaa3db867bac79e5aea4a7c6df6fec726}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Check\-Parameters@{Rectangle\-Distance\-Check\-Parameters}}
 \index{Rectangle\-Distance\-Check\-Parameters@{Rectangle\-Distance\-Check\-Parameters}!Rectangle.h@{Rectangle.\-h}}
 \subsubsection[{Rectangle\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Distance\-Check\-Parameters (
@@ -73,3 +90,87 @@ Intended to determine if the parameters supplied are valid input to the other fu
 \begin{DoxyReturn}{Returns}
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
 \end{DoxyReturn}
+\hypertarget{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Mean@{Rectangle\-Distance\-Mean}}
+\index{Rectangle\-Distance\-Mean@{Rectangle\-Distance\-Mean}!Rectangle.h@{Rectangle.\-h}}
+\subsubsection[{Rectangle\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_8h_ab705580ca1206e533ac91b91914edf9d}
+Calculates the mean distance between two random points on a rectangle.
+
+From \char`\"{}\-Random Distances Within a Rectangle and Between Two Rectangles\char`\"{}, B. Ghosh, Bulletin of the Calcutta Mathematical Society, Col.\-43 (1), p.\-17-\/24, 1951. \char`\"{}\-R\-A\-N\-D\-O\-M P\-O\-I\-N\-T\-S A\-S\-S\-O\-C\-I\-A\-T\-E\-D W\-I\-T\-H R\-E\-C\-T\-A\-N\-G\-L\-E\-S\char`\"{}, A.\-M. M\-A\-T\-H\-A\-I
+\begin{DoxyItemize}
+\item R M\-O\-S\-C\-H\-O\-P\-O\-U\-L\-O\-S -\/\-G. P\-E\-D\-E\-R\-Z\-O\-L\-I R\-E\-N\-D\-I\-C\-O\-N\-T1 D\-E\-L C\-I\-R\-C\-O\-L\-O M\-A\-T\-E\-M\-A\-T\-I\-C\-O D\-I P\-A\-L\-E\-R\-M\-O, Serie 11, Tomo X\-L\-V\-I\-I\-I (1999), pp. 163-\/190 
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean distance between two random points on a rectangle. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\hypertarget{_rectangle_8h_afa023c61f4035f333b56ba078da13329}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-P\-D\-F@{Rectangle\-Distance\-P\-D\-F}}
+\index{Rectangle\-Distance\-P\-D\-F@{Rectangle\-Distance\-P\-D\-F}!Rectangle.h@{Rectangle.\-h}}
+\subsubsection[{Rectangle\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_8h_afa023c61f4035f333b56ba078da13329}
+Implements the P\-D\-F of the distance between two random points on a rectangle.
+
+From \char`\"{}\-Random Distances Within a Rectangle and Between Two Rectangles\char`\"{}, B. Ghosh, Bulletin of the Calcutta Mathematical Society, Col.\-43 (1), p.\-17-\/24, 1951. \char`\"{}\-R\-A\-N\-D\-O\-M P\-O\-I\-N\-T\-S A\-S\-S\-O\-C\-I\-A\-T\-E\-D W\-I\-T\-H R\-E\-C\-T\-A\-N\-G\-L\-E\-S\char`\"{}, A.\-M. M\-A\-T\-H\-A\-I
+\begin{DoxyItemize}
+\item R M\-O\-S\-C\-H\-O\-P\-O\-U\-L\-O\-S -\/\-G. P\-E\-D\-E\-R\-Z\-O\-L\-I R\-E\-N\-D\-I\-C\-O\-N\-T1 D\-E\-L C\-I\-R\-C\-O\-L\-O M\-A\-T\-E\-M\-A\-T\-I\-C\-O D\-I P\-A\-L\-E\-R\-M\-O, Serie 11, Tomo X\-L\-V\-I\-I\-I (1999), pp. 163-\/190 
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$t. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\hypertarget{_rectangle_8h_a066999772cca84018acd363d1995f1ab}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Support@{Rectangle\-Distance\-Support}}
+\index{Rectangle\-Distance\-Support@{Rectangle\-Distance\-Support}!Rectangle.h@{Rectangle.\-h}}
+\subsubsection[{Rectangle\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_8h_a066999772cca84018acd363d1995f1ab}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random points on a rectangle.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points on a rectangle. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Var@{Rectangle\-Distance\-Var}}
+\index{Rectangle\-Distance\-Var@{Rectangle\-Distance\-Var}!Rectangle.h@{Rectangle.\-h}}
+\subsubsection[{Rectangle\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_8h_aa95275ca8bf305ca44cc26abb62e38a7}
+Calculates the variance of distances between two random points on a rectangle.
+
+From \char`\"{}\-Random Distances Within a Rectangle and Between Two Rectangles\char`\"{}, B. Ghosh, Bulletin of the Calcutta Mathematical Society, Col.\-43 (1), p.\-17-\/24, 1951. \char`\"{}\-R\-A\-N\-D\-O\-M P\-O\-I\-N\-T\-S A\-S\-S\-O\-C\-I\-A\-T\-E\-D W\-I\-T\-H R\-E\-C\-T\-A\-N\-G\-L\-E\-S\char`\"{}, A.\-M. M\-A\-T\-H\-A\-I
+\begin{DoxyItemize}
+\item R M\-O\-S\-C\-H\-O\-P\-O\-U\-L\-O\-S -\/\-G. P\-E\-D\-E\-R\-Z\-O\-L\-I R\-E\-N\-D\-I\-C\-O\-N\-T1 D\-E\-L C\-I\-R\-C\-O\-L\-O M\-A\-T\-E\-M\-A\-T\-I\-C\-O D\-I P\-A\-L\-E\-R\-M\-O, Serie 11, Tomo X\-L\-V\-I\-I\-I (1999), pp. 163-\/190 
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variance of distances between two random points on a rectangle. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
