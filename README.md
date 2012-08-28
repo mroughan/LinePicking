@@ -67,6 +67,7 @@ Details:
  mathematica/ -- Mathematical worksheets for deriving some of the
                  formula
 
+ inst/ - files that R package manager will ignore.
 
 
 Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
