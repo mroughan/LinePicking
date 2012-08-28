@@ -28,6 +28,10 @@ int DiskDistanceNpar = 1;
 /**
  * Implements the PDF of the distance between two random points on a disk.
  *
+ * From Tu, S.-J. and Fischbach, E.
+ * "A New Geometric Probability Technique for an {N}-Dimensional 
+ * Sphere and Its Applications"
+ *
  * @param $t The distance to calculate the density for.
  * @param $parameters[0] The radius of the disk. 
  *
@@ -80,6 +84,11 @@ double DiskDistanceCDF(double t, double* parameters)
 /**
  * Calculates the mean of the distance between two random points on a disk.
  * 
+ *
+ * From Tu, S.-J. and Fischbach, E.
+ * "A New Geometric Probability Technique for an {N}-Dimensional 
+ * Sphere and Its Applications"
+ *
  * @param $parameters $parameters[0] is the radius of the disk.  
  * 
  * @return The mean distance between two points on a disk 

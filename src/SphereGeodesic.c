@@ -24,38 +24,53 @@ char *SphereGeodesicDistanceDescription =
 int SphereGeodesicDistanceNpar = 1;
 
 
-/* distance density (at d) between two points on the surface 
- * of a sphere of radius given in parameters[0] with the distance 
- * measured around the surface of the sphere (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+/**
+ * Implements the PDF of the distance between two random points on the 
+ * surface of a sphere measured around the surface of the sphere
+ * (i.e., a geodesic).
+ *
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>.
+ * @todo Write up the derivation.
+ * @param $s The distance to calculate the density for.
+ * @param $parameters $parameters[0] is the radius of the sphere. 
+ * @return The density at $s.
  */
-double SphereGeodesicDistancePDF(double d, double* parameters)
+double SphereGeodesicDistancePDF(double s, double* parameters)
 {
     double R = parameters[0];
         
-    return sin(d / R) / ( 2. * R);
+    return sin(s / R) / ( 2. * R);
 }
 
 
-/* distance cumulative distribution (at d) between two points on the  
- * surface of a sphere of radius given in parameters[0] with the distance 
- * measured around the surface of the sphere (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+/**
+ * Implements the CDF of the distance between two random points on the 
+ * surface of a sphere measured around the surface of the sphere
+ * (i.e., a geodesic).
+ *
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>.
+ * @todo Write up the derivation.
+ * @param $s The distance to calculate the cumulative density for.
+ * @param $parameters $parameters[0] is the radius of the sphere. 
+ * @return The cumulative density at $s.
  */
-double SphereGeodesicDistanceCDF(double d, double* parameters)
+double SphereGeodesicDistanceCDF(double s, double* parameters)
 {
     double R = parameters[0];
     
-    return pow(sin(d / (2. * R)), 2);
+    return pow(sin(s / (2. * R)), 2);
 }
 
-/* mean distance between two points on the surface of a sphere 
- * of radius given in parameters[0] with the distance 
- * measured around the surface of the sphere (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+
+/**
+ * Calculates the mean of the distance between two random points on the surface 
+ * of a sphere measured around the surface of the sphere (i.e., a geodesic).
+ *
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>.
+ * @todo Write up the derivation.
+ * @param $parameters $parameters[0] is the radius of the sphere. 
+ * @return The mean of the distance between two random points on the surface 
+ * of a sphere measured around the surface of the sphere (i.e., a geodesic).
  */
 double SphereGeodesicDistanceMean(double* parameters)
 {
@@ -65,11 +80,16 @@ double SphereGeodesicDistanceMean(double* parameters)
 }
 
 
-/* variance of distance between two points on the surface of a sphere 
- * of radius given in parameters[0] with the distance 
- * measured around the surface of the sphere (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+/**
+ * Calculates the variance of the distances between two random points on 
+ * the surface of a sphere measured around the surface of the sphere
+ * (i.e., a geodesic).
+ *
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>.
+ * @todo Write up the derivation.
+ * @param $parameters $parameters[0] is the radius of the sphere. 
+ * @return The mean of the distance between two random points on the surface 
+ * of a sphere measured around the surface of the sphere (i.e., a geodesic).
  */
 double SphereGeodesicDistanceVar(double* parameters)
 {
@@ -78,9 +98,18 @@ double SphereGeodesicDistanceVar(double* parameters)
     return ((-8 + M_PI * M_PI) * R * R) / 4.;
 }
 
-/* suppport for PDF and CDF of distance between two points on the  
- * surface of a sphere of radius given in parameters[0] with the distance 
- * measured around the surface of the sphere (i.e., a geodesic) 
+
+
+/**
+ * Calculates the support for the PDF and CDF of the distance between 
+ * two random points on the surface of a sphere measured around the surface of 
+ * the sphere (i.e., a geodesic).
+ *
+ * @param $t Pointer to storage for lower and upper ends of the support for
+ * the PDF and CDF of the distance between two random points on the surface 
+ * of a sphere measured around the surface of the sphere (i.e., a geodesic).
+ * @return The lower end of the interval is returned in $t[0] and the 
+ * upper end of the interval is returned in $t[1].
  */
 void SphereGeodesicDistanceSupport(double *t, double *parameters)
 {

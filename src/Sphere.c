@@ -27,6 +27,7 @@ int SphereDistanceNpar = 1;
  * Implements the PDF of the distance between two random points on the 
  * surface of a sphere.
  * 
+ * From Solomon, H. Geometric Probability. Philadelphia, PA: SIAM, 1978.
  * @param $s The distance to calculate the density for.
  * @param $parameters $parameters[0] is the radius of the sphere. 
  * @return The density at $s.
@@ -43,7 +44,8 @@ double SphereDistancePDF(double s, double* parameters)
 /**
  * Implements the CDF of the distance between two random points on the 
  * surface of a sphere.
- * 
+ *
+ * From Solomon, H. Geometric Probability. Philadelphia, PA: SIAM, 1978.
  * @param $s The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the radius of the sphere. 
  * @return The  cumulative density at $s.
@@ -56,13 +58,12 @@ double SphereDistanceCDF(double s, double* parameters)
     return (s * s) / (4. * R * R);
 }
 
-/* mean distance between two points on the surface of a sphere of radius 
- * given in parameters[0] http://mathworld.wolfram.com/SphereLinePicking.html
- */
 
 /**
 * Calculates the mean of the distance between two random points on the surface 
-* of a sphere. 
+* of a sphere.
+*
+* From Solomon, H. Geometric Probability. Philadelphia, PA: SIAM, 1978.
 * @param $parameters $parameters[0] is the radius of the sphere. 
 * @return The mean of the distance between two random points on the surface 
 * of a sphere
@@ -78,7 +79,9 @@ double SphereDistanceMean(double* parameters)
 
 /**
  * Calculates the variance of the distances between two random points 
- * on the surface of a sphere. 
+ * on the surface of a sphere.
+ *
+ * From Solomon, H. Geometric Probability. Philadelphia, PA: SIAM, 1978.
  * @param $parameters $parameters[0] is the radius of the sphere. 
  * @return The variance of the distances between two random points on 
  * the surface  of a sphere
@@ -99,7 +102,6 @@ double SphereDistanceVar(double* parameters)
  * the PDF and CDF of the distance between two random points on the surface 
  * of a sphere.
  * @param $parameters $parameters[0] is the radius of the sphere.
- * (i.e., the length of any side).
  * @return The lower end of the interval is returned in $t[0] and the 
  * upper end of the interval is returned in $t[1].
  */
