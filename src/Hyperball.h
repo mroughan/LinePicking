@@ -33,7 +33,7 @@ extern int HyperballDistanceNpar;
 
 double HyperballDistancePDF(double t, double* parameters);
 
-double HyperballDistanceCDF(double a, double* b);
+double HyperballDistanceCDF(double t, double* parameters);
 
 double HyperballDistanceMean(double* parameters);
 

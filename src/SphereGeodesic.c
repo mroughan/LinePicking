@@ -97,7 +97,7 @@ void SphereGeodesicDistanceSupport(double *t, double *parameters)
  * this is merely a place holder to allow for a complete implementation 
  * in geometries that have more complex relationships between parameters.
  *
- * @param $parameters parameters[0] is the diameter of the sphere under
+ * @param $parameters parameters[0] is the radius of the sphere under
  * consideration.
  * @param $result Pointer to storage for an integer indicating any errors  
  * in the supplied parameters.

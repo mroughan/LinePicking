@@ -32,8 +32,8 @@ int CubeDistanceNpar = 1;
  * but with 'corrected typos'
  * 
  * @param $t The distance to calcuate the density for.
- * @param $parameters[0] The size of the cube (i.e., the length of any side). 
- 
+ * @param $parameters $parameters[0] is the size of the cube 
+ * (i.e., the length of any side). 
  * @return The density at $t.
  * @see  http://mathworld.wolfram.com/CubeLinePicking.html
  */
@@ -81,8 +81,9 @@ double CubeDistancePDF(double t, double* parameters)
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>  
  *
- * @param $t The distance calcuate the culmultive density for.
- * @param $parameters[0] The size of the cube (i.e., the length of any side). 
+ * @param $t The distance to calcuate the culmultive density for.
+ * @param $parameters $parameters[0] is the size of the cube
+ * (i.e., the length of any side).
  * @todo Write up how to derive the CDF.
  * @return The culmultive density at $t.
  */
@@ -136,14 +137,14 @@ double CubeDistanceCDF(double t, double* parameters)
 
 
 /**
- * Implements the mean of the distance between two random points within a cube.
+ * Calclates the mean of the distance between two random points within a cube.
  *
  * From Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. 
  * "Distance between Random Points in a Cube." J. Statistica 59, 61-81, 1999.
  * but with 'corrected typos'
  * 
- * @param $parameters[0] The size of the cube (i.e., the length of any side). 
- *
+ * @param $parameters $parameters[0] is the size of the cube 
+ * (i.e., the length of any side).
  * @return The mean distance between two points in a unit cube
  * @see  http://mathworld.wolfram.com/CubeLinePicking.html
  */
@@ -161,12 +162,13 @@ double CubeDistanceMean(double* parameters)
 
 
 /**
- * Implements the variance of the distance between two 
+ * Calculates the variance of the distance between two 
  * random points within a cube.
  *
  * This was calculated numerically.
  * 
- * @param $parameters[0] The size of the cube (i.e., the length of any side). 
+ * @param $parameters $parameters[0] is the size of the cube
+ * (i.e., the length of any side).
  * @todo Try to derive a value algebaricaly 
  * @return The variance of the distances between two points in a unit cube
  */
@@ -184,7 +186,8 @@ double CubeDistanceVar(double* parameters)
  *
  * @param $t Pointer to storage for lower and upper ends of the support for
  * the PDF and CDF of the distance between two random points within a cube. 
- * @param $parameters[0] The size of the cube (i.e., the length of any side). 
+ * @param $parameters $parameters[0] is the size of the cube
+ * (i.e., the length of any side).
  * @return The lower end of the interval is returned in $t[0] and the 
  * upper end of the interval is returned in $t[1].
  */
@@ -203,15 +206,15 @@ void CubeDistanceSupport(double *t, double *parameters)
  * this is merely a place holder to allow for a complete implementation 
  * in geometries that have more complex relationships between parameters.
  *
- * @param $parameters parameters[0] is the length of the side of the cube under
- * consideration.
+ * @param $parameters $parameters[0] is the size of the cube
+ * (i.e., the length of any side).
  * @param $result Pointer to storage for an integer indicating any errors  
  * in the supplied parameters.
  * @param $error_str Pointer to storage for a message explaining any errors
  * in the supplied parameters. 
  * @return Any error conditions are indicated by placing a value other than 0 
  * in the location pointed to by $result and a message explaining the error 
- * is copied in to the location pointed to $error_str
+ * is copied in to the location pointed to by $error_str
  */
 void CubeDistanceCheckParameters(double *parameters, int *result, 
                                  char *error_str)

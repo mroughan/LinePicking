@@ -9,20 +9,15 @@ Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}{double {\bfseries Hyperball\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}
-
+double \hyperlink{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}{Hyperball\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
 \item 
-\hypertarget{_hyperball_8h_ad0770bdac63457165ebced5592bc2138}{double {\bfseries Hyperball\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_hyperball_8h_ad0770bdac63457165ebced5592bc2138}
-
+double \hyperlink{_hyperball_8h_a911b77b473d55872774163ed724af6f3}{Hyperball\-Distance\-C\-D\-F} (double t, double $\ast$parameters)
 \item 
-\hypertarget{_hyperball_8h_ace3a14a1cd0b1fae4c5cae39494189bd}{double {\bfseries Hyperball\-Distance\-Mean} (double $\ast$parameters)}\label{_hyperball_8h_ace3a14a1cd0b1fae4c5cae39494189bd}
-
+double \hyperlink{_hyperball_8h_ace3a14a1cd0b1fae4c5cae39494189bd}{Hyperball\-Distance\-Mean} (double $\ast$parameters)
 \item 
-\hypertarget{_hyperball_8h_aab4b94960ba0f8cb9652d489579780f6}{double {\bfseries Hyperball\-Distance\-Var} (double $\ast$parameters)}\label{_hyperball_8h_aab4b94960ba0f8cb9652d489579780f6}
-
+double \hyperlink{_hyperball_8h_aab4b94960ba0f8cb9652d489579780f6}{Hyperball\-Distance\-Var} (double $\ast$parameters)
 \item 
-\hypertarget{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{void {\bfseries Hyperball\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}
-
+void \hyperlink{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{Hyperball\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_hyperball_8h_a2e16e2049ffc42ddebae7f4dc66e6ef3}{Hyperball\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
 \end{DoxyCompactItemize}
@@ -50,6 +45,30 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 
 
 \subsection{Function Documentation}
+\hypertarget{_hyperball_8h_a911b77b473d55872774163ed724af6f3}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-C\-D\-F@{Hyperball\-Distance\-C\-D\-F}}
+\index{Hyperball\-Distance\-C\-D\-F@{Hyperball\-Distance\-C\-D\-F}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double $\ast$}]{b}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_a911b77b473d55872774163ed724af6f3}
+Will implement the C\-D\-F of the distance between two random points in a hyper-\/ball.
+
+Not yet implemented.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Implement! \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calcuate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The culmative density at \$t, currently -\/1 for all \$t. 
+\end{DoxyReturn}
 \hypertarget{_hyperball_8h_a2e16e2049ffc42ddebae7f4dc66e6ef3}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Check\-Parameters@{Hyperball\-Distance\-Check\-Parameters}}
 \index{Hyperball\-Distance\-Check\-Parameters@{Hyperball\-Distance\-Check\-Parameters}!Hyperball.h@{Hyperball.\-h}}
 \subsubsection[{Hyperball\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Hyperball\-Distance\-Check\-Parameters (
@@ -61,7 +80,7 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 )}}\label{_hyperball_8h_a2e16e2049ffc42ddebae7f4dc66e6ef3}
 Determines if the parameters supplied are valid input to the other functions implemented in this file. 
 \begin{DoxyParams}{Parameters}
-{\em \$parameters\mbox{[}0\mbox{]}} & Contains the dimension of the hyper-\/ball under consideration and \$parameters\mbox{[}1\mbox{]} the diameter of the hyper-\/ball under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball under consideration and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball under consideration. \\
 \hline
 {\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
 \hline
@@ -71,3 +90,101 @@ Determines if the parameters supplied are valid input to the other functions imp
 \begin{DoxyReturn}{Returns}
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str The only condition this function needs to check is that the dimesnion of the hyper-\/ball consider is at least 1. 
 \end{DoxyReturn}
+\hypertarget{_hyperball_8h_ace3a14a1cd0b1fae4c5cae39494189bd}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Mean@{Hyperball\-Distance\-Mean}}
+\index{Hyperball\-Distance\-Mean@{Hyperball\-Distance\-Mean}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_ace3a14a1cd0b1fae4c5cae39494189bd}
+Calculates the mean distance between two random points in a hyper-\/ball.
+
+From Tu, S.-\/\-J. and Fischbach, E. \char`\"{}\-A New Geometric Probability Technique for an \{\-N\}-\/\-Dimensional 
+\-Sphere and Its Applications\char`\"{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean distance between wo random points in a hyper-\/ball. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://arxiv.org/abs/math-ph/0004021}{\tt http\-://arxiv.\-org/abs/math-\/ph/0004021} 
+
+\href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
+\hypertarget{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-P\-D\-F@{Hyperball\-Distance\-P\-D\-F}}
+\index{Hyperball\-Distance\-P\-D\-F@{Hyperball\-Distance\-P\-D\-F}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}
+Implements the P\-D\-F of the distance between two random points in a hyper-\/ball.
+
+From Tu, S.-\/\-J. and Fischbach, E. \char`\"{}\-A New Geometric Probability Technique for an \{\-N\}-\/\-Dimensional 
+\-Sphere and Its Applications\char`\"{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calcuate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$t. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://arxiv.org/abs/math-ph/0004021}{\tt http\-://arxiv.\-org/abs/math-\/ph/0004021} 
+
+\href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
+\hypertarget{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}}
+\index{Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Hyperball\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random in a hyper-\/ball.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points in a hyper-\/ball. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_hyperball_8h_aab4b94960ba0f8cb9652d489579780f6}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Var@{Hyperball\-Distance\-Var}}
+\index{Hyperball\-Distance\-Var@{Hyperball\-Distance\-Var}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_aab4b94960ba0f8cb9652d489579780f6}
+Calculates the variance of distances between two random points in a hyper-\/ball.
+
+From Tu, S.-\/\-J. and Fischbach, E. \char`\"{}\-A New Geometric Probability Technique for an \{\-N\}-\/\-Dimensional 
+  Sphere and Its Applications\char`\"{}
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variance of distances between two random points in a hyper-\/ball. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://arxiv.org/abs/math-ph/0004021}{\tt http\-://arxiv.\-org/abs/math-\/ph/0004021} 
+
+\href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}

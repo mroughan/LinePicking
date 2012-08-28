@@ -59,9 +59,9 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$t} & The distance calcuate the culmultive density for. \\
+{\em \$t} & The distance to calcuate the culmultive density for. \\
 \hline
-{\em \$parameters\mbox{[}0\mbox{]}} & The size of the cube (i.\-e., the length of any side). \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the cube (i.\-e., the length of any side). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}
@@ -82,7 +82,7 @@ Intended to determine if the parameters supplied are valid input to the other fu
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$parameters\mbox{[}0\mbox{]}} & Contains the length of the side of the cube under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the cube (i.\-e., the length of any side). \\
 \hline
 {\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
 \hline
@@ -99,13 +99,13 @@ Any error conditions are indicated by placing a value other than 0 in the locati
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_cube_8h_a185abf3dd7a6e79a0229433dd21618a7}
-Implements the mean of the distance between two random points within a cube.
+Calclates the mean of the distance between two random points within a cube.
 
 From Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. \char`\"{}\-Distance between Random Points in a Cube.\char`\"{} J. Statistica 59, 61-\/81, 1999. but with 'corrected typos'
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$parameters\mbox{[}0\mbox{]}} & The size of the cube (i.\-e., the length of any side).\\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the cube (i.\-e., the length of any side). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -130,7 +130,7 @@ From Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. \char`\"{}\-Distance bet
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calcuate the density for. \\
 \hline
-{\em \$parameters\mbox{[}0\mbox{]}} & The size of the cube (i.\-e., the length of any side).\\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the cube (i.\-e., the length of any side). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -153,7 +153,7 @@ Calculates the support for the P\-D\-F and C\-D\-F of the distance between two r
 \begin{DoxyParams}{Parameters}
 {\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points within a cube. \\
 \hline
-{\em \$parameters\mbox{[}0\mbox{]}} & The size of the cube (i.\-e., the length of any side). \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the cube (i.\-e., the length of any side). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -166,13 +166,13 @@ The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper 
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_cube_8h_ac37d5ff3c99d8637fc414212ac041f18}
-Implements the variance of the distance between two random points within a cube.
+Calculates the variance of the distance between two random points within a cube.
 
 This was calculated numerically.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$parameters\mbox{[}0\mbox{]}} & The size of the cube (i.\-e., the length of any side). \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the cube (i.\-e., the length of any side). \\
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}

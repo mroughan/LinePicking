@@ -152,8 +152,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
 <p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$t</td><td>The distance calcuate the culmultive density for. </td></tr>
-    <tr><td class="paramname">$parameters[0]</td><td>The size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$t</td><td>The distance to calcuate the culmultive density for. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -194,7 +194,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
 <p>Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters[0]</td><td>Contains the length of the side of the cube under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
     <tr><td class="paramname">$result</td><td>Pointer to storage for an integer indicating any errors in the supplied parameters. </td></tr>
     <tr><td class="paramname">$error_str</td><td>Pointer to storage for a message explaining any errors in the supplied parameters. </td></tr>
   </table>
@@ -217,11 +217,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Implements the mean of the distance between two random points within a cube.</p>
+<p>Calclates the mean of the distance between two random points within a cube.</p>
 <p>From Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. "Distance between Random Points in a Cube." J. Statistica 59, 61-81, 1999. but with 'corrected typos'</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters[0]</td><td>The size of the cube (i.e., the length of any side).</td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -258,7 +258,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calcuate the density for. </td></tr>
-    <tr><td class="paramname">$parameters[0]</td><td>The size of the cube (i.e., the length of any side).</td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -294,7 +294,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>Pointer to storage for lower and upper ends of the support for the PDF and CDF of the distance between two random points within a cube. </td></tr>
-    <tr><td class="paramname">$parameters[0]</td><td>The size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -315,11 +315,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Implements the variance of the distance between two random points within a cube.</p>
+<p>Calculates the variance of the distance between two random points within a cube.</p>
 <p>This was calculated numerically.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters[0]</td><td>The size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -331,7 +331,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>CubeDistanceNpar</b></
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 28 2012 00:58:32 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 28 2012 11:56:52 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
