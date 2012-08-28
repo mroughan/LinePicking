@@ -3,7 +3,7 @@
 #' Modes are integers describing possible geometries for the line picking
 #' problem. This function gives you the information for a given mode.
 #' 
-#' @param mode
+#' @param mode see \code{\link{LinePickingPDF}}
 #' @return prints out information
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export

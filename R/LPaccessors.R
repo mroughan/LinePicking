@@ -81,13 +81,13 @@ setMethod("stats", "linepicking", function(x){
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
 #' tmp <- CreateLinePicking(mode=0,para=10)
-#' pdf(tmp,t=5)
+#' CalcPDF(tmp,t=5)
 #'
 setGeneric("CalcPDF",function(x,t) {
   standardGeneric("CalcPDF")
 })
 setMethod("CalcPDF", "linepicking", function(x,t){
-  tmp <- LinePickingPDF(t,mode(x),para(x))
+  tmp <- LinePickingPDF(t,space(x),para(x))
   return(tmp)
 })
 #' Calculates the cdf for a given distance and \code{linepicking} object
@@ -101,12 +101,12 @@ setMethod("CalcPDF", "linepicking", function(x,t){
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
 #' tmp <- CreateLinePicking(mode=0,para=10)
-#' cdf(tmp,t=5)
+#' CalcCDF(tmp,t=5)
 #'
 setGeneric("CalcCDF",function(x,t) {
   standardGeneric("CalcCDF")
 })
 setMethod("CalcCDF", "linepicking", function(x,t){
-  tmp <- LinePickingCDF(t,mode(x),para(x))
+  tmp <- LinePickingCDF(t,space(x),para(x))
   return(tmp)
 })

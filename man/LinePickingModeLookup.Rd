@@ -5,7 +5,7 @@
   LinePickingModeLookup(mode = 0)
 }
 \arguments{
-  \item{mode}{}
+  \item{mode}{see \code{\link{LinePickingPDF}}}
 }
 \value{
   prints out information

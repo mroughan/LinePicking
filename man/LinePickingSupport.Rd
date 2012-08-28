@@ -5,10 +5,10 @@
   LinePickingSupport(mode = 0, parameters)
 }
 \arguments{
-  \item{mode}{}
+  \item{mode}{see \code{\link{LinePickingPDF}}}
 
-  \item{para}{the parameter necessary to describe the space
-  given by mode.}
+  \item{parameters}{the parameter necessary to describe the
+  space given by mode.}
 }
 \value{
   min and max values of support

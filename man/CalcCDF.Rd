@@ -15,7 +15,7 @@
 }
 \examples{
 tmp <- CreateLinePicking(mode=0,para=10)
-cdf(tmp,t=5)
+CalcCDF(tmp,t=5)
 }
 \author{
   Eric Parsonage, Matt Roughan, Jono Tuke

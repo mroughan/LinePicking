@@ -15,7 +15,7 @@
 }
 \examples{
 tmp <- CreateLinePicking(mode=0,para=10)
-pdf(tmp,t=5)
+CalcPDF(tmp,t=5)
 }
 \author{
   Eric Parsonage, Matt Roughan, Jono Tuke
