@@ -37,6 +37,25 @@
  * 
  */
 
+/** 
+ * @mainpage LinePicking
+ * @version 0.9
+ * @brief Numerical code for geometric probability problems, 
+ * in particular PDFs, CDFs, means and variances for the "line picking" problem.
+ * 
+ * @par Description  
+ * The problem is a standard problem in stochastic
+ * geometry, where we pick lines at random from some region. The typical
+ * questions one asks are what will then mean line length be? What will
+ * the Probability Density Function (PDF) be? This software implements the 
+ * current list of known PDFs, CDFs, means and variances for such problems and
+ * extends these with solutions to previously unsolved problems.
+ *
+ * @author Eric Parsonage <eric.parsonage@adelaide.edu.au>
+ * @author Matthew Roughan <matthew.roughan@adelaide.edu.au>
+ */
+
+
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h> 

@@ -34,7 +34,7 @@ int HyperballDistanceNpar = 2;
  * "A New Geometric Probability Technique for an {N}-Dimensional 
  * Sphere and Its Applications"
  *
- * @param $t The distance to calcuate the density for.
+ * @param $t The distance to calculate the density for.
  * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
  * $parameters[1] is the radius of the hyper-ball. 
  * @return The density at $t.
@@ -67,7 +67,7 @@ double HyperballDistancePDF(double t, double* parameters)
  * Not yet implemented.
  *
  * @todo Implement!
- * @param $t The distance to calcuate the density for.
+ * @param $t The distance to calculate the density for.
  * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
  * $parameters[1] is the radius of the hyper-ball. 
  * @return The culmative density at $t, currently -1 for all $t.

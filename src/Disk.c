@@ -28,7 +28,7 @@ int DiskDistanceNpar = 1;
 /**
  * Implements the PDF of the distance between two random points on a disk.
  *
- * @param $t The distance to calcuate the density for.
+ * @param $t The distance to calculate the density for.
  * @param $parameters[0] The radius of the disk. 
  *
  * @return The density at $t.
@@ -56,10 +56,10 @@ double DiskDistancePDF(double t, double* parameters)
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>  
  *
- * @param $t The distance to calcuate the culmultive density for.
+ * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the radius of the disk. 
  * @todo Write up how to derive the CDF.
- * @return The culmultive density at $t.
+ * @return The cumulative density at $t.
  */
 double DiskDistanceCDF(double t, double* parameters)
 {    

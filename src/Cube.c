@@ -31,7 +31,7 @@ int CubeDistanceNpar = 1;
  * "Distance between Random Points in a Cube." J. Statistica 59, 61-81, 1999.
  * but with 'corrected typos'
  * 
- * @param $t The distance to calcuate the density for.
+ * @param $t The distance to calculate the density for.
  * @param $parameters $parameters[0] is the size of the cube 
  * (i.e., the length of any side). 
  * @return The density at $t.
@@ -81,11 +81,11 @@ double CubeDistancePDF(double t, double* parameters)
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>  
  *
- * @param $t The distance to calcuate the culmultive density for.
+ * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the size of the cube
  * (i.e., the length of any side).
  * @todo Write up how to derive the CDF.
- * @return The culmultive density at $t.
+ * @return The cumulative density at $t.
  */
 double CubeDistanceCDF(double t, double* parameters)
 
@@ -137,7 +137,7 @@ double CubeDistanceCDF(double t, double* parameters)
 
 
 /**
- * Calclates the mean of the distance between two random points within a cube.
+ * Calculates the mean of the distance between two random points within a cube.
  *
  * From Mathai, A. M.; Moschopoulos, P.; and Pederzoli, G. 
  * "Distance between Random Points in a Cube." J. Statistica 59, 61-81, 1999.
