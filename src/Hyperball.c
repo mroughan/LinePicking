@@ -56,7 +56,7 @@ double HyperballDistancePDF(double t, double* parameters)
     q = 1.0 / 2.0;
     Ix = beta_inc(p, q, x);
     
-    return n * (pow(t, n - 1.0) / pow(r, n)) * Ix);
+    return n * (pow(t, n - 1.0) / pow(r, n)) * Ix;
 }
 
 
@@ -123,9 +123,9 @@ double HyperballDistanceVar(double* parameters)
     double tmp = pow((n / (n + m)), 2.0) * pow(parameters[1], m) *
                     tgamma(n + m + 1.0) * 
                     tgamma(n / 2.0) / 
-                    ( tgamma((n + m) /2.0) * tgamma(n + 1 + m / 2.0));
+                    (tgamma((n + m) /2.0) * tgamma(n + 1 + m / 2.0));
     
-    return tmp - pow(HyperballDistanceMean(parameters),2 .0);
+    return tmp - pow(HyperballDistanceMean(parameters),2.0);
 }
 
 
