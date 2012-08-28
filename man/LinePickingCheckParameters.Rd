@@ -26,7 +26,7 @@
 }
 \examples{
 LinePickingCheckParameters(mode=0, parameters=c(10))
-LinePickingCheckParameters(mode=99)
+LinePickingCheckParameters(mode=99,parameters=c(10))
 LinePickingCheckParameters(mode=0, parameters=c(1,2))
 LinePickingCheckParameters(mode=3, parameters=c(1))
 }

@@ -2,8 +2,7 @@
 #'
 #' For a given mode and parameters gives the variance
 #'
-#' @param mode
-
+#' @param mode see \code{\link{LinePickingPDF}}
 #' @param para the parameter necessary to describe 
 #' the space given by mode.
 #' @return variance

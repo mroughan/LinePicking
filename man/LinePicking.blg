@@ -1,69 +1,66 @@
-This is BibTeX, Version 0.99d (TeX Live 2011)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: LinePicking.aux
 The style file: ieeetr.bst
-I couldn't open database file queueing_theory.bib
----line 103 of file LinePicking.aux
- : \bibdata{queueing_theory
- :                         ,books,ip_traffic,time_series,reliability,tcp,ospf,lrd,worms,internet,routing,bgp,topology,network,traffic_engineering,algorithms,optimization,history,graph}
-I'm skipping whatever remains of this command
-I found no database files---while reading file LinePicking.aux
-Warning--I didn't find a database entry for "Rosenberg200499"
-Warning--I didn't find a database entry for "mathai_geom"
-Warning--I didn't find a database entry for "b.ghosh51:_random_rect"
-Warning--I didn't find a database entry for "m.naldi05:_connec_of_waxman_graph"
-Warning--I didn't find a database entry for "philip:_probab_distr_distan_between_two"
-Warning--I didn't find a database entry for "weisstein:_squar_line_picking"
-Warning--I didn't find a database entry for "weisstein:_line_line_picking"
-Warning--I didn't find a database entry for "mathai99:_distan"
-Warning--I didn't find a database entry for "weisstein:_cube_line_picking"
-Warning--I didn't find a database entry for "philip:_probab_distr_distan_between_two_4d"
-Warning--I didn't find a database entry for "tu00:_circle_line"
-Warning--I didn't find a database entry for "robbins78:_constant"
-Warning--I didn't find a database entry for "weisstein:_ball_line_picking"
-Warning--I didn't find a database entry for "weisstein:_circle_line_picking"
-Warning--I didn't find a database entry for "Abramowitz_and_Stegun"
-Warning--I didn't find a database entry for "weisstein:_sphere_line_picking"
-Warning--I didn't find a database entry for "bartlett64"
-You've used 0 entries,
+Database file #1: queueing_theory.bib
+Database file #2: books.bib
+Database file #3: ip_traffic.bib
+Database file #4: time_series.bib
+Database file #5: reliability.bib
+Database file #6: tcp.bib
+Database file #7: ospf.bib
+Database file #8: lrd.bib
+Database file #9: worms.bib
+Database file #10: internet.bib
+Database file #11: routing.bib
+Database file #12: bgp.bib
+Database file #13: topology.bib
+Database file #14: network.bib
+Database file #15: traffic_engineering.bib
+Database file #16: algorithms.bib
+Database file #17: optimization.bib
+Database file #18: history.bib
+Database file #19: graph.bib
+Warning--empty publisher in mathai_geom
+Warning--empty year in mathai_geom
+You've used 17 entries,
             1876 wiz_defined-function locations,
-            496 strings with 3941 characters,
-and the built_in function-call counts, 20 in all, are:
-= -- 0
-> -- 0
+            691 strings with 8046 characters,
+and the built_in function-call counts, 3050 in all, are:
+= -- 290
+> -- 83
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 9
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 38
+- -- 21
+* -- 164
+:= -- 430
+add.period$ -- 18
+call.type$ -- 17
+change.case$ -- 15
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 19
+duplicate$ -- 146
+empty$ -- 362
+format.name$ -- 21
+if$ -- 777
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 17
+missing$ -- 10
+newline$ -- 55
+num.names$ -- 17
+pop$ -- 69
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 1
+skip$ -- 123
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 117
+swap$ -- 46
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There were 2 error messages)
+warning$ -- 2
+while$ -- 28
+width$ -- 19
+write$ -- 145
+(There were 2 warnings)

@@ -5,7 +5,7 @@
   LinePickingVar(mode = 0, para)
 }
 \arguments{
-  \item{mode}{}
+  \item{mode}{see \code{\link{LinePickingPDF}}}
 
   \item{para}{the parameter necessary to describe the space
   given by mode.}
