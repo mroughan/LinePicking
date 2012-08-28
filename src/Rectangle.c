@@ -32,8 +32,8 @@ int RectangleDistanceNpar = 2;
  *
  * From "Random Distances Within a Rectangle and Between Two Rectangles",
  * B. Ghosh, Bulletin of the Calcutta Mathematical Society, Col.43 (1), 
- * p.17-24, 1951. "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI 
- * - R MOSCHOPOULOS -G. PEDERZOLI RENDICONT1 DEL CIRCOLO 
+ * p.17-24, 1951. "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI -
+ * R MOSCHOPOULOS -G. PEDERZOLI RENDICONT1 DEL CIRCOLO 
  * MATEMATICO DI PALERMO, Serie 11, Tomo XLVIII (1999), pp. 163-190 
  * @param $t The distance to calculate the density for.
  * @param $parameters $parameters[0] is the length of one side of the rectangle
@@ -157,8 +157,8 @@ double RectangleDistanceCDF(double w, double* parameters)
  *
  * From "Random Distances Within a Rectangle and Between Two Rectangles",
  * B. Ghosh, Bulletin of the Calcutta Mathematical Society, Col.43 (1), 
- * p.17-24, 1951. "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI 
- * - R MOSCHOPOULOS -G. PEDERZOLI RENDICONT1 DEL CIRCOLO 
+ * p.17-24, 1951. "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI -
+ * R MOSCHOPOULOS - G. PEDERZOLI RENDICONT1 DEL CIRCOLO 
  * MATEMATICO DI PALERMO, Serie 11, Tomo XLVIII (1999), pp. 163-190 
  * @param $parameters $parameters[0] is the length of one side of the rectangle
  * and $parameters[1] is the length of the other. 
@@ -187,8 +187,8 @@ double RectangleDistanceMean(double* parameters)
  *
  * From "Random Distances Within a Rectangle and Between Two Rectangles",
  * B. Ghosh, Bulletin of the Calcutta Mathematical Society, Col.43 (1), 
- * p.17-24, 1951. "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI 
- * - R MOSCHOPOULOS -G. PEDERZOLI RENDICONT1 DEL CIRCOLO 
+ * p.17-24, 1951. "RANDOM POINTS ASSOCIATED WITH RECTANGLES", A.M. MATHAI -
+ * R MOSCHOPOULOS - G. PEDERZOLI RENDICONT1 DEL CIRCOLO 
  * MATEMATICO DI PALERMO, Serie 11, Tomo XLVIII (1999), pp. 163-190 
  * @param $parameters $parameters[0] is the length of one side of the rectangle
  * and $parameters[1] is the length of the other. 

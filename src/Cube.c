@@ -145,7 +145,7 @@ double CubeDistanceCDF(double t, double* parameters)
  * 
  * @param $parameters $parameters[0] is the size of the cube 
  * (i.e., the length of any side).
- * @return The mean distance between two points in a unit cube
+ * @return The mean distance between two points in a unit cube.
  * @see  http://mathworld.wolfram.com/CubeLinePicking.html
  */
 double CubeDistanceMean(double* parameters)
@@ -170,13 +170,13 @@ double CubeDistanceMean(double* parameters)
  * @param $parameters $parameters[0] is the size of the cube
  * (i.e., the length of any side).
  * @todo Try to derive a value algebaricaly 
- * @return The variance of the distances between two points in a unit cube
+ * @return The variance of the distances between two points in a unit cube.
  */
 double CubeDistanceVar(double* parameters)
 /* mean distance between two points in a unit cube */
 /*    calculated numerically */
 {
-    return(parameters[0]*parameters[0]*0.062143604936);
+    return(parameters[0] * parameters[0] * 0.062143604936);
 }
 
 
@@ -186,7 +186,7 @@ double CubeDistanceVar(double* parameters)
  *
  * @param $t Pointer to storage for lower and upper ends of the support for
  * the PDF and CDF of the distance between two random points within a cube. 
- * @param $parameters $parameters[0] is the size of the cube
+ * @param $parameters $parameters[0] is the size of the cube.
  * (i.e., the length of any side).
  * @return The lower end of the interval is returned in $t[0] and the 
  * upper end of the interval is returned in $t[1].
