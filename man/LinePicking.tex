@@ -573,7 +573,7 @@ rememeber $x = 1 - t^2/4R^2$, $a=(n+1)/2$, and $b=1/2$, and from
 \cite[26.5.4]{Abramowitz_and_Stegun}
 \begin{eqnarray}
   \label{eq:Ix}
-  I_x(a,b)
+  I_x(a,b) 
  & = & 1 - I_{1-x}(b,a)
                     \nonumber \\
  & = & 1 - \frac{(1-x)^b x^a}{b B(b,a)}  \left\{ 
@@ -586,10 +586,14 @@ rememeber $x = 1 - t^2/4R^2$, $a=(n+1)/2$, and $b=1/2$, and from
                \sum_{i=0}^{\infty} \frac{B(b+1,i+1)}{B(a+b,i+1)} (t/2R)^{2(i+1)}
            \right\} 
                \nonumber \\
+ & \simeq & 1 - \frac{t/R}{B(b,a)} 
+               + \frac{a t^3/4R^3 }{B(b,a)} 
+               - \frac{2 (t/2R)}{B(b,a)} \frac{B(b+1,1)}{B(a+b,1)} (t/2R)^{2}
+               \nonumber \\
  & \simeq & 1 - \frac{t/R}{B(1/2,(n+1)/2)} 
-               + \frac{2}{B(1/2,(n+1)/2)} 
+               + \frac{1}{4 B(1/2,(n+1)/2)} 
                    \left[ \frac{n+1}{2}
-                          -\frac{B(3/2,1)}{B(n/2+1,1)} \right] (t/2R)^{3}.
+                          -\frac{B(3/2,1)}{B(n/2+1,1)} \right] (t/R)^{3}.
 \end{eqnarray}
 The Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
 \begin{eqnarray}
@@ -597,7 +601,7 @@ The Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
   \Gamma(1/2) & = & \pi^{1/2}, \\
   \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
   \Gamma(k+1) & = & k!, \\
-  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!}, \\
+  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!},
 \end{eqnarray}
 % last one comes from Wiki, but could be derived simply from A&S
 so we can derive
@@ -635,41 +639,41 @@ For example: when $n=1,2,3$ and $4$:
 \begin{eqnarray}
   \label{eq:ex_g(t)}
 g^{1D-{\rm ball}}_R(t)
- & \simeq &                          % (k=1, n odd)
+ & \simeq &                        
   n \frac{t^{n-1}}{R^n} - 
     n \frac{t^{n}}{R^{n+1}} 
-   \left\{  \frac{(2k)! }{2^{2k} k! (k-1)!}  \right\}
-                 \nonumber \\
+   \left\{  \frac{(2k)! }{2^{2k} k! (k-1)!}  \right\},
+                 \;\;\; \mbox{ where $n$ is odd, and } k=1,  \nonumber \\
  & \simeq &                          % (k=1, n odd)
   \frac{1}{R} - 
-    \frac{1}{2} \frac{t}{R^{2}} 
+    \frac{1}{2} \frac{t}{R^{2}}. 
                  \\
 g^{2D-{\rm ball}}_R(t)
  & \simeq &                          % (k=1, n even)
   n \frac{t^{n-1}}{R^n} - 
     n \frac{t^{n}}{R^{n+1}} 
-   \left\{ \frac{2^{2k} k! k!}{\pi (2k)!}  \right\}
-                 \nonumber \\
+   \left\{ \frac{2^{2k} k! k!}{\pi (2k)!}  \right\},
+                 \;\;\; \mbox{ where $n$ is even, and } k=1,  \nonumber \\
  & \simeq &                          % (k=1, n even)
   2 \frac{t^{1}}{R^2} - 
-    \frac{4}{\pi} \frac{t^{2}}{R^{3}} 
+    \frac{4}{\pi} \frac{t^{2}}{R^{3}} .
                   \\
 g^{3D-{\rm ball}}_R(t)
  & \simeq &                          % (k=2, n odd)
   n \frac{t^{n-1}}{R^n} - 
     n \frac{t^{n}}{R^{n+1}} 
-   \left\{ \frac{(2k)! }{2^{2k} k! (k-1)!}  \right\}
-                 \nonumber \\
+   \left\{ \frac{(2k)! }{2^{2k} k! (k-1)!}  \right\},
+                 \;\;\; \mbox{ where $n$ is odd, and } k=2,  \nonumber \\
  & \simeq &                          % (k=2, n odd)
   \frac{3 t^{2}}{R^3} - 
-     \frac{9}{4} \frac{t^{3}}{R^{4}} 
+     \frac{9}{4} \frac{t^{3}}{R^{4}} .
    \\ 
 g^{4D-{\rm ball}}_R(t)
  & \simeq &                          % (k=2, n even)
   n \frac{t^{n-1}}{R^n} -  
     n \frac{t^{n}}{R^{n+1}} 
-   \left\{ \frac{2^{2k} k! k!}{\pi (2k)!} \right\}
-                 \nonumber \\
+   \left\{ \frac{2^{2k} k! k!}{\pi (2k)!} \right\},
+                 \;\;\; \mbox{ where $n$ is even, and } k=2, \nonumber \\
  & \simeq &                          % (k=2, n even)
   \frac{4 t^{3}}{R^4} -  
     \frac{2^5}{3\pi} \frac{t^{4}}{R^{5}} .
