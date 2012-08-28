@@ -1,4 +1,4 @@
-function [names descriptions] =  LinePickingAllModes(mode) 
+function [names descriptions] =  LinePickingAllModes
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,13 +14,13 @@ function [names descriptions] =  LinePickingAllModes(mode)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingModeLookup(mode) gets information for a given mode
+% LinePickingAllModes gets lists of the modes, and their descriptions.
 %
 % INPUTS:       
-%    mode = region type to get information about
 %         
 % OUTPUTS:
-%    [name description] arrays of strings with name and description of each mode
+%    [names descriptions] cell arrays of strings with name and description
+%                         of each mode
 %
 %     
 % See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllModes, LinePickingAllModes 
