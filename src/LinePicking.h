@@ -46,6 +46,15 @@
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
+#if defined(_MEX) /* MEX */
+#define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
+#elif defined(_NOTR) /* Standalone code or library */
+#define PRINT_STDOUT(...) fprintf(stdout, __VA_ARGS__)
+#else  /* R */
+#define PRINT_STDOUT(...) Rprintf(__VA_ARGS__)
+#endif
+/* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
+
 /** structure thingo test */
 typedef struct 
 {

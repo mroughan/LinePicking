@@ -77,11 +77,12 @@ void LinePickingAllModes(void)
     
     for (i=0; i < NUMBER_OF_MODES; i++)
     {
-#ifdef _MEX
-        mexPrintf(" mode[%d] = %s\n", i, *LinePickingFields[i].name);
-#else /* MEX */
-        fprintf(stdout, " mode[%d] = %s\n", i, *LinePickingFields[i].name);
-#endif
+	PRINT_STDOUT(" mode[%d] = %s\n", i, *LinePickingFields[i].name);
+/* #ifdef _MEX */
+/*         mexPrintf(" mode[%d] = %s\n", i, *LinePickingFields[i].name); */
+/* #else /\* MEX *\/ */
+/*         fprintf(stdout, " mode[%d] = %s\n", i, *LinePickingFields[i].name); */
+/* #endif */
     }
     
     return;
