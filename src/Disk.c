@@ -91,7 +91,7 @@ double DiskDistanceCDF(double t, double* parameters)
  *
  * @param $parameters $parameters[0] is the radius of the disk.  
  * 
- * @return The mean distance between two points on a disk 
+ * @return The mean distance between two points on a disk. 
  * @see  http://mathworld.wolfram.com/BallLinePicking.html
  */
 double DiskDistanceMean(double* parameters)
@@ -106,7 +106,7 @@ double DiskDistanceMean(double* parameters)
  * Currently calculated numerically.
  * @param $parameters $parameters[0] is the radius of the disk.   
  *
- * @return The variance of distances between two points on a disk 
+ * @return The variance of distances between two points on a disk. 
  * @see  http://mathworld.wolfram.com/BallLinePicking.html
  * @todo Derive an algebraic expression. 
  */
@@ -118,7 +118,7 @@ double DiskDistanceVar(double* parameters)
 
 /**
  * Calculates the support for the PDF and CDF of the distance between 
- * two random points on a disk
+ * two random points on a disk.
  *
  * @param $t Pointer to storage for lower and upper ends of the support for
  * the PDF and CDF of the distance between two random points on a disk. 

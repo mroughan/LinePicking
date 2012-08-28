@@ -94,6 +94,7 @@ double SphereDistanceVar(double* parameters)
     return (2. *  R * R) / 9.;
 }
 
+
 /**
  * Calculates the support for the PDF and CDF of the distance between 
  * two random points on the surface of a sphere.
@@ -115,6 +116,7 @@ void SphereDistanceSupport(double *t, double *parameters)
     /* the longest line is the diameter of the sphere */
     t[1] = 2 * R;
 }
+
 
 /**
  * Intended to determine if the parameters supplied are valid input 

@@ -99,7 +99,6 @@ double SphereGeodesicDistanceVar(double* parameters)
 }
 
 
-
 /**
  * Calculates the support for the PDF and CDF of the distance between 
  * two random points on the surface of a sphere measured around the surface of 
@@ -118,6 +117,7 @@ void SphereGeodesicDistanceSupport(double *t, double *parameters)
     t[0] = 0;
     t[1] = R * M_PI;
 }
+
 
 /**
  * Intended to determine if the parameters supplied are valid input 

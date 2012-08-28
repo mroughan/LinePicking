@@ -35,9 +35,9 @@ extern char * SphereGeodesicDistanceDescription;
 extern int SphereGeodesicDistanceNpar;
 
 
-double SphereGeodesicDistancePDF(double t, double* parameters);
+double SphereGeodesicDistancePDF(double s, double* parameters);
 
-double SphereGeodesicDistanceCDF(double a, double* b);
+double SphereGeodesicDistanceCDF(double s, double* parameters);
 
 double SphereGeodesicDistanceMean(double* parameters);
 
