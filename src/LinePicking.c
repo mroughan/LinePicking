@@ -589,7 +589,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             return;
             
         case 6: /* LinePickingAllModes */
-            CheckNumberInputArg(nrhs, 2, "LinePickingAllModes");
+            CheckNumberInputArg(nrhs, 1, "LinePickingAllModes");
             CheckNumberOutputArg(nlhs, 0, "LinePickingAllModes");
             LinePickingAllModes();
                        
