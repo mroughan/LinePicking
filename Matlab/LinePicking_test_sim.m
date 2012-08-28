@@ -20,7 +20,7 @@ clear;
 N = 30;
 M = 10^6;
 rand('state', 1);
-randn('state', 1);
+randn('state', 5);
 
 % check that the geometries are what we think they should be 
 LinePickingAllModes;
@@ -171,14 +171,14 @@ print('-deps','Plots/LinePicking_test_sim_3ball.eps');
 
 figure(geometry+101)
 hold off
-theta = 0:pi/40:2*pi;
-x_theta = R*cos(theta);
-y_theta = R*sin(theta);
-plot3(0,0,0);
+n = 12;
+[x,y,z] = sphere(n);
+x = R*x;
+y = R*y; 
+z = R*z;
+h = mesh(x+0,y+0,z+0);
+hidden off
 hold on
-plot3(x_theta, y_theta, zeros(size(theta)), 'k-', 'linewidth', 2);
-plot3(x_theta, zeros(size(theta)), y_theta, 'k-', 'linewidth', 2);
-plot3(zeros(size(theta)), x_theta, y_theta, 'k-', 'linewidth', 2);
 m = 1:10;
 plot3([x1(k(m))'; x2(k(m))'], [y1(k(m))'; y2(k(m))'], [z1(k(m))'; z2(k(m))'], 'bo-', 'linewidth', 2);
 set(gca, 'xlim', [-R-0.1, R+0.1]);
@@ -427,16 +427,19 @@ print('-deps','Plots/LinePicking_test_sim_geodesic.eps');
 
 figure(geometry+101)
 hold off
-theta = 0:pi/40:2*pi;
-x_theta = R*cos(theta);
-y_theta = R*sin(theta);
-plot3(0,0,0);
+n = 12;
+[x,y,z] = sphere(n);
+x = R*x;
+y = R*y;
+z = R*z;
+h = mesh(x+0,y+0,z+0);
+hidden off
 hold on
-plot3(x_theta, y_theta, zeros(size(theta)), 'k-', 'linewidth', 2);
-plot3(x_theta, zeros(size(theta)), y_theta, 'k-', 'linewidth', 2);
-plot3(zeros(size(theta)), x_theta, y_theta, 'k-', 'linewidth', 2);
 m = 1:10;
-plot3([x1(m)'; x2(m)'], [y1(m)'; y2(m)'], [z1(m)'; z2(m)'], 'bo-', 'linewidth', 2);
+of = 1.001; % make dots just outside sphere
+plot3(of*x1(m), of*y1(m), of*z1(m), 'b.', 'markersize', 15);
+plot3(of*x2(m), of*y2(m), of*z2(m), 'b.', 'markersize', 15);
+plot3([x1(m)'; x2(m)'], [y1(m)'; y2(m)'], [z1(m)'; z2(m)'], 'b-', 'linewidth', 2);
 set(gca, 'xlim', [-R-0.1, R+0.1]);
 set(gca, 'ylim', [-R-0.1, R+0.1]);
 set(gca, 'zlim', [-R-0.1, R+0.1]);
@@ -495,16 +498,15 @@ title('sphere-geodesic-line picking density');
 print('-deps','Plots/LinePicking_test_sim_sphere_geodesic.eps');
 
 figure(geometry+101)
+hold off
+n = 12;
+[x,y,z] = sphere(n);
+x = R*x;
+y = R*y; 
+z = R*z;
+h = mesh(x+0,y+0,z+0);
+hidden off
 hold on
-theta = 0:pi/40:2*pi;
-x_theta = R*cos(theta);
-y_theta = R*sin(theta);
-plot3(0,0,0);
-hold on
-plot3(x_theta, y_theta, zeros(size(theta)), 'k-', 'linewidth', 2);
-plot3(x_theta, zeros(size(theta)), y_theta, 'k-', 'linewidth', 2);
-plot3(zeros(size(theta)), x_theta, y_theta, 'k-', 'linewidth', 2);
-
 n=10;
 points = randn(3,n);
 normals = 1./sum(points.^2).^(1/2);
@@ -516,8 +518,17 @@ v2 = [normals.*points(1,:); normals.*points(2,:); normals.*points(3,:)];
 
 
 % plot dots at the ends of the lines
-plot3(v1(1,:),v1(2,:),v1(3,:),'.b');
-plot3(v2(1,:),v2(2,:),v2(3,:),'.b');
+of = 1.001; % make dots just outside sphere
+d = 0.1;
+little_sphere_x = d*x/R;
+little_sphere_y = d*y/R;
+little_sphere_z = d*z/R;
+for i=1:size(v1,2)
+  % surf(of*v1(1,i)+little_sphere_x,of*v1(2,i)+little_sphere_y,of*v1(3,i)+little_sphere_z);
+  % seems to draw them better if we do it one by one
+  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 15);
+  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 15);
+end
 
 % draw the great circle lines 
 [rows cols] = size(v1);
@@ -527,7 +538,7 @@ for i = 1:cols
   % Let t range through the inner angle between v1 and v2
   t = linspace(0,atan2(norm(cross(v1(:,i),v2(:,i))),dot(v1(:,i),v2(:,i))));
   v = v1(:,i)*cos(t)+v3*sin(t); % v traces great circle path, relative to center
-  plot3(v(1,:),v(2,:),v(3,:),'b-', 'linewidth', 2); % Plot it in 3D
+  plot3(of*v(1,:),of*v(2,:),of*v(3,:),'b-', 'linewidth', 2); % Plot it in 3D
 end
 
 set(gca, 'xlim', [-R-0.1, R+0.1]);
