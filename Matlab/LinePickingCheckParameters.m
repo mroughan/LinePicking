@@ -45,7 +45,7 @@ function [results error_str] =  LinePickingCheckParameters(mode, parameters)
 %                       3: not enough parameters were entered.
 %                       4: other error.
 %     
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingModeLookup, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
 %         
 %
 

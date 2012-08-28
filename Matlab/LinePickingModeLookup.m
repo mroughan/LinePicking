@@ -23,10 +23,10 @@ function [name description] =  LinePickingModeLookup(mode)
 %    [name description] strings with name and description of region refered to by mode
 %
 %     
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllModes, LinePickingAllModes 
 %         
 %
 
-[name description] = LinePicking(5, mode);
+[names descriptions] = LinePicking(8);
 
 

@@ -70,7 +70,7 @@ void LinePickingModeLookup(int *mode, char **name, char **description)
     return;
 }
 
-void LinePickingAllModes(void)
+void LinePickingPrintAllModes(void)
 /* write out the list of modes */
 {
     int i;
@@ -85,6 +85,21 @@ void LinePickingAllModes(void)
 /* #endif */
     }
     
+    return;
+}
+
+void LinePickingAllModes(char **names, char **descriptions)
+/* return the list of modes:
+      assumes memory is allocated for the array of pointers to strings */
+{
+    int i;
+    
+    for (i=0; i < NUMBER_OF_MODES; i++)
+    {
+	names[i] = *LinePickingFields[i].name;
+	descriptions[i] = *LinePickingFields[i].description;
+    }
+
     return;
 }
 
@@ -433,7 +448,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     
     double stat;
 
-    
+    int ndim = 1; /* useful for creating 1D arrays */
+    const mwSize dims[1] = {NUMBER_OF_MODES}; /* useful for creating arrays */
+    char *names[NUMBER_OF_MODES];       /* used to output a list of names of the modes */
+    char *descriptions[NUMBER_OF_MODES]; /* used to output a list of descriptions of the modes */
     
     if (nrhs < 1)
         mexErrMsgTxt("LinePicking needs at least one input parameter.");
@@ -589,10 +607,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             }
             return;
             
-        case 6: /* LinePickingAllModes */
-            CheckNumberInputArg(nrhs, 1, "LinePickingAllModes");
-            CheckNumberOutputArg(nlhs, 0, "LinePickingAllModes");
-            LinePickingAllModes();
+        case 6: /* LinePickingPrintAllModes */
+            CheckNumberInputArg(nrhs, 1, "LinePickingPrintAllModes");
+            CheckNumberOutputArg(nlhs, 0, "LinePickingPrintAllModes");
+            LinePickingPrintAllModes();
                        
             return;
             
@@ -619,9 +637,25 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             /* reset it so we can carry on */
             result = 0;
             break;
+
+        case 8: /* LinePickingAllModes */
+
+            CheckNumberInputArg(nrhs, 1, "LinePickingAllModes");
+            CheckNumberOutputArg(nlhs, 2, "LinePickingAllModes");
+            plhs[0] = mxCreateCellArray(1, dims);
+            plhs[1] = mxCreateCellArray(1, dims);
+
+	    LinePickingAllModes(names, descriptions);
+	    for (i=0; i < NUMBER_OF_MODES; i++)
+	    {
+		mxSetCell(plhs[0], i, mxCreateString(names[i]));
+		mxSetCell(plhs[1], i, mxCreateString(descriptions[i]));
+	    }
+
+            return;
             
         default:
-                mexErrMsgTxt("LinePicking unknown entry point requested.");
+	    mexErrMsgTxt("LinePicking unknown entry point requested.");
             
     }
     

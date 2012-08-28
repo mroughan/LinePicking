@@ -38,7 +38,7 @@ function g =  LinePickingMean(mode, parameters)
 %    g = expected value for given mode and parameters 
 %         
 %
-% See Also LinePickingPDF, LinePickingCDF, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
 g = LinePicking(2, mode, parameters);
 
 

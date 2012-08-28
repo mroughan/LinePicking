@@ -96,7 +96,8 @@ LinePickingRec LinePickingFields[] =
 
 /* give details of a mode */
 void LinePickingModeLookup(int *, char**, char**);
-void LinePickingAllmodes();
+void LinePickingPrintAllmodes();
+void LinePickingAllModes(char **, char **);
 
 /* check that a mode and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
