@@ -12,7 +12,7 @@
   object rather than using @
 }
 \examples{
-tmp <- CreateLinePicking(mode=0,para=10)
+tmp <- CreateLinePicking(problem=0,para=10)
 stats(tmp)
 }
 \author{

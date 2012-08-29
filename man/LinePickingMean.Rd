@@ -1,26 +1,27 @@
 \name{LinePickingMean}
 \alias{LinePickingMean}
-\title{Get expected value for given mode and parameters}
+\title{Get expected value for given problem and parameters}
 \usage{
-  LinePickingMean(mode = 0, para)
+  LinePickingMean(problem = 0, para)
 }
 \arguments{
-  \item{mode}{see \code{\link{LinePickingPDF}}}
+  \item{problem}{see \code{\link{LinePickingPDF}}}
 
   \item{para}{the parameter necessary to describe the space
-  given by mode.}
+  given by problem.}
 }
 \value{
   expected value
 }
 \description{
-  For a given mode and parameters gives the expected value
+  For a given problem and parameters gives the expected
+  value
 }
 \note{
   August 25 2012
 }
 \examples{
-LinePickingMean(mode=0,para=10)
+LinePickingMean(problem=0,para=10)
 }
 \author{
   Eric Parsonage, Matt Roughan, Jono Tuke

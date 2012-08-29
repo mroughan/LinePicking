@@ -2,12 +2,12 @@
 \alias{LinePickingPDF}
 \title{Get pdf for distance between two random points}
 \usage{
-  LinePickingPDF(t, mode = 0, para)
+  LinePickingPDF(t, problem = 0, para)
 }
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
 
-  \item{mode}{\itemize{ \item 0 Square, with side length
+  \item{problem}{\itemize{ \item 0 Square, with side length
   parameters[0] \item 1 Disk, with radius parameters[0]
   \item 2 Hyper-ball, dimension parameters[0], radius
   parameters[1] \item 3 Rectangle, side lengths
@@ -18,7 +18,7 @@
   PrismGeodesic, TBA }}
 
   \item{para}{the parameter necessary to describe the space
-  given by mode.}
+  given by problem.}
 }
 \value{
   vector of probability density function values for each
@@ -35,7 +35,7 @@
 }
 \examples{
 t <- seq(0,1,l=1000)
-y <- LinePickingPDF(t=t,mode=0,para=1)
+y <- LinePickingPDF(t=t,problem=0,para=1)
 plot(t,y,type='l')
 }
 \author{

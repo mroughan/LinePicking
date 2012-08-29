@@ -12,8 +12,6 @@ Imports:
     methods
 Collate:
     'LinePickingPDF.R'
-    'LinePickingModeLookup.R'
-    'LinePickingAllmodes.R'
     'LinePickingCheckParameters.R'
     'LinePickingCDF.R'
     'LinePickingMean.R'
@@ -24,3 +22,5 @@ Collate:
     'LPaccessors.R'
     'LPplot.R'
     'LPshow.R'
+    'LinePickingAllProblems.R'
+    'LinePickingProblemLookup.R'

@@ -14,7 +14,7 @@
   returns the probability density function
 }
 \examples{
-tmp <- CreateLinePicking(mode=0,para=10)
+tmp <- CreateLinePicking(problem=0,para=10)
 CalcPDF(tmp,t=5)
 }
 \author{

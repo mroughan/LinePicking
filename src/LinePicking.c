@@ -87,7 +87,7 @@
 #endif
 
 
-void LinePickingNumberOfProblemss(int *N) 
+void LinePickingNumberOfProblems(int *N) 
 /* 
    output the number of problems
  */

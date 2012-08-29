@@ -9,7 +9,7 @@
   this object has most of the features of the space
 }
 \section{Slots}{
-  \itemize{ \item Mode: type of space \item parameters:
+  \itemize{ \item Problems: type of space \item parameters:
   parameters to define space \item support: range of values
   pdf if non-zero \item t: points in support for pdf and
   cdf \item pdf: probability density function for values t

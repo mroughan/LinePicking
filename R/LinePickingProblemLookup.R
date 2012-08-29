@@ -10,9 +10,9 @@
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' LinePickingProblemsLookup(problem=0)
-LinePickingProblemsLookup <- function(problem=0){
-  tmp <- .C("LinePickingProblemsLookup",
+#' LinePickingProblemLookup(problem=0)
+LinePickingProblemLookup <- function(problem=0){
+  tmp <- .C("LinePickingProblemLookup",
             problem = as.integer(problem),
             name = as.character(""),
             description = as.character(""))
