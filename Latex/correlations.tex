@@ -1,0 +1,25 @@
+\section{Correlations}
+
+Correlations between distances \cite{bartlett64}
+
+(0) correlation between a pair 1/10
+
+(i) $n$ nodes, then $N = n (n-1)/2$ pairs of nodes, and so this many pairs of distances
+
+(ii) the $N (N-1) /2 = n (n-1) (n (n-1) -1)/8 = $ possible pairs of
+correlations
+
+(iii) but only $n(n-1)(n-2)/2$ of the correlations are positive,
+because they share a node so we get average correlation between all
+pairs
+ \[ \frac{1}{10} \frac{n(n-1)(n-2)/2}{n (n-1) (n (n-1) -1)/8} =
+    \frac{2}{5} \frac{(n-2)}{(n (n-1) -1)}
+   \simeq 
+   \frac{2}{5n}
+\]
+for large $n$
+
+Empirical measurement (see triples.m)
+\[ r = 0.114865 \pm 0.000037\]
+ 
+ 

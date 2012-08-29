@@ -28,7 +28,8 @@ LATEX  = latex -interaction=nonstopmode
 PS2PDF = ps2pdf
 DVIPS = dvips
 
-SRCFILES := $(shell ls *.tex)
+# SRCFILES := $(shell ls *.tex)
+SRCFILES = LinePicking.tex
 ROOT = $(SRCFILES:.tex=)
 PS = $(SRCFILES:.tex=.ps)
 PDF = $(SRCFILES:.tex=.pdf)
