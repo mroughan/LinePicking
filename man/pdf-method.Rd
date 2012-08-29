@@ -1,5 +1,6 @@
 \name{CalcPDF}
 \alias{CalcPDF}
+\alias{CalcPDF,linepicking-method}
 \title{Calculates the pdf for a given distance and \code{linepicking} object}
 \arguments{
   \item{x}{A \code{linepicking} object}

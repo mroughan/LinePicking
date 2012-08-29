@@ -13,3 +13,5 @@ LinePicking
 *src-*
 tmp/*
 *pdf
+.Rbuildignore
+
