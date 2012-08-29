@@ -1,4 +1,4 @@
-function g = LinePicking(entry t, mode, parameters)
+function g = LinePicking(entry t, problem, parameters)
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -25,4 +25,4 @@ function g = LinePicking(entry t, mode, parameters)
 % NOTE it is not intended that most users will call this function diectly
 %    there are a number of shim functions that povide a full api to the library
 %
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllmodes
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingProblemLookup, LinePickingPrintAllProblems, LinePickingAllProblemss

@@ -8,7 +8,7 @@
 #' @rdname linepicking-class
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @section Slots: \itemize{
-#'    \item Mode: type of space
+#'    \item Problems: type of space
 #'    \item parameters: parameters to define space
 #'    \item support: range of values pdf if non-zero
 #'    \item t: points in support for pdf and cdf
@@ -22,7 +22,7 @@
 #' getSlots("linepicking")
 #
 setClass("linepicking",
-         representation=representation(mode="numeric", 
+         representation=representation(problem="numeric", 
                                        parameters="numeric",
                                        support="numeric",
                                        t="numeric",

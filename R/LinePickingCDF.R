@@ -15,16 +15,16 @@
 #' @note August 25 2012
 #' @examples
 #' t <- seq(0,1,l=1000)
-#' y <- LinePickingCDF(t=t,mode=0,para=1)
+#' y <- LinePickingCDF(t=t,problem=0,para=1)
 #' plot(t,y,type='l')
 LinePickingCDF <-
-  function(t,mode=0,para){
+  function(t,problem=0,para){
     n <- length(t)
     tmp <- .C('LinePickingCDF',
               t = as.double(t),
               pdf = as.double(rep(0,n)),
               n = as.integer(n),
-              mode = as.integer(mode),
+              problem = as.integer(problem),
               para = as.double(para),
               Npar = as.integer(length(para)),
               results = as.integer(0),

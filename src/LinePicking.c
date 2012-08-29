@@ -24,7 +24,7 @@
  * C Call as:     result = LinePicking( ??? );
  *
  * Unix command line call as:  
- *  LinePicking -f input_file -m mode -p parameter0 -q parameter1 -s parameter2
+ *  LinePicking -f input_file -m problem -p parameter0 -q parameter1 -s parameter2
  *    
  * Various regions are supported:
  *    0: square, with side length parameters[0]
@@ -33,7 +33,7 @@
  *    3: rectangle, side lengths parameters[0], parameters[1]
  *    4: line, length parameters[0]
  *    5: cube, side length parameters[0]
- * with LinePickingModeLookup providing the map from number to name.
+ * with LinePickingProblemLookup providing the map from number to name.
  * 
  */
 
@@ -88,56 +88,43 @@
 
 
 
-/**
- * \public
- * Implements A
- *
- *
- * @param $mode  The distance to calculate the cumulative density for.
- * @param $name $parameters[0] is the size of the square. 
- * @return stuff
- * 
- */ 
-void LinePickingModeLookup(int *mode, char **name, char **description) 
-/* give details of a mode */
+
+
+void LinePickingProblemLookup(int *problem, char **name, char **description) 
+/* give details of a problem */
 {
-    if (*mode<0 || *mode>=NUMBER_OF_MODES) {
-	*name = "Unsupported mode!";
-	*description = "The entered mode number does not correspond to anything.";
+    if (*problem<0 || *problem>=NUMBER_OF_PROBLEMS) {
+	*name = "Unsupported problem!";
+	*description = "The entered problem number does not correspond to anything.";
 	return;
     }
 
-    *name = *LinePickingFields[*mode].name;
-    *description = *LinePickingFields[*mode].description;
+    *name = *LinePickingFields[*problem].name;
+    *description = *LinePickingFields[*problem].description;
     
     return;
 }
 
-/**
- * \public
- * Implements B
- *
- * 
- */
-void LinePickingPrintAllModes(void)
-/* write out the list of modes */
+
+void LinePickingPrintAllProblems(void)
+/* write out the list of problems */
 {
     int i;
     
-    for (i=0; i < NUMBER_OF_MODES; i++)
+    for (i=0; i < NUMBER_OF_PROBLEMS; i++)
     {
-        PRINT_STDOUT(" mode[%d] = %s\n", i, *LinePickingFields[i].name);
+        PRINT_STDOUT(" problem[%d] = %s\n", i, *LinePickingFields[i].name);
     }
     return;
 }
 
-void LinePickingAllModes(char **names, char **descriptions)
-/* return the list of modes:
+void LinePickingAllProblems(char **names, char **descriptions)
+/* return the list of problems:
       assumes memory is allocated for the array of pointers to strings */
 {
     int i;
     
-    for (i=0; i < NUMBER_OF_MODES; i++)
+    for (i=0; i < NUMBER_OF_PROBLEMS; i++)
     {
 	names[i] = *LinePickingFields[i].name;
 	descriptions[i] = *LinePickingFields[i].description;
@@ -147,21 +134,21 @@ void LinePickingAllModes(char **names, char **descriptions)
 }
 
 
-void LinePickingCheckParameters(int *mode, double* parameters, 
+void LinePickingCheckParameters(int *problem, double* parameters, 
                                 int *Npar, int *result, char **error_str)
-/* check that a mode and a set of parameters are valid
+/* check that a problem and a set of parameters are valid
  *
- * mode = type of region (see LinePickingModeLookup)
+ * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
- *    1: unsupported mode
+ *    1: unsupported problem
  *    2: parameters out of range.
  *    3: not enough parameters were entered.
  *    4: other error.
  * error_str: a message explaining the error
  *
- * Note that N, mode and Npar are all passed in by reference so R can cope, 
+ * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly, the function must return void, so we return the exit code 
  * in the last argument.
  */
@@ -173,24 +160,24 @@ void LinePickingCheckParameters(int *mode, double* parameters,
     /* longest error string is 255 characters */
     *error_str  = (char *) malloc((size_t) sizeof(char)*256); 
     
-    /* check the mode is supported */
-    if (*mode<0 || *mode >= NUMBER_OF_MODES) 
+    /* check the problem is supported */
+    if (*problem<0 || *problem >= NUMBER_OF_PROBLEMS) 
     {
         *result=1;
         sprintf(*error_str, 
-                "LinePickingCheckParameters: the mode %d is unsupported.", 
-                *mode);
+                "LinePickingCheckParameters: the problem %d is unsupported.", 
+                *problem);
         return;
     }
     
     /* check that there are the right number of parameters */
-    if (*Npar !=  *LinePickingFields[*mode].Npar) 
+    if (*Npar !=  *LinePickingFields[*problem].Npar) 
     {
         *result=3;
         sprintf(*error_str, 
                 "LinePickingCheckParameters:"
-                " mode %d requires %d parameters (%d were input).", 
-                *mode, *LinePickingFields[*mode].Npar, *Npar);
+                " problem %d requires %d parameters (%d were input).", 
+                *problem, *LinePickingFields[*problem].Npar, *Npar);
         return;
     }
     
@@ -208,65 +195,65 @@ void LinePickingCheckParameters(int *mode, double* parameters,
     }
     
     /* do region specific parameter checking */
-    (*LinePickingFields[*mode].CHECK_PAR)(parameters, result, *error_str);
+    (*LinePickingFields[*problem].CHECK_PAR)(parameters, result, *error_str);
     return;
 }
 
 
-void LinePickingSupport(double *t, int *mode, 
+void LinePickingSupport(double *t, int *problem, 
                         double* parameters, int *Npar, int *result, 
                         char **error_str) 
 /* compute support of distance density g(t) (at points t) between 
  * two points in a region.
  *
  * t = [t_min, t_max]    : assumes 2 spaces are allocated!!!!!
- * mode = type of region (see LinePickingModeLookup)
+ * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
- *    1: unsupported mode
+ *    1: unsupported problem
  *    2: parameters out of range.
  *    3: not enough parameters were entered.
  *    4: other error.
  * error_str: a message explaining the error
  *
- * Note that N, mode and Npar are all passed in by reference so R can cope, 
+ * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly, the function must return void, so we return the exit code 
  * in the last argument.
  */
 {
     
     /* first check input parameters */
-    LinePickingCheckParameters(mode, parameters, Npar, result, error_str);
+    LinePickingCheckParameters(problem, parameters, Npar, result, error_str);
     
     if (*result != 0) /* something was wrong with parameters */
         return;
     
     /* compute the lower and upper end of the support */
-    (*LinePickingFields[*mode].SUPPORT)(t, parameters);
+    (*LinePickingFields[*problem].SUPPORT)(t, parameters);
     
     return; 
 }
 
 
-void LinePickingPDF(double *t, double *g, int *N, int *mode, 
+void LinePickingPDF(double *t, double *g, int *N, int *problem, 
                     double* parameters, int *Npar, int *result, 
                     char **error_str) 
 /* compute distance density g(t) (at points t) between two points in a region.
  *
  * t = array of points at which to calculate density 
  * g = array to store output 
- * mode = type of region (see LinePickingModeLookup)
+ * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
- *    1: unsupported mode
+ *    1: unsupported problem
  *    2: parameters out of range.
  *    3: not enough parameters were entered.
  *    4: other error.
  * error_str: a message explaining the error
  *
- * Note that N, mode and Npar are all passed in by reference so R can cope, 
+ * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly, the function must return void, so we return the exit code 
  * in the last argument.
  */
@@ -275,7 +262,7 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode,
     double support[2];
     
     /* calculate the support and check parameters are valid */
-    LinePickingSupport(support, mode, parameters, Npar, result, error_str);
+    LinePickingSupport(support, problem, parameters, Npar, result, error_str);
 
     if (*result != 0) /* something was wrong with the parameters */
         return;    
@@ -286,14 +273,14 @@ void LinePickingPDF(double *t, double *g, int *N, int *mode,
         if (t[i] < support[0] || t[i] > support[1]) 
             g[i] = 0;
         else 
-            g[i] = (*LinePickingFields[*mode].PDF)(t[i], parameters);
+            g[i] = (*LinePickingFields[*problem].PDF)(t[i], parameters);
     }
     
     return;
 }
 
 
-void LinePickingCDF(double *t, double *g, int *N, int *mode, 
+void LinePickingCDF(double *t, double *g, int *N, int *problem, 
                     double* parameters, int *Npar, int *result, 
                     char **error_str) 
 /* compute distance distribution function \int_0^x g(t) dt (at points t) 
@@ -301,17 +288,17 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode,
  *
  * t = array of points at which to calculate density 
  * g = array to store output 
- * mode = type of region (see LinePickingModeLookup)
+ * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
- *    1: unsupported mode
+ *    1: unsupported problem
  *    2: parameters out of range.
  *    3: not enough parameters were entered.
  *    4: other error.
  * error_str: a message explaining the error
  *
- * Note that N, mode and Npar are all passed in by reference so R can cope, 
+ * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly,the function must return void, so we return the exit code 
  * in the last argument.
  */
@@ -321,7 +308,7 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode,
     
     /* now calculate the support of the distribution,
      which will incidentally check that the parameters are valid */
-    LinePickingSupport(support, mode, parameters, Npar, result, error_str);
+    LinePickingSupport(support, problem, parameters, Npar, result, error_str);
     
     if (*result != 0)
     /* something was wrong with parameters */
@@ -337,7 +324,7 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode,
             if (t[i] >= support[1]) 
                 g[i] = 1.0;
             else 
-                g[i] = (*LinePickingFields[*mode].CDF)(t[i], parameters);
+                g[i] = (*LinePickingFields[*problem].CDF)(t[i], parameters);
         }
     }
     
@@ -345,24 +332,24 @@ void LinePickingCDF(double *t, double *g, int *N, int *mode,
 }
 
 
-void LinePickingMean(double *mean, int *mode, 
+void LinePickingMean(double *mean, int *problem, 
                      double* parameters, int *Npar, int *result, 
                      char **error_str) 
 /* compute mean  between two points in a region.
  *
  * t = array of points at which to calculate density 
  * mean = mean line length
- * mode = type of region (see LinePickingModeLookup)
+ * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
- *    1: unsupported mode
+ *    1: unsupported problem
  *    2: parameters out of range.
  *    3: not enough parameters were entered.
  *    4: other error.
  * error_str: a message explaining the error
  *
- * Note that mode and Npar are all passed in by reference so R can cope, 
+ * Note that problem and Npar are all passed in by reference so R can cope, 
  * and similarly,the function must return void, so we return the exit code 
  * in the last argument.
  */
@@ -373,36 +360,36 @@ void LinePickingMean(double *mean, int *mode,
     /* now calculate the support of the distribution,
      which will incidentally check that the parameters are valid
      */
-    LinePickingSupport(support, mode, parameters, Npar, result, error_str);
+    LinePickingSupport(support, problem, parameters, Npar, result, error_str);
     if (*result != 0) 
     /* something was wrong with parameters */
         return; 
     
     /* calculate the mean */
-    *mean = (*LinePickingFields[*mode].MEAN)(parameters);
+    *mean = (*LinePickingFields[*problem].MEAN)(parameters);
 
     return;
 }
 
 
-void LinePickingVar(double *var, int *mode, 
+void LinePickingVar(double *var, int *problem, 
                     double* parameters, int *Npar, int *result, 
                     char **error_str) 
 /* compute variance between two points in a region.
  *
  * t = array of points at which to calculate density 
  * var = var line length
- * mode = type of region (see LinePickingModeLookup)
+ * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
  * result = exit code
  *    0: parameters are valid
- *    1: unsupported mode
+ *    1: unsupported problem
  *    2: parameters out of range.
  *    3: not enough parameters were entered.
  *    4: other error.
  * error_str: a message explaining the error
  *
- * Note that mode and Npar are all passed in by reference so R can cope, 
+ * Note that problem and Npar are all passed in by reference so R can cope, 
  * and similarly,the function must return void, so we return the exit code 
  * in the last argument.
  */
@@ -413,12 +400,12 @@ void LinePickingVar(double *var, int *mode,
     /* now calculate the support of the distribution,
      which will incidentally check that the parameters are valid
      */
-    LinePickingSupport(support, mode, parameters, Npar, result, error_str);
+    LinePickingSupport(support, problem, parameters, Npar, result, error_str);
     if (*result != 0) /* something was wrong with parameters */
         return;
     
     /* calculate the variance */
-    *var = (*LinePickingFields[*mode].VAR)(parameters);
+    *var = (*LinePickingFields[*problem].VAR)(parameters);
     
     return;
 }
@@ -458,15 +445,15 @@ void CheckNumberOutputArg(int nlhs, int max, char* entry_str)
 }
 
 /* if we fail this we exit with a message */            
-void CheckMode(int mode, char* entry_str)
+void CheckProblem(int problem, char* entry_str)
 {
     char buffer[256];
-    if (mode < 0 || mode >= NUMBER_OF_MODES) 
+    if (problem < 0 || problem >= NUMBER_OF_PROBLEMS) 
     {
         sprintf(buffer, 
                 "\n%s entry point: "
-                "the mode %d is unsupported.", 
-                entry_str, mode);
+                "the problem %d is unsupported.", 
+                entry_str, problem);
         
         mexErrMsgTxt(buffer);  
     }
@@ -481,9 +468,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     int N, M;    /* number of points */
     int Npar;    /* number of parameters */
     int i;					
-    int mode;    /* the type of region on which to calculate the distribution */
+    int problem;    /* the type of region on which to calculate the distribution */
     double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the mode */
+                         note that meaning of parameters depends on the problem */
     int entry;
     
     int result;
@@ -492,9 +479,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     double stat;
 
     int ndim = 1; /* useful for creating 1D arrays */
-    const mwSize dims[1] = {NUMBER_OF_MODES}; /* useful for creating arrays */
-    char *names[NUMBER_OF_MODES];       /* used to output a list of names of the modes */
-    char *descriptions[NUMBER_OF_MODES]; /* used to output a list of descriptions of the modes */
+    const mwSize dims[1] = {NUMBER_OF_PROBLEMS}; /* useful for creating arrays */
+    char *names[NUMBER_OF_PROBLEMS];       /* used to output a list of names of the problems */
+    char *descriptions[NUMBER_OF_PROBLEMS]; /* used to output a list of descriptions of the problems */
     
     if (nrhs < 1)
         mexErrMsgTxt("LinePicking needs at least one input parameter.");
@@ -525,8 +512,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             
             t = mxGetPr(prhs[1]);
             
-            mode = (int)mxGetScalar(prhs[2]);
-            CheckMode(mode, "LinePickingCDF");
+            problem = (int)mxGetScalar(prhs[2]);
+            CheckProblem(problem, "LinePickingCDF");
             
             Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
             parameters = mxGetPr(prhs[3]);
@@ -534,7 +521,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
             g = mxGetPr(plhs[0]);
                 
-            LinePickingPDF(t, g, &N, &mode, parameters, 
+            LinePickingPDF(t, g, &N, &problem, parameters, 
                            &Npar, &result, &error_str);
 
             break;
@@ -553,8 +540,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             
             t = mxGetPr(prhs[1]);
             
-            mode = (int)mxGetScalar(prhs[2]);
-            CheckMode(mode, "LinePickingCDF");
+            problem = (int)mxGetScalar(prhs[2]);
+            CheckProblem(problem, "LinePickingCDF");
             
             Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
             parameters = mxGetPr(prhs[3]);
@@ -562,7 +549,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
             g = mxGetPr(plhs[0]);
             
-            LinePickingCDF(t, g, &N, &mode, parameters, 
+            LinePickingCDF(t, g, &N, &problem, parameters, 
                            &Npar, &result, &error_str);
             
             break;
@@ -571,10 +558,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             CheckNumberInputArg(nrhs, 3, "LinePickingMean");
             CheckNumberOutputArg(nlhs, 1, "LinePickingMean");
             
-            /* three parameters the second is the mode */
-            mode = (int)mxGetScalar(prhs[1]);
+            /* three parameters the second is the problem */
+            problem = (int)mxGetScalar(prhs[1]);
             
-            CheckMode(mode, "LinePickingMean");
+            CheckProblem(problem, "LinePickingMean");
             
             /* three parameters the third are the region parameters */
             Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
@@ -583,7 +570,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
             g = mxGetPr(plhs[0]);;
         
-            LinePickingMean(g, &mode, parameters, &Npar, &result, 
+            LinePickingMean(g, &problem, parameters, &Npar, &result, 
                             &error_str); 
             
             break;
@@ -591,10 +578,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         case 3: /* LinePickingVar */
             CheckNumberInputArg(nrhs, 3, "LinePickingVar");
             CheckNumberOutputArg(nlhs, 1, "LinePickingVar");
-            /* three parameters the second is the mode */
-            mode = (int)mxGetScalar(prhs[1]);
+            /* three parameters the second is the problem */
+            problem = (int)mxGetScalar(prhs[1]);
             
-            CheckMode(mode, "LinePickingVar");
+            CheckProblem(problem, "LinePickingVar");
             
             /* three parameters the third are the region parameters */
             Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
@@ -603,7 +590,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
             g = mxGetPr(plhs[0]);;
             
-            LinePickingVar(g, &mode, parameters, &Npar, &result, 
+            LinePickingVar(g, &problem, parameters, &Npar, &result, 
                             &error_str);
             break;
             
@@ -611,10 +598,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             CheckNumberInputArg(nrhs, 3, "LinePickingSupport");
             CheckNumberOutputArg(nlhs, 1, "LinePickingSupport");
             
-            /* three parameters the second is the mode */
-            mode = (int)mxGetScalar(prhs[1]);
+            /* three parameters the second is the problem */
+            problem = (int)mxGetScalar(prhs[1]);
             
-            CheckMode(mode, "LinePickingSupport");
+            CheckProblem(problem, "LinePickingSupport");
             
             /* three parameters the third are the region parameters */
             Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
@@ -623,37 +610,37 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             plhs[0] = mxCreateDoubleMatrix(1, 2, mxREAL);
             g = mxGetPr(plhs[0]);
             
-            LinePickingSupport(g, &mode, parameters, &Npar, &result, 
+            LinePickingSupport(g, &problem, parameters, &Npar, &result, 
                            &error_str);
             
             break;
             
-        case 5: /* LinePickingModeLookup */
+        case 5: /* LinePickingProblemLookup */
             
-            CheckNumberInputArg(nrhs, 2, "LinePickingModeLookup");
-            CheckNumberOutputArg(nlhs, 2, "LinePickingModeLookup");
+            CheckNumberInputArg(nrhs, 2, "LinePickingProblemLookup");
+            CheckNumberOutputArg(nlhs, 2, "LinePickingProblemLookup");
                
-            /* two parameters the second is the mode */
-            mode = (int)mxGetScalar(prhs[1]);
+            /* two parameters the second is the problem */
+            problem = (int)mxGetScalar(prhs[1]);
             
-            CheckMode(mode, "LinePickingModeLookup");
+            CheckProblem(problem, "LinePickingProblemLookup");
             
             /* success */ 
             {
                 char *name;
                 char *description;
                 
-                LinePickingModeLookup(&mode, &name, &description);
+                LinePickingProblemLookup(&problem, &name, &description);
                 
                 plhs[0] = mxCreateString(name);
                 plhs[1] = mxCreateString(description);
             }
             return;
             
-        case 6: /* LinePickingPrintAllModes */
-            CheckNumberInputArg(nrhs, 1, "LinePickingPrintAllModes");
-            CheckNumberOutputArg(nlhs, 0, "LinePickingPrintAllModes");
-            LinePickingPrintAllModes();
+        case 6: /* LinePickingPrintAllProblems */
+            CheckNumberInputArg(nrhs, 1, "LinePickingPrintAllProblems");
+            CheckNumberOutputArg(nlhs, 0, "LinePickingPrintAllProblems");
+            LinePickingPrintAllProblems();
                        
             return;
             
@@ -661,15 +648,15 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             CheckNumberInputArg(nrhs, 3, "LinePickingCheckParameters");
             CheckNumberOutputArg(nlhs, 2, "LinePickingCheckParameters");
             
-            /* three parameters the second is the mode */
-            mode = (int)mxGetScalar(prhs[1]);
+            /* three parameters the second is the problem */
+            problem = (int)mxGetScalar(prhs[1]);
             
             /* three parameters the third are the region parameters */
             Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
             parameters = mxGetPr(prhs[2]);
             
             
-            LinePickingCheckParameters(&mode, parameters, &Npar, &result, 
+            LinePickingCheckParameters(&problem, parameters, &Npar, &result, 
                            &error_str);
             
             plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
@@ -681,15 +668,15 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             result = 0;
             break;
 
-        case 8: /* LinePickingAllModes */
+        case 8: /* LinePickingAllProblems */
 
-            CheckNumberInputArg(nrhs, 1, "LinePickingAllModes");
-            CheckNumberOutputArg(nlhs, 2, "LinePickingAllModes");
+            CheckNumberInputArg(nrhs, 1, "LinePickingAllProblems");
+            CheckNumberOutputArg(nlhs, 2, "LinePickingAllProblems");
             plhs[0] = mxCreateCellArray(1, dims);
             plhs[1] = mxCreateCellArray(1, dims);
 
-            LinePickingAllModes(names, descriptions);
-            for (i=0; i < NUMBER_OF_MODES; i++)
+            LinePickingAllProblems(names, descriptions);
+            for (i=0; i < NUMBER_OF_PROBLEMS; i++)
             {
                 mxSetCell(plhs[0], i, mxCreateString(names[i]));
                 mxSetCell(plhs[1], i, mxCreateString(descriptions[i]));
@@ -718,7 +705,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 static void 
 usage_LinePicking()
 {
-    fprintf(stderr, "Usage: LinePicking -f input_file -m mode -p parameter[0]"
+    fprintf(stderr, "Usage: LinePicking -f input_file -m problem -p parameter[0]"
             " -q parameter[1] -s parameter[2] \n");
     fprintf(stderr, "           input_file contains a list of points t.\n");
     exit(1);
@@ -726,7 +713,7 @@ usage_LinePicking()
 
 static void 
 set_pars_LinePicking(int argc, char *argv[], 
-                     char **file, int *mode, 
+                     char **file, int *problem, 
                      double *parameters, int *Npar)
 {
     char c;
@@ -734,7 +721,7 @@ set_pars_LinePicking(int argc, char *argv[],
     extern int      optind;
     
     /* defaults */
-    *mode = 0;
+    *problem = 0;
     /* longest allowed file name is 255 characters */
     *file = (char *) malloc((size_t) sizeof(char)*256);
     parameters[0] = 1.0; 
@@ -748,7 +735,7 @@ set_pars_LinePicking(int argc, char *argv[],
             if (sscanf(optarg,"%s",*file) != 1) usage_LinePicking(); 
             break; 
         case 'm':  
-            if (sscanf(optarg,"%d",mode) != 1) usage_LinePicking(); 
+            if (sscanf(optarg,"%d",problem) != 1) usage_LinePicking(); 
             break; 
         case 'p': 
             if (sscanf(optarg,"%lf",&(parameters[0])) != 1) usage_LinePicking(); 
@@ -763,7 +750,7 @@ set_pars_LinePicking(int argc, char *argv[],
         default: 
             usage_LinePicking(); 
     }
-    *Npar = *LinePickingFields[*mode].Npar;
+    *Npar = *LinePickingFields[*problem].Npar;
 }
 
 int main(int argc, char *argv[])
@@ -771,7 +758,7 @@ int main(int argc, char *argv[])
     int i=0;
     char *readbuf;
     double epsilon;
-    int mode;
+    int problem;
     double parameters[3];
     char *version = "version 1.0";
     char *file;
@@ -780,37 +767,37 @@ int main(int argc, char *argv[])
     int N=1;
     int result, Npar;
     char *error_str;
-    char *mode_name;
-    char *mode_description;
+    char *Problems_name;
+    char *Problems_description;
     
     /*print out program name and version*/
     fprintf(stderr,"%% %s: %s \n", *argv, version);
     
     /* read in programs options  */
     set_pars_LinePicking(argc, argv, 
-                         &file, &mode, parameters, &Npar);
-    fprintf(stderr,"%%   file=%s, mode=%d, Npar=%d,", file, mode, Npar);
+                         &file, &problem, parameters, &Npar);
+    fprintf(stderr,"%%   file=%s, problem=%d, Npar=%d,", file, problem, Npar);
     for (i=0;i<Npar;i++) 
     {
         fprintf(stderr, " p[%d]=%.3f", i, parameters[i]);
     }
     fprintf(stderr, "\n");
     
-    /* check the mode and parameters are valid */
-    LinePickingCheckParameters(&mode, parameters, &Npar, &result, &error_str);
+    /* check the problem and parameters are valid */
+    LinePickingCheckParameters(&problem, parameters, &Npar, &result, &error_str);
     if (result != 0) 
     {
         fprintf(stderr, "LinePicking: %s\n", error_str);
         exit(1);
     }
-    /* get the mode's name and description */
-    LinePickingModeLookup(&mode, &mode_name, &mode_description);
+    /* get the problem's name and description */
+    LinePickingProblemLookup(&problem, &Problems_name, &Problems_description);
     fprintf(stderr, 
-            "%%  mode=%d, %s (%s)\n", mode, mode_name, mode_description);
+            "%%  problem=%d, %s (%s)\n", problem, Problems_name, Problems_description);
     
     /* calculate the mean and variance */
-    LinePickingMean(&mean, &mode, parameters, &Npar, &result, &error_str);
-    LinePickingVar(&var, &mode, parameters, &Npar, &result, &error_str);
+    LinePickingMean(&mean, &problem, parameters, &Npar, &result, &error_str);
+    LinePickingVar(&var, &problem, parameters, &Npar, &result, &error_str);
     if (result == 0) 
     {
         fprintf(stderr, 
@@ -833,9 +820,9 @@ int main(int argc, char *argv[])
     /* test that we read in exactly one double */  
     while(fscanf(fp, "%lf", &t) == 1) 
     {
-        LinePickingPDF(&t, &g, &N, &mode, 
+        LinePickingPDF(&t, &g, &N, &problem, 
                        parameters, &Npar, &result, &error_str);
-        LinePickingCDF(&t, &G, &N, &mode, 
+        LinePickingCDF(&t, &G, &N, &problem, 
                        parameters, &Npar, &result, &error_str);
         if (result == 0) 
         {

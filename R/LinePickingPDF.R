@@ -7,7 +7,7 @@
 #' between two Poisson distributed points in the space.
 #'
 #' @param t vector of points to calculate pdf for. 
-#' @param mode \itemize{
+#' @param problem \itemize{
 #'    \item 0 Square, with side length parameters[0]
 #'    \item 1 Disk, with radius parameters[0]
 #'    \item 2 Hyper-ball, dimension parameters[0], radius parameters[1]
@@ -19,7 +19,7 @@
 #'    \item 8 PrismGeodesic, TBA
 #' }
 #' @param para the parameter necessary to describe 
-#' the space given by mode.
+#' the space given by problem.
 #' @return vector of probability density function values for each
 #' element in t.
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
@@ -28,16 +28,16 @@
 #' @note August 25 2012
 #' @examples
 #' t <- seq(0,1,l=1000)
-#' y <- LinePickingPDF(t=t,mode=0,para=1)
+#' y <- LinePickingPDF(t=t,problem=0,para=1)
 #' plot(t,y,type='l')
 LinePickingPDF <-
-function(t,mode=0,para){
+function(t,problem=0,para){
   n <- length(t)
   tmp <- .C('LinePickingPDF',
             t = as.double(t),
             pdf = as.double(rep(0,n)),
             n = as.integer(n),
-            mode = as.integer(mode),
+            problem = as.integer(problem),
             para = as.double(para),
             Npar = as.integer(length(para)),
             results = as.integer(0),

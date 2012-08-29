@@ -3,10 +3,10 @@ GetLength <- function(x){
   i <- min(which(x==""))
   return(i)
 }
-#' Gets list of all modes
+#' Gets list of all problems
 #'
-#' Modes are integers describing possible geometries for the line picking
-#' problem. This function prints all possible modes.
+#' Problemss are integers describing possible geometries for the line picking
+#' problem. This function prints all possible problems.
 #' 
 #' @return List with 
 #' \itemize{
@@ -18,9 +18,9 @@ GetLength <- function(x){
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' LinePickingAllModes()
-LinePickingAllModes <- function(){
-  tmp <- .C("LinePickingAllModes",
+#' LinePickingAllProblems()
+LinePickingAllProblems <- function(){
+  tmp <- .C("LinePickingAllProblems",
             names = as.character(rep("",100)),
             description = as.character(rep("",100)))
   n <- GetLength(tmp$names) - 1

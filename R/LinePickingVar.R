@@ -1,22 +1,22 @@
-#' Get variance for given mode and parameters
+#' Get variance for given problem and parameters
 #'
-#' For a given mode and parameters gives the variance
+#' For a given problem and parameters gives the variance
 #'
-#' @param mode see \code{\link{LinePickingPDF}}
+#' @param problem see \code{\link{LinePickingPDF}}
 #' @param para the parameter necessary to describe 
-#' the space given by mode.
+#' the space given by problem.
 #' @return variance
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' LinePickingVar(mode=0,para=10)
+#' LinePickingVar(problem=0,para=10)
 LinePickingVar <-
-function(mode=0,para){
+function(problem=0,para){
   tmp <- .C('LinePickingVar',
             mean = as.double(0),
-            mode = as.integer(mode),
+            problem = as.integer(problem),
             para = as.double(para),
             Npar = as.integer(length(para)),
             results = as.integer(99),

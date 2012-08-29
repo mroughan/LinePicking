@@ -96,14 +96,15 @@ LinePickingRec LinePickingFields[] =
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
-#define NUMBER_OF_MODES elements(LinePickingFields)
+#define NUMBER_OF_PROBLEMS elements(LinePickingFields)
 
+/** @defgroup api "Public API" */
 
-void LinePickingPrintAllmodes();
-void LinePickingAllModes(char **, char **);
-void LinePickingModeLookup(int *, char**, char**);
+void LinePickingPrintAllProblemss();
+void LinePickingAllProblems(char **, char **);
+void LinePickingProblemLookup(int *, char**, char**);
 
-/* check that a mode and a set of parameters are valid */
+/* check that a problem and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
 
 /* compute support of the density */

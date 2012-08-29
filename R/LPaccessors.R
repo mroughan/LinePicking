@@ -1,19 +1,19 @@
-#' Get mode for \code{linepicking} object
+#' Get problem for \code{linepicking} object
 #'
-#' Returns the mode for \code{linepicking} object rather than using @@
+#' Returns the problem for \code{linepicking} object rather than using @@
 #'
 #' @param x A \code{linepicking} object
 #' @return value from slot
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' space(tmp)
 setGeneric("space",function(x) {
   standardGeneric("space")
 })
 setMethod("space", "linepicking", function(x){
-  slot(x,"mode")
+  slot(x,"problem")
 })
 #' Get para for \code{linepicking} object
 #'
@@ -24,7 +24,7 @@ setMethod("space", "linepicking", function(x){
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' para(tmp)
 #'
 setGeneric("para", function(x) {
@@ -42,7 +42,7 @@ setMethod("para", "linepicking", function(x){
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' support(tmp)
 #' para(tmp)
 setGeneric("support",function(x) {
@@ -60,7 +60,7 @@ setMethod("support", "linepicking", function(x){
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' stats(tmp)
 setGeneric("stats",function(x) {
   standardGeneric("stats")
@@ -80,7 +80,7 @@ setMethod("stats", "linepicking", function(x){
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' CalcPDF(tmp,t=5)
 #'
 setGeneric("CalcPDF",function(x,t) {
@@ -100,7 +100,7 @@ setMethod("CalcPDF", "linepicking", function(x,t){
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' CalcCDF(tmp,t=5)
 #'
 setGeneric("CalcCDF",function(x,t) {

@@ -10,7 +10,7 @@
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' plot(tmp)
 #' plot(tmp,dist="cdf")
 setMethod("plot", "linepicking", function(x,dist='pdf',...){

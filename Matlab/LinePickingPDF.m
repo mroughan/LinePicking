@@ -1,4 +1,4 @@
-function g =  LinePickingPDF(t, mode, parameters) 
+function g =  LinePickingPDF(t, problem, parameters) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,12 +14,12 @@ function g =  LinePickingPDF(t, mode, parameters)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingPDF(t, mode, parameters) computes the PDF of the length of a 
-%     randomly chosen line, within some region chosen by the mode. 
+% LinePickingPDF(t, problem, parameters) computes the PDF of the length of a 
+%     randomly chosen line, within some region chosen by the problem. 
 %
 % INPUTS:
 %    t = vector of points on which to calculate the PDF         
-%    mode = region type
+%    problem = region type
 %              currently supported: 
 %                        0: square, with side length parameters[0]
 %                        1: disk, with radius parameters[0]
@@ -38,5 +38,5 @@ function g =  LinePickingPDF(t, mode, parameters)
 %   g(t) = vector of calculated densities      
 %         
 %
-% See Also LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingAllModes 
-g = LinePicking(0, t, mode, parameters);
+% See Also LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingProblemLookup, LinePickingAllProblems 
+g = LinePicking(0, t, problem, parameters);

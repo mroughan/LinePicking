@@ -1,10 +1,10 @@
-#' Creates a linepicking object from mode and parameters
+#' Creates a linepicking object from problem and parameters
 #'
-#' Modes are integers describing possible geometries for the line picking
+#' Problemss are integers describing possible geometries for the line picking
 #' problem. Each has appropraite parameters
 #' 
-#' @param mode see \code{\link{LinePickingPDF}}
-#' @param para parameters for mode.
+#' @param problem see \code{\link{LinePickingPDF}}
+#' @param para parameters for problem.
 #' @param n number of points for plots.
 #' @return an instance of \code{linepicking} class
 #' @author Matt Roughan, Jono Tuke, Eric Parsonage
@@ -12,26 +12,26 @@
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' print(tmp)
-CreateLinePicking <- function(mode, para, n=1000){
+CreateLinePicking <- function(problem, para, n=1000){
   # Check possible space
-  exit <- LinePickingCheckParameters(mode=mode, parameters=para)
+  exit <- LinePickingCheckParameters(problem=problem, parameters=para)
   if(exit == 1){
-    cat("Possible modes are :\n")
-    LinePickingAllModes()
+    cat("Possible problems are :\n")
+    LinePickingAllProblems()
     return(NULL)
   }
   if(exit > 1) return(NULL)
-  support <- LinePickingSupport(mode=mode,parameters=para)
+  support <- LinePickingSupport(problem=problem,parameters=para)
   t <- seq(support[1],support[2],length=n)
   new("linepicking", 
-      mode = mode, 
+      problem = problem, 
       parameters = para,
-      support = LinePickingSupport(mode=mode,parameters=para), 
+      support = LinePickingSupport(problem=problem,parameters=para), 
       t = t,
-      pdf = LinePickingPDF(t=t,mode=mode,para=para),
-      cdf = LinePickingCDF(t=t,mode=mode,para=para),
-      mean = LinePickingMean(mode=mode,para=para),
-      var = LinePickingVar(mode=mode,para=para))
+      pdf = LinePickingPDF(t=t,problem=problem,para=para),
+      cdf = LinePickingCDF(t=t,problem=problem,para=para),
+      mean = LinePickingMean(problem=problem,para=para),
+      var = LinePickingVar(problem=problem,para=para))
 }

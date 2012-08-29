@@ -5,9 +5,9 @@
 clear;
 R = 1;
 N = 100;
-mode = 2; % hyperball
+problem = 2; % hyperball
 parameters = [1,R];
-s = LinePickingSupport(mode, parameters);
+s = LinePickingSupport(problem, parameters);
 dt = diff(s)/N;
 t = s(1):dt:s(2);
 

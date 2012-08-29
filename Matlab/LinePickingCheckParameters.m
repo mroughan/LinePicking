@@ -1,4 +1,4 @@
-function [results error_str] =  LinePickingCheckParameters(mode, parameters) 
+function [results error_str] =  LinePickingCheckParameters(problem, parameters) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,14 +14,14 @@ function [results error_str] =  LinePickingCheckParameters(mode, parameters)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingCheckParameters(mode, parameters) checks that the parameters 
+% LinePickingCheckParameters(problem, parameters) checks that the parameters 
 %     provided represent valid inputs for other functions in the LinePicking 
 %     lirary. Specifically that the parameters supplied are suitable for the 
-%     given mode. 
+%     given problem. 
 %
 %
 % INPUTS:       
-%    mode = region type
+%    problem = region type
 %              currently supported: 
 %                        0: square, with side length parameters[0]
 %                        1: disk, with radius parameters[0]
@@ -40,15 +40,15 @@ function [results error_str] =  LinePickingCheckParameters(mode, parameters)
 %    [results error_str]
 %           currently supported: 
 %                       0: parameters are valid
-%                       1: unsupported mode
+%                       1: unsupported problem
 %                       2: parameters out of range.
 %                       3: not enough parameters were entered.
 %                       4: other error.
 %     
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingProblemLookup, LinePickingPrintAllProblems, LinePickingAllProblems 
 %         
 %
 
-[results error_str] = LinePicking(7, mode, parameters);
+[results error_str] = LinePicking(7, problem, parameters);
 
 

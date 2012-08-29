@@ -1,4 +1,4 @@
-function g =  LinePickingMean(mode, parameters) 
+function g =  LinePickingMean(problem, parameters) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,12 +14,12 @@ function g =  LinePickingMean(mode, parameters)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingMean(mode, parameters) computes the mean of the length of a 
-%     randomly chosen line, within some region chosen by the mode. 
+% LinePickingMean(problem, parameters) computes the mean of the length of a 
+%     randomly chosen line, within some region chosen by the problem. 
 %
 % INPUTS:
 %    t = vector of points on which to calculate the PDF         
-%    mode = region type
+%    problem = region type
 %              currently supported: 
 %                        0: square, with side length parameters[0]
 %                        1: disk, with radius parameters[0]
@@ -35,11 +35,11 @@ function g =  LinePickingMean(mode, parameters)
 %    parameters = vector of parameters for the region
 %         
 % OUTPUTS:        
-%    g = expected value for given mode and parameters 
+%    g = expected value for given problem and parameters 
 %         
 %
-% See Also LinePickingPDF, LinePickingCDF, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
-g = LinePicking(2, mode, parameters);
+% See Also LinePickingPDF, LinePickingCDF, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingProblemLookup, LinePickingPrintAllProblems, LinePickingAllProblems 
+g = LinePicking(2, problem, parameters);
 
 
 

@@ -1,4 +1,4 @@
-function g = LinePickingSupport(mode, parameters) 
+function g = LinePickingSupport(problem, parameters) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,12 +14,12 @@ function g = LinePickingSupport(mode, parameters)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingSupport(mode, parameters)  Given a mode see \link{LinePickingPDF} 
+% LinePickingSupport(problem, parameters)  Given a problem see \link{LinePickingPDF} 
 %     and parameters gives the range of t for which the pdf is non-zero
 %
 %
 % INPUTS:       
-%    mode = region type
+%    problem = region type
 %              currently supported: 
 %                        0: square, with side length parameters[0]
 %                        1: disk, with radius parameters[0]
@@ -38,8 +38,8 @@ function g = LinePickingSupport(mode, parameters)
 %    g = range of t for which the pdf is non-zero
 %
 %
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingCheckParameters, LinePickingModeLookup, LinePickingPrintAllModes, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingCheckParameters, LinePickingProblemLookup, LinePickingPrintAllProblems, LinePickingAllProblems 
 
-g = LinePicking(4, mode, parameters);
+g = LinePicking(4, problem, parameters);
 
 

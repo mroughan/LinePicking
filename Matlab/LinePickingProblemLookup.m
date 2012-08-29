@@ -1,4 +1,4 @@
-function [name description] =  LinePickingModeLookup(mode) 
+function [name description] =  LinePickingProblemLookup(problem) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,16 +14,16 @@ function [name description] =  LinePickingModeLookup(mode)
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingModeLookup(mode) gets information for a given mode
+% LinePickingProblemLookup(problem) gets information for a given problem
 %
 % INPUTS:       
-%    mode = region type to get information about
+%    problem = region type to get information about
 %         
 % OUTPUTS:
-%    [name description] strings with name and description of region refered to by mode
+%    [name description] strings with name and description of region refered to by problem
 %
 %     
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllModes, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllProblems, LinePickingAllProblems 
 %         
 %
 

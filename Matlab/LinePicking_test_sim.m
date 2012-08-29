@@ -23,7 +23,7 @@ rand('state', 1);
 randn('state', 1);
 
 % check that the geometries are what we think they should be 
-LinePickingAllModes;
+LinePickingAllProblems;
 
 
 %

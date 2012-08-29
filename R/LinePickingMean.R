@@ -1,22 +1,22 @@
-#' Get expected value for given mode and parameters
+#' Get expected value for given problem and parameters
 #'
-#' For a given mode and parameters gives the expected value
+#' For a given problem and parameters gives the expected value
 #'
-#' @param mode see \code{\link{LinePickingPDF}}
+#' @param problem see \code{\link{LinePickingPDF}}
 #' @param para the parameter necessary to describe 
-#' the space given by mode.
+#' the space given by problem.
 #' @return expected value
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' LinePickingMean(mode=0,para=10)
+#' LinePickingMean(problem=0,para=10)
 LinePickingMean <-
-function(mode=0,para){
+function(problem=0,para){
   tmp <- .C('LinePickingMean',
             mean = as.double(0),
-            mode = as.integer(mode),
+            problem = as.integer(problem),
             para = as.double(para),
             Npar = as.integer(length(para)),
             results = as.integer(99),

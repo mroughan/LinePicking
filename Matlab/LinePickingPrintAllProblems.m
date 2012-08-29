@@ -1,4 +1,4 @@
-function [names descriptions] =  LinePickingAllModes
+function LinePickingPrintAllProblemss 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,17 +14,13 @@ function [names descriptions] =  LinePickingAllModes
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingAllModes gets lists of the modes, and their descriptions.
+% LinePickingPrintAllProblemss Prints list of all problems
+%    Problemss are integers describing possible geometries for the line picking
+%    problem. This function prints all possible problems.
 %
-% INPUTS:       
-%         
-% OUTPUTS:
-%    [names descriptions] cell arrays of strings with name and description
-%                         of each mode
 %
 %     
-% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllModes, LinePickingAllModes 
+% See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingProblemsLookup, LinePickingAllProblemss
 %         
 %
-
-[names descriptions] = LinePicking(8);
+LinePicking(6);

@@ -11,12 +11,12 @@
 #' @export
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
-#' tmp <- CreateLinePicking(mode=0,para=10)
+#' tmp <- CreateLinePicking(problem=0,para=10)
 #' tmp
 setMethod("show", "linepicking", function(object){
   cat("A LinePicking object with\n")
-  cat("Mode:",space(object),"\n")
-  LinePickingAllModes()
+  cat("Problems:",space(object),"\n")
+  LinePickingAllProblems()
   cat("Parameters:", para(object),"\n")
   cat("Support: ", support(object)[1],"-",
       support(object)[2],"\n",sep='')
