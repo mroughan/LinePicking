@@ -87,6 +87,15 @@
 #endif
 
 
+void LinePickingNumberOfModes(int *N) 
+/* 
+   output the number of modes
+ */
+{
+    *N = NUMBER_OF_MODES;
+    return;
+}
+
 
 /**
  * \public
@@ -697,6 +706,16 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
             return;
             
+       case 9: /* LinePickingNumberOfModes */
+
+            CheckNumberInputArg(nrhs, 1, "LinePickingAllModes");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingAllModes");
+	    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+	    g = mxGetPr(plhs[0]);
+            g[0] = NUMBER_OF_MODES;
+
+	    return;
+
         default:
 	    mexErrMsgTxt("LinePicking unknown entry point requested.");
             

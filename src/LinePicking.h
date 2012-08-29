@@ -46,6 +46,10 @@
 #include "SphereGeodesic.h"
 #include "PrismGeodesic.h"
 
+#ifndef _NOTR
+#include <R.h> /* only include this if we are compiling for R */
+#endif
+
 
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
@@ -99,6 +103,7 @@ LinePickingRec LinePickingFields[] =
 #define NUMBER_OF_MODES elements(LinePickingFields)
 
 
+void LinePickingNumberOfModes(int *);
 void LinePickingPrintAllmodes();
 void LinePickingAllModes(char **, char **);
 void LinePickingModeLookup(int *, char**, char**);

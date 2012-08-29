@@ -48,3 +48,4 @@ distclean:
 # don't build Matlab, or R until after src is built
 Matlab: src
 R: src
+Latex: Matlab
