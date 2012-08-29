@@ -15,8 +15,8 @@
 #' tmp
 setMethod("show", "linepicking", function(object){
   cat("A LinePicking object with\n")
-  cat("Problems:",space(object),"\n")
-  LinePickingAllProblems()
+  cat("Problems:",problem(object),"\n")
+#   LinePickingAllProblems() TODO add better table
   cat("Parameters:", para(object),"\n")
   cat("Support: ", support(object)[1],"-",
       support(object)[2],"\n",sep='')

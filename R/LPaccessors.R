@@ -8,11 +8,11 @@
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @examples
 #' tmp <- CreateLinePicking(problem=0,para=10)
-#' space(tmp)
-setGeneric("space",function(x) {
-  standardGeneric("space")
+#' problem(tmp)
+setGeneric("problem",function(x) {
+  standardGeneric("problem")
 })
-setMethod("space", "linepicking", function(x){
+setMethod("problem", "linepicking", function(x){
   slot(x,"problem")
 })
 #' Get para for \code{linepicking} object
@@ -87,7 +87,7 @@ setGeneric("CalcPDF",function(x,t) {
   standardGeneric("CalcPDF")
 })
 setMethod("CalcPDF", "linepicking", function(x,t){
-  tmp <- LinePickingPDF(t,space(x),para(x))
+  tmp <- LinePickingPDF(t,problem(x),para(x))
   return(tmp)
 })
 #' Calculates the cdf for a given distance and \code{linepicking} object
@@ -107,6 +107,6 @@ setGeneric("CalcCDF",function(x,t) {
   standardGeneric("CalcCDF")
 })
 setMethod("CalcCDF", "linepicking", function(x,t){
-  tmp <- LinePickingCDF(t,space(x),para(x))
+  tmp <- LinePickingCDF(t,problem(x),para(x))
   return(tmp)
 })

@@ -1,4 +1,4 @@
-function number_of_problems =  LinePickingNumberOfModes
+function number_of_problems =  LinePickingNumberOfProblems
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
@@ -14,12 +14,12 @@ function number_of_problems =  LinePickingNumberOfModes
 %     You should have received a copy of the GNU General Public License
 %     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% LinePickingNumberOfModes returns the number of problems currently implemented
+% LinePickingNumberOfProblems returns the number of problems currently implemented
 %
 % INPUTS:       
 %         
 % OUTPUTS:
-%    number_of_problems the number of problems currently implemented.
+%    The the number of problems currently implemented.
 %
 %     
 % See Also LinePickingPDF, LinePickingCDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingPrintAllProblems, LinePickingAllProblems 
