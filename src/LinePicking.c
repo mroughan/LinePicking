@@ -89,7 +89,7 @@
 
 void LinePickingNumberOfModes(int *N) 
 /* 
-   output the number of modes
+   output the number of problems
  */
 {
     *N = NUMBER_OF_PROBLEMS;
