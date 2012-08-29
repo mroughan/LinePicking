@@ -2,6 +2,28 @@
 \label{sec:rectangle_line}
 
 
+Here we consider choosingp lines from a rectangle with side lengths
+$a$ and $b$, which we order $a \leq b$ without loss of generality. 
+We could also describe the problem by the aspect ratio of the
+rectangle, i.e., $a:b$.
+
+Figure~\ref{fig:rect_eg} shows a 2D example, and
+Figure~\ref{fig:rect_pdf} shows the PDFs for various rectangles chosen
+such that $\sqrt{a^2 + b^2} = 1$ to allow comparison (the choice means
+that the PDFs have the same support).
+
+\begin{figure}[tbp]
+  \begin{center}
+    \subfloat[\label{fig:rect_eg}2:1 rectangle example.
+    Example.]{\includegraphics[width=0.4\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect_eg.eps}} 
+    \hspace{6mm}
+    \subfloat[\label{fig:rect_pdf}PDF of rectangle with various aspect
+    ratios.]{\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_test_rect.eps}}
+    \caption{The rectangle-line picking problem.}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
+
 \subsubsection{PDF}
 
 The PDF for the rectangle is given in \cite[Theorem
@@ -27,9 +49,9 @@ where
     \end{array} \right. 
 \end{equation}
 where the rectangle has sides of length $a \leq
-b$. Figure~\ref{fig:rect_density} shows these for various cases,
-chosen such that $\sqrt{a^2 + b^2} = 1$ to allow comparison. We label
-these rectangles by their aspect ratio $a: b$.
+b$. Figure~\ref{fig:rect_pdf} shows these for various cases, chosen
+such that $\sqrt{a^2 + b^2} = 1$ to allow comparison. We label these
+rectangles by their aspect ratio $a: b$.
 
 This is a rather complicated expression, but is easily evaluated
 numerically.  Naldi \cite{m.naldi05:_connec_of_waxman_graph}
