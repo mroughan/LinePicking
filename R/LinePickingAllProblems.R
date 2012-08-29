@@ -1,8 +1,3 @@
-# internal function to get number of non-empty entries
-GetLength <- function(x){
-  i <- min(which(x==""))
-  return(i)
-}
 #' Gets list of all problems
 #'
 #' Problemss are integers describing possible geometries for the line picking
