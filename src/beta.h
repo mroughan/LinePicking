@@ -23,6 +23,8 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -30,10 +32,21 @@
 #ifndef _BETA_H
 #define _BETA_H
 
+
+#ifndef PRINT_STDOUT 
+#if defined(_MEX) /* MEX */
+#define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
+#elif defined(_NOTR) /* Standalone code or library */
+#define PRINT_STDOUT(...) fprintf(stdout, __VA_ARGS__)
+#else  /* R */
+#define PRINT_STDOUT(...) Rprintf(__VA_ARGS__)
+#endif
+#endif
+
 /* beta function in terms of gamma functions */
 double beta(double, double);
 
 /* regularized incomplete beta function */
-double beta_inc(double, double, double);
+double beta_inc(double, double, double, int *result);
 
 #endif

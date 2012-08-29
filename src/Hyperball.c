@@ -54,7 +54,13 @@ double HyperballDistancePDF(double t, double* parameters)
     x = 1.0 - t2 / (4.0 * r2);
     p = (n + 1.0) / 2.0;
     q = 1.0 / 2.0;
-    Ix = beta_inc(p, q, x);
+    
+    /* 
+     * we dont need to check the result from beta_inc
+     * because the parameters to this function have
+     * been checked thus what we pass to beta_inc is 
+     * also correct */
+    Ix = beta_inc(p, q, x, &result);
     
     return n * (pow(t, n - 1.0) / pow(r, n)) * Ix;
 }

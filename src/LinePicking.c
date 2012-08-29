@@ -693,7 +693,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
             return;
             
-       case 9: /* LinePickingNumberOfproblemss */
+       case 9: /* LinePickingNumberOfProblems */
 
             CheckNumberInputArg(nrhs, 1, " LinePickingNumberOfProblems");
             CheckNumberOutputArg(nlhs, 1, " LinePickingNumberOfProblems");

@@ -54,6 +54,7 @@
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
+#ifndef PRINT_STDOUT
 /* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
 #if defined(_MEX) /* MEX */
 #define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
@@ -61,6 +62,7 @@
 #define PRINT_STDOUT(...) fprintf(stdout, __VA_ARGS__)
 #else  /* R */
 #define PRINT_STDOUT(...) Rprintf(__VA_ARGS__)
+#endif
 #endif
 
 

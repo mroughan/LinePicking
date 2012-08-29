@@ -80,57 +80,88 @@ double beta_cont_frac(double a, double b, double x)
  * the given parameters. 
  */
 /* regularized incomplete beta function */
-double beta_inc(double a, double b, double x)
+double beta_inc(double a, double b, double x, int *result)
 {
     double cf;
 
+    /** result = 0 if no error is encontered */
+    *result = 0;
+    
     /* check input arguments */
     if (x < 0.0 || x > 1.0) 
     {
-	fprintf(stderr, "beta_inc: x (=%.3f) must be in the interval [0,1]\n", x);
-	exit(EXIT_FAILURE);
+        PRINT_STDOUT("beta_inc: x (=%.3f) must be in the interval [0,1]\n", x);
+        *result = 1;
+        return 0;
     }
     if (a < 0)
     {
-	fprintf(stderr, "beta_inc: a (=%.3f) must be > 0\n", a);
-	exit(EXIT_FAILURE);
+        PRINT_STDOUT("beta_inc: a (=%.3f) must be > 0\n", a);
+        *result = 2;
+        return 0;
     }
     if (b < 0)
     {
-	fprintf(stderr, "beta_inc: b (=%.3f) must be > 0\n", b);
-	exit(EXIT_FAILURE);
+        PRINT_STDOUT("beta_inc: b (=%.3f) must be > 0\n", b);
+        *result = 3;
+        return 0;
     }
 	
     /* deal with some extreme cases */
-    if (x==0.0) return(0.0);
-    else if (x==1.0) return(1.0);
- 
-    if (a==0.0) return(1.0);
-    else if (b==0.0) return(0.0);
-
-    if (a==1.0 && b==1.0) return (x);
-    else if (a==1.0) return( (1 - pow(1-x,b))/(b*beta(a,b)) );
-    else if (b==1.0) return( pow(x,a)/(a*beta(a,b)) );
-
+    if (x == 0.0) 
+        return 0.0;
+    else 
+        if (x == 1.0) return 1.0;
+    
+    if (a == 0.0) 
+        return 1.0;
+    else
+    {
+        if (b == 0.0) 
+            return 0.0;
+    }
+    
+    if (a == 1.0 && b == 1.0) 
+        return x;
+    else
+    {
+        if (a == 1.0) 
+            return (1 - pow(1 - x, b))/(b * beta(a, b));
+        else 
+            if (b == 1.0) 
+                return pow(x, a) / (a * beta(a, b));
+    }
+    
     /* use identities to get a>1 and b>1  */
-    if (a < 1 && b < 1) {
-	return( (a*beta_inc(a+1,b,x) + b*beta_inc(a,b+1,x))/(a+b)  );
-    } else if (a < 1) {
-	return( beta_inc(a+1,b,x) + pow(x,a)*pow(1-x,b)/(a*beta(a,b)) );
-    } else if (b < 1) {
-	return( beta_inc(a,b+1,x) - pow(x,a)*pow(1-x,b)/(b*beta(a,b)) );
+    if (a < 1 && b < 1) 
+    {
+        return (a * beta_inc(a + 1, b, x, result) + 
+                b * beta_inc(a, b + 1, x, result)) / (a + b)  ;
+    } 
+    else if (a < 1) 
+    {
+        return beta_inc(a + 1, b, x, result) + 
+                pow(x, a) * pow(1 - x, b) / (a * beta(a, b));
+    } 
+    else if (b < 1) 
+    {
+        return beta_inc(a,b+1,x, result) - 
+                pow(x, a) * pow(1 - x, b) / (b * beta(a, b));
     }
 
     /* get started */
-    if (x <= (a+1.0)/(a+b+2.0)) {
-	/* use continued fractions */
-	cf = beta_cont_frac(a,b,x);
-	return( pow(x,a)*pow(1-x,b)*cf/(a*beta(a,b)) );
-    } else {
-	/* look at complement */
-	/* cf = beta_cont_frac(b, a, 1-x); */
-	/* return( 1.0 -  pow(x,a)*pow(1-x,b)*cf/(b*beta(b,a)) );*/
-	return( 1.0 - beta_inc(b, a, 1.0-x) ); 
+    if (x <= (a + 1.0) / (a + b + 2.0)) 
+    {
+        /* use continued fractions */
+        cf = beta_cont_frac(a, b, x);
+        return pow(x, a) * pow(1 - x, b) * cf / (a * beta(a,b )) ;
+    } 
+    else 
+    {
+        /* look at complement */
+        /* cf = beta_cont_frac(b, a, 1-x); */
+        /* return( 1.0 -  pow(x,a)*pow(1-x,b)*cf/(b*beta(b,a)) );*/
+        return 1.0 - beta_inc(b, a, 1.0-x, result); 
     }
     
 }
