@@ -1,3 +1,137 @@
-\hypertarget{group__api}{\section{\char`\"{}\-Public A\-P\-I\char`\"{}}
-\label{group__api}\index{\char`\"{}\-Public A\-P\-I\char`\"{}@{""Public A\-P\-I""}}
+\hypertarget{group__api}{\section{Line\-Picking A\-P\-I}
+\label{group__api}\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}}
 }
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group__api_gab0e3cb9eaef2a9f040f1135eee394f28}{Line\-Picking\-Number\-Of\-Problems} (int $\ast$)
+\item 
+\hypertarget{group__api_gaf35cfa0008791ab328033efdcb20a2bc}{void {\bfseries Line\-Picking\-Print\-All\-Problems} ()}\label{group__api_gaf35cfa0008791ab328033efdcb20a2bc}
+
+\item 
+\hypertarget{group__api_gaf04b41252ebd1a3013b6bcb4dbbf3649}{void {\bfseries Line\-Picking\-All\-Problems} (char $\ast$$\ast$, char $\ast$$\ast$)}\label{group__api_gaf04b41252ebd1a3013b6bcb4dbbf3649}
+
+\item 
+\hypertarget{group__api_ga146eea4bf38bd6e3812ea47ae2ac57a7}{void {\bfseries Line\-Picking\-Problem\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)}\label{group__api_ga146eea4bf38bd6e3812ea47ae2ac57a7}
+
+\item 
+void \hyperlink{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{Line\-Picking\-Check\-Parameters} (int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+\item 
+void \hyperlink{group__api_ga0aec0b2f87903f4bf4ad3011a99b3446}{Line\-Picking\-Support} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+\item 
+void \hyperlink{group__api_ga8feba9835984bd74f3d919f51389e573}{Line\-Picking\-P\-D\-F} (double $\ast$, double $\ast$, int $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+\item 
+void \hyperlink{group__api_ga445ba2c007d60d789747cecbd5f874b9}{Line\-Picking\-C\-D\-F} (double $\ast$, double $\ast$, int $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+\item 
+\hypertarget{group__api_ga39879835a11f7af8bf65699f9d83a5cb}{void {\bfseries Line\-Picking\-Mean} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{group__api_ga39879835a11f7af8bf65699f9d83a5cb}
+
+\item 
+void \hyperlink{group__api_ga08fecba488534373e8d1710f273bc49c}{Line\-Picking\-Var} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This section documents the A\-P\-I exposed for the use of other programs. These are the functions called by the R and Matlab wrappers included in this package. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000006}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
+
+
+\subsection{Function Documentation}
+\hypertarget{group__api_ga445ba2c007d60d789747cecbd5f874b9}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-C\-D\-F@{Line\-Picking\-C\-D\-F}}
+\index{Line\-Picking\-C\-D\-F@{Line\-Picking\-C\-D\-F}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{g, }
+\item[{int $\ast$}]{N, }
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga445ba2c007d60d789747cecbd5f874b9}
+compute distance distribution function $^\wedge$x g(t) dt (at points t) between two points in a region.
+
+t = array of points at which to calculate density g = array to store output problem = type of region (see Line\-Picking\-Problem\-Lookup) Npar = number of parameters result = exit code 0\-: parameters are valid 1\-: unsupported problem 2\-: parameters out of range. 3\-: not enough parameters were entered. 4\-: other error. error\-\_\-str\-: a message explaining the error
+
+Note that N, problem and Npar are all passed in by reference so R can cope, and similarly,the function must return void, so we return the exit code in the last argument. \hypertarget{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Check\-Parameters@{Line\-Picking\-Check\-Parameters}}
+\index{Line\-Picking\-Check\-Parameters@{Line\-Picking\-Check\-Parameters}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_gac55d1d166b33c8906ceccbb37010ddb0}
+check that a problem and a set of parameters are valid
+
+problem = type of region (see Line\-Picking\-Problem\-Lookup) Npar = number of parameters result = exit code 0\-: parameters are valid 1\-: unsupported problem 2\-: parameters out of range. 3\-: not enough parameters were entered. 4\-: other error. error\-\_\-str\-: a message explaining the error
+
+Note that N, problem and Npar are all passed in by reference so R can cope, and similarly, the function must return void, so we return the exit code in the last argument. \hypertarget{group__api_gab0e3cb9eaef2a9f040f1135eee394f28}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Number\-Of\-Problems@{Line\-Picking\-Number\-Of\-Problems}}
+\index{Line\-Picking\-Number\-Of\-Problems@{Line\-Picking\-Number\-Of\-Problems}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-Number\-Of\-Problems}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Number\-Of\-Problems (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{N}
+\end{DoxyParamCaption}
+)}}\label{group__api_gab0e3cb9eaef2a9f040f1135eee394f28}
+Helper function to expose the number of currently implemented problems. 
+\begin{DoxyParams}{Parameters}
+{\em \$\-N} & Pointer to an integer to store the number of currently implemented problems. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of currently implemented problems is returned in \$\-N 
+\end{DoxyReturn}
+\hypertarget{group__api_ga8feba9835984bd74f3d919f51389e573}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-P\-D\-F@{Line\-Picking\-P\-D\-F}}
+\index{Line\-Picking\-P\-D\-F@{Line\-Picking\-P\-D\-F}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{g, }
+\item[{int $\ast$}]{N, }
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga8feba9835984bd74f3d919f51389e573}
+compute distance density g(t) (at points t) between two points in a region.
+
+t = array of points at which to calculate density g = array to store output problem = type of region (see Line\-Picking\-Problem\-Lookup) Npar = number of parameters result = exit code 0\-: parameters are valid 1\-: unsupported problem 2\-: parameters out of range. 3\-: not enough parameters were entered. 4\-: other error. error\-\_\-str\-: a message explaining the error
+
+Note that N, problem and Npar are all passed in by reference so R can cope, and similarly, the function must return void, so we return the exit code in the last argument. \hypertarget{group__api_ga0aec0b2f87903f4bf4ad3011a99b3446}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Support@{Line\-Picking\-Support}}
+\index{Line\-Picking\-Support@{Line\-Picking\-Support}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga0aec0b2f87903f4bf4ad3011a99b3446}
+compute support of distance density g(t) (at points t) between two points in a region.
+
+t = \mbox{[}t\-\_\-min, t\-\_\-max\mbox{]} \-: assumes 2 spaces are allocated!!!!! problem = type of region (see Line\-Picking\-Problem\-Lookup) Npar = number of parameters result = exit code 0\-: parameters are valid 1\-: unsupported problem 2\-: parameters out of range. 3\-: not enough parameters were entered. 4\-: other error. error\-\_\-str\-: a message explaining the error
+
+Note that N, problem and Npar are all passed in by reference so R can cope, and similarly, the function must return void, so we return the exit code in the last argument. \hypertarget{group__api_ga08fecba488534373e8d1710f273bc49c}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Var@{Line\-Picking\-Var}}
+\index{Line\-Picking\-Var@{Line\-Picking\-Var}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-Var}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{var, }
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga08fecba488534373e8d1710f273bc49c}
+compute variance between two points in a region.
+
+t = array of points at which to calculate density var = var line length problem = type of region (see Line\-Picking\-Problem\-Lookup) Npar = number of parameters result = exit code 0\-: parameters are valid 1\-: unsupported problem 2\-: parameters out of range. 3\-: not enough parameters were entered. 4\-: other error. error\-\_\-str\-: a message explaining the error
+
+Note that problem and Npar are all passed in by reference so R can cope, and similarly,the function must return void, so we return the exit code in the last argument. 

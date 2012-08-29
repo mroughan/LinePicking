@@ -75,16 +75,17 @@ double beta_cont_frac(double a, double b, double x)
  * @param $a in \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$
  * @param $b in  \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$
  * @param $x in  \f$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. \f$
+ * @param $result is non zero if some error occured.  
  * @return
  * The result of evaluating the incomplete beta function with 
- * the given parameters. 
+ * the given parameters or an error conditon returned in $result 
  */
 /* regularized incomplete beta function */
 double beta_inc(double a, double b, double x, int *result)
 {
     double cf;
 
-    /** result = 0 if no error is encontered */
+    /* result = 0 if no error is encontered */
     *result = 0;
     
     /* check input arguments */

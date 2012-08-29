@@ -14,26 +14,6 @@
  *
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * Compute the distance distribution between two point in a region, 
- * often called the "line picking problem".
- *
- * MEX Call as:   [g] = LinePicking( ??? )
- *                   remember: parameter(1) (in matlab) == parameter[0] (in C)
- *
- * C Call as:     result = LinePicking( ??? );
- *
- * Unix command line call as:  
- *  LinePicking -f input_file -m problem -p parameter0 -q parameter1 -s parameter2
- *    
- * Various regions are supported:
- *    0: square, with side length parameters[0]
- *    1: disk, with radius parameters[0]
- *    2: hyper-ball, dimension parameters[0], radius parameters[1]
- *    3: rectangle, side lengths parameters[0], parameters[1]
- *    4: line, length parameters[0]
- *    5: cube, side length parameters[0]
- * with LinePickingProblemLookup providing the map from number to name.
  * 
  */
 
@@ -50,15 +30,18 @@
  * current list of known PDFs, CDFs, means and variances for such problems.
  * It also provides solutions to some previously unsolved problems. 
  *
- * The code has been designed to provide a small set of entry points  
- * which are callable from R, Matlab and C. The documentation is found in 
- * the files for their respective help systems. 
+ * The library has been designed to provide a small set of entry points  
+ * which are callable from R, Matlab and other C programs. Documentation
+ * for the R and Matlab bindings to this libary have been provided 
+ * in the a format suitable for each of their help systems.
  *
  * Much of this manual is dedicated to documenting functions specific 
- * to a particular problem but users of the software will only need to 
- * call the entry points documented in 
+ * to a particular problem but users of the library generally only need to 
+ * understand the entry points documented in the @ref api.   
  *
- * A simple method for seamlessly extending the library has been provided.
+ *
+ * A simple method for seamlessly extending the library has been provided and
+ * is also documented in the @ref api.
  * 
  * 
  * @authors Eric Parsonage <eric.parsonage@adelaide.edu.au>
@@ -67,6 +50,13 @@
  */
 
 
+/** 
+ * This section documents the API exposed for the use of other programs.
+ * These are the functions called by the R and Matlab wrappers included 
+ * in this package.
+ * @todo Add some more preamble about the API.
+ * @addtogroup api
+ */
 
 
 #include <math.h>
@@ -87,65 +77,71 @@
 #endif
 
 
-void LinePickingNumberOfProblems(int *N) 
-/* 
-   output the number of problems
+
+/**
+ * Helper function to expose the number of currently implemented problems.
+ * @param $N Pointer to an integer to store the number of currently 
+ * implemented problems. 
+ * @return The number of currently implemented problems is returned in $N 
  */
+void LinePickingNumberOfProblems(int *N) 
+
 {
     *N = NUMBER_OF_PROBLEMS;
-    return;
 }
 
 
-
-
+/**
+ * Given the unction to expose the number of currently implemented problems.
+ * @param $N Pointer to an integer to store the number of currently 
+ * implemented problems. 
+ * @return The number of currently implemented problems is returned in $N 
+ */
 void LinePickingProblemLookup(int *problem, char **name, char **description) 
-/* give details of a problem */
 {
-    if (*problem<0 || *problem>=NUMBER_OF_PROBLEMS) {
-	*name = "Unsupported problem!";
-	*description = "The entered problem number does not correspond to anything.";
-	return;
+    if (*problem < 0 || *problem >= NUMBER_OF_PROBLEMS) 
+    {
+        *name = "Unsupported problem!";
+        *description = 
+            "The entered problem number does not correspond to anything.";
+        return;
     }
 
     *name = *LinePickingFields[*problem].name;
     *description = *LinePickingFields[*problem].description;
-    
-    return;
 }
 
 
-void LinePickingPrintAllProblems(void)
 /* write out the list of problems */
+void LinePickingPrintAllProblems(void)
+
 {
     int i;
     
-    for (i=0; i < NUMBER_OF_PROBLEMS; i++)
+    for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
     {
         PRINT_STDOUT(" problem[%d] = %s\n", i, *LinePickingFields[i].name);
     }
-    return;
 }
 
-void LinePickingAllProblems(char **names, char **descriptions)
+
 /* return the list of problems:
-      assumes memory is allocated for the array of pointers to strings */
+ assumes memory is allocated for the array of pointers to strings */
+
+void LinePickingAllProblems(char **names, char **descriptions)
 {
     int i;
     
-    for (i=0; i < NUMBER_OF_PROBLEMS; i++)
+    for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
     {
-	names[i] = *LinePickingFields[i].name;
-	descriptions[i] = *LinePickingFields[i].description;
+        names[i] = *LinePickingFields[i].name;
+        descriptions[i] = *LinePickingFields[i].description;
     }
-
-    return;
 }
 
-
-void LinePickingCheckParameters(int *problem, double* parameters, 
-                                int *Npar, int *result, char **error_str)
-/* check that a problem and a set of parameters are valid
+/** 
+ *
+ * check that a problem and a set of parameters are valid
  *
  * problem = type of region (see LinePickingProblemLookup)
  * Npar = number of parameters
@@ -160,7 +156,12 @@ void LinePickingCheckParameters(int *problem, double* parameters,
  * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly, the function must return void, so we return the exit code 
  * in the last argument.
+ * 
+ *
  */
+void LinePickingCheckParameters(int *problem, double* parameters, 
+                                int *Npar, int *result, char **error_str)
+
 {
     int i;
     
@@ -170,7 +171,7 @@ void LinePickingCheckParameters(int *problem, double* parameters,
     *error_str  = (char *) malloc((size_t) sizeof(char)*256); 
     
     /* check the problem is supported */
-    if (*problem<0 || *problem >= NUMBER_OF_PROBLEMS) 
+    if (*problem < 0 || *problem >= NUMBER_OF_PROBLEMS) 
     {
         *result=1;
         sprintf(*error_str, 
@@ -205,14 +206,10 @@ void LinePickingCheckParameters(int *problem, double* parameters,
     
     /* do region specific parameter checking */
     (*LinePickingFields[*problem].CHECK_PAR)(parameters, result, *error_str);
-    return;
 }
 
-
-void LinePickingSupport(double *t, int *problem, 
-                        double* parameters, int *Npar, int *result, 
-                        char **error_str) 
-/* compute support of distance density g(t) (at points t) between 
+/** 
+ * compute support of distance density g(t) (at points t) between 
  * two points in a region.
  *
  * t = [t_min, t_max]    : assumes 2 spaces are allocated!!!!!
@@ -229,7 +226,13 @@ void LinePickingSupport(double *t, int *problem,
  * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly, the function must return void, so we return the exit code 
  * in the last argument.
+ *
+ *
  */
+void LinePickingSupport(double *t, int *problem, 
+                        double* parameters, int *Npar, int *result, 
+                        char **error_str) 
+
 {
     
     /* first check input parameters */
@@ -240,15 +243,10 @@ void LinePickingSupport(double *t, int *problem,
     
     /* compute the lower and upper end of the support */
     (*LinePickingFields[*problem].SUPPORT)(t, parameters);
-    
-    return; 
 }
 
-
-void LinePickingPDF(double *t, double *g, int *N, int *problem, 
-                    double* parameters, int *Npar, int *result, 
-                    char **error_str) 
-/* compute distance density g(t) (at points t) between two points in a region.
+/** 
+ * compute distance density g(t) (at points t) between two points in a region.
  *
  * t = array of points at which to calculate density 
  * g = array to store output 
@@ -265,7 +263,13 @@ void LinePickingPDF(double *t, double *g, int *N, int *problem,
  * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly, the function must return void, so we return the exit code 
  * in the last argument.
+ *
+ *
  */
+void LinePickingPDF(double *t, double *g, int *N, int *problem, 
+                    double* parameters, int *Npar, int *result, 
+                    char **error_str) 
+
 {
     int i;
     double support[2];
@@ -284,15 +288,10 @@ void LinePickingPDF(double *t, double *g, int *N, int *problem,
         else 
             g[i] = (*LinePickingFields[*problem].PDF)(t[i], parameters);
     }
-    
-    return;
 }
 
-
-void LinePickingCDF(double *t, double *g, int *N, int *problem, 
-                    double* parameters, int *Npar, int *result, 
-                    char **error_str) 
-/* compute distance distribution function \int_0^x g(t) dt (at points t) 
+/** 
+ * compute distance distribution function \int_0^x g(t) dt (at points t) 
  * between two points in a region.
  *
  * t = array of points at which to calculate density 
@@ -310,7 +309,12 @@ void LinePickingCDF(double *t, double *g, int *N, int *problem,
  * Note that N, problem and Npar are all passed in by reference so R can cope, 
  * and similarly,the function must return void, so we return the exit code 
  * in the last argument.
+ *
  */
+void LinePickingCDF(double *t, double *g, int *N, int *problem, 
+                    double* parameters, int *Npar, int *result, 
+                    char **error_str) 
+
 {
     int i;
     double support[2];
@@ -336,32 +340,13 @@ void LinePickingCDF(double *t, double *g, int *N, int *problem,
                 g[i] = (*LinePickingFields[*problem].CDF)(t[i], parameters);
         }
     }
-    
-    return;
 }
 
 
 void LinePickingMean(double *mean, int *problem, 
                      double* parameters, int *Npar, int *result, 
                      char **error_str) 
-/* compute mean  between two points in a region.
- *
- * t = array of points at which to calculate density 
- * mean = mean line length
- * problem = type of region (see LinePickingProblemLookup)
- * Npar = number of parameters
- * result = exit code
- *    0: parameters are valid
- *    1: unsupported problem
- *    2: parameters out of range.
- *    3: not enough parameters were entered.
- *    4: other error.
- * error_str: a message explaining the error
- *
- * Note that problem and Npar are all passed in by reference so R can cope, 
- * and similarly,the function must return void, so we return the exit code 
- * in the last argument.
- */
+
 {
     int i;
     double support[2];
@@ -380,11 +365,8 @@ void LinePickingMean(double *mean, int *problem,
     return;
 }
 
-
-void LinePickingVar(double *var, int *problem, 
-                    double* parameters, int *Npar, int *result, 
-                    char **error_str) 
-/* compute variance between two points in a region.
+/** 
+ * compute variance between two points in a region.
  *
  * t = array of points at which to calculate density 
  * var = var line length
@@ -400,8 +382,13 @@ void LinePickingVar(double *var, int *problem,
  *
  * Note that problem and Npar are all passed in by reference so R can cope, 
  * and similarly,the function must return void, so we return the exit code 
- * in the last argument.
+ * in the last argument. 
+ *
  */
+
+void LinePickingVar(double *var, int *problem, 
+                    double* parameters, int *Npar, int *result, 
+                    char **error_str) 
 {
     int i;
     double support[2];

@@ -9,12 +9,18 @@ Implements the beta function and the regularized incomplete beta function.
 {\ttfamily \#include $<$math.\-h$>$}\\*
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
 {\ttfamily \#include $<$stdlib.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{beta_8h_ada3d93b92edae24e993803d0179d8eb7}{\#define {\bfseries P\-R\-I\-N\-T\-\_\-\-S\-T\-D\-O\-U\-T}(...)~Rprintf(\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-)}\label{beta_8h_ada3d93b92edae24e993803d0179d8eb7}
+
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 double \hyperlink{beta_8h_a8acd908df0c9f383f67d0cc269ffe160}{beta} (double, double)
 \item 
-double \hyperlink{beta_8h_adf8f53297621a938306cf528fac3f9d3}{beta\-\_\-inc} (double, double, double)
+double \hyperlink{beta_8h_af16c9618bf4cbba7e724a579868b8740}{beta\-\_\-inc} (double, double, double, int $\ast$result)
 \end{DoxyCompactItemize}
 
 
@@ -48,15 +54,16 @@ Implements the beta function. i.\-e., the Euler integral of the first kind, defi
 \begin{DoxyReturn}{Returns}
 The result of evaluating Eulers integral of the first kind with the given parameters. 
 \end{DoxyReturn}
-\hypertarget{beta_8h_adf8f53297621a938306cf528fac3f9d3}{\index{beta.\-h@{beta.\-h}!beta\-\_\-inc@{beta\-\_\-inc}}
+\hypertarget{beta_8h_af16c9618bf4cbba7e724a579868b8740}{\index{beta.\-h@{beta.\-h}!beta\-\_\-inc@{beta\-\_\-inc}}
 \index{beta\-\_\-inc@{beta\-\_\-inc}!beta.h@{beta.\-h}}
 \subsubsection[{beta\-\_\-inc}]{\setlength{\rightskip}{0pt plus 5cm}double beta\-\_\-inc (
 \begin{DoxyParamCaption}
 \item[{double}]{a, }
 \item[{double}]{b, }
-\item[{double}]{x}
+\item[{double}]{x, }
+\item[{int $\ast$}]{result}
 \end{DoxyParamCaption}
-)}}\label{beta_8h_adf8f53297621a938306cf528fac3f9d3}
+)}}\label{beta_8h_af16c9618bf4cbba7e724a579868b8740}
 Implements the regularized incomplete beta function. Defined as $ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $ Where $ \mathrm{B}(a,b) = \int_0^1t^{a-1}(1-t)^{b-1}\,dt $ and $ B(x;\,a,b) = \int_0^x t^{a-1}\,(1-t)^{b-1}\,dt. $ \par
  \begin{DoxySeeAlso}{See Also}
 \href{http://doi.acm.org/10.1145/131766.131776}{\tt http\-://doi.\-acm.\-org/10.\-1145/131766.\-131776} 
@@ -73,7 +80,9 @@ Implements the regularized incomplete beta function. Defined as $ I_x(a,b) = \df
 \hline
 {\em \$x} & in $ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $ \\
 \hline
+{\em \$result} & is non zero if some error occured. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The result of evaluating the incomplete beta function with the given parameters. 
+The result of evaluating the incomplete beta function with the given parameters or an error conditon returned in \$result 
 \end{DoxyReturn}
