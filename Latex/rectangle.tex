@@ -5,7 +5,7 @@
 Here we consider choosingp lines from a rectangle with side lengths
 $a$ and $b$, which we order $a \leq b$ without loss of generality. 
 We could also describe the problem by the aspect ratio of the
-rectangle, i.e., $a:b$.
+rectangle, i.e., $a \!: \!b$.
 
 Figure~\ref{fig:rect_eg} shows a 2D example, and
 Figure~\ref{fig:rect_pdf} shows the PDFs for various rectangles chosen
@@ -59,6 +59,27 @@ approximated this expression with a $\beta$ function, though given the
 requirements to numerically evaluate that function there hardly seems
 any advantage, though we shall see later that this would have been
 completely appropriate if the region have been a circle.
+
+We can also see that for longer, thinner rectangles, the PDF is
+comprised of two main segments: (i) a part approximating the shape of
+that for the square (though compressed into a short range of values of
+$t$), and (ii) an almost straight component, similar to the PDF for
+line-line picking problem. The reasons for this also seem relatively
+intuitive. 
+
+We can calculate the limit as $a \rightarrow 0$ to see the PDF for the
+line-line picking problem.  We keep $a^2 + b^2 = L^2$ so that the
+support of the PDF remains constant.  As $a \rightarrow 0$, we only
+need consider the case $a \leq t \leq b$, where
+\begin{eqnarray}
+    g^{\rm rect}_{a,b}(t)
+        & = & \frac{4 t}{a^2 b^2} 
+                  \left[ a b \sin^{-1} (a/t) - \frac{a^2}{2} - b t + b\sqrt{t^2 - a^2} \right] , \nonumber \\
+\end{eqnarray}
+
+Where we have used the Taylor series
+\[ \sin^{-1}(x) = x + \frac{x^3}{6} + \frac{3 x^5}{40} + \cdots . \]
+
 
 \subsubsection{CDF}
 
