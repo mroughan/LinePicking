@@ -239,27 +239,6 @@ void LinePickingCheckParameters(int *problem, double* parameters,
     (*LinePickingFields[*problem].CHECK_PAR)(parameters, result, *error_str);
 }
 
-/*
- * compute support of distance density g(t) (at points t) between 
- * two points in a region.
- *
- * t = [t_min, t_max]    : assumes 2 spaces are allocated!!!!!
- * problem = type of region (see LinePickingProblemLookup)
- * Npar = number of parameters
- * result = exit code
- *    0: parameters are valid
- *    1: unsupported problem
- *    2: parameters out of range.
- *    3: not enough parameters were entered.
- *    4: other error.
- * error_str: a message explaining the error
- *
- * Note that N, problem and Npar are all passed in by reference so R can cope, 
- * and similarly, the function must return void, so we return the exit code 
- * in the last argument.
- *
- *
- */
 
 /**
  * Compute the support of the PDF and CDF of the distance between two 
