@@ -46,6 +46,10 @@
 #include "SphereGeodesic.h"
 #include "PrismGeodesic.h"
 
+#ifndef _NOTR
+#include <R.h> /* only include this if we are compiling for R */
+#endif
+
 
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
@@ -100,9 +104,12 @@ LinePickingRec LinePickingFields[] =
 
 /** @defgroup api "Public API" */
 
+
+void LinePickingNumberOfProblems(int *);
 void LinePickingPrintAllProblemss();
 void LinePickingAllProblems(char **, char **);
 void LinePickingProblemLookup(int *, char**, char**);
+
 
 /* check that a problem and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
