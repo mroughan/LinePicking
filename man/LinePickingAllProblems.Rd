@@ -10,7 +10,7 @@
 }
 \value{
   Data frame with \itemize{ \item problems: problem number
-  see \code{\line{LinePickingPDF}} \item names: list of the
+  see \code{\link{LinePickingPDF}} \item names: list of the
   problem names \item description: brief description of
   each space }
 }

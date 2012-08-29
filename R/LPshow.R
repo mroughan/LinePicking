@@ -6,6 +6,7 @@
 #'
 #' @name print
 #' @aliases print print,linepicking-method
+#' @aliases show,linepicking-method
 #' @docType methods
 #' @rdname print-methods
 #' @export

@@ -6,7 +6,7 @@
 #' @param short_tab boolean is false gives description as well.
 #' @return Data frame with 
 #' \itemize{
-#' \item problems: problem number see \code{\line{LinePickingPDF}}
+#' \item problems: problem number see \code{\link{LinePickingPDF}}
 #' \item names: list of the problem names
 #' \item description: brief description of each space
 #' }

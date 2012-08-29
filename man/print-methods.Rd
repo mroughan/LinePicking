@@ -2,6 +2,7 @@
 \name{print}
 \alias{print}
 \alias{print,linepicking-method}
+\alias{show,linepicking-method}
 \title{Print the linepicking class to standard output.}
 \arguments{
   \item{object}{A \code{linepicking} object.}

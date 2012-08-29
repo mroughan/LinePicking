@@ -1,5 +1,7 @@
+\docType{methods}
 \name{CalcCDF}
 \alias{CalcCDF}
+\alias{CalcCDF,linepicking-method}
 \title{Calculates the cdf for a given distance and \code{linepicking} object}
 \arguments{
   \item{x}{A \code{linepicking} object}
