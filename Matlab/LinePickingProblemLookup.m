@@ -27,6 +27,6 @@ function [name description] =  LinePickingProblemLookup(problem)
 %         
 %
 
-[name description] = LinePicking(5,mode);
+[name description] = LinePicking(5, problem);
 
 

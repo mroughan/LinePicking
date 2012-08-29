@@ -87,9 +87,9 @@
 #endif
 
 
-void LinePickingNumberOfModes(int *N) 
+void LinePickingNumberOfProblemss(int *N) 
 /* 
-   output the number of modes
+   output the number of problems
  */
 {
     *N = NUMBER_OF_PROBLEMS;
@@ -693,10 +693,10 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
             return;
             
-       case 9: /* LinePickingNumberOfModes */
+       case 9: /* LinePickingNumberOfproblemss */
 
-            CheckNumberInputArg(nrhs, 1, " LinePickingNumberOfModes");
-            CheckNumberOutputArg(nlhs, 1, " LinePickingNumberOfModes");
+            CheckNumberInputArg(nrhs, 1, " LinePickingNumberOfProblems");
+            CheckNumberOutputArg(nlhs, 1, " LinePickingNumberOfProblems");
 	    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
 	    g = mxGetPr(plhs[0]);
             g[0] = NUMBER_OF_PROBLEMS;
@@ -705,7 +705,6 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
         default:
 	    mexErrMsgTxt("LinePicking unknown entry point requested.");
-            
     }
     
     if (result != 0) 
