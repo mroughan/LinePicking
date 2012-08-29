@@ -2,14 +2,20 @@
 \alias{LinePickingAllProblems}
 \title{Gets list of all problems}
 \usage{
-  LinePickingAllProblems()
+  LinePickingAllProblems(short_tab = TRUE)
+}
+\arguments{
+  \item{short_tab}{boolean is false gives description as
+  well.}
 }
 \value{
-  List with \itemize{ \item names: list of the spaces names
-  \item description: brief description of each space }
+  Data frame with \itemize{ \item problems: problem number
+  see \code{\line{LinePickingPDF}} \item names: list of the
+  problem names \item description: brief description of
+  each space }
 }
 \description{
-  Problemss are integers describing possible geometries for
+  Problems are integers describing possible geometries for
   the line picking problem. This function prints all
   possible problems.
 }
