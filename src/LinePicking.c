@@ -79,10 +79,11 @@
 
 
 /**
- * Helper function to expose the number of currently implemented problems.
+ * Helper function returns the number of currently implemented problems.
  * @param $N Pointer to an integer to store the number of currently 
  * implemented problems. 
- * @return The number of currently implemented problems is returned in $N 
+ * @return The number of currently implemented problems is returned in the 
+ * location pointed to by $N. 
  */
 void LinePickingNumberOfProblems(int *N) 
 
@@ -92,10 +93,16 @@ void LinePickingNumberOfProblems(int *N)
 
 
 /**
- * Given the unction to expose the number of currently implemented problems.
- * @param $N Pointer to an integer to store the number of currently 
- * implemented problems. 
- * @return The number of currently implemented problems is returned in $N 
+ * Problems are represented as integers. Given such an integer this function
+ * returns the problem name and description as a string.
+ * @param $problem Represents a problem. 
+ * @param $name Address of a memory location to set to the address of a string
+ * containing the name of the problem.
+ * @param $description Address of a memory location to set to the address of a 
+ * string containing the description of the problem.
+ * @return Strings containing the name and description of the problem are 
+ * retuned in the locations pointed to by $name and $description.
+ * @todo Implement dynamic memory allocation of string outputs.
  */
 void LinePickingProblemLookup(int *problem, char **name, char **description) 
 {
@@ -112,6 +119,11 @@ void LinePickingProblemLookup(int *problem, char **name, char **description)
 }
 
 
+/**
+ * Prints to stdout a list of all implemented problems giving the number of 
+ * the problem and its associated name.
+ * @todo Do we want to print out the descriptions here?
+ */
 /* write out the list of problems */
 void LinePickingPrintAllProblems(void)
 
@@ -125,9 +137,24 @@ void LinePickingPrintAllProblems(void)
 }
 
 
-/* return the list of problems:
- assumes memory is allocated for the array of pointers to strings */
-
+/**
+ * This function is passed two arrays of uninitialised pointers to strings. 
+ * On its return these pointers are initialised. The firat contains pointers
+ * to strings containing the names of all the problems implemented and the 
+ * second contains pointers to strings containing the descriptions of all the
+ * problems implemented.
+ * @param $name Pointer to array that this function will fill with pointers to 
+ * strings containing the names of all the problems currently implemented.
+ * @param $description Pointer to array that this function will fill with 
+ * pointers to strings containing the descriptons  of all the problems 
+ * currently implemented.
+ * @return The two uninitialised arrays passed to the function are initialised 
+ * with pointers to strings. 
+ * @todo Implement dynamic memory allocation of string outputs and the 
+ * array that points to them.
+ * @bug possible array bounds exception if the size of the supplied arguments is 
+ * incorrect.
+ */
 void LinePickingAllProblems(char **names, char **descriptions)
 {
     int i;
@@ -139,25 +166,29 @@ void LinePickingAllProblems(char **names, char **descriptions)
     }
 }
 
-/** 
+
+
+/**
+ * Determines if the supplied parameters are valid input for other functions
+ * in this library.
  *
- * check that a problem and a set of parameters are valid
- *
- * problem = type of region (see LinePickingProblemLookup)
- * Npar = number of parameters
- * result = exit code
- *    0: parameters are valid
- *    1: unsupported problem
- *    2: parameters out of range.
- *    3: not enough parameters were entered.
- *    4: other error.
- * error_str: a message explaining the error
- *
- * Note that N, problem and Npar are all passed in by reference so R can cope, 
- * and similarly, the function must return void, so we return the exit code 
- * in the last argument.
  * 
- *
+ * @param $problem The number of the problem for which the the 
+ * supplied $parameters are checked against. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. 
+ * The following values are implemented:
+ *      - 0: parameters are valid.
+ *      - 1: unsupported problem.
+ *      - 2: parameters out of range.
+ *      - 3: not enough parameters were entered.
+ *      - 4: other error.. 
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The validity of the supplied parameters as input for other functions 
+ * in this library is retuned in $result.
  */
 void LinePickingCheckParameters(int *problem, double* parameters, 
                                 int *Npar, int *result, char **error_str)
@@ -208,7 +239,7 @@ void LinePickingCheckParameters(int *problem, double* parameters,
     (*LinePickingFields[*problem].CHECK_PAR)(parameters, result, *error_str);
 }
 
-/** 
+/*
  * compute support of distance density g(t) (at points t) between 
  * two points in a region.
  *
@@ -229,6 +260,30 @@ void LinePickingCheckParameters(int *problem, double* parameters,
  *
  *
  */
+
+/**
+ * Compute the support of the PDF and CDF of the distance between two 
+ * random points for a given problem.
+ *
+ * 
+ * @param $t Pointer to storage for lower and upper ends of the support for
+ * the PDF and CDF of the distance between two random points 
+ * for a given problem.  
+ * @param $problem The number of the problem for which the PDF's and CDF's
+ * support will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters. 
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The lower end of the interval is returned in $t[0] and the 
+ * upper end of the interval is returned in $t[1].
+ * @todo allocate memeory for the result dynamically.
+ * @bug potential array bounds overrun.
+ */
 void LinePickingSupport(double *t, int *problem, 
                         double* parameters, int *Npar, int *result, 
                         char **error_str) 
@@ -245,26 +300,31 @@ void LinePickingSupport(double *t, int *problem,
     (*LinePickingFields[*problem].SUPPORT)(t, parameters);
 }
 
-/** 
- * compute distance density g(t) (at points t) between two points in a region.
+
+
+/**
+ * Implements the PDF of the distance between two random points for the 
+ * given problem.
  *
- * t = array of points at which to calculate density 
- * g = array to store output 
- * problem = type of region (see LinePickingProblemLookup)
- * Npar = number of parameters
- * result = exit code
- *    0: parameters are valid
- *    1: unsupported problem
- *    2: parameters out of range.
- *    3: not enough parameters were entered.
- *    4: other error.
- * error_str: a message explaining the error
- *
- * Note that N, problem and Npar are all passed in by reference so R can cope, 
- * and similarly, the function must return void, so we return the exit code 
- * in the last argument.
- *
- *
+ * 
+ * @param $t An array of distances to calculate the density for.
+ * @param $g An array in which the calculated densities are returned.
+ * @param $N The value pointed to by $N is the number of entries in $T
+ * @param $problem The number of the problem for which the PDF 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters. 
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required calculated densities are returned in $g.
+ * @todo The matlab version allocates memory dynamically for the array 
+ * of densities which is safe. The R version could go horribly wrong 
+ * if a shorter array was passed.
+ * @bug potential array bounds overrun.
  */
 void LinePickingPDF(double *t, double *g, int *N, int *problem, 
                     double* parameters, int *Npar, int *result, 
@@ -281,7 +341,7 @@ void LinePickingPDF(double *t, double *g, int *N, int *problem,
         return;    
 
     /* calculate the distribution */
-    for (i=0; i<*N; i++) 
+    for (i = 0; i < *N; i++) 
     {
         if (t[i] < support[0] || t[i] > support[1]) 
             g[i] = 0;
@@ -290,26 +350,29 @@ void LinePickingPDF(double *t, double *g, int *N, int *problem,
     }
 }
 
-/** 
- * compute distance distribution function \int_0^x g(t) dt (at points t) 
- * between two points in a region.
+/**
+ * Implements the CDF of the distance between two random points for the 
+ * given problem.
  *
- * t = array of points at which to calculate density 
- * g = array to store output 
- * problem = type of region (see LinePickingProblemLookup)
- * Npar = number of parameters
- * result = exit code
- *    0: parameters are valid
- *    1: unsupported problem
- *    2: parameters out of range.
- *    3: not enough parameters were entered.
- *    4: other error.
- * error_str: a message explaining the error
- *
- * Note that N, problem and Npar are all passed in by reference so R can cope, 
- * and similarly,the function must return void, so we return the exit code 
- * in the last argument.
- *
+ * 
+ * @param $t An array of distances to calculate the cumulative density for.
+ * @param $g An array in which the calculated cumulative densities are returned.
+ * @param $N The value pointed to by $N is the number of entries in $T
+ * @param $problem The number of the problem for which the PDF 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters.
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required calculated cumulative densities are returned in $g.
+ * @todo The matlab version allocates memory dynamically for the array 
+ * of cumulative densities which is safe. The R version could go horribly wrong 
+ * if a shorter array was passed.
+ * @bug potential array bounds overrun.
  */
 void LinePickingCDF(double *t, double *g, int *N, int *problem, 
                     double* parameters, int *Npar, int *result, 
@@ -343,6 +406,25 @@ void LinePickingCDF(double *t, double *g, int *N, int *problem,
 }
 
 
+
+/**
+* Calculates the mean distance between two random points for the 
+* given problem.
+*
+* 
+* @param $mean A pointer to the location where the mean will be stored.
+* @param $problem The number of the problem for which the mean 
+* will be calculated. 
+* @param $parameters Pointer to the values required to describe 
+* the geometry of the problem.
+* @param $Npar The number of parameters that $parameters contains.
+* @param $result Pointer so that the result of the evaluation can be returned. 
+* A non-zero value indicates there was a problem in the input. A description 
+* of the error is returned in $error_str. The integer values returned are 
+* described in @ref LinePickingCheckParameters.
+* @param $error_str A string describing the result of evaluating the function.
+* @return The required calculated mean is returned in $mean.
+*/
 void LinePickingMean(double *mean, int *problem, 
                      double* parameters, int *Npar, int *result, 
                      char **error_str) 
@@ -365,27 +447,25 @@ void LinePickingMean(double *mean, int *problem,
     return;
 }
 
-/** 
- * compute variance between two points in a region.
- *
- * t = array of points at which to calculate density 
- * var = var line length
- * problem = type of region (see LinePickingProblemLookup)
- * Npar = number of parameters
- * result = exit code
- *    0: parameters are valid
- *    1: unsupported problem
- *    2: parameters out of range.
- *    3: not enough parameters were entered.
- *    4: other error.
- * error_str: a message explaining the error
- *
- * Note that problem and Npar are all passed in by reference so R can cope, 
- * and similarly,the function must return void, so we return the exit code 
- * in the last argument. 
- *
- */
 
+/**
+ * Calculates the variance of the distances between two random points for the 
+ * given problem.
+ *
+ * 
+ * @param $var A pointer to the location where the variance will be stored.
+ * @param $problem The number of the problem for which the mean 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters.
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required calculated variance is returned in $var.
+ */
 void LinePickingVar(double *var, int *problem, 
                     double* parameters, int *Npar, int *result, 
                     char **error_str) 

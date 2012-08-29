@@ -66,9 +66,6 @@
 #endif
 
 
-
-
-/** structure thingo test */
 typedef struct 
 {
     double (* PDF)(double, double *); 
