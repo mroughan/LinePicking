@@ -107,6 +107,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="_sphere_8h_source.html">Sphere.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_sphere_geodesic_8h_source.html">SphereGeodesic.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_prism_geodesic_8h_source.html">PrismGeodesic.h</a>&quot;</code><br/>
+<code>#include &lt;R.h&gt;</code><br/>
 </div>
 <p><a href="_line_picking_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -128,21 +129,24 @@ Macros</h2></td></tr>
 <tr class="memitem:a7bb48b353069ee7a30bc6f43407c5133"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bb48b353069ee7a30bc6f43407c5133"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>elements</b>(x)&#160;&#160;&#160;(sizeof(x) / sizeof(x[0]))</td></tr>
 <tr class="separator:a7bb48b353069ee7a30bc6f43407c5133"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae92d66c34581750be2b6f639d3de4c90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae92d66c34581750be2b6f639d3de4c90"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>NUMBER_OF_MODES</b>&#160;&#160;&#160;elements(LinePickingFields)</td></tr>
-<tr class="separator:ae92d66c34581750be2b6f639d3de4c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16ab60dd0b76f3ea2a980558e7debd31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a16ab60dd0b76f3ea2a980558e7debd31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NUMBER_OF_PROBLEMS</b>&#160;&#160;&#160;elements(LinePickingFields)</td></tr>
+<tr class="separator:a16ab60dd0b76f3ea2a980558e7debd31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a103b4f4a1ac9d98f7402bf2925232764"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a103b4f4a1ac9d98f7402bf2925232764"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingPrintAllmodes</b> ()</td></tr>
-<tr class="separator:a103b4f4a1ac9d98f7402bf2925232764"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaedd3355aa74b61af65af86c2674f066a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gaedd3355aa74b61af65af86c2674f066a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingAllModes</b> (char **, char **)</td></tr>
-<tr class="separator:gaedd3355aa74b61af65af86c2674f066a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadecbcbeb648bc936dac406ae8f0147e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gadecbcbeb648bc936dac406ae8f0147e8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingModeLookup</b> (int *, char **, char **)</td></tr>
-<tr class="separator:gadecbcbeb648bc936dac406ae8f0147e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0e3cb9eaef2a9f040f1135eee394f28"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab0e3cb9eaef2a9f040f1135eee394f28"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingNumberOfProblems</b> (int *)</td></tr>
+<tr class="separator:ab0e3cb9eaef2a9f040f1135eee394f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae60c84172a5d63e1e76e9fdac0f68193"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae60c84172a5d63e1e76e9fdac0f68193"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingPrintAllProblemss</b> ()</td></tr>
+<tr class="separator:ae60c84172a5d63e1e76e9fdac0f68193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af04b41252ebd1a3013b6bcb4dbbf3649"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af04b41252ebd1a3013b6bcb4dbbf3649"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingAllProblems</b> (char **, char **)</td></tr>
+<tr class="separator:af04b41252ebd1a3013b6bcb4dbbf3649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146eea4bf38bd6e3812ea47ae2ac57a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a146eea4bf38bd6e3812ea47ae2ac57a7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingProblemLookup</b> (int *, char **, char **)</td></tr>
+<tr class="separator:a146eea4bf38bd6e3812ea47ae2ac57a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac55d1d166b33c8906ceccbb37010ddb0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac55d1d166b33c8906ceccbb37010ddb0"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingCheckParameters</b> (int *, double *, int *, int *, char **)</td></tr>
 <tr class="separator:ac55d1d166b33c8906ceccbb37010ddb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -223,7 +227,7 @@ Matthew Roughan <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 29 2012 10:03:55 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 29 2012 13:09:39 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
