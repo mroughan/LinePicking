@@ -27,12 +27,16 @@ char *PrismGeodesicDistanceDescription =
 int PrismGeodesicDistanceNpar = 2;
 
 
-/** distance density (at w) between two points on the surface of an
- * upright prism of length and perimeter given in parameters[0] and 
- * parameters[1] respectively. The distance is measured around the   
- * the surface of the prism (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+/**
+ * Implements the PDF of the distance between two random points on the
+ * surface of an upright prism (excluding the ends). The distance is  
+ * measured around the the surface of the prism (i.e., a geodesic). 
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @todo Write up the derivation.
+ * @param $w The distance to calculate the density for.
+ * @param $parameters $parameters[0] is the length of the prism and  
+ * $parameters[1] is the perimeter of the prism. 
+ * @return The density at $w.
  */
 double PrismGeodesicDistancePDF(double w, double* parameters)
 {
@@ -61,12 +65,16 @@ double PrismGeodesicDistancePDF(double w, double* parameters)
 }
 
 
-/* distance distribution (at w) between two points on the surface of an
- * upright prism of length and perimeter given in parameters[0] and 
- * parameters[1] respectively. The distance is measured around the   
- * the surface of the prism (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+/**
+ * Implements the CDF of the distance between two random points on the
+ * surface of an upright prism (excluding the ends). The distance is  
+ * measured around the the surface of the prism (i.e., a geodesic). 
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @todo Write up the derivation.
+ * @param $w The distance to calculate the cumulative density for.
+ * @param $parameters $parameters[0] is the length of the prism and  
+ * $parameters[1] is the perimeter of the prism. 
+ * @return The cumulative density at $w.
  */
 double PrismGeodesicDistanceCDF(double w, double* parameters)
 {
@@ -110,16 +118,20 @@ double PrismGeodesicDistanceCDF(double w, double* parameters)
 }
 
 
-/* TODO re-erive the mean without using the three part PDF as a basis 
- * I am sure a simpler result can be found using a similar methods to 
- * that used on the rectangle */
 
-/* mean distance between two points on the surface of an
- * upright prism of length and perimeter given in parameters[0] and 
- * parameters[1] respectively. The distance is measured around the   
- * the surface of the prism (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+
+/**
+ * Calculates the mean distance between two random points on the
+ * surface of an upright prism (excluding the ends).
+ *
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @param $parameters $parameters[0] is the length of the prism and  
+ * $parameters[1] is the perimeter of the prism. 
+ * @return The mean distance between two random points on the
+ * surface of an upright prism (excluding the ends).
+ * @todo re-derive the mean without using the three part PDF as a basis 
+ * I am sure a simpler result can be found using a similar methods to 
+ * that used on the rectangle
  */
 double PrismGeodesicDistanceMean(double* parameters)
 {
@@ -153,12 +165,18 @@ double PrismGeodesicDistanceMean(double* parameters)
             (48. * L2 * P * sqrt(4 * L2 + P2));
 }
 
-/* variance of distance between two points on the surface of an
- * upright prism of length and perimeter given in parameters[0] and 
- * parameters[1] respectively. The distance is measured around the   
- * the surface of the prism (i.e., a geodesic) 
- * TODO Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * soon to be written up somewhere
+/**
+ * Calculates the variance of distances between two random points on the
+ * surface of an upright prism (excluding the ends).
+ *
+ * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
+ * @param $parameters $parameters[0] is the length of the prism and  
+ * $parameters[1] is the perimeter of the prism. 
+ * @return The variance of distances between two random points on the
+ * surface of an upright prism (excluding the ends).
+ * @todo re-derive the variance without using the three part PDF as a basis 
+ * I am sure a simpler result can be found using a similar methods to 
+ * that used on the rectangle
  */
 double PrismGeodesicDistanceVar(double* parameters)
 {
@@ -800,13 +818,27 @@ double PrismGeodesicDistanceVar(double* parameters)
     (27648. * L5 * P3 * sqrt(4 * L2 + P2));
 }
 
+
+/**
+ * Calculates the support for the PDF and CDF of the distance between 
+ * two random points on the surface of an upright prism (excluding the ends).
+ *
+ *
+ * @param $t Pointer to storage for lower and upper ends of the support for
+ * the PDF and CDF of the distance between two random points on the surface 
+ * of an upright prism (excluding the ends).
+ * @param $parameters $parameters[0] is the length of the prism and  
+ * $parameters[1] is the perimeter of the prism. 
+ * 
+ * @return The lower end of the interval is returned in $t[0] and the 
+ * upper end of the interval is returned in $t[1].
+ */
 void PrismGeodesicDistanceSupport(double *t, double *parameters)
 {
 
     t[0] = 0;
     t[1] = sqrt(pow(parameters[0], 2) + pow(parameters[1]/2, 2));
 }
-
 
 
 /**

@@ -23,8 +23,15 @@ char *SquareDistanceName = "square";
 char *SquareDistanceDescription = "square, with side length parameters[0]";
 int SquareDistanceNpar = 1;
 
-/* distance density (at t) between two points in a unit square
- * http://mathworld.wolfram.com/SquareLinePicking.html
+
+/**
+ * Implements the PDF of the distance between two random points on a square.
+ *
+ *
+ * @param $t The distance to calculate the density for.
+ * @param $parameters $parameters[0] is the size of the square. 
+ * @return The density at $t.
+ * @see http://mathworld.wolfram.com/SquareLinePicking.html 
  */
 double SquareDistancePDF(double t, double* parameters)
 {
@@ -38,12 +45,19 @@ double SquareDistancePDF(double t, double* parameters)
         return 2 * t * (t2 - 4 * t + M_PI) / parameters[0];
     else 
         return  2 * t * (4 * sqrt(t2-1) - 
-                (t2 + 2 - M_PI) - 
-                4 * atan(sqrt(t2 - 1))) / parameters[0];
+                         (t2 + 2 - M_PI) - 
+                         4 * atan(sqrt(t2 - 1))) / parameters[0];
 }
 
-/* distance cumulative distribution (at t) between two points in a unit square
- * http://mathworld.wolfram.com/SquareLinePicking.html 
+
+/**
+ * Implements the CDF of the distance between two random points on a square.
+ *
+ *
+ * @param $t The distance to calculate the cumulative density for.
+ * @param $parameters $parameters[0] is the size of the square. 
+ * @return The cumulative density at $t.
+ * @see http://mathworld.wolfram.com/SquareLinePicking.html 
  */
 double SquareDistanceCDF(double t, double* parameters)
 {
@@ -59,29 +73,55 @@ double SquareDistanceCDF(double t, double* parameters)
     {
         tmp = sqrt(t2 - 1);
         return  -pow(t, 4.) / 2 - 4 * t2 * atan(tmp) + 
-                 4.0 * (2.0 * t2 + 1) * tmp / 3.0 + (M_PI - 2) * t2 + 1.0 / 3.0;
+                    4.0 * (2.0 * t2 + 1) * tmp /
+                    3.0 + (M_PI - 2) * t2 + 1.0 / 3.0;
     }
 }
 
-/* mean distance between two points in a unit square 
- * http://mathworld.wolfram.com/SquareLinePicking.html 
+
+/**
+ * Calculates the mean of the distance between two random points on a square.
+ *
+ * @param $parameters $parameters[0] is the size of the square.  
+ * 
+ * @return The mean distance between two random points on a square. 
+ * @see http://mathworld.wolfram.com/SquareLinePicking.html 
  */
 double SquareDistanceMean(double* parameters)
 {
     return parameters[0] * (2 + M_SQRT2 + 5 * asinh(1)) / 15.0;
 }
 
-/* variance of distances between two points in a unit square
- *http://mathworld.wolfram.com/SquareLinePicking.html
+
+/**
+ * Calculates the variance of the distances between two random points 
+ * on a square.
+ *
+ * @param $parameters $parameters[0] is the size of the square.  
+ * 
+ * @return The variance of the distances between two points random points
+ * on a square. 
+ * @see http://mathworld.wolfram.com/SquareLinePicking.html 
  */
 double SquareDistanceVar(double* parameters)
 {
     double tmp = asinh(1);
     return parameters[0] * parameters[0] * 
-           (69 - 4*M_SQRT2 - 10.0*(2 + M_SQRT2)*tmp - 25*tmp*tmp) / 225.0;
+            (69 - 4 * M_SQRT2 - 10.0 * 
+            (2 + M_SQRT2) * tmp - 25 * tmp * tmp) / 225.0;
 }
 
 
+/**
+ * Calculates the support for the PDF and CDF of the distance between 
+ * two random points on a square.
+ *
+ * @param $t Pointer to storage for lower and upper ends of the support for
+ * the PDF and CDF of the distance between two random points on a square. 
+ * @param $parameters $parameters[0] is the size of the square.   
+ * @return The lower end of the interval is returned in $t[0] and the 
+ * upper end of the interval is returned in $t[1].
+ */
 void SquareDistanceSupport(double *t, double *parameters)
 {
     /* square, with side length parameters[0] */

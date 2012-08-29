@@ -9,20 +9,15 @@ Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_sphere_geodesic_8h_a147644268f82fdbb8fd3f69a4aee1045}{double {\bfseries Sphere\-Geodesic\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_sphere_geodesic_8h_a147644268f82fdbb8fd3f69a4aee1045}
-
+double \hyperlink{_sphere_geodesic_8h_a645f07d87003b80bdda7c2b207843a38}{Sphere\-Geodesic\-Distance\-P\-D\-F} (double s, double $\ast$parameters)
 \item 
-\hypertarget{_sphere_geodesic_8h_a26f0baf792ad7ec2ca5d0f834b62fdf2}{double {\bfseries Sphere\-Geodesic\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_sphere_geodesic_8h_a26f0baf792ad7ec2ca5d0f834b62fdf2}
-
+double \hyperlink{_sphere_geodesic_8h_a6f02e3010b285377265dd4ab657dfcf2}{Sphere\-Geodesic\-Distance\-C\-D\-F} (double s, double $\ast$parameters)
 \item 
-\hypertarget{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}{double {\bfseries Sphere\-Geodesic\-Distance\-Mean} (double $\ast$parameters)}\label{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}
-
+double \hyperlink{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}{Sphere\-Geodesic\-Distance\-Mean} (double $\ast$parameters)
 \item 
-\hypertarget{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}{double {\bfseries Sphere\-Geodesic\-Distance\-Var} (double $\ast$parameters)}\label{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}
-
+double \hyperlink{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}{Sphere\-Geodesic\-Distance\-Var} (double $\ast$parameters)
 \item 
-\hypertarget{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}{void {\bfseries Sphere\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}
-
+void \hyperlink{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}{Sphere\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_sphere_geodesic_8h_a2753f6846132cd3d18ffbe5cf281059f}{Sphere\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
 \end{DoxyCompactItemize}
@@ -50,6 +45,28 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 
 
 \subsection{Function Documentation}
+\hypertarget{_sphere_geodesic_8h_a6f02e3010b285377265dd4ab657dfcf2}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-C\-D\-F@{Sphere\-Geodesic\-Distance\-C\-D\-F}}
+\index{Sphere\-Geodesic\-Distance\-C\-D\-F@{Sphere\-Geodesic\-Distance\-C\-D\-F}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
+\subsubsection[{Sphere\-Geodesic\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Geodesic\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{s, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_geodesic_8h_a6f02e3010b285377265dd4ab657dfcf2}
+Implements the C\-D\-F of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic).
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au}. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000012}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$s} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative density at \$s. 
+\end{DoxyReturn}
 \hypertarget{_sphere_geodesic_8h_a2753f6846132cd3d18ffbe5cf281059f}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Check\-Parameters@{Sphere\-Geodesic\-Distance\-Check\-Parameters}}
 \index{Sphere\-Geodesic\-Distance\-Check\-Parameters@{Sphere\-Geodesic\-Distance\-Check\-Parameters}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
 \subsubsection[{Sphere\-Geodesic\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Sphere\-Geodesic\-Distance\-Check\-Parameters (
@@ -72,4 +89,82 @@ Intended to determine if the parameters supplied are valid input to the other fu
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}
+\hypertarget{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Mean@{Sphere\-Geodesic\-Distance\-Mean}}
+\index{Sphere\-Geodesic\-Distance\-Mean@{Sphere\-Geodesic\-Distance\-Mean}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
+\subsubsection[{Sphere\-Geodesic\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Geodesic\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_geodesic_8h_ab4f11431d2e3f00883dfaa60375827fe}
+Calculates the mean of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic).
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au}. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000013}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic). 
+\end{DoxyReturn}
+\hypertarget{_sphere_geodesic_8h_a645f07d87003b80bdda7c2b207843a38}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-P\-D\-F@{Sphere\-Geodesic\-Distance\-P\-D\-F}}
+\index{Sphere\-Geodesic\-Distance\-P\-D\-F@{Sphere\-Geodesic\-Distance\-P\-D\-F}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
+\subsubsection[{Sphere\-Geodesic\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Geodesic\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{s, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_geodesic_8h_a645f07d87003b80bdda7c2b207843a38}
+Implements the P\-D\-F of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic).
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au}. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000011}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$s} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$s. 
+\end{DoxyReturn}
+\hypertarget{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Support@{Sphere\-Geodesic\-Distance\-Support}}
+\index{Sphere\-Geodesic\-Distance\-Support@{Sphere\-Geodesic\-Distance\-Support}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
+\subsubsection[{Sphere\-Geodesic\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Sphere\-Geodesic\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic).
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Var@{Sphere\-Geodesic\-Distance\-Var}}
+\index{Sphere\-Geodesic\-Distance\-Var@{Sphere\-Geodesic\-Distance\-Var}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
+\subsubsection[{Sphere\-Geodesic\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Geodesic\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_geodesic_8h_ac65127604bfd0ca7f3c2f95168cc2ac7}
+Calculates the variance of the distances between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic).
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au}. \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000014}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic). 
 \end{DoxyReturn}

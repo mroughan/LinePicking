@@ -24,9 +24,15 @@ char *LineDistanceName = "line";
 char *LineDistanceDescription = "line, length parameters[0]";
 int LineDistanceNpar = 1;
 
+/**
+ * Implements the PDF of the distance between two random points on a line.
+ *
+ * @param $t The distance to calculate the density for.
+ * @param $parameters $parameters[0] is the length of the line. 
+ * @return The density at $t.
+ * @see http://mathworld.wolfram.com/LineLinePicking.html 
+ */
 double LineDistancePDF(double t, double* parameters)
-/* distance density (at t) between two points on a line length parameter[0] */
-/*    http://mathworld.wolfram.com/LineLinePicking.html */
 {
     double L = parameters[0];
     
@@ -34,9 +40,15 @@ double LineDistancePDF(double t, double* parameters)
     return(2*(1-t/L)/L);
 }
 
+/**
+ * Implements the CDF of the distance between two random points on a line.
+ *
+ * @param $t The distance to calculate the density for.
+ * @param $parameters $parameters[0] is the length of the line. 
+ * @return The cumulative density at $t.
+ * @see http://mathworld.wolfram.com/LineLinePicking.html 
+ */
 double LineDistanceCDF(double t, double* parameters)
-/* distance density (at t) between two points on a line length parameter[0] */
-/*    http://mathworld.wolfram.com/LineLinePicking.html */
 {
     double L = parameters[0];
     t = t / L;
@@ -45,23 +57,47 @@ double LineDistanceCDF(double t, double* parameters)
 
 }
 
+
+/**
+ * Calculates the mean of the distance between two random points on a line.
+ * 
+ * @param $parameters $parameters[0] is the length of the line.  
+ * 
+ * @return The mean distance between two points on a line 
+ * @see  http://mathworld.wolfram.com/LineLinePicking.html 
+ */
 double LineDistanceMean(double* parameters)
-/* distance density (at t) between two points on a line length parameter[0] */
-/*    http://mathworld.wolfram.com/LineLinePicking.html */
 {
     double L = parameters[0];
     return(parameters[0]*1.0/3.0);
 }
 
+
+/**
+ * Calculates the variance of the distances between two random points on a line.
+ * 
+ * Currently calculated numerically.
+ * @param $parameters $parameters[0] is the length of the line.   
+ *
+ * @return The variance of distances between two points on a line 
+ * @see  http://mathworld.wolfram.com/BallLinePicking.html
+ */
 double LineDistanceVar(double* parameters)
-/* distance density (at t) between two points on a line length parameter[0] */
-/*    http://mathworld.wolfram.com/LineLinePicking.html */
 {
     double L = parameters[0];
     return(parameters[0]*parameters[0]*1.0/18.0);
 }
 
-
+/**
+ * Calculates the support for the PDF and CDF of the distance between 
+ * two random points on a line
+ *
+ * @param $t Pointer to storage for lower and upper ends of the support for
+ * the PDF and CDF of the distance between two random points on a line. 
+ * @param $parameters $parameters[0] is the length of the line.   
+ * @return The lower end of the interval is returned in $t[0] and the 
+ * upper end of the interval is returned in $t[1].
+ */
 void LineDistanceSupport(double *t, double *parameters)
 {
     /* line, length parameters[0] */

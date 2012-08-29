@@ -1,4 +1,6 @@
+
 /**
+ * 
  * @file LinePicking.h
  * @brief Exposes to matlab and R a set of functions that implement PDF, CDF,   
  * mean and variance of the distance between two random points 
@@ -26,6 +28,8 @@
  *     You should have received a copy of the GNU General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h> 
@@ -46,6 +50,7 @@
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
+/* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
 #if defined(_MEX) /* MEX */
 #define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
 #elif defined(_NOTR) /* Standalone code or library */
@@ -53,7 +58,7 @@
 #else  /* R */
 #define PRINT_STDOUT(...) Rprintf(__VA_ARGS__)
 #endif
-/* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
+
 
 /** structure thingo test */
 typedef struct 
@@ -94,10 +99,9 @@ LinePickingRec LinePickingFields[] =
 #define NUMBER_OF_MODES elements(LinePickingFields)
 
 
-/* give details of a mode */
-void LinePickingModeLookup(int *, char**, char**);
 void LinePickingPrintAllmodes();
 void LinePickingAllModes(char **, char **);
+void LinePickingModeLookup(int *, char**, char**);
 
 /* check that a mode and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
@@ -137,5 +141,6 @@ int main(int argc, char *argv[]);
 
 
 #endif /* _LINEPICKING_H */
+
 
 

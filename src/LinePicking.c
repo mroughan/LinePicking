@@ -37,6 +37,38 @@
  * 
  */
 
+/** 
+ * @mainpage LinePicking
+ * 
+ * @brief Numerical code for geometric probability problems, 
+ * in particular PDFs, CDFs, means and variances for the "line picking" problem.
+ * 
+ * The problem is a standard problem in stochastic
+ * geometry, where we pick lines at random from some region. The typical
+ * questions one asks are: what will the mean line length be? What will
+ * the Probability Density Function (PDF) be? This software implements the 
+ * current list of known PDFs, CDFs, means and variances for such problems.
+ * It also provides solutions to some previously unsolved problems. 
+ *
+ * The code has been designed to provide a small set of entry points  
+ * which are callable from R, Matlab and C. The documentation is found in 
+ * the files for their respective help systems. 
+ *
+ * Much of this manual is dedicated to documenting functions specific 
+ * to a particular problem but users of the software will only need to 
+ * call the entry points documented in 
+ *
+ * A simple method for seamlessly extending the library has been provided.
+ * 
+ * 
+ * @authors Eric Parsonage <eric.parsonage@adelaide.edu.au>
+ * @authors Matthew Roughan <matthew.roughan@adelaide.edu.au> 
+ * @authors Jonothan Tuke <simon.tuke@adelaide.edu.au>
+ */
+
+
+
+
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h> 
@@ -55,6 +87,17 @@
 #endif
 
 
+
+/**
+ * \public
+ * Implements A
+ *
+ *
+ * @param $mode  The distance to calculate the cumulative density for.
+ * @param $name $parameters[0] is the size of the square. 
+ * @return stuff
+ * 
+ */ 
 void LinePickingModeLookup(int *mode, char **name, char **description) 
 /* give details of a mode */
 {
@@ -70,6 +113,12 @@ void LinePickingModeLookup(int *mode, char **name, char **description)
     return;
 }
 
+/**
+ * \public
+ * Implements B
+ *
+ * 
+ */
 void LinePickingPrintAllModes(void)
 /* write out the list of modes */
 {
@@ -77,14 +126,8 @@ void LinePickingPrintAllModes(void)
     
     for (i=0; i < NUMBER_OF_MODES; i++)
     {
-	PRINT_STDOUT(" mode[%d] = %s\n", i, *LinePickingFields[i].name);
-/* #ifdef _MEX */
-/*         mexPrintf(" mode[%d] = %s\n", i, *LinePickingFields[i].name); */
-/* #else /\* MEX *\/ */
-/*         fprintf(stdout, " mode[%d] = %s\n", i, *LinePickingFields[i].name); */
-/* #endif */
+        PRINT_STDOUT(" mode[%d] = %s\n", i, *LinePickingFields[i].name);
     }
-    
     return;
 }
 
@@ -645,12 +688,12 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             plhs[0] = mxCreateCellArray(1, dims);
             plhs[1] = mxCreateCellArray(1, dims);
 
-	    LinePickingAllModes(names, descriptions);
-	    for (i=0; i < NUMBER_OF_MODES; i++)
-	    {
-		mxSetCell(plhs[0], i, mxCreateString(names[i]));
-		mxSetCell(plhs[1], i, mxCreateString(descriptions[i]));
-	    }
+            LinePickingAllModes(names, descriptions);
+            for (i=0; i < NUMBER_OF_MODES; i++)
+            {
+                mxSetCell(plhs[0], i, mxCreateString(names[i]));
+                mxSetCell(plhs[1], i, mxCreateString(descriptions[i]));
+            }
 
             return;
             
@@ -810,5 +853,4 @@ int main(int argc, char *argv[])
 }
 
 #endif /* _STANDALONE */
-
 

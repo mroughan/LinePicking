@@ -152,13 +152,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
 <p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$t</td><td>The distance to calcuate the culmultive density for. </td></tr>
+    <tr><td class="paramname">$t</td><td>The distance to calculate the cumulative density for. </td></tr>
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Write up how to derive the CDF. </dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>The culmultive density at $t. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The cumulative density at $t. </dd></dl>
 
 </div>
 </div>
@@ -218,13 +218,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
       </table>
 </div><div class="memdoc">
 <p>Calculates the mean of the distance between two random points on a disk.</p>
+<p>From Tu, S.-J. and Fischbach, E. "A New Geometric Probability Technique for an {N}-Dimensional 
+Sphere and Its Applications"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The mean distance between two points on a disk </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The mean distance between two points on a disk. </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/BallLinePicking.html">http://mathworld.wolfram.com/BallLinePicking.html</a> </dd></dl>
 
 </div>
@@ -253,9 +255,11 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
       </table>
 </div><div class="memdoc">
 <p>Implements the PDF of the distance between two random points on a disk.</p>
+<p>From Tu, S.-J. and Fischbach, E. "A New Geometric Probability Technique for an {N}-Dimensional 
+Sphere and Its Applications"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$t</td><td>The distance to calcuate the density for. </td></tr>
+    <tr><td class="paramname">$t</td><td>The distance to calculate the density for. </td></tr>
     <tr><td class="paramname">$parameters[0]</td><td>The radius of the disk.</td></tr>
   </table>
   </dd>
@@ -288,7 +292,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the support for the PDF and CDF of the distance between two random points on a disk</p>
+<p>Calculates the support for the PDF and CDF of the distance between two random points on a disk.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>Pointer to storage for lower and upper ends of the support for the PDF and CDF of the distance between two random points on a disk. </td></tr>
@@ -321,7 +325,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The variance of distances between two points on a disk </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The variance of distances between two points on a disk. </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/BallLinePicking.html">http://mathworld.wolfram.com/BallLinePicking.html</a> </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Derive an algebraic expression. </dd></dl>
 
@@ -330,7 +334,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 28 2012 11:56:52 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 29 2012 03:02:18 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

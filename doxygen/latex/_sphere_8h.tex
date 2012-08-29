@@ -9,20 +9,15 @@ Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_sphere_8h_a33d849508a7688237e8f3cc3e4e2766a}{double {\bfseries Sphere\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_sphere_8h_a33d849508a7688237e8f3cc3e4e2766a}
-
+double \hyperlink{_sphere_8h_a33d849508a7688237e8f3cc3e4e2766a}{Sphere\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
 \item 
-\hypertarget{_sphere_8h_a331848ac5648be96aafe20536177046b}{double {\bfseries Sphere\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_sphere_8h_a331848ac5648be96aafe20536177046b}
-
+double \hyperlink{_sphere_8h_a331848ac5648be96aafe20536177046b}{Sphere\-Distance\-C\-D\-F} (double a, double $\ast$b)
 \item 
-\hypertarget{_sphere_8h_a5ba64d80b9bbd4208580edec6ad48ba9}{double {\bfseries Sphere\-Distance\-Mean} (double $\ast$parameters)}\label{_sphere_8h_a5ba64d80b9bbd4208580edec6ad48ba9}
-
+double \hyperlink{_sphere_8h_a5ba64d80b9bbd4208580edec6ad48ba9}{Sphere\-Distance\-Mean} (double $\ast$parameters)
 \item 
-\hypertarget{_sphere_8h_a2f8c66e769eed9fbced07db3e085352f}{double {\bfseries Sphere\-Distance\-Var} (double $\ast$parameters)}\label{_sphere_8h_a2f8c66e769eed9fbced07db3e085352f}
-
+double \hyperlink{_sphere_8h_a2f8c66e769eed9fbced07db3e085352f}{Sphere\-Distance\-Var} (double $\ast$parameters)
 \item 
-\hypertarget{_sphere_8h_ab2275f7d485704da6fff78b160c34beb}{void {\bfseries Sphere\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_sphere_8h_ab2275f7d485704da6fff78b160c34beb}
-
+void \hyperlink{_sphere_8h_ab2275f7d485704da6fff78b160c34beb}{Sphere\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_sphere_8h_aff60610d8f08cd1568878e6a5dbff87d}{Sphere\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
 \end{DoxyCompactItemize}
@@ -50,6 +45,29 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 
 
 \subsection{Function Documentation}
+\hypertarget{_sphere_8h_a331848ac5648be96aafe20536177046b}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-C\-D\-F@{Sphere\-Distance\-C\-D\-F}}
+\index{Sphere\-Distance\-C\-D\-F@{Sphere\-Distance\-C\-D\-F}!Sphere.h@{Sphere.\-h}}
+\subsubsection[{Sphere\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{s, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_8h_a331848ac5648be96aafe20536177046b}
+Implements the C\-D\-F of the distance between two random points on the surface of a sphere.
+
+From Solomon, H. Geometric Probability. Philadelphia, P\-A\-: S\-I\-A\-M, 1978. 
+\begin{DoxyParams}{Parameters}
+{\em \$s} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative density at \$s. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SphereLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Sphere\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
 \hypertarget{_sphere_8h_aff60610d8f08cd1568878e6a5dbff87d}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Check\-Parameters@{Sphere\-Distance\-Check\-Parameters}}
 \index{Sphere\-Distance\-Check\-Parameters@{Sphere\-Distance\-Check\-Parameters}!Sphere.h@{Sphere.\-h}}
 \subsubsection[{Sphere\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Sphere\-Distance\-Check\-Parameters (
@@ -73,3 +91,86 @@ Intended to determine if the parameters supplied are valid input to the other fu
 \begin{DoxyReturn}{Returns}
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
 \end{DoxyReturn}
+\hypertarget{_sphere_8h_a5ba64d80b9bbd4208580edec6ad48ba9}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Mean@{Sphere\-Distance\-Mean}}
+\index{Sphere\-Distance\-Mean@{Sphere\-Distance\-Mean}!Sphere.h@{Sphere.\-h}}
+\subsubsection[{Sphere\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_8h_a5ba64d80b9bbd4208580edec6ad48ba9}
+Calculates the mean of the distance between two random points on the surface of a sphere.
+
+From Solomon, H. Geometric Probability. Philadelphia, P\-A\-: S\-I\-A\-M, 1978. 
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean of the distance between two random points on the surface of a sphere 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SphereLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Sphere\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
+\hypertarget{_sphere_8h_a33d849508a7688237e8f3cc3e4e2766a}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-P\-D\-F@{Sphere\-Distance\-P\-D\-F}}
+\index{Sphere\-Distance\-P\-D\-F@{Sphere\-Distance\-P\-D\-F}!Sphere.h@{Sphere.\-h}}
+\subsubsection[{Sphere\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{s, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_8h_a33d849508a7688237e8f3cc3e4e2766a}
+Implements the P\-D\-F of the distance between two random points on the surface of a sphere.
+
+From Solomon, H. Geometric Probability. Philadelphia, P\-A\-: S\-I\-A\-M, 1978. 
+\begin{DoxyParams}{Parameters}
+{\em \$s} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$s. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SphereLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Sphere\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
+\hypertarget{_sphere_8h_ab2275f7d485704da6fff78b160c34beb}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Support@{Sphere\-Distance\-Support}}
+\index{Sphere\-Distance\-Support@{Sphere\-Distance\-Support}!Sphere.h@{Sphere.\-h}}
+\subsubsection[{Sphere\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Sphere\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_8h_ab2275f7d485704da6fff78b160c34beb}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random points on the surface of a sphere.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points on the surface of a sphere. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_sphere_8h_a2f8c66e769eed9fbced07db3e085352f}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Var@{Sphere\-Distance\-Var}}
+\index{Sphere\-Distance\-Var@{Sphere\-Distance\-Var}!Sphere.h@{Sphere.\-h}}
+\subsubsection[{Sphere\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_sphere_8h_a2f8c66e769eed9fbced07db3e085352f}
+Calculates the variance of the distances between two random points on the surface of a sphere.
+
+From Solomon, H. Geometric Probability. Philadelphia, P\-A\-: S\-I\-A\-M, 1978. 
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the radius of the sphere. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variance of the distances between two random points on the surface of a sphere 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SphereLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Sphere\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}

@@ -9,20 +9,15 @@ Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_square_8h_a68e95e7440f8bf397433fe927269ec88}{double {\bfseries Square\-Distance\-P\-D\-F} (double t, double $\ast$parameters)}\label{_square_8h_a68e95e7440f8bf397433fe927269ec88}
-
+double \hyperlink{_square_8h_a68e95e7440f8bf397433fe927269ec88}{Square\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
 \item 
-\hypertarget{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}{double {\bfseries Square\-Distance\-C\-D\-F} (double a, double $\ast$b)}\label{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}
-
+double \hyperlink{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}{Square\-Distance\-C\-D\-F} (double a, double $\ast$b)
 \item 
-\hypertarget{_square_8h_a6111729489478f1612c62c5f34f79695}{double {\bfseries Square\-Distance\-Mean} (double $\ast$parameters)}\label{_square_8h_a6111729489478f1612c62c5f34f79695}
-
+double \hyperlink{_square_8h_a6111729489478f1612c62c5f34f79695}{Square\-Distance\-Mean} (double $\ast$parameters)
 \item 
-\hypertarget{_square_8h_afbc676954944a54a8068a8c16afcc044}{double {\bfseries Square\-Distance\-Var} (double $\ast$parameters)}\label{_square_8h_afbc676954944a54a8068a8c16afcc044}
-
+double \hyperlink{_square_8h_afbc676954944a54a8068a8c16afcc044}{Square\-Distance\-Var} (double $\ast$parameters)
 \item 
-\hypertarget{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{void {\bfseries Square\-Distance\-Support} (double $\ast$t, double $\ast$parameters)}\label{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}
-
+void \hyperlink{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{Square\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_square_8h_ad0b790be76a72cdb8223d04da0774084}{Square\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
 \end{DoxyCompactItemize}
@@ -50,6 +45,29 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 
 
 \subsection{Function Documentation}
+\hypertarget{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-C\-D\-F@{Square\-Distance\-C\-D\-F}}
+\index{Square\-Distance\-C\-D\-F@{Square\-Distance\-C\-D\-F}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_ac5f14b29303204a4d2d45dd36af85e1f}
+Implements the C\-D\-F of the distance between two random points on a square.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the square. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative density at \$t. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
 \hypertarget{_square_8h_ad0b790be76a72cdb8223d04da0774084}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Check\-Parameters@{Square\-Distance\-Check\-Parameters}}
 \index{Square\-Distance\-Check\-Parameters@{Square\-Distance\-Check\-Parameters}!Square.h@{Square.\-h}}
 \subsubsection[{Square\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-Distance\-Check\-Parameters (
@@ -73,3 +91,86 @@ Intended to determine if the parameters supplied are valid input to the other fu
 \begin{DoxyReturn}{Returns}
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
 \end{DoxyReturn}
+\hypertarget{_square_8h_a6111729489478f1612c62c5f34f79695}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Mean@{Square\-Distance\-Mean}}
+\index{Square\-Distance\-Mean@{Square\-Distance\-Mean}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_a6111729489478f1612c62c5f34f79695}
+Calculates the mean of the distance between two random points on a square.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the square.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean distance between two random points on a square. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
+\hypertarget{_square_8h_a68e95e7440f8bf397433fe927269ec88}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-P\-D\-F@{Square\-Distance\-P\-D\-F}}
+\index{Square\-Distance\-P\-D\-F@{Square\-Distance\-P\-D\-F}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_a68e95e7440f8bf397433fe927269ec88}
+Implements the P\-D\-F of the distance between two random points on a square.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the square. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$t. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}
+\hypertarget{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Support@{Square\-Distance\-Support}}
+\index{Square\-Distance\-Support@{Square\-Distance\-Support}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random points on a square.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points on a square. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the square. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_square_8h_afbc676954944a54a8068a8c16afcc044}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Var@{Square\-Distance\-Var}}
+\index{Square\-Distance\-Var@{Square\-Distance\-Var}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_afbc676954944a54a8068a8c16afcc044}
+Calculates the variance of the distances between two random points on a square.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the size of the square.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variance of the distances between two points random points on a square. 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See Also}
+\href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
+\end{DoxySeeAlso}

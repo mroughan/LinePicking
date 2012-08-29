@@ -31,6 +31,9 @@ struct \hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec}
 \hypertarget{_line_picking_8h_a2f07c1ea1fa674c2803d2563b5527500}{\#define {\bfseries \-\_\-\-L\-I\-N\-E\-P\-I\-C\-K\-I\-N\-G\-\_\-\-H}}\label{_line_picking_8h_a2f07c1ea1fa674c2803d2563b5527500}
 
 \item 
+\hypertarget{_line_picking_8h_ada3d93b92edae24e993803d0179d8eb7}{\#define {\bfseries P\-R\-I\-N\-T\-\_\-\-S\-T\-D\-O\-U\-T}(...)~Rprintf(\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-)}\label{_line_picking_8h_ada3d93b92edae24e993803d0179d8eb7}
+
+\item 
 \#define {\bfseries Expand\-Fields}(\-\_\-x)
 \item 
 \hypertarget{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}{\#define {\bfseries elements}(x)~(sizeof(x) / sizeof(x\mbox{[}0\mbox{]}))}\label{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}
@@ -42,11 +45,13 @@ struct \hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}{void {\bfseries Line\-Picking\-Mode\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}
+\hypertarget{_line_picking_8h_a103b4f4a1ac9d98f7402bf2925232764}{void {\bfseries Line\-Picking\-Print\-Allmodes} ()}\label{_line_picking_8h_a103b4f4a1ac9d98f7402bf2925232764}
 
 \item 
-\hypertarget{_line_picking_8h_af30d6aa4b8de60573d68a23bb703e47f}{void {\bfseries Line\-Picking\-Allmodes} ()}\label{_line_picking_8h_af30d6aa4b8de60573d68a23bb703e47f}
+\hypertarget{_line_picking_8h_a303ec3fa850040a71db04a6aa369b30a}{void {\bfseries Line\-Picking\-All\-Modes} (char $\ast$$\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a303ec3fa850040a71db04a6aa369b30a}
 
+\item 
+void \hyperlink{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}{Line\-Picking\-Mode\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)
 \item 
 \hypertarget{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}{void {\bfseries Line\-Picking\-Check\-Parameters} (int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}
 
@@ -100,6 +105,30 @@ Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roug
 &\_x##DistanceNpar,&\_x##DistanceName,\(\backslash\)
 &\_x##DistanceDescription
 \end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}{\index{Line\-Picking.\-h@{Line\-Picking.\-h}!Line\-Picking\-Mode\-Lookup@{Line\-Picking\-Mode\-Lookup}}
+\index{Line\-Picking\-Mode\-Lookup@{Line\-Picking\-Mode\-Lookup}!LinePicking.h@{Line\-Picking.\-h}}
+\subsubsection[{Line\-Picking\-Mode\-Lookup}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Mode\-Lookup (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{mode, }
+\item[{char $\ast$$\ast$}]{name, }
+\item[{char $\ast$$\ast$}]{description}
+\end{DoxyParamCaption}
+)}}\label{_line_picking_8h_a690fb9f89605623cf621c0681945e13b}
+Implements A
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$mode} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$name} & \$parameters\mbox{[}0\mbox{]} is the size of the square. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+stuff 
+\end{DoxyReturn}
 
 
 \subsection{Variable Documentation}

@@ -1,11 +1,12 @@
 \name{LinePickingAllModes}
 \alias{LinePickingAllModes}
-\title{Prints list of all modes}
+\title{Gets list of all modes}
 \usage{
   LinePickingAllModes()
 }
 \value{
-  prints out information
+  List with \itemize{ \item names: list of the spaces names
+  \item description: brief description of each space }
 }
 \description{
   Modes are integers describing possible geometries for the
