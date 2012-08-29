@@ -76,3 +76,49 @@ numerical approach, however, it accuracy should be sufficient for most
 estimation problems, without increasing the computational workload
 unduly.
 make
+
+
+
+\begin{figure}[tbp]
+  \begin{center}
+    \subfloat[line]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_line.eps}} 
+    \subfloat[square]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_square.eps}} 
+    \subfloat[rect]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect.eps}} 
+
+    \subfloat[cube]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cube.eps}} 
+    \subfloat[3ball]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3ball.eps}} 
+    \subfloat[4ball]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_4ball.eps}} 
+
+    \subfloat[sphere]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_sphere.eps}} 
+    \subfloat[sphere geodesic]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_sphere_geodesic.eps}} 
+ 
+
+    \caption{\label{fig:sim_vs_exact}Comparisons of exactly calculated
+      distributions and the distributions obtained by simulation. One
+      million simulated lines were used to draw the estimated PDF,
+      which are binned into 30 equally spaced bins.}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
+
+
+
+TABLE from \verb|LinePicking_test_sim|
+
+  \begin{table}[ht]
+    \centering
+    \begin{tabular}{r|rrrr}
+             problem &     mean & estimated mean & variance &  estimated var \\
+     \hline 
+              square &   0.5214 &         0.5214 &   0.0615 &         0.0615 \\
+                disk &   0.9054 &         0.9060 &   0.1802 &         0.1804 \\
+        3d hyperball &   1.0286 &         1.0278 &   0.1420 &         0.1421 \\
+       1:2 rectangle &   0.8048 &         0.8050 &   0.1857 &         0.1855 \\
+                line &   0.3333 &         0.3329 &   0.0556 &         0.0555 \\
+                cube &   0.6617 &         0.6613 &   0.0621 &         0.0622 \\
+              sphere &   1.3333 &         1.3332 &   0.2222 &         0.2221 \\
+    \end{tabular}
+    \caption{Means and variances calculated exactly, and approximated by simulation.}
+    \label{tab:mean_var_estimates}
+  \end{table}
+% probably want parameters in the table ...

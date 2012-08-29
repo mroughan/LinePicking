@@ -21,23 +21,28 @@ N = 30;
 M = 10^6;
 rand('state', 1);
 randn('state', 5);
+device = '-depsc';
+suffix = 'eps';
+
+% probably should put error bars into the graphs ...
+
 
 % check that the geometries are what we think they should be 
 LinePickingAllProblems;
 
-
 %
 % square picking
 %
-geometry = 0;
+problem = 0;
 L = 1;
 parameters = [L];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+name(problem+1) = {LinePickingProblemLookup(problem)};
 
 x1 = L*rand(M,1);
 y1 = L*rand(M,1);
@@ -46,8 +51,10 @@ y2 = L*rand(M,1);
 d = sqrt( (x1-x2).^2 + (y1-y2).^2);
 n = histc(d, t);
 prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -58,10 +65,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_square.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('square-line picking density');
-print('-deps','Plots/LinePicking_test_sim_square.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 plot([0 L L 0 0], [0 0 L L 0], 'k-', 'linewidth', 2);
 hold on
@@ -73,21 +82,24 @@ axis equal
 axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_square_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('square-line picking example');
-print('-deps','Plots/LinePicking_test_sim_square_eg.eps');
 
 %
 % disk picking
 %
-geometry = 1;
+problem = 1;
 R = 1;
 parameters = [R];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+name(problem+1) = {LinePickingProblemLookup(problem)};
 
 x1 = 2*R*rand(M,1)-R;
 y1 = 2*R*rand(M,1)-R;
@@ -97,8 +109,10 @@ k = find((x1.^2+y1.^2)<=R^2 & (x2.^2+y2.^2)<=R^2);
 d = sqrt( (x1(k)-x2(k)).^2 + (y1(k)-y2(k)).^2);
 n = histc(d, t);
 prob = (n/length(k)) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -109,10 +123,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_disk.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('disk-line picking density');
-print('-deps','Plots/LinePicking_test_sim_disk.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 theta = 0:pi/40:2*pi;
 x_theta = R*cos(theta);
@@ -127,22 +143,26 @@ axis equal
 axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_disk_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('disk-line picking example');
-print('-deps','Plots/LinePicking_test_sim_disk_eg.eps');
 
 
 %
 % 3ball picking (to test hyperball)
 %
-geometry = 2;
+problem = 2;
 R = 1;
 parameters = [3, R];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+% name(problem+1) = {LinePickingProblemLookup(problem)};
+name(problem+1) = {'3d hyperball'};
 
 x1 = 2*R*rand(M,1)-R;
 y1 = 2*R*rand(M,1)-R;
@@ -154,8 +174,10 @@ k = find((x1.^2+y1.^2+z1.^2)<=R^2 & (x2.^2+y2.^2+z2.^2)<=R^2);
 d = sqrt( (x1(k)-x2(k)).^2 + (y1(k)-y2(k)).^2 + (z1(k)-z2(k)).^2);
 n = histc(d, t);
 prob = (n/length(k)) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -166,10 +188,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_3ball.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('3D ball-line picking density');
-print('-deps','Plots/LinePicking_test_sim_3ball.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 n = 12;
 [x,y,z] = sphere(n);
@@ -190,23 +214,23 @@ view([az, el]);
 % axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_3ball_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('3D ball-line picking example');
-print('-deps','Plots/LinePicking_test_sim_3ball_eg.eps');
 
 
 
 %
 % 4ball picking (to test hyperball)
 %
-geometry = 2;
+problem = 2;
 R = 1;
 parameters = [4, R];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
 
 x1 = 2*R*rand(M,1)-R;
 y1 = 2*R*rand(M,1)-R;
@@ -221,7 +245,7 @@ d = sqrt( (x1(k)-x2(k)).^2 + (y1(k)-y2(k)).^2 + (z1(k)-z2(k)).^2 + (w1(k)-w2(k))
 n = histc(d, t);
 prob = (n/length(k)) / ds;
 
-figure(geometry+21)
+figure(problem+21)
 hold off
 p1 = plot(0,0);
 hold on
@@ -232,23 +256,27 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_4ball.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('4D ball-line picking density');
-print('-deps','Plots/LinePicking_test_sim_4ball.eps');
 
 
 %
 % rect picking
 %
-geometry = 3;
+problem = 3;
 a = 1;
 b = 2;
 parameters = [a, b];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+% name(problem+1) = {LinePickingProblemLookup(problem)};
+name(problem+1) = {'1:2 rectangle'};
 
 x1 = b*rand(M,1);
 y1 = a*rand(M,1);
@@ -257,8 +285,10 @@ y2 = a*rand(M,1);
 d = sqrt( (x1-x2).^2 + (y1-y2).^2);
 n = histc(d, t);
 prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -269,10 +299,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_rect.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('rect(2:1)-line picking density');
-print('-deps','Plots/LinePicking_test_sim_rect.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 plot([0 b b 0 0], [0 0 a a 0], 'k-', 'linewidth', 2);
 hold on
@@ -284,29 +316,34 @@ axis equal
 axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_rect_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('rect(2:1)-line picking example');
-print('-deps','Plots/LinePicking_test_sim_rect_eg.eps');
 
 %
 % line-line picking
 %
-geometry = 4;
+problem = 4;
 L = 1;
 parameters = [L];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+name(problem+1) = {LinePickingProblemLookup(problem)};
 
 x1 = L*rand(M,1);
 x2 = L*rand(M,1);
 d = abs( (x1-x2) );
 n = histc(d, t);
 prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -317,22 +354,25 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_line.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('line-line picking density');
-print('-deps','Plots/LinePicking_test_sim_line.eps');
 
 
 %
 % cube picking
 %
-geometry = 5;
+problem = 5;
 L = 1;
 parameters = [L];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+name(problem+1) = {LinePickingProblemLookup(problem)};
 
 x1 = L*rand(M,1);
 y1 = L*rand(M,1);
@@ -343,8 +383,10 @@ z2 = L*rand(M,1);
 d = sqrt( (x1-x2).^2 + (y1-y2).^2 + (z1-z2).^2);
 n = histc(d, t);
 prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -355,10 +397,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_cube.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('cube-line picking density');
-print('-deps','Plots/LinePicking_test_sim_cube.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 plot3(0,0,0);
 hold on
@@ -377,22 +421,25 @@ view([az, el]);
 % axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_cube_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('cube-line picking example');
-print('-deps','Plots/LinePicking_test_sim_cube_eg.eps');
 
 
 %
 % sphere line picking
 %
-geometry = 6;
+problem = 6;
 R = 1;
 parameters = [R];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+name(problem+1) = {LinePickingProblemLookup(problem)};
 
 % random points on sphere
 % http://mathworld.wolfram.com/SpherePointPicking.html
@@ -410,8 +457,10 @@ z2 = r2(3,:)';
 d = sqrt( (x1-x2).^2 + (y1-y2).^2 + (z1-z2).^2);
 n = histc(d, t);
 prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -422,10 +471,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_sphere.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('sphere-line picking density');
-print('-deps','Plots/LinePicking_test_sim_geodesic.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 n = 12;
 [x,y,z] = sphere(n);
@@ -449,22 +500,25 @@ view([az, el]);
 % axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_sphere_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('sphere-line picking example');
-print('-deps','Plots/LinePicking_test_sim_sphere_eg.eps');
 
 
 %
 % sphere geodesic picking
 %
-geometry = 7;
+problem = 7;
 R = 1;
 parameters = [R];
-s = LinePickingSupport(geometry, parameters);
+s = LinePickingSupport(problem, parameters);
 ds = diff(s)/N;
 t = s(1):ds:s(2);
-g = LinePickingPDF(t, geometry, parameters);
-m = LinePickingMean(geometry, parameters);
-v = LinePickingVar(geometry, parameters);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+name(problem+1) = {LinePickingProblemLookup(problem)};
 
 % random points on sphere
 % http://mathworld.wolfram.com/SpherePointPicking.html
@@ -482,8 +536,10 @@ d = R*phi1;
 
 n = histc(d, t);
 prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
 
-figure(geometry+1)
+figure(problem+1)
 hold off
 p1 = plot(0,0);
 hold on
@@ -494,10 +550,12 @@ set(gca, 'fontsize', 16);
 legend([p1 p2], 'exact', 'simulated');
 xlabel('t');
 ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_sphere_geodesic.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('sphere-geodesic-line picking density');
-print('-deps','Plots/LinePicking_test_sim_sphere_geodesic.eps');
 
-figure(geometry+101)
+figure(problem+101)
 hold off
 n = 12;
 [x,y,z] = sphere(n);
@@ -551,5 +609,22 @@ view([az, el]);
 % axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_sphere_geodesic_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
 title('sphere-geodesic picking example');
-print('-deps','Plots/LinePicking_test_sim_sphere_geodesic_eg.eps');
+
+
+
+
+
+% output a table of results
+fprintf('  \\begin{tabular}{r|rrrr}\n');
+fprintf('%20s & %8s & %14s & %8s & %14s \\\\\n', 'problem', 'mean', 'estimated mean', 'variance', 'estimated var');
+fprintf('     \\hline \n');
+for i=1:problem
+  fprintf('%20s & %8.4f & %14.4f & %8.4f & %14.4f \\\\\n', ...
+	  char(name(i)), means(i), est_means(i), vars(i), est_var(i));
+end
+fprintf('  \\end{tabular}\n');
+
