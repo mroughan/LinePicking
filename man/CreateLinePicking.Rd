@@ -1,13 +1,13 @@
 \name{CreateLinePicking}
 \alias{CreateLinePicking}
-\title{Creates a linepicking object from mode and parameters}
+\title{Creates a linepicking object from problem and parameters}
 \usage{
-  CreateLinePicking(mode, para, n = 1000)
+  CreateLinePicking(problem, para, n = 1000)
 }
 \arguments{
-  \item{mode}{see \code{\link{LinePickingPDF}}}
+  \item{problem}{see \code{\link{LinePickingPDF}}}
 
-  \item{para}{parameters for mode.}
+  \item{para}{parameters for problem.}
 
   \item{n}{number of points for plots.}
 }
@@ -15,14 +15,14 @@
   an instance of \code{linepicking} class
 }
 \description{
-  Modes are integers describing possible geometries for the
-  line picking problem. Each has appropraite parameters
+  Problemss are integers describing possible geometries for
+  the line picking problem. Each has appropraite parameters
 }
 \note{
   August 25 2012
 }
 \examples{
-tmp <- CreateLinePicking(mode=0,para=10)
+tmp <- CreateLinePicking(problem=0,para=10)
 print(tmp)
 }
 \author{

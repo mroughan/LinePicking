@@ -19,7 +19,7 @@ CreateLinePicking <- function(problem, para, n=1000){
   exit <- LinePickingCheckParameters(problem=problem, parameters=para)
   if(exit == 1){
     cat("Possible problems are :\n")
-    LinePickingAllProblems()
+#     LinePickingAllProblems() Add better table
     return(NULL)
   }
   if(exit > 1) return(NULL)

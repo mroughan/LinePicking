@@ -13,7 +13,7 @@
   Print the linepicking class to standard output.
 }
 \examples{
-tmp <- CreateLinePicking(mode=0,para=10)
+tmp <- CreateLinePicking(problem=0,para=10)
 tmp
 }
 \author{

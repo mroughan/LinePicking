@@ -1,26 +1,26 @@
 \name{LinePickingVar}
 \alias{LinePickingVar}
-\title{Get variance for given mode and parameters}
+\title{Get variance for given problem and parameters}
 \usage{
-  LinePickingVar(mode = 0, para)
+  LinePickingVar(problem = 0, para)
 }
 \arguments{
-  \item{mode}{see \code{\link{LinePickingPDF}}}
+  \item{problem}{see \code{\link{LinePickingPDF}}}
 
   \item{para}{the parameter necessary to describe the space
-  given by mode.}
+  given by problem.}
 }
 \value{
   variance
 }
 \description{
-  For a given mode and parameters gives the variance
+  For a given problem and parameters gives the variance
 }
 \note{
   August 25 2012
 }
 \examples{
-LinePickingVar(mode=0,para=10)
+LinePickingVar(problem=0,para=10)
 }
 \author{
   Eric Parsonage, Matt Roughan, Jono Tuke
