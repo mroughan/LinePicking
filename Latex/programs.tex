@@ -1,0 +1,62 @@
+\section{Programs}
+\label{sec:program}
+
+\subsection{A Rough Guide}
+
+The code is arranged to be usable as
+\begin{enumerate}
+
+\item Directly, as a command-line function;
+
+\item By linking into a larger set of code;
+
+\item Called through a {\tt Matlab} MEX wrapper; or 
+
+\item Called through a {\tt R} wrapper function.
+
+\end{enumerate}
+It is designed to be as independent of external libraries as possible,
+needing only the C standard libraries. So compilation should be
+straight forward on the majority of machines.
+
+Ideally, typing {\tt make} in the top level directory should make all
+of the targets, however, {\tt R} users may find it easier to install
+using standard {\tt R} installation procedures (but not that these
+won't necessarily construct the other components, need for instance
+for Matlab).
+
+The makefiles in the subdirectories are named {\tt gMakefile} to avoid
+conflicts with the way {\tt R} interprets them, so if you wish to
+remake a specific subdirectory, enter the directory and type: 
+\verb|make -f gMakefile|.
+
+There are a large number of functions defined in the code, for each of
+the cases discussed above, however, there are a small set of functions
+that you may need to be aware of, that allow one to call all of the
+others through a simple, uniform interface.
+
+....
+
+
+\subsection{Numerical Issues}
+
+Most of the computations in the code involve simple calculations, with
+no obvious numerical issues (other than the obvious fact that floating
+point arithmetic is being used).
+
+The computations on the $n$-D ball, however, require calculation of
+the incomplete beta function. We have provided a separate library to
+perform this computation, but users may find they can obtain more
+accurate results using third party library functions. 
+
+...
+
+Estimates of errors ...
+
+
+\subsection{Tests}
+
+The tools come with a set of tests to compare performance on your
+system with ours, and ensure everything is working ...
+
+

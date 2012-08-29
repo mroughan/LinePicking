@@ -20,6 +20,7 @@ Exposes to matlab and R a set of functions that implement P\-D\-F, C\-D\-F, mean
 {\ttfamily \#include \char`\"{}Sphere.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Sphere\-Geodesic.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Prism\-Geodesic.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$R.\-h$>$}\\*
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -39,19 +40,22 @@ struct \hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec}
 \hypertarget{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}{\#define {\bfseries elements}(x)~(sizeof(x) / sizeof(x\mbox{[}0\mbox{]}))}\label{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}
 
 \item 
-\hypertarget{_line_picking_8h_ae92d66c34581750be2b6f639d3de4c90}{\#define {\bfseries N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-M\-O\-D\-E\-S}~elements(Line\-Picking\-Fields)}\label{_line_picking_8h_ae92d66c34581750be2b6f639d3de4c90}
+\hypertarget{_line_picking_8h_a16ab60dd0b76f3ea2a980558e7debd31}{\#define {\bfseries N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-P\-R\-O\-B\-L\-E\-M\-S}~elements(Line\-Picking\-Fields)}\label{_line_picking_8h_a16ab60dd0b76f3ea2a980558e7debd31}
 
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{_line_picking_8h_a103b4f4a1ac9d98f7402bf2925232764}{void {\bfseries Line\-Picking\-Print\-Allmodes} ()}\label{_line_picking_8h_a103b4f4a1ac9d98f7402bf2925232764}
+\hypertarget{_line_picking_8h_ab0e3cb9eaef2a9f040f1135eee394f28}{void {\bfseries Line\-Picking\-Number\-Of\-Problems} (int $\ast$)}\label{_line_picking_8h_ab0e3cb9eaef2a9f040f1135eee394f28}
 
 \item 
-\hypertarget{group__api_gaedd3355aa74b61af65af86c2674f066a}{void {\bfseries Line\-Picking\-All\-Modes} (char $\ast$$\ast$, char $\ast$$\ast$)}\label{group__api_gaedd3355aa74b61af65af86c2674f066a}
+\hypertarget{_line_picking_8h_ae60c84172a5d63e1e76e9fdac0f68193}{void {\bfseries Line\-Picking\-Print\-All\-Problemss} ()}\label{_line_picking_8h_ae60c84172a5d63e1e76e9fdac0f68193}
 
 \item 
-\hypertarget{group__api_gadecbcbeb648bc936dac406ae8f0147e8}{void {\bfseries Line\-Picking\-Mode\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)}\label{group__api_gadecbcbeb648bc936dac406ae8f0147e8}
+\hypertarget{_line_picking_8h_af04b41252ebd1a3013b6bcb4dbbf3649}{void {\bfseries Line\-Picking\-All\-Problems} (char $\ast$$\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_af04b41252ebd1a3013b6bcb4dbbf3649}
+
+\item 
+\hypertarget{_line_picking_8h_a146eea4bf38bd6e3812ea47ae2ac57a7}{void {\bfseries Line\-Picking\-Problem\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_a146eea4bf38bd6e3812ea47ae2ac57a7}
 
 \item 
 \hypertarget{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}{void {\bfseries Line\-Picking\-Check\-Parameters} (int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)}\label{_line_picking_8h_ac55d1d166b33c8906ceccbb37010ddb0}
