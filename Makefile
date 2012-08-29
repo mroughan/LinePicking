@@ -23,7 +23,7 @@
 # which also appears in gnu makes docs: http://www.gnu.org/software/make/manual/make.html#Phony-Targets
 # 
 
-SUBDIRS = src Matlab  R man 
+SUBDIRS = src Matlab R Latex
 
 .PHONY: subdirs $(SUBDIRS)
 subdirs: $(SUBDIRS)
