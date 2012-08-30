@@ -46,6 +46,7 @@
 #include "SphereGeodesic.h"
 #include "PrismGeodesic.h"
 #include "RectangleManhattan.h"
+#include "RectangleMax.h"
 
 #ifndef _NOTR
 #include <R.h> /* only include this if we are compiling for R */
@@ -99,7 +100,8 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(Sphere)}, 
     {ExpandFields(SphereGeodesic)},
     {ExpandFields(PrismGeodesic)},
-    {ExpandFields(RectangleManhattan)}
+    {ExpandFields(RectangleManhattan)},
+    {ExpandFields(RectangleMax)}
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))

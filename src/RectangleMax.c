@@ -1,6 +1,5 @@
-/* RectangleManhattan.c	
+/* RectangleMax.c	
  *
- *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
  *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -18,17 +17,17 @@
 
 #include <math.h>
 
-#include "RectangleManhattan.h"
+#include "RectangleMax.h"
 
-char *RectangleManhattanDistanceName = "rectangle Manhattan";
-char *RectangleManhattanDistanceDescription = 
-    "rectangle Manhattan, side lengths parameters[0], parameters[1]";
-int RectangleManhattanDistanceNpar = 2;
+char *RectangleMaxDistanceName = "rectangle max";
+char *RectangleMaxDistanceDescription = 
+    "rectangle max, side lengths parameters[0], parameters[1]";
+int RectangleMaxDistanceNpar = 2;
 
 
 /**
  * Implements the PDF of the distance between two random points on a
- * rectangle measured using the Manhattan metric.
+ * rectangle measured using the max metric.
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>
  * @todo Write up the derivation.
@@ -37,7 +36,7 @@ int RectangleManhattanDistanceNpar = 2;
  * and $parameters[1] is the length of the other. 
  * @return The density at $t.
  */
-double RectangleManhattanDistancePDF(double t, double* parameters)
+double RectangleMaxDistancePDF(double t, double* parameters)
 {
     double H = parameters[0];
     double L = parameters[1];
@@ -54,31 +53,23 @@ double RectangleManhattanDistancePDF(double t, double* parameters)
         H = tmp;
     }
     
-   
-    
-    /* three cases */
+    /* two cases */
     if (t <= H)
     {
-        return (2 * t * (6 * H * L - 3 * H * t - 3 * L * t + t2)) / 
-                (3. * H2 * L2);
+        return (2 * t * (4 * H * L - 3 * H * t - 3 * L * t + 2 * t2)) /
+                (H2 * L2);
         
     } 
     else if (t <= L) 
     {
-        return (2 * (H + 3 * L - 3 * t)) / (3. * L2);
+        return (2 * (L - t)) / L2;
     } 
-    else 
-    {
-        return (2 * pow(H + L - t, 3)) / (3. * H2 * L2);
-        
-    }
-    
 }
 
 
 /**
  * Implements the CDF of the distance between two random points on a rectangle
- * measured using the Manhattan metric.
+ * measured using the max metric.
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au> 
  * @todo Write up the derivation.
@@ -87,7 +78,7 @@ double RectangleManhattanDistancePDF(double t, double* parameters)
  * and $parameters[1] is the length of the other. 
  * @return The cumulative density at $t.
  */
-double RectangleManhattanDistanceCDF(double t, double* parameters)
+double RectangleMaxDistanceCDF(double t, double* parameters)
 {
     
     double H = parameters[0];
@@ -105,31 +96,22 @@ double RectangleManhattanDistanceCDF(double t, double* parameters)
         H = tmp;
     }
     
-    /* three cases */
+    /* two cases */
     if (t <= H)
     {
-        return (t2 * (12 * H * L - 4 * (H + L) * t + t2)) / (6. * H2 * L2);
+        return ((2 * H - t) * (2 * L - t) * t2) / (H2 * L2);
     } 
     else if (t <= L) 
     {
-        return  -(H2 + 4 * H * (L - t) + 6 * t * (-2 * L + t)) / (6. * L2);       
-        
-    }
-    else 
-    {
-        return -(pow(H,4) + 
-                 4 * pow(H,3) * (L - t) + 
-                 4 * H * pow(L - t,3) + 
-                 pow(L - t,4) + 
-                 6 * H2 * t * (t -2 * L)) / (6. * H2 * L2);
-    }
+        return((2 * L - t) * t) / L2;
+    } 
    
 }
 
 
 /**
  * Calculates the mean distance between two random points on a rectangle
- * measured using the Manhattan metric.
+ * measured using the max metric.
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>
  * @todo Write up the derivation.
@@ -137,20 +119,19 @@ double RectangleManhattanDistanceCDF(double t, double* parameters)
  * and $parameters[1] is the length of the other. 
  * @return The mean distance between two random points on a rectangle.
  */
-double RectangleManhattanDistanceMean(double* parameters)
+double RectangleMaxDistanceMean(double* parameters)
 {
     
     double L = parameters[0];
     double H = parameters[1];
-    
-    return (H + L)/3.;
-    
+   
+    return -(pow(H, 3) - 5 * pow(H, 2) * L - 10*pow(L, 3)) / (30. * pow(L, 2));
 }
 
 
 /**
  * Calculates the variance of distances between two random points on a 
- * rectangle measured using the Manhattan metric.
+ * rectangle measured using the max metric.
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>
  * @todo Write up the derivation.
@@ -158,7 +139,7 @@ double RectangleManhattanDistanceMean(double* parameters)
  * and $parameters[1] is the length of the other. 
  * @return The variance of distances between two random points on a rectangle.
  */
-double RectangleManhattanDistanceVar(double* parameters)
+double RectangleMaxDistanceVar(double* parameters)
 {
     double L = parameters[0];
     double H = parameters[1];
@@ -171,20 +152,17 @@ double RectangleManhattanDistanceVar(double* parameters)
         H = tmp;
     }
     
-    return (2 * pow(H, 5) + 
-            14 * pow(H, 4) * (L - 1) -
-            28 * pow(H, 3) * (L - 2) * L + 
-            105 * pow(L, 4) + 
-            35 * pow(H, 2) * pow(L, 2) * (4 * L - 1)) / 
-                (1890. * pow(L,2));
-    
-    
+    return -(pow(H, 6) - 10 * pow(H, 5) * L + 
+             55 * pow(H, 4) * pow(L, 2) - 140 * pow(H, 3) * pow(L, 3) + 
+             100 * pow(H, 2) * pow(L, 4) - 50 * pow(L, 6)) /
+                (900. * pow(L, 4));
+
 }
 
 
 /**
  * Calculates the support for the PDF and CDF of the distance between 
- * two random points on a rectangle measured using the Manhattan metric.
+ * two random points on a rectangle measured using the max metric.
  *
  * @param $t Pointer to storage for lower and upper ends of the support for
  * the PDF and CDF of the distance between two random points on a rectangle.
@@ -193,11 +171,11 @@ double RectangleManhattanDistanceVar(double* parameters)
  * @return The lower end of the interval is returned in $t[0] and the 
  * upper end of the interval is returned in $t[1].
  */
-void RectangleManhattanDistanceSupport(double *t, double *parameters)
+void RectangleMaxDistanceSupport(double *t, double *parameters)
 {
     /* rectangle, side lengths parameters[0], parameters[1] */
     t[0] = 0;
-    t[1] = parameters[0] + parameters[1];
+    t[1] = parameters[0] > parameters[1] ? parameters[0] : parameters[1];
 }
 
 
@@ -218,7 +196,7 @@ void RectangleManhattanDistanceSupport(double *t, double *parameters)
 * in the location pointed to by $result and a message explaining the error 
 * is copied in to the location pointed to $error_str 
 */
-void RectangleManhattanDistanceCheckParameters(double *parameters, int *result, 
+void RectangleMaxDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {
     /* no further checks needed */
