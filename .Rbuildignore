@@ -1,0 +1,5 @@
+gMakefile
+Template_h
+Template_c
+Doxyfile
+^\.Rproj\.user$
