@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LinePicking: &quot;Public API&quot;</title>
+<title>LinePicking: LinePicking API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -65,7 +65,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -75,14 +75,578 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">"Public API"</div>  </div>
+<div class="title">LinePicking API</div>  </div>
 </div><!--header-->
 <div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:gab0e3cb9eaef2a9f040f1135eee394f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gab0e3cb9eaef2a9f040f1135eee394f28">LinePickingNumberOfProblems</a> (int *)</td></tr>
+<tr class="separator:gab0e3cb9eaef2a9f040f1135eee394f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a1c27d3c46da382a0443f810628a8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga1a1c27d3c46da382a0443f810628a8ac">LinePickingPrintAllProblems</a> (void)</td></tr>
+<tr class="separator:ga1a1c27d3c46da382a0443f810628a8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf04b41252ebd1a3013b6bcb4dbbf3649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gaf04b41252ebd1a3013b6bcb4dbbf3649">LinePickingAllProblems</a> (char **, char **)</td></tr>
+<tr class="separator:gaf04b41252ebd1a3013b6bcb4dbbf3649"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga146eea4bf38bd6e3812ea47ae2ac57a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga146eea4bf38bd6e3812ea47ae2ac57a7">LinePickingProblemLookup</a> (int *, char **, char **)</td></tr>
+<tr class="separator:ga146eea4bf38bd6e3812ea47ae2ac57a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac55d1d166b33c8906ceccbb37010ddb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a> (int *, double *, int *, int *, char **)</td></tr>
+<tr class="separator:gac55d1d166b33c8906ceccbb37010ddb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0aec0b2f87903f4bf4ad3011a99b3446"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga0aec0b2f87903f4bf4ad3011a99b3446">LinePickingSupport</a> (double *, int *, double *, int *, int *, char **)</td></tr>
+<tr class="separator:ga0aec0b2f87903f4bf4ad3011a99b3446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8feba9835984bd74f3d919f51389e573"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga8feba9835984bd74f3d919f51389e573">LinePickingPDF</a> (double *, double *, int *, int *, double *, int *, int *, char **)</td></tr>
+<tr class="separator:ga8feba9835984bd74f3d919f51389e573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga445ba2c007d60d789747cecbd5f874b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga445ba2c007d60d789747cecbd5f874b9">LinePickingCDF</a> (double *, double *, int *, int *, double *, int *, int *, char **)</td></tr>
+<tr class="separator:ga445ba2c007d60d789747cecbd5f874b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39879835a11f7af8bf65699f9d83a5cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga39879835a11f7af8bf65699f9d83a5cb">LinePickingMean</a> (double *, int *, double *, int *, int *, char **)</td></tr>
+<tr class="separator:ga39879835a11f7af8bf65699f9d83a5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga08fecba488534373e8d1710f273bc49c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga08fecba488534373e8d1710f273bc49c">LinePickingVar</a> (double *, int *, double *, int *, int *, char **)</td></tr>
+<tr class="separator:ga08fecba488534373e8d1710f273bc49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>This section documents the API exposed for the use of other programs. These are the functions called by the R and Matlab wrappers included in this package. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Add some more preamble about the API.</dd></dl>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="gaf04b41252ebd1a3013b6bcb4dbbf3649"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingAllProblems </td>
+          <td>(</td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>descriptions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is passed two arrays of uninitialised pointers to strings. On its return these pointers are initialised. The firat contains pointers to strings containing the names of all the problems implemented and the second contains pointers to strings containing the descriptions of all the problems implemented. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$name</td><td>Pointer to array that this function will fill with pointers to strings containing the names of all the problems currently implemented. </td></tr>
+    <tr><td class="paramname">$description</td><td>Pointer to array that this function will fill with pointers to strings containing the descriptons of all the problems currently implemented. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The two uninitialised arrays passed to the function are initialised with pointers to strings. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Implement dynamic memory allocation of string outputs and the array that points to them. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000001">Bug:</a></b></dt><dd>possible array bounds exception if the size of the supplied arguments is incorrect. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga445ba2c007d60d789747cecbd5f874b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingCDF </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Implements the CDF of the distance between two random points for the given problem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$t</td><td>An array of distances to calculate the cumulative density for. </td></tr>
+    <tr><td class="paramname">$g</td><td>An array in which the calculated cumulative densities are returned. </td></tr>
+    <tr><td class="paramname">$N</td><td>The value pointed to by $N is the number of entries in $T </td></tr>
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the PDF will be calculated. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. A description of the error is returned in $error_str. The integer values returned are described in <a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a>. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The required calculated cumulative densities are returned in $g. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>The matlab version allocates memory dynamically for the array of cumulative densities which is safe. The R version could go horribly wrong if a shorter array was passed. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug:</a></b></dt><dd>potential array bounds overrun. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac55d1d166b33c8906ceccbb37010ddb0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingCheckParameters </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determines if the supplied parameters are valid input for other functions in this library.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the the supplied $parameters are checked against. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. The following values are implemented:<ul>
+<li>0: parameters are valid.</li>
+<li>1: unsupported problem.</li>
+<li>2: parameters out of range.</li>
+<li>3: not enough parameters were entered.</li>
+<li>4: other error.. </li>
+</ul>
+</td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The validity of the supplied parameters as input for other functions in this library is retuned in $result. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga39879835a11f7af8bf65699f9d83a5cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingMean </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>mean</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculates the mean distance between two random points for the given problem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$mean</td><td>A pointer to the location where the mean will be stored. </td></tr>
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the mean will be calculated. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. A description of the error is returned in $error_str. The integer values returned are described in <a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a>. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The required calculated mean is returned in $mean. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gab0e3cb9eaef2a9f040f1135eee394f28"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingNumberOfProblems </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>N</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Helper function returns the number of currently implemented problems. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$N</td><td>Pointer to an integer to store the number of currently implemented problems. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of currently implemented problems is returned in the location pointed to by $N. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8feba9835984bd74f3d919f51389e573"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingPDF </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>N</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Implements the PDF of the distance between two random points for the given problem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$t</td><td>An array of distances to calculate the density for. </td></tr>
+    <tr><td class="paramname">$g</td><td>An array in which the calculated densities are returned. </td></tr>
+    <tr><td class="paramname">$N</td><td>The value pointed to by $N is the number of entries in $T </td></tr>
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the PDF will be calculated. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. A description of the error is returned in $error_str. The integer values returned are described in <a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a>. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The required calculated densities are returned in $g. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug:</a></b></dt><dd>potential array bounds overrun. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1a1c27d3c46da382a0443f810628a8ac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingPrintAllProblems </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prints to stdout a list of all implemented problems giving the number of the problem and its associated name. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Do we want to print out the descriptions here? </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga146eea4bf38bd6e3812ea47ae2ac57a7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingProblemLookup </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>description</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Problems are represented as integers. Given such an integer this function returns the problem name and description as a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$problem</td><td>Represents a problem. </td></tr>
+    <tr><td class="paramname">$name</td><td>Address of a memory location to set to the address of a string containing the name of the problem. </td></tr>
+    <tr><td class="paramname">$description</td><td>Address of a memory location to set to the address of a string containing the description of the problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Strings containing the name and description of the problem are retuned in the locations pointed to by $name and $description. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Implement dynamic memory allocation of string outputs. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0aec0b2f87903f4bf4ad3011a99b3446"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingSupport </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Compute the support of the PDF and CDF of the distance between two random points for a given problem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$t</td><td>Pointer to storage for lower and upper ends of the support for the PDF and CDF of the distance between two random points for a given problem. </td></tr>
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the PDF's and CDF's support will be calculated. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. A description of the error is returned in $error_str. The integer values returned are described in <a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a>. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The lower end of the interval is returned in $t[0] and the upper end of the interval is returned in $t[1]. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>allocate memeory for the result dynamically. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000002">Bug:</a></b></dt><dd>potential array bounds overrun. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga08fecba488534373e8d1710f273bc49c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingVar </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>var</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculates the variance of the distances between two random points for the given problem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$var</td><td>A pointer to the location where the variance will be stored. </td></tr>
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the mean will be calculated. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. A description of the error is returned in $error_str. The integer values returned are described in <a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a>. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The required calculated variance is returned in $var. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 29 2012 13:09:39 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 29 2012 22:41:33 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
