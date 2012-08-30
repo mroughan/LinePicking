@@ -154,62 +154,11 @@ where remember $p = \frac{1}{2} (n+1)$, and $q=\frac{1}{2}$.
 Extending this to the general case with radius $R$ we get:
 \begin{equation}
   \label{eq:cdf_n-ball}  
-   G^{n-{\rm ball}}_{1/2}(\tau)
+   G^{n-{\rm ball}}_{R}(\tau)
      =  2^n \left[ \left( \frac{\tau}{2R} \right)^{n} I_{x}(p,q)  + \frac{B(1-x; q+n/2,p)}{B(q,p)} \right].
 \end{equation}
 
-% also see http://mathworld.wolfram.com/IncompleteBetaFunction.html
-
 \subsubsection{Moments}
-
-Ghosh \cite{b.ghosh51:_random_rect} gives the first four moments of
-the line-length distribution for the rectangle.
-\begin{eqnarray}
-  \label{eq:rect_moments} 
-  \alpha_1 & = & \frac{1}{6} \left[ 
-                        \frac{b^2}{a} \cosh^{-1}\left( M/b \right) +
-                        \frac{a^2}{b} \cosh^{-1}\left( M/a \right) 
-                 \right]
-                  + \frac{1}{15} \left[ \frac{a^3}{b^2} + \frac{b^3}{a^2} \right]
-                  - \frac{M}{15} \left[ \frac{a^2}{b^2} + \frac{b^2}{a^2} -3 \right],
-\\
-  \alpha_2 & = & \frac{1}{6} M^2, \\
-  \alpha_3 & = & \frac{1}{20} \left[ 
-                        \frac{b^4}{a} \cosh^{-1}\left( M/b \right) +
-                        \frac{a^4}{b} \cosh^{-1}\left( M/a \right) 
-                 \right]
-                  + \frac{2}{105} \left[ \frac{a^5}{b^2} + \frac{b^5}{a^2} \right]
-                  - \frac{2M}{105} \left[ \frac{a^4}{b^2} + \frac{b^4}{a^2}\right]
-                        - \frac{5}{84} M^3, 
-\\
-  \alpha_4 & = & \frac{1}{15} a^4 + \frac{1}{18} a^2 b^2 + \frac{1}{15} b^4,
-\end{eqnarray}
-where $M = \sqrt{a^2 + b^2}$, from which we can derive the special
-cases of the square and line (though these can also be derived
-directly). Obvious central moments such as mean, and variance, etc.,
-can be derived from these, though forumlas will be
-complex. Rosenberg~\cite{Rosenberg200499} derives a similar result,
-but under different assumptions of the random selection of lines (he
-assumes we first choose a random angle, then choose the line.
-
-The mean for the cube, known as the {\em Robbins constant}, is given
-in \cite{robbins78:_constant,weisstein:_cube_line_picking} as
-\begin{equation}
-   \label{eq:cube_mean}
- \mu^{\rm cube} = \frac{1}{105} \left[ 
-                             4 + 17 \sqrt{2}- 6 \sqrt{3}  +
-                             21 \ln(1+\sqrt{2}) + 
-                             42 \ln(2+\sqrt{3}) - 7 \pi
-                      \right]
-	=	0.66170...
-\end{equation}
-but a closed form for the variance does not appear (only even moments
-are reported). Even more complicated results appear for 4- and 5-Cubes in
-5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}:
-\begin{eqnarray}
- \mu^{\rm 4-cube} & = & 0.7776656535 ...    \label{eq:4-cube}, \\
- \mu^{\rm 4-cube} & = & 0.8785309152 ...     \label{eq:5-cube}.
-\end{eqnarray}
 
 The means for the $n$-dimensional ball (with radius 1) are given in
 \cite{weisstein:_ball_line_picking} as
@@ -221,18 +170,16 @@ The means for the $n$-dimensional ball (with radius 1) are given in
   \mu^{4D-{\rm ball}} & = & \frac{16384}{4725 \pi}.
 \end{eqnarray}
 The more general form for higher order moments is given in
-\cite{tu00:_circle_line} (equation (138-141)) as
+\cite{tu00:_circle_line}~(138-141) as
 \begin{eqnarray}
   \label{eq:ball-ndim-moments}
-  \alpha_m^{nD-{\rm ball}} & = &
+  \alpha_m^{n-{\rm ball}} & = &
      \frac{n 2^{m+n}}{m+n} \frac{B\left(\frac{n+1}{2}, \frac{n+m+1}{2}  \right)}{B\left(\frac{n+1}{2}, \frac{1}{2} \right)} R^m, \\
        & = & \left( \frac{n}{n+m} \right)^2 
                  \frac{\Gamma\left( n+m+1 \right) \Gamma\left( n/2 \right) }
                       {\Gamma\left( (n+m)/2 \right) \Gamma\left( n+1 + m/2 \right) } R^m.  
 \end{eqnarray}
-for and $n$-dimensional ball of radius $R$.
-
-
+Obviously, central moments can be derived in the standard way.
 
 
 

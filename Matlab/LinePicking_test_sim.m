@@ -201,6 +201,7 @@ x = R*x;
 y = R*y; 
 z = R*z;
 h = mesh(x+0,y+0,z+0);
+colormap(0.5*[1 1 1]);
 hidden off
 hold on
 m = 1:10;
@@ -468,7 +469,7 @@ p1 = plot(t, g, 'r--', 'linewidth', 2);
 p2 = plot(t+ds/2, prob, 'bo', 'linewidth', 2);
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
-legend([p1 p2], 'exact', 'simulated');
+legend([p1 p2], 'exact', 'simulated', 'location','southeast');
 xlabel('t');
 ylabel('g(t)');
 filename = sprintf('Plots/LinePicking_test_sim_sphere.%s', suffix);
@@ -484,6 +485,7 @@ x = R*x;
 y = R*y;
 z = R*z;
 h = mesh(x+0,y+0,z+0);
+colormap(0.5*[1 1 1]);
 hidden off
 hold on
 m = 1:10;
@@ -563,6 +565,7 @@ x = R*x;
 y = R*y; 
 z = R*z;
 h = mesh(x+0,y+0,z+0);
+colormap(0.5*[1 1 1]);
 hidden off
 hold on
 n=10;

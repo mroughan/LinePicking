@@ -86,3 +86,29 @@ Where we have used the Taylor series
 
 \subsubsection{Moments}
 
+Ghosh \cite{b.ghosh51:_random_rect} gives the first four moments of
+the line-length distribution for the rectangle.
+\begin{eqnarray}
+  \label{eq:rect_moments} 
+  \alpha_1 & = & \frac{1}{6} \left[ 
+                        \frac{b^2}{a} \cosh^{-1}\left( M/b \right) +
+                        \frac{a^2}{b} \cosh^{-1}\left( M/a \right) 
+                 \right]
+                  + \frac{1}{15} \left[ \frac{a^3}{b^2} + \frac{b^3}{a^2} \right]
+                  - \frac{M}{15} \left[ \frac{a^2}{b^2} + \frac{b^2}{a^2} -3 \right],
+\\
+  \alpha_2 & = & \frac{1}{6} M^2, \\
+  \alpha_3 & = & \frac{1}{20} \left[ 
+                        \frac{b^4}{a} \cosh^{-1}\left( M/b \right) +
+                        \frac{a^4}{b} \cosh^{-1}\left( M/a \right) 
+                 \right]
+                  + \frac{2}{105} \left[ \frac{a^5}{b^2} + \frac{b^5}{a^2} \right]
+                  - \frac{2M}{105} \left[ \frac{a^4}{b^2} + \frac{b^4}{a^2}\right]
+                        - \frac{5}{84} M^3, 
+\\
+  \alpha_4 & = & \frac{1}{15} a^4 + \frac{1}{18} a^2 b^2 + \frac{1}{15} b^4,
+\end{eqnarray}
+where $M = \sqrt{a^2 + b^2}$, from which we can derive the special
+cases of the square and line (though these can also be derived
+directly). Obviously central moments such as mean, and variance, etc.,
+can be derived from these. 
