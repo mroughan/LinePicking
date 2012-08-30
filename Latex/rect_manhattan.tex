@@ -105,8 +105,20 @@ these, i.e., for $0 \leq t \leq a+b$, and $a \leq b$, we get
   \label{eq:manhattan}
 \end{eqnarray}
 
-The above simplifies dramatically 
+The above simplifies dramatically.
 
+
+Good work you are heading for this:
+
+\begin{equation}
+ g^{\rm X+Y}_b(t) =
+ \begin{cases}
+ \frac{2 t \left(6 a b-3 a t-3 b t+t^2\right)}{3 a^2 b^2}& 0 \le t < a \\
+\frac{2 (a+3 b-3 t)}{3 b^2} & a\le t <  b \\
+\frac{2 (a+b-t)^3}{3 a^2 b^2} & b \le t < \le  a + b\\
+ 0 & \mbox{otherwise}
+ \end{cases}
+\end{equation}
 
 \subsubsection{CDF}
 
@@ -114,7 +126,30 @@ The function above is comprised of several polynomial segments. A
 closed form for the CDF is therefore easily derived (say by use of
 Mathematica), but tiresome and not very instructive ...
 
+Not so tiresome.., took less than typing in the paragraph above!!!
+Especially if you use the method i did to get the PDF.
+
+\begin{equation}
+ G^{\rm X+Y}_b(t) =
+ \begin{cases}
+\frac{t^2 \left(-4 t (a+b)+12 a b+t^2\right)}{6 a^2 b^2} & 0 \le t < a \\
+-\frac{a^2+4 a (b-t)+6 t (t-2 b)}{6 b^2} & a\le t <  b \\
+-\frac{a^4+4 a^3 (b-t)+6 a^2 t (t-2 b)+4 a (b-t)^3+(b-t)^4}{6 a^2 b^2} & b \le t < \le  a + b\\
+ 0 & t < 0\\
+ 1 & t > a + b
+ \end{cases}
+\end{equation}
+
+
 \subsubsection{Moments}
+
+We can also easily get 
+
+\begin{eqnarray}
+ \mu & = \frac{a+b}{3} \\
+ \sigma^{2} & = \frac{2 a^5+14 a^4 (b-1)-28 a^3 (b-2) b+35 a^2 b^2 (4 b-1)+105 b^4}{1890 b^2}
+\end{eqnarray}
+
 
 
 

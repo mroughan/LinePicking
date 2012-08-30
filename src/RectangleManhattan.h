@@ -1,7 +1,8 @@
 /**
- * @file Rectangle.h
+ * @file RectangleManhattan.h
  * @brief Functions to provide PDF, CDF, mean and variance of the  
- * distance between two random points on a rectangle.
+ * distance between two random points on a rectangle measured using the
+ * Manhattan metric.
  * @author Eric Parsonage <eric.parsonage@adelaide.edu.au> 
  * @date 22/09/2012
  */
@@ -23,27 +24,27 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _RECTANGLE_H
-#define _RECTANGLE_H
+#ifndef _RECTANGLE_MANHATTAN_H
+#define _RECTANGLE_MANHATTAN_H
 
-extern char *RectangleDistanceName;
-extern char *RectangleDistanceDescription;
-extern int RectangleDistanceNpar;
+extern char *RectangleManhattanDistanceName;
+extern char *RectangleManhattanDistanceDescription;
+extern int RectangleManhattanDistanceNpar;
 
 
-double RectangleDistancePDF(double t, double* parameters);
+double RectangleManhattanDistancePDF(double t, double* parameters);
 
-double RectangleDistanceCDF(double t, double* parameters);
+double RectangleManhattanDistanceCDF(double t, double* parameters);
 
-double RectangleDistanceMean(double* parameters);
+double RectangleManhattanDistanceMean(double* parameters);
 
-double RectangleDistanceVar(double* parameters);
+double RectangleManhattanDistanceVar(double* parameters);
 
-void RectangleDistanceSupport(double *t, double *parameters);
+void RectangleManhattanDistanceSupport(double *t, double *parameters);
 
-void RectangleDistanceCheckParameters(double *parameters, int *result, 
+void RectangleManhattanDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
 
 
-#endif /* _RECTANGLE_H */
+#endif /* _RECTANGLE_MANHATTAN_H */
