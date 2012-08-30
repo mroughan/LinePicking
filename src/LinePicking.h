@@ -1,6 +1,5 @@
 
 /**
- * 
  * @file LinePicking.h
  * @brief Exposes to matlab and R a set of functions that implement PDF, CDF,   
  * mean and variance of the distance between two random points 
@@ -30,6 +29,7 @@
  */
 
 
+
 #include <math.h>
 #include <stdlib.h>
 #include <stdint.h> 
@@ -50,9 +50,9 @@
 #include <R.h> /* only include this if we are compiling for R */
 #endif
 
-
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
+
 
 #ifndef PRINT_STDOUT
 /* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
@@ -66,7 +66,6 @@
 #endif
 
 
-/** structure thingo test */
 typedef struct 
 {
     double (* PDF)(double, double *); 
@@ -104,14 +103,19 @@ LinePickingRec LinePickingFields[] =
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
 #define NUMBER_OF_PROBLEMS elements(LinePickingFields)
 
-/** @defgroup api "Public API" */
 
+/** @defgroup api LinePicking API 
+ *\addtogroup api 
+ *  @{
+ */
 
 void LinePickingNumberOfProblems(int *);
-void LinePickingPrintAllProblemss();
-void LinePickingAllProblems(char **, char **);
-void LinePickingProblemLookup(int *, char**, char**);
 
+void LinePickingPrintAllProblems(void);
+
+void LinePickingAllProblems(char **, char **);
+
+void LinePickingProblemLookup(int *, char**, char**);
 
 /* check that a problem and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
@@ -136,6 +140,9 @@ void LinePickingMean(double *, int *, double*, int *, int*, char **);
 
 /* primary function for calculating Mean line length for any region */
 void LinePickingVar(double *, int *, double*, int *, int*, char **);
+
+
+/** @}*/
 
 
 #ifdef _STANDALONE

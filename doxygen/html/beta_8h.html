@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Groups</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -82,6 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">beta.h File Reference</div>  </div>
@@ -96,12 +97,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="beta_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ada3d93b92edae24e993803d0179d8eb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada3d93b92edae24e993803d0179d8eb7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_STDOUT</b>(...)&#160;&#160;&#160;Rprintf(__VA_ARGS__)</td></tr>
+<tr class="separator:ada3d93b92edae24e993803d0179d8eb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8acd908df0c9f383f67d0cc269ffe160"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="beta_8h.html#a8acd908df0c9f383f67d0cc269ffe160">beta</a> (double, double)</td></tr>
 <tr class="separator:a8acd908df0c9f383f67d0cc269ffe160"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf8f53297621a938306cf528fac3f9d3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="beta_8h.html#adf8f53297621a938306cf528fac3f9d3">beta_inc</a> (double, double, double)</td></tr>
-<tr class="separator:adf8f53297621a938306cf528fac3f9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af16c9618bf4cbba7e724a579868b8740"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="beta_8h.html#af16c9618bf4cbba7e724a579868b8740">beta_inc</a> (double, double, double, int *result)</td></tr>
+<tr class="separator:af16c9618bf4cbba7e724a579868b8740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implements the beta function and the regularized incomplete beta function. </p>
@@ -143,7 +150,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="adf8f53297621a938306cf528fac3f9d3"></a>
+<a class="anchor" id="af16c9618bf4cbba7e724a579868b8740"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -163,7 +170,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>x</em>&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -184,17 +197,18 @@ Functions</h2></td></tr>
     <tr><td class="paramname">$a</td><td>in <img class="formulaInl" alt="$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $" src="form_1.png"/> </td></tr>
     <tr><td class="paramname">$b</td><td>in <img class="formulaInl" alt="$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $" src="form_1.png"/> </td></tr>
     <tr><td class="paramname">$x</td><td>in <img class="formulaInl" alt="$ I_x(a,b) = \dfrac{B(x;\,a,b)}{B(a,b)}. $" src="form_1.png"/> </td></tr>
+    <tr><td class="paramname">$result</td><td>is non zero if some error occured. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The result of evaluating the incomplete beta function with the given parameters. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The result of evaluating the incomplete beta function with the given parameters or an error conditon returned in $result </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Aug 29 2012 13:09:39 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 29 2012 22:41:33 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
