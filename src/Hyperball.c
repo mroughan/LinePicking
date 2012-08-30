@@ -78,9 +78,29 @@ double HyperballDistancePDF(double t, double* parameters)
  * $parameters[1] is the radius of the hyper-ball. 
  * @return The cumulative density at $t, currently -1 for all $t.
  */
-double HyperballDistanceCDF(double a, double* b)
+double HyperballDistanceCDF(double t, double* parameters)
 {    
-    return -1;
+    double n = ceil(parameters[0]); 
+    double r = parameters[1];
+    double d = 2 * r;
+    double r2 = r * r;
+    double t2 = t * t;			     
+    double p, q, x, Ix, Bx;
+    int result;
+    
+    x = 1.0 - t2 / (4.0 * r2);
+    p = (n + 1.0) / 2.0;
+    q = 1.0 / 2.0;
+    
+    /* 
+     * we dont need to check the result from beta_inc
+     * because the parameters to this function have
+     * been checked thus what we pass to beta_inc is 
+     * also correct */
+    Ix = beta_inc(p, q, x, &result);
+    Bx = beta_inc(q+n/2, p, 1-x, &result) * beta(q+n/2, p) / beta(q,p);
+
+    return pow(2,n) * ( pow(t/(2*r), n) * Ix + Bx);
 }
 
 
