@@ -11,5 +11,11 @@ var searchData=
   ['rectanglemanhattandistancemean',['RectangleManhattanDistanceMean',['../_rectangle_manhattan_8h.html#aee8e75a7c20fcd57d7e0973fe7405755',1,'RectangleManhattan.c']]],
   ['rectanglemanhattandistancepdf',['RectangleManhattanDistancePDF',['../_rectangle_manhattan_8h.html#a0eb28f90684fb76ee37f6e1b63d1f54a',1,'RectangleManhattan.c']]],
   ['rectanglemanhattandistancesupport',['RectangleManhattanDistanceSupport',['../_rectangle_manhattan_8h.html#a5d33e1aea01cc27b013c0291e19ed2ef',1,'RectangleManhattan.c']]],
-  ['rectanglemanhattandistancevar',['RectangleManhattanDistanceVar',['../_rectangle_manhattan_8h.html#a117ba0bca15232d5d7eb89b8b5a7c1ff',1,'RectangleManhattan.c']]]
+  ['rectanglemanhattandistancevar',['RectangleManhattanDistanceVar',['../_rectangle_manhattan_8h.html#a117ba0bca15232d5d7eb89b8b5a7c1ff',1,'RectangleManhattan.c']]],
+  ['rectanglemaxdistancecdf',['RectangleMaxDistanceCDF',['../_rectangle_max_8h.html#afb7f5c997bb653282b592aa729827f0f',1,'RectangleMax.c']]],
+  ['rectanglemaxdistancecheckparameters',['RectangleMaxDistanceCheckParameters',['../_rectangle_max_8h.html#afc22233583190a55383abb7d82a88fe8',1,'RectangleMax.c']]],
+  ['rectanglemaxdistancemean',['RectangleMaxDistanceMean',['../_rectangle_max_8h.html#aac3f09b5f28e45c0862cf8eb3e9c86fc',1,'RectangleMax.c']]],
+  ['rectanglemaxdistancepdf',['RectangleMaxDistancePDF',['../_rectangle_max_8h.html#a9c33752d0602fa7bbe5314f728669d24',1,'RectangleMax.c']]],
+  ['rectanglemaxdistancesupport',['RectangleMaxDistanceSupport',['../_rectangle_max_8h.html#ad7ab679ff8c9f83bfbe78aeaa4ee01f0',1,'RectangleMax.c']]],
+  ['rectanglemaxdistancevar',['RectangleMaxDistanceVar',['../_rectangle_max_8h.html#a5e0f082b20cf7ef198e57031cdbd2bea',1,'RectangleMax.c']]]
 ];
