@@ -1,0 +1,122 @@
+\subsection{Line picking on the rectangle with the Manhattan distance}
+\label{sec:rect_manhattan}
+
+Example showing a different distance metric: 
+
+% \begin{figure}[tbp]
+%   \begin{center}
+%     \subfloat[\label{fig:hyperball_pdf}PDF of length 1 line showing
+%     exact and simulated values.]{\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_test_sim_line.eps}}
+%     \caption{The line-line picking problem ($L=1$).}
+%   \end{center} 
+% \vspace{-4mm}
+% \end{figure}
+
+\subsubsection{PDF}
+
+The elegant feature of this problem is that the Manhattan distance is
+made up from the horizontal distance, and the vertical distance, and
+these two are independent. Hence the total distance is the sum of two
+independent random variables, i.e.,
+\[ t_{\rm Manhattan} = t_X + t_Y, \]
+where $t_X$ and $t_Y$ are distances given by the line-line picking
+problem (Section~\ref{sec:line_line}).
+
+
+The probability density function of distances between two (uniformly)
+randomly chosen points on the unit line is given in
+\eqref{eq:line_lineL}, and so the densities in the $X$ and $Y$
+directions for a rectangle with sides $a$ and $b$ will be
+\begin{eqnarray}
+  \label{eq:rect_xy}
+  g^{\rm X}_b(t) & = & \left\{ \begin{array}{ll}
+                    \frac{2}{b} \left( 1-\frac{t}{b} \right), &
+                         \mbox{ for } 0 \leq t \leq b, \\
+                    0, & \mbox{ otherwise}, \\
+                  \end{array} \right. \nonumber \\
+  g^{\rm Y}_a(t) & = & \left\{ \begin{array}{ll}
+                    \frac{2}{a} \left( 1-\frac{t}{a} \right), &
+                         \mbox{ for } 0 \leq t \leq a, \\
+                    0, & \mbox{ otherwise}. \\
+                  \end{array} \right. \nonumber 
+\end{eqnarray}
+The density for the Manhattan distance will be the convolution of
+these, i.e., for $0 \leq t \leq a+b$, and $a \leq b$, we get
+\begin{eqnarray}
+    g^{\rm X+Y}_b(t) & = & g^{\rm X+Y}_b(t), \nonumber \\
+       & = & \left[ g^{\rm Y}_a *  g^{\rm X}_b \right] (t) \nonumber \\
+       & = & \int_{-\infty}^{\infty} g^{\rm Y}_a(s)  \, g^{\rm X}_b(t-s) \, ds,  \nonumber \\
+       & = & \int_{\max(0,t-b)}^{\min(a,t)} g^{\rm Y}_a(s)  \, g^{\rm X}_b(t-s) \, ds,  \nonumber \\
+       & = & \frac{4}{a b} \int_{\max(0,t-b)}^{\min(a,t)}  
+              \left( 1-\frac{s}{a} \right) 
+              \left( 1-\frac{t-s}{b} \right)  \, ds,  \nonumber \\
+       & = & \frac{4}{a b} \int_{\max(0,t-b)}^{\min(a,t)} 
+                   \left( 1 - \frac{t}{b} \right)  
+                    + \left( \frac{1}{b} - \frac{1}{a} + \frac{t}{a b} \right)  s  
+                    - \frac{1}{a b}  s^2 
+                \, ds,  \nonumber \\
+       & = & \frac{4}{a b} \left[ \left( 1 - \frac{t}{b} \right) s
+              + \frac{1}{2} \left( \frac{1}{b} - \frac{1}{a} + \frac{t}{a b} \right)  s^2 
+              - \frac{1}{3} \frac{1}{a b}  s^3
+                  \right]_{\max(0,t-b)}^{\min(a,t)},  \nonumber \\
+       & = & \left\{ \begin{array}{ll}
+           \displaystyle
+           \frac{4}{a b} \left( 1 - \frac{t}{b} \right) t
+              + \frac{2}{a b} \left( \frac{1}{b} - \frac{1}{a} + \frac{t}{a b} \right)  t^2 
+              - \frac{4}{3} \frac{1}{a^2 b^2}  t^3, & \mbox{ for } 0 \leq t \leq a, \\
+           \displaystyle
+           \frac{4}{a b}  \left( 1 - \frac{t}{b} \right) a
+              + \frac{2}{a b} \left( \frac{1}{b} - \frac{1}{a} + \frac{t}{a b} \right)  a^2 
+              - \frac{4}{3} \frac{1}{a^2 b^2}  a^3, & \mbox{ for } a \leq t \leq b, \\
+           \displaystyle
+           \frac{4}{a b}  \left( 1 - \frac{t}{b} \right) a
+              + \frac{2}{a b} \left( \frac{1}{b} - \frac{1}{a} + \frac{t}{a b} \right)  a^2 
+              - \frac{4}{3} \frac{1}{a^2 b^2}  a^3   \\
+           \displaystyle
+             \hspace{7mm}
+              - \frac{4}{a b}  \left( 1 - \frac{t}{b} \right) (t-b)
+              - \frac{2}{a b} \left( \frac{1}{b} - \frac{1}{a} + \frac{t}{a b} \right)  (t-b)^2 
+              + \frac{4}{3} \frac{1}{a^2 b^2}  (t-b)^3, & \mbox{ for } b \leq t \leq a + b , \\
+                \end{array} \right. \nonumber \\
+       & = & \left\{ \begin{array}{ll}
+           \displaystyle
+           \left(\frac{4}{a b}\right) t
+              - \left(\frac{2(a+b)}{a^2 b^2} \right) t^2
+              + \left(\frac{2}{3} \frac{1}{a^2 b^2}\right)  t^3, & \mbox{ for } 0 \leq t \leq a, \\
+           \displaystyle
+                   \left( \frac{4}{b}
+                               - \frac{2(b-a)}{b^2} 
+                               - \frac{4}{3} \frac{a}{ b^2} \right)
+              - \left( \frac{2}{b^2}  \right) t, & \mbox{ for } a \leq t \leq b, \\
+           \displaystyle
+              \left( \frac{4}{b}
+                              - \frac{2(b-a)}{b^2} 
+                              - \frac{4}{3} \frac{a}{ b^2} \right)
+              - \left( \frac{2}{b^2}  \right) t \\
+           \displaystyle
+             \hspace{7mm}
+              -  \frac{4}{a b} (t-b)
+              + \frac{2(a+b)}{a^2 b^2} (t-b)^2 
+              - \frac{2}{3} \frac{1}{a^2 b^2}  (t-b)^3
+                     , & \mbox{ for } b \leq t \leq a + b,  \\
+           \displaystyle
+             0, & \mbox{ otherwise}.
+                \end{array} \right. \nonumber \\
+  \label{eq:manhattan}
+\end{eqnarray}
+
+The above simplifies dramatically 
+
+
+\subsubsection{CDF}
+
+The function above is comprised of several polynomial segments. A
+closed form for the CDF is therefore easily derived (say by use of
+Mathematica), but tiresome and not very instructive ...
+
+\subsubsection{Moments}
+
+
+
+
+
