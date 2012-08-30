@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LinePicking: Disk.h File Reference</title>
+<title>LinePicking: RectangleManhattan.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,53 +85,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">Disk.h File Reference</div>  </div>
+<div class="title">RectangleManhattan.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Functions to provide PDF, CDF, mean and variance of the distance between two random points on a disk.  
+<p>Functions to provide PDF, CDF, mean and variance of the distance between two random points on a rectangle measured using the Manhattan metric.  
 <a href="#details">More...</a></p>
 
-<p><a href="_disk_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_rectangle_manhattan_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af380a0fb907ad9d5b932cfeaaa812ce3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#af380a0fb907ad9d5b932cfeaaa812ce3">DiskDistancePDF</a> (double t, double *parameters)</td></tr>
-<tr class="separator:af380a0fb907ad9d5b932cfeaaa812ce3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8958adae00c0c55d68c1e81deb51c06b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#a8958adae00c0c55d68c1e81deb51c06b">DiskDistanceCDF</a> (double a, double *b)</td></tr>
-<tr class="separator:a8958adae00c0c55d68c1e81deb51c06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb64f95ed30e47f774035e444899ecaf"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#afb64f95ed30e47f774035e444899ecaf">DiskDistanceMean</a> (double *parameters)</td></tr>
-<tr class="separator:afb64f95ed30e47f774035e444899ecaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a156ab336770f189207572a9282158392"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#a156ab336770f189207572a9282158392">DiskDistanceVar</a> (double *parameters)</td></tr>
-<tr class="separator:a156ab336770f189207572a9282158392"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4bf32a1a301d1a73a6aba771b4b6924"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#ac4bf32a1a301d1a73a6aba771b4b6924">DiskDistanceSupport</a> (double *t, double *parameters)</td></tr>
-<tr class="separator:ac4bf32a1a301d1a73a6aba771b4b6924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00d7ffaa41fc12193012b4fa03606ac1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#a00d7ffaa41fc12193012b4fa03606ac1">DiskDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
-<tr class="separator:a00d7ffaa41fc12193012b4fa03606ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb28f90684fb76ee37f6e1b63d1f54a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rectangle_manhattan_8h.html#a0eb28f90684fb76ee37f6e1b63d1f54a">RectangleManhattanDistancePDF</a> (double t, double *parameters)</td></tr>
+<tr class="separator:a0eb28f90684fb76ee37f6e1b63d1f54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd7815a45832662c0ba5b2733c19faa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rectangle_manhattan_8h.html#adcd7815a45832662c0ba5b2733c19faa">RectangleManhattanDistanceCDF</a> (double t, double *parameters)</td></tr>
+<tr class="separator:adcd7815a45832662c0ba5b2733c19faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee8e75a7c20fcd57d7e0973fe7405755"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rectangle_manhattan_8h.html#aee8e75a7c20fcd57d7e0973fe7405755">RectangleManhattanDistanceMean</a> (double *parameters)</td></tr>
+<tr class="separator:aee8e75a7c20fcd57d7e0973fe7405755"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117ba0bca15232d5d7eb89b8b5a7c1ff"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rectangle_manhattan_8h.html#a117ba0bca15232d5d7eb89b8b5a7c1ff">RectangleManhattanDistanceVar</a> (double *parameters)</td></tr>
+<tr class="separator:a117ba0bca15232d5d7eb89b8b5a7c1ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d33e1aea01cc27b013c0291e19ed2ef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rectangle_manhattan_8h.html#a5d33e1aea01cc27b013c0291e19ed2ef">RectangleManhattanDistanceSupport</a> (double *t, double *parameters)</td></tr>
+<tr class="separator:a5d33e1aea01cc27b013c0291e19ed2ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d30f47a9d0f75bfdef1a2f0d1de039b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rectangle_manhattan_8h.html#a1d30f47a9d0f75bfdef1a2f0d1de039b">RectangleManhattanDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
+<tr class="separator:a1d30f47a9d0f75bfdef1a2f0d1de039b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2d9662db6a2edc4f8aafa8947bc030b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d9662db6a2edc4f8aafa8947bc030b2"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceName</b></td></tr>
-<tr class="separator:a2d9662db6a2edc4f8aafa8947bc030b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8cb88c327c3f5489f49475a4dcc5d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca8cb88c327c3f5489f49475a4dcc5d0"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceDescription</b></td></tr>
-<tr class="separator:aca8cb88c327c3f5489f49475a4dcc5d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf2096b18929ba46064b3f62e75b77a1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf2096b18929ba46064b3f62e75b77a1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></td></tr>
-<tr class="separator:aaf2096b18929ba46064b3f62e75b77a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f9a1b4b9a62ad43a019baef9a5b0070"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2f9a1b4b9a62ad43a019baef9a5b0070"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>RectangleManhattanDistanceName</b></td></tr>
+<tr class="separator:a2f9a1b4b9a62ad43a019baef9a5b0070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9cee298083799ac4c9b06e71ac93bdf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad9cee298083799ac4c9b06e71ac93bdf"></a>
+char *&#160;</td><td class="memItemRight" valign="bottom"><b>RectangleManhattanDistanceDescription</b></td></tr>
+<tr class="separator:ad9cee298083799ac4c9b06e71ac93bdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b17d19040060c3426c0336f8fcbc21d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4b17d19040060c3426c0336f8fcbc21d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>RectangleManhattanDistanceNpar</b></td></tr>
+<tr class="separator:a4b17d19040060c3426c0336f8fcbc21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Functions to provide PDF, CDF, mean and variance of the distance between two random points on a disk. </p>
+<div class="textblock"><p>Functions to provide PDF, CDF, mean and variance of the distance between two random points on a rectangle measured using the Manhattan metric. </p>
 <dl class="section author"><dt>Author</dt><dd>Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/09/2012 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a8958adae00c0c55d68c1e81deb51c06b"></a>
+<a class="anchor" id="adcd7815a45832662c0ba5b2733c19faa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double DiskDistanceCDF </td>
+          <td class="memname">double RectangleManhattanDistanceCDF </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -149,26 +149,26 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Implements the CDF of the distance between two random points on a disk.</p>
-<p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a></p>
+<p>Implements the CDF of the distance between two random points on a rectangle measured using theManhattan metric.</p>
+<p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000018">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calculate the cumulative density for. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the length of one side of the rectangle and $parameters[1] is the length of the other. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Write up how to derive the CDF. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>The cumulative density at $t. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a00d7ffaa41fc12193012b4fa03606ac1"></a>
+<a class="anchor" id="a1d30f47a9d0f75bfdef1a2f0d1de039b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DiskDistanceCheckParameters </td>
+          <td class="memname">void RectangleManhattanDistanceCheckParameters </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>parameters</em>, </td>
@@ -192,10 +192,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.</p>
+<p>Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as the calling function checks that the supplied parameters are positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] and parameters[1] are the lengths of the sides of the rectangle under consideration. </td></tr>
     <tr><td class="paramname">$result</td><td>Pointer to storage for an integer indicating any errors in the supplied parameters. </td></tr>
     <tr><td class="paramname">$error_str</td><td>Pointer to storage for a message explaining any errors in the supplied parameters. </td></tr>
   </table>
@@ -205,12 +205,12 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
 
 </div>
 </div>
-<a class="anchor" id="afb64f95ed30e47f774035e444899ecaf"></a>
+<a class="anchor" id="aee8e75a7c20fcd57d7e0973fe7405755"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double DiskDistanceMean </td>
+          <td class="memname">double RectangleManhattanDistanceMean </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>parameters</em></td><td>)</td>
@@ -218,26 +218,25 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>DiskDistanceNpar</b></
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the mean of the distance between two random points on a disk.</p>
-<p>From Tu, S.-J. and Fischbach, E. "A New Geometric Probability Technique for an {N}-Dimensional 
-Sphere and Its Applications"</p>
+<p>Calculates the mean distance between two random points on a rectangle measured using the Manhattan metric.</p>
+<p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000019">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk.</td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the length of one side of the rectangle and $parameters[1] is the length of the other. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The mean distance between two points on a disk. </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/BallLinePicking.html">http://mathworld.wolfram.com/BallLinePicking.html</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The mean distance between two random points on a rectangle. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="af380a0fb907ad9d5b932cfeaaa812ce3"></a>
+<a class="anchor" id="a0eb28f90684fb76ee37f6e1b63d1f54a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double DiskDistancePDF </td>
+          <td class="memname">double RectangleManhattanDistancePDF </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -255,27 +254,26 @@ Sphere and Its Applications"</p>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Implements the PDF of the distance between two random points on a disk.</p>
-<p>From Tu, S.-J. and Fischbach, E. "A New Geometric Probability Technique for an {N}-Dimensional 
-Sphere and Its Applications"</p>
+<p>Implements the PDF of the distance between two random points on a rectangle measured using the Manhattan metric.</p>
+<p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calculate the density for. </td></tr>
-    <tr><td class="paramname">$parameters[0]</td><td>The radius of the disk.</td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the length of one side of the rectangle and $parameters[1] is the length of the other. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The density at $t. </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/BallLinePicking.html">http://mathworld.wolfram.com/BallLinePicking.html</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ac4bf32a1a301d1a73a6aba771b4b6924"></a>
+<a class="anchor" id="a5d33e1aea01cc27b013c0291e19ed2ef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void DiskDistanceSupport </td>
+          <td class="memname">void RectangleManhattanDistanceSupport </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -293,11 +291,11 @@ Sphere and Its Applications"</p>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the support for the PDF and CDF of the distance between two random points on a disk.</p>
+<p>Calculates the support for the PDF and CDF of the distance between two random points on a rectangle measured using the Manhattan metric.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$t</td><td>Pointer to storage for lower and upper ends of the support for the PDF and CDF of the distance between two random points on a disk. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk. </td></tr>
+    <tr><td class="paramname">$t</td><td>Pointer to storage for lower and upper ends of the support for the PDF and CDF of the distance between two random points on a rectangle. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the length of one side of the rectangle and $parameters[1] is the length of the other. </td></tr>
   </table>
   </dd>
 </dl>
@@ -305,12 +303,12 @@ Sphere and Its Applications"</p>
 
 </div>
 </div>
-<a class="anchor" id="a156ab336770f189207572a9282158392"></a>
+<a class="anchor" id="a117ba0bca15232d5d7eb89b8b5a7c1ff"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double DiskDistanceVar </td>
+          <td class="memname">double RectangleManhattanDistanceVar </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>parameters</em></td><td>)</td>
@@ -318,17 +316,16 @@ Sphere and Its Applications"</p>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the variance of the distances between two random points on a disk.</p>
-<p>Currently calculated numerically. </p>
+<p>Calculates the variance of distances between two random points on a rectangle measured using the Manhattan metric.</p>
+<p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000020">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the disk.</td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the length of one side of the rectangle and $parameters[1] is the length of the other. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The variance of distances between two points on a disk. </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/BallLinePicking.html">http://mathworld.wolfram.com/BallLinePicking.html</a> </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Derive an algebraic expression. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The variance of distances between two random points on a rectangle. </dd></dl>
 
 </div>
 </div>

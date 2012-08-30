@@ -1,0 +1,172 @@
+\hypertarget{_rectangle_manhattan_8h}{\section{Rectangle\-Manhattan.\-h File Reference}
+\label{_rectangle_manhattan_8h}\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a rectangle measured using the Manhattan metric.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{_rectangle_manhattan_8h_a0eb28f90684fb76ee37f6e1b63d1f54a}{Rectangle\-Manhattan\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
+\item 
+double \hyperlink{_rectangle_manhattan_8h_adcd7815a45832662c0ba5b2733c19faa}{Rectangle\-Manhattan\-Distance\-C\-D\-F} (double t, double $\ast$parameters)
+\item 
+double \hyperlink{_rectangle_manhattan_8h_aee8e75a7c20fcd57d7e0973fe7405755}{Rectangle\-Manhattan\-Distance\-Mean} (double $\ast$parameters)
+\item 
+double \hyperlink{_rectangle_manhattan_8h_a117ba0bca15232d5d7eb89b8b5a7c1ff}{Rectangle\-Manhattan\-Distance\-Var} (double $\ast$parameters)
+\item 
+void \hyperlink{_rectangle_manhattan_8h_a5d33e1aea01cc27b013c0291e19ed2ef}{Rectangle\-Manhattan\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
+\item 
+void \hyperlink{_rectangle_manhattan_8h_a1d30f47a9d0f75bfdef1a2f0d1de039b}{Rectangle\-Manhattan\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_rectangle_manhattan_8h_a2f9a1b4b9a62ad43a019baef9a5b0070}{char $\ast$ {\bfseries Rectangle\-Manhattan\-Distance\-Name}}\label{_rectangle_manhattan_8h_a2f9a1b4b9a62ad43a019baef9a5b0070}
+
+\item 
+\hypertarget{_rectangle_manhattan_8h_ad9cee298083799ac4c9b06e71ac93bdf}{char $\ast$ {\bfseries Rectangle\-Manhattan\-Distance\-Description}}\label{_rectangle_manhattan_8h_ad9cee298083799ac4c9b06e71ac93bdf}
+
+\item 
+\hypertarget{_rectangle_manhattan_8h_a4b17d19040060c3426c0336f8fcbc21d}{int {\bfseries Rectangle\-Manhattan\-Distance\-Npar}}\label{_rectangle_manhattan_8h_a4b17d19040060c3426c0336f8fcbc21d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a rectangle measured using the Manhattan metric. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_rectangle_manhattan_8h_adcd7815a45832662c0ba5b2733c19faa}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-C\-D\-F@{Rectangle\-Manhattan\-Distance\-C\-D\-F}}
+\index{Rectangle\-Manhattan\-Distance\-C\-D\-F@{Rectangle\-Manhattan\-Distance\-C\-D\-F}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_adcd7815a45832662c0ba5b2733c19faa}
+Implements the C\-D\-F of the distance between two random points on a rectangle measured using the\-Manhattan metric.
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000018}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative density at \$t. 
+\end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_a1d30f47a9d0f75bfdef1a2f0d1de039b}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Check\-Parameters@{Rectangle\-Manhattan\-Distance\-Check\-Parameters}}
+\index{Rectangle\-Manhattan\-Distance\-Check\-Parameters@{Rectangle\-Manhattan\-Distance\-Check\-Parameters}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Manhattan\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_a1d30f47a9d0f75bfdef1a2f0d1de039b}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as the calling function checks that the supplied parameters are positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} and parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_aee8e75a7c20fcd57d7e0973fe7405755}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Mean@{Rectangle\-Manhattan\-Distance\-Mean}}
+\index{Rectangle\-Manhattan\-Distance\-Mean@{Rectangle\-Manhattan\-Distance\-Mean}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_aee8e75a7c20fcd57d7e0973fe7405755}
+Calculates the mean distance between two random points on a rectangle measured using the Manhattan metric.
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000019}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean distance between two random points on a rectangle. 
+\end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_a0eb28f90684fb76ee37f6e1b63d1f54a}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-P\-D\-F@{Rectangle\-Manhattan\-Distance\-P\-D\-F}}
+\index{Rectangle\-Manhattan\-Distance\-P\-D\-F@{Rectangle\-Manhattan\-Distance\-P\-D\-F}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_a0eb28f90684fb76ee37f6e1b63d1f54a}
+Implements the P\-D\-F of the distance between two random points on a rectangle measured using the Manhattan metric.
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000017}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$t. 
+\end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_a5d33e1aea01cc27b013c0291e19ed2ef}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Support@{Rectangle\-Manhattan\-Distance\-Support}}
+\index{Rectangle\-Manhattan\-Distance\-Support@{Rectangle\-Manhattan\-Distance\-Support}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Manhattan\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_a5d33e1aea01cc27b013c0291e19ed2ef}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random points on a rectangle measured using the Manhattan metric.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points on a rectangle. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_a117ba0bca15232d5d7eb89b8b5a7c1ff}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Var@{Rectangle\-Manhattan\-Distance\-Var}}
+\index{Rectangle\-Manhattan\-Distance\-Var@{Rectangle\-Manhattan\-Distance\-Var}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_a117ba0bca15232d5d7eb89b8b5a7c1ff}
+Calculates the variance of distances between two random points on a rectangle measured using the Manhattan metric.
+
+Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000020}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variance of distances between two random points on a rectangle. 
+\end{DoxyReturn}

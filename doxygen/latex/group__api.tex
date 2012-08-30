@@ -28,7 +28,7 @@ void \hyperlink{group__api_ga08fecba488534373e8d1710f273bc49c}{Line\-Picking\-Va
 
 \subsection{Detailed Description}
 This section documents the A\-P\-I exposed for the use of other programs. These are the functions called by the R and Matlab wrappers included in this package. \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000006}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000005}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
 
 
 \subsection{Function Documentation}
@@ -51,7 +51,7 @@ This function is passed two arrays of uninitialised pointers to strings. On its 
 The two uninitialised arrays passed to the function are initialised with pointers to strings. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000009}{Todo}]Implement dynamic memory allocation of string outputs and the array that points to them. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000008}{Todo}]Implement dynamic memory allocation of string outputs and the array that points to them. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
 \item[\hyperlink{bug__bug000001}{Bug}]possible array bounds exception if the size of the supplied arguments is incorrect. \end{DoxyRefDesc}
 \hypertarget{group__api_ga445ba2c007d60d789747cecbd5f874b9}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-C\-D\-F@{Line\-Picking\-C\-D\-F}}
@@ -93,7 +93,7 @@ Implements the C\-D\-F of the distance between two random points for the given p
 The required calculated cumulative densities are returned in \$g. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000012}{Todo}]The matlab version allocates memory dynamically for the array of cumulative densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000011}{Todo}]The matlab version allocates memory dynamically for the array of cumulative densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
 \item[\hyperlink{bug__bug000004}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Check\-Parameters@{Line\-Picking\-Check\-Parameters}}
@@ -218,7 +218,7 @@ Implements the P\-D\-F of the distance between two random points for the given p
 The required calculated densities are returned in \$g. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000011}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000010}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
 \item[\hyperlink{bug__bug000003}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_ga1a1c27d3c46da382a0443f810628a8ac}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Print\-All\-Problems@{Line\-Picking\-Print\-All\-Problems}}
@@ -229,7 +229,7 @@ The required calculated densities are returned in \$g.
 \end{DoxyParamCaption}
 )}}\label{group__api_ga1a1c27d3c46da382a0443f810628a8ac}
 Prints to stdout a list of all implemented problems giving the number of the problem and its associated name. \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000008}{Todo}]Do we want to print out the descriptions here? \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000007}{Todo}]Do we want to print out the descriptions here? \end{DoxyRefDesc}
 \hypertarget{group__api_ga146eea4bf38bd6e3812ea47ae2ac57a7}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Problem\-Lookup@{Line\-Picking\-Problem\-Lookup}}
 \index{Line\-Picking\-Problem\-Lookup@{Line\-Picking\-Problem\-Lookup}!LinePicking API@{Line\-Picking A\-P\-I}}
 \subsubsection[{Line\-Picking\-Problem\-Lookup}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Problem\-Lookup (
@@ -252,7 +252,7 @@ Problems are represented as integers. Given such an integer this function return
 Strings containing the name and description of the problem are retuned in the locations pointed to by \$name and \$description. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000007}{Todo}]Implement dynamic memory allocation of string outputs. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000006}{Todo}]Implement dynamic memory allocation of string outputs. \end{DoxyRefDesc}
 \hypertarget{group__api_ga0aec0b2f87903f4bf4ad3011a99b3446}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Support@{Line\-Picking\-Support}}
 \index{Line\-Picking\-Support@{Line\-Picking\-Support}!LinePicking API@{Line\-Picking A\-P\-I}}
 \subsubsection[{Line\-Picking\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Support (
@@ -286,7 +286,7 @@ Compute the support of the P\-D\-F and C\-D\-F of the distance between two rando
 The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000010}{Todo}]allocate memeory for the result dynamically. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000009}{Todo}]allocate memeory for the result dynamically. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
 \item[\hyperlink{bug__bug000002}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_ga08fecba488534373e8d1710f273bc49c}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Var@{Line\-Picking\-Var}}
