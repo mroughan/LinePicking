@@ -28,7 +28,7 @@ int RectangleManhattanDistanceNpar = 2;
 
 /**
  * Implements the PDF of the distance between two random points on a
- * rectangle measured using theManhattan metric.
+ * rectangle measured using the Manhattan metric.
  *
  * Derived by Eric Parsonage <eric.parsonage@adelaide.edu.au>
  * @todo Write up the derivation.
