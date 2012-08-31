@@ -44,16 +44,20 @@ LinePickingData HyperSphereDistanceData =
  */
 double HyperSphereDistancePDF(double t, double* parameters)
 {
+    
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    double d = 2 * r;
-    double r2 = r * r;
-    double t2 = t * t;			     
-    double p, q, x, Ix, Ix2;
-    int result;
-    
+    double Cn2 = pow(M_PI, ((n - 2.0) / 2.0)) / tgamma(n  / 2.0);
+    double theta = acos(1.0 - ((t * t) / (2.0 * r * r)));
+    double dtheta = 2.0 / sqrt(4 * r * r - t * t);
+    /* TODO something wrong here we get the right shape for n = 1 and 
+     * n = 2 i.e. Circle and Sphere but they need scaling down in both 
+     cases and we ned more scaling for the circle than for the sphere the 
+     amounts they need scaling by is in factors of pi and 2 or 4 
+     */
+     
 
-    return -1;
+    return (2 * M_PI * pow(sin(theta), n - 1) * dtheta)/ Cn2; 
 }
 
 

@@ -164,7 +164,22 @@ So, say for $n=2$, we have
       & = &   2 \pi \sin(\phi_1)  \nonumber \\   
   d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].  \nonumber \\  
 \end{eqnarray}
+
 Take 
+
+\begin{eqnarray}
+  \phi_1 & =  & \cos^{-1} \left[1-\frac{d^2}{2 R^2}\right]\\ 
+   \frac {d \phi_1}{dd} & = &\frac{d}{\sqrt{1-\left(1-\frac{d^2}{2 R^2}\right)^2} R^2} \\
+   & = &\frac{2}{\sqrt{4 R^2 -d^2 }}\\
+\end{eqnarray}
+
+thus 
+
+\begin{equation}
+  fd(d) & =  & \frac{2}{\sqrt{4 R^2 -d^2 }} fd_{\phi}(\frac{d}{\sqrt{1-\left(1-\frac{d^2}{2 R^2}\right)^2} R^2})
+\end{equation}
+
+
 \begin{eqnarray}
   prob(\phi_1) & = & 1/f(\phi_1) \nonumber \\  
       & = &  1/ 2 \pi \sin(\phi_1)
