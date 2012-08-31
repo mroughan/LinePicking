@@ -38,31 +38,32 @@ int RectangleMaxDistanceNpar = 2;
  */
 double RectangleMaxDistancePDF(double t, double* parameters)
 {
-    double H = parameters[0];
-    double L = parameters[1];
-    double H2 = H*H;
-    double L2 = L*L;
+    double a = parameters[0];
+    double b = parameters[1];
+    double a2, b2;
     double t2 = t*t;
     double tmp;
     
     /* make sure hieght < length */
-    if (H > L) 
+    if (a > b) 
     {
-        tmp = L;
-        L = H;
-        H = tmp;
+        tmp = b;
+        b = a;
+        a = tmp;
     }
+    a2 = a*a;
+    b2 = b*b;
     
     /* two cases */
-    if (t <= H)
+    if (t <= a)
     {
-        return (2 * t * (4 * H * L - 3 * H * t - 3 * L * t + 2 * t2)) /
-                (H2 * L2);
+        return (2 * t * (4 * a * b - 3 * a * t - 3 * b * t + 2 * t2)) /
+                (a2 * b2);
         
     } 
-    else if (t <= L) 
+    else if (t <= b) 
     {
-        return (2 * (L - t)) / L2;
+        return (2 * (b - t)) / b2;
     } 
 }
 
@@ -81,29 +82,30 @@ double RectangleMaxDistancePDF(double t, double* parameters)
 double RectangleMaxDistanceCDF(double t, double* parameters)
 {
     
-    double H = parameters[0];
-    double L = parameters[1];
-    double H2 = H*H;
-    double L2 = L*L;
+    double a = parameters[0];
+    double b = parameters[1];
+    double a2, b2;
     double t2 = t*t;
     double tmp;
     
     /* make sure hieght < length */
-    if (H > L) 
+    if (a > b) 
     {
-        tmp = L;
-        L = H;
-        H = tmp;
+        tmp = b;
+        b = a;
+        a = tmp;
     }
+    a2 = a*a;
+    b2 = b*b;
     
     /* two cases */
-    if (t <= H)
+    if (t <= a)
     {
-        return ((2 * H - t) * (2 * L - t) * t2) / (H2 * L2);
+        return ((2 * a - t) * (2 * b - t) * t2) / (a2 * b2);
     } 
-    else if (t <= L) 
+    else if (t <= b) 
     {
-        return((2 * L - t) * t) / L2;
+        return((2 * b - t) * t) / b2;
     } 
    
 }
@@ -122,10 +124,10 @@ double RectangleMaxDistanceCDF(double t, double* parameters)
 double RectangleMaxDistanceMean(double* parameters)
 {
     
-    double L = parameters[0];
-    double H = parameters[1];
+    double b = parameters[0];
+    double a = parameters[1];
    
-    return -(pow(H, 3) - 5 * pow(H, 2) * L - 10*pow(L, 3)) / (30. * pow(L, 2));
+    return -(pow(a, 3) - 5 * pow(a, 2) * b - 10*pow(b, 3)) / (30. * pow(b, 2));
 }
 
 
@@ -141,21 +143,21 @@ double RectangleMaxDistanceMean(double* parameters)
  */
 double RectangleMaxDistanceVar(double* parameters)
 {
-    double L = parameters[0];
-    double H = parameters[1];
+    double b = parameters[0];
+    double a = parameters[1];
     double tmp;
     
-    if (H > L) 
+    if (a > b) 
     {
-        tmp = L;
-        L = H;
-        H = tmp;
+        tmp = b;
+        b = a;
+        a = tmp;
     }
     
-    return -(pow(H, 6) - 10 * pow(H, 5) * L + 
-             55 * pow(H, 4) * pow(L, 2) - 140 * pow(H, 3) * pow(L, 3) + 
-             100 * pow(H, 2) * pow(L, 4) - 50 * pow(L, 6)) /
-                (900. * pow(L, 4));
+    return -(pow(a, 6) - 10 * pow(a, 5) * b + 
+             55 * pow(a, 4) * pow(b, 2) - 140 * pow(a, 3) * pow(b, 3) + 
+             100 * pow(a, 2) * pow(b, 4) - 50 * pow(b, 6)) /
+                (900. * pow(b, 4));
 
 }
 
