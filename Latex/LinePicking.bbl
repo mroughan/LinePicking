@@ -28,9 +28,9 @@ A.~Mathai, {\em An Introduction to Geometrical Probability}.
 M.Naldi, ``Connectivity of {Waxman} graphs,'' {\em Computer Communications},
   vol.~29, pp.~24--31, 2005.
 
-\bibitem{robbins78:_constant}
-D.~Robbins, ``Average distance between two points in a box,'' {\em American
-  Mathematical Monthly}, vol.~85, p.~278, 1978.
+\bibitem{mathai99:_distan}
+A.~Mathai, P.~Moschopoulos, and G.~Pederzoli, ``Distance between random points
+  in a cube,'' {\em Statistica}, vol.~59, no.~1, pp.~61--81, 1999.
 
 \bibitem{weisstein:_cube_line_picking}
 E.~W. Weisstein, ``Cube line picking.'' From MathWorld--A Wolfram Web Resource.
@@ -40,9 +40,9 @@ E.~W. Weisstein, ``Cube line picking.'' From MathWorld--A Wolfram Web Resource.
 J.~Philip, ``The distance between two random points in a 4- and 5-cube.''
   \url{http://www.math.kth.se/~johanph/h45.pdf}.
 
-\bibitem{mathai99:_distan}
-A.~Mathai, P.~Moschopoulos, and G.~Pederzoli, ``Distance between random points
-  in a cube,'' {\em Statistica}, vol.~59, no.~1, pp.~61--81, 1999.
+\bibitem{robbins78:_constant}
+D.~Robbins, ``Average distance between two points in a box,'' {\em American
+  Mathematical Monthly}, vol.~85, p.~278, 1978.
 
 \bibitem{tu00:_circle_line}
 S.-J. Tu and E.~Fischbach, ``A new geometric probability technique for an

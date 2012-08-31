@@ -135,7 +135,7 @@ So a {\em line-picking problem} consists of 3 components:
 \end{itemize}
 so we describe these problems by the triple: $(\Omega, \mu, d)$. Given
 that the typical case of $\mu$ is uniform, and of $d$ is Euclidean, we
-often ommit these from the problem statement.
+ ommit these from the problem statement when we use these simple defaults.
 
 EXAMPLE FIGURES: square, surface of sphere, manhattan distance
 
@@ -238,9 +238,6 @@ appendices in order to make the flow easy.
 \input{rectangle.tex}
 
 \clearpage
-\input{cube.tex}
-
-\clearpage
 \input{rect_manhattan.tex}
 
 \clearpage
@@ -250,26 +247,11 @@ appendices in order to make the flow easy.
 \input{grid.tex}
 
 \clearpage
-\subsection{Extensions}
+\input{rect_other.tex}
 
-These results have also been extended into 3D, with the probability
-density function of distances between two (uniformly) randomly chosen
-points in the unit cube is given in
-\cite{mathai99:_distan,weisstein:_cube_line_picking}, by a yet more
-complicated, but again easily evaluated formula. Likewise the formula
-have been calculated for a box (with sides $a,b$ and
-$c$)~\cite{philip:_probab_distr_distan_between_two} and 4- and
-5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}. Other
-results are also known, for instance the distribution when the points
-are chosen on the sides of the square (but lines are drawn across it)
-or faces of a cube!\cite{mathai99:_distan}, and the distribution of
-distances between points chosen in two different
-rectangles~\cite{b.ghosh51:_random_rect}.
+\clearpage
+\input{cube.tex}
 
-Rosenberg~\cite{Rosenberg200499} derives a similar result to the mean
-line length in a rectangle, but under different assumptions of the
-random selection of lines (he assumes we first choose a random angle,
-then choose the line).
 
 
 \clearpage
@@ -280,6 +262,9 @@ then choose the line).
 
 \clearpage
 \input{sphere_geodesic}
+
+\clearpage
+\input{non_uniform}
 
 \clearpage
 \subsection{Others}
