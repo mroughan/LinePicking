@@ -161,23 +161,8 @@ double RectangleManhattanDistanceVar(double* parameters)
 {
     double b = parameters[0];
     double a = parameters[1];
-    double tmp;
-    
-    if (a > b) 
-    {
-        tmp = b;
-        b = a;
-        a = tmp;
-    }
-    
-    return (2 * pow(a, 5) + 
-            14 * pow(a, 4) * (b - 1) -
-            28 * pow(a, 3) * (b - 2) * b + 
-            105 * pow(b, 4) + 
-            35 * pow(a, 2) * pow(b, 2) * (4 * b - 1)) / 
-                (1890. * pow(b,2));
-    
-    
+
+    return (a * a + b * b) / 18;
 }
 
 
