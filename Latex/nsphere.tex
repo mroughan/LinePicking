@@ -3,7 +3,186 @@
 
 Can we do this case in general ???
 
+$n$-Sphere is embedded in $\R^{n+1}$ and encloses the $n+1$-ball
+
 \subsubsection{PDF}
+
+Obviously, the sphere has spherical symmetry, but as a result, we can,
+without loss of generality, assume the first point lies at the pole of
+the sphere.
+
+Points on the $n$-sphere can be parameterised by a set of angles
+$\phi_1, \phi_2, \ldots, \phi_{n-1}$ where $\phi_1, \phi_2, \ldots,
+\phi_{n-2}\in [0,\pi]$ and $\phi_{n-1}\in [0,2\pi)$. 
+
+
+We can transform to Cartesian coordinates of $\R^{n+1}$ by
+\begin{eqnarray}
+  \label{eq:sphere_to_cart1}
+  x_1 & = & R \cos (\phi_1 ) \\
+  x_2 & = & R \sin(\phi_1) \cos (\phi_2 ) \\
+  x_3 & = & R \sin(\phi_1) \sin(\phi_2) \cos (\phi_3 ) \\
+      & \vdots & \\
+  x_{n} & = & R \sin (\phi_1) \sin(\phi_2) \cdots \sin (\phi_{n-1}) \cos (\phi_{n})  \\
+  x_{n+1} & = & R \sin (\phi_1) \sin(\phi_2) \cdots \sin (\phi_{n-1}) \sin (\phi_{n}) 
+  \label{eq:sphere_to_cartn}
+\end{eqnarray}
+
+So the first point is chosen at the pole where
+$\phi_1=\phi_2=\cdots=\phi_{n-1}=0$, so that ${\mathbf x} =
+(R,0,0,\ldots,0)$, and the second point satisfies equations
+\eqref{eq:sphere_to_cart1}-\eqref{eq:sphere_to_cartn}. 
+
+Distance is therefore
+\begin{eqnarray}
+  \label{eq:d_nsphere}
+  d^2 & = & R^2 \left[ 
+                        (1-\cos(\phi_1))^2
+                       + \sin^2 (\phi_1) \cos^2 (\phi_2 )
+                       + \sin^2 (\phi_1) \sin^2 (\phi_2) \cos^2 (\phi_3 )
+                       + \cdots \right.  \nonumber \\
+     & &   \left.           + \sin^2 (\phi_1) \sin^2 (\phi_2) \cdots \sin^2 (\phi_{n-1}) \cos^2 (\phi_{n})
+                       + \sin^2 (\phi_1) \sin^2 (\phi_2) \cdots \sin^2 (\phi_{n-1}) \sin^2 (\phi_{n}) 
+                 \right].
+\end{eqnarray}
+The last two terms sum, using $\cos^2 (\phi_{n}) + \sin^2
+(\phi_{n}) = 1$, and then the resulting last two terms sum
+likewise, and so on collapsing the whole sum down to
+\begin{eqnarray}
+  \label{eq:d_nsphere}
+  d^2 & = & R^2 \left[ 
+                        (1-\cos(\phi_1))^2
+                       + \sin^2 (\phi_1) \right], \nonumber \\
+ & = & R^2 \left[ 1 - 2 \cos(\phi_1) + \cos^2(\phi_1)
+                       + \sin^2 (\phi_1) \right], \nonumber \\
+ & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].
+\end{eqnarray}
+So distance only depends on the first (angular) coordinate.
+
+
+Uniformly chosen at random means that in any (generalized) area
+element of size $d^{n}S$, there will be, on average $\lambda d^{n}S$
+points (where $\lambda$ is the rate of points, which is simply the
+total number of points divided by the total (generalized) area).
+
+A small area unit on the $n$-sphere can be written (in terms of the
+Jacobian $J$)
+\begin{eqnarray}
+  \label{eq:vn_n_sphere}
+  d^nS & = & J \, d\phi_1 \, d\phi_2 \, \cdots d\phi_{n},  \nonumber \\
+       & = & \sin^{n-1}(\phi_1) \sin^{n-2}(\phi_2) \cdots \sin(\phi_{n-1})
+                  d\phi_1 \, d\phi_2 \, \cdots d\phi_{n}.
+\end{eqnarray}
+To obtain the distribution for distances, we integrate the distance
+function over these elements to obtain the density of the first
+angular coordinate, i.e.,
+\begin{eqnarray}
+  f(\phi_1)
+      & = & \sin^{n-1}(\phi_1)
+              \int_{0}^{2\pi} \int_{0}^{\pi} \cdots  \int_{0}^{\pi} 
+              \sin^{n-2}(\phi_2) \cdots \sin(\phi_{n-1})
+                   d\phi_2 \, \cdots d\phi_{n}, \nonumber \\
+      & = & \sin^{n-1}(\phi_1)
+              \int_{0}^{2\pi} 1 d\phi_{n} 
+              \int_{0}^{\pi} \sin(\phi_{n-1}) d\phi_{n-1}  
+              \cdots  
+              \int_{0}^{\pi} \sin^{n-2}(\phi_2)  d\phi_{2}, \nonumber \\   
+\end{eqnarray}
+Now for $i>-1$, the integral % Wolfram alpha
+\begin{equation}
+  \label{eq:int_sin_n}
+  \int_0^{\pi} \sin^i(x) \, dx = 
+       \frac{\sqrt{\pi} \Gamma\big( i/2 + 1/2 \big)}{\Gamma\big( i/2+1 \big)}.
+\end{equation}
+Note that in each adjacent term in the product above, the Gamma
+functions in the numerators and denominators cancel so the final
+product collapses down to
+\begin{eqnarray}
+  f(\phi_1)
+      & = & \sin^{n-1}(\phi_1)
+              \int_{0}^{2\pi} 1 d\phi_{n} 
+              \int_{0}^{\pi} \sin(\phi_{n-1}) d\phi_{n-1}  
+              \cdots  
+              \int_{0}^{\pi} \sin^{n-2}(\phi_2)  d\phi_{2}, \nonumber \\   
+      & = & 2 \pi \pi^{(n-2)/2} \sin^{n-1}(\phi_1)  
+                     \frac{\Gamma\big( 1/2 + 1/2 \big)}{\Gamma\big( (n-2)/2+1 \big)}
+                 \nonumber \\   
+      & = & 2 \pi^{n/2} \sin^{n-1}(\phi_1)  
+                     \frac{\Gamma\big(1 \big)}{\Gamma\big( n/2 \big)}
+                 \nonumber \\   
+      & = &  2 \pi \sin^{n-1}(\phi_1)  
+                     \frac{2 \pi^{(n-2)/2}}{\Gamma\big( (n-2)/2+1 \big)}
+                 \nonumber \\   
+      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
+                 \nonumber \\   
+\end{eqnarray}
+
+
+The generalized volume and surface are of the $n$-D hyperball are
+\begin{eqnarray}
+ V_n(R) & = & C_n R^n,
+  \label{eq:gen_vol} \\
+ S_{n}(R) & = & \frac{dV_n}{dR} = n C_n R^{n-1}.
+  \label{eq:gen_surf}
+\end{eqnarray}
+where
+\begin{equation}
+  \label{eq:cn}
+   C_n = \frac{ \pi^{n/2} }{\Gamma(n/2 + 1)},
+\end{equation}
+
+where the Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
+\begin{eqnarray}
+  \label{eq:gamma}
+  \Gamma(1/2) & = & \pi^{1/2}, \\
+  \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
+  \Gamma(k+1) & = & k!, \\
+  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!},
+\end{eqnarray}
+So we can write
+\begin{eqnarray}
+   \int_0^{\pi} \sin^i(x) \, dx
+     & = & \left\{ \begin{array}{ll}
+         \displaystyle
+       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
+       & \mbox{ for } i = 2k, \\
+         \displaystyle
+       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
+       & \mbox{ for } i = 2k+1, \\
+            \end{array} \right. \nonumber \\
+\end{eqnarray}
+
+We aim to have $f d\phi_1$ be uniform ????
+
+So, say for $n=2$, we have
+\begin{eqnarray}
+  f(\phi_1)
+      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
+                 \nonumber \\   
+      & = &   \frac{2 \pi \sin(\phi_1)}{C_{0}}
+                 \nonumber \\   
+      & = &   2 \pi \sin(\phi_1)  \nonumber \\   
+  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].  \nonumber \\  
+\end{eqnarray}
+Take 
+\begin{eqnarray}
+  prob(\phi_1) & = & 1/f(\phi_1) \nonumber \\  
+      & = &  1/ 2 \pi \sin(\phi_1)
+\end{eqnarray}
+
+
+If $y = g(X)$
+
+\[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
+                f_X\left( g^{-1}(y) \right)
+\]
+
+
+\begin{eqnarray}
+  E[ g(X) ] & = & \int y f_g (y) \, dy \\
+            & = & \int g(x) f_X(x) \, dx 
+\end{eqnarray}
+
 
 \subsubsection{CDF}
 
