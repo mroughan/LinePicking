@@ -36,9 +36,37 @@ rectangle \eqref{eqn:rectangle}.
 
 \subsubsection{CDF}
 
+The CDF can be obtained by simple integration:
+\begin{eqnarray}
+  G^{\rm line}_L(t)
+     & = & \int_0^t g^{\rm line}_L(s) \, ds, \nonumber \\
+     & = & \frac{2}{L} \int_0^t  1-\frac{s}{L} \, ds, \nonumber \\
+     & = & \frac{2}{L} \left[ s - \frac{s^2}{2L} \right]_0^t, \nonumber \\
+     & = &  \frac{2}{L} t - \frac{t^2}{L^2}. \\
+  \label{eq:line_cdf}  
+\end{eqnarray}
 
 \subsubsection{Moments}
 
-
+The moments are
+\begin{eqnarray}
+  \alpha_i & = & \int_0^L s^i g^{\rm line}_L(s) \, ds, \nonumber \\
+           & = & \frac{2}{L}  \int_0^L s^i- \frac{s^{i+1}}{L}  \, ds, \nonumber \\
+           & = & \frac{2}{L} \left[ \frac{s^{i+1}}{i+1} - \frac{s^{i+2}}{L(i+2)} \right]_0^L, \nonumber \\
+           & = & \frac{2 L^{i}}{i+1} - \frac{2 L^{i}}{(i+2)}, \nonumber \\
+           & = & \frac{2 L^{i} (i+2) - 2 L^{i}(i+1)}{(i+1)(i+2)} , \nonumber \\
+           & = & \frac{2 L^{i}}{(i+1)(i+2)} , \nonumber \\
+  \label{eq:line_moments}
+\end{eqnarray}
+Hence the mean and variance are
+\begin{eqnarray}
+  \mu^{\rm line} & = & \frac{L}{3}, \\
+  \label{eq:line_mean}
+  \sigma^2_{\rm line}
+      & = & \frac{2 L^{2}}{12} - \frac{L^2}{9}, \nonumber \\
+      & = & \frac{6 L^{2} -4 L^2}{36}, \nonumber \\
+      & = & \frac{L^{2}}{18}.
+  \label{eq:line_var}
+\end{eqnarray}
 
 

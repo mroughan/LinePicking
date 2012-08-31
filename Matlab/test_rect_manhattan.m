@@ -26,11 +26,11 @@ g(k1) = temp(t1);
 % g1_a =( 4/b - 2*(b-a)/b^2 - 4*a/(3*b^2) );
 g1_a =( (6*b+2*a)/(3*b^2) );
 g(k2) = g1_a  - (2/b^2)*t2;
-g(k3) = g1_a  - (2/b^2)*t3 - temp(t3-b); 
-g2_b = 2/a - (4*b)/(3*a^2)
-g(k3) = g2_b;  
+g(k3) = 2*(a+b-t3).^3/(3*a^2*b^2);
+cal_mean(1) = (a+b)/3
+cal_val(1) = (a^2 + b^2)/18
 
-M = 1000000;
+M = 2000000;
 problem = 1;
 x1 = b*rand(M,1);
 y1 = a*rand(M,1);
@@ -42,8 +42,8 @@ ds = diff(s)/N;
 ts = s(1):ds:s(2);
 n = histc(d, ts);
 prob = (n/M) / ds;
-est_means(problem+1) = mean(d);
-est_var(problem+1) = var(d);
+est_means(1) = mean(d)
+est_var(1) = var(d)
 
 figure(problem+1)
 hold off
@@ -68,9 +68,9 @@ title('rect-manhattan-line picking density');
 
 
 
-% symbolic calculation
-syms a b s t f
-f  = 4*( (1-t/b)*s + (1/b-1/a+t/(a*b))*s^2/2 - s^3/(3*a*b))/(a*b);
-expand(subs(f, s, t))
-expand(subs(f, s, a))
+% % symbolic calculation
+% syms a b s t f
+% f  = 4*( (1-t/b)*s + (1/b-1/a+t/(a*b))*s^2/2 - s^3/(3*a*b))/(a*b);
+% expand(subs(f, s, t))
+% expand(subs(f, s, a))
 
