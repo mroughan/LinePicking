@@ -21,7 +21,8 @@ LinePickingAllProblems <- function(short_tab=TRUE){
   tmp <- .C("LinePickingAllProblems",
             names = as.character(rep("",N)),
             description = as.character(rep("",N)))
-  tmp <- data.frame(problem=0:(N-1),names=tmp$names,description=tmp$description)
+  tmp <- data.frame(problem=0:(N-1),names=tmp$names,
+                    description=tmp$description)
   if(short_tab){
     tmp <- tmp[,1:2]
   }
