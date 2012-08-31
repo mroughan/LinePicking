@@ -117,8 +117,6 @@ product collapses down to
                  \nonumber \\   
 \end{eqnarray}
 
-We aim to have $f d\phi_1$ be uniform ????
-
 
 The generalized volume and surface are of the $n$-D hyperball are
 \begin{eqnarray}
@@ -152,6 +150,37 @@ So we can write
        \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
        & \mbox{ for } i = 2k+1, \\
             \end{array} \right. \nonumber \\
+\end{eqnarray}
+
+We aim to have $f d\phi_1$ be uniform ????
+
+So, say for $n=2$, we have
+\begin{eqnarray}
+  f(\phi_1)
+      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
+                 \nonumber \\   
+      & = &   \frac{2 \pi \sin(\phi_1)}{C_{0}}
+                 \nonumber \\   
+      & = &   2 \pi \sin(\phi_1)  \nonumber \\   
+  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].  \nonumber \\  
+\end{eqnarray}
+Take 
+\begin{eqnarray}
+  prob(\phi_1) & = & 1/f(\phi_1) \nonumber \\  
+      & = &  1/ 2 \pi \sin(\phi_1)
+\end{eqnarray}
+
+
+If $y = g(X)$
+
+\[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
+                f_X\left( g^{-1}(y) \right)
+\]
+
+
+\begin{eqnarray}
+  E[ g(X) ] & = & \int y f_g (y) \, dy \\
+            & = & \int g(x) f_X(x) \, dx 
 \end{eqnarray}
 
 
