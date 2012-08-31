@@ -19,7 +19,15 @@
 clear;
 dt = 0.001;
 t = -0.1:dt:2.1;
-
+colors = [[1 0 0];
+	  [1 0.5 0];
+	  [1 1 0];
+	  [0 1 0];
+	  [0 1 1];
+	  [0 0 1];
+	  [0 0.5 0.5];
+	  [0.5 0 0.5];
+	 ];
 
 % compare ball-line picking in 1D, with line-line picking
 [g1] = LinePickingPDF(t, 2, [1, 1]);
@@ -81,15 +89,7 @@ ylabel('g(t)');
 
 % compare ball-line picking in different dimensions:
 %   see http://mathworld.wolfram.com/BallLinePicking.html
-colors = [[1 0 0];
-	  [1 0.5 0];
-	  [1 1 0];
-	  [0 1 0];
-	  [0 1 1];
-	  [0 0 1];
-	  [0 0.5 0.5];
-	  [0.5 0 0.5];
-	 ];
+
 figure(5)
 hold off
 plot(0,0)
@@ -298,211 +298,32 @@ print('-depsc', 'Plots/LinePicking_test_rect_max_regions.eps');
 
 
 
-
-
-% test scaling with size for each type of distribution, 
-%   by considering whether distribution sums to 1
-dt = 0.001;
-t = -0.1:dt:10.1;
-
-[g1] = LinePickingPDF(t, 0, 1);
-[g5] = LinePickingPDF(t, 0, 5);
-sum_square_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_square_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 1, 1);
-[g5] = LinePickingPDF(t, 1, 5);
-sum_disk_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_disk_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 2, [3,1]);
-[g5] = LinePickingPDF(t, 2, [3,5]);
-sum__1 = sum(g1*dt)
-sum_ball3_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_ball3_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 3, [0.5,1]);
-[g5] = LinePickingPDF(t, 3, [2.5,5]);
-sum_rect_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_rect_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 4, 1);
-[g5] = LinePickingPDF(t, 4, 5);
-sum_line_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_line_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 5, 1);
-[g5] = LinePickingPDF(t, 5, 5);
-sum_cube_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_cube_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 9, [0.5,1]);
-[g5] = LinePickingPDF(t, 9, [2.5,5]);
-sum_rect_man_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_rect_man_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-[g1] = LinePickingPDF(t, 10, [0.5,1]);
-[g5] = LinePickingPDF(t, 10, [2.5,5]);
-sum_rect_max_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
-sum_rect_max_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
-
-
-
-% tests of common error conditions
-%
-
-
-
 % 
-% compute Laplace transform and derivative of Laplace transform of the distributions
-%
-
-t_min = 0;
-t_max = 4;
-tolerance = 1.0e-9;
-trace = 0;
-Ss = [0:0.2:100];
-% radius = 1/sqrt(pi) for disk with area 1
-R = 1/sqrt(pi);
-for i=1:length(Ss)
-  s = Ss(i);
-  g_square = @(t) exp(-s*t) .* LinePickingPDF(t, 0, 1);
-  g_disk = @(t) exp(-s*t) .* LinePickingPDF(t, 1, R);
-  g_sphere = @(t) exp(-s*t) .* LinePickingPDF(t, 2, [3,(3/(4*pi))^(1/3)]);
-  g_rect = @(t) exp(-s*t) .* LinePickingPDF(t, 3, [0.5,1]*2);
-  g_line = @(t) exp(-s*t) .* LinePickingPDF(t, 4, 1);
-  g_cube = @(t) exp(-s*t) .* LinePickingPDF(t, 5, 1);
-  [q_square, errbnd] = quadgk(g_square, t_min, t_max);
-  [q_disk, errbnd] = quadgk(g_disk, t_min, t_max);
-  [q_sphere, errbnd] = quadgk(g_sphere, t_min, t_max);
-  [q_rect, errbnd] = quadgk(g_rect, t_min, t_max);
-  [q_line, errbnd] = quadgk(g_line, t_min, t_max);
-  [q_cube, errbnd] = quadgk(g_cube, t_min, t_max);
-  [q_cube2, fn_count] = quad(g_cube, t_min, t_max, tolerance, trace);
-  G_square(i) = q_square;
-  G_disk(i) = q_disk;
-  G_sphere(i) = q_sphere;
-  G_rect(i) = q_rect;
-  G_line(i) = q_line;
-  G_cube(i) = q_cube;
-  G_cube2(i) = q_cube2;
-end
-figure(20)
-hold off
-plot(0,0) 
-hold on
-p20(1) = plot(Ss, G_square,'color', colors(1,:), 'linewidth', 2);
-p20(2) = plot(Ss, G_disk,'color', colors(2,:), 'linewidth', 2);
-p20(3) = plot(Ss, G_sphere,'color', colors(4,:), 'linewidth', 2);
-p20(4) = plot(Ss, G_rect,'color', colors(5,:), 'linewidth', 2);
-p20(5) = plot(Ss, G_cube,'color', colors(6,:), 'linewidth', 2);
-set(gca, 'xlim', [0 5]);
-set(gca, 'linewidth', 2);
-set(gca, 'fontsize', 16);
-legend(p20, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'cube');
-xlabel('s');
-ylabel('G(s)');
-print('-depsc', 'Plots/LinePicking_test_laplace_tranforms.eps');
-
-for i=1:length(Ss)
-  s = Ss(i);
-  g_square = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 0, 1);
-  g_disk = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 1, R);
-  g_sphere = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 2, [3,(3/(4*pi))^(1/3)]);
-  g_rect = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 3, [0.5,1]*2);
-  g_line = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 4, 1);
-  g_cube = @(t) t .* exp(-s*t) .* LinePickingPDF(t, 5, 1);
-  [q_square, errbnd] = quadgk(g_square, t_min, t_max);
-  [q_disk, errbnd] = quadgk(g_disk, t_min, t_max);
-  [q_sphere, errbnd] = quadgk(g_sphere, t_min, t_max);
-  [q_rect, errbnd] = quadgk(g_rect, t_min, t_max);
-  [q_line, errbnd] = quadgk(g_line, t_min, t_max);
-  [q_cube, errbnd] = quadgk(g_cube, t_min, t_max);
-  [q_cube2, fn_count] = quad(g_cube, t_min, t_max, tolerance, trace);
-  Gd_square(i) = -q_square;
-  Gd_disk(i) = -q_disk;
-  Gd_sphere(i) = -q_sphere;
-  Gd_rect(i) = -q_rect;
-  Gd_line(i) = -q_line;
-  Gd_cube(i) = -q_cube;
-  Gd_cube2(i) = -q_cube2;
-end
- 
-figure(21)
+% do nice plot for cube
+problem = 5;
+L = 1/sqrt(3);
+dt = 0.001;
+t = -0.1:dt:3.1;
+k1 = find(t<=L);
+k2 = find(t>L & t<=L*sqrt(2));
+k3 = find(t>L*sqrt(2)& t<=L*sqrt(3));
+t1 = t(k1);
+t2 = t(k2);
+t3 = t(k3);
+figure(11)
 hold off
 plot(0,0)
 hold on
-p21(1) = plot(Ss, -Gd_square./G_square,'color', colors(1,:), 'linewidth', 2);
-p21(2) = plot(Ss, -Gd_disk./G_disk,'color', colors(2,:), 'linewidth', 2);
-p21(3) = plot(Ss, -Gd_sphere./G_sphere,'color', colors(4,:), 'linewidth', 2);
-p21(4) = plot(Ss, -Gd_rect./G_rect,'color', colors(5,:), 'linewidth', 2);
-p21(5) = plot(Ss, -Gd_cube./G_cube,'color', colors(6,:), 'linewidth', 2);
-p21(6) = plot(Ss, 2./Ss, 'k-.', 'linewidth', 2);
-p21(7) = plot(Ss, 3./Ss, 'k:', 'linewidth', 3);
-set(gca, 'ylim', [0 0.8]);
+[g_cube] = LinePickingPDF(t, problem, L);
+fill([t1, fliplr(t1)], [g_cube(k1),zeros(size(k1))], [0.9,1,1]);
+fill([t2, fliplr(t2)], [g_cube(k2),zeros(size(k2))], [1,0.9,1]);
+fill([t3, fliplr(t3)], [g_cube(k3),zeros(size(k3))], [1,1,0.9]);
+plot(t,g_cube,'color', colors(n,:), 'linewidth', 2);
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
-legend(p21, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'cube', '2/s', '3/s');
-xlabel('s');
-ylabel('-G''(s)/G(s)');
-print('-depsc', 'Plots/LinePicking_test_laplace_ratio.eps');
- 
-figure(22)
-hold off
-plot(0,0)
-hold on
-p22(1) = plot(Ss, -Gd_cube./G_cube,'color', colors(6,:), 'linewidth', 2);
-p22(2) = plot(Ss, -Gd_cube2./G_cube2,'y--', 'linewidth', 2);
-set(gca, 'ylim', [0 0.8]);
-set(gca, 'linewidth', 2);
-set(gca, 'fontsize', 16);
-legend(p22, 'cube using "quadgk"', 'cube using "quad"');
-xlabel('s');
-ylabel('-G''(s)/G(s)');
-print('-depsc', 'Plots/LinePicking_test_quad.eps');
- 
-figure(23)
-hold off
-plot(0,0)
-hold on
-p23(1) = plot(Ss, -Gd_disk./G_disk, 'b-', 'linewidth', 2);
-p23(2) = plot(Ss,  2./Ss,'r--', 'linewidth', 2);
-p23(3) = plot(Ss,  2./Ss - 4./(pi*R*Ss.^2),'m--', 'linewidth', 2);
-set(gca, 'ylim', [0 0.8]);
-set(gca, 'linewidth', 2);
-set(gca, 'fontsize', 16);
-legend(p23, '-G''(s)/G(s)', '2/s', '2/s - 4/(\pi R s^2)');
-xlabel('s');
-ylabel('-G''(s)/G(s) approximation');
- 
-
-figure(24)
-hold off
-semilogy(0,1)
-hold on
-p24(1) = plot(Ss, + Gd_disk./G_disk + 2./Ss , 'b-', 'linewidth', 2);
-p24(2) = plot(Ss, 4./(pi*R*Ss.^2) ,'r--', 'linewidth', 2);
-%p23(3) = plot(Ss, 3*(8/(pi*R^3))./((2/R^2) - 8./(pi*R^3*Ss) )./Ss.^2,'g--', 'linewidth', 2);
-%p23(4) = plot(Ss, 12*R./(pi*Ss.^2) ,'m--', 'linewidth', 2);
-set(gca, 'ylim', [0 0.8]);
-set(gca, 'linewidth', 2);
-set(gca, 'fontsize', 16);
-legend(p24, 'error', 'error approximation');
-xlabel('s');
-ylabel('-G''(s)/G(s) approximation error');
-print('-depsc', 'Plots/LinePicking_approx_error.eps');
-
-figure(25)
-hold off
-semilogy(0,1)
-hold on
-p25(1) = plot(Ss, (Gd_disk./G_disk + 2./Ss) ./ (-Gd_disk./G_disk) , 'b-', 'linewidth', 2);
-p25(2) = plot(Ss, 2./(pi*R*Ss),'r--', 'linewidth', 2);
-set(gca, 'ylim', [0 0.8]);
-set(gca, 'linewidth', 2);
-set(gca, 'fontsize', 16);
-legend(p25, 'error', 'error approximation');
-xlabel('s');
-ylabel('-G''(s)/G(s) absolute relative approximation error');
-print('-depsc', 'Plots/LinePicking_approx_rel_error.eps');
+set(gca, 'xlim', [0 1]);
+legend(p9, legend_str9);
+xlabel('t');
+ylabel('g^{\rm cube}(t)');
+print('-depsc', 'Plots/LinePicking_test_cube_regions.eps');
 
