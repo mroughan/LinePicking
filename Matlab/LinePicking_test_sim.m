@@ -620,8 +620,114 @@ title('sphere-geodesic picking example');
 
 
 
+%
+% rect with Manhattan distance picking
+%
+problem = 9;
+a = 1;
+b = 2;
+parameters = [a, b];
+s = LinePickingSupport(problem, parameters);
+ds = diff(s)/N;
+t = s(1):ds:s(2);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+% name(problem+1) = {LinePickingProblemLookup(problem)};
+name(problem+1) = {'1:2 rectangle with Manhattan distances'};
 
+x1 = b*rand(M,1);
+y1 = a*rand(M,1);
+x2 = b*rand(M,1);
+y2 = a*rand(M,1);
+d = abs(x1-x2) + abs(y1-y2);
+n = histc(d, t);
+prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
+
+figure(problem+1)
+hold off
+p1 = plot(0,0);
+hold on
+p1 = plot(t, g, 'r--', 'linewidth', 2);
+p2 = plot(t+ds/2, prob, 'bo', 'linewidth', 2);
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+legend([p1 p2], 'exact', 'simulated');
+xlabel('t');
+ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_rect_man.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('rect(2:1) with Manhattan distances-line picking density');
+
+figure(problem+101)
+hold off
+plot([0 b b 0 0], [0 0 a a 0], 'k-', 'linewidth', 2);
+hold on
+m = 1:10;
+plot([x1(m)'; x2(m)'; x2(m)'], [y1(m)'; y1(m)'; y2(m)'], 'b-', 'linewidth', 2);
+plot([x1(m)'; x2(m)'], [y1(m)'; y2(m)'], 'bo', 'linewidth', 2);
+set(gca, 'xlim', [-0.1, b+0.1]);
+set(gca, 'ylim', [-0.1, a+0.1]);
+axis equal
+axis off
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+filename = sprintf('Plots/LinePicking_test_sim_rect_man_eg.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('rect(2:1) with Manhattan distances-line picking example');
+
+%
+% rect with Max distance picking
+%
+problem = 10;
+a = 1;
+b = 2;
+parameters = [a, b];
+s = LinePickingSupport(problem, parameters);
+ds = diff(s)/N;
+t = s(1):ds:s(2);
+g = LinePickingPDF(t, problem, parameters);
+means(problem+1) = LinePickingMean(problem, parameters);
+vars(problem+1) = LinePickingVar(problem, parameters);
+% name(problem+1) = {LinePickingProblemLookup(problem)};
+name(problem+1) = {'1:2 rectangle with Max distances'};
+
+x1 = b*rand(M,1);
+y1 = a*rand(M,1);
+x2 = b*rand(M,1);
+y2 = a*rand(M,1);
+d = max([abs(x1-x2),abs(y1-y2)]');
+n = histc(d, t);
+prob = (n/M) / ds;
+est_means(problem+1) = mean(d);
+est_var(problem+1) = var(d);
+
+figure(problem+1)
+hold off
+p1 = plot(0,0);
+hold on
+p1 = plot(t, g, 'r--', 'linewidth', 2);
+p2 = plot(t+ds/2, prob, 'bo', 'linewidth', 2);
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+legend([p1 p2], 'exact', 'simulated');
+xlabel('t');
+ylabel('g(t)');
+filename = sprintf('Plots/LinePicking_test_sim_rect_max.%s', suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('rect(2:1) with Max distances-line picking density');
+
+
+%
+%
 % output a table of results
+%
+% 
 fprintf('  \\begin{tabular}{r|rrrr}\n');
 fprintf('%20s & %8s & %14s & %8s & %14s \\\\\n', 'problem', 'mean', 'estimated mean', 'variance', 'estimated var');
 fprintf('     \\hline \n');

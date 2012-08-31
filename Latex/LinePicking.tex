@@ -42,6 +42,7 @@
 % \def\CC{\mathds{C}}
 \def\R{\mathbb{R}}
 \def\C{\mathbb{C}}
+\def\Z{\mathbb{Z}}
 \def\x{{\mathbf x}}
 \def\y{{\mathbf y}}
 
@@ -147,6 +148,18 @@ triangle?''
 
 
 
+Definitions:
+\begin{description}
+
+\item[PDF:] 
+
+\item[CDF:]
+
+\item[Support:]
+
+\end{description}
+
+
 \section{Region Transforms}
 \label{sec:scaling}
 
@@ -173,6 +186,25 @@ Scaling for CDFs is even simpler, we simply take
    G_L(t) = G_1 \left( \frac{t}{L} \right). 
 \end{equation}
 
+
+\section{General Properties}
+\label{sec:general}
+
+\begin{enumerate}
+
+\item Most of the cases are defined over finite regions, and hence the
+  PDFs have finite support.
+
+\item All of the distributions are {\em proper}
+
+\item Almost all are defined on continuous, convex sets, and in this
+  case the distributions are continuous, i.e., the CDF is a continuous
+  function.
+
+\item Almost all are defined on continuous, convex sets, and in this
+  case the PDFs are also continuous functions.
+
+\end{enumerate}
 
 
 \section{Examples}
@@ -213,6 +245,9 @@ appendices in order to make the flow easy.
 
 \clearpage
 \input{rect_max.tex}
+
+\clearpage
+\input{grid.tex}
 
 \clearpage
 \subsection{Extensions}
@@ -256,15 +291,20 @@ then choose the line).
 SUMMARY TABLE
 
 
+\clearpage
 \input{approximation}
 
+\clearpage
 \input{numerical}
 
+\clearpage
 \input{programs}
 
+\clearpage
 \input{correlations}
 
 
+\clearpage
 \section{Conclusion and Future Work}
 
 

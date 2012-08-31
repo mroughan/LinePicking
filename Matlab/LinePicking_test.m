@@ -186,7 +186,7 @@ set(gca, 'fontsize', 16);
 set(gca, 'xlim', [0 1]);
 legend(p8, legend_str8);
 xlabel('t');
-ylabel('g_{a/b}(t)');
+ylabel('g_{a:b}(t)');
 print('-depsc', 'Plots/LinePicking_test_rect.eps');
 
 
@@ -201,8 +201,7 @@ hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g_rect_man] = LinePickingPDF(t, problem, [1,n]/(1+n));
-%  [g_rect_man] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
+  [g_rect_man] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
   p9(n) = plot(t,g_rect_man,'color', colors(n,:), 'linewidth', 2);
   legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
@@ -211,10 +210,94 @@ set(gca, 'fontsize', 16);
 set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
-ylabel('g_{a/b}(t)');
+ylabel('g_{a:b}(t)');
 print('-depsc', 'Plots/LinePicking_test_rect_man.eps');
 
 % also do a plot showing the different regions in the PDF
+problem = 9;
+dt = 0.001;
+a = 1;
+b = 2.5;
+t = -0.1:dt:a+b+0.1;
+k1 = find(t<=a);
+k2 = find(t>a & t<=b);
+k3 = find(t>b & t<=a+b);
+t1 = t(k1);
+t2 = t(k2);
+t3 = t(k3);
+
+figure(91)
+hold off
+plot(0,0)
+hold on
+[g] = LinePickingPDF(t, problem, [a b]);
+fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
+fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
+fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
+plot(t,g,'b-', 'linewidth', 2);
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+set(gca, 'xlim', [-0.1 a+b+0.1]);
+xlabel('t');
+ylabel('g_{a:b}(t)');
+print('-depsc', 'Plots/LinePicking_test_rect_man_regions.eps');
+
+
+% 
+% do nice plot considering rectangles (with Max distances) of various dimensions
+%  fixing the max length
+problem = 10;
+dt = 0.001;
+t = -0.1:dt:3.1;
+figure(10)
+hold off
+plot(0,0)
+hold on
+for n=1:8
+  [g_rect_max] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
+  p9(n) = plot(t,g_rect_max,'color', colors(n,:), 'linewidth', 2);
+  legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
+end
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+set(gca, 'xlim', [0 1]);
+legend(p9, legend_str9);
+xlabel('t');
+ylabel('g_{a:b}(t)');
+print('-depsc', 'Plots/LinePicking_test_rect_max.eps');
+
+% also do a plot showing the different regions in the PDF
+problem = 10;
+dt = 0.001;
+a = 1;
+b = 2.5;
+t = -0.1:dt:a+b+0.1;
+k1 = find(t<=a);
+k2 = find(t>a & t<=b);
+k3 = find(t>b & t<=a+b);
+t1 = t(k1);
+t2 = t(k2);
+t3 = t(k3);
+
+figure(101)
+hold off
+plot(0,0)
+hold on
+[g] = LinePickingPDF(t, problem, [a b]);
+fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
+fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
+fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
+plot(t,g,'b-', 'linewidth', 2);
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+set(gca, 'xlim', [-0.1 a+b+0.1]);
+xlabel('t');
+ylabel('g_{a:b}(t)');
+print('-depsc', 'Plots/LinePicking_test_rect_max_regions.eps');
+
+
+
+
 
 
 % test scaling with size for each type of distribution, 
@@ -257,6 +340,11 @@ sum_cube_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 [g5] = LinePickingPDF(t, 9, [2.5,5]);
 sum_rect_man_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_rect_man_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
+
+[g1] = LinePickingPDF(t, 10, [0.5,1]);
+[g5] = LinePickingPDF(t, 10, [2.5,5]);
+sum_rect_max_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
+sum_rect_max_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
 
 

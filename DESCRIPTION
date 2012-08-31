@@ -25,3 +25,4 @@ Collate:
     'LinePickingAllProblems.R'
     'LinePickingProblemLookup.R'
     'LinePickingNumberOfProblems.R'
+    'package.R'

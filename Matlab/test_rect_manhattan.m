@@ -29,6 +29,7 @@ g(k2) = g1_a  - (2/b^2)*t2;
 g(k3) = 2*(a+b-t3).^3/(3*a^2*b^2);
 cal_mean(1) = (a+b)/3
 cal_val(1) = (a^2 + b^2)/18
+cal_val2(1) = LinePickingMean(9,[a b])
 
 M = 2000000;
 problem = 1;

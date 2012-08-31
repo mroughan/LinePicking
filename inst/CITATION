@@ -1,0 +1,19 @@
+citHeader("To cite package 'LinePicking' in publications use:")
+     
+     year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+     vers <- paste("R package version", meta$Version)
+     
+     citEntry(entry="Article",
+              title = "The Line-Picking Problem",
+              author = personList(as.person("Matthew Roughan"),
+                                  as.person("Eric Parsonage"),
+                                  as.person("Jonathan Tuke")),
+              year = year,
+              note = vers,
+
+							journal = "To be published",
+     
+              textVersion =
+              paste("Matthew Roughan, Eric Parsonage, Jonathan Tuke.",
+                    "The Line-Picking Problem.","To be published,",year,
+                    vers, ".", sep=" "))

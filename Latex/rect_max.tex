@@ -1,16 +1,17 @@
-\subsection{Line picking on the rectangle with the Max metric}
+\subsection{Line picking on the rectangle with the max metric}
 \label{sec:rect_manhattan}
 
 Example showing how a different distance metric can simplify the result: 
 
-% \begin{figure}[tbp]
-%   \begin{center}
-%     \subfloat[\label{fig:hyperball_pdf}PDF of length 1 line showing
-%     exact and simulated values.]{\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_test_sim_line.eps}}
-%     \caption{The line-line picking problem ($L=1$).}
-%   \end{center} 
-% \vspace{-4mm}
-% \end{figure}
+\begin{figure}[tbp]
+  \begin{center}
+    \subfloat[\label{fig:rect_max_pdf.]{\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_test_rect_max_regions.eps}}
+      \hspace{3mm}
+    \subfloat[\label{fig:rect_max_pdf_var.]{\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_test_rect_max.eps}}
+    \caption{The line picking on the rectangle with the max metric.}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
 
 \subsubsection{PDF}
 
@@ -19,7 +20,7 @@ The elegant feature of this problem is that using the CDF method the rectangle
 can be partitioned into two parts. 
 
 The  distance is the maximum of two independent random variables, i.e.,
-\[ t_{\rm Max} = Max (t_X,  t_Y), \]
+\[ t_{\rm max} = \max (t_X,  t_Y), \]
 where $t_X$ and $t_Y$ are distances given by the line-line picking
 problem (Section~\ref{sec:line_line}). 
 

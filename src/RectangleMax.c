@@ -40,11 +40,20 @@ double RectangleMaxDistancePDF(double t, double* parameters)
 {
     double a = parameters[0];
     double b = parameters[1];
+<<<<<<< HEAD
     double a2, b2;
     double t2 = t*t;
     double tmp;
     
     /* make sure hieght < length */
+=======
+    double a2;
+    double b2;
+    double t2 = t*t;
+    double tmp;
+    
+    /* make sure a < b */
+>>>>>>> e33f3bc67bde8ca2f37dda9888e8fc32af16fd2b
     if (a > b) 
     {
         tmp = b;
@@ -53,6 +62,9 @@ double RectangleMaxDistancePDF(double t, double* parameters)
     }
     a2 = a*a;
     b2 = b*b;
+    
+    b2 = b * b;
+    a2 = a * a;
     
     /* two cases */
     if (t <= a)
@@ -84,7 +96,12 @@ double RectangleMaxDistanceCDF(double t, double* parameters)
     
     double a = parameters[0];
     double b = parameters[1];
+<<<<<<< HEAD
     double a2, b2;
+=======
+    double a2;
+    double b2;
+>>>>>>> e33f3bc67bde8ca2f37dda9888e8fc32af16fd2b
     double t2 = t*t;
     double tmp;
     
@@ -97,6 +114,9 @@ double RectangleMaxDistanceCDF(double t, double* parameters)
     }
     a2 = a*a;
     b2 = b*b;
+    
+    b2 = b * b;
+    a2 = a * a;
     
     /* two cases */
     if (t <= a)
@@ -152,6 +172,10 @@ double RectangleMaxDistanceVar(double* parameters)
         tmp = b;
         b = a;
         a = tmp;
+<<<<<<< HEAD
+=======
+        
+>>>>>>> e33f3bc67bde8ca2f37dda9888e8fc32af16fd2b
     }
     
     return -(pow(a, 6) - 10 * pow(a, 5) * b + 
