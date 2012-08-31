@@ -1,16 +1,38 @@
 \subsection{Line picking on the rectangle with the Manhattan distance}
 \label{sec:rect_manhattan}
 
-Example showing a different distance metric: 
+The line-picking problem need not be considered one of ``straight''
+lines. As discussed above, the general problem is one of determining
+the distance between two randomly chosen points, where distance could
+be determined by any valid metric.
 
-% \begin{figure}[tbp]
-%   \begin{center}
-%     \subfloat[\label{fig:hyperball_pdf}PDF of length 1 line showing
-%     exact and simulated values.]{\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_test_sim_line.eps}}
-%     \caption{The line-line picking problem ($L=1$).}
-%   \end{center} 
-% \vspace{-4mm}
-% \end{figure}
+In this case, we choose the points randomly on the rectangle (with
+height $a$ and length $b$), but use the Manhattan distance (also
+called the taxicab, or rectilinear, or L1 distance) between the two
+points. Figure~\ref{fig:rect_man_eg} shows an example, illustrating
+the rectilinear distance.
+
+The PDF for one case ($a=1$, $b=2.5$) is shown
+in \label{fig:rect_man_pdf}, and the PDF for a range of rectangles
+with different aspect ratios, but constant perimeter, is shown in
+Figure~\ref{fig:rect_man_pdf_various}.
+
+\begin{figure}[tbp]
+  \begin{center}
+    \subfloat[\label{fig:rect_man_eg}Example.]{\includegraphics[width=0.31\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect_man_eg.eps}}
+    \hspace{3mm}
+    \subfloat[\label{fig:rect_man_pdf}The PDF for $a=1$, $b=2.5$,
+    showing the three
+    regions.]{\includegraphics[width=0.31\columnwidth]{../Matlab/Plots/LinePicking_test_rect_man_regions.eps}}
+    \hspace{3mm}
+    \subfloat[\label{fig:rect_man_pdf_various}The PDF for various
+    aspect ratios $a \! : \! b$ with
+    $a+b=1$.]{\includegraphics[width=0.31\columnwidth]{../Matlab/Plots/LinePicking_test_rect_man.eps}}
+    \caption{The line picking problem on a rectangle, with the
+      Manhattan distance.}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
 
 \subsubsection{PDF}
 
@@ -112,11 +134,11 @@ Especially if you use the method i did to get the PDF.
 \begin{equation}
  G^{\rm X+Y}_b(t) =
  \begin{cases}
- 0 & t < 0\\
-\frac{t^2 \left(-4 t (a+b)+12 a b+t^2\right)}{6 a^2 b^2} & 0 \le t < a \\
--\frac{a^2+4 a (b-t)+6 t (t-2 b)}{6 b^2} & a\le t <  b \\
--\frac{a^4+4 a^3 (b-t)+6 a^2 t (t-2 b)+4 a (b-t)^3+(b-t)^4}{6 a^2 b^2} & b \le t < \le  a + b\\
- 1 & t > a + b
+ 0, & t \leq 0, \\
+\frac{t^2 \left(-4 t (a+b)+12 a b+t^2\right)}{6 a^2 b^2}, & 0 \leq t \leq a, \\
+-\frac{a^2+4 a (b-t)+6 t (t-2 b)}{6 b^2}, & a \leq t \leq  b, \\
+-\frac{a^4+4 a^3 (b-t)+6 a^2 t (t-2 b)+4 a (b-t)^3+(b-t)^4}{6 a^2 b^2}, & b \leq t  \leq  a + b,\\
+ 1, & t \geq a + b.
  \end{cases}
 \end{equation}
 
@@ -136,7 +158,7 @@ picking problem, i.e.,
 
 
 
-We can also easily get 
+Variance below looks wrong???
 
 \begin{eqnarray}
  \mu & = \frac{a+b}{3} \\
