@@ -17,7 +17,7 @@ LinePickingAllProblems <- function(short_tab=TRUE){
   for(i in 0:(N-1)){
     tab <- rbind(tab,LinePickingProblemLookup(problem=i))
   }
-  tab <- data.frame(tmp)
+  tab <- data.frame(tab)
   if(short_tab){
     tab <- tab[,1:2]
   }
