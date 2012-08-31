@@ -17,6 +17,7 @@
  */
 
 #include <math.h>
+#include <stdio.h>
 
 #include "RectangleManhattan.h"
 
@@ -34,45 +35,41 @@ int RectangleManhattanDistanceNpar = 2;
  * @todo Write up the derivation.
  * @param $t The distance to calculate the density for.
  * @param $parameters $parameters[0] is the length of one side of the rectangle
- * and $parameters[1] is the length of the other. 
+ * and $parameters[1] is the length of the other. You'll save work if 
+ * $parameters[0]<=$parameters[1].
  * @return The density at $t.
  */
 double RectangleManhattanDistancePDF(double t, double* parameters)
 {
-    double H = parameters[0];
-    double L = parameters[1];
-    double H2 = H*H;
-    double L2 = L*L;
+    double a = parameters[0];
+    double b = parameters[1];
     double t2 = t*t;
     double tmp;
     
-    /* make sure hieght < length */
-    if (H > L) 
+    /* make sure a < b */
+    if (a > b) 
     {
-        tmp = L;
-        L = H;
-        H = tmp;
+        tmp = b;
+        b = a;
+        a = tmp;
     }
     
-   
-    
-    /* three cases */
-    if (t <= H)
+    /* three cases */ 
+    if (t <= a)
     {
-        return (2 * t * (6 * H * L - 3 * H * t - 3 * L * t + t2)) / 
-                (3. * H2 * L2);
+        return (2. * t * (6 * a * b - 3 * a * t - 3 * b * t + t2)) / 
+                (3. * a * a * b * b);
         
     } 
-    else if (t <= L) 
+    else if (t <= b) 
     {
-        return (2 * (H + 3 * L - 3 * t)) / (3. * L2);
+        return 2.0 * (a + 3.0 * b - 3.0 * t) / (3.0 * b * b);
     } 
     else 
     {
-        return (2 * pow(H + L - t, 3)) / (3. * H2 * L2);
+        return (2. * pow(a + b - t, 3)) / (3. * a * a * b * b);
         
     }
-    
 }
 
 
@@ -90,38 +87,40 @@ double RectangleManhattanDistancePDF(double t, double* parameters)
 double RectangleManhattanDistanceCDF(double t, double* parameters)
 {
     
-    double H = parameters[0];
-    double L = parameters[1];
-    double H2 = H*H;
-    double L2 = L*L;
+    double a = parameters[0];
+    double b = parameters[1];
+    double a2;
+    double b2;
     double t2 = t*t;
     double tmp;
     
     /* make sure hieght < length */
-    if (H > L) 
+    if (a > b) 
     {
-        tmp = L;
-        L = H;
-        H = tmp;
+        tmp = b;
+        b = a;
+        a = tmp;
     }
-    
+    a2 = a*a;
+    b2 = b*b;
+
     /* three cases */
-    if (t <= H)
+    if (t <= a)
     {
-        return (t2 * (12 * H * L - 4 * (H + L) * t + t2)) / (6. * H2 * L2);
+        return (t2 * (12 * a * b - 4 * (a + b) * t + t2)) / (6. * a2 * b2);
     } 
-    else if (t <= L) 
+    else if (t <= b) 
     {
-        return  -(H2 + 4 * H * (L - t) + 6 * t * (-2 * L + t)) / (6. * L2);       
+        return  -(a2 + 4 * a * (b - t) + 6 * t * (-2 * b + t)) / (6. * b2);       
         
     }
     else 
     {
-        return -(pow(H,4) + 
-                 4 * pow(H,3) * (L - t) + 
-                 4 * H * pow(L - t,3) + 
-                 pow(L - t,4) + 
-                 6 * H2 * t * (t -2 * L)) / (6. * H2 * L2);
+        return -(pow(a,4) + 
+                 4 * pow(a,3) * (b - t) + 
+                 4 * a * pow(b - t,3) + 
+                 pow(b - t,4) + 
+                 6 * a2 * t * (t -2 * b)) / (6. * a2 * b2);
     }
    
 }
@@ -140,10 +139,10 @@ double RectangleManhattanDistanceCDF(double t, double* parameters)
 double RectangleManhattanDistanceMean(double* parameters)
 {
     
-    double L = parameters[0];
-    double H = parameters[1];
+    double a = parameters[0];
+    double b = parameters[1];
     
-    return (H + L)/3.;
+    return (a + b)/3.;
     
 }
 
@@ -160,23 +159,23 @@ double RectangleManhattanDistanceMean(double* parameters)
  */
 double RectangleManhattanDistanceVar(double* parameters)
 {
-    double L = parameters[0];
-    double H = parameters[1];
+    double b = parameters[0];
+    double a = parameters[1];
     double tmp;
     
-    if (H > L) 
+    if (a > b) 
     {
-        tmp = L;
-        L = H;
-        H = tmp;
+        tmp = b;
+        b = a;
+        a = tmp;
     }
     
-    return (2 * pow(H, 5) + 
-            14 * pow(H, 4) * (L - 1) -
-            28 * pow(H, 3) * (L - 2) * L + 
-            105 * pow(L, 4) + 
-            35 * pow(H, 2) * pow(L, 2) * (4 * L - 1)) / 
-                (1890. * pow(L,2));
+    return (2 * pow(a, 5) + 
+            14 * pow(a, 4) * (b - 1) -
+            28 * pow(a, 3) * (b - 2) * b + 
+            105 * pow(b, 4) + 
+            35 * pow(a, 2) * pow(b, 2) * (4 * b - 1)) / 
+                (1890. * pow(b,2));
     
     
 }

@@ -190,6 +190,33 @@ ylabel('g_{a/b}(t)');
 print('-depsc', 'Plots/LinePicking_test_rect.eps');
 
 
+% 
+% do nice plot considering rectangles (with Manhattan distances) of various dimensions
+%  fixing the max length
+problem = 9;
+dt = 0.001;
+t = -0.1:dt:3.1;
+figure(9)
+hold off
+plot(0,0)
+hold on
+for n=1:8
+  [g_rect_man] = LinePickingPDF(t, problem, [1,n]/(1+n));
+%  [g_rect_man] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
+  p9(n) = plot(t,g_rect_man,'color', colors(n,:), 'linewidth', 2);
+  legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
+end
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+set(gca, 'xlim', [0 1]);
+legend(p9, legend_str9);
+xlabel('t');
+ylabel('g_{a/b}(t)');
+print('-depsc', 'Plots/LinePicking_test_rect_man.eps');
+
+% also do a plot showing the different regions in the PDF
+
+
 % test scaling with size for each type of distribution, 
 %   by considering whether distribution sums to 1
 dt = 0.001;
@@ -225,6 +252,11 @@ sum_line_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 [g5] = LinePickingPDF(t, 5, 5);
 sum_cube_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
 sum_cube_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
+
+[g1] = LinePickingPDF(t, 9, [0.5,1]);
+[g5] = LinePickingPDF(t, 9, [2.5,5]);
+sum_rect_man_1 = (sum(g1) -(g1(1)+g1(end))/2 )*dt
+sum_rect_man_5 = (sum(g5) -(g5(1)+g5(end))/2 )*dt
 
 
 

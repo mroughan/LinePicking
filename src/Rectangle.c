@@ -44,8 +44,8 @@ double RectangleDistancePDF(double t, double* parameters)
 {
     double a = parameters[0];
     double b = parameters[1];
-    double a2 = a*a;
-    double b2 = b*b;
+    double a2;
+    double b2;
     double L2 = a2+ b2;
     double L = sqrt(L2);
     double t2 = t*t;
@@ -57,9 +57,9 @@ double RectangleDistancePDF(double t, double* parameters)
         tmp = b;
         b = a;
         a = tmp;
-        a2 = a*a;
-        b2 = b*b;
     }
+    a2 = a*a;
+    b2 = b*b;
     
     /* three cases */
     if (t <= a)
