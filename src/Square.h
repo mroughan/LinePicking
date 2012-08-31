@@ -28,9 +28,7 @@
 #ifndef _SQUARE_H
 #define _SQUARE_H
 
-extern char *SquareDistanceName;
-extern char *SquareDistanceDescription;
-extern int SquareDistanceNpar;
+extern LinePickingData SquareDistanceData;
 
 double SquareDistancePDF(double t, double* parameters);
 

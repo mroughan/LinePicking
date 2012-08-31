@@ -17,13 +17,16 @@
 
 #include <math.h>
 
+#include "LinePickingData.h"
 #include "RectangleMax.h"
 
-char *RectangleMaxDistanceName = "rectangle max";
-char *RectangleMaxDistanceDescription = 
-    "rectangle max, side lengths parameters[0], parameters[1]";
-int RectangleMaxDistanceNpar = 2;
-
+LinePickingData RectangleMaxDistanceData =
+{
+    "rectangle max",
+    "rectangle max, side lengths parameters[0], parameters[1]",
+    2,
+    {2,1},
+};
 
 /**
  * Implements the PDF of the distance between two random points on a

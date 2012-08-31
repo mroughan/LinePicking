@@ -26,10 +26,7 @@
 #ifndef _HYPERBALL_H
 #define _HYPERBALL_H
 
-extern char *HyperballDistanceName;
-extern char *HyperballDistanceDescription;
-extern int HyperballDistanceNpar;
-
+extern LinePickingData HyperballDistanceData;
 
 double HyperballDistancePDF(double t, double* parameters);
 

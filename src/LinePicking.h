@@ -36,6 +36,7 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "LinePickingData.h"
 #include "Square.h"
 #include "Disk.h"
 #include "Hyperball.h"
@@ -48,12 +49,14 @@
 #include "RectangleManhattan.h"
 #include "RectangleMax.h"
 
-#ifndef _NOTR
-#include <R.h> /* only include this if we are compiling for R */
-#endif
 
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
+
+
+#ifndef _NOTR
+#include <R.h> /* only include this if we are compiling for R */
+#endif
 
 
 #ifndef PRINT_STDOUT
@@ -76,9 +79,7 @@ typedef struct
     double (* VAR)(double *);
     void   (* SUPPORT)(double*, double *);
     void   (* CHECK_PAR)(double*, int *, char *);
-    int *Npar;
-    char ** name;
-    char ** description;
+    LinePickingData *DATA; 
     
 } LinePickingRec;
 
@@ -86,8 +87,7 @@ typedef struct
 #define ExpandFields(_x) &_x##DistancePDF,&_x##DistanceCDF,\
 &_x##DistanceMean,&_x##DistanceVar,\
 &_x##DistanceSupport,&_x##DistanceCheckParameters,\
-&_x##DistanceNpar,&_x##DistanceName,\
-&_x##DistanceDescription
+&_x##DistanceData
 
 LinePickingRec LinePickingFields[] = 
 { 

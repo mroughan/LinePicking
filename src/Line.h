@@ -26,9 +26,7 @@
 #ifndef _LINE_H
 #define _LINE_H
 
-extern char *LineDistanceName;
-extern char *LineDistanceDescription;
-extern int LineDistanceNpar;
+extern LinePickingData LineDistanceData;
 
 double LineDistancePDF(double t, double* parameters);
 

@@ -17,11 +17,17 @@
  */
 
 #include <math.h>
+
+#include "LinePickingData.h"
 #include "Square.h"
 
-char *SquareDistanceName = "square";
-char *SquareDistanceDescription = "square, with side length parameters[0]";
-int SquareDistanceNpar = 1;
+LinePickingData SquareDistanceData =
+{
+    "square",
+    "square, with side length parameters[0]",
+    1,
+    {1}
+};
 
 
 /**

@@ -17,14 +17,18 @@
 
 #include <math.h>
 #include <stdio.h>
+
+#include "LinePickingData.h"
 #include "PrismGeodesic.h"
 
-char *PrismGeodesicDistanceName = "prism geodesic";
-char *PrismGeodesicDistanceDescription = 
-            "prism geodesic, with length parameters[0], and perimeter parameters[1]."
-            "Perimeter is used as the prism can have any cross section.";
-
-int PrismGeodesicDistanceNpar = 2;
+LinePickingData PrismGeodesicDistanceData =
+{
+    "prism geodesic",
+    "prism geodesic, with length parameters[0], and perimeter parameters[1]."
+    "Perimeter is used as the prism can have any cross section.",
+    2,
+    {1,1}
+};    
 
 
 /**

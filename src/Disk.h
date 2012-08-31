@@ -27,9 +27,8 @@
 #ifndef _DISK_H
 #define _DISK_H
 
-extern char *DiskDistanceName;
-extern char *DiskDistanceDescription; 
-extern int DiskDistanceNpar;
+
+extern LinePickingData DiskDistanceData;
 
 double DiskDistancePDF(double t, double* parameters);
 

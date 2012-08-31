@@ -26,10 +26,7 @@
 #ifndef _RECTANGLE_H
 #define _RECTANGLE_H
 
-extern char *RectangleDistanceName;
-extern char *RectangleDistanceDescription;
-extern int RectangleDistanceNpar;
-
+extern LinePickingData RectangleDistanceData;
 
 double RectangleDistancePDF(double t, double* parameters);
 

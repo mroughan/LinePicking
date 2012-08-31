@@ -18,11 +18,20 @@
 
 #include <math.h>
 
+#include "LinePickingData.h"
 #include "Disk.h"
 
 char *DiskDistanceName = "disk";
 char *DiskDistanceDescription = "disk, with radius parameters[0]";
 int DiskDistanceNpar = 1;
+
+LinePickingData DiskDistanceData =
+{
+    "disk",
+    "disk, with radius parameters[0]",
+    1,
+    {1}
+};
 
 
 /**

@@ -18,11 +18,17 @@
 
 #include <math.h>
 
+#include "LinePickingData.h"
 #include "Cube.h"
 
-char * CubeDistanceName = "cube";
-char * CubeDistanceDescription = "cube, side length parameters[0]";
-int CubeDistanceNpar = 1;
+LinePickingData CubeDistanceData =
+{
+    "cube",
+    "cube, side length parameters[0]",
+    1,
+    {1}
+};
+
 
 /**
  * Implements the PDF of the distance between two random points within a cube.

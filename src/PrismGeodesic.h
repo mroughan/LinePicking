@@ -31,10 +31,7 @@
 #define _PRISM_GEODESIC_H
 
 
-extern char * PrismGeodesicDistanceName;
-extern char * PrismGeodesicDistanceDescription;
-extern int PrismGeodesicDistanceNpar;
-
+extern LinePickingData PrismGeodesicDistanceData;
 
 double PrismGeodesicDistancePDF(double t, double* parameters);
 

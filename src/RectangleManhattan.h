@@ -27,10 +27,7 @@
 #ifndef _RECTANGLE_MANHATTAN_H
 #define _RECTANGLE_MANHATTAN_H
 
-extern char *RectangleManhattanDistanceName;
-extern char *RectangleManhattanDistanceDescription;
-extern int RectangleManhattanDistanceNpar;
-
+extern LinePickingData RectangleManhattanDistanceData;
 
 double RectangleManhattanDistancePDF(double t, double* parameters);
 

@@ -18,11 +18,16 @@
 
 #include <math.h>
 
+#include "LinePickingData.h"
 #include "Line.h"
 
-char *LineDistanceName = "line";
-char *LineDistanceDescription = "line, length parameters[0]";
-int LineDistanceNpar = 1;
+LinePickingData LineDistanceData =
+{
+    "line",
+    "line, length parameters[0]",
+    1,
+    {1}
+};
 
 /**
  * Implements the PDF of the distance between two random points on a line.

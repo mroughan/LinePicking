@@ -18,13 +18,18 @@
 
 #include <math.h>
 #include <stdio.h>
+
+#include "LinePickingData.h"
 #include "Hyperball.h"
 #include "beta.h" 
 
-char *HyperballDistanceName = "hyper-ball";
-char *HyperballDistanceDescription = "hyper-ball, with dimension parameters[0]"
-                                        ", and radius parameters[1]";
-int HyperballDistanceNpar = 2;
+LinePickingData HyperballDistanceData =
+{
+   "hyper-ball",
+    "hyper-ball, with dimension parameters[0], and radius parameters[1]",
+    2,
+    {3, 1}
+};
 
 
 /**

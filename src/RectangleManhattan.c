@@ -19,13 +19,16 @@
 #include <math.h>
 #include <stdio.h>
 
+#include "LinePickingData.h"
 #include "RectangleManhattan.h"
 
-char *RectangleManhattanDistanceName = "rectangle Manhattan";
-char *RectangleManhattanDistanceDescription = 
-    "rectangle Manhattan, side lengths parameters[0], parameters[1]";
-int RectangleManhattanDistanceNpar = 2;
-
+LinePickingData RectangleManhattanDistanceData =
+{
+    "rectangle Manhattan",
+    "rectangle Manhattan, side lengths parameters[0], parameters[1]",
+    2,
+    {2,1}
+};
 
 /**
  * Implements the PDF of the distance between two random points on a

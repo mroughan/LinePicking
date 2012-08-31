@@ -16,13 +16,17 @@
  */
 
 #include <math.h>
+
+#include "LinePickingData.h"
 #include "SphereGeodesic.h"
 
-char *SphereGeodesicDistanceName = "sphere geodesic";
-char *SphereGeodesicDistanceDescription = 
-                                "sphere geodesic, with radius parameters[0]";
-int SphereGeodesicDistanceNpar = 1;
-
+LinePickingData SphereGeodesicDistanceData =
+{
+    "sphere geodesic",
+    "sphere geodesic, with radius parameters[0]",
+    1,
+    {1}
+};
 
 /**
  * Implements the PDF of the distance between two random points on the 

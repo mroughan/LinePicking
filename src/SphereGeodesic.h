@@ -30,10 +30,7 @@
 #define _SPHERE_GEODESIC_H
 
 
-extern char * SphereGeodesicDistanceName;
-extern char * SphereGeodesicDistanceDescription;
-extern int SphereGeodesicDistanceNpar;
-
+extern LinePickingData SphereGeodesicDistanceData;
 
 double SphereGeodesicDistancePDF(double s, double* parameters);
 

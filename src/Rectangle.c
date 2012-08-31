@@ -18,12 +18,16 @@
 
 #include <math.h>
 
+#include "LinePickingData.h"
 #include "Rectangle.h"
 
-char *RectangleDistanceName = "rectangle";
-char *RectangleDistanceDescription = "rectangle, side lengths parameters[0],"
-" parameters[1]";
-int RectangleDistanceNpar = 2;
+LinePickingData RectangleDistanceData =
+{
+    "rectangle",
+    "rectangle, side lengths parameters[0], parameters[1]",
+    2,
+    {2,1}
+};
 
 
 /**

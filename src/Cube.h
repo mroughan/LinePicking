@@ -25,10 +25,7 @@
 #ifndef _CUBE_H
 #define _CUBE_H
 
-extern char * CubeDistanceName;
-extern char * CubeDistanceDescription;
-extern int CubeDistanceNpar;
-
+extern LinePickingData CubeDistanceData;
 
 double CubeDistancePDF(double t, double* parameters);
 

@@ -15,13 +15,17 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "LinePickingData.h"
 #include "Sphere.h"
 
-char *SphereDistanceName = "sphere";
-char *SphereDistanceDescription = "sphere, with radius parameters[0]";
-int SphereDistanceNpar = 1;
 
-
+LinePickingData SphereDistanceData =
+{
+    "sphere",
+    "sphere, with radius parameters[0]",
+    1,
+    {1},
+};
 
 /**
  * Implements the PDF of the distance between two random points on the 

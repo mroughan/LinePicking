@@ -27,10 +27,7 @@
 #ifndef _RECTANGLE_MAX_H
 #define _RECTANGLE_MAX_H
 
-extern char *RectangleMaxDistanceName;
-extern char *RectangleMaxDistanceDescription;
-extern int RectangleMaxDistanceNpar;
-
+extern LinePickingData RectangleMaxDistanceData;
 
 double RectangleMaxDistancePDF(double t, double* parameters);
 

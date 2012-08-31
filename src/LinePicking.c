@@ -114,8 +114,8 @@ void LinePickingProblemLookup(int *problem, char **name, char **description)
         return;
     }
 
-    *name = *LinePickingFields[*problem].name;
-    *description = *LinePickingFields[*problem].description;
+    *name = LinePickingFields[*problem].DATA->name;
+    *description = LinePickingFields[*problem].DATA->description;
 }
 
 
@@ -132,7 +132,7 @@ void LinePickingPrintAllProblems(void)
     
     for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
     {
-        PRINT_STDOUT(" problem[%d] = %s\n", i, *LinePickingFields[i].name);
+        PRINT_STDOUT(" problem[%d] = %s\n", i, LinePickingFields[i].DATA->name);
     }
 }
 
@@ -161,8 +161,8 @@ void LinePickingAllProblems(char **names, char **descriptions)
     
     for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
     {
-        names[i] = *LinePickingFields[i].name;
-        descriptions[i] = *LinePickingFields[i].description;
+        names[i] = LinePickingFields[i].DATA->name;
+        descriptions[i] = LinePickingFields[i].DATA->description;
     }
 }
 
@@ -212,13 +212,13 @@ void LinePickingCheckParameters(int *problem, double* parameters,
     }
     
     /* check that there are the right number of parameters */
-    if (*Npar !=  *LinePickingFields[*problem].Npar) 
+    if (*Npar !=  LinePickingFields[*problem].DATA->Npar) 
     {
         *result=3;
         sprintf(*error_str, 
                 "LinePickingCheckParameters:"
                 " problem %d requires %d parameters (%d were input).", 
-                *problem, *LinePickingFields[*problem].Npar, *Npar);
+                *problem, LinePickingFields[*problem].DATA->Npar, *Npar);
         return;
     }
     
@@ -814,7 +814,7 @@ set_pars_LinePicking(int argc, char *argv[],
         default: 
             usage_LinePicking(); 
     }
-    *Npar = *LinePickingFields[*problem].Npar;
+    *Npar = LinePickingFields[*problem].DATA->Npar;
 }
 
 int main(int argc, char *argv[])

@@ -1,11 +1,3 @@
-/**
- * @file Sphere.h
- * @brief Functions to provide PDF, CDF, mean and variance of the  
- * distance between two random points on the surface of a sphere.
- * @author Eric Parsonage <eric.parsonage@adelaide.edu.au> 
- * @date 22/09/2012
- */
-
 /*
  *
  *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
@@ -24,23 +16,18 @@
  */
 
 
-#ifndef _SPHERE_H
-#define _SPHERE_H
+#ifndef _LINE_PICKING_DATA
+#define _LINE_PICKING_DATA
+#define MAX_PARAMETERS 3
 
-extern LinePickingData SphereDistanceData;
+typedef struct
+{
+    char * name;
+    char * description;
+    int  Npar;
+    double DefaultParameters[MAX_PARAMETERS];
+    
+} LinePickingData;
 
-double SphereDistancePDF(double t, double* parameters);
-
-double SphereDistanceCDF(double a, double* b);
-
-double SphereDistanceMean(double* parameters);
-
-double SphereDistanceVar(double* parameters);
-
-void SphereDistanceSupport(double *t, double *parameters);
-
-void SphereDistanceCheckParameters(double *parameters, int *result, 
-                                char *error_str);
-
-#endif /* _SPHERE_H */
+#endif
 
