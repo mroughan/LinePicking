@@ -76,15 +76,15 @@ ifeq ("$(UNAME)","Linux")
 endif
 
 MX=mex -O -largeArrayDims 
-CC=gcc -O -fPIC
+CC=gcc -O -fPIC 
 
 C = $(shell ls *.c)
 HEADERS = $(shell ls *.h)
 
 MEX = LinePicking.$(MATLAB_EXT)
-O = LinePicking.o beta.o
+O = LinePicking.o beta.o metrics.o
 O2 =  Square.o Disk.o Hyperball.o Rectangle.o Line.o Cube.o Sphere.o SphereGeodesic.o PrismGeodesic.o RectangleManhattan.o RectangleMax.o
-SO = LinePicking.so beta.so
+SO = LinePicking.so beta.so metrics.so
 STAND_ALONE = LinePicking 
 
 all: ${STAND_ALONE}
@@ -105,13 +105,12 @@ test: ${STAND_ALONE}
 
 $(O): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE -D_NOTR
-    
+
 $(O2): %.o: %.c ${HEADERS}
 	$(CC) $< -c -o $@ -I/usr/include/ -D_STANDALONE -D_NOTR
-        
 
-$(STAND_ALONE): %: %.o beta.o $(O2)
-	$(CC) $< -o $@ beta.o $(O2) -lm -lstdc++ -D_STANDALONE -D_NOTR
+$(STAND_ALONE): %: %.o beta.o metrics.o $(O2)
+	$(CC) $< -o $@ beta.o metrics.o $(O2) -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
 $(MEX): %.$(MATLAB_EXT): %.c beta.o $(O2) ${HEADERS}
