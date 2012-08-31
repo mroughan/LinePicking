@@ -201,7 +201,7 @@ hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g_rect_man] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
+  [g_rect_man] = LinePickingPDF(t, problem, [n,1]/(1+n));
   p9(n) = plot(t,g_rect_man,'color', colors(n,:), 'linewidth', 2);
   legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
@@ -254,7 +254,7 @@ hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g_rect_max] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
+  [g_rect_max] = LinePickingPDF(t, problem, [n,1]/n);
   p9(n) = plot(t,g_rect_max,'color', colors(n,:), 'linewidth', 2);
   legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
