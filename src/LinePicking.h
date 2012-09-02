@@ -49,6 +49,8 @@
 #include "RectangleManhattan.h"
 #include "RectangleMax.h"
 #include "HyperSphere.h"
+#include "HyperSphereGeodesic.h"
+
 
 
 #ifndef _LINEPICKING_H
@@ -103,7 +105,8 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(PrismGeodesic)},
     {ExpandFields(RectangleManhattan)},
     {ExpandFields(RectangleMax)},
-    {ExpandFields(HyperSphere)}
+    {ExpandFields(HyperSphere)},
+    {ExpandFields(HyperSphereGeodesic)}
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
