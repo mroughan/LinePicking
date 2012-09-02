@@ -32,11 +32,12 @@ LinePickingData HyperSphereDistanceData =
 
 
 /* just a little helper function */
+/* not currently used
 double Cn(double n)
 {
     return pow(M_PI, n / 2.0 )/ tgamma((n / 2.0)+ 1);       
 }
-
+*/
 
 /**
  * Implements the PDF of the distance between two random points on a 
@@ -68,7 +69,6 @@ double HyperSphereDistancePDF(double t, double* parameters)
     return (pow (M_PI, -1. /2.)* t * pow(1 - pow(1. - (pow(t,2) / 2.) / 
         pow(r,2),2), (n - 2) / 2.) * tgamma((n + 1.) / 2.) * tgamma(n / 2.)) /
         (pow(r,2)*pow(tgamma(n / 2.),2));
-    
 }
 
 
@@ -94,7 +94,6 @@ double HyperSphereDistanceCDF(double t, double* parameters)
                                  pow(1. - (0.5 * pow(t, 2)) / pow(r, 2), 2), 
                                  100)
             ) / (pow(r, 2) * pow(tgamma(0.5 * n), 2));
-
 }
 
 
