@@ -54,10 +54,36 @@ double HyperSphereGeodesicDistancePDF(double t, double* parameters)
 
 
 /**
+ * @todo analyse excatly when the loop in the hypergeometric function
+ * should stop.
+ * helper function for the CDF if needed elswhere it will get its own file 
+ * and hopefully a better implementation
+ */
+double hypergeometric2f1(double a, double  b, double c, double x, int n)
+{
+    /* quick hack does series expansion up to n terms */
+    
+    int m = 0;
+    double z = 0;
+    double delta = 1;
+    
+    while (m < n)
+    {
+        if (m != 0)
+            delta = delta * x * (a + (m - 1)) * (b + (m - 1)) / m / 
+            (c + (m - 1));
+        
+        z = z + delta;
+        m = m + 1;
+    }
+    return z;
+}
+
+
+/**
  * Will implement the CDF of the distance between two random points
  * on a hyper-sphere measured along a geodesic.
  *
- * @todo Implement
  * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
@@ -67,8 +93,15 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
 {    
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-
-    return -1;;
+    
+    
+    return 0.5 - (pow(M_PI, -0.5) * cos(t / r) * 
+                  tgamma(0.5 + 0.5 * n) *
+                  tgamma(n / 2.) *
+                  hypergeometric2f1(0.5,1 - n / 2., 1.5, 
+                                    pow(cos(t / r), 2), 100) *
+                  pow(sin(t / r), n)) / 
+                    (pow(tgamma(0.5 * n), 2) * pow(pow(sin(t / r),2.),n/2.));
 }
 
 
