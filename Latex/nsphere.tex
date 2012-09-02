@@ -227,7 +227,12 @@ Thus we can write:
 
 \subsubsection{CDF}
 
-We calculate the cumulative density function by integrating the PDF:
-\
+The cumulative density function is derived by integrating the PDF:
+
+\begin{eqnarray}
+G_D(d) & = & \int g_D(d) \, dd\\
+&=& \frac{\left(1-\frac{d^2}{4 R^2}\right)^{-n/2} \left(\frac{d^2}{R^2}\right-\frac{d^4}{4 R^4})^{n/2} \Gamma \left[\frac{1+n}{2}\right] {}_{2}F_{1}\left[1-\frac{n}{2},\frac{n}{2},1+\frac{n}{2},\frac{d^2}{4 R^2}\right]}{n \sqrt{\pi } \Gamma \left[\frac{n}{2}\right]} + K
+\end{eqnarray}
+Inspection tells us that  $G_D(0) = 0$  thus  $K = 0$. 
 
 \subsubsection{Moments}
