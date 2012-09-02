@@ -26,7 +26,7 @@
  * @param $c The Hypergeometric function converges only for 
  * $c != 0, -1, -2, -3, ...
  * @param $x The Hypergeometric function converges only for |$x| < 1
- * param $n Number of terms in the seres to evaluate
+ * @param $n Number of terms in the series to evaluate.
  * @return
  * The result of evaluating the hypergeometric function.
  */
