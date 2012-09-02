@@ -57,6 +57,7 @@ double HyperSphereGeodesicDistancePDF(double t, double* parameters)
  * Will implement the CDF of the distance between two random points
  * on a hyper-sphere measured along a geodesic.
  *
+ * @todo Implement
  * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
@@ -75,6 +76,7 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
  * Calculates the mean distance between two random points on a hyper-sphere 
  * measured along a geodesic.
  *
+ * @todo Implement
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
  * @return The mean distance between two random points on a hyper-sphere.
@@ -93,6 +95,7 @@ double HyperSphereGeodesicDistanceMean(double* parameters)
  * a hyper-sphere measured along a geodesic.
  *
  *
+ * @todo Implement
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
  * @return The variance of distances between two random points on a hyper-sphere.

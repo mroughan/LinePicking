@@ -111,15 +111,9 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a1c6e9d6c0367d037764f7714d9530273"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c6e9d6c0367d037764f7714d9530273"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceName</b></td></tr>
-<tr class="separator:a1c6e9d6c0367d037764f7714d9530273"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6388a45fbed82a228afc7c20deedd632"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6388a45fbed82a228afc7c20deedd632"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceDescription</b></td></tr>
-<tr class="separator:a6388a45fbed82a228afc7c20deedd632"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7637fcc44f13aceeef62af8fa004066"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7637fcc44f13aceeef62af8fa004066"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceNpar</b></td></tr>
-<tr class="separator:ae7637fcc44f13aceeef62af8fa004066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a443f3753a9536a2a853e1bf55c39696e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a443f3753a9536a2a853e1bf55c39696e"></a>
+<a class="el" href="struct_line_picking_data.html">LinePickingData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceData</b></td></tr>
+<tr class="separator:a443f3753a9536a2a853e1bf55c39696e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Functions to provide PDF, CDF, mean and variance of the distance between two random points on the surface (not including the ends) of an upright prism of any cross section. The distance is measured around the surface i.e., it is a geodesic. </p>
@@ -150,7 +144,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceN
       </table>
 </div><div class="memdoc">
 <p>Implements the CDF of the distance between two random points on the surface of an upright prism (excluding the ends). The distance is measured around the the surface of the prism (i.e., a geodesic). Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000024">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$w</td><td>The distance to calculate the cumulative density for. </td></tr>
@@ -226,7 +220,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceN
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The mean distance between two random points on the surface of an upright prism (excluding the ends). </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">Todo:</a></b></dt><dd>re-derive the mean without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">Todo:</a></b></dt><dd>re-derive the mean without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
 
 </div>
 </div>
@@ -254,7 +248,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceN
       </table>
 </div><div class="memdoc">
 <p>Implements the PDF of the distance between two random points on the surface of an upright prism (excluding the ends). The distance is measured around the the surface of the prism (i.e., a geodesic). Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000023">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$w</td><td>The distance to calculate the density for. </td></tr>
@@ -323,14 +317,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>PrismGeodesicDistanceN
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The variance of distances between two random points on the surface of an upright prism (excluding the ends). </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd>re-derive the variance without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">Todo:</a></b></dt><dd>re-derive the variance without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 31 2012 09:06:48 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Sep 2 2012 23:23:57 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -98,6 +98,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;stdint.h&gt;</code><br/>
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &quot;LinePickingData.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_square_8h_source.html">Square.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_disk_8h_source.html">Disk.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_hyperball_8h_source.html">Hyperball.h</a>&quot;</code><br/>
@@ -109,6 +110,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="_prism_geodesic_8h_source.html">PrismGeodesic.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_rectangle_manhattan_8h_source.html">RectangleManhattan.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_rectangle_max_8h_source.html">RectangleMax.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_hyper_sphere_8h_source.html">HyperSphere.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="_hyper_sphere_geodesic_8h_source.html">HyperSphereGeodesic.h</a>&quot;</code><br/>
 <code>#include &lt;R.h&gt;</code><br/>
 </div>
 <p><a href="_line_picking_8h_source.html">Go to the source code of this file.</a></p>
@@ -186,8 +189,7 @@ Matthew Roughan <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'
 <b>Value:</b><div class="fragment"><div class="line">&amp;_x##DistancePDF,&amp;_x##DistanceCDF,\</div>
 <div class="line">&amp;_x##DistanceMean,&amp;_x##DistanceVar,\</div>
 <div class="line">&amp;_x##DistanceSupport,&amp;_x##DistanceCheckParameters,\</div>
-<div class="line">&amp;_x##DistanceNpar,&amp;_x##DistanceName,\</div>
-<div class="line">&amp;_x##DistanceDescription</div>
+<div class="line">&amp;_x##DistanceData</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -213,7 +215,9 @@ Matthew Roughan <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'
 <div class="line">    {ExpandFields(SphereGeodesic)},</div>
 <div class="line">    {ExpandFields(PrismGeodesic)},</div>
 <div class="line">    {ExpandFields(RectangleManhattan)},</div>
-<div class="line">    {ExpandFields(RectangleMax)}</div>
+<div class="line">    {ExpandFields(RectangleMax)},</div>
+<div class="line">    {ExpandFields(HyperSphere)},</div>
+<div class="line">    {ExpandFields(HyperSphereGeodesic)}</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -221,7 +225,7 @@ Matthew Roughan <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 31 2012 09:06:48 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Sep 2 2012 23:23:57 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

@@ -11,6 +11,7 @@ Exposes to matlab and R a set of functions that implement P\-D\-F, C\-D\-F, mean
 {\ttfamily \#include $<$stdint.\-h$>$}\\*
 {\ttfamily \#include $<$string.\-h$>$}\\*
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}Line\-Picking\-Data.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Square.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Disk.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Hyperball.\-h\char`\"{}}\\*
@@ -22,6 +23,8 @@ Exposes to matlab and R a set of functions that implement P\-D\-F, C\-D\-F, mean
 {\ttfamily \#include \char`\"{}Prism\-Geodesic.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Rectangle\-Manhattan.\-h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}Rectangle\-Max.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Hyper\-Sphere.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Hyper\-Sphere\-Geodesic.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$R.\-h$>$}\\*
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
@@ -99,8 +102,7 @@ Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roug
 &\_x##DistancePDF,&\_x##DistanceCDF,\(\backslash\)
 &\_x##DistanceMean,&\_x##DistanceVar,\(\backslash\)
 &\_x##DistanceSupport,&\_x##DistanceCheckParameters,\(\backslash\)
-&\_x##DistanceNpar,&\_x##DistanceName,\(\backslash\)
-&\_x##DistanceDescription
+&\_x##DistanceData
 \end{DoxyCode}
 
 
@@ -122,6 +124,8 @@ Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roug
     \{ExpandFields(SphereGeodesic)\},
     \{ExpandFields(PrismGeodesic)\},
     \{ExpandFields(RectangleManhattan)\},
-    \{ExpandFields(RectangleMax)\}
+    \{ExpandFields(RectangleMax)\},
+    \{ExpandFields(HyperSphere)\},
+    \{ExpandFields(HyperSphereGeodesic)\}
 \}
 \end{DoxyCode}
