@@ -233,6 +233,9 @@ The cumulative density function is derived by integrating the PDF:
 G_D(d) & = & \int g_D(d) \, dd\\
 &=& \frac{\left(1-\frac{d^2}{4 R^2}\right)^{-n/2} \left(\frac{d^2}{R^2}\right-\frac{d^4}{4 R^4})^{n/2} \Gamma \left[\frac{1+n}{2}\right] {}_{2}F_{1}\left[1-\frac{n}{2},\frac{n}{2},1+\frac{n}{2},\frac{d^2}{4 R^2}\right]}{n \sqrt{\pi } \Gamma \left[\frac{n}{2}\right]} + K
 \end{eqnarray}
-Inspection tells us that  $G_D(0) = 0$  thus  $K = 0$. 
+Inspection tells us that  $G_D(0) = 0$  thus  $K = 0$.  This can be simplified a little further using a regularised Hypergeometric function rather than the general one above :
 
+\begin{equation}
+G_D(d) =\frac{\left(\frac{d^2}{R^2} -\frac{d^4}{4 R^4}\right)^{n/2} \Gamma\left[\frac{1+n}{2}\right] {}_{2}\bar{F}_{1}\left[1,n,\frac{2+n}{2},\frac{d^2}{4 R^2}\right]}{2 \sqrt{\pi }}
+\end{equation}
 \subsubsection{Moments}
