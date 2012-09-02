@@ -32,6 +32,13 @@ LinePickingData HyperSphereDistanceData =
 };
 
 
+
+double Cn(double n)
+{
+    return pow(M_PI, n / 2.0 )/ tgamma((n / 2.0)+ 1);       
+}
+
+
 /**
  * Implements the PDF of the distance between two random points on a 
  * hyper-sphere.
@@ -42,22 +49,30 @@ LinePickingData HyperSphereDistanceData =
  * $parameters[1] is the radius of the hyper-sphere. 
  * @return The density at $t.
  */
+
 double HyperSphereDistancePDF(double t, double* parameters)
 {
+    /** @todo check if the 1-sphere is correct if not we
+     * need to either limit the parameter here to 2 or above or branch 
+     * the code 
+     */
     
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    double Cn2 = pow(M_PI, ((n - 2.0) / 2.0)) / tgamma(n  / 2.0);
-    double theta = acos(1.0 - ((t * t) / (2.0 * r * r)));
-    double dtheta = 2.0 / sqrt(4 * r * r - t * t);
-    /* TODO something wrong here we get the right shape for n = 1 and 
-     * n = 2 i.e. Circle and Sphere but they need scaling down in both 
-     cases and we ned more scaling for the circle than for the sphere the 
-     amounts they need scaling by is in factors of pi and 2 or 4 
+    double theta = acos(1. - ((t * t) / (2. * r * r)));
+    double dtheta = fabs(2.0 / sqrt((4.0 * r * r) - (t * t)));
+    double c = (2 * pow(M_PI, 2.5 - 0.5 * n) * pow(tgamma(n / 2.), 2.)) /
+                tgamma((1. + n) / 2.);
+    return ((2 * M_PI * pow(sin(theta), n - 1 ) / Cn(n - 2)) * dtheta) / c; 
+    
+    /* could equally use the following code as it is a simplification of all
+     * the abpve 
      */
-     
-
-    return (2 * M_PI * pow(sin(theta), n - 1) * dtheta)/ Cn2; 
+    /*
+     return (pow (M_pi, -1. /2.)* d * pow(1 - pow(1. - (pow(d,2) / 2.) / 
+        pow(R,2),2), (n - 2) / 2.) * tgamma((n + 1.) / 2.) * tgamma(n / 2.)) /
+        (pow(R,2)*pow(tgamma(n / 2.),2))
+     */
 }
 
 
@@ -74,12 +89,6 @@ double HyperSphereDistanceCDF(double t, double* parameters)
 {    
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    double d = 2 * r;
-    double r2 = r * r;
-    double t2 = t * t;			     
-    double p, q, x, Ix, Bx;
-    int result;
-    
 
     return -1;;
 }
@@ -159,6 +168,10 @@ void HyperSphereDistanceSupport(double *t, double *parameters)
 void HyperSphereDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {
+    /** @todo check if the 1-sphere is correct if not we
+     * need to either limit the parameter here to 2 or above or branch 
+     * the code 
+     */
     *result=0;
     /* hyper-shpere, with dimension parameters[0], and radius parameters[1] */
     if (parameters[0] < 1) 
