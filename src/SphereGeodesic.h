@@ -47,3 +47,5 @@ void SphereGeodesicDistanceCheckParameters(double *parameters, int *result,
 
 #endif /* _SPHERE_GEODESIC_H */
 
+
+

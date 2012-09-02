@@ -83,7 +83,6 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
  * Calculates the mean distance between two random points on a hyper-sphere 
  * measured along a geodesic.
  *
- * @todo Implement
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
  * @return The mean distance between two random points on a hyper-sphere.
@@ -91,9 +90,9 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
 double HyperSphereGeodesicDistanceMean(double* parameters)
 {
     double n = ceil(parameters[0]); 
-    double m = 1;
+    double r = parameters[1];
     
-    return -1;
+    return (M_PI * r) / 2.0;
 }
 
 

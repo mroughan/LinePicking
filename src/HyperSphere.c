@@ -76,7 +76,6 @@ double HyperSphereDistancePDF(double t, double* parameters)
  * Implements the CDF of the distance between two random points
  * on a hyper-sphere.
  *
- * @todo Implement
  * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
@@ -102,7 +101,6 @@ double HyperSphereDistanceCDF(double t, double* parameters)
 /**
  * Calculates the mean distance between two random points on a hyper-sphere.
  *
- * @todo Implement
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
  * @return The mean distance between two random points on a hyper-sphere.
@@ -110,9 +108,11 @@ double HyperSphereDistanceCDF(double t, double* parameters)
 double HyperSphereDistanceMean(double* parameters)
 {
     double n = ceil(parameters[0]); 
-    double m = 1;
+    double r = parameters[1];
     
-    return -1;
+    return (pow(2, n) * r * pow(tgamma((1 + n) / 2.), 2)) /
+                (sqrt(M_PI) * tgamma(0.5 + n));
+    
 }
 
 
