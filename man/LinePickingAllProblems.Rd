@@ -9,10 +9,7 @@
   well.}
 }
 \value{
-  Data frame with \itemize{ \item problems: problem number
-  see \code{\link{LinePickingPDF}} \item names: list of the
-  problem names \item description: brief description of
-  each space }
+  Data frame with information on each problem
 }
 \description{
   Problems are integers describing possible geometries for

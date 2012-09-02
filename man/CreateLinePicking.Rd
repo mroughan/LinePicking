@@ -2,12 +2,12 @@
 \alias{CreateLinePicking}
 \title{Creates a linepicking object from problem and parameters}
 \usage{
-  CreateLinePicking(problem, para, n = 1000)
+  CreateLinePicking(problem, parameters, n = 1000)
 }
 \arguments{
   \item{problem}{see \code{\link{LinePickingPDF}}}
 
-  \item{para}{parameters for problem.}
+  \item{parameters}{parameters for problem.}
 
   \item{n}{number of points for plots.}
 }
@@ -22,7 +22,7 @@
   August 25 2012
 }
 \examples{
-tmp <- CreateLinePicking(problem=0,para=10)
+tmp <- CreateLinePicking(problem=0,parameters=10)
 print(tmp)
 }
 \author{

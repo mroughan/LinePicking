@@ -16,5 +16,5 @@ LinePickingProblemLookup <- function(problem=0){
             problem = as.integer(problem),
             name = as.character(""),
             description = as.character(""))
-  print(tmp)
+  return(tmp)
 }

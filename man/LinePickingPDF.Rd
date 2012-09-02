@@ -2,7 +2,7 @@
 \alias{LinePickingPDF}
 \title{Get pdf for distance between two random points}
 \usage{
-  LinePickingPDF(t, problem = 0, para)
+  LinePickingPDF(t, problem = 0, parameters)
 }
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
@@ -17,8 +17,8 @@
   SphereGeodesic, with radius parameters[0] \item 8
   PrismGeodesic, TBA }}
 
-  \item{para}{the parameter necessary to describe the space
-  given by problem.}
+  \item{parameters}{the parameter necessary to describe the
+  space given by problem.}
 }
 \value{
   vector of probability density function values for each
@@ -35,7 +35,7 @@
 }
 \examples{
 t <- seq(0,1,l=1000)
-y <- LinePickingPDF(t=t,problem=0,para=1)
+y <- LinePickingPDF(t=t,problem=0,parameters=1)
 plot(t,y,type='l')
 }
 \author{

@@ -3,7 +3,7 @@
 #' For a given problem and parameters gives the variance
 #'
 #' @param problem see \code{\link{LinePickingPDF}}
-#' @param para the parameter necessary to describe 
+#' @param parameters the parameter necessary to describe 
 #' the space given by problem.
 #' @return variance
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
@@ -11,14 +11,14 @@
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' LinePickingVar(problem=0,para=10)
+#' LinePickingVar(problem=0,parameters=10)
 LinePickingVar <-
-function(problem=0,para){
+function(problem=0,parameters){
   tmp <- .C('LinePickingVar',
             mean = as.double(0),
             problem = as.integer(problem),
-            para = as.double(para),
-            Npar = as.integer(length(para)),
+            parameters = as.double(parameters),
+            Npar = as.integer(length(parameters)),
             results = as.integer(99),
             error_str = as.character(""))
   if(tmp$results != 0 ){

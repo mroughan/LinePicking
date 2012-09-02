@@ -18,7 +18,7 @@
 #'    \item 7 SphereGeodesic, with radius parameters[0]
 #'    \item 8 PrismGeodesic, TBA
 #' }
-#' @param para the parameter necessary to describe 
+#' @param parameters the parameter necessary to describe 
 #' the space given by problem.
 #' @return vector of probability density function values for each
 #' element in t.
@@ -28,18 +28,18 @@
 #' @note August 25 2012
 #' @examples
 #' t <- seq(0,1,l=1000)
-#' y <- LinePickingPDF(t=t,problem=0,para=1)
+#' y <- LinePickingPDF(t=t,problem=0,parameters=1)
 #' plot(t,y,type='l')
 LinePickingPDF <-
-function(t,problem=0,para){
+function(t,problem=0,parameters){
   n <- length(t)
   tmp <- .C('LinePickingPDF',
             t = as.double(t),
             pdf = as.double(rep(0,n)),
             n = as.integer(n),
             problem = as.integer(problem),
-            para = as.double(para),
-            Npar = as.integer(length(para)),
+            parameters = as.double(parameters),
+            Npar = as.integer(length(parameters)),
             results = as.integer(0),
             error_str = as.character(""))
   if(tmp$results != 0 ){

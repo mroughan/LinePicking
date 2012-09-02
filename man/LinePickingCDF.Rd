@@ -2,7 +2,7 @@
 \alias{LinePickingCDF}
 \title{Get cdf for distance between two random points}
 \usage{
-  LinePickingCDF(t, problem = 0, para)
+  LinePickingCDF(t, problem = 0, parameters)
 }
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
@@ -17,8 +17,8 @@
   SphereGeodesic, with radius parameters[0] \item 8
   PrismGeodesic, TBA }}
 
-  \item{para}{the parameter necessary to describe the space
-  given by problem.}
+  \item{parameters}{the parameter necessary to describe the
+  space given by problem.}
 }
 \value{
   vector of probability density function values for each
