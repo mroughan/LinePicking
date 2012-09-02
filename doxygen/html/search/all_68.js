@@ -7,6 +7,8 @@ var searchData=
   ['hyperballdistancepdf',['HyperballDistancePDF',['../_hyperball_8h.html#ab8854ddf93c84fa6af1cb6629a5de99d',1,'Hyperball.c']]],
   ['hyperballdistancesupport',['HyperballDistanceSupport',['../_hyperball_8h.html#af7c90fe861ac1ab54c956b79b995b817',1,'Hyperball.c']]],
   ['hyperballdistancevar',['HyperballDistanceVar',['../_hyperball_8h.html#aab4b94960ba0f8cb9652d489579780f6',1,'Hyperball.c']]],
+  ['hypergeometric_2eh',['HyperGeometric.h',['../_hyper_geometric_8h.html',1,'']]],
+  ['hypergeometric2f1_5f',['hypergeometric2f1_',['../_hyper_geometric_8h.html#a9052869448390df4205e72917cd7f00d',1,'HyperGeometric.c']]],
   ['hypersphere_2eh',['HyperSphere.h',['../_hyper_sphere_8h.html',1,'']]],
   ['hyperspheredistancecdf',['HyperSphereDistanceCDF',['../_hyper_sphere_8h.html#ae5411ac6ba2485c1e033760ac2245e74',1,'HyperSphere.c']]],
   ['hyperspheredistancecheckparameters',['HyperSphereDistanceCheckParameters',['../_hyper_sphere_8h.html#a1fd054315809f3be16b79fc198a2a9b8',1,'HyperSphere.c']]],

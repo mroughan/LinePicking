@@ -1,0 +1,50 @@
+\hypertarget{_hyper_geometric_8h}{\section{Hyper\-Geometric.\-h File Reference}
+\label{_hyper_geometric_8h}\index{Hyper\-Geometric.\-h@{Hyper\-Geometric.\-h}}
+}
+
+
+Implements the Hypergeometric function.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{_hyper_geometric_8h_a9052869448390df4205e72917cd7f00d}{hypergeometric2f1\-\_\-} (double a, double b, double c, double x, int n)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implements the Hypergeometric function. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_hyper_geometric_8h_a9052869448390df4205e72917cd7f00d}{\index{Hyper\-Geometric.\-h@{Hyper\-Geometric.\-h}!hypergeometric2f1\-\_\-@{hypergeometric2f1\-\_\-}}
+\index{hypergeometric2f1\-\_\-@{hypergeometric2f1\-\_\-}!HyperGeometric.h@{Hyper\-Geometric.\-h}}
+\subsubsection[{hypergeometric2f1\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}double hypergeometric2f1\-\_\- (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b, }
+\item[{double}]{c, }
+\item[{double}]{x, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{_hyper_geometric_8h_a9052869448390df4205e72917cd7f00d}
+Computes the hypergeometric function using a series expansion. 
+\begin{DoxyParams}{Parameters}
+{\em \$a} & \\
+\hline
+{\em \$b} & \\
+\hline
+{\em \$c} & The Hypergeometric function converges only for \$c != 0, -\/1, -\/2, -\/3, ... \\
+\hline
+{\em \$x} & The Hypergeometric function converges only for $|$\$x$|$ $<$ 1 param \$n Number of terms in the seres to evaluate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The result of evaluating the hypergeometric function. 
+\end{DoxyReturn}

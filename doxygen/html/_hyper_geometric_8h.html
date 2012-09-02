@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LinePicking: Bug List</title>
+<title>LinePicking: HyperGeometric.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -37,10 +37,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -59,6 +59,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>File&#160;List</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
+    </ul>
+  </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,21 +81,84 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Bug List </div>  </div>
+<div class="title">HyperGeometric.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_bug000001"></a>Global <a class="el" href="group__api.html#gaf04b41252ebd1a3013b6bcb4dbbf3649">LinePickingAllProblems</a>  (char **, char **)</dt>
-<dd>possible array bounds exception if the size of the supplied arguments is incorrect.  </dd>
-<dt><a class="anchor" id="_bug000004"></a>Global <a class="el" href="group__api.html#ga445ba2c007d60d789747cecbd5f874b9">LinePickingCDF</a>  (double *, double *, int *, int *, double *, int *, int *, char **)</dt>
-<dd>potential array bounds overrun.  </dd>
-<dt><a class="anchor" id="_bug000003"></a>Global <a class="el" href="group__api.html#ga8feba9835984bd74f3d919f51389e573">LinePickingPDF</a>  (double *, double *, int *, int *, double *, int *, int *, char **)</dt>
-<dd>potential array bounds overrun.  </dd>
-<dt><a class="anchor" id="_bug000002"></a>Global <a class="el" href="group__api.html#ga0aec0b2f87903f4bf4ad3011a99b3446">LinePickingSupport</a>  (double *, int *, double *, int *, int *, char **)</dt>
-<dd>potential array bounds overrun. </dd>
+
+<p>Implements the Hypergeometric function.  
+<a href="#details">More...</a></p>
+
+<p><a href="_hyper_geometric_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a9052869448390df4205e72917cd7f00d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_geometric_8h.html#a9052869448390df4205e72917cd7f00d">hypergeometric2f1_</a> (double a, double b, double c, double x, int n)</td></tr>
+<tr class="separator:a9052869448390df4205e72917cd7f00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Implements the Hypergeometric function. </p>
+<dl class="section author"><dt>Author</dt><dd>Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3/09/2012 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a9052869448390df4205e72917cd7f00d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double hypergeometric2f1_ </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computes the hypergeometric function using a series expansion. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$a</td><td></td></tr>
+    <tr><td class="paramname">$b</td><td></td></tr>
+    <tr><td class="paramname">$c</td><td>The Hypergeometric function converges only for $c != 0, -1, -2, -3, ... </td></tr>
+    <tr><td class="paramname">$x</td><td>The Hypergeometric function converges only for |$x| &lt; 1 param $n Number of terms in the seres to evaluate </td></tr>
+  </table>
+  </dd>
 </dl>
-</div></div><!-- contents -->
+<dl class="section return"><dt>Returns</dt><dd>The result of evaluating the hypergeometric function. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated on Mon Sep 3 2012 01:57:36 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">

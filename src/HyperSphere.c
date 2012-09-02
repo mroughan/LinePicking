@@ -20,6 +20,7 @@
 
 #include "LinePickingData.h"
 #include "HyperSphere.h"
+#include "HyperGeometric.h"
  
 LinePickingData HyperSphereDistanceData =
 {
@@ -56,7 +57,7 @@ double HyperSphereDistancePDF(double t, double* parameters)
     
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    /*
+    /* this is equivalent to the single line below
     double theta = acos(1. - ((t * t) / (2. * r * r)));
     double dtheta = fabs(2.0 / sqrt((4.0 * r * r) - (t * t)));
     double c = (2 * pow(M_PI, 2.5 - 0.5 * n) * pow(tgamma(n / 2.), 2.)) /
@@ -72,7 +73,7 @@ double HyperSphereDistancePDF(double t, double* parameters)
 
 
 /**
- * Will implement the CDF of the distance between two random points
+ * Implements the CDF of the distance between two random points
  * on a hyper-sphere.
  *
  * @todo Implement
@@ -86,7 +87,15 @@ double HyperSphereDistanceCDF(double t, double* parameters)
     double n = ceil(parameters[0]); 
     double r = parameters[1];
 
-    return -1;;
+    return 0.5 + 
+            (((pow(M_PI, -0.5) / 2.) * pow(t,2) - 
+               pow(M_PI, -0.5) * 
+               pow(r,2)) * tgamma(0.5 + 0.5 * n) * tgamma(n / 2.) *
+               hypergeometric2f1_(0.5, 1. - 0.5 * n, 1.5, 
+                                 pow(1. - (0.5 * pow(t, 2)) / pow(r, 2), 2), 
+                                 100)
+            ) / (pow(r, 2) * pow(tgamma(0.5 * n), 2));
+
 }
 
 
