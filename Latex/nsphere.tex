@@ -1,7 +1,7 @@
 \subsection{$n$D-Sphere-line picking}
 \label{sec:nsphere_line}
 
-Can we do this case in general ???
+Can we do this case in general ??? yes we can !!!
 
 $n$-Sphere is embedded in $\R^{n+1}$ and encloses the $n+1$-ball
 
@@ -117,89 +117,117 @@ product collapses down to
                  \nonumber \\   
 \end{eqnarray}
 
+ In order to make  $f(\phi_1)$ into a probability density function we need to normalise it. This is achieved by dividing through by the result of integrating $f(\phi_1)$ over $[0, \pi]$ thus. 
 
-The generalized volume and surface are of the $n$-D hyperball are
-\begin{eqnarray}
- V_n(R) & = & C_n R^n,
-  \label{eq:gen_vol} \\
- S_{n-1}(R) & = & \frac{dV_n}{dR} = n C_n R^{n-1}.
-  \label{eq:gen_surf}
-\end{eqnarray}
-where
-\begin{equation}
-  \label{eq:cn}
-   C_n = \frac{ \pi^{n/2} }{\Gamma(n/2 + 1)},
+ \begin{equation}      
+ h(\phi_1) = \int_0^{\pi}  f(\phi_1) \, d\phi_1 =  \frac{2 \pi ^{\frac{5}{2}-\frac{n}{2}} \Gamma\left(\frac{n}{2}\right)^2}{\Gamma\left(\frac{1+n}{2}\right)}
 \end{equation}
 
-where the Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
-\begin{eqnarray}
-  \label{eq:gamma}
-  \Gamma(1/2) & = & \pi^{1/2}, \\
-  \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
-  \Gamma(k+1) & = & k!, \\
-  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!},
-\end{eqnarray}
-So we can write
-\begin{eqnarray}
-   \int_0^{\pi} \sin^i(x) \, dx
-     & = & \left\{ \begin{array}{ll}
-         \displaystyle
-       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
-       & \mbox{ for } i = 2k, \\
-         \displaystyle
-       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
-       & \mbox{ for } i = 2k+1, \\
-            \end{array} \right. \nonumber \\
-\end{eqnarray}
 
-We aim to have $f d\phi_1$ be uniform ????
+Now $g(\phi_1) =\frac{f(\phi_1)}{ h(\phi_1)}$ is the  probability density function for the distance between points on the surface of a sphere measured by $\phi_1$, which after some simplification can be written:
+\begin{equation}  
+ g(\phi_1) = \frac{\Gamma\left(\frac{1+n}{2}\right) \sin(\phi )^{n - 1}}{\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}
+\end{equation} 
 
-So, say for $n=2$, we have
-\begin{eqnarray}
-  f(\phi_1)
-      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
-                 \nonumber \\   
-      & = &   \frac{2 \pi \sin(\phi_1)}{C_{0}}
-                 \nonumber \\   
-      & = &   2 \pi \sin(\phi_1)  \nonumber \\   
-  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].  \nonumber \\  
-\end{eqnarray}
-
-Take 
+ 
+We have have a function for $d$ the distance between two points in terms of $\phi_1$ so we can get  $\phi_1$ in terms of $d$ thus:
 
 \begin{eqnarray}
-  \phi_1 & =  & \cos^{-1} \left[1-\frac{d^2}{2 R^2}\right]\\ 
+  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].\\
+\phi_1& =  & \cos^{-1} \left[1-\frac{d^2}{2 R^2}\right]\\ 
    \frac {d \phi_1}{dd} & = &\frac{d}{\sqrt{1-\left(1-\frac{d^2}{2 R^2}\right)^2} R^2} \\
    & = &\frac{2}{\sqrt{4 R^2 -d^2 }}\\
 \end{eqnarray}
 
-thus 
 
-\begin{equation}
-  fd(d) & =  & \frac{2}{\sqrt{4 R^2 -d^2 }} fd_{\phi}(\frac{d}{\sqrt{1-\left(1-\frac{d^2}{2 R^2}\right)^2} R^2})
-\end{equation}
-
-
-\begin{eqnarray}
-  prob(\phi_1) & = & 1/f(\phi_1) \nonumber \\  
-      & = &  1/ 2 \pi \sin(\phi_1)
-\end{eqnarray}
-
-
-If $y = g(X)$
+If $y = g(X)$ then the transform rule  is :  
 
 \[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
                 f_X\left( g^{-1}(y) \right)
 \]
 
-
+Thus we can write:
 \begin{eqnarray}
-  E[ g(X) ] & = & \int y f_g (y) \, dy \\
-            & = & \int g(x) f_X(x) \, dx 
+  g_D(d) & = & \left|\frac{2}{\sqrt{4 R^2 -d^2 }} \right| g_{\Phi}\left( \cos^{-1} \left[1-\frac{d^2}{2 R^2}\right]\right)\\
+             & = &\frac{d \left(\frac{d^2}{R^2} -\frac{d^4}{4 R^4}\right)^{\frac{1}{2} (n-2)} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^2 \Gamma\left[\frac{n}{2}\right]} 
 \end{eqnarray}
 
 
+
+
+%
+%
+%The generalized volume and surface are of the $n$-D hyperball are
+%\begin{eqnarray}
+% V_n(R) & = & C_n R^n,
+%  \label{eq:gen_vol} \\
+% S_{n-1}(R) & = & \frac{dV_n}{dR} = n C_n R^{n-1}.
+%  \label{eq:gen_surf}
+%\end{eqnarray}
+%where
+%\begin{equation}
+%  \label{eq:cn}
+%   C_n = \frac{ \pi^{n/2} }{\Gamma(n/2 + 1)},
+%\end{equation}
+%
+%where the Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
+%\begin{eqnarray}
+%  \label{eq:gamma}
+%  \Gamma(1/2) & = & \pi^{1/2}, \\
+%  \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
+%  \Gamma(k+1) & = & k!, \\
+%  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!},
+%\end{eqnarray}
+%So we can write
+%\begin{eqnarray}
+%   \int_0^{\pi} \sin^i(x) \, dx
+%     & = & \left\{ \begin{array}{ll}
+%         \displaystyle
+%       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
+%       & \mbox{ for } i = 2k, \\
+%         \displaystyle
+%       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
+%       & \mbox{ for } i = 2k+1, \\
+%            \end{array} \right. \nonumber \\
+%\end{eqnarray}
+%
+%We aim to have $f d\phi_1$ be uniform ????
+%
+%So, say for $n=2$, we have
+%\begin{eqnarray}
+%  f(\phi_1)
+%      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
+%                 \nonumber \\   
+%      & = &   \frac{2 \pi \sin(\phi_1)}{C_{0}}
+%                 \nonumber \\   
+%      & = &   2 \pi \sin(\phi_1)  \nonumber \\   
+%  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].  \nonumber \\  
+%\end{eqnarray}
+%
+%
+%
+%\begin{eqnarray}
+%  prob(\phi_1) & = & 1/f(\phi_1) \nonumber \\  
+%      & = &  1/ 2 \pi \sin(\phi_1)
+%\end{eqnarray}
+%
+%
+%If $y = g(X)$
+%
+%\[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
+%                f_X\left( g^{-1}(y) \right)
+%\]
+%
+%
+%\begin{eqnarray}
+%  E[ g(X) ] & = & \int y f_g (y) \, dy \\
+%            & = & \int g(x) f_X(x) \, dx 
+%\end{eqnarray}
+%
+
 \subsubsection{CDF}
 
+We calculate the cumulative density function by integrating the PDF:
+\
 
 \subsubsection{Moments}

@@ -66,9 +66,16 @@ double HyperSphereDistancePDF(double t, double* parameters)
     return ((2 * M_PI * pow(sin(theta), n - 1 ) / Cn(n - 2)) * dtheta) / c; 
     
     */
+    /*
     return (pow (M_PI, -1. /2.)* t * pow(1 - pow(1. - (pow(t,2) / 2.) / 
         pow(r,2),2), (n - 2) / 2.) * tgamma((n + 1.) / 2.) * tgamma(n / 2.)) /
-        (pow(r,2)*pow(tgamma(n / 2.),2));
+        (pow(r,2)*pow(tgamma(n / 2.),2)); */
+   
+    /* simpler again now matches derivation in paper */
+    return (t * pow(-pow(t, 4) / (4. * pow(r, 4)) + 
+                    pow(t, 2) / pow(r, 2),(n - 2) / 2.) * 
+                    tgamma((1 + n) / 2.)) /
+                      (sqrt(M_PI) * pow(r, 2) * tgamma(n / 2.));
 }
 
 
