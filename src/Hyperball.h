@@ -26,6 +26,7 @@
 #ifndef _HYPERBALL_H
 #define _HYPERBALL_H
 
+
 extern LinePickingData HyperballDistanceData;
 
 double HyperballDistancePDF(double t, double* parameters);
