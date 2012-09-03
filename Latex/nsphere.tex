@@ -181,7 +181,7 @@ above becomes:
 The cumulative density function is derived by integrating the PDF:
 \begin{eqnarray}
 G^{n-{\rm sphere}}_{n,R}(t)
-       & = & \int_0^t g^{n-{\rm sphere}}_R(s) \, ds \nonumber \\
+       & = & \int_0^t g^{n-{\rm sphere}}_{n,R}(s) \, ds \nonumber \\
        & = & \frac{ \left(1-\frac{s^2}{4 R^2}\right)^{-n/2} 
                     \left( \frac{s^2}{R^2} \right)
                    -\frac{s^4}{4 R^4})^{n/2} 
@@ -199,6 +199,41 @@ G^{n-{\rm sphere}}_{n,R}(t) =
                  R^2}\right]
            }{2 \sqrt{\pi }}.
 \end{equation}
+
+
+
+
+Alt derivation: for $R=1/2$, and taking $u=s^2$, so $s = \sqrt{u}$ and
+$ds = du/2\sqrt{u}$
+\begin{eqnarray}
+G^{n-{\rm sphere}}_{n,1/2}(t)
+    & = & \int_0^t g^{n-{\rm sphere}}_{n,1/2}(s) \, ds \nonumber \\
+    & = & \int_0^t  2^n \frac{s^{n-1}
+             \left(1 -s^2\right)^{\frac{1}{2} (n-2)}
+             \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi }
+             \Gamma\left[\frac{n}{2}\right]} 
+             \, ds \nonumber \\    
+    & = & \frac{ 2^n \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+           \int_0^t s^{n-1}  \left(1 -s^2\right)^{\frac{1}{2} (n-2)}
+             \, ds \nonumber \\    
+    & = & \frac{ 2^n \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+           \int_0^{t^2} u^{(n-1)/2}  \left(1 - u\right)^{\frac{1}{2} (n-2)}
+             \, du/2\sqrt{u}  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+           \int_0^{t^2} u^{n/2-1}  \left(1 - u\right)^{n/2-1)}
+             \, du  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+               \beta_{t^2}(n/2, n/2)  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+              \beta(n/2,n/2) I_{t^2}(n/2, n/2)  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+              \frac{\Gamma[n/2]^2}{\Gamma[n]} I_{t^2}(n/2, n/2)  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]\Gamma[n/2] }{\sqrt{\pi}\Gamma\left[n\right]}
+              I_{t^2}(n/2, n/2)  \nonumber \\    
+\end{eqnarray}
+
+
+
 
 \subsubsection{Moments}
 
