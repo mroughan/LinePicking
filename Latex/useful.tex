@@ -1,0 +1,75 @@
+\section{Useful functions and results}
+\label{sec:useful}
+
+
+
+
+\subsection{$\Gamma$ functions}
+
+Definitions ...
+
+
+where the Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
+\begin{eqnarray}
+ \label{eq:gamma}
+ \Gamma(1/2) & = & \pi^{1/2}, \\
+ \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
+ \Gamma(k+1) & = & k!, \\
+ \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!},
+\end{eqnarray}
+
+
+
+From ????
+\begin{eqnarray}
+  \int_0^{\pi} \sin^i(x) \, dx
+    & = & \left\{ \begin{array}{ll}
+        \displaystyle
+      \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
+      & \mbox{ for } i = 2k, \\
+        \displaystyle
+      \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
+      & \mbox{ for } i = 2k+1, \\
+           \end{array} \right. \nonumber \\
+\end{eqnarray}
+
+
+
+C standard library has routines
+
+\subsection{$\beta$ functions}
+
+Definitions
+
+Results
+
+Calculations
+
+\subsection{Hypergoemetric functions}
+
+
+\subsection{Elliptic integrals}
+
+
+
+\subsection{$n$-balls and $n$-spheres}
+
+Definitions
+
+....
+
+
+The generalized volume and surface area of an $n$-ball are given by:
+\begin{eqnarray}
+V_n(R) & = & C_n R^n,
+ \label{eq:gen_vol} \\
+S_{n-1}(R) & = & \frac{dV_n}{dR} = n C_n R^{n-1}.
+ \label{eq:gen_surf}
+\end{eqnarray}
+where
+\begin{equation}
+ \label{eq:cn}
+  C_n = \frac{ \pi^{n/2} }{\Gamma(n/2 + 1)}.
+\end{equation}
+
+

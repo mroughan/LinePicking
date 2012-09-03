@@ -50,7 +50,7 @@ The last two terms sum, using $\cos^2 (\phi_{n}) + \sin^2
 likewise, and so on collapsing the whole sum down to
 \begin{eqnarray}
   \label{eq:d_nsphere}
-  d^2 & = & R^2 \left[ 
+  t^2 & = & R^2 \left[ 
                         (1-\cos(\phi_1))^2
                        + \sin^2 (\phi_1) \right], \nonumber \\
  & = & R^2 \left[ 1 - 2 \cos(\phi_1) + \cos^2(\phi_1)
@@ -61,7 +61,7 @@ So distance only depends on the first (angular) coordinate.
 
 
 Uniformly chosen at random means that in any (generalized) area
-element of size $d^{n}S$, there will be, on average $\lambda d^{n}S$
+element of size $t^{n}S$, there will be, on average $\lambda t^{n}S$
 points (where $\lambda$ is the rate of points, which is simply the
 total number of points divided by the total (generalized) area).
 
@@ -69,7 +69,7 @@ A small area unit on the $n$-sphere can be written (in terms of the
 Jacobian $J$)
 \begin{eqnarray}
   \label{eq:vn_n_sphere}
-  d^nS & = & J \, d\phi_1 \, d\phi_2 \, \cdots d\phi_{n},  \nonumber \\
+  t^nS & = & J \, d\phi_1 \, d\phi_2 \, \cdots d\phi_{n},  \nonumber \\
        & = & \sin^{n-1}(\phi_1) \sin^{n-2}(\phi_2) \cdots \sin(\phi_{n-1})
                   d\phi_1 \, d\phi_2 \, \cdots d\phi_{n}.
 \end{eqnarray}
@@ -113,135 +113,96 @@ product collapses down to
       & = &  2 \pi \sin^{n-1}(\phi_1)  
                      \frac{2 \pi^{(n-2)/2}}{\Gamma\big( (n-2)/2+1 \big)}
                  \nonumber \\   
-      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
-                 \nonumber \\   
+      & = &   2 \pi C_{n-2} \sin^{n-1}(\phi_1),
 \end{eqnarray}
+where $C_{n-2}$ is the coefficient for the generalized volume of an
+$n$-ball (see Section~\ref{sec:useful}).
 
- In order to make  $f(\phi_1)$ into a probability density function we need to normalise it. This is achieved by dividing through by the result of integrating $f(\phi_1)$ over $[0, \pi]$ thus. 
-
+In order to make $f(\phi_1)$ into a probability density function we
+need to normalise it. This is achieved by dividing through by the
+result of integrating $f(\phi_1)$ over $[0, \pi]$ thus.
  \begin{equation}      
- h(\phi_1) = \int_0^{\pi}  f(\phi_1) \, d\phi_1 =  \frac{2 \pi ^{\frac{5}{2}-\frac{n}{2}} \Gamma\left(\frac{n}{2}\right)^2}{\Gamma\left(\frac{1+n}{2}\right)}
+ h(\phi_1) = \int_0^{\pi}  f(\phi_1) \, d\phi_1
+           =  \frac{2 \pi ^{\frac{5}{2}-\frac{n}{2}} 
+            \Gamma\left(\frac{n}{2}\right)^2}{\Gamma\left(\frac{1+n}{2}\right)}.
 \end{equation}
 
 
-Now $g(\phi_1) =\frac{f(\phi_1)}{ h(\phi_1)}$ is the  probability density function for the distance between points on the surface of a sphere measured by $\phi_1$, which after some simplification can be written:
+Now $g(\phi_1) =\frac{f(\phi_1)}{ h(\phi_1)}$ is the  probability
+density function for the distance between points on the surface of a
+sphere measured by $\phi_1$, which after some simplification can be
+written: 
 \begin{equation}  
- g(\phi_1) = \frac{\Gamma\left(\frac{1+n}{2}\right) \sin(\phi )^{n - 1}}{\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}
+ g(\phi_1) = \frac{\Gamma\left(\frac{1+n}{2}\right) \sin(\phi )^{n - 1}}{\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}.
 \end{equation} 
-
- 
-We have have a function for $d$ the distance between two points in terms of $\phi_1$ so we can get  $\phi_1$ in terms of $d$ thus:
-
+We have have a function for $t$ the distance between two points in
+terms of $\phi_1$ so we can get  $\phi_1$ in terms of $t$ thus: 
 \begin{eqnarray}
-  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].\\
-\phi_1& =  & \cos^{-1} \left[1-\frac{d^2}{2 R^2}\right]\\ 
-   \frac {d \phi_1}{dd} & = &\frac{d}{\sqrt{1-\left(1-\frac{d^2}{2 R^2}\right)^2} R^2} \\
-   & = &\frac{2}{\sqrt{4 R^2 -d^2 }}\\
+  t^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].\\
+\phi_1& =  & \cos^{-1} \left[1-\frac{t^2}{2 R^2}\right]\\ 
+   \frac {d \phi_1}{dt} & = &\frac{t}{\sqrt{1-\left(1-\frac{t^2}{2 R^2}\right)^2} R^2} \\
+   & = &\frac{2}{\sqrt{4 R^2 -t^2 }}.
 \end{eqnarray}
-
-
 If $y = g(X)$ then the transform rule  is :  
-
 \[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
-                f_X\left( g^{-1}(y) \right)
+                f_X\left( g^{-1}(y) \right).
 \]
 
 Thus we can write:
 \begin{eqnarray}
-  g_D(d) & = & \left|\frac{2}{\sqrt{4 R^2 -d^2 }} \right| g_{\Phi}\left( \cos^{-1} \left[1-\frac{d^2}{2 R^2}\right]\right)\\
-             & = &\frac{d \left(\frac{d^2}{R^2} -\frac{d^4}{4 R^4}\right)^{\frac{1}{2} (n-2)} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^2 \Gamma\left[\frac{n}{2}\right]} 
+  g^{n-{\rm sphere}}_{n,R}(t) 
+   & = & \left|\frac{2}{\sqrt{4 R^2 -t^2 }} \right| g_{\Phi}\left( \cos^{-1} \left[1-\frac{t^2}{2 R^2}\right]\right)\\
+   & = &\frac{t \left(\frac{t^2}{R^2} -\frac{t^4}{4 R^4}\right)^{\frac{1}{2} (n-2)} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^2 \Gamma\left[\frac{n}{2}\right]}, 
+\end{eqnarray}
+using the fact that $\sin\big( \cos^{-1}(x) \big) = \sqrt{1 - x^2}$.
+
+The obvious special cases are the circle and the 2-sphere where the
+above becomes:
+\begin{eqnarray}
+  g^{n-{\rm sphere}}_{1,R}(t) 
+   & = &\frac{t \left(\frac{t^2}{R^2} -\frac{t^4}{4 R^4}\right)^{-\frac{1}{2}}}{\pi R^2}, \\
+  g^{n-{\rm sphere}}_{2,R}(t) 
+   & = &\frac{t}{2 R^2}.
 \end{eqnarray}
 
 
-
-
-%
-%
-%The generalized volume and surface are of the $n$-D hyperball are
-%\begin{eqnarray}
-% V_n(R) & = & C_n R^n,
-%  \label{eq:gen_vol} \\
-% S_{n-1}(R) & = & \frac{dV_n}{dR} = n C_n R^{n-1}.
-%  \label{eq:gen_surf}
-%\end{eqnarray}
-%where
-%\begin{equation}
-%  \label{eq:cn}
-%   C_n = \frac{ \pi^{n/2} }{\Gamma(n/2 + 1)},
-%\end{equation}
-%
-%where the Gamma function satisfies\cite[6.1.12]{Abramowitz_and_Stegun}
-%\begin{eqnarray}
-%  \label{eq:gamma}
-%  \Gamma(1/2) & = & \pi^{1/2}, \\
-%  \Gamma(3/2) & = & \frac{1}{2} \pi^{1/2}, \\
-%  \Gamma(k+1) & = & k!, \\
-%  \Gamma(k+1/2) & = & \frac{(2k)! \pi^{1/2}}{2^{2k} k!},
-%\end{eqnarray}
-%So we can write
-%\begin{eqnarray}
-%   \int_0^{\pi} \sin^i(x) \, dx
-%     & = & \left\{ \begin{array}{ll}
-%         \displaystyle
-%       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
-%       & \mbox{ for } i = 2k, \\
-%         \displaystyle
-%       \frac{\sqrt{\pi} \Gamma\big( n/2 + 1/2 \big)}{\Gamma\big( n/2+1 \big)}.
-%       & \mbox{ for } i = 2k+1, \\
-%            \end{array} \right. \nonumber \\
-%\end{eqnarray}
-%
-%We aim to have $f d\phi_1$ be uniform ????
-%
-%So, say for $n=2$, we have
-%\begin{eqnarray}
-%  f(\phi_1)
-%      & = &   \frac{2 \pi \sin^{n-1}(\phi_1)}{C_{n-2}}
-%                 \nonumber \\   
-%      & = &   \frac{2 \pi \sin(\phi_1)}{C_{0}}
-%                 \nonumber \\   
-%      & = &   2 \pi \sin(\phi_1)  \nonumber \\   
-%  d^2 & = & 2 R^2 \left[ 1 - \cos(\phi_1) \right].  \nonumber \\  
-%\end{eqnarray}
-%
-%
-%
-%\begin{eqnarray}
-%  prob(\phi_1) & = & 1/f(\phi_1) \nonumber \\  
-%      & = &  1/ 2 \pi \sin(\phi_1)
-%\end{eqnarray}
-%
-%
-%If $y = g(X)$
-%
-%\[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
-%                f_X\left( g^{-1}(y) \right)
-%\]
-%
-%
-%\begin{eqnarray}
-%  E[ g(X) ] & = & \int y f_g (y) \, dy \\
-%            & = & \int g(x) f_X(x) \, dx 
-%\end{eqnarray}
-%
 
 \subsubsection{CDF}
 
 The cumulative density function is derived by integrating the PDF:
 \begin{eqnarray}
-G^{n-{\rm sphere}}_R(t)
-       & = & \int_0^t g_D(s) \, ds \nonumber \\
-       & = & \frac{ \left(1-\frac{d^2}{4 R^2}\right)^{-n/2} 
-                    \left( \frac{d^2}{R^2} \right)
-                   -\frac{d^4}{4 R^4})^{n/2} 
+G^{n-{\rm sphere}}_{n,R}(t)
+       & = & \int_0^t g^{n-{\rm sphere}}_R(s) \, ds \nonumber \\
+       & = & \frac{ \left(1-\frac{s^2}{4 R^2}\right)^{-n/2} 
+                    \left( \frac{s^2}{R^2} \right)
+                   -\frac{s^4}{4 R^4})^{n/2} 
                     \Gamma \left[\frac{1+n}{2}\right] {}_{2}F_{1} 
-                    \left[ 1-\frac{n}{2},\frac{n}{2},1+\frac{n}{2},\frac{d^2}{4 R^2} \right]
-                  }{n \sqrt{\pi } \Gamma \left[ \frac{n}{2} \right] } + K
+                    \left[ 1-\frac{n}{2},\frac{n}{2},1+\frac{n}{2},\frac{s^2}{4 R^2} \right]
+                  }{n \sqrt{\pi } \Gamma \left[ \frac{n}{2} \right] }.
 \end{eqnarray}
-Inspection tells us that  $G_D(0) = 0$  thus  $K = 0$.  This can be simplified a little further using a regularised Hypergeometric function rather than the general one above :
-
+This can be simplified a little further using a regularised
+Hypergeometric function rather than the general one above :
 \begin{equation}
-G_D(d) =\frac{\left(\frac{d^2}{R^2} -\frac{d^4}{4 R^4}\right)^{n/2} \Gamma\left[\frac{1+n}{2}\right] {}_{2}\bar{F}_{1}\left[1,n,\frac{2+n}{2},\frac{d^2}{4 R^2}\right]}{2 \sqrt{\pi }}
+G^{n-{\rm sphere}}_{n,R}(t) = 
+      \frac{\left(\frac{t^2}{R^2} -\frac{t^4}{4 R^4}\right)^{n/2}
+            \Gamma\left[\frac{1+n}{2}\right]
+             {}_{2}\bar{F}_{1}\left[1,n,\frac{2+n}{2},\frac{t^2}{4
+                 R^2}\right]
+           }{2 \sqrt{\pi }}.
 \end{equation}
 
 \subsubsection{Moments}
+
+
+If $y = g(X)$
+
+\[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
+               f_X\left( g^{-1}(y) \right)
+\]
+
+
+\begin{eqnarray}
+ E[ g(X) ] & = & \int y f_g (y) \, dy \\
+           & = & \int g(x) f_X(x) \, dx 
+\end{eqnarray}
+

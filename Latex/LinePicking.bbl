@@ -4,6 +4,11 @@
 E.~Rosenberg, ``The expected length of a random line segment in a rectangle,''
   {\em Operations Research Letters}, vol.~32, no.~2, pp.~99--102, 2004.
 
+\bibitem{Abramowitz_and_Stegun}
+M.~Abramowitz and I.~Stegun, {\em Handbook of Mathematical Functions with
+  Formulas, Graphs, and Mathematical Tables}.
+\newblock Dover Publications, Inc., New York, 1964.
+
 \bibitem{weisstein:_line_line_picking}
 E.~W. Weisstein, ``Line line picking.'' From MathWorld--A Wolfram Web Resource.
   \url{http://mathworld.wolfram.com/LineLinePicking.html}.
@@ -60,11 +65,6 @@ G.~Marsaglia, ``Choosing a point from the surface of a sphere,'' {\em The
 \bibitem{weisstein:_circle_line_picking}
 E.~W. Weisstein, ``Circle line picking.'' From MathWorld--A Wolfram Web
   Resource. \url{http://mathworld.wolfram.com/CircleLinePicking.html}.
-
-\bibitem{Abramowitz_and_Stegun}
-M.~Abramowitz and I.~Stegun, {\em Handbook of Mathematical Functions with
-  Formulas, Graphs, and Mathematical Tables}.
-\newblock Dover Publications, Inc., New York, 1964.
 
 \bibitem{weisstein:_sphere_line_picking}
 E.~W. Weisstein, ``Sphere line picking.'' From MathWorld--A Wolfram Web
