@@ -64,6 +64,7 @@
 #include <stdint.h> 
 #include <string.h>
 #include <stdio.h>
+#include <unistd.h>
 #include "LinePicking.h"
 #include "beta.h" 
 
@@ -409,7 +410,6 @@ void LinePickingMean(double *mean, int *problem,
                      char **error_str) 
 
 {
-    int i;
     double support[2];
     
     /* now calculate the support of the distribution,
@@ -449,7 +449,6 @@ void LinePickingVar(double *var, int *problem,
                     double* parameters, int *Npar, int *result, 
                     char **error_str) 
 {
-    int i;
     double support[2];
     
     /* now calculate the support of the distribution,
@@ -464,6 +463,95 @@ void LinePickingVar(double *var, int *problem,
     
     return;
 }
+
+
+/**
+ * Return the number of coordinates used to describe a point in some problem.
+ *
+ * @Ncoords The number of coordinates.
+ * @CoordSystem A description of the coordinate system being used.
+ * @param $problem The number of the problem for which the PDF 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters. 
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required points are returned in $g.
+ * @todo The matlab version allocates memory dynamically for the array 
+ * of densities which is safe. The R version could go horribly wrong 
+ * if a shorter array was passed.
+ * @bug potential array bounds overrun.
+ */
+void LinePickingNcoords(int *Ncoords, char **CoordSystem, int *problem, 
+			double* parameters, int *Npar, int *result, 
+			char **error_str)
+{
+
+}
+
+
+/**
+ * Generate a set of points suitable for use in simulating a problem 
+ *
+ * @param $points An array in which the coordinates of the simulated points are returned.
+ * @param $N The value pointed to by $N is the number of entries there should be in $points
+ * @param $problem The number of the problem for which the PDF 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters. 
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required points are returned in $g.
+ * @todo The matlab version allocates memory dynamically for the array 
+ * of densities which is safe. The R version could go horribly wrong 
+ * if a shorter array was passed.
+ * @bug potential array bounds overrun.
+ */
+void LinePickingSimPoints(double **points, int *Npoints, int *Ncoords, 
+			  int *problem, double* parameters, int *Npar,
+			  int *result, char **error_str)
+{
+
+}
+
+/**
+ * Generate a set of distances by simulating a problem
+ *
+ * @param $distances An array in which the simulated distances are returned.
+ * @param $N The value pointed to by $N is the number of entries in $T
+ * @param $problem The number of the problem for which the PDF 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters. 
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required calculated densities are returned in $g.
+ * @todo The matlab version allocates memory dynamically for the array 
+ * of densities which is safe. The R version could go horribly wrong 
+ * if a shorter array was passed.
+ * @bug potential array bounds overrun.
+ */
+void LinePickingSimDistances(double *distances, int *N, int *problem, 
+			     double* parameters, int *Npar, int *result, 
+			     char **error_str)
+{
+
+
+}
+
+
 
 
 #ifdef _MEX
@@ -520,6 +608,8 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     
     double *t; /* points at which to calculate the distribution */
     double *g; /* value of the distribution at the points t */
+    double **Points; /* used to return a set of simulated points */
+    double *distances; /* used to return a set of simulated distances */
     int N, M;    /* number of points */
     int Npar;    /* number of parameters */
     int i;					
@@ -537,7 +627,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     const mwSize dims[1] = {NUMBER_OF_PROBLEMS}; /* useful for creating arrays */
     char *names[NUMBER_OF_PROBLEMS];       /* used to output a list of names of the problems */
     char *descriptions[NUMBER_OF_PROBLEMS]; /* used to output a list of descriptions of the problems */
-    
+    int Ncoords, Npoints;
+    char *CoordSystem;
+
     if (nrhs < 1)
         mexErrMsgTxt("LinePicking needs at least one input parameter.");
         
@@ -749,7 +841,50 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
 	    return;
 
-        default:
+       case 10: /* LinePickingSimPoints */
+
+            CheckNumberInputArg(nrhs, 3, "LinePickingSimPoints");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingSimPoints");
+            
+            problem = (int)mxGetScalar(prhs[1]);
+            CheckProblem(problem, "LinePickingSimPoints");
+            
+            Npoints = (int)mxGetScalar(prhs[0]);
+            LinePickingNcoords(&Ncoords, &CoordSystem, &problem, parameters, 
+			       &Npar, &result, &error_str);
+            
+            Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
+            parameters = mxGetPr(prhs[2]);
+            
+            plhs[0] = mxCreateDoubleMatrix(Ncoords, Npoints, mxREAL);
+            Points = (double **) mxGetPr(plhs[0]);
+            
+            LinePickingSimPoints(Points, &Npoints, &Ncoords, &problem, parameters, 
+				 &Npar, &result, &error_str);
+          
+            break;
+
+       case 11: /* LinePickingSimDistances */
+
+
+            CheckNumberInputArg(nrhs, 3, "LinePickingSimDistances");
+            CheckNumberOutputArg(nlhs, 1, "LinePickingSimDistances");
+            
+            problem = (int)mxGetScalar(prhs[2]);
+            CheckProblem(problem, "LinePickingSimDistances");
+            
+            N = (int)mxGetScalar(prhs[1]);
+            
+            Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
+            parameters = mxGetPr(prhs[3]);
+            
+            plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
+            distances = mxGetPr(plhs[0]);
+            
+            LinePickingSimDistances(distances, &Npoints, &problem, parameters, 
+				    &Npar, &result, &error_str);
+
+       default:
 	    mexErrMsgTxt("LinePicking unknown entry point requested.");
     }
     
@@ -820,8 +955,6 @@ set_pars_LinePicking(int argc, char *argv[],
 int main(int argc, char *argv[])
 {
     int i=0;
-    char *readbuf;
-    double epsilon;
     int problem;
     double parameters[3];
     char *version = "version 1.0";

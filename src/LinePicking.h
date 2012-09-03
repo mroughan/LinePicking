@@ -150,6 +150,19 @@ void LinePickingMean(double *, int *, double*, int *, int*, char **);
 /* primary function for calculating Mean line length for any region */
 void LinePickingVar(double *, int *, double*, int *, int*, char **);
 
+/* return the number of coordinates, and a description of the coordinate system */
+void LinePickingNcoords(int *, char **, int *, double*, int *, int *, char **);
+
+/* generate a set of points suitable for use in simulating a problem */
+void LinePickingSimPoints(double **points, int *Npoints, int *Ncoords,
+			  int *problem, double* parameters, int *Npar,
+			  int *result, char **error_str);
+
+/* generate a set of distances by simulating a problem */
+void LinePickingSimDistances(double *distances, int *N, int *problem, 
+ 			     double* parameters, int *Npar, int *result, 
+			     char **error_str);
+
 
 /** @}*/
 
