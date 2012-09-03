@@ -150,9 +150,18 @@ If $y = g(X)$ then the transform rule  is :
 
 Thus we can write:
 \begin{eqnarray}
-  g^{n-{\rm sphere}}_{n,R}(t) & = & \left|\frac{2}{\sqrt{4 R^2 -t^2 }} \right| g_{\Phi}\left( \cos^{-1} \left[1-\frac{t^2}{2 R^2}\right]\right)\\
+  g^{n-{\rm sphere}}_{n,R}(t)
+    & = & \left|\frac{2}{\sqrt{4 R^2 -t^2 }} \right|
+             g_{\Phi}\left( \cos^{-1} \left[1-\frac{t^2}{2  R^2}\right]\right) \nonumber \\
+    & = & \frac{t \left(\frac{t^2}{R^2} -\frac{t^4}{4 R^4}\right)^{\frac{1}{2} (n-2)}
+             \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^2 \Gamma\left[\frac{n}{2}\right]}  \nonumber \\
+    & = & \frac{t \left(\frac{t}{R} \right)^{(n-2)}
+             \left(1 -\frac{t^2}{4 R^2}\right)^{\frac{1}{2} (n-2)}
+             \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^2 \Gamma\left[\frac{n}{2}\right]}  \nonumber \\
+    & = & \frac{t^{n-1}
+             \left(1 -\frac{t^2}{4 R^2}\right)^{\frac{1}{2} (n-2)}
+             \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^n \Gamma\left[\frac{n}{2}\right]}  \nonumber \\
   \label{eq:nsphere_pdf_phi}
-             & = &\frac{t \left(\frac{t^2}{R^2} -\frac{t^4}{4 R^4}\right)^{\frac{1}{2} (n-2)} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R^2 \Gamma\left[\frac{n}{2}\right]} 
 \end{eqnarray}
 using the fact that $\sin\big( \cos^{-1}(x) \big) = \sqrt{1 - x^2}$.
 
@@ -160,7 +169,7 @@ The obvious special cases are the circle and the 2-sphere where the
 above becomes:
 \begin{eqnarray}
   g^{n-{\rm sphere}}_{1,R}(t) 
-   & = &\frac{t \left(\frac{t^2}{R^2} -\frac{t^4}{4 R^4}\right)^{-\frac{1}{2}}}{\pi R^2}, \\
+   & = &\frac{t^2 \left(1 -\frac{t^2}{4 R^2}\right)^{-\frac{1}{2}}}{\pi R^3}, \\
   g^{n-{\rm sphere}}_{2,R}(t) 
    & = &\frac{t}{2 R^2}.
 \end{eqnarray}
