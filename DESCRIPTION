@@ -9,7 +9,7 @@ Description: Given Poisson points in a space, gives
     the probability density function for the distance between these points.
 License: GPL-3
 Imports:
-    methods
+    methods, testthat
 Collate:
     'LinePickingPDF.R'
     'LinePickingCheckParameters.R'
