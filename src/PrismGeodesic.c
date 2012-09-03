@@ -16,9 +16,12 @@
  */
 
 #include <math.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "LinePickingData.h"
+#include "metrics.h"
+#include "Rand.h"
 #include "PrismGeodesic.h"
 
 LinePickingData PrismGeodesicDistanceData =
@@ -47,8 +50,8 @@ double PrismGeodesicDistancePDF(double w, double* parameters)
     double L = parameters[0];
     double P = parameters[1];
     double L2 = L * L;
-    double P2 = P * P;
-    double M = sqrt(L2 + (P2 / 4.));
+    /* double P2 = P * P; */
+    /* double M = sqrt(L2 + (P2 / 4.)); */
     double w2 = w * w;
         
     /* three cases */
@@ -87,7 +90,7 @@ double PrismGeodesicDistanceCDF(double w, double* parameters)
     double P = parameters[1];
     double L2 = L * L;
     double P2 = P * P;
-    double M = sqrt(L2 + (P2 / 4.));
+    /* double M = sqrt(L2 + (P2 / 4.)); */
     double w2 = w * w;
     
     
@@ -873,4 +876,62 @@ void PrismGeodesicDistanceCheckParameters(double *parameters, int *result,
             "we must have (parameter[1] / 2 <= parameter[0]).\n"
             "i.e., The Length of the prism must be >= "
             " to half the Perimeter of the prism\n"); 
+}
+
+
+/**
+ * Returns the number of coordinates used given input problem and parameters.
+ *
+ * @param $Ncoords returns the number of coordinates
+ * @param $CoordSystem returns a brief description of the coordinate system
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+{
+    *Ncoords = 3; /* really this could be done with two coordinates, but life is easier this way */
+    *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+}
+
+/**
+ * Simulate a set of points from the problem of interest
+ *
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system
+ * @param $Npoints = number of points to generate
+ * @param $Ncoords = number of coordinates for each point
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ * @todo Implement this.
+ */
+void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+{
+    int i, j;
+    double *normals;
+    double sum;
+    
+    /* not the most efficient use of normal random number generation, but it should work for all nballs */
+    normals = (double *) malloc(sizeof(double)*(*Ncoords));
+    for (i=0; i<*Npoints; i++)
+    {
+	for (j=0; j<*Ncoords; j++)
+	{
+	    points[i][j] = 0; /* not implemented yet */
+
+	}
+    }
+    free(normals);
+}
+
+/**
+ * Calculate distance (using correct metric) between 2 points
+ *
+ * @param $Ncoords = number of coordinates for each point
+ * @param $points1 = coordinates of first point
+ * @param $points2 = coordinates of second point
+ * @return The distance between the two points
+ * @todo Implement this.
+ */
+double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2)
+{
+    return -1; /* not implemented yet */
 }

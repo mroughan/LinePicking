@@ -16,9 +16,14 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
 #include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "LinePickingData.h"
+#include "metrics.h"
+#include "Rand.h"
 #include "Rectangle.h"
 
 LinePickingData RectangleDistanceData =
@@ -50,8 +55,8 @@ double RectangleDistancePDF(double t, double* parameters)
     double b = parameters[1];
     double a2;
     double b2;
-    double L2 = a2+ b2;
-    double L = sqrt(L2);
+    /* double L2 = a2+ b2; */
+    /* double L = sqrt(L2); */
     double t2 = t*t;
     double tmp;
     
@@ -104,7 +109,7 @@ double RectangleDistanceCDF(double w, double* parameters)
     double H = parameters[1];
     double L2 = L * L;
     double H2 = H * H;
-    double M = sqrt(L2 + H2);
+    /* double M = sqrt(L2 + H2); */
     double tmp;
     double w2 = w * w;
    
@@ -176,7 +181,6 @@ double RectangleDistanceMean(double* parameters)
     double b2 = b*b;
     double M2 = a2 + b2;
     double M = sqrt(M2);
-    double tmp;
     
     return( (b2*acosh(M/b)/a + a2*acosh(M/a)/b)/6.0 +
            (pow(a,3)/b2 + pow(b,3)/a2)/15.0 -
@@ -205,7 +209,6 @@ double RectangleDistanceVar(double* parameters)
     double a2 = a*a;
     double b2 = b*b;
     double M2 = a2 + b2;
-    double M = sqrt(M2);
     double tmp = RectangleDistanceMean(parameters);
     
     return( M2/6.0 - tmp*tmp );
@@ -253,4 +256,55 @@ void RectangleDistanceCheckParameters(double *parameters, int *result,
 {
     /* no further checks needed */
     *result=0;
+}
+
+
+/**
+ * Returns the number of coordinates used given input problem and parameters.
+ *
+ * @param $Ncoords returns the number of coordinates
+ * @param $CoordSystem returns a brief description of the coordinate system
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+{
+    *Ncoords=2;
+    *CoordSystem="Euclidean";
+}
+
+/**
+ * Simulate a set of points from the problem of interest
+ *
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system
+ * @param $Npoints = number of points to generate
+ * @param $Ncoords = number of coordinates for each point
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+{
+    int i, j;
+    
+    for (i=0; i<*Npoints; i++)
+    {
+	for (j=0; j<*Ncoords; j++)
+	{
+	    points[i][j] = parameters[*Ncoords-j-1]*drand48();
+	    /* parameters in opposite order, because give height first */
+	}
+    }
+}
+
+/**
+ * Calculate distance (using correct metric) between 2 points
+ *
+ * @param $Ncoords = number of coordinates for each point
+ * @param $points1 = coordinates of first point
+ * @param $points2 = coordinates of second point
+ * @return The distance between the two points
+ */
+double RectangleDistanceMetric(int Ncoords, double *point1, double* point2)
+{
+    return DistanceEuclidean(Ncoords, point1, point2);
 }

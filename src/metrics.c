@@ -89,7 +89,7 @@ double DistanceManhattan(int N, double *point1, double *point2)
     double sum=0;
 
     for (i=0;i<N;i++) {
-	sum += abs( point1[i] - point2[i] );
+	sum += fabs( point1[i] - point2[i] );
     }
     return sum;
 }
@@ -110,7 +110,7 @@ double DistanceMax(int N, double *point1, double *point2)
     double tmp;
 
     for (i=0;i<N;i++) {
-	tmp = abs(point1[i]-point2[i]);
+	tmp = fabs(point1[i]-point2[i]);
 	max = max > tmp ? max : tmp;
     }
     return max;

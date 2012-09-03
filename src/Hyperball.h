@@ -42,4 +42,11 @@ void HyperballDistanceSupport(double *t, double *parameters);
 void HyperballDistanceCheckParameters(double *parameters, int *result, 
 				      char *error_str);
 
+void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double HyperballDistanceMetric(int Ncoords, double *point1, double* point2);
+
+
 #endif /* _HYPERBALL_H */

@@ -41,6 +41,12 @@ void RectangleDistanceSupport(double *t, double *parameters);
 void RectangleDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double RectangleDistanceMetric(int Ncoords, double *point1, double* point2);
+
 
 
 #endif /* _RECTANGLE_H */

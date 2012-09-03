@@ -1,4 +1,4 @@
-function distances =  LinePickingSimDistances(N, problem, parameters) 
+function distances =  LinePickingSimDistances(N, problem, parameters, seed) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
@@ -36,7 +36,10 @@ function distances =  LinePickingSimDistances(N, problem, parameters)
 %    parameters = vector of parameters for the region
 %         
 % OUTPUTS:        
-%    g(t) = vector of calculated cumulative densities      
+%    distances = vector of simulated distances
 %         
 % See Also LinePickingPDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingProblemLookup, LinePickingPrintAllProblems, LinePickingAllProblems  
-distances = LinePicking(11, N, problem, parameters);
+if (nargin < 4)
+  seed = 1;
+end
+distances = LinePicking(11, N, problem, parameters, seed);

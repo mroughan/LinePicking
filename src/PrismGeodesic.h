@@ -46,5 +46,11 @@ void PrismGeodesicDistanceSupport(double *t, double *parameters);
 void PrismGeodesicDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2);
+
 #endif /* _Prism_GEODESIC_H */
 

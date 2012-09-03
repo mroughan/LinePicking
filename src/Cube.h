@@ -40,5 +40,10 @@ void CubeDistanceSupport(double *t, double *parameters);
 void CubeDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void CubeDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double CubeDistanceMetric(int Ncoords, double *point1, double* point2);
 
 #endif /* _CUBE_H */

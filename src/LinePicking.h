@@ -82,18 +82,17 @@ typedef struct
     double (* VAR)(double *);
     void   (* SUPPORT)(double*, double *);
     void   (* CHECK_PAR)(double*, int *, char *);
+    void   (* NCOORDS)(int *, char **, double *);
+    void   (* SIM_POINTS)(double **, int *, int *, double *);
+    double (* DISTANCE)(int, double *, double *);
     LinePickingData *DATA; 
-    
 } LinePickingRec;
  
-/* (*LinePickingFields[*problem].NCOORDS)(int *Ncoords, char **CoordSystem, double* parameters, int *Npar); */
-/* g[i] = (*LinePickingFields[*problem].SIMPOINTS)(t[i], parameters); */
-/* g[i] = (*LinePickingFields[*problem].SIMDISTANCES)(t[i], parameters); */
-
 
 #define ExpandFields(_x) &_x##DistancePDF,&_x##DistanceCDF,\
 &_x##DistanceMean,&_x##DistanceVar,\
 &_x##DistanceSupport,&_x##DistanceCheckParameters,\
+&_x##DistanceNcoords,&_x##DistanceSimPoints,&_x##DistanceMetric,\
 &_x##DistanceData
 
 LinePickingRec LinePickingFields[] = 
@@ -107,10 +106,10 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(Sphere)}, 
     {ExpandFields(SphereGeodesic)},
     {ExpandFields(PrismGeodesic)},
-    {ExpandFields(RectangleManhattan)},
-    {ExpandFields(RectangleMax)},
+    {ExpandFields(RectangleManhattan)}, 
+    {ExpandFields(RectangleMax)}, 
     {ExpandFields(HyperSphere)},
-    {ExpandFields(HyperSphereGeodesic)}
+    {ExpandFields(HyperSphereGeodesic)} 
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))

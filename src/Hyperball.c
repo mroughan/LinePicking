@@ -17,9 +17,12 @@
  */
 
 #include <math.h>
+#include <stdlib.h>
 #include <stdio.h>
 
 #include "LinePickingData.h"
+#include "metrics.h"
+#include "Rand.h"
 #include "Hyperball.h"
 #include "beta.h" 
 
@@ -50,10 +53,10 @@ double HyperballDistancePDF(double t, double* parameters)
 {
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    double d = 2 * r;
+    /* double d = 2 * r; */
     double r2 = r * r;
     double t2 = t * t;			     
-    double p, q, x, Ix, Ix2;
+    double p, q, x, Ix;
     int result;
     
     x = 1.0 - t2 / (4.0 * r2);
@@ -84,7 +87,7 @@ double HyperballDistanceCDF(double t, double* parameters)
 {    
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    double d = 2 * r;
+    /* double d = 2 * r; */
     double r2 = r * r;
     double t2 = t * t;			     
     double p, q, x, Ix, Bx;
@@ -207,4 +210,69 @@ void HyperballDistanceCheckParameters(double *parameters, int *result,
                 parameters[0]);
         *result=2;
     }
+}
+
+
+/**
+ * Returns the number of coordinates used given input problem and parameters.
+ *
+ * @param $Ncoords returns the number of coordinates
+ * @param $CoordSystem returns a brief description of the coordinate system
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+{
+    *Ncoords= (int) (parameters[0]);
+    *CoordSystem="Euclidean"; /* We could use cicular coordinates, but why?" */
+}
+
+/**
+ * Simulate a set of points from the problem of interest
+ *
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system
+ * @param $Npoints = number of points to generate
+ * @param $Ncoords = number of coordinates for each point
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+{
+    int i, j;
+    double *normals;
+    double sum, u;
+    
+    /* not the most efficient use of normal random number generation, but it should work for all nballs */
+    normals = (double *) malloc(sizeof(double)*(*Ncoords));
+    for (i=0; i<*Npoints; i++)
+    {
+	/* generate n normal random variables */
+	rand_normal(*Ncoords, normals);
+
+	/* normalize them so that they lie on the (n-1)-sphere */
+	sum = 0;
+	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
+	for (j=0; j<*Ncoords; j++) points[i][j] = normals[j]/sqrt(sum);
+	
+	/* now distribute them through the disk */
+	u = pow(drand48(), 1.0 / *Ncoords);
+	for (j=0; j<*Ncoords; j++)
+	{
+	    points[i][j] = parameters[1] * u * points[i][j];
+	}
+    }
+    free(normals);
+}
+
+/**
+ * Calculate distance (using correct metric) between 2 points
+ *
+ * @param $Ncoords = number of coordinates for each point
+ * @param $points1 = coordinates of first point
+ * @param $points2 = coordinates of second point
+ * @return The distance between the two points
+ */
+double HyperballDistanceMetric(int Ncoords, double *point1, double* point2)
+{
+    return DistanceEuclidean(Ncoords, point1, point2);
 }

@@ -42,6 +42,12 @@ void RectangleManhattanDistanceSupport(double *t, double *parameters);
 void RectangleManhattanDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void RectangleManhattanDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void RectangleManhattanDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double RectangleManhattanDistanceMetric(int Ncoords, double *point1, double* point2);
+
 
 
 #endif /* _RECTANGLE_MANHATTAN_H */

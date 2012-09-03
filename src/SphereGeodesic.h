@@ -45,6 +45,12 @@ void SphereGeodesicDistanceSupport(double *t, double *parameters);
 void SphereGeodesicDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void SphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double SphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2);
+
 #endif /* _SPHERE_GEODESIC_H */
 
 

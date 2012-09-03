@@ -1,4 +1,4 @@
-function points =  LinePickingSimPoints(N, problem, parameters) 
+function points =  LinePickingSimPoints(N, problem, parameters, seed) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
@@ -38,4 +38,7 @@ function points =  LinePickingSimPoints(N, problem, parameters)
 %    points = array containing coordinates of the points     
 %         
 % See Also LinePickingPDF, LinePickingMean, LinePickingVar, LinePickingSupport, LinePickingCheckParameters, LinePickingProblemLookup, LinePickingPrintAllProblems, LinePickingAllProblems  
-points = LinePicking(10, N, problem, parameters);
+if (nargin < 4)
+  seed = 1;
+end
+points = LinePicking(10, N, problem, parameters, seed);

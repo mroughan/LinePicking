@@ -15,7 +15,13 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "LinePickingData.h"
+#include "metrics.h"
+#include "Rand.h"
 #include "Sphere.h"
 
 
@@ -144,4 +150,61 @@ void SphereDistanceCheckParameters(double *parameters, int *result,
 {   
     /* nothing further to check */
     *result=0;
+}
+
+/**
+ * Returns the number of coordinates used given input problem and parameters.
+ *
+ * @param $Ncoords returns the number of coordinates
+ * @param $CoordSystem returns a brief description of the coordinate system
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void SphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+{
+    *Ncoords = 3; /* really this could be done with two coordinates, but life is easier this way */
+    *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+}
+
+/**
+ * Simulate a set of points from the problem of interest
+ *
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system
+ * @param $Npoints = number of points to generate
+ * @param $Ncoords = number of coordinates for each point
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void SphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+{
+    int i, j;
+    double *normals;
+    double sum;
+    
+    /* not the most efficient use of normal random number generation, but it should work for all nballs */
+    normals = (double *) malloc(sizeof(double)*(*Ncoords));
+    for (i=0; i<*Npoints; i++)
+    {
+	/* generate n normal random variables */
+	rand_normal(*Ncoords, normals);
+
+	/* normalize them so that they lie on the (n-1)-sphere */
+	sum = 0;
+	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
+	for (j=0; j<*Ncoords; j++) points[i][j] = parameters[0]*normals[j]/sqrt(sum);
+    }
+    free(normals);
+}
+
+/**
+ * Calculate distance (using correct metric) between 2 points
+ *
+ * @param $Ncoords = number of coordinates for each point
+ * @param $points1 = coordinates of first point
+ * @param $points2 = coordinates of second point
+ * @return The distance between the two points
+ */
+double SphereDistanceMetric(int Ncoords, double *point1, double* point2)
+{
+    return DistanceEuclidean(Ncoords, point1, point2);
 }

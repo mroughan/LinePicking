@@ -41,4 +41,10 @@ void LineDistanceSupport(double *t, double *parameters);
 void LineDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void LineDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void LineDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double LineDistanceMetric(int Ncoords, double *point1, double* point2);
+
 #endif /* _LINE_H */

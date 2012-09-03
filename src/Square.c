@@ -17,8 +17,12 @@
  */
 
 #include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "LinePickingData.h"
+#include "metrics.h"
+#include "Rand.h"
 #include "Square.h"
 
 LinePickingData SquareDistanceData =
@@ -41,7 +45,7 @@ LinePickingData SquareDistanceData =
  */
 double SquareDistancePDF(double t, double* parameters)
 {
-    double L = M_SQRT2;
+    /* double L = M_SQRT2; */
     double t2;
     t = t/parameters[0]; /* rescale points to unit square */
     t2 = t*t;
@@ -67,7 +71,7 @@ double SquareDistancePDF(double t, double* parameters)
  */
 double SquareDistanceCDF(double t, double* parameters)
 {
-    double L = M_SQRT2;
+    /* double L = M_SQRT2; */
     double t2, tmp;
     t = t/parameters[0]; /* rescale points to unit square */
     t2 = t*t;
@@ -157,4 +161,54 @@ void SquareDistanceCheckParameters(double *parameters, int *result,
 {
     /* square, with side length parameters[0] */
     *result=0;
+}
+
+
+/**
+ * Returns the number of coordinates used given input problem and parameters.
+ *
+ * @param $Ncoords returns the number of coordinates
+ * @param $CoordSystem returns a brief description of the coordinate system
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void SquareDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+{
+    *Ncoords=2;
+    *CoordSystem="Euclidean";
+}
+
+/**
+ * Simulate a set of points from the problem of interest
+ *
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system
+ * @param $Npoints = number of points to generate
+ * @param $Ncoords = number of coordinates for each point
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void SquareDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+{
+    int i, j;
+    
+    for (i=0; i<*Npoints; i++)
+    {
+	for (j=0; j<*Ncoords; j++)
+	{
+	    points[i][j] = parameters[0]*drand48(); /* mxArray is transpose of c matrix */
+	}
+    }
+}
+
+/**
+ * Calculate distance (using correct metric) between 2 points
+ *
+ * @param $Ncoords = number of coordinates for each point
+ * @param $points1 = coordinates of first point
+ * @param $points2 = coordinates of second point
+ * @return The distance between the two points
+ */
+double SquareDistanceMetric(int Ncoords, double *point1, double* point2)
+{
+    return DistanceEuclidean(Ncoords, point1, point2);
 }

@@ -16,8 +16,12 @@
  */
 
 #include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 #include "LinePickingData.h"
+#include "metrics.h"
+#include "Rand.h"
 #include "RectangleMax.h"
 
 LinePickingData RectangleMaxDistanceData =
@@ -72,6 +76,7 @@ double RectangleMaxDistancePDF(double t, double* parameters)
     {
         return (2 * (b - t)) / b2;
     } 
+    else return 0;
 }
 
 
@@ -117,8 +122,9 @@ double RectangleMaxDistanceCDF(double t, double* parameters)
     else if (t <= b) 
     {
         return((2 * b - t) * t) / b2;
-    } 
-   
+    } else {
+	return 0;
+    }
 }
 
 
@@ -214,4 +220,54 @@ void RectangleMaxDistanceCheckParameters(double *parameters, int *result,
 {
     /* no further checks needed */
     *result=0;
+}
+
+/**
+ * Returns the number of coordinates used given input problem and parameters.
+ *
+ * @param $Ncoords returns the number of coordinates
+ * @param $CoordSystem returns a brief description of the coordinate system
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void RectangleMaxDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+{
+    *Ncoords=2;
+    *CoordSystem="Euclidean";
+}
+
+/**
+ * Simulate a set of points from the problem of interest
+ *
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system
+ * @param $Npoints = number of points to generate
+ * @param $Ncoords = number of coordinates for each point
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the square under consideration.
+ */
+void RectangleMaxDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+{
+    int i, j;
+    
+    for (i=0; i<*Npoints; i++)
+    {
+	for (j=0; j<*Ncoords; j++)
+	{
+	    points[i][j] = parameters[*Ncoords-j-1]*drand48();
+	    /* parameters in opposite order, because give height first */
+	}
+    }
+}
+
+/**
+ * Calculate distance (using correct metric) between 2 points
+ *
+ * @param $Ncoords = number of coordinates for each point
+ * @param $points1 = coordinates of first point
+ * @param $points2 = coordinates of second point
+ * @return The distance between the two points
+ */
+double RectangleMaxDistanceMetric(int Ncoords, double *point1, double* point2)
+{
+    return DistanceMax(Ncoords, point1, point2);
 }

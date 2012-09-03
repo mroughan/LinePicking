@@ -41,4 +41,10 @@ void HyperSphereDistanceSupport(double *t, double *parameters);
 void HyperSphereDistanceCheckParameters(double *parameters, int *result, 
 				      char *error_str);
 
+void HyperSphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void HyperSphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double HyperSphereDistanceMetric(int Ncoords, double *point1, double* point2);
+
 #endif /* _HYPERSPHERE_H */

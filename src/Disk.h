@@ -43,5 +43,11 @@ void DiskDistanceSupport(double *t, double *parameters);
 void DiskDistanceCheckParameters(double *parameters, int *result, 
                                 char *error_str);
 
+void DiskDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
+
+void DiskDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
+
+double DiskDistanceMetric(int Ncoords, double *point1, double* point2);
+
 
 #endif /* _DISK_H */
