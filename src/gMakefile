@@ -76,7 +76,7 @@ ifeq ("$(UNAME)","Linux")
 endif
 
 MX=mex -O -largeArrayDims 
-CC=gcc -O -fPIC -wall
+CC=gcc -O -fPIC -Wall
 
 C = $(shell ls *.c)
 HEADERS = $(shell ls *.h)
