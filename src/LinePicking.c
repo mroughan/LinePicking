@@ -490,7 +490,14 @@ void LinePickingNcoords(int *Ncoords, char **CoordSystem, int *problem,
 			double* parameters, int *Npar, int *result, 
 			char **error_str)
 {
+    /* first check input parameters */
+    LinePickingCheckParameters(problem, parameters, Npar, result, error_str);
+    
+    if (*result != 0) /* something was wrong with parameters */
+        return;
 
+    /* output the number of coordinates and their description */
+    /* (*LinePickingFields[*problem].NCOORDS)(Ncoords, CoordSystem, parameters, Npar); */
 }
 
 
@@ -519,6 +526,15 @@ void LinePickingSimPoints(double **points, int *Npoints, int *Ncoords,
 			  int *problem, double* parameters, int *Npar,
 			  int *result, char **error_str)
 {
+    /* first check input parameters */
+    LinePickingCheckParameters(problem, parameters, Npar, result, error_str);
+    
+    if (*result != 0) /* something was wrong with parameters */
+        return;
+
+    /* generate points */
+    /* generate a pair of points */
+    /* (*LinePickingFields[*problem].SIMPOINTS)(points, Npoints,Ncoords, parameters, Npar, result, error_str); */
 
 }
 
@@ -547,8 +563,35 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 			     double* parameters, int *Npar, int *result, 
 			     char **error_str)
 {
+    int i, Ncoords;
+    int Npoints = 2;
+    char *CoordSystem;
+    double **points;
+    double *point1;
+    double *point2;
 
+    /* first check input parameters */
+    LinePickingCheckParameters(problem, parameters, Npar, result, error_str);
 
+    /* work out the number of coordinates */
+    /* (*LinePickingFields[*problem].NCOORDS)(&Ncoords, &CoordSystem, parameters, Npar); */
+    /* allocate memory for the pointers */
+    points = (double **) malloc((size_t) sizeof(double)*(2*Ncoords));
+    point1 = (double *) points;
+    point2 = ((double *) points) + Ncoords;
+
+    if (*result != 0) /* something was wrong with parameters */
+        return;
+
+    for (i=0; i<*N; i++) 
+    {
+    /* generate a pair of points */
+    /* (*LinePickingFields[*problem].SIMPOINTS)(points, &Npoints, &Ncoords, parameters, Npar, result, error_str); */
+
+    /* compute the distances */
+    /* (*LinePickingFields[*problem].DISTANCE)(Ncoords, point1, point2); */
+    }
+    free(points);
 }
 
 
@@ -758,7 +801,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             g = mxGetPr(plhs[0]);
             
             LinePickingSupport(g, &problem, parameters, &Npar, &result, 
-                           &error_str);
+			       &error_str);
             
             break;
             
@@ -843,18 +886,18 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
        case 10: /* LinePickingSimPoints */
 
-            CheckNumberInputArg(nrhs, 3, "LinePickingSimPoints");
+            CheckNumberInputArg(nrhs, 4, "LinePickingSimPoints");
             CheckNumberOutputArg(nlhs, 1, "LinePickingSimPoints");
             
-            problem = (int)mxGetScalar(prhs[1]);
+            problem = (int)mxGetScalar(prhs[2]);
             CheckProblem(problem, "LinePickingSimPoints");
             
-            Npoints = (int)mxGetScalar(prhs[0]);
+            Npoints = (int)mxGetScalar(prhs[1]);
             LinePickingNcoords(&Ncoords, &CoordSystem, &problem, parameters, 
 			       &Npar, &result, &error_str);
             
-            Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
-            parameters = mxGetPr(prhs[2]);
+            Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
+            parameters = mxGetPr(prhs[3]);
             
             plhs[0] = mxCreateDoubleMatrix(Ncoords, Npoints, mxREAL);
             Points = (double **) mxGetPr(plhs[0]);
@@ -866,8 +909,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
        case 11: /* LinePickingSimDistances */
 
-
-            CheckNumberInputArg(nrhs, 3, "LinePickingSimDistances");
+            CheckNumberInputArg(nrhs, 4, "LinePickingSimDistances");
             CheckNumberOutputArg(nlhs, 1, "LinePickingSimDistances");
             
             problem = (int)mxGetScalar(prhs[2]);
@@ -880,9 +922,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             
             plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
             distances = mxGetPr(plhs[0]);
-            
-            LinePickingSimDistances(distances, &Npoints, &problem, parameters, 
-				    &Npar, &result, &error_str);
+            LinePickingSimDistances(distances, &N, &problem, parameters,
+	    			    &Npar, &result, &error_str);
+            break;
 
        default:
 	    mexErrMsgTxt("LinePicking unknown entry point requested.");

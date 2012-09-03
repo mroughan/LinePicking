@@ -1,4 +1,4 @@
-function distances =  LinePickingSimDistances(t, problem, parameters) 
+function distances =  LinePickingSimDistances(N, problem, parameters) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>

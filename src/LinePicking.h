@@ -85,6 +85,10 @@ typedef struct
     LinePickingData *DATA; 
     
 } LinePickingRec;
+ 
+/* (*LinePickingFields[*problem].NCOORDS)(int *Ncoords, char **CoordSystem, double* parameters, int *Npar); */
+/* g[i] = (*LinePickingFields[*problem].SIMPOINTS)(t[i], parameters); */
+/* g[i] = (*LinePickingFields[*problem].SIMDISTANCES)(t[i], parameters); */
 
 
 #define ExpandFields(_x) &_x##DistancePDF,&_x##DistanceCDF,\

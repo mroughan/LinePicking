@@ -1,4 +1,4 @@
-function points =  LinePickingSimPoints(t, problem, parameters) 
+function points =  LinePickingSimPoints(N, problem, parameters) 
 %
 %     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
 %     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>

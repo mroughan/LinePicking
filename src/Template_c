@@ -16,6 +16,7 @@
  */
 
 #include "XXX.h"
+#include "metrics.h"
 
 char *XXXDistanceName = "XXX";
 char *XXXDistanceDescription = "XXX description";
@@ -52,4 +53,22 @@ void XXXDistanceCheckParameters(double *parameters, int *result,
                                  char *error_str)
 {
     *result=0;
+}
+
+void XXXDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters, int *Npar) 
+{
+   *Ncoords=0;
+   *CoordSystem="undefined";
+}
+
+void XXXDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
+                          double* parameters, int *Npar,	
+			  int *result, char **error_str)
+{
+    *result=0;
+}
+
+double XXXDistanceDistance(int Ncoords, double *point1, double* point2)
+{
+    return 0;
 }
