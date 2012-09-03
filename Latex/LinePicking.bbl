@@ -57,14 +57,14 @@ E.~W. Weisstein, ``Ball line picking.'' From MathWorld--A Wolfram Web Resource.
 G.~Marsaglia, ``Choosing a point from the surface of a sphere,'' {\em The
   Annals of Mathematical Statistics}, vol.~43, no.~2, pp.~645--646, 1972.
 
+\bibitem{weisstein:_circle_line_picking}
+E.~W. Weisstein, ``Circle line picking.'' From MathWorld--A Wolfram Web
+  Resource. \url{http://mathworld.wolfram.com/CircleLinePicking.html}.
+
 \bibitem{Abramowitz_and_Stegun}
 M.~Abramowitz and I.~Stegun, {\em Handbook of Mathematical Functions with
   Formulas, Graphs, and Mathematical Tables}.
 \newblock Dover Publications, Inc., New York, 1964.
-
-\bibitem{weisstein:_circle_line_picking}
-E.~W. Weisstein, ``Circle line picking.'' From MathWorld--A Wolfram Web
-  Resource. \url{http://mathworld.wolfram.com/CircleLinePicking.html}.
 
 \bibitem{weisstein:_sphere_line_picking}
 E.~W. Weisstein, ``Sphere line picking.'' From MathWorld--A Wolfram Web
