@@ -103,64 +103,91 @@ Motivation: examples of uses
 
 \section{Problem Definition}
 
-Start with a space $\Omega$, from which we can draw points $x$ at
-random. Typical examples include a rectangle in $R^2$, or a hyperball
-in $R^n$.
-
-Draw two IID (Independently, Identically Distributed) points from the
-space, and draw a line between the points. The line could refer to the
-natural geodesic on the space, or something more complicated such as
-a geodesic in a higher dimensional Euclidean space in which $\Omega$
-is embedded. For instance, we might consider simple straight lines
-between points chosen in a rectangle, or straight lines in $R^n$
-between points chosen on the surface of a sphere, or geodesics on the
-surface of the same sphere.
-
-Another way to frame this is to assume we have a distance metic
-$d(\cdot, \cdot)$ on the space $\Omega$. The typical distance metric
-used in these problems is the Euclidean distance, but others are
-possible.
-
-So a {\em line-picking problem} consists of 3 components:
+A fairly general formulation of the {\em line-picking problem}
+consists of 3 components:
 \begin{itemize}
 
-\item $\Omega$ (typically a subset of $R^n$)
+\item Some space $\Omega$ (typically a subset of $R^n$), on which we
+  draw pairs of random points.
 
-\item The measure $\mu$ on $\Omega$ describing the choice of points
-  (typically uniform)
+\item The measure $\mu$ on $\Omega$ giving the probability of drawing
+  points from given segments of $\Omega$. The most common measure, by
+  far, is the uniform measure, resulting in a generalized Poisson
+  process of points on the $\Omega$.
 
-\item The space in which we draw lines (geodesics) and its related
-  distance metric.
+\item A distance metric $D(\cdot, \cdot)$ on the space $\Omega$. One
+  way to think of this is we are drawing ``lines'', i.e., geodesics,
+  in some space $\Sigma$ in which $\Omega$ is embedded. The most
+  common case is that the space $\Sigma = \R^n$, and the distance
+  metric is simple Euclidean distance. In this case, the geodesics are
+  simple lines -- hence the name of the problem. However, there are
+  other possibilities.
 
 \end{itemize}
-so we describe these problems by the triple: $(\Omega, \mu, d)$. Given
-that the typical case of $\mu$ is uniform, and of $d$ is Euclidean, we
- ommit these from the problem statement when we use these simple defaults.
+We describe these problems by the triple: $\big(\Omega, \mu, D(\cdot,
+\cdot)\big)$. However, the common cases are so common that we ommit
+mentioning that the measure is uniform, or that the distance metric is
+Given that the typical case of $\mu$ is uniform, and of $d$ is
+Euclidean, we ommit these from the problem statement when we use these
+simple defaults.
 
-EXAMPLE FIGURES: square, surface of sphere, manhattan distance
-
-
-
-Bertrand's Paradox of 1889, ``Does a random chord on a circle has
-length exceeding the length of a side of an inscribed equilateral
-triangle?''
+There are other possibilities. In the formulation above, a line is
+defined by its two independently chosen end points, but there are
+choice of a random line could mean other things. For instance,
+Bertrand's paradox involves chosing a chord of a circle at random, and
+he presents three methods for doing so: one by choosing random end
+points, and two others involving more involved constructions. 
 % http://www.sciencedirect.com/science/article/pii/S0167637703000725
+% http://en.wikipedia.org/wiki/Bertrand_paradox_%28probability%29
+However, here we shall focus on lines determined by two IID
+end-points. 
+
+Figure~\ref{fig:eg} presents three examples: the disk-line-picking
+problem, the circle-line-picking problem and the cube-line-picking
+problem.
+
+\begin{figure}[tbp]
+% Figures generated with ../Matlab/Examples/LinePicking_eg.m
+  \begin{center}
+    \subfloat[\label{fig:disk_eg}Disk-line-picking.]%
+          {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_eg_disk.eps}}
+    \subfloat[\label{fig:circle_eg}Circle-line-picking.]%
+          {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_eg_circle.eps}}
+    \subfloat[\label{fig:cube_eg}Cube-line-picking.]%
+          {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_eg_cube.eps}}
+    \caption{Example line-picking problems.\label{fig:eg}}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
+
+Given one ofthese problems, there have been works that determined the
+Probability Density Function (PDF), or Cumulative Density Function
+(CDF), or just mean and/or variance. It should be clear that give
+either the PDF or CDF the other quantities are all obtainable
+numerically, however, we primarily focus here on closed-form
+solutions. 
 
 
+\section{General Properties}
+\label{sec:general}
 
-Definitions:
-\begin{description}
+\begin{enumerate}
 
-\item[PDF:] 
+\item Most of the cases are defined over finite regions, and hence the
+  PDFs have finite support.
 
-\item[CDF:]
+\item All of the distributions are {\em proper}
 
-\item[Support:]
+\item Almost all are defined on continuous, convex sets, and in this
+  case the distributions are continuous, i.e., the CDF is a continuous
+  function.
 
-\end{description}
+\item Almost all are defined on continuous, convex sets, and in this
+  case the PDFs are also continuous functions.
 
+\end{enumerate}
 
-\section{Region Transforms}
+\subsection{Region Transforms}
 \label{sec:scaling}
 
 Many of the standard problems use a uniform point distribution and
@@ -187,26 +214,6 @@ Scaling for CDFs is even simpler, we simply take
 \end{equation}
 
 
-\section{General Properties}
-\label{sec:general}
-
-\begin{enumerate}
-
-\item Most of the cases are defined over finite regions, and hence the
-  PDFs have finite support.
-
-\item All of the distributions are {\em proper}
-
-\item Almost all are defined on continuous, convex sets, and in this
-  case the distributions are continuous, i.e., the CDF is a continuous
-  function.
-
-\item Almost all are defined on continuous, convex sets, and in this
-  case the PDFs are also continuous functions.
-
-\end{enumerate}
-
-
 \clearpage
 \input{useful}
 
@@ -219,12 +226,20 @@ appendices in order to make the flow easy.
 
 \begin{figure}[tbp]
   \begin{center}
-    \subfloat[\label{fig:rect_density}Density distribution of rectangles, each chosen with a
-      different aspect ratio $a/b$, but fixed diagonal distance
-      $\sqrt{a^2 + b^2} = 1$.]{\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_test_rect.eps}}
-    \subfloat[\label{fig:b_balls}Density distribution of $n$-D balls.]{\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_test_balls.eps}}
+% Figures generated with ../Matlab/Examples/LinePicking_plot.m
+    \subfloat[\label{fig:rect_density}Density distribution of
+    rectangles, each chosen with a different aspect ratio $a/b$, but
+    fixed diagonal distance $\sqrt{a^2 + b^2} = 1$.]
+      {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_plot_rect.eps}}
+%
+    \subfloat[\label{fig:b_balls}Density distribution of $n$-D balls.]
+      {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_plot_nballs.eps}}
+%
+
     \subfloat[\label{fig:various} Various densities distributions for
-    shapes with area fixed to 1.]{\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_test_fix_area.eps}}
+    shapes with area fixed to 1.]
+      {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_plot_fix_area.eps}}
+
     \caption{Example distance densities.}
   \end{center} 
 \vspace{-4mm}
@@ -261,13 +276,7 @@ appendices in order to make the flow easy.
 \input{hyperball}
 
 \clearpage
-\input{sphere}
-
-\clearpage
 \input{nsphere}
-
-\clearpage
-\input{sphere_geodesic}
 
 \clearpage
 \input{nsphere_geodesic}
@@ -307,7 +316,7 @@ SUMMARY TABLE -- at least giving equation and page references.
 \input{approximation}
 
 \clearpage
-\input{numerical}
+% \input{numerical}
 
 \clearpage
 \input{programs}
