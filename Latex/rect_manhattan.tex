@@ -12,24 +12,24 @@ called the taxicab, or rectilinear, or L1 distance) between the two
 points. Figure~\ref{fig:rect_man_eg} shows an example, illustrating
 the rectilinear distance.
 
-The PDF for one case ($a=1$, $b=2.5$) is shown
-in \label{fig:rect_man_pdf}, and the PDF for a range of rectangles
-with different aspect ratios, but constant perimeter, is shown in
-Figure~\ref{fig:rect_man_pdf_various}.
+Figure~\ref{fig:rect_man_pdf} shows the PDF for one rectangle ($a=1$,
+$b=2.5$), and Figure~\ref{fig:rect_man_pdf_var} shows the PDFs for
+various rectangles chosen such that $\sqrt{a^2 + b^2} = 1$ to allow
+comparison (the choice means that the PDFs have the same support).
 
 \begin{figure}[tbp]
   \begin{center}
-    \subfloat[\label{fig:rect_man_eg}Example.]{\includegraphics[width=0.31\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect_man_eg.eps}}
-    \hspace{3mm}
-    \subfloat[\label{fig:rect_man_pdf}The PDF for $a=1$, $b=2.5$,
-    showing the three
-    regions.]{\includegraphics[width=0.31\columnwidth]{../Matlab/Plots/LinePicking_test_rect_man_regions.eps}}
-    \hspace{3mm}
-    \subfloat[\label{fig:rect_man_pdf_various}The PDF for various
-    aspect ratios $a \! : \! b$ with
-    $a+b=1$.]{\includegraphics[width=0.31\columnwidth]{../Matlab/Plots/LinePicking_test_rect_man.eps}}
-    \caption{The line picking problem on a rectangle, with the
-      Manhattan distance.}
+    \subfloat[\label{fig:rect_man_eg}2:1 rectangle example.
+    Example.]{\includegraphics[width=0.28\columnwidth]
+          {../Matlab/Plots/LinePicking_eg_rect_man.eps}} 
+    \hspace{6mm}
+    \subfloat[\label{fig:rect_man_pdf}PDF of rectangles with various aspect
+    ratios.]{\includegraphics[width=0.35\columnwidth]
+          {../Matlab/Plots/LinePicking_plot_rect_man_regions.eps}}
+    \subfloat[\label{fig:rect_man_pdf_var}PDF of rectangles with various aspect
+    ratios.]{\includegraphics[width=0.35\columnwidth]
+          {../Matlab/Plots/LinePicking_plot_rect_man.eps}}
+    \caption{The rectangle-line picking problem with Manhattan distance.}
   \end{center} 
 \vspace{-4mm}
 \end{figure}

@@ -22,9 +22,7 @@ vars(problem+1) = LinePickingVar(problem, parameters)
 name(problem+1) = {LinePickingProblemLookup(problem)};
 
 seed = 1;
-parameters1 = parameters;
-parameters1(1) = parameters1(1)+1;
-d = LinePickingSimDistances(M, problem, parameters1, seed);
+d = LinePickingSimDistances(M, problem, parameters, seed);
 n = histc(d, t);
 prob = (n/length(d)) / ds;
 est_means(problem+1) = mean(d)

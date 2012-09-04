@@ -221,7 +221,7 @@ void HyperSphereDistanceCheckParameters(double *parameters, int *result,
  */
 void HyperSphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
 {
-    *Ncoords = parameters[0]; /* really this could be done with two coordinates, but life is easier this way */
+    *Ncoords = parameters[0]+1; /* really this could be done with two coordinates, but life is easier this way */
     *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
 }
 
