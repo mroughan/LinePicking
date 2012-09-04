@@ -18,4 +18,5 @@ test_that("PDF integrate to 1 over support",{
   expect_that(NumCDF(8,c(5,5)), equals(1, tolerance=1e-5))
   expect_that(NumCDF(9,c(5,5)), equals(1, tolerance=1e-5))
   expect_that(NumCDF(10,c(5,5)), equals(1, tolerance=1e-5))
+  expect_that(NumCDF(11,c(5,5)), equals(1, tolerance=1e-5))
 })
