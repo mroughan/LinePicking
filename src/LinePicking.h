@@ -192,7 +192,7 @@ typedef struct
 
 #define ExpandForMatlab(_x, _in, _out) void mex##_x (int nlhs, mxArray *plhs[],\
 int nrhs, const mxArray *prhs[], int *result, \
-char **error_str);
+char **error_str, int cmd);
 
 #include "MatlabDefinitions.def"
 
