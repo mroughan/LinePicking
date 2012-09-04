@@ -1,6 +1,11 @@
 %
 % Look at limits for n-ball and n-sphere
 %
+% Q: 
+%     Are they asymptotically normal? If so, with what parameters
+%     Do they converge to a delta?
+%     Do the nsphere an nball coverge to the same distribution?
+%
 % Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
 %     This program is free software: you can redistribute it and/or modify
 %     it under the terms of the GNU General Public License as published by
@@ -54,7 +59,6 @@ for n=1:8
   legend_str(n,:) = sprintf('n = %3d', n*step);
 end
 set(gca, 'xlim', [0 2.3]);
-% set(gca, 'ylim', [0 6]);
 legend(p5, legend_str,'location','NorthWest');
 xlabel('t');
 ylabel('g_n(t)');
@@ -74,13 +78,32 @@ for n=1:8
   legend_str(n,:) = sprintf('n = %3d', n*step);
 end
 set(gca, 'xlim', [0 2.3]);
-% set(gca, 'ylim', [0 6]);
 legend(p16, legend_str,'location','NorthWest');
 xlabel('t');
 ylabel('g_n(t)');
 filename = sprintf('%s/LinePicking_limit_nspheres.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
+
+% compare sphere-geodesic-line picking in different dimensions:
+%   
+figure(17)
+hold off
+plot(0,0)
+hold on
+for n=1:8
+  [g] = LinePickingPDF(t, 12, [n*step, 1]);
+  p17(n) = plot(t,g,'color', colors(n,:));
+  legend_str(n,:) = sprintf('n = %3d', n*step);
+end
+set(gca, 'xlim', [0 pi]);
+legend(p17, legend_str,'location','NorthWest');
+xlabel('t');
+ylabel('g_n(t)');
+filename = sprintf('%s/LinePicking_limit_nspheres_geodesic.%s', plotdir, suffix);
+print(device, filename);
+fprintf('Printed to %s\n', filename);
+
 
 figure(100)
 hold off

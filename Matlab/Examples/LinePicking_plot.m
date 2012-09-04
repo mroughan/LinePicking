@@ -50,7 +50,7 @@ plot(0,0)
 hold on
 for n=1:8
   [g] = LinePickingPDF(t, 2, [n, 1]);
-  p5(n) = plot(t,g,'color', colors(n,:), 'linewidth', 2);
+  p5(n) = plot(t,g,'color', colors(n,:));
   legend_str(n,:) = sprintf('n = %2d', n);
 end
 set(gca, 'xlim', [0 2.3]);
@@ -75,12 +75,12 @@ figure(6)
 hold off
 plot(0,0)
 hold on
-p6(1) = plot(t, g_square,'color', colors(1,:), 'linewidth', 2);
-p6(2) = plot(t, g_disk,'color', colors(2,:), 'linewidth', 2);
-p6(3) = plot(t, g_sphere,'color', colors(4,:), 'linewidth', 2);
-p6(4) = plot(t, g_rect,'color', colors(5,:), 'linewidth', 2);
-p6(5) = plot(t, g_line,'color', colors(3,:), 'linewidth', 2);
-p6(6) = plot(t, g_cube,'color', colors(6,:), 'linewidth', 2);
+p6(1) = plot(t, g_square,'color', colors(1,:));
+p6(2) = plot(t, g_disk,'color', colors(2,:));
+p6(3) = plot(t, g_sphere,'color', colors(4,:));
+p6(4) = plot(t, g_rect,'color', colors(5,:));
+p6(5) = plot(t, g_line,'color', colors(3,:));
+p6(6) = plot(t, g_cube,'color', colors(6,:));
 set(gca, 'xlim', [0 1]);
 legend(p6, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'line', 'cube');
 xlabel('t');
@@ -103,11 +103,11 @@ figure(7)
 hold off
 plot(0,0)
 hold on
-p7(1) = plot(t, g_square,'color', colors(1,:), 'linewidth', 2);
-p7(2) = plot(t, g_disk,'color', colors(2,:), 'linewidth', 2);
-p7(3) = plot(t, g_sphere,'color', colors(4,:), 'linewidth', 2);
-p7(4) = plot(t, g_rect,'color', colors(5,:), 'linewidth', 2);
-p7(5) = plot(t, g_cube,'color', colors(6,:), 'linewidth', 2);
+p7(1) = plot(t, g_square,'color', colors(1,:));
+p7(2) = plot(t, g_disk,'color', colors(2,:));
+p7(3) = plot(t, g_sphere,'color', colors(4,:));
+p7(4) = plot(t, g_rect,'color', colors(5,:));
+p7(5) = plot(t, g_cube,'color', colors(6,:));
 set(gca, 'xlim', [0 2.1]);
 legend(p7, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'cube');
 xlabel('t');
@@ -129,7 +129,7 @@ plot(0,0)
 hold on
 for n=1:8
   [g_rect] = LinePickingPDF(t, 3, [n,1]/sqrt(1+n^2));
-  p8(n) = plot(t,g_rect,'color', colors(n,:), 'linewidth', 2);
+  p8(n) = plot(t,g_rect,'color', colors(n,:));
   legend_str8(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
 set(gca, 'xlim', [0 1]);
@@ -161,7 +161,7 @@ hold on
 fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
-plot(t,g,'b-', 'linewidth', 2);
+plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
@@ -182,7 +182,7 @@ plot(0,0)
 hold on
 for n=1:8
   [g_rect_man] = LinePickingPDF(t, problem, [n,1]/(1+n));
-  p9(n) = plot(t,g_rect_man,'color', colors(n,:), 'linewidth', 2);
+  p9(n) = plot(t,g_rect_man,'color', colors(n,:));
   legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
 set(gca, 'xlim', [0 1]);
@@ -214,7 +214,7 @@ hold on
 fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
-plot(t,g,'b-', 'linewidth', 2);
+plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
@@ -234,7 +234,7 @@ plot(0,0)
 hold on
 for n=1:8
   [g_rect_max] = LinePickingPDF(t, problem, [n,1]/n);
-  p9(n) = plot(t,g_rect_max,'color', colors(n,:), 'linewidth', 2);
+  p9(n) = plot(t,g_rect_max,'color', colors(n,:));
   legend_str9(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
 set(gca, 'xlim', [0 1]);
@@ -266,7 +266,7 @@ hold on
 fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
-plot(t,g,'b-', 'linewidth', 2);
+plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
@@ -296,7 +296,7 @@ hold on
 fill([t1, fliplr(t1)], [g_cube(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g_cube(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g_cube(k3),zeros(size(k3))], [1,1,0.9]);
-plot(t,g_cube,'color', colors(n,:), 'linewidth', 2);
+plot(t,g_cube,'color', colors(n,:));
 set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
@@ -322,7 +322,7 @@ hold off
 plot(0,0)
 hold on
 [g_line] = LinePickingPDF(t, problem, L);
-plot(t,g_line,'color', 'b', 'linewidth', 2);
+plot(t,g_line,'color', 'b');
 set(gca, 'xlim', [0 1]);
 xlabel('t');
 ylabel('g^{\rm line}(t)');
@@ -335,7 +335,7 @@ hold off
 plot(0,0)
 hold on
 [G_line] = LinePickingCDF(t, problem, L);
-plot(t,G_line,'color', 'b', 'linewidth', 2);
+plot(t,G_line,'color', 'b');
 set(gca, 'xlim', [0 1]);
 xlabel('t');
 ylabel('G^{\rm line}(t)');
@@ -360,7 +360,7 @@ hold on
 [g_square] = LinePickingPDF(t, problem, L);
 fill([t1, fliplr(t1)], [g_square(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g_square(k2),zeros(size(k2))], [1,0.9,1]);
-plot(t,g_square,'color', 'b', 'linewidth', 2);
+plot(t,g_square,'color', 'b');
 set(gca, 'xlim', [0 sqrt(2)]);
 xlabel('t');
 ylabel('g^{\rm square}(t)');
@@ -375,7 +375,7 @@ hold on
 [G_square] = LinePickingCDF(t, problem, L);
 fill([t1, fliplr(t1)], [G_square(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [G_square(k2),zeros(size(k2))], [1,0.9,1]);
-plot(t,G_square,'color', 'b', 'linewidth', 2);
+plot(t,G_square,'color', 'b');
 set(gca, 'xlim', [0 sqrt(2)]);
 xlabel('t');
 ylabel('G^{\rm square}(t)');
@@ -391,7 +391,7 @@ plot(0,0)
 hold on
 for n=1:8
   [g] = LinePickingPDF(t, 11, [n, 1]);
-  p16(n) = plot(t,g,'color', colors(n,:), 'linewidth', 2);
+  p16(n) = plot(t,g,'color', colors(n,:));
   legend_str(n,:) = sprintf('n = %2d', n);
 end
 set(gca, 'xlim', [0 2.3]);
@@ -411,10 +411,10 @@ plot(0,0)
 hold on
 for n=1:8
   [g] = LinePickingPDF(t, 12, [n, 1]);
-  p17(n) = plot(t,g,'color', colors(n,:), 'linewidth', 2);
+  p17(n) = plot(t,g,'color', colors(n,:));
   legend_str(n,:) = sprintf('n = %2d', n);
 end
-set(gca, 'xlim', [0 3]);
+set(gca, 'xlim', [0 pi]);
 set(gca, 'ylim', [0 1.5]);
 legend(p17, legend_str,'location','NorthWest');
 xlabel('t');
