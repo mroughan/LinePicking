@@ -20,6 +20,12 @@ double \hyperlink{_cube_8h_ac37d5ff3c99d8637fc414212ac041f18}{Cube\-Distance\-Va
 void \hyperlink{_cube_8h_ab6515117628cc8d3e75be8f417ce5787}{Cube\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_cube_8h_a69bb825990e8c958e52a7ca7382fde0c}{Cube\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_cube_8h_a798749176206e84aa3aef6184e549c0f}{Cube\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_cube_8h_a4c30624eb7830602dd4d78cb967c9be1}{Cube\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_cube_8h_a4dd271f97c8be3bc3dc75043e6e3ae84}{Cube\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -108,6 +114,49 @@ The mean distance between two points in a unit cube.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/CubeLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Cube\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_cube_8h_a4dd271f97c8be3bc3dc75043e6e3ae84}{\index{Cube.\-h@{Cube.\-h}!Cube\-Distance\-Metric@{Cube\-Distance\-Metric}}
+\index{Cube\-Distance\-Metric@{Cube\-Distance\-Metric}!Cube.h@{Cube.\-h}}
+\subsubsection[{Cube\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Cube\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_cube_8h_a4dd271f97c8be3bc3dc75043e6e3ae84}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_cube_8h_a798749176206e84aa3aef6184e549c0f}{\index{Cube.\-h@{Cube.\-h}!Cube\-Distance\-Ncoords@{Cube\-Distance\-Ncoords}}
+\index{Cube\-Distance\-Ncoords@{Cube\-Distance\-Ncoords}!Cube.h@{Cube.\-h}}
+\subsubsection[{Cube\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Cube\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cube_8h_a798749176206e84aa3aef6184e549c0f}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_cube_8h_a262fe199765102368f353b18c624c65c}{\index{Cube.\-h@{Cube.\-h}!Cube\-Distance\-P\-D\-F@{Cube\-Distance\-P\-D\-F}}
 \index{Cube\-Distance\-P\-D\-F@{Cube\-Distance\-P\-D\-F}!Cube.h@{Cube.\-h}}
 \subsubsection[{Cube\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Cube\-Distance\-P\-D\-F (
@@ -133,6 +182,29 @@ The density at \$t.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/CubeLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Cube\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_cube_8h_a4c30624eb7830602dd4d78cb967c9be1}{\index{Cube.\-h@{Cube.\-h}!Cube\-Distance\-Sim\-Points@{Cube\-Distance\-Sim\-Points}}
+\index{Cube\-Distance\-Sim\-Points@{Cube\-Distance\-Sim\-Points}!Cube.h@{Cube.\-h}}
+\subsubsection[{Cube\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Cube\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cube_8h_a4c30624eb7830602dd4d78cb967c9be1}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_cube_8h_ab6515117628cc8d3e75be8f417ce5787}{\index{Cube.\-h@{Cube.\-h}!Cube\-Distance\-Support@{Cube\-Distance\-Support}}
 \index{Cube\-Distance\-Support@{Cube\-Distance\-Support}!Cube.h@{Cube.\-h}}
 \subsubsection[{Cube\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Cube\-Distance\-Support (

@@ -121,11 +121,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> HyperSphereDistanceCheckParameters(<span class="keywordtype">double</span> *parameters, <span class="keywordtype">int</span> *result, </div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                      <span class="keywordtype">char</span> *error_str);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _HYPERSPHERE_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> HyperSphereDistanceNcoords(<span class="keywordtype">int</span> *Ncoords, <span class="keywordtype">char</span> **CoordSystem, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> HyperSphereDistanceSimPoints(<span class="keywordtype">double</span> **points, <span class="keywordtype">int</span> *Npoints, <span class="keywordtype">int</span> *Ncoords, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keywordtype">double</span> HyperSphereDistanceMetric(<span class="keywordtype">int</span> Ncoords, <span class="keywordtype">double</span> *point1, <span class="keywordtype">double</span>* point2);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _HYPERSPHERE_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 3 2012 01:57:35 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 3 2012 20:49:57 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

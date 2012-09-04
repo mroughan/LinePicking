@@ -108,6 +108,12 @@ Functions</h2></td></tr>
 <tr class="separator:aa5edd08b36e87835366a0789ca247785"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2753f6846132cd3d18ffbe5cf281059f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sphere_geodesic_8h.html#a2753f6846132cd3d18ffbe5cf281059f">SphereGeodesicDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
 <tr class="separator:a2753f6846132cd3d18ffbe5cf281059f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcd3909296775f86691ff04e22f591ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sphere_geodesic_8h.html#abcd3909296775f86691ff04e22f591ce">SphereGeodesicDistanceNcoords</a> (int *Ncoords, char **CoordSystem, double *parameters)</td></tr>
+<tr class="separator:abcd3909296775f86691ff04e22f591ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14fa79916cda995cf3b89959dbf0ff2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sphere_geodesic_8h.html#ac14fa79916cda995cf3b89959dbf0ff2">SphereGeodesicDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
+<tr class="separator:ac14fa79916cda995cf3b89959dbf0ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeeba5365697facdeaed969985953006"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_sphere_geodesic_8h.html#aeeeba5365697facdeaed969985953006">SphereGeodesicDistanceMetric</a> (int Ncoords, double *point1, double *point2)</td></tr>
+<tr class="separator:aeeeba5365697facdeaed969985953006"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -145,7 +151,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Implements the CDF of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.e., a geodesic).</p>
 <p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a>. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000036">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000039">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$s</td><td>The distance to calculate the cumulative density for. </td></tr>
@@ -214,7 +220,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Calculates the mean of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.e., a geodesic).</p>
 <p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a>. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000037">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000040">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the sphere. </td></tr>
@@ -222,6 +228,90 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The mean of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.e., a geodesic). </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aeeeba5365697facdeaed969985953006"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SphereGeodesicDistanceMetric </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate distance (using correct metric) between 2 points</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$points1</td><td>= coordinates of first point </td></tr>
+    <tr><td class="paramname">$points2</td><td>= coordinates of second point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The distance between the two points </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000042">Todo:</a></b></dt><dd>Implement this. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abcd3909296775f86691ff04e22f591ce"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SphereGeodesicDistanceNcoords </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>CoordSystem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the number of coordinates used given input problem and parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
+    <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -250,7 +340,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Implements the PDF of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.e., a geodesic).</p>
 <p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a>. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000035">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000038">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$s</td><td>The distance to calculate the density for. </td></tr>
@@ -259,6 +349,54 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The density at $s. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac14fa79916cda995cf3b89959dbf0ff2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SphereGeodesicDistanceSimPoints </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Simulate a set of points from the problem of interest</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system </td></tr>
+    <tr><td class="paramname">$Npoints</td><td>= number of points to generate </td></tr>
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -311,7 +449,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Calculates the variance of the distances between two random points on the surface of a sphere measured around the surface of the sphere (i.e., a geodesic).</p>
 <p>Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a>. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000038">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000041">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the radius of the sphere. </td></tr>
@@ -325,7 +463,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 3 2012 01:57:36 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 3 2012 20:49:58 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

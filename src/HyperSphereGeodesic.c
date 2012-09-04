@@ -84,12 +84,17 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
                                     pow(cos(t / r), 2), 100) *
                   pow(sin(t / r), n)) / 
                     (pow(tgamma(0.5 * n), 2) * pow(pow(sin(t / r),2.),n/2.))); */
-    
+    /*
    return 0.5 - ((cos(t / r) * tgamma((1 + n) / 2.) *
                   hypergeometric2f1_(0.5, 1 - n / 2., 1.5, 
                                     pow(cos(t / r), 2), 100)
                  * pow(sin(t/r),n))/
-                 (sqrt(M_PI)*tgamma(n / 2.) * pow(pow(sin(t / r), 2), n / 2.)));
+                 (sqrt(M_PI)*tgamma(n / 2.) * pow(pow(sin(t / r), 2), n / 2.)));*/
+    
+    return 0.5 - ((cos(t / r) * tgamma((1 + n)/2.) * 
+                   hypergeometric2f1_(0.5, 1 - n / 2., 1.5, 
+                                     pow(cos(t / r), 2), 100)) /
+                  (sqrt(M_PI) * tgamma(n/2.)));
 }
 
 
@@ -102,8 +107,7 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
  * @return The mean distance between two random points on a hyper-sphere.
  */
 double HyperSphereGeodesicDistanceMean(double* parameters)
-{
-    double n = ceil(parameters[0]); 
+{ 
     double r = parameters[1];
     
     return (M_PI * r) / 2.0;

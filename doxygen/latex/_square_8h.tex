@@ -20,6 +20,12 @@ double \hyperlink{_square_8h_afbc676954944a54a8068a8c16afcc044}{Square\-Distance
 void \hyperlink{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{Square\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_square_8h_ad0b790be76a72cdb8223d04da0774084}{Square\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_square_8h_a353252bf400f8a646084f27f2052dc6a}{Square\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_square_8h_a1810f50789e22c584a1aa7e234ff17b0}{Square\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_square_8h_a2018f08a863faf31538e19ce548cfbbe}{Square\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -105,6 +111,49 @@ The mean distance between two random points on a square.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_square_8h_a2018f08a863faf31538e19ce548cfbbe}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Metric@{Square\-Distance\-Metric}}
+\index{Square\-Distance\-Metric@{Square\-Distance\-Metric}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_a2018f08a863faf31538e19ce548cfbbe}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_square_8h_a353252bf400f8a646084f27f2052dc6a}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Ncoords@{Square\-Distance\-Ncoords}}
+\index{Square\-Distance\-Ncoords@{Square\-Distance\-Ncoords}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_a353252bf400f8a646084f27f2052dc6a}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_square_8h_a68e95e7440f8bf397433fe927269ec88}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-P\-D\-F@{Square\-Distance\-P\-D\-F}}
 \index{Square\-Distance\-P\-D\-F@{Square\-Distance\-P\-D\-F}!Square.h@{Square.\-h}}
 \subsubsection[{Square\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-P\-D\-F (
@@ -128,6 +177,29 @@ The density at \$t.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_square_8h_a1810f50789e22c584a1aa7e234ff17b0}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Sim\-Points@{Square\-Distance\-Sim\-Points}}
+\index{Square\-Distance\-Sim\-Points@{Square\-Distance\-Sim\-Points}!Square.h@{Square.\-h}}
+\subsubsection[{Square\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_square_8h_a1810f50789e22c584a1aa7e234ff17b0}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Support@{Square\-Distance\-Support}}
 \index{Square\-Distance\-Support@{Square\-Distance\-Support}!Square.h@{Square.\-h}}
 \subsubsection[{Square\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Square\-Distance\-Support (

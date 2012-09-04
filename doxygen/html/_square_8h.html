@@ -108,6 +108,12 @@ Functions</h2></td></tr>
 <tr class="separator:a922c1f4695e3f9c5d302cf86b8ba2e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0b790be76a72cdb8223d04da0774084"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_square_8h.html#ad0b790be76a72cdb8223d04da0774084">SquareDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
 <tr class="separator:ad0b790be76a72cdb8223d04da0774084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a353252bf400f8a646084f27f2052dc6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_square_8h.html#a353252bf400f8a646084f27f2052dc6a">SquareDistanceNcoords</a> (int *Ncoords, char **CoordSystem, double *parameters)</td></tr>
+<tr class="separator:a353252bf400f8a646084f27f2052dc6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1810f50789e22c584a1aa7e234ff17b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_square_8h.html#a1810f50789e22c584a1aa7e234ff17b0">SquareDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
+<tr class="separator:a1810f50789e22c584a1aa7e234ff17b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2018f08a863faf31538e19ce548cfbbe"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_square_8h.html#a2018f08a863faf31538e19ce548cfbbe">SquareDistanceMetric</a> (int Ncoords, double *point1, double *point2)</td></tr>
+<tr class="separator:a2018f08a863faf31538e19ce548cfbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -223,6 +229,89 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2018f08a863faf31538e19ce548cfbbe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SquareDistanceMetric </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate distance (using correct metric) between 2 points</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$points1</td><td>= coordinates of first point </td></tr>
+    <tr><td class="paramname">$points2</td><td>= coordinates of second point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The distance between the two points </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a353252bf400f8a646084f27f2052dc6a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SquareDistanceNcoords </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>CoordSystem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the number of coordinates used given input problem and parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
+    <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a68e95e7440f8bf397433fe927269ec88"></a>
 <div class="memitem">
 <div class="memproto">
@@ -256,6 +345,54 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The density at $t. </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/SquareLinePicking.html">http://mathworld.wolfram.com/SquareLinePicking.html</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1810f50789e22c584a1aa7e234ff17b0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SquareDistanceSimPoints </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Simulate a set of points from the problem of interest</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system </td></tr>
+    <tr><td class="paramname">$Npoints</td><td>= number of points to generate </td></tr>
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -322,7 +459,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 3 2012 01:57:36 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 3 2012 20:49:58 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

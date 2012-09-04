@@ -20,6 +20,12 @@ double \hyperlink{_rectangle_manhattan_8h_a117ba0bca15232d5d7eb89b8b5a7c1ff}{Rec
 void \hyperlink{_rectangle_manhattan_8h_a5d33e1aea01cc27b013c0291e19ed2ef}{Rectangle\-Manhattan\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_rectangle_manhattan_8h_a1d30f47a9d0f75bfdef1a2f0d1de039b}{Rectangle\-Manhattan\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_rectangle_manhattan_8h_ad01d408a32124bfce406cc8a1628ec4b}{Rectangle\-Manhattan\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_rectangle_manhattan_8h_aa5989c474fb0fb8c430b7d32ee760634}{Rectangle\-Manhattan\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_rectangle_manhattan_8h_ac6a60f9a809c3d4e39554d997f17db44}{Rectangle\-Manhattan\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -50,7 +56,7 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 Implements the C\-D\-F of the distance between two random points on a rectangle measured using the Manhattan metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000028}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000031}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calculate the cumulative density for. \\
@@ -94,7 +100,7 @@ Any error conditions are indicated by placing a value other than 0 in the locati
 Calculates the mean distance between two random points on a rectangle measured using the Manhattan metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000029}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000032}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
@@ -103,6 +109,49 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a rectangle. 
 \end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_ac6a60f9a809c3d4e39554d997f17db44}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Metric@{Rectangle\-Manhattan\-Distance\-Metric}}
+\index{Rectangle\-Manhattan\-Distance\-Metric@{Rectangle\-Manhattan\-Distance\-Metric}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_ac6a60f9a809c3d4e39554d997f17db44}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_ad01d408a32124bfce406cc8a1628ec4b}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Ncoords@{Rectangle\-Manhattan\-Distance\-Ncoords}}
+\index{Rectangle\-Manhattan\-Distance\-Ncoords@{Rectangle\-Manhattan\-Distance\-Ncoords}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Manhattan\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_ad01d408a32124bfce406cc8a1628ec4b}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_rectangle_manhattan_8h_a0eb28f90684fb76ee37f6e1b63d1f54a}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-P\-D\-F@{Rectangle\-Manhattan\-Distance\-P\-D\-F}}
 \index{Rectangle\-Manhattan\-Distance\-P\-D\-F@{Rectangle\-Manhattan\-Distance\-P\-D\-F}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
 \subsubsection[{Rectangle\-Manhattan\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-P\-D\-F (
@@ -114,7 +163,7 @@ The mean distance between two random points on a rectangle.
 Implements the P\-D\-F of the distance between two random points on a rectangle measured using the Manhattan metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000027}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000030}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calculate the density for. \\
@@ -125,6 +174,29 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The density at \$t. 
 \end{DoxyReturn}
+\hypertarget{_rectangle_manhattan_8h_aa5989c474fb0fb8c430b7d32ee760634}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Sim\-Points@{Rectangle\-Manhattan\-Distance\-Sim\-Points}}
+\index{Rectangle\-Manhattan\-Distance\-Sim\-Points@{Rectangle\-Manhattan\-Distance\-Sim\-Points}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
+\subsubsection[{Rectangle\-Manhattan\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Manhattan\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_manhattan_8h_aa5989c474fb0fb8c430b7d32ee760634}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_rectangle_manhattan_8h_a5d33e1aea01cc27b013c0291e19ed2ef}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Support@{Rectangle\-Manhattan\-Distance\-Support}}
 \index{Rectangle\-Manhattan\-Distance\-Support@{Rectangle\-Manhattan\-Distance\-Support}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
 \subsubsection[{Rectangle\-Manhattan\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Manhattan\-Distance\-Support (
@@ -155,7 +227,7 @@ The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper 
 Calculates the variance of distances between two random points on a rectangle measured using the Manhattan metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000030}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000033}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
