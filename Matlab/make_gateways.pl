@@ -72,7 +72,6 @@ print "\$template_file = $template_file\n";
 
 # read in the C code
 $mex = 0;
-$k = 0;
 $case_i = -1;
 open(FILE, "< $file") or die "Error:could not open $file: $!\n";
 while (<FILE>) {
