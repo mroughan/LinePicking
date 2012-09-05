@@ -20,6 +20,12 @@ double \hyperlink{_disk_8h_a156ab336770f189207572a9282158392}{Disk\-Distance\-Va
 void \hyperlink{_disk_8h_ac4bf32a1a301d1a73a6aba771b4b6924}{Disk\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_disk_8h_a00d7ffaa41fc12193012b4fa03606ac1}{Disk\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_disk_8h_a1a4b519cabbd7d71626c865f2d945b68}{Disk\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_disk_8h_a3ea425769dd877804c129ad5801ad448}{Disk\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_disk_8h_abcc601c79003f3b4ab405466831c1b51}{Disk\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -109,6 +115,49 @@ The mean distance between two points on a disk.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_disk_8h_abcc601c79003f3b4ab405466831c1b51}{\index{Disk.\-h@{Disk.\-h}!Disk\-Distance\-Metric@{Disk\-Distance\-Metric}}
+\index{Disk\-Distance\-Metric@{Disk\-Distance\-Metric}!Disk.h@{Disk.\-h}}
+\subsubsection[{Disk\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Disk\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_disk_8h_abcc601c79003f3b4ab405466831c1b51}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_disk_8h_a1a4b519cabbd7d71626c865f2d945b68}{\index{Disk.\-h@{Disk.\-h}!Disk\-Distance\-Ncoords@{Disk\-Distance\-Ncoords}}
+\index{Disk\-Distance\-Ncoords@{Disk\-Distance\-Ncoords}!Disk.h@{Disk.\-h}}
+\subsubsection[{Disk\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Disk\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_disk_8h_a1a4b519cabbd7d71626c865f2d945b68}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_disk_8h_af380a0fb907ad9d5b932cfeaaa812ce3}{\index{Disk.\-h@{Disk.\-h}!Disk\-Distance\-P\-D\-F@{Disk\-Distance\-P\-D\-F}}
 \index{Disk\-Distance\-P\-D\-F@{Disk\-Distance\-P\-D\-F}!Disk.h@{Disk.\-h}}
 \subsubsection[{Disk\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Disk\-Distance\-P\-D\-F (
@@ -135,6 +184,29 @@ The density at \$t.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_disk_8h_a3ea425769dd877804c129ad5801ad448}{\index{Disk.\-h@{Disk.\-h}!Disk\-Distance\-Sim\-Points@{Disk\-Distance\-Sim\-Points}}
+\index{Disk\-Distance\-Sim\-Points@{Disk\-Distance\-Sim\-Points}!Disk.h@{Disk.\-h}}
+\subsubsection[{Disk\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Disk\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_disk_8h_a3ea425769dd877804c129ad5801ad448}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_disk_8h_ac4bf32a1a301d1a73a6aba771b4b6924}{\index{Disk.\-h@{Disk.\-h}!Disk\-Distance\-Support@{Disk\-Distance\-Support}}
 \index{Disk\-Distance\-Support@{Disk\-Distance\-Support}!Disk.h@{Disk.\-h}}
 \subsubsection[{Disk\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Disk\-Distance\-Support (

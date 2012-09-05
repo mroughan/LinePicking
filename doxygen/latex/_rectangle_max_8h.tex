@@ -20,6 +20,12 @@ double \hyperlink{_rectangle_max_8h_a5e0f082b20cf7ef198e57031cdbd2bea}{Rectangle
 void \hyperlink{_rectangle_max_8h_ad7ab679ff8c9f83bfbe78aeaa4ee01f0}{Rectangle\-Max\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_rectangle_max_8h_afc22233583190a55383abb7d82a88fe8}{Rectangle\-Max\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_rectangle_max_8h_a5a72eb3a9399e75126d78c5af8c675fe}{Rectangle\-Max\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_rectangle_max_8h_ac726a47136e909539848330a8fe539d3}{Rectangle\-Max\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_rectangle_max_8h_af638a6366a8e7d52bff81b0c7bbd9587}{Rectangle\-Max\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -50,7 +56,7 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 Implements the C\-D\-F of the distance between two random points on a rectangle measured using the max metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000032}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000035}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calculate the cumulative density for. \\
@@ -94,7 +100,7 @@ Any error conditions are indicated by placing a value other than 0 in the locati
 Calculates the mean distance between two random points on a rectangle measured using the max metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000033}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000036}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\
@@ -103,6 +109,49 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a rectangle. 
 \end{DoxyReturn}
+\hypertarget{_rectangle_max_8h_af638a6366a8e7d52bff81b0c7bbd9587}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Metric@{Rectangle\-Max\-Distance\-Metric}}
+\index{Rectangle\-Max\-Distance\-Metric@{Rectangle\-Max\-Distance\-Metric}!RectangleMax.h@{Rectangle\-Max.\-h}}
+\subsubsection[{Rectangle\-Max\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Max\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_max_8h_af638a6366a8e7d52bff81b0c7bbd9587}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_rectangle_max_8h_a5a72eb3a9399e75126d78c5af8c675fe}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Ncoords@{Rectangle\-Max\-Distance\-Ncoords}}
+\index{Rectangle\-Max\-Distance\-Ncoords@{Rectangle\-Max\-Distance\-Ncoords}!RectangleMax.h@{Rectangle\-Max.\-h}}
+\subsubsection[{Rectangle\-Max\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Max\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_max_8h_a5a72eb3a9399e75126d78c5af8c675fe}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_rectangle_max_8h_a9c33752d0602fa7bbe5314f728669d24}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-P\-D\-F@{Rectangle\-Max\-Distance\-P\-D\-F}}
 \index{Rectangle\-Max\-Distance\-P\-D\-F@{Rectangle\-Max\-Distance\-P\-D\-F}!RectangleMax.h@{Rectangle\-Max.\-h}}
 \subsubsection[{Rectangle\-Max\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Max\-Distance\-P\-D\-F (
@@ -114,7 +163,7 @@ The mean distance between two random points on a rectangle.
 Implements the P\-D\-F of the distance between two random points on a rectangle measured using the max metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000031}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000034}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calculate the density for. \\
@@ -125,6 +174,29 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The density at \$t. 
 \end{DoxyReturn}
+\hypertarget{_rectangle_max_8h_ac726a47136e909539848330a8fe539d3}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Sim\-Points@{Rectangle\-Max\-Distance\-Sim\-Points}}
+\index{Rectangle\-Max\-Distance\-Sim\-Points@{Rectangle\-Max\-Distance\-Sim\-Points}!RectangleMax.h@{Rectangle\-Max.\-h}}
+\subsubsection[{Rectangle\-Max\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Max\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_rectangle_max_8h_ac726a47136e909539848330a8fe539d3}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_rectangle_max_8h_ad7ab679ff8c9f83bfbe78aeaa4ee01f0}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Support@{Rectangle\-Max\-Distance\-Support}}
 \index{Rectangle\-Max\-Distance\-Support@{Rectangle\-Max\-Distance\-Support}!RectangleMax.h@{Rectangle\-Max.\-h}}
 \subsubsection[{Rectangle\-Max\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Rectangle\-Max\-Distance\-Support (
@@ -155,7 +227,7 @@ The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper 
 Calculates the variance of distances between two random points on a rectangle measured using the max metric.
 
 Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000034}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000037}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of one side of the rectangle and \$parameters\mbox{[}1\mbox{]} is the length of the other. \\

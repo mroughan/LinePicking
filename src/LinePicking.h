@@ -170,6 +170,57 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 /** @}*/
 
 
+#ifdef _MEX
+#include "mex.h"
+#include "matrix.h"
+
+
+
+typedef struct 
+{
+    void (* CMD)(int nlhs, mxArray *plhs[], 
+                 int nrhs, const mxArray *prhs[], 
+                 int *result, char **error_str);
+    char *MatlabCmdName;
+    int InputArgs;
+    int OutputArgs;
+} MatlabCallRec;
+
+
+/* 
+ * define ExpandForMatlab in a way that produces function 
+ * prototypes when MatlabDefinitions.def is included 
+ */
+#ifdef ExpandForMatlab
+#undef ExpandForMatlab
+#endif
+
+#define ExpandForMatlab(_x, _in, _out) void mex##_x (int nlhs, mxArray *plhs[],\
+int nrhs, const mxArray *prhs[], int *result, \
+char **error_str, int cmd);
+
+#include "MatlabDefinitions.def"
+
+/* 
+ * define ExpandForMatlab in a way that produces an array of  
+ * MatlabCallRec structs when MatlabDefinitions.def is included 
+ */
+#ifdef ExpandForMatlab
+#undef ExpandForMatlab
+#endif
+#define ExpandForMatlab(_x, _in, _out) { &mex##_x, #_x, _in, _out },
+
+MatlabCallRec MatlabCallList[] =
+{
+#include "MatlabDefinitions.def"
+};
+
+
+#define NUMBER_OF_MATLAB_CMDS elements(MatlabCallList)
+
+#endif /* _MEX */
+
+
 #ifdef _STANDALONE
 /*
  * bits needed to run this as a stand alone command-line function

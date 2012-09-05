@@ -108,6 +108,12 @@ Functions</h2></td></tr>
 <tr class="separator:a6569dd5df6a62c2a68b5413df03b9445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1fd054315809f3be16b79fc198a2a9b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_8h.html#a1fd054315809f3be16b79fc198a2a9b8">HyperSphereDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
 <tr class="separator:a1fd054315809f3be16b79fc198a2a9b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf682dd668187f6f735508e0a7de08c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_8h.html#aaf682dd668187f6f735508e0a7de08c2">HyperSphereDistanceNcoords</a> (int *Ncoords, char **CoordSystem, double *parameters)</td></tr>
+<tr class="separator:aaf682dd668187f6f735508e0a7de08c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc509ad7a9daae15bfb1572eb74e4713"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_8h.html#abc509ad7a9daae15bfb1572eb74e4713">HyperSphereDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
+<tr class="separator:abc509ad7a9daae15bfb1572eb74e4713"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af36bd8afc44797978f1975b4b6f3dc8d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_8h.html#af36bd8afc44797978f1975b4b6f3dc8d">HyperSphereDistanceMetric</a> (int Ncoords, double *point1, double *point2)</td></tr>
+<tr class="separator:af36bd8afc44797978f1975b4b6f3dc8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -144,7 +150,6 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Implements the CDF of the distance between two random points on a hyper-sphere.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Implement </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calculate the cumulative density for. </td></tr>
@@ -195,7 +200,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Any error conditions are indicated by placing a value other than 0 in the location pointed to by $result and a message explaining the error is copied in to the location pointed to $error_str The only condition this function needs to check is that the dimesnion of the hyper-sphere consider is at least 1. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>check if the 1-sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>check if the 1-sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code </dd></dl>
 
 </div>
 </div>
@@ -213,7 +218,6 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculates the mean distance between two random points on a hyper-sphere.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Implement </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the dimension of the hyper-sphere and $parameters[1] is the radius of the hyper-sphere. </td></tr>
@@ -221,6 +225,89 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The mean distance between two random points on a hyper-sphere. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af36bd8afc44797978f1975b4b6f3dc8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double HyperSphereDistanceMetric </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate distance (using correct metric) between 2 points</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$points1</td><td>= coordinates of first point </td></tr>
+    <tr><td class="paramname">$points2</td><td>= coordinates of second point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The distance between the two points </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaf682dd668187f6f735508e0a7de08c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HyperSphereDistanceNcoords </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>CoordSystem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the number of coordinates used given input problem and parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
+    <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -258,6 +345,54 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The density at $t. </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>check if the 1-sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abc509ad7a9daae15bfb1572eb74e4713"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HyperSphereDistanceSimPoints </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Simulate a set of points from the problem of interest</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system </td></tr>
+    <tr><td class="paramname">$Npoints</td><td>= number of points to generate </td></tr>
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -310,7 +445,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculates the variance of distances between two random points on a hyper-sphere.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Implement </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>Implement </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the dimension of the hyper-sphere and $parameters[1] is the radius of the hyper-sphere. </td></tr>
@@ -324,7 +459,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 3 2012 01:57:36 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 5 2012 03:48:47 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

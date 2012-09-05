@@ -108,6 +108,12 @@ Functions</h2></td></tr>
 <tr class="separator:ac4bf32a1a301d1a73a6aba771b4b6924"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00d7ffaa41fc12193012b4fa03606ac1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#a00d7ffaa41fc12193012b4fa03606ac1">DiskDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
 <tr class="separator:a00d7ffaa41fc12193012b4fa03606ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a4b519cabbd7d71626c865f2d945b68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#a1a4b519cabbd7d71626c865f2d945b68">DiskDistanceNcoords</a> (int *Ncoords, char **CoordSystem, double *parameters)</td></tr>
+<tr class="separator:a1a4b519cabbd7d71626c865f2d945b68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ea425769dd877804c129ad5801ad448"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#a3ea425769dd877804c129ad5801ad448">DiskDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
+<tr class="separator:a3ea425769dd877804c129ad5801ad448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abcc601c79003f3b4ab405466831c1b51"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_disk_8h.html#abcc601c79003f3b4ab405466831c1b51">DiskDistanceMetric</a> (int Ncoords, double *point1, double *point2)</td></tr>
+<tr class="separator:abcc601c79003f3b4ab405466831c1b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -226,6 +232,89 @@ Sphere and Its Applications"</p>
 
 </div>
 </div>
+<a class="anchor" id="abcc601c79003f3b4ab405466831c1b51"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DiskDistanceMetric </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>point2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate distance (using correct metric) between 2 points</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$points1</td><td>= coordinates of first point </td></tr>
+    <tr><td class="paramname">$points2</td><td>= coordinates of second point </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The distance between the two points </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a1a4b519cabbd7d71626c865f2d945b68"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DiskDistanceNcoords </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>CoordSystem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the number of coordinates used given input problem and parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
+    <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="af380a0fb907ad9d5b932cfeaaa812ce3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -261,6 +350,54 @@ Sphere and Its Applications"</p>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The density at $t. </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://mathworld.wolfram.com/BallLinePicking.html">http://mathworld.wolfram.com/BallLinePicking.html</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3ea425769dd877804c129ad5801ad448"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DiskDistanceSimPoints </td>
+          <td>(</td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npoints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Ncoords</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Simulate a set of points from the problem of interest</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system </td></tr>
+    <tr><td class="paramname">$Npoints</td><td>= number of points to generate </td></tr>
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -329,7 +466,7 @@ Sphere and Its Applications"</p>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 3 2012 01:57:35 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 5 2012 03:48:47 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

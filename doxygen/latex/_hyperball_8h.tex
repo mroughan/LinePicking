@@ -20,6 +20,12 @@ double \hyperlink{_hyperball_8h_aab4b94960ba0f8cb9652d489579780f6}{Hyperball\-Di
 void \hyperlink{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{Hyperball\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_hyperball_8h_a2e16e2049ffc42ddebae7f4dc66e6ef3}{Hyperball\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_hyperball_8h_a230385e5154cdc9cea8d5746fd630c83}{Hyperball\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_hyperball_8h_a54636be3e5baf903a2343388835d0884}{Hyperball\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_hyperball_8h_a93c9cb4f217260938e198372aae4cfa5}{Hyperball\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -105,6 +111,49 @@ The mean distance between two random points in a hyper-\/ball.
 
 \href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_hyperball_8h_a93c9cb4f217260938e198372aae4cfa5}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Metric@{Hyperball\-Distance\-Metric}}
+\index{Hyperball\-Distance\-Metric@{Hyperball\-Distance\-Metric}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_a93c9cb4f217260938e198372aae4cfa5}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_hyperball_8h_a230385e5154cdc9cea8d5746fd630c83}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Ncoords@{Hyperball\-Distance\-Ncoords}}
+\index{Hyperball\-Distance\-Ncoords@{Hyperball\-Distance\-Ncoords}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Hyperball\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_a230385e5154cdc9cea8d5746fd630c83}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-P\-D\-F@{Hyperball\-Distance\-P\-D\-F}}
 \index{Hyperball\-Distance\-P\-D\-F@{Hyperball\-Distance\-P\-D\-F}!Hyperball.h@{Hyperball.\-h}}
 \subsubsection[{Hyperball\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-P\-D\-F (
@@ -133,6 +182,29 @@ The density at \$t.
 
 \href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_hyperball_8h_a54636be3e5baf903a2343388835d0884}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Sim\-Points@{Hyperball\-Distance\-Sim\-Points}}
+\index{Hyperball\-Distance\-Sim\-Points@{Hyperball\-Distance\-Sim\-Points}!Hyperball.h@{Hyperball.\-h}}
+\subsubsection[{Hyperball\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Hyperball\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyperball_8h_a54636be3e5baf903a2343388835d0884}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}}
 \index{Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}!Hyperball.h@{Hyperball.\-h}}
 \subsubsection[{Hyperball\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Hyperball\-Distance\-Support (

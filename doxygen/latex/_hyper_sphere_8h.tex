@@ -20,6 +20,12 @@ double \hyperlink{_hyper_sphere_8h_a967f1346407b9b3263549e1052407fa4}{Hyper\-Sph
 void \hyperlink{_hyper_sphere_8h_a6569dd5df6a62c2a68b5413df03b9445}{Hyper\-Sphere\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_hyper_sphere_8h_a1fd054315809f3be16b79fc198a2a9b8}{Hyper\-Sphere\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_hyper_sphere_8h_aaf682dd668187f6f735508e0a7de08c2}{Hyper\-Sphere\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_hyper_sphere_8h_abc509ad7a9daae15bfb1572eb74e4713}{Hyper\-Sphere\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_hyper_sphere_8h_af36bd8afc44797978f1975b4b6f3dc8d}{Hyper\-Sphere\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -49,8 +55,6 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 )}}\label{_hyper_sphere_8h_ae5411ac6ba2485c1e033760ac2245e74}
 Implements the C\-D\-F of the distance between two random points on a hyper-\/sphere.
 
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000007}{Todo}]Implement \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calculate the cumulative density for. \\
@@ -83,7 +87,7 @@ Determines if the parameters supplied are valid input to the other functions imp
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str The only condition this function needs to check is that the dimesnion of the hyper-\/sphere consider is at least 1. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000010}{Todo}]check if the 1-\/sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000008}{Todo}]check if the 1-\/sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code \end{DoxyRefDesc}
 \hypertarget{_hyper_sphere_8h_a650d9f6bdb5043a287c9ed5e67419941}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Mean@{Hyper\-Sphere\-Distance\-Mean}}
 \index{Hyper\-Sphere\-Distance\-Mean@{Hyper\-Sphere\-Distance\-Mean}!HyperSphere.h@{Hyper\-Sphere.\-h}}
 \subsubsection[{Hyper\-Sphere\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Distance\-Mean (
@@ -93,8 +97,6 @@ Any error conditions are indicated by placing a value other than 0 in the locati
 )}}\label{_hyper_sphere_8h_a650d9f6bdb5043a287c9ed5e67419941}
 Calculates the mean distance between two random points on a hyper-\/sphere.
 
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000008}{Todo}]Implement \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/sphere and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/sphere. \\
@@ -103,6 +105,49 @@ Calculates the mean distance between two random points on a hyper-\/sphere.
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a hyper-\/sphere. 
 \end{DoxyReturn}
+\hypertarget{_hyper_sphere_8h_af36bd8afc44797978f1975b4b6f3dc8d}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Metric@{Hyper\-Sphere\-Distance\-Metric}}
+\index{Hyper\-Sphere\-Distance\-Metric@{Hyper\-Sphere\-Distance\-Metric}!HyperSphere.h@{Hyper\-Sphere.\-h}}
+\subsubsection[{Hyper\-Sphere\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_hyper_sphere_8h_af36bd8afc44797978f1975b4b6f3dc8d}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_hyper_sphere_8h_aaf682dd668187f6f735508e0a7de08c2}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Ncoords@{Hyper\-Sphere\-Distance\-Ncoords}}
+\index{Hyper\-Sphere\-Distance\-Ncoords@{Hyper\-Sphere\-Distance\-Ncoords}!HyperSphere.h@{Hyper\-Sphere.\-h}}
+\subsubsection[{Hyper\-Sphere\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Hyper\-Sphere\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyper_sphere_8h_aaf682dd668187f6f735508e0a7de08c2}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_hyper_sphere_8h_ac9f09ad018eaa239847e438a60d75aa3}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-P\-D\-F@{Hyper\-Sphere\-Distance\-P\-D\-F}}
 \index{Hyper\-Sphere\-Distance\-P\-D\-F@{Hyper\-Sphere\-Distance\-P\-D\-F}!HyperSphere.h@{Hyper\-Sphere.\-h}}
 \subsubsection[{Hyper\-Sphere\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Distance\-P\-D\-F (
@@ -127,6 +172,29 @@ The density at \$t.
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000006}{Todo}]check if the 1-\/sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code \end{DoxyRefDesc}
+\hypertarget{_hyper_sphere_8h_abc509ad7a9daae15bfb1572eb74e4713}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Sim\-Points@{Hyper\-Sphere\-Distance\-Sim\-Points}}
+\index{Hyper\-Sphere\-Distance\-Sim\-Points@{Hyper\-Sphere\-Distance\-Sim\-Points}!HyperSphere.h@{Hyper\-Sphere.\-h}}
+\subsubsection[{Hyper\-Sphere\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Hyper\-Sphere\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyper_sphere_8h_abc509ad7a9daae15bfb1572eb74e4713}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_hyper_sphere_8h_a6569dd5df6a62c2a68b5413df03b9445}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Support@{Hyper\-Sphere\-Distance\-Support}}
 \index{Hyper\-Sphere\-Distance\-Support@{Hyper\-Sphere\-Distance\-Support}!HyperSphere.h@{Hyper\-Sphere.\-h}}
 \subsubsection[{Hyper\-Sphere\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Hyper\-Sphere\-Distance\-Support (
@@ -157,7 +225,7 @@ The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper 
 Calculates the variance of distances between two random points on a hyper-\/sphere.
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000009}{Todo}]Implement \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000007}{Todo}]Implement \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/sphere and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/sphere. \\

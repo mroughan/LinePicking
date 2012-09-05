@@ -20,6 +20,12 @@ double \hyperlink{_hyper_sphere_geodesic_8h_a203990a77a11670e5ab591d64461fca4}{H
 void \hyperlink{_hyper_sphere_geodesic_8h_a6c091021336cf964cd3ac8ea1f4fc436}{Hyper\-Sphere\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_hyper_sphere_geodesic_8h_a0d1f54ac3a880c1c99d1ca5e85bd8256}{Hyper\-Sphere\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_hyper_sphere_geodesic_8h_a5849c183283668b9832e1da4d1fcb486}{Hyper\-Sphere\-Geodesic\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_hyper_sphere_geodesic_8h_ab3d32d66c2c0152df7c98bca28158b23}{Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_hyper_sphere_geodesic_8h_a19c36462545e2e1391333fd7053c26dd}{Hyper\-Sphere\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -81,7 +87,7 @@ Determines if the parameters supplied are valid input to the other functions imp
 Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str The only condition this function needs to check is that the dimesnion of the hyper-\/sphere consider is at least 1. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000014}{Todo}]check if the 1-\/sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000011}{Todo}]check if the 1-\/sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code \end{DoxyRefDesc}
 \hypertarget{_hyper_sphere_geodesic_8h_ace4934a0a477c12fee4f0fccea40c50a}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Mean@{Hyper\-Sphere\-Geodesic\-Distance\-Mean}}
 \index{Hyper\-Sphere\-Geodesic\-Distance\-Mean@{Hyper\-Sphere\-Geodesic\-Distance\-Mean}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
 \subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Geodesic\-Distance\-Mean (
@@ -91,8 +97,6 @@ Any error conditions are indicated by placing a value other than 0 in the locati
 )}}\label{_hyper_sphere_geodesic_8h_ace4934a0a477c12fee4f0fccea40c50a}
 Calculates the mean distance between two random points on a hyper-\/sphere measured along a geodesic.
 
-\begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000012}{Todo}]Implement \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/sphere and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/sphere. \\
@@ -101,6 +105,51 @@ Calculates the mean distance between two random points on a hyper-\/sphere measu
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a hyper-\/sphere. 
 \end{DoxyReturn}
+\hypertarget{_hyper_sphere_geodesic_8h_a19c36462545e2e1391333fd7053c26dd}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Metric@{Hyper\-Sphere\-Geodesic\-Distance\-Metric}}
+\index{Hyper\-Sphere\-Geodesic\-Distance\-Metric@{Hyper\-Sphere\-Geodesic\-Distance\-Metric}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
+\subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Geodesic\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_hyper_sphere_geodesic_8h_a19c36462545e2e1391333fd7053c26dd}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000012}{Todo}]Implement this. \end{DoxyRefDesc}
+\hypertarget{_hyper_sphere_geodesic_8h_a5849c183283668b9832e1da4d1fcb486}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Ncoords@{Hyper\-Sphere\-Geodesic\-Distance\-Ncoords}}
+\index{Hyper\-Sphere\-Geodesic\-Distance\-Ncoords@{Hyper\-Sphere\-Geodesic\-Distance\-Ncoords}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
+\subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Hyper\-Sphere\-Geodesic\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyper_sphere_geodesic_8h_a5849c183283668b9832e1da4d1fcb486}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_hyper_sphere_geodesic_8h_a16d98ff2d1ad0e4d662b8631c72f9931}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-P\-D\-F@{Hyper\-Sphere\-Geodesic\-Distance\-P\-D\-F}}
 \index{Hyper\-Sphere\-Geodesic\-Distance\-P\-D\-F@{Hyper\-Sphere\-Geodesic\-Distance\-P\-D\-F}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
 \subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Geodesic\-Distance\-P\-D\-F (
@@ -112,7 +161,7 @@ The mean distance between two random points on a hyper-\/sphere.
 Implements the P\-D\-F of the distance between two random points on a hyper-\/sphere measured along a geodesic.
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000011}{Todo}]reference us \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000009}{Todo}]reference us \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$t} & The distance to calculate the density for. \\
@@ -123,6 +172,29 @@ Implements the P\-D\-F of the distance between two random points on a hyper-\/sp
 \begin{DoxyReturn}{Returns}
 The density at \$t. 
 \end{DoxyReturn}
+\hypertarget{_hyper_sphere_geodesic_8h_ab3d32d66c2c0152df7c98bca28158b23}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points@{Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points}}
+\index{Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points@{Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
+\subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_hyper_sphere_geodesic_8h_ab3d32d66c2c0152df7c98bca28158b23}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_hyper_sphere_geodesic_8h_a6c091021336cf964cd3ac8ea1f4fc436}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Support@{Hyper\-Sphere\-Geodesic\-Distance\-Support}}
 \index{Hyper\-Sphere\-Geodesic\-Distance\-Support@{Hyper\-Sphere\-Geodesic\-Distance\-Support}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
 \subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Hyper\-Sphere\-Geodesic\-Distance\-Support (
@@ -153,7 +225,7 @@ The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper 
 Calculates the variance of distances between two random points on a hyper-\/sphere measured along a geodesic.
 
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000013}{Todo}]Implement \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000010}{Todo}]Implement \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/sphere and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/sphere. \\

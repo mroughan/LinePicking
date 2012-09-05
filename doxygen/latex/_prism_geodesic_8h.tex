@@ -20,6 +20,12 @@ double \hyperlink{_prism_geodesic_8h_ac804282eeada51c4b8b2e2ae636d1bab}{Prism\-G
 void \hyperlink{_prism_geodesic_8h_af2117caebb235b8823a466c181520309}{Prism\-Geodesic\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_prism_geodesic_8h_a11a61ee69a6e43eaedc3e6ff5f686f42}{Prism\-Geodesic\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_prism_geodesic_8h_ab78844059a347fe8e4272b66abc63afa}{Prism\-Geodesic\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_prism_geodesic_8h_ac95a32780ab47f82fa182f4ae9a2d600}{Prism\-Geodesic\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_prism_geodesic_8h_adba9b77cd0c7f008cf1cc2b9ac118658}{Prism\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -48,7 +54,7 @@ Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage
 \end{DoxyParamCaption}
 )}}\label{_prism_geodesic_8h_a8fb219075b27e66757a3b5c234097c4d}
 Implements the C\-D\-F of the distance between two random points on the surface of an upright prism (excluding the ends). The distance is measured around the the surface of the prism (i.\-e., a geodesic). Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000023}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000024}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$w} & The distance to calculate the cumulative density for. \\
@@ -98,7 +104,52 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 The mean distance between two random points on the surface of an upright prism (excluding the ends). 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000024}{Todo}]re-\/derive the mean without using the three part P\-D\-F as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000025}{Todo}]re-\/derive the mean without using the three part P\-D\-F as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle \end{DoxyRefDesc}
+\hypertarget{_prism_geodesic_8h_adba9b77cd0c7f008cf1cc2b9ac118658}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Metric@{Prism\-Geodesic\-Distance\-Metric}}
+\index{Prism\-Geodesic\-Distance\-Metric@{Prism\-Geodesic\-Distance\-Metric}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
+\subsubsection[{Prism\-Geodesic\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Prism\-Geodesic\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_prism_geodesic_8h_adba9b77cd0c7f008cf1cc2b9ac118658}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000028}{Todo}]Implement this. \end{DoxyRefDesc}
+\hypertarget{_prism_geodesic_8h_ab78844059a347fe8e4272b66abc63afa}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Ncoords@{Prism\-Geodesic\-Distance\-Ncoords}}
+\index{Prism\-Geodesic\-Distance\-Ncoords@{Prism\-Geodesic\-Distance\-Ncoords}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
+\subsubsection[{Prism\-Geodesic\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Prism\-Geodesic\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_prism_geodesic_8h_ab78844059a347fe8e4272b66abc63afa}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-P\-D\-F@{Prism\-Geodesic\-Distance\-P\-D\-F}}
 \index{Prism\-Geodesic\-Distance\-P\-D\-F@{Prism\-Geodesic\-Distance\-P\-D\-F}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
 \subsubsection[{Prism\-Geodesic\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Prism\-Geodesic\-Distance\-P\-D\-F (
@@ -108,7 +159,7 @@ The mean distance between two random points on the surface of an upright prism (
 \end{DoxyParamCaption}
 )}}\label{_prism_geodesic_8h_a674a98341a80a5b8589352280f89173c}
 Implements the P\-D\-F of the distance between two random points on the surface of an upright prism (excluding the ends). The distance is measured around the the surface of the prism (i.\-e., a geodesic). Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000022}{Todo}]Write up the derivation. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000023}{Todo}]Write up the derivation. \end{DoxyRefDesc}
 
 \begin{DoxyParams}{Parameters}
 {\em \$w} & The distance to calculate the density for. \\
@@ -119,6 +170,31 @@ Implements the P\-D\-F of the distance between two random points on the surface 
 \begin{DoxyReturn}{Returns}
 The density at \$w. 
 \end{DoxyReturn}
+\hypertarget{_prism_geodesic_8h_ac95a32780ab47f82fa182f4ae9a2d600}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Sim\-Points@{Prism\-Geodesic\-Distance\-Sim\-Points}}
+\index{Prism\-Geodesic\-Distance\-Sim\-Points@{Prism\-Geodesic\-Distance\-Sim\-Points}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
+\subsubsection[{Prism\-Geodesic\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Prism\-Geodesic\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_prism_geodesic_8h_ac95a32780ab47f82fa182f4ae9a2d600}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000027}{Todo}]Implement this. \end{DoxyRefDesc}
 \hypertarget{_prism_geodesic_8h_af2117caebb235b8823a466c181520309}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Support@{Prism\-Geodesic\-Distance\-Support}}
 \index{Prism\-Geodesic\-Distance\-Support@{Prism\-Geodesic\-Distance\-Support}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
 \subsubsection[{Prism\-Geodesic\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Prism\-Geodesic\-Distance\-Support (
@@ -157,4 +233,4 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 The variance of distances between two random points on the surface of an upright prism (excluding the ends). 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000025}{Todo}]re-\/derive the variance without using the three part P\-D\-F as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000026}{Todo}]re-\/derive the variance without using the three part P\-D\-F as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle \end{DoxyRefDesc}

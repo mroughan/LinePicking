@@ -20,6 +20,12 @@ double \hyperlink{_line_8h_a8229023d8ebfc3a8ab2f621bd63d520d}{Line\-Distance\-Va
 void \hyperlink{_line_8h_a114af70fcbf9b173fba90b7a3c1c25a5}{Line\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
 \item 
 void \hyperlink{_line_8h_a01d9022f81145b6616123cd7649507b8}{Line\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_line_8h_a773aefb49472182230e056adb574a587}{Line\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_line_8h_a313c386736482ea2dc66b5acb0f99ed8}{Line\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_line_8h_a0e9e1ea8cb270f3ef837e217441d8d47}{Line\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -105,6 +111,49 @@ The mean distance between two points on a line
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/LineLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Line\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_line_8h_a0e9e1ea8cb270f3ef837e217441d8d47}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-Metric@{Line\-Distance\-Metric}}
+\index{Line\-Distance\-Metric@{Line\-Distance\-Metric}!Line.h@{Line.\-h}}
+\subsubsection[{Line\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Line\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2}
+\end{DoxyParamCaption}
+)}}\label{_line_8h_a0e9e1ea8cb270f3ef837e217441d8d47}
+Calculate distance (using correct metric) between 2 points
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$points1} & = coordinates of first point \\
+\hline
+{\em \$points2} & = coordinates of second point \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points 
+\end{DoxyReturn}
+\hypertarget{_line_8h_a773aefb49472182230e056adb574a587}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-Ncoords@{Line\-Distance\-Ncoords}}
+\index{Line\-Distance\-Ncoords@{Line\-Distance\-Ncoords}!Line.h@{Line.\-h}}
+\subsubsection[{Line\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_line_8h_a773aefb49472182230e056adb574a587}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_line_8h_a6bb12bb4fc56025afe7ad1e4c021dd89}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-P\-D\-F@{Line\-Distance\-P\-D\-F}}
 \index{Line\-Distance\-P\-D\-F@{Line\-Distance\-P\-D\-F}!Line.h@{Line.\-h}}
 \subsubsection[{Line\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Line\-Distance\-P\-D\-F (
@@ -128,6 +177,29 @@ The density at \$t.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/LineLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Line\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
+\hypertarget{_line_8h_a313c386736482ea2dc66b5acb0f99ed8}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-Sim\-Points@{Line\-Distance\-Sim\-Points}}
+\index{Line\-Distance\-Sim\-Points@{Line\-Distance\-Sim\-Points}!Line.h@{Line.\-h}}
+\subsubsection[{Line\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_line_8h_a313c386736482ea2dc66b5acb0f99ed8}
+Simulate a set of points from the problem of interest
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+\hline
+{\em \$\-Npoints} & = number of points to generate \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point \\
+\hline
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
+\end{DoxyParams}
 \hypertarget{_line_8h_a114af70fcbf9b173fba90b7a3c1c25a5}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-Support@{Line\-Distance\-Support}}
 \index{Line\-Distance\-Support@{Line\-Distance\-Support}!Line.h@{Line.\-h}}
 \subsubsection[{Line\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Distance\-Support (
