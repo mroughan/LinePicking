@@ -30,7 +30,7 @@ LinePickingData SquareDistanceData =
     "square",
     "square, with side length parameters[0]",
     1,
-    {1}
+    {1.0}
 };
 
 

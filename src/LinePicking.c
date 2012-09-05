@@ -101,19 +101,17 @@ void LinePickingNumberOfProblems(int *N)
  * @return The number of parameters problem $problem uses is returned in 
  * $Npar. -1 is returned if $problem is not implemented.
  */
-void LinePickingProblenNparLookup(int *problem, int *Npar) 
+void LinePickingProblemNparLookup(int *problem, int *Npar) 
 {
-    int i;
-    *problem = -1;
-    
-    if (*problem < 0 || *problem  >= NUMBER_OF_PROBLEMS)
-    {
-        *Npar = -1;
-        return;
-    }
-    
-    *Npar = LinePickingFields[i].DATA->Npar;
-    return;
+
+	if (*problem < 0 || *problem  >= NUMBER_OF_PROBLEMS)
+	{
+		*Npar = -1;
+		return;
+	}
+
+	*Npar = LinePickingFields[*problem].DATA->Npar;
+	return;
 }
 
 
@@ -153,7 +151,7 @@ void LinePickingNameLookup(int *problem, char **name)
  * @todo Implement dynamic memory allocation of string outputs.
  */
 void LinePickingProblemLookup(int *problem, char **name, char **description , 
-                              int *Npar, double ** parameters) 
+                              int *Npar, double **parameters) 
 {
     if (*problem < 0 || *problem >= NUMBER_OF_PROBLEMS) 
     {

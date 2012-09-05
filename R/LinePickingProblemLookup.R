@@ -12,9 +12,15 @@
 #' @examples
 #' LinePickingProblemLookup(problem=0)
 LinePickingProblemLookup <- function(problem=0){
+  N <- LinePickingNparLookup(problem=problem)
+  if(N == -1){
+    stop("That problem is giving problems with number of parameters")
+  }
   tmp <- .C("LinePickingProblemLookup",
             problem = as.integer(problem),
             name = as.character(""),
-            description = as.character(""))
+            description = as.character(""),
+            Npar = as.integer(0),
+            parameters = as.numeric(rep(0,N)))
   return(tmp)
 }
