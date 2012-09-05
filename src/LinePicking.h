@@ -180,7 +180,7 @@ typedef struct
 {
     void (* CMD)(int nlhs, mxArray *plhs[], 
                  int nrhs, const mxArray *prhs[], 
-                 int *result, char **error_str);
+                 int *result, char **error_str, int cmd);
     char *MatlabCmdName;
     int InputArgs;
     int OutputArgs;
