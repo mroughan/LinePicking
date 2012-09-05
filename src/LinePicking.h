@@ -127,9 +127,9 @@ void LinePickingNumberOfProblems(int *);
 
 void LinePickingPrintAllProblems(void);
 
-void LinePickingAllProblems(char **, char **);
+void LinePickingAllProblems(char **names, char **, int *, double **);
 
-void LinePickingProblemLookup(int *, char**, char**);
+void LinePickingProblemLookup(int *, char**, char**,  int *, double **);
 
 /* check that a problem and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);

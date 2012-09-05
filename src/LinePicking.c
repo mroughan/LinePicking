@@ -105,7 +105,8 @@ void LinePickingNumberOfProblems(int *N)
  * retuned in the locations pointed to by $name and $description.
  * @todo Implement dynamic memory allocation of string outputs.
  */
-void LinePickingProblemLookup(int *problem, char **name, char **description) 
+void LinePickingProblemLookup(int *problem, char **name, char **description , 
+                              int *Npar, double ** parameters) 
 {
     if (*problem < 0 || *problem >= NUMBER_OF_PROBLEMS) 
     {
@@ -117,6 +118,8 @@ void LinePickingProblemLookup(int *problem, char **name, char **description)
 
     *name = LinePickingFields[*problem].DATA->name;
     *description = LinePickingFields[*problem].DATA->description;
+    *Npar = LinePickingFields[*problem].DATA->Npar;
+    *parameters = LinePickingFields[*problem].DATA->DefaultParameters; 
 }
 
 
@@ -156,7 +159,8 @@ void LinePickingPrintAllProblems(void)
  * @bug possible array bounds exception if the size of the supplied arguments is 
  * incorrect.
  */
-void LinePickingAllProblems(char **names, char **descriptions)
+void LinePickingAllProblems(char **names, char **descriptions,
+                            int *Npars, double **parameters)
 {
     int i;
     
@@ -164,6 +168,8 @@ void LinePickingAllProblems(char **names, char **descriptions)
     {
         names[i] = LinePickingFields[i].DATA->name;
         descriptions[i] = LinePickingFields[i].DATA->description;
+        Npars[i] = LinePickingFields[i].DATA->Npar;
+        parameters[i] = LinePickingFields[i].DATA->DefaultParameters; 
     }
 }
 
@@ -858,8 +864,11 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxAr
     {
         char *name;
         char *description;
+        int Npar;
+        double *parameters;
         
-        LinePickingProblemLookup(&problem, &name, &description);
+        LinePickingProblemLookup(&problem, &name, &description,
+                                 &Npar, &parameters);
         
 		/* output argument 1: name, the name of the problem */
 		plhs[0] = mxCreateString(name);
@@ -911,26 +920,41 @@ void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], int nrhs, const mx
 
 void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
 {   
-    int i;
+    int i, j;
     const mwSize dims[1] = {NUMBER_OF_PROBLEMS}; /* useful for creating arrays */
     char *names[NUMBER_OF_PROBLEMS];       /* used to output a list of names of the problems */
     char *descriptions[NUMBER_OF_PROBLEMS]; /* used to output a list of descriptions of the problems */
-    
+    int Npars[NUMBER_OF_PROBLEMS];
+    double *parameters[NUMBER_OF_PROBLEMS];
+    double *tmp;
     
     /* LinePickingAllProblems returns information about the problems. */
-    
     
     /* output argument 1: names, a cell array of problem names */
     plhs[0] = mxCreateCellArray(1, dims);
     
     /* output argument 2: descriptions, a cell array of brief descriptions of each problem */
     plhs[1] = mxCreateCellArray(1, dims);
+
+    /* output argument 3: Npar, a cell array of the number of parameters in of each problem */
+    plhs[2] = mxCreateCellArray(1, dims);
+
+    /* output argument 4: parameters, a cell array of the number of parameters in of each problem */
+  /*  plhs[3] = mxCreateCellArray(1, dims);*/
+
     
-    LinePickingAllProblems(names, descriptions);
+    LinePickingAllProblems(names, descriptions, Npars, parameters);
     for (i=0; i < NUMBER_OF_PROBLEMS; i++)
     {
         mxSetCell(plhs[0], i, mxCreateString(names[i]));
         mxSetCell(plhs[1], i, mxCreateString(descriptions[i]));
+        mxSetCell(plhs[2], i, mxCreateDoubleScalar((double)Npars[i]));
+        /*
+        mxSetCell(plhs[3], i, mxCreateDoubleMatrix(1, Npars[i], mxREAL));
+        tmp = mxGetPr(plhs[3]);
+        for (j = 0; j < Npars[i]; j++)
+            tmp[j] = parameters[i][j];*/
+
     }
     
 }
