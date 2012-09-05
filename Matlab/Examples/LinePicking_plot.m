@@ -48,8 +48,9 @@ figure(5)
 hold off
 plot(0,0)
 hold on
+problem = LinePickingNameLookup('hyper-ball');
 for n=1:8
-  [g] = LinePickingPDF(t, 2, [n, 1]);
+  [g] = LinePickingPDF(t, problem, [n, 1]);
   p5(n) = plot(t,g,'color', colors(n,:));
   legend_str(n,:) = sprintf('n = %2d', n);
 end
@@ -65,24 +66,24 @@ fprintf('Printed to %s\n', filename);
 % do  plots comparing sphere, line, disk and square
 %
 %  scale so that all have same MAX(length)
-[g_square] = LinePickingPDF(t, 0, 1/sqrt(2));
-[g_disk] = LinePickingPDF(t, 1, 0.5);
-[g_sphere] = LinePickingPDF(t, 2, [3,0.5]);
-[g_rect] = LinePickingPDF(t, 3, [0.5,1]/sqrt(1.25));
-[g_line] = LinePickingPDF(t, 4, 1);
-[g_cube] = LinePickingPDF(t, 5, 1/sqrt(3));
+[g_square] = LinePickingPDF(t, LinePickingNameLookup('square'), 1/sqrt(2));
+[g_disk] = LinePickingPDF(t, LinePickingNameLookup('disk'), 0.5);
+[g_3ball] = LinePickingPDF(t, LinePickingNameLookup('hyper-ball'), [3,0.5]);
+[g_rect] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [0.5,1]/sqrt(1.25));
+[g_line] = LinePickingPDF(t, LinePickingNameLookup('line'), 1);
+[g_cube] = LinePickingPDF(t, LinePickingNameLookup('cube'), 1/sqrt(3));
 figure(6)
 hold off
 plot(0,0)
 hold on
 p6(1) = plot(t, g_square,'color', colors(1,:));
 p6(2) = plot(t, g_disk,'color', colors(2,:));
-p6(3) = plot(t, g_sphere,'color', colors(4,:));
+p6(3) = plot(t, g_3ball,'color', colors(4,:));
 p6(4) = plot(t, g_rect,'color', colors(5,:));
 p6(5) = plot(t, g_line,'color', colors(3,:));
 p6(6) = plot(t, g_cube,'color', colors(6,:));
 set(gca, 'xlim', [0 1]);
-legend(p6, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'line', 'cube');
+legend(p6, 'square', 'disk', '3-ball', 'rectangle(2:1)', 'line', 'cube');
 xlabel('t');
 ylabel('g(t)');
 filename = sprintf('%s/LinePicking_plot_fix_max_len.%s', plotdir, suffix);
@@ -93,19 +94,19 @@ fprintf('Printed to %s\n', filename);
 %  scale so that all have the same area
 dt = 0.001;
 t = -0.1:dt:3.1;
-[g_square] = LinePickingPDF(t, 0, 1);
-[g_disk] = LinePickingPDF(t, 1, 1/sqrt(pi));
-[g_sphere] = LinePickingPDF(t, 2, [3,(3/(4*pi))^(1/3)]);
-[g_rect] = LinePickingPDF(t, 3, [0.5,1]*2);
-[g_line] = LinePickingPDF(t, 4, 1);
-[g_cube] = LinePickingPDF(t, 5, 1);
+[g_square] = LinePickingPDF(t, LinePickingNameLookup('square'), 1);
+[g_disk] = LinePickingPDF(t, LinePickingNameLookup('disk'), 1/sqrt(pi));
+[g_3ball] = LinePickingPDF(t, LinePickingNameLookup('hyper-ball'), [3,(3/(4*pi))^(1/3)]);
+[g_rect] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [0.5,1]*2);
+[g_line] = LinePickingPDF(t, LinePickingNameLookup('line'), 1);
+[g_cube] = LinePickingPDF(t, LinePickingNameLookup('cube'), 1);
 figure(7)
 hold off
 plot(0,0)
 hold on
 p7(1) = plot(t, g_square,'color', colors(1,:));
 p7(2) = plot(t, g_disk,'color', colors(2,:));
-p7(3) = plot(t, g_sphere,'color', colors(4,:));
+p7(3) = plot(t, g_3ball,'color', colors(4,:));
 p7(4) = plot(t, g_rect,'color', colors(5,:));
 p7(5) = plot(t, g_cube,'color', colors(6,:));
 set(gca, 'xlim', [0 2.1]);
@@ -128,7 +129,7 @@ hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g_rect] = LinePickingPDF(t, 3, [n,1]/sqrt(1+n^2));
+  [g_rect] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [n,1]/sqrt(1+n^2));
   p8(n) = plot(t,g_rect,'color', colors(n,:));
   legend_str8(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
@@ -141,7 +142,6 @@ print(device, filename);
 fprintf('Printed to %s\n', filename);
 
 % also do a plot showing the different regions in the PDF
-problem = 3;
 dt = 0.001;
 a = 1;
 b = 1.2;
@@ -157,7 +157,7 @@ figure(81)
 hold off
 plot(0,0)
 hold on
-[g] = LinePickingPDF(t, problem, [a b]);
+[g] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [a b]);
 fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
@@ -173,7 +173,7 @@ fprintf('Printed to %s\n', filename);
 % 
 % do plot considering rectangles (with Manhattan distances) of various dimensions
 %  fixing the max length
-problem = 9;
+problem = LinePickingNameLookup('rectangle Manhattan');
 dt = 0.001;
 t = -0.1:dt:3.1;
 figure(9)
@@ -194,7 +194,6 @@ print(device, filename);
 fprintf('Printed to %s\n', filename);
 
 % also do a plot showing the different regions in the PDF
-problem = 9;
 dt = 0.001;
 a = 1;
 b = 2.5;
@@ -225,7 +224,7 @@ fprintf('Printed to %s\n', filename);
 % 
 % do  plot considering rectangles (with Max distances) of various dimensions
 %  fixing the max length
-problem = 10;
+problem = LinePickingNameLookup('rectangle max');
 dt = 0.001;
 t = -0.1:dt:3.1;
 figure(10)
@@ -246,7 +245,6 @@ print(device, filename);
 fprintf('Printed to %s\n', filename);
 
 % also do a plot showing the different regions in the PDF
-problem = 10;
 dt = 0.001;
 a = 1;
 b = 2.5;
@@ -278,7 +276,6 @@ fprintf('Printed to %s\n', filename);
 
 % 
 % do  plot for cube
-problem = 5;
 L = 1/sqrt(3);
 dt = 0.001;
 t = -0.1:dt:3.1;
@@ -292,7 +289,7 @@ figure(11)
 hold off
 plot(0,0)
 hold on
-[g_cube] = LinePickingPDF(t, problem, L);
+[g_cube] = LinePickingPDF(t, LinePickingNameLookup('cube'), L);
 fill([t1, fliplr(t1)], [g_cube(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g_cube(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g_cube(k3),zeros(size(k3))], [1,1,0.9]);
@@ -307,7 +304,7 @@ fprintf('Printed to %s\n', filename);
 
 % 
 % do  plots for line
-problem = 4;
+problem = LinePickingNameLookup('cube');
 L = 1;
 dt = 0.001;
 t = -0.1:dt:3.1;
@@ -345,7 +342,7 @@ fprintf('Printed to %s\n', filename);
 
 % 
 % do  plots for square
-problem = 0;
+problem = LinePickingNameLookup('square');
 L = 1;
 dt = 0.001;
 t = -0.1:dt:3.1;
@@ -385,12 +382,13 @@ fprintf('Printed to %s\n', filename);
 
 % compare sphere-line picking in different dimensions:
 %   
+problem = LinePickingNameLookup('hyper-sphere');
 figure(16)
 hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g] = LinePickingPDF(t, 11, [n, 1]);
+  [g] = LinePickingPDF(t, problem, [n, 1]);
   p16(n) = plot(t,g,'color', colors(n,:));
   legend_str(n,:) = sprintf('n = %2d', n);
 end
@@ -405,12 +403,13 @@ fprintf('Printed to %s\n', filename);
 
 % compare sphere-geodesic-line picking in different dimensions:
 %   
+problem = LinePickingNameLookup('hyper-sphere geodesic');
 figure(17)
 hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g] = LinePickingPDF(t, 12, [n, 1]);
+  [g] = LinePickingPDF(t, problem, [n, 1]);
   p17(n) = plot(t,g,'color', colors(n,:));
   legend_str(n,:) = sprintf('n = %2d', n);
 end

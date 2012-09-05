@@ -49,6 +49,7 @@ LinePickingPrintAllProblems;
 step = 20;
 
 % look at n-ball for large n
+problem = LinePickingNameLookup('hyper-ball');
 figure(5)
 hold off
 plot(0,0)
@@ -68,6 +69,7 @@ fprintf('Printed to %s\n', filename);
 
 % look at n-sphere for large n
 %   
+problem = LinePickingNameLookup('hyper-sphere');
 figure(16)
 hold off
 plot(0,0)
@@ -87,6 +89,7 @@ fprintf('Printed to %s\n', filename);
 
 % compare sphere-geodesic-line picking in different dimensions:
 %   
+problem = LinePickingNameLookup('hyper-sphere geodesic');
 figure(17)
 hold off
 plot(0,0)
