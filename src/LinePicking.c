@@ -94,6 +94,27 @@ void LinePickingNumberOfProblems(int *N)
 
 
 /**
+ * Problems are represented as integers. Given such a name, this finds the problem
+ * corresponding to that name, if one exists
+ * @param $problem Represents a problem. 
+ * @param $name Address of a memory location to set to the address of a string
+ * containing the name of the problem.
+ * @return $problem returns the problem corresponding to the name, or -1 if none exists.
+ */
+void LinePickingNameLookup(int *problem, char **name) 
+{
+    int i;
+    *problem = -1;
+
+    for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
+    {
+        if (strcmp(*name, LinePickingFields[i].DATA->name) == 0) {
+	    *problem = i;
+	}
+    }
+}
+
+/**
  * Problems are represented as integers. Given such an integer this function
  * returns the problem name and description as a string.
  * @param $problem Represents a problem. 
@@ -823,6 +844,45 @@ void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
     
     LinePickingSupport(g, &problem, parameters, &Npar, result, 
                        error_str);
+}
+
+void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+{    
+
+    char *name;
+    int   name_len, status;
+    int   problem;
+    double *problem_return_val;
+/* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
+
+    /* Input must be a string. */
+    if (mxIsChar(prhs[0]) != 1)
+	mexErrMsgTxt("Input must be a string.");
+
+    /* Input must be a row vector. */
+    if (mxGetM(prhs[0]) != 1)
+	mexErrMsgTxt("Input must be a row vector.");
+    
+    /* Get the length of the input string. */
+    name_len = (mxGetM(prhs[0]) * mxGetN(prhs[0])) + 1;
+
+    /* Allocate memory for input and output strings. */
+    name = mxCalloc(name_len, sizeof(char));
+
+    /* Copy the string data from prhs[0] into a C string name_buf. */
+    status = mxGetString(prhs[0], name, name_len);
+    if (status != 0) 
+	mexWarnMsgTxt("Not enough space. String is truncated.");
+
+    /* creaturn return variable */
+    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    problem_return_val = mxGetPr(plhs[0]);
+
+    /* Lookup the problem name */
+    LinePickingNameLookup(&problem, &name);
+    
+    /* Return the problem to Matlab */
+    *problem_return_val = problem;
 }
 
 void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
