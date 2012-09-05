@@ -7,6 +7,7 @@ NumCDF <- function(problem, parameters){
                        problem=problem,parameters=parameters)$value
   return(int.num)
 }
+context("Check PDFs")
 test_that("PDF integrate to 1 over support",{
   expect_that(NumCDF(1,5), equals(1, tolerance=1e-5))
   expect_that(NumCDF(2,c(5,5)), equals(1, tolerance=1e-5))
