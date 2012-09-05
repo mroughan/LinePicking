@@ -94,6 +94,30 @@ void LinePickingNumberOfProblems(int *N)
 
 
 /**
+ * Helper function returns the number of parameters a currently implemented 
+ * problem uses.
+ * @param $problem Represents a problem. 
+ * @param $Npar Is the number of parameters problem $problem uses. 
+ * @return The number of parameters problem $problem uses is returned in 
+ * $Npar. -1 is returned if $problem is not implemented.
+ */
+void LinePickingProblenNparLookup(int *problem, int *Npar) 
+{
+    int i;
+    *problem = -1;
+    
+    if (*problem < 0 || *problem  >= NUMBER_OF_PROBLEMS)
+    {
+        *Npar = -1;
+        return;
+    }
+    
+    *Npar = LinePickingFields[i].DATA->Npar;
+    return;
+}
+
+
+/**
  * Problems are represented as integers. Given such a name, this finds the problem
  * corresponding to that name, if one exists
  * @param $problem Represents a problem. 
@@ -105,14 +129,16 @@ void LinePickingNameLookup(int *problem, char **name)
 {
     int i;
     *problem = -1;
-
+    
     for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
     {
-        if (strcmp(*name, LinePickingFields[i].DATA->name) == 0) {
-	    *problem = i;
-	}
+        if (strcmp(*name, LinePickingFields[i].DATA->name) == 0) 
+        {
+            *problem = i;
+        }
     }
 }
+
 
 /**
  * Problems are represented as integers. Given such an integer this function

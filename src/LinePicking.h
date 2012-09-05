@@ -137,6 +137,8 @@ void LinePickingAllProblems(char **names, char **, int *, double **);
 void LinePickingNameLookup(int *, char **);
 void LinePickingProblemLookup(int *, char**, char**,  int *, double **);
 
+/* given a problem lookup how many parameters it takes */
+void LinePickingProblenNparLookup(int *problem, int *Npar); 
 
 
 /* check that a problem and a set of parameters are valid */
