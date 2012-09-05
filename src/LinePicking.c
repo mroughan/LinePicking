@@ -1064,7 +1064,7 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
     
     LinePickingSimPoints(Points, &Npoints, &Ncoords, &problem, parameters, 
                          &Npar, result, error_str);
-    
+    free(Points);
 }
 
 void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)            
