@@ -1278,6 +1278,7 @@ int main(int argc, char *argv[])
     int i=0;
     int problem;
     double parameters[3];
+    double *DefaultParameters;
     char *version = "version 1.0";
     char *file;
     FILE *fp;    
@@ -1287,6 +1288,7 @@ int main(int argc, char *argv[])
     char *error_str;
     char *Problems_name;
     char *Problems_description;
+    
     
     /*print out program name and version*/
     fprintf(stderr,"%% %s: %s \n", *argv, version);
@@ -1309,7 +1311,8 @@ int main(int argc, char *argv[])
         exit(1);
     }
     /* get the problem's name and description */
-    LinePickingProblemLookup(&problem, &Problems_name, &Problems_description);
+    LinePickingProblemLookup(&problem, &Problems_name, &Problems_description, &Npar, 
+                             &DefaultParameters);
     fprintf(stderr, 
             "%%  problem=%d, %s (%s)\n", problem, Problems_name, Problems_description);
     

@@ -21,6 +21,6 @@ LinePickingProblemLookup <- function(problem=0){
             name = as.character(""),
             description = as.character(""),
             Npar = as.integer(0),
-            parameters = as.numeric(rep(0,N)))
+            parameters = as.double(rep(0,N)))
   return(tmp)
 }
