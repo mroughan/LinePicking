@@ -151,8 +151,10 @@ void LinePickingNameLookup(int *problem, char **name)
  * @todo Implement dynamic memory allocation of string outputs.
  */
 void LinePickingProblemLookup(int *problem, char **name, char **description , 
-                              int *Npar, double **parameters) 
+                              int *Npar, double *parameters) 
 {
+    int i;
+    
     if (*problem < 0 || *problem >= NUMBER_OF_PROBLEMS) 
     {
         *name = "Unsupported problem!";
@@ -164,7 +166,11 @@ void LinePickingProblemLookup(int *problem, char **name, char **description ,
     *name = LinePickingFields[*problem].DATA->name;
     *description = LinePickingFields[*problem].DATA->description;
     *Npar = LinePickingFields[*problem].DATA->Npar;
-    *parameters = LinePickingFields[*problem].DATA->DefaultParameters; 
+    for (i =0 ;i < *Npar ; i++) 
+    {
+        parameters[i] = LinePickingFields[*problem].DATA->DefaultParameters[i];
+    }
+     
 }
 
 
@@ -948,7 +954,8 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxAr
     char *name;
     char *description;
     int Npar;
-    double *parameters;
+    double parameters[MAX_PARAMETERS];
+    
     
     /* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
     
@@ -959,13 +966,14 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxAr
     
     
     LinePickingProblemLookup(&problem, &name, &description,
-                             &Npar, &parameters);
+                             &Npar, parameters);
     
     /* output argument 1: name, the name of the problem */
     plhs[0] = mxCreateString(name);
     /* output argument 2: description, a brief description of the problem */
     plhs[1] = mxCreateString(description);
     plhs[2] = mxCreateDoubleScalar((double)Npar);
+    
     plhs[3] = mxCreateDoubleMatrix(1, Npar, mxREAL);
     
     tmp = mxGetPr(plhs[3]);
