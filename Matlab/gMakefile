@@ -86,7 +86,7 @@ $(MEX): FORCE
 	cd ../src/; $(MAKE) $@ -f gMakefile; cp $@ ../Matlab/
 
 $(MATLAB): $(MEX)
-	./make_gateways.pl -f ../src/LinePicking.c
+	./make_gateways.pl -f ../src/MatlabDefinitions.def -b LinePicking  > make_gateways.out
 
 # cause something to always remake when you put this in its dependencies
 FORCE:

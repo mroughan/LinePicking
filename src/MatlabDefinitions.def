@@ -49,21 +49,27 @@ ExpandForMatlab(LinePickingVar, 3, 1)
 /* output argument 1: var, the variance of the distribution. */
 
 ExpandForMatlab(LinePickingSupport, 3, 1)
+/* LinePickingSupport returns the support of the PDF (the range of values for which it is non-zero). */
 /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
 /* input argument 2: parameters, the parameters of the problem */
 /* output argument 1: support, a 1x2 vector containing the [min,max] support of the PDF. */
-
 
 ExpandForMatlab(LinePickingProblemLookup, 2, 4)
 /* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
 /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
 /* output argument 1: name, the name of the problem */
 /* output argument 2: description, a brief description of the problem */
+/* output argument 3: Npar, the number of parameters the problem has */
+/* output argument 4: parameters, the parameters */
+
+ExpandForMatlab(LinePickingNameLookup, 2, 1)
+/* LinePickingNameLookup finds the problem number for a particular name .*/
+/* input argument 1: name, the name of the problem  */
+/* output argument 1: problem, the corresponding problem number (or -1 if the problem doesn't exist) */
 
 ExpandForMatlab(LinePickingPrintAllProblems, 1, 0)
 /* LinePickingPrintAllProblems prints out the list of implemented problems. */
 
- 
 ExpandForMatlab(LinePickingCheckParameters, 3, 2)
 /*  LinePickingCheckParameters checks if the supplied parameters are correct*/
 /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
@@ -75,9 +81,8 @@ ExpandForMatlab(LinePickingAllProblems, 1, 4)
 /* LinePickingAllProblems returns information about the problems. */
 /* output argument 1: names, a cell array of problem names */
 /* output argument 2: descriptions, a cell array of brief descriptions of each problem */
-* output argument 3: Npar, a cell array of the number of parameters for each problem */
+/* output argument 3: Npar, a cell array of the number of parameters for each problem */
 /* output argument 4: parameters, a cell array of arrays of parameters */
-
 
 ExpandForMatlab(LinePickingNumberOfProblems, 1, 1) 
 /* LinePickingNumberOfProblems returns the number of implemented problems. */

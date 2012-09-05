@@ -123,13 +123,21 @@ LinePickingRec LinePickingFields[] =
  *  @{
  */
 
+/* return the number of implemented problems */
 void LinePickingNumberOfProblems(int *);
 
+/* print a list of problems to stdout */
 void LinePickingPrintAllProblems(void);
 
+/* return a list of all the problems with a description */
 void LinePickingAllProblems(char **names, char **, int *, double **);
 
+
+/* lookup problems by name or number, respectively */
+void LinePickingNameLookup(int *, char **);
 void LinePickingProblemLookup(int *, char**, char**,  int *, double **);
+
+
 
 /* check that a problem and a set of parameters are valid */
 void LinePickingCheckParameters(int *, double *, int *, int *, char **);
@@ -226,7 +234,7 @@ MatlabCallRec MatlabCallList[] =
 #ifdef _STANDALONE
 /*
  * bits needed to run this as a stand alone command-line function
- *
+ * 
  */
 static void usage_LinePicking();
 static void set_pars_LinePicking(int argc, char *argv[],

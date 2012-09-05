@@ -94,6 +94,27 @@ void LinePickingNumberOfProblems(int *N)
 
 
 /**
+ * Problems are represented as integers. Given such a name, this finds the problem
+ * corresponding to that name, if one exists
+ * @param $problem Represents a problem. 
+ * @param $name Address of a memory location to set to the address of a string
+ * containing the name of the problem.
+ * @return $problem returns the problem corresponding to the name, or -1 if none exists.
+ */
+void LinePickingNameLookup(int *problem, char **name) 
+{
+    int i;
+    *problem = -1;
+
+    for (i = 0; i < NUMBER_OF_PROBLEMS; i++)
+    {
+        if (strcmp(*name, LinePickingFields[i].DATA->name) == 0) {
+	    *problem = i;
+	}
+    }
+}
+
+/**
  * Problems are represented as integers. Given such an integer this function
  * returns the problem name and description as a string.
  * @param $problem Represents a problem. 
@@ -848,10 +869,62 @@ void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
                        error_str);
 }
 
+void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+{    
+
+    char *name;
+    int   name_len, status;
+    int   problem;
+    double *problem_return_val;
+    char error_buffer[256];
+/* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
+
+    /* input argument 1: name, a string with the name of the problem */
+    if (mxIsChar(prhs[1]) != 1)
+    {
+        sprintf(error_buffer, 
+                "\n%s entry point: "
+                "Input must be a string.", 
+                MatlabCallList[cmd].MatlabCmdName);
+        mexErrMsgTxt(error_buffer);  
+    }
+
+    /* Input must be a row vector. */
+    if (mxGetM(prhs[1]) != 1)
+	mexErrMsgTxt("Input must be a row vector.");
+    
+    /* Get the length of the input string. */
+    name_len = (mxGetM(prhs[1]) * mxGetN(prhs[1])) + 1;
+
+    /* Allocate memory for input and output strings. */
+    name = mxCalloc(name_len, sizeof(char));
+
+    /* Copy the string data from prhs[1] into a C string name_buf. */
+    status = mxGetString(prhs[1], name, name_len);
+    if (status != 0) 
+	mexWarnMsgTxt("Not enough space. String is truncated.");
+
+    /* creaturn return variable */
+    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    problem_return_val = mxGetPr(plhs[0]);
+
+    /* Lookup the problem name */
+    LinePickingNameLookup(&problem, &name);
+    
+    /* Return the problem to Matlab */
+    *problem_return_val = problem;
+}
+
 void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
 {
     
     int problem;    /* the type of region on which to calculate the distribution */
+    double *tmp;
+    int j;
+    char *name;
+    char *description;
+    int Npar;
+    double *parameters;
     
     /* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
     
@@ -860,21 +933,22 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxAr
     
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
-    /* success */ 
-    {
-        char *name;
-        char *description;
-        int Npar;
-        double *parameters;
-        
-        LinePickingProblemLookup(&problem, &name, &description,
-                                 &Npar, &parameters);
-        
-		/* output argument 1: name, the name of the problem */
-		plhs[0] = mxCreateString(name);
-		/* output argument 2: description, a brief description of the problem */
-        plhs[1] = mxCreateString(description);
-    }
+    
+    LinePickingProblemLookup(&problem, &name, &description,
+                             &Npar, &parameters);
+    
+    /* output argument 1: name, the name of the problem */
+    plhs[0] = mxCreateString(name);
+    /* output argument 2: description, a brief description of the problem */
+    plhs[1] = mxCreateString(description);
+    plhs[2] = mxCreateDoubleScalar((double)Npar);
+    plhs[3] = mxCreateDoubleMatrix(1, Npar, mxREAL);
+    
+    tmp = mxGetPr(plhs[3]);
+    
+    for (j = 0; j < Npar; j++)
+        tmp[j] = parameters[j];
+
 }
 
 
@@ -927,6 +1001,7 @@ void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArra
     int Npars[NUMBER_OF_PROBLEMS];
     double *parameters[NUMBER_OF_PROBLEMS];
     double *tmp;
+    mxArray *array_ptr;
     
     /* LinePickingAllProblems returns information about the problems. */
     
@@ -940,7 +1015,7 @@ void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArra
     plhs[2] = mxCreateCellArray(1, dims);
 
     /* output argument 4: parameters, a cell array of the number of parameters in of each problem */
-  /*  plhs[3] = mxCreateCellArray(1, dims);*/
+    plhs[3] = mxCreateCellArray(1, dims);
 
     
     LinePickingAllProblems(names, descriptions, Npars, parameters);
@@ -949,11 +1024,12 @@ void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArra
         mxSetCell(plhs[0], i, mxCreateString(names[i]));
         mxSetCell(plhs[1], i, mxCreateString(descriptions[i]));
         mxSetCell(plhs[2], i, mxCreateDoubleScalar((double)Npars[i]));
-        /*
         mxSetCell(plhs[3], i, mxCreateDoubleMatrix(1, Npars[i], mxREAL));
-        tmp = mxGetPr(plhs[3]);
+        array_ptr = mxGetCell(plhs[3], i);
+        tmp = mxGetPr(array_ptr);
+        
         for (j = 0; j < Npars[i]; j++)
-            tmp[j] = parameters[i][j];*/
+            tmp[j] = parameters[i][j];
 
     }
     
@@ -1004,13 +1080,15 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
     /* input argument 4: seed, the seed to the random number generator */
     seed = (long int) mxGetScalar(prhs[4]);
     srand48(seed); /* initialize random number generator */
-    
+ 
     /* determine the correct number of coordinates */
     LinePickingNcoords(&Ncoords, &CoordSystem, &problem, parameters, 
                        &Npar, result, error_str);               
-    if (result != 0) /* something was wrong with parameters */
-		mexErrMsgTxt(*error_str);
-    
+    if (*result != 0) /* something was wrong with parameters */
+    {
+	mexErrMsgTxt(*error_str);
+    }    
+
     /* output argument 1: points, returns a Ncoords x Npoints array containing the simulated points */
     plhs[0] = mxCreateDoubleMatrix(Ncoords, Npoints, mxREAL);
     Points = (double **) malloc((size_t) sizeof(double)*(Npoints));
@@ -1021,7 +1099,7 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
     
     LinePickingSimPoints(Points, &Npoints, &Ncoords, &problem, parameters, 
                          &Npar, result, error_str);
-    
+    free(Points);
 }
 
 void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)            
