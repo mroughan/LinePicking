@@ -186,6 +186,11 @@ typedef struct
     int OutputArgs;
 } MatlabCallRec;
 
+
+/* 
+ * define ExpandForMatlab in a way that produces function 
+ * prototypes when MatlabDefinitions.def is included 
+ */
 #ifdef ExpandForMatlab
 #undef ExpandForMatlab
 #endif
@@ -196,10 +201,13 @@ char **error_str, int cmd);
 
 #include "MatlabDefinitions.def"
 
+/* 
+ * define ExpandForMatlab in a way that produces an array of  
+ * MatlabCallRec structs when MatlabDefinitions.def is included 
+ */
 #ifdef ExpandForMatlab
 #undef ExpandForMatlab
 #endif
-
 #define ExpandForMatlab(_x, _in, _out) { &mex##_x, #_x, _in, _out },
 
 MatlabCallRec MatlabCallList[] =
