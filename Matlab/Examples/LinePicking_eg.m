@@ -34,7 +34,7 @@ LinePickingPrintAllProblems;
 %
 % square picking
 %
-problem = 0;
+problem = LinePickingNameLookup('square');
 L = 1;
 parameters = [L];
 name(problem+1) = {LinePickingProblemLookup(problem)};
@@ -58,7 +58,7 @@ title('square-line picking example');
 %
 % disk picking
 %
-problem = 1;
+problem = LinePickingNameLookup('disk');
 R = 1;
 parameters = [R];
 name(problem+1) = {LinePickingProblemLookup(problem)};
@@ -85,7 +85,7 @@ title('disk-line picking example');
 %
 % 3ball picking
 %
-problem = 2;
+problem = LinePickingNameLookup('hyper-ball');
 R = 1;
 parameters = [3, R];
 name(problem+1) = {'3d hyperball'};
@@ -119,7 +119,7 @@ title('3D ball-line picking example');
 %
 % rect picking
 %
-problem = 3;
+problem = LinePickingNameLookup('rectangle');
 a = 1;
 b = 2;
 parameters = [a, b];
@@ -149,7 +149,7 @@ title('rect(2:1)-line picking example');
 %
 % cube picking
 %
-problem = 5;
+problem = LinePickingNameLookup('cube');
 L = 1;
 parameters = [L];
 name(problem+1) = {LinePickingProblemLookup(problem)};
@@ -179,7 +179,7 @@ title('cube-line picking example');
 %
 % sphere line picking
 %
-problem = 6;
+problem = LinePickingNameLookup('sphere');
 R = 1;
 parameters = [R];
 name(problem+1) = {LinePickingProblemLookup(problem)};
@@ -215,7 +215,7 @@ title('sphere-line picking example');
 %
 % sphere geodesic picking
 %
-problem = 7;
+problem = LinePickingNameLookup('sphere geodesic');
 R = 1;
 parameters = [R];
 points1 = LinePickingSimPoints(M, problem, parameters, seed);
@@ -281,7 +281,7 @@ title('sphere-geodesic picking example');
 %
 % rect with Manhattan distance picking
 %
-problem = 9;
+problem = LinePickingNameLookup('rectangle Manhattan');
 a = 1;
 b = 2;
 parameters = [a, b];
@@ -315,6 +315,7 @@ title('rect(2:1) with Manhattan distances-line picking example');
 % circle line picking (using hypersphere, with n=1)
 %
 problem = 11;
+problem = LinePickingNameLookup('hyper-sphere');
 R = 1;
 parameters = [1,R];
 name(problem+1) = {LinePickingProblemLookup(problem)};
