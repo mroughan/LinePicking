@@ -1047,13 +1047,15 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
     /* input argument 4: seed, the seed to the random number generator */
     seed = (long int) mxGetScalar(prhs[4]);
     srand48(seed); /* initialize random number generator */
-    
+ 
     /* determine the correct number of coordinates */
     LinePickingNcoords(&Ncoords, &CoordSystem, &problem, parameters, 
                        &Npar, result, error_str);               
-    if (result != 0) /* something was wrong with parameters */
-		mexErrMsgTxt(*error_str);
-    
+    if (*result != 0) /* something was wrong with parameters */
+    {
+	mexErrMsgTxt(*error_str);
+    }    
+
     /* output argument 1: points, returns a Ncoords x Npoints array containing the simulated points */
     plhs[0] = mxCreateDoubleMatrix(Ncoords, Npoints, mxREAL);
     Points = (double **) malloc((size_t) sizeof(double)*(Npoints));
