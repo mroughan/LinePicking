@@ -115,8 +115,12 @@ $(STAND_ALONE): %: %.o $(O2)
 	$(CC) $< -o $@ $(O2) -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
-$(MEX): %.$(MATLAB_EXT): %.c $(O2) ${HEADERS}
+$(MEX): %.$(MATLAB_EXT): %.c $(O2) ${HEADERS} MatlabDefinitions.def
 	$(MX)  $< $(O2) -D_MEX -D_NOTR
+
+# use to see output of preprocessor
+# gcc -I /usr/local/matlab/extern/include -E -D_NOTR -D_MEX LinePicking.c > tmp
+
 
 # shared libraries are used by R, so use R's standard command to define
 #    see R CMD SHLIB beta.c, for example

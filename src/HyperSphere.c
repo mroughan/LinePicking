@@ -149,8 +149,7 @@ double HyperSphereDistanceMean(double* parameters)
 double HyperSphereDistanceVar(double* parameters)
 {
     double n = ceil(parameters[0]); 
-    double m = 2;
-        
+    
     return -1;
 }
 

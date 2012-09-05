@@ -28,7 +28,7 @@ print STDERR "running $version on $today\n";
 
 # get command line options
 sub usage {
-    "Usage: $0 [--help] [--Debug=i] -f=input_file.c\n";
+    "Usage: $0 [--help] [--Debug=i] -f=input_file.c -b base_name\n";
 }
 
 use Getopt::Long;
@@ -36,6 +36,7 @@ Getopt::Long::Configure("bundling");
 $result = GetOptions('help|h' => \$opt_help,
 		     'Debug|D=i' => \$opt_debug,
 		     'File|f=s' => \$file,
+		     'basename|b=s' => \$base_name,
 		     'Template|t=s' => \$template_file,
 		     ) || die usage();
 $result = 0;
@@ -61,9 +62,10 @@ if ($0 =~ /(.*)\/(.*)/) {
 if (!defined($file)) {
   die usage();
 }
-($base_name = $file) =~ s/\.c//;
-$base_name =~ s/.*\///;
-print "\$base_name = $base_name\n";
+if (!defined($base_name)) {
+  die usage();
+}
+
 
 if (!defined($template_file)) {
   $template_file = "${base_name}Template_m";
@@ -71,62 +73,45 @@ if (!defined($template_file)) {
 print "\$template_file = $template_file\n";
 
 # read in the C code
-$mex = 0;
 $case_i = -1;
 open(FILE, "< $file") or die "Error:could not open $file: $!\n";
 while (<FILE>) {
-  if ($mex > 0) {
-    # print "\$mex=$mex, $_";
-    if (m"#ifdef" || m"#ifndef") {
-      $mex++;
+  # find gateway commands
+  if (/ExpandForMatlab\((\w+)[,\s]+(\d+)[,\s]+(\d+)\)/) {
+    $inp = $2;
+    $out = $3;
+    if ($1 =~ m/($base_name[^*\s]*)\s*([^*]*)/) {
+      $case_i++;
+      $gateway = $1;
+      $gateways{$case_i} = $gateway;
+      $inp_args{$gateway} = $inp - 1; # -1, because the first argument is the case number
+      $out_args{$gateway} = $out;
+      print "\n gateway[$case_i]=$gateway\n";
     }
-    if (m"#endif") {
-      $mex--;
-    }
+  }
 
-    # find case statements corresponding to the gateway commands
-    if (/case\s+(\d+):\s+($RE{comment}{C})/) {
-      $case_i = $1;
-      if ($2 =~ m/($base_name[^*\s]*)\s*([^*]*)/) {
-	$gateway = $1;
-	$gateways{$case_i} = $gateway;
-	$descriptions{$gateway} = $2;
-      }
-      print "\n case=$case_i, \t gateway=$gateway, \t description=$descriptions{$gateway}\n";
-    } elsif (/default:/) {
-      $case_i = -1;
-    }
-
-    if ($case_i >= 0) {
-      # look for checks of numbers of input and output arguments
-      if (/CheckNumberInputArg\(nrhs,\s*(\d+)/) {
-	$inp_args{$gateway} = $1 - 1; # -1, because the first argument is the case number
-	print "       input args $inp_args{$gateway}\n";
-      } elsif (/CheckNumberOutputArg\(nlhs,\s*(\d+)/) {
-	$out_args{$gateway} = $1;
-	print "       output args $out_args{$gateway}\n";
-      }
-
-    }
-
-    # find single line comments for more informations
+  if ($case_i >= 0) {
+    # C comments (on a single line) provide more information
     if (/$RE{comment}{C}{-keep}/) {
+      # description of the function (must not include a *)
+      if ($1 =~ /$gateway\s+([^*]*)/) {
+	$descriptions{$gateway} = $1;
+	print "     description: $descriptions{$gateway}\n";
+	print "     input args:  $inp_args{$gateway}\n";
+	print "     output args: $out_args{$gateway}\n";
+      }
+      # information about input and output arguments (must not include a *)
       if ($1 =~ /(input|output) argument (\d+):\s*(\w+),\s*([^*]*)/) {
 	$inp_out = $1;
 	$number = $2;
 	$name = $3;
 	$description = $4;
-	print "               $inp_out, \$number=$number, \$name=$name, \$description=$description\n";
+	print "         $inp_out, \$number=$number, \$name=$name, \$description=$description\n";
 	$argument_number{$gateway}{$inp_out}{$name} = $number;
 	$argument_name{$gateway}{$inp_out}{$number} = $name;
 	$argument_desc{$gateway}{$inp_out}{$number} = $description;
       }
     }
-  }
-
-  # only bother reading the bits between the MEX defines
-  if (m"#ifdef _MEX") {
-    $mex = 1;
   }
 }
 close(FILE) or die "Error: could not close $file: $!\n";
@@ -136,23 +121,40 @@ $name_list = "LinePicking, " . join(', ', (sort {$a cmp $b} (values %gateways)))
 foreach $case_i (sort {$a <=> $b} (keys %gateways)) {
   $gateway = $gateways{$case_i};
   $matlab_file = "$gateway.m";
+  if (!defined($descriptions{$gateways{$case_i}})) {
+    $descriptions{$gateways{$case_i}} = "(no description available, please fill in comments in MatlabDefinitions.def).";
+  }
+
+
+  $out_arg_details = "";
+  $out_arg_details = "";
+  for ($i=1;$i<=$out_args{$gateway};$i++) {
+    if (!defined($argument_name{$gateway}{output}{$i})) {
+      $argument_name{$gateway}{output}{$i} = "output$i";
+      $argument_desc{$gateway}{output}{$i} = "";
+      $argument_number{$gateway}{output}{"output$i"} = $i;
+    }
+    $out_arg_details .= "%    output argument $i = $argument_name{$gateway}{output}{$i}, $argument_desc{$gateway}{output}{$i}\n";
+  }
+  $out_arg_details  .= "%";
+  $inp_arg_details = "";
+  for ($i=1;$i<=$inp_args{$gateway};$i++) {
+    if (!defined($argument_name{$gateway}{input}{$i})) {
+      $argument_name{$gateway}{input}{$i} = "input$i";
+      $argument_desc{$gateway}{input}{$i} = "";
+      $argument_number{$gateway}{input}{"input$i"} = $i;
+    }
+    $inp_arg_details .= "%    input argument $i = $argument_name{$gateway}{input}{$i}, $argument_desc{$gateway}{input}{$i}\n";
+  }
+  $inp_arg_details  .= "%";
+
+
   $input_arg_list = join(', ', (sort {$argument_number{$gateway}{input}{$a} <=> 
 				       $argument_number{$gateway}{input}{$b}}
 			 (values %{$argument_name{$gateway}{input}})));
   $output_arg_list = join(', ', (sort {$argument_number{$gateway}{output}{$a} <=> 
 				       $argument_number{$gateway}{output}{$b}}
 			 (values %{$argument_name{$gateway}{output}})));
-  $out_arg_details = "";
-  $out_arg_details = "";
-  for ($i=1;$i<=$out_args{$gateway};$i++) {
-    $out_arg_details .= "%    output argument $i = $argument_name{$gateway}{output}{$i}, $argument_desc{$gateway}{output}{$i}\n";
-  }
-  $out_arg_details  .= "%";
-  $inp_arg_details = "";
-  for ($i=1;$i<=$inp_args{$gateway};$i++) {
-    $inp_arg_details .= "%    input argument $i = $argument_name{$gateway}{input}{$i}, $argument_desc{$gateway}{input}{$i}\n";
-  }
-  $inp_arg_details  .= "%";
 
   open(MATLAB_FILE, "> $matlab_file") or die "Error:could not open $matlab_file: $!\n";
   open(TEMP_FILE, "< $template_file") or die "Error:could not open $template_file: $!\n";

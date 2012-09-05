@@ -220,9 +220,26 @@ void LinePickingCheckParameters(int *problem, double* parameters,
     
     *result = 0;
     
+    /* 
+     * longest error string is 255 characters 
+     * the memory can be allocated staticaly because  
+     * in Matlab we explicitly create a copy of this 
+     * string and in R the caller makes a copy.
+     */
+    *error_str  = global_error_str;
     
-    /* longest error string is 255 characters */
-    *error_str  = (char *) malloc((size_t) sizeof(char)*256); 
+    /* 
+     * start with an empty string so if there   
+     * is no error we get an empty string
+     */
+    *error_str[0] = '\0';
+    
+    /* 
+     * Previously this caused a memory leak: 
+     * *error_str  = (char *) malloc((size_t) sizeof(char)*256); 
+     * because we had no way of freeing this memory but as
+     * explained above we did not need to allocate it dynamically
+     */
     
     /* check the problem is supported */
     if (*problem < 0 || *problem >= NUMBER_OF_PROBLEMS) 
@@ -1084,10 +1101,10 @@ void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, const mxArr
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
     int cmd;
-    char buffer[256];
+    char buffer[256] = "";
     int result;
     char *error_str;
-    
+        
     
     if (nrhs < 1)
         mexErrMsgTxt("LinePicking needs at least one input parameter.");
