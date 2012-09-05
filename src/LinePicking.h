@@ -73,6 +73,8 @@
 #endif
 #endif
 
+/* a buffer available globally for errors */
+char global_error_str[256];
 
 typedef struct 
 {

@@ -907,17 +907,17 @@ void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords,
 {
     int i, j;
     double *normals;
-    double sum;
+    
     
     /* not the most efficient use of normal random number generation, but it should work for all nballs */
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = 0; /* not implemented yet */
-
-	}
+        for (j=0; j<*Ncoords; j++)
+        {
+            points[i][j] = 0; /* not implemented yet */
+            
+        }
     }
     free(normals);
 }
