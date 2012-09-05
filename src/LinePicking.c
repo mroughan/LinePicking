@@ -870,24 +870,31 @@ void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray
     int   name_len, status;
     int   problem;
     double *problem_return_val;
+    char error_buffer[256];
 /* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
 
-    /* Input must be a string. */
-    if (mxIsChar(prhs[0]) != 1)
-	mexErrMsgTxt("Input must be a string.");
+    /* input argument 1: name, a string with the name of the problem */
+    if (mxIsChar(prhs[1]) != 1)
+    {
+        sprintf(error_buffer, 
+                "\n%s entry point: "
+                "Input must be a string.", 
+                MatlabCallList[cmd].MatlabCmdName);
+        mexErrMsgTxt(error_buffer);  
+    }
 
     /* Input must be a row vector. */
-    if (mxGetM(prhs[0]) != 1)
+    if (mxGetM(prhs[1]) != 1)
 	mexErrMsgTxt("Input must be a row vector.");
     
     /* Get the length of the input string. */
-    name_len = (mxGetM(prhs[0]) * mxGetN(prhs[0])) + 1;
+    name_len = (mxGetM(prhs[1]) * mxGetN(prhs[1])) + 1;
 
     /* Allocate memory for input and output strings. */
     name = mxCalloc(name_len, sizeof(char));
 
-    /* Copy the string data from prhs[0] into a C string name_buf. */
-    status = mxGetString(prhs[0], name, name_len);
+    /* Copy the string data from prhs[1] into a C string name_buf. */
+    status = mxGetString(prhs[1], name, name_len);
     if (status != 0) 
 	mexWarnMsgTxt("Not enough space. String is truncated.");
 
