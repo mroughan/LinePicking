@@ -405,25 +405,25 @@ probability distribution for line length (with a unit circle) is
 \begin{equation}
   \label{eq:circle_line_picking}
   g(t) = \frac{1}{\pi} \left(    
-           1 - \frac{s^2}{4}
+           1 - \frac{t^2}{4}
                \right)^{-1/2} 
-       \simeq \frac{1}{\pi} \left( 1 - \frac{s^2}{4} + \cdots \right) 
+       \simeq \frac{1}{\pi} \left( 1 - \frac{t^2}{4} + \cdots \right) 
 \end{equation}
-whereas in {\em sphere line
-  picking}~\cite{weisstein:_sphere_line_picking}, there distribution
+which is correct using the form above with $n=1$, i.e.,
+\begin{equation}
+  g(t) \simeq \frac{1 C_1}{2 \pi} t^0 =  \frac{1}{\pi}
+\end{equation}
+because $C_1=2$ and the circle, effectively has no edges.
+
+For the {\em sphere line
+  picking}~\cite{weisstein:_sphere_line_picking}, the distribution
 takes the form
 \begin{equation}
-  \label{eq:sphere_line_picking_approx}
-  g(t) = \frac{1}{2} t.
+  g(t) \simeq \frac{1}{2} t.
 \end{equation}
-Clearly in this type of case, the dimension of the space is not the
-critical factor, because the space on which the points are chosen is
-embedded in a larger space from which lines are chosen, and the
-geometry of the relationship is important.
-
-
-INCIDENTALLY -- limit n -> infty for balls, has almost fixed distances
-between nodes, so it approaches ER graph
-
+which works for $n=2$ and zero perimeter on the edges:
+\begin{equation}
+  g(t) \simeq \frac{2 \pi}{A} t = \frac{2 \pi}{4 \pi} t = \frac{1}{2} t.
+\end{equation}
 
 
