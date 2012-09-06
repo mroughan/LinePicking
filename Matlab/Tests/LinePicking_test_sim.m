@@ -91,9 +91,16 @@ for i=1:length(test_problems)
   t = s(1):ds:s(2);
   g = LinePickingPDF(t, problem, parameters);
   G = LinePickingCDF(t, problem, parameters);
+  if (any(g)<0)
+    k = find(g < 0);
+    t(k)
+  end
   
   % compute the sum of the PDF
-  sum_pdf(i) = sum(g)*ds;
+  % sum_pdf(i) = sum(g)*ds;
+  gt = @(t) LinePickingPDF(t, problem, parameters);
+  [q_square, errbnd] = quadgk(gt, s(1), s(2));
+  sum_pdf(i) = q_square;
   
   % simulate
   distances = LinePickingSimDistances(M, problem, parameters, seed);
@@ -119,24 +126,61 @@ for i=1:length(test_problems)
   fprintf('   printed to %s\n', filename);
   title(title_str);
 
-  % test values
+  % plot CDFs and test values
   
 end
+
+
+%%%
+%    create a .tex file with some stuff in it for the paper
+%%%
+fid = fopen('LinePicking_test_sim.tex', 'w');
+
+%
+%
+% output a figure to import directly into LaTex document
+%
+% 
+fprintf(fid,'\n\n\n');
+fprintf(fid,'\\begin{figure}[tbp]\n');
+fprintf(fid,'  \\begin{center}\n');
+for i=1:length(test_problems)
+  file_str = char(test_problems(i,4));
+  filename = sprintf('LinePicking_test_sim_%s.%s', file_str, suffix);
+  fprintf(fid,'        \\subfloat[%s]{\\includegraphics[width=0.24\\columnwidth]{../Matlab/Plots/%s}}\n', ...
+	  char(test_problems(i,3)), filename);
+  if (mod(i,4) == 0)
+    fprintf(fid,'\n');
+  end
+end
+fprintf(fid,'    \\caption{\\label{fig:sim_vs_exact}Comparisons of exactly calculated\n');
+fprintf(fid,'      distributions and the distributions obtained by simulation. \n');
+fprintf(fid,'      %.0f simulated lines were used to draw the estimated PDF,\n');
+fprintf(fid,'      which are binned into 30 equally spaced bins.}\n');
+fprintf(fid,'  \\end{center} \n');
+fprintf(fid,'\\vspace{-4mm}\n');
+fprintf(fid,'\\end{figure}\n');
+
 
 %
 %
 % output a table of means and variance estimates
 %
 % 
-fprintf('\n\n\n');
-fprintf('  \\begin{tabular}{r|rrrr}\n');
-fprintf('%25s & %8s & %14s & %8s & %14s \\\\\n', 'problem', 'mean', 'estimated mean', 'variance', 'estimated var');
-fprintf('     \\hline \n');
+fprintf(fid,'\n\n\n');
+fprintf(fid,'\\begin{table}[ht]\n');
+fprintf(fid,'  \\centering\n');
+fprintf(fid,'  \\begin{tabular}{r|rrrr}\n');
+fprintf(fid,'%25s & %8s & %14s & %8s & %14s \\\\\n', 'problem', 'mean', 'estimated mean', 'variance', 'estimated var');
+fprintf(fid,'     \\hline \n');
 for i=1:length(test_problems)
-  fprintf('%25s & %8.4f & %14.4f & %8.4f & %14.4f \\\\\n', ...
+  fprintf(fid,'%25s & %8.4f & %14.4f & %8.4f & %14.4f \\\\\n', ...
 	  char(test_problems(i,3)), calc_means(i), est_means(i), calc_vars(i), est_var(i));
 end
-fprintf('  \\end{tabular}\n');
+fprintf(fid,'  \\end{tabular}\n');
+fprintf(fid,'  \\caption{Means and variances calculated exactly, and approximated by simulation.}\n');
+fprintf(fid,'  \\label{tab:mean_var_estimates}\n');
+fprintf(fid,'\\end{table}\n');
 
 
 %
@@ -144,13 +188,20 @@ fprintf('  \\end{tabular}\n');
 % output a table of PDF sums
 %
 % 
-fprintf('\n\n\n');
-fprintf('  \\begin{tabular}{r|r}\n');
-fprintf('%25s & %8s & %14s \\\\\n', 'problem', 'PDF sum');
-fprintf('     \\hline \n');
+fprintf(fid,'\n\n\n');
+fprintf(fid,'\n\n\n');
+fprintf(fid,'\\begin{table}[ht]\n');
+fprintf(fid,'  \\centering\n');
+fprintf(fid,'  \\begin{tabular}{r|r}\n');
+fprintf(fid,'%25s & %12s \\\\\n', 'problem', 'PDF integral');
+fprintf(fid,'     \\hline \n');
 for i=1:length(test_problems)
-  fprintf('%25s & %8.5f \\\\\n', ...
+  fprintf(fid,'%25s & %12.10f \\\\\n', ...
 	  char(test_problems(i,3)), sum_pdf(i));
 end
-fprintf('  \\end{tabular}\n');
+fprintf(fid,'  \\end{tabular}\n');
+fprintf(fid,'  \\caption{Numerically integrated PDFs.}\n');
+fprintf(fid,'  \\label{tab:numerical_pdf_sum}\n');
+fprintf(fid,'\\end{table}\n');
 
+fclose(fid);
