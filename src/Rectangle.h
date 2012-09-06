@@ -45,7 +45,7 @@ void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, double* paramete
 
 void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double RectangleDistanceMetric(int Ncoords, double *point1, double* point2);
+double RectangleDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 
 

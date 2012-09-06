@@ -894,13 +894,14 @@ void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* para
 }
 
 /**
- * Simulate a set of points from the problem of interest
+ * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system
- * @param $Npoints = number of points to generate
- * @param $Ncoords = number of coordinates for each point
- * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $Npoints = number of points to generate.
+ * @param $Ncoords = number of coordinates for each point.
+ * @param $parameters $parameters[0] is the length of the prism under 
+ * and $parameters[1] is the length of the perimeter of the prism 
+ * under consideration.
  * @todo Implement this.
  */
 void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
@@ -923,15 +924,20 @@ void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords,
 }
 
 /**
- * Calculate distance (using correct metric) between 2 points
+ * Calculate distance (using correct metric) between 2 points.
  *
- * @param $Ncoords = number of coordinates for each point
- * @param $points1 = coordinates of first point
- * @param $points2 = coordinates of second point
- * @return The distance between the two points
+ * @param $Ncoords = number of coordinates for each point.
+ * @param $points1 = coordinates of first point.
+ * @param $points2 = coordinates of second point.
+ * @param $parameters $parameters[0] is the length of the prism under 
+ * and $parameters[1] is the length of the perimeter of the prism 
+ * under consideration.
+ * @return The distance between the two points.
  * @todo Implement this.
  */
-double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2)
+double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
 {
     return -1; /* not implemented yet */
 }
+
+

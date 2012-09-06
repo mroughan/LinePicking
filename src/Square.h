@@ -48,6 +48,6 @@ void SquareDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
 
 void SquareDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double SquareDistanceMetric(int Ncoords, double *point1, double* point2);
+double SquareDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 #endif /* _SQUARE_H */

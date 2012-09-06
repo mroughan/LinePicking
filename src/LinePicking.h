@@ -86,7 +86,7 @@ typedef struct
     void   (* CHECK_PAR)(double*, int *, char *);
     void   (* NCOORDS)(int *, char **, double *);
     void   (* SIM_POINTS)(double **, int *, int *, double *);
-    double (* DISTANCE)(int, double *, double *);
+    double (* DISTANCE)(int, double *, double *, double *);
     LinePickingData *DATA; 
 } LinePickingRec;
  

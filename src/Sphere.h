@@ -46,7 +46,7 @@ void SphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
 
 void SphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double SphereDistanceMetric(int Ncoords, double *point1, double* point2);
+double SphereDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 #endif /* _SPHERE_H */
 

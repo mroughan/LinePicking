@@ -46,7 +46,7 @@ void RectangleManhattanDistanceNcoords(int *Ncoords, char **CoordSystem, double*
 
 void RectangleManhattanDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double RectangleManhattanDistanceMetric(int Ncoords, double *point1, double* point2);
+double RectangleManhattanDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 
 

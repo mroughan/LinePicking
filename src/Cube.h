@@ -44,6 +44,6 @@ void CubeDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters);
 
 void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double CubeDistanceMetric(int Ncoords, double *point1, double* point2);
+double CubeDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 #endif /* _CUBE_H */

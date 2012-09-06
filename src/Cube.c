@@ -242,13 +242,13 @@ void CubeDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
 }
 
 /**
- * Simulate a set of points from the problem of interest
+ * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system
- * @param $Npoints = number of points to generate
- * @param $Ncoords = number of coordinates for each point
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $Npoints = number of points to generate.
+ * @param $Ncoords = number of coordinates for each point.
  * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * the cube under consideration.
  */
 void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
 {
@@ -264,14 +264,16 @@ void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* 
 }
 
 /**
- * Calculate distance (using correct metric) between 2 points
+ * Calculate distance (using correct metric) between 2 points.
  *
- * @param $Ncoords = number of coordinates for each point
- * @param $points1 = coordinates of first point
- * @param $points2 = coordinates of second point
- * @return The distance between the two points
+ * @param $Ncoords = number of coordinates for each point.
+ * @param $points1 = coordinates of first point.
+ * @param $points2 = coordinates of second point.
+ * @param $parameters parameters[0] is the length of the sides of 
+ * the cube under consideration.
+ * @return The distance between the two points.
  */
-double CubeDistanceMetric(int Ncoords, double *point1, double* point2)
+double CubeDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }

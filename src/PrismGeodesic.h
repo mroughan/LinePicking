@@ -50,7 +50,7 @@ void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* para
 
 void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2);
+double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 #endif /* _Prism_GEODESIC_H */
 

@@ -49,7 +49,7 @@ void SphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* par
 
 void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double SphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2);
+double SphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 #endif /* _SPHERE_GEODESIC_H */
 

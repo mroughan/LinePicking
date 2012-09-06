@@ -46,7 +46,7 @@ void RectangleMaxDistanceNcoords(int *Ncoords, char **CoordSystem, double* param
 
 void RectangleMaxDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double RectangleMaxDistanceMetric(int Ncoords, double *point1, double* point2);
+double RectangleMaxDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 
 #endif /* _RECTANGLE_MAX_H */

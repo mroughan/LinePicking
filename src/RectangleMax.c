@@ -237,13 +237,13 @@ void RectangleMaxDistanceNcoords(int *Ncoords, char **CoordSystem, double* param
 }
 
 /**
- * Simulate a set of points from the problem of interest
+ * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system
- * @param $Npoints = number of points to generate
- * @param $Ncoords = number of coordinates for each point
- * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $Npoints = number of points to generate.
+ * @param $Ncoords = number of coordinates for each point.
+ * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
+ * sides of the rectangle under consideration.
  */
 void RectangleMaxDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
 {
@@ -251,11 +251,11 @@ void RectangleMaxDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
     
     for (i=0; i<*Npoints; i++)
     {
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = parameters[*Ncoords-j-1]*drand48();
-	    /* parameters in opposite order, because give height first */
-	}
+        for (j=0; j<*Ncoords; j++)
+        {
+            points[i][j] = parameters[*Ncoords-j-1]*drand48();
+            /* parameters in opposite order, because give height first */
+        }
     }
 }
 
@@ -265,9 +265,11 @@ void RectangleMaxDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
  * @param $Ncoords = number of coordinates for each point
  * @param $points1 = coordinates of first point
  * @param $points2 = coordinates of second point
+ * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
+ * sides of the rectangle under consideration.
  * @return The distance between the two points
  */
-double RectangleMaxDistanceMetric(int Ncoords, double *point1, double* point2)
+double RectangleMaxDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
 {
     return DistanceMax(Ncoords, point1, point2);
 }

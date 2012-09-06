@@ -664,7 +664,7 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 	(*LinePickingFields[*problem].SIM_POINTS)(points, &Npoints, &Ncoords, parameters);
 
 	/* compute the distances */
-	distances[i] = (*LinePickingFields[*problem].DISTANCE)(Ncoords, points[0], points[1]);
+	distances[i] = (*LinePickingFields[*problem].DISTANCE)(Ncoords, points[0], points[1], parameters);
     }
     free(points[0]);
     free(points[1]);
@@ -1286,7 +1286,7 @@ int main(int argc, char *argv[])
     int i=0;
     int problem;
     double parameters[3];
-    double *DefaultParameters;
+    double DefaultParameters[MAX_PARAMETERS];
     char *version = "version 1.0";
     char *file;
     FILE *fp;    
@@ -1320,7 +1320,7 @@ int main(int argc, char *argv[])
     }
     /* get the problem's name and description */
     LinePickingProblemLookup(&problem, &Problems_name, &Problems_description, &Npar, 
-                             &DefaultParameters);
+                             DefaultParameters);
     fprintf(stderr, 
             "%%  problem=%d, %s (%s)\n", problem, Problems_name, Problems_description);
     

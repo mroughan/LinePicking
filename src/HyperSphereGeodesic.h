@@ -46,6 +46,6 @@ void HyperSphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double
 
 void HyperSphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters);
 
-double HyperSphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2);
+double HyperSphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters);
 
 #endif /* _HYPERSPHERE_GEODESIC_H */
