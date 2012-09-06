@@ -50,23 +50,22 @@ L3 = 1/sqrt(3); % side of cube
 R = 1/2;        % radius for balls
 a = 1;          % rectangle height
 b = 2;          % rectangle width
-a = 1/sqrt(a^2 + b^2); b=1/sqrt(a^2 + b^2);
 test_problems = [...
+    {'line', [L1], 'line', 'line'};
     {'square', [L2], 'square', 'square'};
+    {'cube', [L3], 'cube', 'cube'};
+    {'rectangle', [a, b]/sqrt(a^2 + b^2), 'rectangle (1:2)', 'rect'};
+    {'rectangle Manhattan', [a, b]/(a+b), 'rectangle Manhattan (1:2)', 'rect_manhattan'};
+    {'rectangle max', [a, b]/max(a,b), 'rectangle max (1:2)', 'rectangle_max'};
     {'disk', [R], 'disk (2-ball)', 'disk'};
     {'hyper-ball', [3, R], '3-ball', '3ball'};
     {'hyper-ball', [4, R], '4-ball', '4ball'};
-    {'rectangle', [a, b], 'rectangle (1:2)', 'rect'};
-    {'line', [L1], 'line', 'line'};
-    {'cube', [L3], 'cube', 'cube'};
+    {'hyper-sphere', [1, R], 'circle (1-sphere)', 'circle'};
     {'sphere', [R], '2-sphere', '2-sphere'};
-    {'hyper-sphere', [1, R], 'circle', 'circle'};
     {'hyper-sphere', [3, R], '3-sphere', '3sphere'};
-    {'sphere geodesic', [R], 'sphere geodesic', 'sphere_geodesic'};
     {'hyper-sphere geodesic', [1 R], 'circle geodesic', 'circle_geodesic'};
+    {'sphere geodesic', [R], 'sphere geodesic', 'sphere_geodesic'};
     {'hyper-sphere geodesic', [3 R], '3-sphere geodesic', '3sphere_geodesic'};
-    {'rectangle Manhattan', [a, b], 'rectangle Manhattan (1:2)', 'rect_manhattan'};
-    {'rectangle max', [a, b], 'rectangle max (1:2)', 'rectangle_max'};
     {'prism geodesic', [b, a]/sqrt(b^2+(a/2)^2), 'prism geodesic', 'prism_geodesic'};
 		];
 
@@ -91,10 +90,11 @@ for i=1:length(test_problems)
   t = s(1):ds:s(2);
   g = LinePickingPDF(t, problem, parameters);
   G = LinePickingCDF(t, problem, parameters);
-  if (any(g)<0)
-    k = find(g < 0);
-    t(k)
-  end
+  % if (any(g<0))
+  %   k = find(g < 0);
+  %   t(k)
+  %   stop
+  % end
   
   % compute the sum of the PDF
   % sum_pdf(i) = sum(g)*ds;
@@ -155,8 +155,8 @@ for i=1:length(test_problems)
 end
 fprintf(fid,'    \\caption{\\label{fig:sim_vs_exact}Comparisons of exactly calculated\n');
 fprintf(fid,'      distributions and the distributions obtained by simulation. \n');
-fprintf(fid,'      %.0f simulated lines were used to draw the estimated PDF,\n');
-fprintf(fid,'      which are binned into 30 equally spaced bins.}\n');
+fprintf(fid,'      %.0f simulated lines were used to draw the estimated PDF,\n', M);
+fprintf(fid,'      which are binned into %0.f equally spaced bins.}\n', N);
 fprintf(fid,'  \\end{center} \n');
 fprintf(fid,'\\vspace{-4mm}\n');
 fprintf(fid,'\\end{figure}\n');
@@ -200,7 +200,7 @@ for i=1:length(test_problems)
 	  char(test_problems(i,3)), sum_pdf(i));
 end
 fprintf(fid,'  \\end{tabular}\n');
-fprintf(fid,'  \\caption{Numerically integrated PDFs.}\n');
+fprintf(fid,'  \\caption{Numerically integrated PDFs (integrated using Matlab''s {\\tt quadgk} function)}\n');
 fprintf(fid,'  \\label{tab:numerical_pdf_sum}\n');
 fprintf(fid,'\\end{table}\n');
 
