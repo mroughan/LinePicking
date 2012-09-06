@@ -184,13 +184,13 @@ void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
-	/* generate n normal random variables */
-	rand_normal(*Ncoords, normals);
-
-	/* normalize them so that they lie on the (n-1)-sphere */
-	sum = 0;
-	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-	for (j=0; j<*Ncoords; j++) points[i][j] = parameters[0]*normals[j]/sqrt(sum);
+        /* generate n normal random variables */
+        rand_normal(*Ncoords, normals);
+        
+        /* normalize them so that they lie on the (n-1)-sphere */
+        sum = 0;
+        for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
+        for (j=0; j<*Ncoords; j++) points[i][j] = parameters[0]*normals[j]/sqrt(sum);
     }
     free(normals);
 }
@@ -208,5 +208,6 @@ void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords
  */
 double SphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
 {
-    return -1; /* not implemented yet */
+    double d = DistanceEuclidean(Ncoords, point1, point2);
+    return parameters[0] * 2 * asin(d/ (2 * parameters[0])); 
 }

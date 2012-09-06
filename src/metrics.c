@@ -108,10 +108,11 @@ double DistanceMax(int N, double *point1, double *point2)
     int i;
     double max = 0;
     double tmp;
-
-    for (i=0;i<N;i++) {
-	tmp = fabs(point1[i]-point2[i]);
-	max = max > tmp ? max : tmp;
+    
+    for (i=0;i<N;i++) 
+    {
+        tmp = fabs(point1[i]-point2[i]);
+        max = max > tmp ? max : tmp;
     }
     return max;
 }
@@ -129,9 +130,10 @@ double DistanceLp(int N, double *point1, double *point2, double p)
 {
     int i;
     double sum=0;
-
-    for (i=0;i<N;i++) {
-	sum += pow(point1[i]-point2[i], p);
+    
+    for (i=0;i<N;i++) 
+    {
+        sum += pow(point1[i]-point2[i], p);
     }
     return pow(sum, 1.0/p);
 }

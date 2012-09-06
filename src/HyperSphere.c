@@ -260,7 +260,7 @@ void HyperSphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, d
  * @param $Ncoords = number of coordinates for each point.
  * @param $points1 = coordinates of first point.
  * @param $points2 = coordinates of second point.
- * @param $parameters $parameters[] is the diameter of the hyper-sphere under
+ * @param $parameters $parameters[1] is the diameter of the hyper-sphere under
  * consideration.
  * @return The distance between the two points.
  */

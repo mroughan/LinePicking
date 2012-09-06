@@ -238,12 +238,13 @@ void HyperSphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Nc
  * @param $Ncoords = number of coordinates for each point.
  * @param $points1 = coordinates of first point.
  * @param $points2 = coordinates of second point.
- * @param $parameters $parameters[] is the diameter of the hyper-sphere under
+ * @param $parameters $parameters[1] is the diameter of the hyper-sphere under
  * consideration.
  * @return The distance between the two points
  * @todo Implement this.
  */
 double HyperSphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
 {
-    return -1; /* not implemented yet */
+    double d = DistanceEuclidean(Ncoords, point1, point2);
+    return parameters[1] * 2 * asin(d/ (2 * parameters[1])); 
 }

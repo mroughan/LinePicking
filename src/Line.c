@@ -168,10 +168,10 @@ void LineDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* 
     
     for (i=0; i<*Npoints; i++)
     {
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = parameters[0]*drand48(); /* mxArray is transpose of c matrix */
-	}
+        for (j=0; j<*Ncoords; j++)
+        {
+            points[i][j] = parameters[0]*drand48(); /* mxArray is transpose of c matrix */
+        }
     }
 }
 

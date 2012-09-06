@@ -270,7 +270,7 @@ void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, dou
  * @param $Ncoords = number of coordinates for each point.
  * @param $points1 = coordinates of first point.
  * @param $points2 = coordinates of second point.
- * @param $parameters $parameters[] is the diameter of the hyper-ball under
+ * @param $parameters $parameters[1] is the diameter of the hyper-ball under
  * consideration.
  * @return The distance between the two points.
  */
