@@ -50,6 +50,7 @@ $(PS): %.ps: %.dvi
 
 $(PDF): %.pdf: %.ps
 	${PS2PDF} $^ $@ 
+	cp $@ ../inst/
 
 $(DVI): %.dvi: %.tex FORCE
 	${LATEX} $< 

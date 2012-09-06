@@ -33,8 +33,8 @@ colors = [[1 0 0];
 device = '-depsc';
 suffix = 'eps';
 seed = 1;
-set(0,'DefaultTextFontsize', 18); % not working
-set(0,'DefaultAxesFontsize', 18); % not working
+set(0,'DefaultTextFontsize', 18);
+set(0,'DefaultAxesFontsize', 18);
 set(0,'DefaultLineLinewidth', 2);
 plotdir = '../Plots';
 
@@ -304,7 +304,7 @@ fprintf('Printed to %s\n', filename);
 
 % 
 % do  plots for line
-problem = LinePickingNameLookup('cube');
+problem = LinePickingNameLookup('line');
 L = 1;
 dt = 0.001;
 t = -0.1:dt:3.1;

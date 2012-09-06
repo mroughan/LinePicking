@@ -94,9 +94,9 @@ FORCE:
 # standard cleanup etc
 .PHONY : clean
 clean: 
-	- $(RM) *~
+	- $(RM) *~ *.mex* LinePicking*.m Contents.m */*~
 
 .PHONY : distclean
 distclean: 
-	- $(RM) *.mex* Plots/LinePicking*
+	- $(RM) *~ *.mex* LinePicking*.m Contents.m */*~ Plots/LinePicking*
 

@@ -23,8 +23,8 @@ M = 10;
 device = '-depsc';
 suffix = 'eps';
 seed = 1;
-set(0,'DefaultTextFontsize', 18); % not working
-set(0,'DefaultAxesFontsize', 18); % not working
+set(0,'DefaultTextFontsize', 18);
+set(0,'DefaultAxesFontsize', 18);
 set(0,'DefaultLineLinewidth', 2);
 plotdir = '../Plots';
 
