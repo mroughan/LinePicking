@@ -24,4 +24,4 @@ LinePickingProblemLookup <- function(problem=0){
             parameters = as.double(rep(1.0,N)))
   return(tmp)
 }
-LinePickingProblemLookup()
+#LinePickingProblemLookup()

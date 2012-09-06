@@ -67,26 +67,26 @@ double RectangleDistancePDF(double t, double* parameters)
         b = a;
         a = tmp;
     }
-    a2 = a*a;
-    b2 = b*b;
+    a2 = a * a;
+    b2 = b * b;
     
     /* three cases */
     if (t <= a)
     {
-        return( 4*( (a*b*M_PI)/2 - (a+b)*t + t2/2 
+        return( 4*( (a * b * M_PI) /2.0 - (a+b)*t + t2/2 
                    )*t/(a2*b2) );
-    } else if (t>a && t<=b) 
+    } else if (t< = b) 
     {
-        return( 4*( a*b*asin(a/t) 
-                   - a2/2 - b*t
-                   + b*sqrt(t2-a2) 
-                   )*t/(a2*b2) );
+        return( 4*( a * b * asin(a / t) 
+                   - a2 / 2.0 - b * t
+                   + b * sqrt(t2 - a2) 
+                   ) * t / (a2 * b2));
     } else {
         return( 4*(  a*b*(asin(a/t) - asin(sqrt(1 - b2/(t2)))) 
-                   - (a2 + b2 + t2)/2
-                   + a*sqrt(t2-b2)
-                   + b*sqrt(t2-a2) 
-                   )*t/(a2*b2));
+                   - (a2 + b2 + t2)/2.0
+                   + a*sqrt(t2 - b2)
+                   + b*sqrt(t2 - a2) 
+                   ) * t /(a2 * b2));
     }
     
 }
@@ -288,11 +288,11 @@ void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, dou
     
     for (i=0; i<*Npoints; i++)
     {
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = parameters[*Ncoords-j-1]*drand48();
-	    /* parameters in opposite order, because give height first */
-	}
+        for (j=0; j<*Ncoords; j++)
+        {
+            points[i][j] = parameters[*Ncoords-j-1]*drand48();
+            /* parameters in opposite order, because give height first */
+        }
     }
 }
 
