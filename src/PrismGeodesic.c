@@ -52,7 +52,7 @@ double PrismGeodesicDistancePDF(double w, double* parameters)
     double L2 = L * L;
     /* double P2 = P * P; */
     /* double M = sqrt(L2 + (P2 / 4.)); */
-    double w2 = w * w;
+    double w2 = w * w; 
         
     /* three cases */
     if (w <= P / 2)
@@ -65,9 +65,9 @@ double PrismGeodesicDistancePDF(double w, double* parameters)
     }
     else 
     {
-        return  (-2 * w) / L2 + ( 4 * w * sqrt(w2 - L2)) / (L2 * P) - 
-        (4 * (w * acos(L / w) - w * asin(P / (2 * w))))/(L * P);
-        
+        double r = (((-2 * w)  + ( 4 * w * sqrt(w2 - L2)) / P ) / L - 
+                 (w * (4 * acos(L / w) - 4 * asin(P / (2 * w))))/ P) / L;
+        return r < 0.0 ? 0.0 : r; 
     }
 }
 

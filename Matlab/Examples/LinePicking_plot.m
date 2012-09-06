@@ -18,6 +18,7 @@
 %
 clear;
 path(path, '../');
+path(path, '../figure_inset');
 
 dt = 0.001;
 t = -0.1:dt:2.1;
@@ -122,14 +123,15 @@ fprintf('Printed to %s\n', filename);
 % 
 % do  plot considering rectangles of various dimensions
 %  fixing the max length
+problem = LinePickingNameLookup('rectangle');
 dt = 0.001;
-t = -0.1:dt:3.1;
+t = -0.1:dt:3.1; 
 figure(8)
 hold off
 plot(0,0)
 hold on
 for n=1:8
-  [g_rect] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [n,1]/sqrt(1+n^2));
+  [g_rect] = LinePickingPDF(t, problem, [n,1]/sqrt(1+n^2));
   p8(n) = plot(t,g_rect,'color', colors(n,:));
   legend_str8(n,:) = sprintf('aspect ratio = 1:%d', n);
 end
@@ -153,11 +155,11 @@ t1 = t(k1);
 t2 = t(k2);
 t3 = t(k3);
 
-figure(81)
+fig1 = figure(81)
 hold off
 plot(0,0)
 hold on
-[g] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [a b]);
+[g] = LinePickingPDF(t, problem, [a b]);
 fill([t1, fliplr(t1)], [g(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g(k3),zeros(size(k3))], [1,1,0.9]);
@@ -165,6 +167,25 @@ plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
+if (exist('inset.m','file'))
+  % do a little inset picture in the plot
+  parameters = [a b];
+  M = 10;
+  seed = 1;
+  points1 = LinePickingSimPoints(M, problem, parameters, seed);
+  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+  fig2=figure(181);
+  hold off
+  plot([0 b b 0 0], [0 0 a a 0], 'k-', 'linewidth', 2);
+  hold on
+  plot([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], 'bo-','linewidth',2);
+  axis equal
+  axis off
+  inset_size = 0.4; % 0.35 is the default
+  [h_m h_i] = inset(fig1,fig2,inset_size);
+else
+  fprintf('  installing inset.m will allow for better figures\n');
+end
 filename = sprintf('%s/LinePicking_plot_rect_regions.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
@@ -205,7 +226,7 @@ t1 = t(k1);
 t2 = t(k2);
 t3 = t(k3);
 
-figure(91)
+fig1 = figure(91)
 hold off
 plot(0,0)
 hold on
@@ -217,6 +238,26 @@ plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
+if (exist('inset.m','file'))
+  % do a little inset picture in the plot
+  parameters = [a b];
+  M = 10;
+  seed = 1;
+  points1 = LinePickingSimPoints(M, problem, parameters, seed);
+  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+  fig2=figure(191);
+  hold off
+  plot([0 b b 0 0], [0 0 a a 0], 'k-', 'linewidth', 2);
+  hold on
+  plot([points1(1,:); points2(1,:); points2(1,:)], [points1(2,:); points1(2,:); points2(2,:)], 'b-','linewidth',1);
+  plot([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], 'b.','linewidth',2);
+  axis equal
+  axis off
+  inset_size = 0.4; % 0.35 is the default
+  [h_m h_i] = inset(fig1,fig2,inset_size);
+else
+  fprintf('  installing inset.m will allow for better figures\n');
+end
 filename = sprintf('%s/LinePicking_plot_rect_man_regions.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
@@ -276,6 +317,7 @@ fprintf('Printed to %s\n', filename);
 
 % 
 % do  plot for cube
+problem = LinePickingNameLookup('cube');
 L = 1/sqrt(3);
 dt = 0.001;
 t = -0.1:dt:3.1;
@@ -285,11 +327,11 @@ k3 = find(t>L*sqrt(2)& t<=L*sqrt(3));
 t1 = t(k1);
 t2 = t(k2);
 t3 = t(k3);
-figure(11)
+fig1 = figure(11)
 hold off
 plot(0,0)
 hold on
-[g_cube] = LinePickingPDF(t, LinePickingNameLookup('cube'), L);
+[g_cube] = LinePickingPDF(t, problem, L);
 fill([t1, fliplr(t1)], [g_cube(k1),zeros(size(k1))], [0.9,1,1]);
 fill([t2, fliplr(t2)], [g_cube(k2),zeros(size(k2))], [1,0.9,1]);
 fill([t3, fliplr(t3)], [g_cube(k3),zeros(size(k3))], [1,1,0.9]);
@@ -298,6 +340,32 @@ set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
 ylabel('g^{\rm cube}(t)');
+if (exist('inset.m','file'))
+  % do a little inset picture in the plot
+  parameters = [L];
+  M = 10;
+  seed = 1;
+  points1 = LinePickingSimPoints(M, problem, parameters, seed);
+  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+  fig2=figure(111);
+  hold off
+  plot3(0,0,0);
+  hold on
+  plot3([0 L L 0 0], [0 0 L L 0], [0 0 0 0 0], 'k-', 'linewidth', 2);
+  plot3([0 L L 0 0], [0 0 L L 0], [L L L L L], 'k-', 'linewidth', 2);
+  plot3([0 L L 0 0], [0 0 0 0 0], [0 0 L L 0], 'k-', 'linewidth', 2);
+  plot3([0 L L 0 0], [L L L L L], [0 0 L L 0], 'k-', 'linewidth', 2);
+  plot3([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], [points1(3,:); points2(3,:)], 'bo-','linewidth',1);
+  set(gca, 'xlim', [-0.1, L+0.1]);
+  set(gca, 'ylim', [-0.1, L+0.1]);
+  set(gca, 'zlim', [-0.1, L+0.1]);
+  axis equal
+  axis off
+  inset_size = 0.4; % 0.35 is the default
+  [h_m h_i] = inset(fig1,fig2,inset_size);
+else
+  fprintf('  installing inset.m will allow for better figures\n');
+end
 filename = sprintf('%s/LinePicking_plot_cube_regions.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
@@ -350,7 +418,7 @@ k1 = find(t<=L);
 k2 = find(t>L & t<=L*sqrt(2));
 t1 = t(k1);
 t2 = t(k2);
-figure(14)
+fig1 = figure(14)
 hold off
 plot(0,0)
 hold on
@@ -361,6 +429,29 @@ plot(t,g_square,'color', 'b');
 set(gca, 'xlim', [0 sqrt(2)]);
 xlabel('t');
 ylabel('g^{\rm square}(t)');
+if (exist('inset.m','file'))
+  % do a little inset picture in the plot
+  problem = LinePickingNameLookup('square');
+  L = 1;
+  parameters = [L];
+  M = 10;
+  seed = 1;
+  points1 = LinePickingSimPoints(M, problem, parameters, seed);
+  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+  fig2=figure(100);
+  hold off
+  plot([0 L L 0 0], [0 0 L L 0], 'k-');
+  hold on
+  plot([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], 'bo-','linewidth',1);
+  set(gca, 'xlim', [-0.1, L+0.1]);
+  set(gca, 'ylim', [-0.1, L+0.1]);
+  axis equal
+  axis off
+  inset_size = 0.4; % 0.35 is the default
+  [h_m h_i] = inset(fig1,fig2,inset_size);
+else
+  fprintf('  installing inset.m will allow for better figures\n');
+end
 filename = sprintf('%s/LinePicking_plot_square_pdf.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);

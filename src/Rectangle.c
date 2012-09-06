@@ -75,7 +75,7 @@ double RectangleDistancePDF(double t, double* parameters)
     {
         return( 4*( (a * b * M_PI) /2.0 - (a+b)*t + t2/2 
                    )*t/(a2*b2) );
-    } else if (t< = b) 
+    } else if (t <= b) 
     {
         return( 4*( a * b * asin(a / t) 
                    - a2 / 2.0 - b * t
