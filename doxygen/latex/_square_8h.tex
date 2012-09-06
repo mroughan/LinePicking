@@ -25,7 +25,7 @@ void \hyperlink{_square_8h_a353252bf400f8a646084f27f2052dc6a}{Square\-Distance\-
 \item 
 void \hyperlink{_square_8h_a1810f50789e22c584a1aa7e234ff17b0}{Square\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_square_8h_a2018f08a863faf31538e19ce548cfbbe}{Square\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_square_8h_ab70b21211b44a8203f25d9ebfc860cf0}{Square\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -111,28 +111,31 @@ The mean distance between two random points on a square.
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/SquareLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Square\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
-\hypertarget{_square_8h_a2018f08a863faf31538e19ce548cfbbe}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Metric@{Square\-Distance\-Metric}}
+\hypertarget{_square_8h_ab70b21211b44a8203f25d9ebfc860cf0}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Metric@{Square\-Distance\-Metric}}
 \index{Square\-Distance\-Metric@{Square\-Distance\-Metric}!Square.h@{Square.\-h}}
 \subsubsection[{Square\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Square\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_square_8h_a2018f08a863faf31538e19ce548cfbbe}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_square_8h_ab70b21211b44a8203f25d9ebfc860cf0}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
 {\em \$points2} & = coordinates of second point \\
 \hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \hypertarget{_square_8h_a353252bf400f8a646084f27f2052dc6a}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Ncoords@{Square\-Distance\-Ncoords}}
 \index{Square\-Distance\-Ncoords@{Square\-Distance\-Ncoords}!Square.h@{Square.\-h}}
@@ -187,17 +190,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_square_8h_a1810f50789e22c584a1aa7e234ff17b0}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_square_8h_a922c1f4695e3f9c5d302cf86b8ba2e04}{\index{Square.\-h@{Square.\-h}!Square\-Distance\-Support@{Square\-Distance\-Support}}

@@ -25,7 +25,7 @@ void \hyperlink{_sphere_geodesic_8h_abcd3909296775f86691ff04e22f591ce}{Sphere\-G
 \item 
 void \hyperlink{_sphere_geodesic_8h_ac14fa79916cda995cf3b89959dbf0ff2}{Sphere\-Geodesic\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_sphere_geodesic_8h_aeeeba5365697facdeaed969985953006}{Sphere\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_sphere_geodesic_8h_acc49218d74f89ce32f4517b99347badd}{Sphere\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -109,28 +109,31 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The mean of the distance between two random points on the surface of a sphere measured around the surface of the sphere (i.\-e., a geodesic). 
 \end{DoxyReturn}
-\hypertarget{_sphere_geodesic_8h_aeeeba5365697facdeaed969985953006}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Metric@{Sphere\-Geodesic\-Distance\-Metric}}
+\hypertarget{_sphere_geodesic_8h_acc49218d74f89ce32f4517b99347badd}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Metric@{Sphere\-Geodesic\-Distance\-Metric}}
 \index{Sphere\-Geodesic\-Distance\-Metric@{Sphere\-Geodesic\-Distance\-Metric}!SphereGeodesic.h@{Sphere\-Geodesic.\-h}}
 \subsubsection[{Sphere\-Geodesic\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Geodesic\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_sphere_geodesic_8h_aeeeba5365697facdeaed969985953006}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_sphere_geodesic_8h_acc49218d74f89ce32f4517b99347badd}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the diameter of the sphere under. consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000042}{Todo}]Implement this. \end{DoxyRefDesc}
@@ -186,17 +189,17 @@ The density at \$s.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_sphere_geodesic_8h_ac14fa79916cda995cf3b89959dbf0ff2}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the diameter of the sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_sphere_geodesic_8h_aa5edd08b36e87835366a0789ca247785}{\index{Sphere\-Geodesic.\-h@{Sphere\-Geodesic.\-h}!Sphere\-Geodesic\-Distance\-Support@{Sphere\-Geodesic\-Distance\-Support}}

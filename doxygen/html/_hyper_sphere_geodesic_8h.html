@@ -112,8 +112,8 @@ Functions</h2></td></tr>
 <tr class="separator:a5849c183283668b9832e1da4d1fcb486"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3d32d66c2c0152df7c98bca28158b23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_geodesic_8h.html#ab3d32d66c2c0152df7c98bca28158b23">HyperSphereGeodesicDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
 <tr class="separator:ab3d32d66c2c0152df7c98bca28158b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19c36462545e2e1391333fd7053c26dd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_geodesic_8h.html#a19c36462545e2e1391333fd7053c26dd">HyperSphereGeodesicDistanceMetric</a> (int Ncoords, double *point1, double *point2)</td></tr>
-<tr class="separator:a19c36462545e2e1391333fd7053c26dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fbca3fad98c691523aeb34eaab97d01"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_sphere_geodesic_8h.html#a0fbca3fad98c691523aeb34eaab97d01">HyperSphereGeodesicDistanceMetric</a> (int Ncoords, double *point1, double *point2, double *parameters)</td></tr>
+<tr class="separator:a0fbca3fad98c691523aeb34eaab97d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -228,7 +228,7 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a19c36462545e2e1391333fd7053c26dd"></a>
+<a class="anchor" id="a0fbca3fad98c691523aeb34eaab97d01"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -248,7 +248,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>point2</em>&#160;</td>
+          <td class="paramname"><em>point2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -257,12 +263,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculate distance (using correct metric) between 2 points</p>
+<p>Calculate distance (using correct metric) between 2 points.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
-    <tr><td class="paramname">$points1</td><td>= coordinates of first point </td></tr>
-    <tr><td class="paramname">$points2</td><td>= coordinates of second point </td></tr>
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point. </td></tr>
+    <tr><td class="paramname">$points1</td><td>= coordinates of first point. </td></tr>
+    <tr><td class="paramname">$points2</td><td>= coordinates of second point. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[1] is the diameter of the hyper-sphere under consideration. </td></tr>
   </table>
   </dd>
 </dl>
@@ -383,13 +390,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Simulate a set of points from the problem of interest</p>
+<p>Simulate a set of points from the problem of interest.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system </td></tr>
-    <tr><td class="paramname">$Npoints</td><td>= number of points to generate </td></tr>
-    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point </td></tr>
-    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+    <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system. </td></tr>
+    <tr><td class="paramname">$Npoints</td><td>= number of points to generate. </td></tr>
+    <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[1] is the diameter of the hyper-sphere under consideration. </td></tr>
   </table>
   </dd>
 </dl>
@@ -459,7 +466,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 5 2012 03:48:47 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 7 2012 09:13:33 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

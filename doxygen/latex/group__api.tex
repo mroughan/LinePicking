@@ -8,9 +8,14 @@ void \hyperlink{group__api_gab0e3cb9eaef2a9f040f1135eee394f28}{Line\-Picking\-Nu
 \item 
 void \hyperlink{group__api_ga1a1c27d3c46da382a0443f810628a8ac}{Line\-Picking\-Print\-All\-Problems} (void)
 \item 
-void \hyperlink{group__api_gaf04b41252ebd1a3013b6bcb4dbbf3649}{Line\-Picking\-All\-Problems} (char $\ast$$\ast$, char $\ast$$\ast$)
+void \hyperlink{group__api_gadb58de53bac5d2fe684019ce77be9896}{Line\-Picking\-All\-Problems} (char $\ast$$\ast$names, char $\ast$$\ast$, int $\ast$, double $\ast$$\ast$)
 \item 
-void \hyperlink{group__api_ga146eea4bf38bd6e3812ea47ae2ac57a7}{Line\-Picking\-Problem\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$)
+void \hyperlink{group__api_ga17699721a1826bc3c2a2c3d80dff6f64}{Line\-Picking\-Name\-Lookup} (int $\ast$, char $\ast$$\ast$)
+\item 
+void \hyperlink{group__api_gaab56d0ac9177e8ec90b87d0927220283}{Line\-Picking\-Problem\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$, int $\ast$, double $\ast$)
+\item 
+\hypertarget{group__api_gad90607b321b23e25d238fc78cbd7ef04}{void {\bfseries Line\-Picking\-Problen\-Npar\-Lookup} (int $\ast$problem, int $\ast$Npar)}\label{group__api_gad90607b321b23e25d238fc78cbd7ef04}
+
 \item 
 void \hyperlink{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{Line\-Picking\-Check\-Parameters} (int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
 \item 
@@ -38,14 +43,16 @@ This section documents the A\-P\-I exposed for the use of other programs. These 
 
 
 \subsection{Function Documentation}
-\hypertarget{group__api_gaf04b41252ebd1a3013b6bcb4dbbf3649}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-All\-Problems@{Line\-Picking\-All\-Problems}}
+\hypertarget{group__api_gadb58de53bac5d2fe684019ce77be9896}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-All\-Problems@{Line\-Picking\-All\-Problems}}
 \index{Line\-Picking\-All\-Problems@{Line\-Picking\-All\-Problems}!LinePicking API@{Line\-Picking A\-P\-I}}
 \subsubsection[{Line\-Picking\-All\-Problems}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-All\-Problems (
 \begin{DoxyParamCaption}
 \item[{char $\ast$$\ast$}]{names, }
-\item[{char $\ast$$\ast$}]{descriptions}
+\item[{char $\ast$$\ast$}]{descriptions, }
+\item[{int $\ast$}]{Npars, }
+\item[{double $\ast$$\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{group__api_gaf04b41252ebd1a3013b6bcb4dbbf3649}
+)}}\label{group__api_gadb58de53bac5d2fe684019ce77be9896}
 This function is passed two arrays of uninitialised pointers to strings. On its return these pointers are initialised. The firat contains pointers to strings containing the names of all the problems implemented and the second contains pointers to strings containing the descriptions of all the problems implemented. 
 \begin{DoxyParams}{Parameters}
 {\em \$name} & Pointer to array that this function will fill with pointers to strings containing the names of all the problems currently implemented. \\
@@ -170,6 +177,24 @@ Calculates the mean distance between two random points for the given problem.
 \begin{DoxyReturn}{Returns}
 The required calculated mean is returned in \$mean. 
 \end{DoxyReturn}
+\hypertarget{group__api_ga17699721a1826bc3c2a2c3d80dff6f64}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Name\-Lookup@{Line\-Picking\-Name\-Lookup}}
+\index{Line\-Picking\-Name\-Lookup@{Line\-Picking\-Name\-Lookup}!LinePicking API@{Line\-Picking A\-P\-I}}
+\subsubsection[{Line\-Picking\-Name\-Lookup}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Name\-Lookup (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{problem, }
+\item[{char $\ast$$\ast$}]{name}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga17699721a1826bc3c2a2c3d80dff6f64}
+Problems are represented as integers. Given such a name, this finds the problem corresponding to that name, if one exists 
+\begin{DoxyParams}{Parameters}
+{\em \$problem} & Represents a problem. \\
+\hline
+{\em \$name} & Address of a memory location to set to the address of a string containing the name of the problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\$problem returns the problem corresponding to the name, or -\/1 if none exists. 
+\end{DoxyReturn}
 \hypertarget{group__api_ga89bd29435ffe1826e97dafb2b0536de1}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Ncoords@{Line\-Picking\-Ncoords}}
 \index{Line\-Picking\-Ncoords@{Line\-Picking\-Ncoords}!LinePicking API@{Line\-Picking A\-P\-I}}
 \subsubsection[{Line\-Picking\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Ncoords (
@@ -271,15 +296,17 @@ The required calculated densities are returned in \$g.
 )}}\label{group__api_ga1a1c27d3c46da382a0443f810628a8ac}
 Prints to stdout a list of all implemented problems giving the number of the problem and its associated name. \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000015}{Todo}]Do we want to print out the descriptions here? \end{DoxyRefDesc}
-\hypertarget{group__api_ga146eea4bf38bd6e3812ea47ae2ac57a7}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Problem\-Lookup@{Line\-Picking\-Problem\-Lookup}}
+\hypertarget{group__api_gaab56d0ac9177e8ec90b87d0927220283}{\index{Line\-Picking A\-P\-I@{Line\-Picking A\-P\-I}!Line\-Picking\-Problem\-Lookup@{Line\-Picking\-Problem\-Lookup}}
 \index{Line\-Picking\-Problem\-Lookup@{Line\-Picking\-Problem\-Lookup}!LinePicking API@{Line\-Picking A\-P\-I}}
 \subsubsection[{Line\-Picking\-Problem\-Lookup}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Problem\-Lookup (
 \begin{DoxyParamCaption}
 \item[{int $\ast$}]{problem, }
 \item[{char $\ast$$\ast$}]{name, }
-\item[{char $\ast$$\ast$}]{description}
+\item[{char $\ast$$\ast$}]{description, }
+\item[{int $\ast$}]{Npar, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{group__api_ga146eea4bf38bd6e3812ea47ae2ac57a7}
+)}}\label{group__api_gaab56d0ac9177e8ec90b87d0927220283}
 Problems are represented as integers. Given such an integer this function returns the problem name and description as a string. 
 \begin{DoxyParams}{Parameters}
 {\em \$problem} & Represents a problem. \\

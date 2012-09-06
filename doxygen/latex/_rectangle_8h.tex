@@ -25,7 +25,7 @@ void \hyperlink{_rectangle_8h_a82ca3e9864a9ffe229e666f9b29a25e1}{Rectangle\-Dist
 \item 
 void \hyperlink{_rectangle_8h_a539e9e4d5ae405ec5f9c34c1cd651ee6}{Rectangle\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_rectangle_8h_adfe226bc86b63ba4ad132f42eed492b8}{Rectangle\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_rectangle_8h_a2ce7ffa1d7e1f4c7e640c20507d3f006}{Rectangle\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -107,28 +107,31 @@ From \char`\"{}\-Random Distances Within a Rectangle and Between Two Rectangles\
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a rectangle. 
 \end{DoxyReturn}
-\hypertarget{_rectangle_8h_adfe226bc86b63ba4ad132f42eed492b8}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Metric@{Rectangle\-Distance\-Metric}}
+\hypertarget{_rectangle_8h_a2ce7ffa1d7e1f4c7e640c20507d3f006}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Metric@{Rectangle\-Distance\-Metric}}
 \index{Rectangle\-Distance\-Metric@{Rectangle\-Distance\-Metric}!Rectangle.h@{Rectangle.\-h}}
 \subsubsection[{Rectangle\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_rectangle_8h_adfe226bc86b63ba4ad132f42eed492b8}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_rectangle_8h_a2ce7ffa1d7e1f4c7e640c20507d3f006}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \hypertarget{_rectangle_8h_a82ca3e9864a9ffe229e666f9b29a25e1}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Ncoords@{Rectangle\-Distance\-Ncoords}}
 \index{Rectangle\-Distance\-Ncoords@{Rectangle\-Distance\-Ncoords}!Rectangle.h@{Rectangle.\-h}}
@@ -180,17 +183,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_rectangle_8h_a539e9e4d5ae405ec5f9c34c1cd651ee6}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates,in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_rectangle_8h_a066999772cca84018acd363d1995f1ab}{\index{Rectangle.\-h@{Rectangle.\-h}!Rectangle\-Distance\-Support@{Rectangle\-Distance\-Support}}

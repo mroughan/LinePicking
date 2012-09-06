@@ -25,7 +25,7 @@ void \hyperlink{_sphere_8h_a29d0f2fa2bb14cdfeda6df6648daf87b}{Sphere\-Distance\-
 \item 
 void \hyperlink{_sphere_8h_a7e54f5db8b01ad872b520540ac3029d9}{Sphere\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_sphere_8h_a724256c2c424f012bdf235699a631acb}{Sphere\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_sphere_8h_a27db39b94e78034461cdc53ae4b68df5}{Sphere\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -111,28 +111,31 @@ The mean of the distance between two random points on the surface of a sphere
 \begin{DoxySeeAlso}{See Also}
 \href{http://mathworld.wolfram.com/SphereLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Sphere\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
-\hypertarget{_sphere_8h_a724256c2c424f012bdf235699a631acb}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Metric@{Sphere\-Distance\-Metric}}
+\hypertarget{_sphere_8h_a27db39b94e78034461cdc53ae4b68df5}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Metric@{Sphere\-Distance\-Metric}}
 \index{Sphere\-Distance\-Metric@{Sphere\-Distance\-Metric}!Sphere.h@{Sphere.\-h}}
 \subsubsection[{Sphere\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Sphere\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_sphere_8h_a724256c2c424f012bdf235699a631acb}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_sphere_8h_a27db39b94e78034461cdc53ae4b68df5}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the diameter of the sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \hypertarget{_sphere_8h_a29d0f2fa2bb14cdfeda6df6648daf87b}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Ncoords@{Sphere\-Distance\-Ncoords}}
 \index{Sphere\-Distance\-Ncoords@{Sphere\-Distance\-Ncoords}!Sphere.h@{Sphere.\-h}}
@@ -187,17 +190,17 @@ The density at \$s.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_sphere_8h_a7e54f5db8b01ad872b520540ac3029d9}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the diameter of the sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_sphere_8h_ab2275f7d485704da6fff78b160c34beb}{\index{Sphere.\-h@{Sphere.\-h}!Sphere\-Distance\-Support@{Sphere\-Distance\-Support}}

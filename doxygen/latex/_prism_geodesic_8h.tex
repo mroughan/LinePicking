@@ -25,7 +25,7 @@ void \hyperlink{_prism_geodesic_8h_ab78844059a347fe8e4272b66abc63afa}{Prism\-Geo
 \item 
 void \hyperlink{_prism_geodesic_8h_ac95a32780ab47f82fa182f4ae9a2d600}{Prism\-Geodesic\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_prism_geodesic_8h_adba9b77cd0c7f008cf1cc2b9ac118658}{Prism\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_prism_geodesic_8h_a6a025e73af4f9b3e74325ab0421bd949}{Prism\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -105,28 +105,31 @@ The mean distance between two random points on the surface of an upright prism (
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000025}{Todo}]re-\/derive the mean without using the three part P\-D\-F as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle \end{DoxyRefDesc}
-\hypertarget{_prism_geodesic_8h_adba9b77cd0c7f008cf1cc2b9ac118658}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Metric@{Prism\-Geodesic\-Distance\-Metric}}
+\hypertarget{_prism_geodesic_8h_a6a025e73af4f9b3e74325ab0421bd949}{\index{Prism\-Geodesic.\-h@{Prism\-Geodesic.\-h}!Prism\-Geodesic\-Distance\-Metric@{Prism\-Geodesic\-Distance\-Metric}}
 \index{Prism\-Geodesic\-Distance\-Metric@{Prism\-Geodesic\-Distance\-Metric}!PrismGeodesic.h@{Prism\-Geodesic.\-h}}
 \subsubsection[{Prism\-Geodesic\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Prism\-Geodesic\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_prism_geodesic_8h_adba9b77cd0c7f008cf1cc2b9ac118658}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_prism_geodesic_8h_a6a025e73af4f9b3e74325ab0421bd949}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the prism under and \$parameters\mbox{[}1\mbox{]} is the length of the perimeter of the prism under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000028}{Todo}]Implement this. \end{DoxyRefDesc}
@@ -180,17 +183,17 @@ The density at \$w.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_prism_geodesic_8h_ac95a32780ab47f82fa182f4ae9a2d600}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the prism under and \$parameters\mbox{[}1\mbox{]} is the length of the perimeter of the prism under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}

@@ -25,7 +25,7 @@ void \hyperlink{_rectangle_max_8h_a5a72eb3a9399e75126d78c5af8c675fe}{Rectangle\-
 \item 
 void \hyperlink{_rectangle_max_8h_ac726a47136e909539848330a8fe539d3}{Rectangle\-Max\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_rectangle_max_8h_af638a6366a8e7d52bff81b0c7bbd9587}{Rectangle\-Max\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_rectangle_max_8h_af67f163dfa20af1f872a2c4b534d6a88}{Rectangle\-Max\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -109,15 +109,16 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a rectangle. 
 \end{DoxyReturn}
-\hypertarget{_rectangle_max_8h_af638a6366a8e7d52bff81b0c7bbd9587}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Metric@{Rectangle\-Max\-Distance\-Metric}}
+\hypertarget{_rectangle_max_8h_af67f163dfa20af1f872a2c4b534d6a88}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Metric@{Rectangle\-Max\-Distance\-Metric}}
 \index{Rectangle\-Max\-Distance\-Metric@{Rectangle\-Max\-Distance\-Metric}!RectangleMax.h@{Rectangle\-Max.\-h}}
 \subsubsection[{Rectangle\-Max\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Max\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_rectangle_max_8h_af638a6366a8e7d52bff81b0c7bbd9587}
+)}}\label{_rectangle_max_8h_af67f163dfa20af1f872a2c4b534d6a88}
 Calculate distance (using correct metric) between 2 points
 
 
@@ -127,6 +128,8 @@ Calculate distance (using correct metric) between 2 points
 {\em \$points1} & = coordinates of first point \\
 \hline
 {\em \$points2} & = coordinates of second point \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -184,17 +187,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_rectangle_max_8h_ac726a47136e909539848330a8fe539d3}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_rectangle_max_8h_ad7ab679ff8c9f83bfbe78aeaa4ee01f0}{\index{Rectangle\-Max.\-h@{Rectangle\-Max.\-h}!Rectangle\-Max\-Distance\-Support@{Rectangle\-Max\-Distance\-Support}}

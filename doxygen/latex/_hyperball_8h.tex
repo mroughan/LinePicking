@@ -25,7 +25,7 @@ void \hyperlink{_hyperball_8h_a230385e5154cdc9cea8d5746fd630c83}{Hyperball\-Dist
 \item 
 void \hyperlink{_hyperball_8h_a54636be3e5baf903a2343388835d0884}{Hyperball\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_hyperball_8h_a93c9cb4f217260938e198372aae4cfa5}{Hyperball\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_hyperball_8h_a8776268d76d25c3aab271e9e2f1091ed}{Hyperball\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -111,28 +111,31 @@ The mean distance between two random points in a hyper-\/ball.
 
 \href{http://mathworld.wolfram.com/BallLinePicking.html}{\tt http\-://mathworld.\-wolfram.\-com/\-Ball\-Line\-Picking.\-html} 
 \end{DoxySeeAlso}
-\hypertarget{_hyperball_8h_a93c9cb4f217260938e198372aae4cfa5}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Metric@{Hyperball\-Distance\-Metric}}
+\hypertarget{_hyperball_8h_a8776268d76d25c3aab271e9e2f1091ed}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Metric@{Hyperball\-Distance\-Metric}}
 \index{Hyperball\-Distance\-Metric@{Hyperball\-Distance\-Metric}!Hyperball.h@{Hyperball.\-h}}
 \subsubsection[{Hyperball\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_hyperball_8h_a93c9cb4f217260938e198372aae4cfa5}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_hyperball_8h_a8776268d76d25c3aab271e9e2f1091ed}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}1\mbox{]} is the diameter of the hyper-\/ball under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \hypertarget{_hyperball_8h_a230385e5154cdc9cea8d5746fd630c83}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Ncoords@{Hyperball\-Distance\-Ncoords}}
 \index{Hyperball\-Distance\-Ncoords@{Hyperball\-Distance\-Ncoords}!Hyperball.h@{Hyperball.\-h}}
@@ -192,17 +195,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_hyperball_8h_a54636be3e5baf903a2343388835d0884}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}\mbox{]} is the diameter of the hyper-\/ball under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}}

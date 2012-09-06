@@ -25,7 +25,7 @@ void \hyperlink{_hyper_sphere_geodesic_8h_a5849c183283668b9832e1da4d1fcb486}{Hyp
 \item 
 void \hyperlink{_hyper_sphere_geodesic_8h_ab3d32d66c2c0152df7c98bca28158b23}{Hyper\-Sphere\-Geodesic\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_hyper_sphere_geodesic_8h_a19c36462545e2e1391333fd7053c26dd}{Hyper\-Sphere\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_hyper_sphere_geodesic_8h_a0fbca3fad98c691523aeb34eaab97d01}{Hyper\-Sphere\-Geodesic\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -105,24 +105,27 @@ Calculates the mean distance between two random points on a hyper-\/sphere measu
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a hyper-\/sphere. 
 \end{DoxyReturn}
-\hypertarget{_hyper_sphere_geodesic_8h_a19c36462545e2e1391333fd7053c26dd}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Metric@{Hyper\-Sphere\-Geodesic\-Distance\-Metric}}
+\hypertarget{_hyper_sphere_geodesic_8h_a0fbca3fad98c691523aeb34eaab97d01}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Metric@{Hyper\-Sphere\-Geodesic\-Distance\-Metric}}
 \index{Hyper\-Sphere\-Geodesic\-Distance\-Metric@{Hyper\-Sphere\-Geodesic\-Distance\-Metric}!HyperSphereGeodesic.h@{Hyper\-Sphere\-Geodesic.\-h}}
 \subsubsection[{Hyper\-Sphere\-Geodesic\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Geodesic\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_hyper_sphere_geodesic_8h_a19c36462545e2e1391333fd7053c26dd}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_hyper_sphere_geodesic_8h_a0fbca3fad98c691523aeb34eaab97d01}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}1\mbox{]} is the diameter of the hyper-\/sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -182,17 +185,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_hyper_sphere_geodesic_8h_ab3d32d66c2c0152df7c98bca28158b23}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}1\mbox{]} is the diameter of the hyper-\/sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_hyper_sphere_geodesic_8h_a6c091021336cf964cd3ac8ea1f4fc436}{\index{Hyper\-Sphere\-Geodesic.\-h@{Hyper\-Sphere\-Geodesic.\-h}!Hyper\-Sphere\-Geodesic\-Distance\-Support@{Hyper\-Sphere\-Geodesic\-Distance\-Support}}

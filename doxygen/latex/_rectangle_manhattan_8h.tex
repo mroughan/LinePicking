@@ -25,7 +25,7 @@ void \hyperlink{_rectangle_manhattan_8h_ad01d408a32124bfce406cc8a1628ec4b}{Recta
 \item 
 void \hyperlink{_rectangle_manhattan_8h_aa5989c474fb0fb8c430b7d32ee760634}{Rectangle\-Manhattan\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_rectangle_manhattan_8h_ac6a60f9a809c3d4e39554d997f17db44}{Rectangle\-Manhattan\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_rectangle_manhattan_8h_a49fcb8b13df97e66a8ab8c25c93d48e9}{Rectangle\-Manhattan\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -109,28 +109,31 @@ Derived by Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a rectangle. 
 \end{DoxyReturn}
-\hypertarget{_rectangle_manhattan_8h_ac6a60f9a809c3d4e39554d997f17db44}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Metric@{Rectangle\-Manhattan\-Distance\-Metric}}
+\hypertarget{_rectangle_manhattan_8h_a49fcb8b13df97e66a8ab8c25c93d48e9}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Metric@{Rectangle\-Manhattan\-Distance\-Metric}}
 \index{Rectangle\-Manhattan\-Distance\-Metric@{Rectangle\-Manhattan\-Distance\-Metric}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
 \subsubsection[{Rectangle\-Manhattan\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Rectangle\-Manhattan\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_rectangle_manhattan_8h_ac6a60f9a809c3d4e39554d997f17db44}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_rectangle_manhattan_8h_a49fcb8b13df97e66a8ab8c25c93d48e9}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
 {\em \$points2} & = coordinates of second point \\
 \hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \hypertarget{_rectangle_manhattan_8h_ad01d408a32124bfce406cc8a1628ec4b}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Ncoords@{Rectangle\-Manhattan\-Distance\-Ncoords}}
 \index{Rectangle\-Manhattan\-Distance\-Ncoords@{Rectangle\-Manhattan\-Distance\-Ncoords}!RectangleManhattan.h@{Rectangle\-Manhattan.\-h}}
@@ -184,17 +187,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_rectangle_manhattan_8h_aa5989c474fb0fb8c430b7d32ee760634}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the rectangle under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_rectangle_manhattan_8h_a5d33e1aea01cc27b013c0291e19ed2ef}{\index{Rectangle\-Manhattan.\-h@{Rectangle\-Manhattan.\-h}!Rectangle\-Manhattan\-Distance\-Support@{Rectangle\-Manhattan\-Distance\-Support}}

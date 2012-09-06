@@ -25,7 +25,7 @@ void \hyperlink{_hyper_sphere_8h_aaf682dd668187f6f735508e0a7de08c2}{Hyper\-Spher
 \item 
 void \hyperlink{_hyper_sphere_8h_abc509ad7a9daae15bfb1572eb74e4713}{Hyper\-Sphere\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
 \item 
-double \hyperlink{_hyper_sphere_8h_af36bd8afc44797978f1975b4b6f3dc8d}{Hyper\-Sphere\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2)
+double \hyperlink{_hyper_sphere_8h_a1168e96ca70667415cb62518bac4d634}{Hyper\-Sphere\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -105,28 +105,31 @@ Calculates the mean distance between two random points on a hyper-\/sphere.
 \begin{DoxyReturn}{Returns}
 The mean distance between two random points on a hyper-\/sphere. 
 \end{DoxyReturn}
-\hypertarget{_hyper_sphere_8h_af36bd8afc44797978f1975b4b6f3dc8d}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Metric@{Hyper\-Sphere\-Distance\-Metric}}
+\hypertarget{_hyper_sphere_8h_a1168e96ca70667415cb62518bac4d634}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Metric@{Hyper\-Sphere\-Distance\-Metric}}
 \index{Hyper\-Sphere\-Distance\-Metric@{Hyper\-Sphere\-Distance\-Metric}!HyperSphere.h@{Hyper\-Sphere.\-h}}
 \subsubsection[{Hyper\-Sphere\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Hyper\-Sphere\-Distance\-Metric (
 \begin{DoxyParamCaption}
 \item[{int}]{Ncoords, }
 \item[{double $\ast$}]{point1, }
-\item[{double $\ast$}]{point2}
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
-)}}\label{_hyper_sphere_8h_af36bd8afc44797978f1975b4b6f3dc8d}
-Calculate distance (using correct metric) between 2 points
+)}}\label{_hyper_sphere_8h_a1168e96ca70667415cb62518bac4d634}
+Calculate distance (using correct metric) between 2 points.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$points1} & = coordinates of first point \\
+{\em \$points1} & = coordinates of first point. \\
 \hline
-{\em \$points2} & = coordinates of second point \\
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}1\mbox{]} is the diameter of the hyper-\/sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance between the two points 
+The distance between the two points. 
 \end{DoxyReturn}
 \hypertarget{_hyper_sphere_8h_aaf682dd668187f6f735508e0a7de08c2}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Ncoords@{Hyper\-Sphere\-Distance\-Ncoords}}
 \index{Hyper\-Sphere\-Distance\-Ncoords@{Hyper\-Sphere\-Distance\-Ncoords}!HyperSphere.h@{Hyper\-Sphere.\-h}}
@@ -182,17 +185,17 @@ The density at \$t.
 \item[{double $\ast$}]{parameters}
 \end{DoxyParamCaption}
 )}}\label{_hyper_sphere_8h_abc509ad7a9daae15bfb1572eb74e4713}
-Simulate a set of points from the problem of interest
+Simulate a set of points from the problem of interest.
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system \\
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
 \hline
-{\em \$\-Npoints} & = number of points to generate \\
+{\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point \\
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}\mbox{]} is the diameter of the hyper-\/sphere under consideration. \\
 \hline
 \end{DoxyParams}
 \hypertarget{_hyper_sphere_8h_a6569dd5df6a62c2a68b5413df03b9445}{\index{Hyper\-Sphere.\-h@{Hyper\-Sphere.\-h}!Hyper\-Sphere\-Distance\-Support@{Hyper\-Sphere\-Distance\-Support}}

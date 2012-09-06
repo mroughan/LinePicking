@@ -88,10 +88,15 @@ Functions</h2></td></tr>
 <tr class="separator:gab0e3cb9eaef2a9f040f1135eee394f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1a1c27d3c46da382a0443f810628a8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga1a1c27d3c46da382a0443f810628a8ac">LinePickingPrintAllProblems</a> (void)</td></tr>
 <tr class="separator:ga1a1c27d3c46da382a0443f810628a8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf04b41252ebd1a3013b6bcb4dbbf3649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gaf04b41252ebd1a3013b6bcb4dbbf3649">LinePickingAllProblems</a> (char **, char **)</td></tr>
-<tr class="separator:gaf04b41252ebd1a3013b6bcb4dbbf3649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga146eea4bf38bd6e3812ea47ae2ac57a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga146eea4bf38bd6e3812ea47ae2ac57a7">LinePickingProblemLookup</a> (int *, char **, char **)</td></tr>
-<tr class="separator:ga146eea4bf38bd6e3812ea47ae2ac57a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadb58de53bac5d2fe684019ce77be9896"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gadb58de53bac5d2fe684019ce77be9896">LinePickingAllProblems</a> (char **names, char **, int *, double **)</td></tr>
+<tr class="separator:gadb58de53bac5d2fe684019ce77be9896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga17699721a1826bc3c2a2c3d80dff6f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga17699721a1826bc3c2a2c3d80dff6f64">LinePickingNameLookup</a> (int *, char **)</td></tr>
+<tr class="separator:ga17699721a1826bc3c2a2c3d80dff6f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaab56d0ac9177e8ec90b87d0927220283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gaab56d0ac9177e8ec90b87d0927220283">LinePickingProblemLookup</a> (int *, char **, char **, int *, double *)</td></tr>
+<tr class="separator:gaab56d0ac9177e8ec90b87d0927220283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad90607b321b23e25d238fc78cbd7ef04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gad90607b321b23e25d238fc78cbd7ef04"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingProblenNparLookup</b> (int *problem, int *Npar)</td></tr>
+<tr class="separator:gad90607b321b23e25d238fc78cbd7ef04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac55d1d166b33c8906ceccbb37010ddb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a> (int *, double *, int *, int *, char **)</td></tr>
 <tr class="separator:gac55d1d166b33c8906ceccbb37010ddb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0aec0b2f87903f4bf4ad3011a99b3446"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga0aec0b2f87903f4bf4ad3011a99b3446">LinePickingSupport</a> (double *, int *, double *, int *, int *, char **)</td></tr>
@@ -115,7 +120,7 @@ Functions</h2></td></tr>
 <p>This section documents the API exposed for the use of other programs. These are the functions called by the R and Matlab wrappers included in this package. </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>Add some more preamble about the API.</dd></dl>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gaf04b41252ebd1a3013b6bcb4dbbf3649"></a>
+<a class="anchor" id="gadb58de53bac5d2fe684019ce77be9896"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -129,7 +134,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>descriptions</em>&#160;</td>
+          <td class="paramname"><em>descriptions</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double **&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -357,6 +374,41 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga17699721a1826bc3c2a2c3d80dff6f64"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingNameLookup </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Problems are represented as integers. Given such a name, this finds the problem corresponding to that name, if one exists </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$problem</td><td>Represents a problem. </td></tr>
+    <tr><td class="paramname">$name</td><td>Address of a memory location to set to the address of a string containing the name of the problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>$problem returns the problem corresponding to the name, or -1 if none exists. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ga89bd29435ffe1826e97dafb2b0536de1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -549,7 +601,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga146eea4bf38bd6e3812ea47ae2ac57a7"></a>
+<a class="anchor" id="gaab56d0ac9177e8ec90b87d0927220283"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -569,7 +621,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>description</em>&#160;</td>
+          <td class="paramname"><em>description</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -873,7 +937,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 5 2012 03:48:47 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Sep 7 2012 09:13:33 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
