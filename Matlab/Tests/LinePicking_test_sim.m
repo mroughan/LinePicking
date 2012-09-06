@@ -67,7 +67,7 @@ test_problems = [...
     {'hyper-sphere geodesic', [3 R], '3-sphere geodesic', '3sphere_geodesic'};
     {'rectangle Manhattan', [a, b], 'rectangle Manhattan (1:2)', 'rect_manhattan'};
     {'rectangle max', [a, b], 'rectangle max (1:2)', 'rectangle_max'};
-    {'prism geodesic', [1, 1], 'prism geodesic', 'prism_geodesic'};
+    {'prism geodesic', [b, a]/sqrt(b^2+(a/2)^2), 'prism geodesic', 'prism_geodesic'};
 		];
 
 % could porobably add a check of scaling in here as well
@@ -76,7 +76,6 @@ test_problems = [...
 LinePickingPrintAllProblems
 
 for i=1:length(test_problems)
-% for i=5:5
   name = char(test_problems(i,1));
   parameters = cell2mat(test_problems(i,2));
   title_str = char(test_problems(i,3));
