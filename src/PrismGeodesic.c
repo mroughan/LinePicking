@@ -889,8 +889,16 @@ void PrismGeodesicDistanceCheckParameters(double *parameters, int *result,
  */
 void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
 {
+    /* WTF  so now I have 13 functions to remove */
+    
     *Ncoords = 3; /* really this could be done with two coordinates, but life is easier this way */
     *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+}
+
+
+double drand ( double low, double high )
+{
+    return ( (double)rand() * ( high - low ) ) / (double)RAND_MAX + low;
 }
 
 /**
@@ -906,21 +914,27 @@ void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* para
  */
 void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
 {
-    int i, j;
-    double *normals;
     
+    int i, j;
+    double normals[2];
+    double length;
     
     /* not the most efficient use of normal random number generation, but it should work for all nballs */
-    normals = (double *) malloc(sizeof(double)*(*Ncoords));
+
     for (i=0; i<*Npoints; i++)
     {
-        for (j=0; j<*Ncoords; j++)
-        {
-            points[i][j] = 0; /* not implemented yet */
-            
-        }
+        /* generate 2 normal random variables */
+        rand_normal(2, normals);
+        
+        /* normalize them so that they lie on the circle */
+        length = sqrt(pow(normals[0], 2) + pow(normals[1], 2));
+        points[i][0] = ((parameters[1]/ (2 *M_PI)) * normals[0]) / length;
+        points[i][1] = ((parameters[1]/ (2 *M_PI)) * normals[1]) / length;
+        points[i][2] = drand(0.0, parameters[0]);
     }
-    free(normals);
+
+
+    
 }
 
 /**
@@ -937,7 +951,10 @@ void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords,
  */
 double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
 {
-    return -1; /* not implemented yet */
+    double d= sqrt(pow(point1[0]-point2[0], 2.0) + pow(point1[1]-point2[1], 2.0));
+    double g = (parameters[1] / (2*M_PI)) * 2 * asin(d/ (2 * (parameters[1] / (2*M_PI))));
+    return  sqrt(pow(point1[2]-point2[2], 2) + pow(g, 2));
+    
 }
 
 
