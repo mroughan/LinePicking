@@ -145,7 +145,9 @@ set(gca, 'fontsize', 16);
 legend(p2, legend_str);
 xlabel('s');
 ylabel('-G''(s)/G(s)');
-print('-depsc', 'Plots/LinePicking_numerical_laplace_ratio.eps');
+
+filename = sprintf('%s/LinePicking_numerical_laplace_ratio.%s', plotdir, suffix);
+print('-depsc', filename);
 
 
 figure(3);
@@ -159,7 +161,10 @@ set(gca, 'fontsize', 16);
 % legend(p2, legend_str);
 xlabel('number of simulated points');
 ylabel('time relative to exact solution');
-print('-depsc', 'Plots/LinePicking_numerical_time.eps');
+
+filename = sprintf('%s/LinePicking_numerical_time.%s', plotdir, suffix);
+print('-depsc', filename);
+
 
 figure(4);
 hold off
@@ -173,7 +178,10 @@ set(gca, 'fontsize', 16);
 % legend(p2, legend_str);
 xlabel('number of simulated points');
 ylabel('mean absolute error');
-print('-depsc', 'Plots/LinePicking_numerical_error.eps');
+
+filename = sprintf('%s/LinePicking_numerical_error.%s', plotdir, suffix);
+print('-depsc', filename);
+
 
 figure(5);
 hold off
@@ -191,6 +199,9 @@ set(gca, 'fontsize', 16);
 legend(p3, 'measured error', sprintf('error ~ N^{%.1f}', P(1)));
 xlabel('number of simulated points');
 ylabel('mean relative error (%)');
-print('-depsc', 'Plots/LinePicking_numerical_rel_error.eps');
+
+filename = sprintf('%s/LinePicking_numerical_rel_error.%s', plotdir, suffix);
+print('-depsc', filename);
+
 
  
