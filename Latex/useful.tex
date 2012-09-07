@@ -16,6 +16,21 @@ Definitions:
 \end{description}
 
 
+Transformation of PDFs
+If $y = g(X)$
+
+\[ f_Y(y) = \left| \frac{d}{dy} \left( g^{-1}(y) \right) \right|
+               f_X\left( g^{-1}(y) \right)
+\]
+
+
+\begin{eqnarray}
+ E[ g(X) ] & = & \int y f_g (y) \, dy \\
+           & = & \int g(x) f_X(x) \, dx 
+\end{eqnarray}
+
+
+
 
 \subsection{$\Gamma$ functions}
 
@@ -52,11 +67,41 @@ C standard library has routines
 
 \subsection{$\beta$ functions}
 
-Definitions
+The {\em beta function} and {\em incomplete beta function} are defined
+to be 
+\begin{eqnarray}
+  \label{eqn:beta}
+  B(p,q)    & = & \int_0^1 t^{p-1} (1 - t)^{q-1} \, dt = \frac{\Gamma(p) \Gamma(q)}{\Gamma(p+q)}, \\
+  \label{eqn:beta_inc}
+  B(x; p,q) & = & \int_0^x t^{p-1} (1 - t)^{q-1} \, dt.
+\end{eqnarray}
+From these, we define the {\em regularized beta function}
+\begin{equation}
+  \label{eqn:beta_reg}
+   I(x; p,q) = \frac{ B(x; p,q)}{B(p,q)}.
+\end{equation}
 
-Results
+There are many results known for these functions. The few needed here
+on a regular basis are given below:
+\begin{eqnarray}
+  I(x; p, q) & = & 1 - I(1-x; q, p) \hspace{7mm} \mbox{ from \cite{}}, \\
+  I(x; p, q) & = &              
+\frac{x^a (1-x)^b}{a B(a,b)}  \left\{ 
+               1 +
+               \sum_{i=0}^{\infty} \frac{B(a+1,i+1)}{B(a+b,i+1)} (1-x)^{i+1}
+           \right\} 
+     \hspace{7mm} \mbox{ from \cite[26.5.4]{Abramowitz_and_Stegun}}, \\
+\end{eqnarray}
+ 
 
-Calculations
+Beta functions need to be calculated for a number of the PDFs and CDFs
+given in this work. The simple beta function can be computed using the
+C-standard libraries $\Gamma$-function. There are also many libraries
+which can calculate incomplete beta functions, however, in order that
+this code be as self-contained as possible, we implement our own beta
+function calculation based on the continued fraction approximation
+described in \cite{}.
+
 
 \subsection{Hypergoemetric functions}
 
