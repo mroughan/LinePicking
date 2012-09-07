@@ -242,6 +242,55 @@ G^{n-{\rm sphere}}_{n,R}(t) =
 \end{equation}
 
 
+     
+A better alternate derivation: take $u={\left(\frac{s}{2R}\right)}^2$, so $s = 2R \sqrt{u}$ and $ds = du\; R / \sqrt{u}$ then
+\begin{eqnarray}
+G^{n-{\rm sphere}}_{n,R}(t)
+    & = & \int_0^t g^{n-{\rm sphere}}_{n,R}(s) \, ds \nonumber \\
+    & = & \int_0^t  2^{n-1} \frac{\left( \frac{s}{2R}\right) {\left({\left( \frac{s}{2R}\right)}^{2}\right)}^{\frac{n}{2} -1}
+             {\left(1 - {\left( \frac{s}{2R}\right)}^{2}  \right)}^{\frac{n}{2} -1}
+             \Gamma\left[\frac{1+n}{2}\right]}{R\sqrt{\pi }
+             \Gamma\left[\frac{n}{2}\right]} 
+             \, ds, \nonumber \\    
+    & = & \frac{ 2^{n- 1} \Gamma\left[\frac{1+n}{2}\right]}{R\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+           \int_0^t \left( \frac{s}{2R}\right) {\left({\left( \frac{s}{2R}\right)}^{2}\right)}^{\frac{n}{2} -1}
+             {\left(1 - {\left( \frac{s}{2R}\right)}^{2}  \right)}^{\frac{n}{2} -1}
+             \, ds, \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{R\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+           \int_0^{ {\left(\frac{t}{2R}\right)}^{2} } u^{(n-1)/2}  \left(1 - u\right)^{\frac{1}{2} (n-2)}
+             \, du R / \sqrt{u}  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+           \int_0^{{\left(\frac{t}{2R}\right)}^{2}} u^{n/2-1}  \left(1 - u\right)^{n/2-1)}
+             \, du,  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]}
+               \beta_{{\left(\frac{t}{2R}\right)}^{2}}(n/2, n/2),  \nonumber \\    
+    & = & \frac{ 2^{n-1} \Gamma\left[\frac{1+n}{2}\right] \Gamma\left[\frac{n}{2}\right] }{\sqrt{\pi}\Gamma\left[\frac{n}{2}\right]^2}
+               \beta_{{\left(\frac{t}{2R}\right)}^{2}}(n/2, n/2),  \nonumber \\ 
+\end{eqnarray}
+
+
+Now consider the Gauss multiplication formula: 
+\begin{equation}
+(2\pi)^{((m-1)/2)}m^{(1/2-mz)} \Gamma\left[mz\right]=\Sigma_{k=0}^{m-1}\Gamma\left[z+\frac{k}{m}\right].  \nonumber \\ 
+\end{equation}
+
+Let $m = 2$ and $z = n/2$ then:
+\begin{equation}
+ 2^{-(n-1)}\sqrt{(\pi)} \Gamma\left[n\right]=\Gamma\left[\frac{n+1}{2}\right] \Gamma\left[\frac{n}{2}\right].   \nonumber \\ 
+\end{equation}
+
+
+Thus:
+\begin{eqnarray}
+G^{n-{\rm sphere}}_{n,R}(t)
+    & = &\frac{\Gamma \left(n \right) {\beta}_{{\left(\frac{t}{2 R}\right)}^{2}}\left( \frac{n}{2},\frac{n}{2}\right)}
+     {\Gamma\left(\frac{n}{2}\right)^{2}},  \nonumber \\   
+     & = &  {I}_{{\left(\frac{t}{2 R}\right)}^{2}}\left( \frac{n}{2},\frac{n}{2}\right).
+\end{eqnarray}
+
+
+
+
 Alt derivation: for $R=1/2$, and taking $u=s^2$, so $s = \sqrt{u}$ and
 $ds = du/2\sqrt{u}$
 \begin{eqnarray}
