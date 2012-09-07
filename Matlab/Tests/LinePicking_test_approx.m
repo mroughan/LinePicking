@@ -2,7 +2,13 @@
 % Test the approximation results for the hyperball in particular         
 %
 %
+
+
 clear;
+device = '-depsc';
+suffix = 'eps';
+seed = 1;
+plotdir = '../Plots';
 R = 1;
 N = 100;
 problem = 2; % hyperball
@@ -43,7 +49,12 @@ for n=1:5
   xlabel('t');
   ylabel('g_n(t)');
   title(sprintf('%dD ball', n));
-  print('-depsc', sprintf('Plots/LinePicking_test_approx_ball_%1d.eps', n));
+  
+  name = sprintf('LinePicking_test_approx_ball_%1d', n)
+  filename = sprintf('%s/%s.%s', plotdir, name, suffix);
+  print(device, filename);
+
+  %print('-depsc', sprintf('LinePicking_test_approx_ball_%1d', n));
 
   
   % NB: 2nd order lies below, and 3rd order lies above for all plotted cases

@@ -117,7 +117,9 @@ set(gca, 'xlim', [0 2.3]);
 legend(p5, legend_str);
 xlabel('t');
 ylabel('g_n(t)');
-print('-depsc', 'Plots/LinePicking_test_balls.eps');
+
+filename = sprintf('%s/LinePicking_test_balls.%s', plotdir, suffix);
+print(device, filename);
 
 
 %
@@ -146,9 +148,10 @@ set(gca, 'fontsize', 16);
 legend(p6, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'line', 'cube');
 xlabel('t');
 ylabel('g(t)');
-print('-depsc', 'Plots/LinePicking_test_fix_max_len.eps');
 
 
+filename = sprintf('%s/LinePicking_test_fix_max_len.%s', plotdir, suffix);
+print(device, filename);
 
 %  scale so that all have the same area
 dt = 0.001;
@@ -174,9 +177,9 @@ set(gca, 'fontsize', 16);
 legend(p7, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'cube');
 xlabel('t');
 ylabel('g(t)');
-print('-depsc', 'Plots/LinePicking_test_fix_area.eps');
 
-
+filename = sprintf('%s/LinePicking_test_fix_area.%s', plotdir, suffix);
+print(device, filename);
 
 
 % 
@@ -199,7 +202,9 @@ set(gca, 'xlim', [0 1]);
 legend(p8, legend_str8);
 xlabel('t');
 ylabel('g_{a:b}(t)');
-print('-depsc', 'Plots/LinePicking_test_rect.eps');
+
+filename = sprintf('%s/LinePicking_test_rect.%s', plotdir, suffix);
+print(device, filename);
 
 
 % 
@@ -223,7 +228,9 @@ set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
 ylabel('g_{a:b}(t)');
-print('-depsc', 'Plots/LinePicking_test_rect_man.eps');
+
+filename = sprintf('%s/LinePicking_test_rect_man.%s', plotdir, suffix);
+print(device, filename);
 
 % also do a plot showing the different regions in the PDF
 problem = 9;
@@ -252,7 +259,10 @@ set(gca, 'fontsize', 16);
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel('g_{a:b}(t)');
-print('-depsc', 'Plots/LinePicking_test_rect_man_regions.eps');
+
+
+filename = sprintf('%s/LinePicking_test_rect_man_regions.%s', plotdir, suffix);
+print(device, filename);
 
 
 % 
@@ -276,7 +286,10 @@ set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
 ylabel('g_{a:b}(t)');
-print('-depsc', 'Plots/LinePicking_test_rect_max.eps');
+
+filename = sprintf('%s/LinePicking_test_rect_max.%s', plotdir, suffix);
+print(device, filename);
+
 
 % also do a plot showing the different regions in the PDF
 problem = 10;
@@ -305,7 +318,10 @@ set(gca, 'fontsize', 16);
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel('g_{a:b}(t)');
-print('-depsc', 'Plots/LinePicking_test_rect_max_regions.eps');
+
+filename = sprintf('%s/LinePicking_test_rect_max_regions.%s', plotdir, suffix);
+print(device, filename);
+
 
 
 
@@ -337,5 +353,8 @@ set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
 ylabel('g^{\rm cube}(t)');
-print('-depsc', 'Plots/LinePicking_test_cube_regions.eps');
+
+filename = sprintf('%s/LinePicking_test_cube_regions.%s', plotdir, suffix);
+print(device, filename);
+
 

@@ -18,6 +18,11 @@
 % 
 %
 clear;
+device = '-depsc';
+suffix = 'eps';
+seed = 1;
+plotdir = '../Plots';
+
 colors = [[1 0 0];
 	  [1 0.5 0];
 	  [1 1 0];
@@ -75,7 +80,12 @@ set(gca, 'fontsize', 16);
 legend(p20, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'cube');
 xlabel('s');
 ylabel('G(s)');
-print('-depsc', 'Plots/LinePicking_test_laplace_tranforms.eps');
+
+  
+filename = sprintf('%s/LinePicking_test_laplace_tranforms.%s', plotdir, suffix);
+print(device, filename);
+  
+
 
 for i=1:length(Ss)
   s = Ss(i);
@@ -118,7 +128,9 @@ set(gca, 'fontsize', 16);
 legend(p21, 'square', 'disk', 'sphere', 'rectangle(2:1)', 'cube', '2/s', '3/s');
 xlabel('s');
 ylabel('-G''(s)/G(s)');
-print('-depsc', 'Plots/LinePicking_test_laplace_ratio.eps');
+
+filename = sprintf('%s/LinePicking_test_laplace_ratio.%s', plotdir, suffix);
+print(device, filename);
  
 figure(22)
 hold off
@@ -132,8 +144,11 @@ set(gca, 'fontsize', 16);
 legend(p22, 'cube using "quadgk"', 'cube using "quad"');
 xlabel('s');
 ylabel('-G''(s)/G(s)');
-print('-depsc', 'Plots/LinePicking_test_quad.eps');
- 
+
+filename = sprintf('%s/LinePicking_test_quad.%s', plotdir, suffix);
+print(device, filename);
+
+
 figure(23)
 hold off
 plot(0,0)
@@ -163,7 +178,9 @@ set(gca, 'fontsize', 16);
 legend(p24, 'error', 'error approximation');
 xlabel('s');
 ylabel('-G''(s)/G(s) approximation error');
-print('-depsc', 'Plots/LinePicking_approx_error.eps');
+
+filename = sprintf('%s/LinePicking_approx_error.%s', plotdir, suffix);
+print(device, filename);
 
 figure(25)
 hold off
@@ -177,5 +194,7 @@ set(gca, 'fontsize', 16);
 legend(p25, 'error', 'error approximation');
 xlabel('s');
 ylabel('-G''(s)/G(s) absolute relative approximation error');
-print('-depsc', 'Plots/LinePicking_approx_rel_error.eps');
+
+filename = sprintf('%s/LinePicking_approx_rel_error.%s', plotdir, suffix);
+print(device, filename);
 
