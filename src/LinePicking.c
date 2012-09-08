@@ -686,6 +686,73 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
  */
 
 
+/* this implementation returns a vector of 4 vectors one for each variable */
+SEXP EricsOtherLinePickingAllProblems(void)
+{
+    
+    const char *var_names[4] = { "name", "description", "npar", "parameters" };
+    int problem;
+    int Npar;
+    int parameter;
+    int i;
+    
+    /*  This is the cector we will return to R it will ve a vector of vectors*/ 
+    SEXP result = PROTECT(allocVector(VECSXP, elements(var_names)));
+
+    SEXP names = PROTECT(allocVector(STRSXP, NUMBER_OF_PROBLEMS));
+    
+    SEXP descriptions = PROTECT(allocVector(STRSXP, NUMBER_OF_PROBLEMS));
+    
+    SEXP Npars = PROTECT(allocVector(INTSXP, NUMBER_OF_PROBLEMS));
+    
+    SEXP parameters = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
+    
+    SET_VECTOR_ELT(result, 0, names);
+    SET_VECTOR_ELT(result, 1, descriptions);
+    SET_VECTOR_ELT(result, 2, Npars);
+    SET_VECTOR_ELT(result, 3, parameters);
+    
+    
+    SEXP list_names = PROTECT(allocVector(STRSXP,elements(var_names)));
+    
+    for(i = 0; i < elements(var_names); i++)
+        SET_STRING_ELT(list_names,i,mkChar(var_names[i]));
+    
+    setAttrib(result, R_NamesSymbol, list_names);
+    
+    
+    for (problem = 0;  problem  < NUMBER_OF_PROBLEMS; problem++)
+    {
+        Npar = LinePickingFields[problem].DATA->Npar;
+        
+        SEXP defaultParameters = PROTECT(allocVector(REALSXP, Npar));
+        
+        SET_VECTOR_ELT(parameters, problem, defaultParameters);
+        
+        
+        SET_STRING_ELT(names, problem, 
+                       mkChar(LinePickingFields[problem].DATA->name));
+        SET_STRING_ELT(descriptions, problem, 
+                       mkChar(LinePickingFields[problem].DATA->description));
+        
+       
+        INTEGER(Npars)[problem] = Npar;
+        
+        
+        for(parameter = 0; parameter < Npar; parameter++)
+        {
+            REAL(defaultParameters)[parameter] = 
+                           LinePickingFields[problem].
+                                DATA->DefaultParameters[parameter];    
+        }
+    }
+    UNPROTECT(6 + NUMBER_OF_PROBLEMS);
+    return result; 
+}
+
+
+/* This implementation returns a vector of NUMBER_OF_PROBLEMS vectors one
+   for each record */ 
 SEXP EricsLinePickingAllProblems(void)
 {
   
