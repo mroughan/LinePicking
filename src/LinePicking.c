@@ -70,12 +70,17 @@
 
 #ifndef _NOTR
 #include <R.h> /* only include this if we are compiling for R */
+#include <Rinternals.h>
 #endif
 
 #ifdef _MEX
 #include "mex.h"
 #include "matrix.h"
 #endif
+
+
+
+
 
 
 
@@ -671,6 +676,66 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
     free(points);
 }
 
+
+
+
+#ifndef _NOTR
+/*
+ * R parts
+ *
+ */
+
+
+SEXP EricsLinePickingAllProblems(void)
+{
+  
+    const char *names[4] = { "name", "description", "npar", "parameters" };
+    int problem;
+    int Npar;
+    int parameter;
+    int i;
+    
+    /*  This is the cector we will return to R it will ve a vector of vectors*/ 
+    SEXP result = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
+    
+    for (problem = 0;  problem  < NUMBER_OF_PROBLEMS; problem++)
+    {
+        /* this vector contains all the data for one problem */
+        Npar = LinePickingFields[problem].DATA->Npar;
+        SEXP problemData = PROTECT(allocVector(VECSXP, 4));
+        /* this vector contains the parameters */
+        SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
+        /* and this one give us names for each of the fields */
+        SEXP list_names = PROTECT(allocVector(STRSXP,elements(names)));
+        
+        SET_VECTOR_ELT(result, problem, problemData); 
+        
+        SEXP name = mkChar(LinePickingFields[problem].DATA->name);
+        SEXP desc = mkChar(LinePickingFields[problem].DATA->description);
+        
+        /* now fill in the fields */
+        SET_VECTOR_ELT(problemData, 0, name);
+        SET_VECTOR_ELT(problemData, 1, desc);
+        SET_VECTOR_ELT(problemData, 2, ScalarInteger(Npar));
+        SET_VECTOR_ELT(problemData, 3, defaultParameters);
+        
+        for(parameter = 0; parameter < Npar; parameter++)
+        {
+            SET_VECTOR_ELT(defaultParameters, parameter, 
+                           ScalarReal(LinePickingFields[problem].
+                                        DATA->DefaultParameters[parameter]));    
+        }
+        
+        for(i = 0; i < elements(names); i++)
+            SET_STRING_ELT(list_names,i,mkChar(names[i]));
+        
+        setAttrib(problemData, R_NamesSymbol, list_names); 
+    }
+    
+    UNPROTECT(1 + 3 * NUMBER_OF_PROBLEMS);
+    return result; 
+}
+#endif
 
 
 
