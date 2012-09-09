@@ -28,16 +28,17 @@ FormatProblem <- function(x){
 #' @useDynLib LinePicking
 #' @examples
 #' LinePickingProblemLookup(problem=1)
-LinePickingProblemLookup <- function(problem=1,print=TRUE){
-  tmp <- .Call("rLinePickingAllProblems")
-  n <- length(tmp)
-  if (problem <= 0 | problem > n){
-    stop(paste("That problem does not exist,", 
-         "there are only problems 0 -",n,"\n"))
-  }
-  x <- tmp[[problem]]
-  if(print){
-    FormatProblem(x)
-  }
-  return(x)
+LinePickingProblemLookup <- function(problem=0,print=TRUE){
+    tmp <- .Call("rLinePickingAllProblems")
+    n <- length(tmp)
+    if (problem < 0 | problem >= n){
+        stop(paste("That problem does not exist,", 
+        "there are only problems 0 -",n - 1,"\n"))
+    }
+    problem <- problem + 1; 
+    x <- tmp[[problem]]
+    if(print){
+        FormatProblem(x)
+    }
+    return(x)
 }
