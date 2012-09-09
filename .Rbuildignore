@@ -3,3 +3,4 @@ Template_h
 Template_c
 Doxyfile
 ^\.Rproj\.user$
+MatlabDefinitions.def

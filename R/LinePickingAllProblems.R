@@ -1,26 +1,24 @@
 #' Gets list of all problems
 #'
-#' Problems are integers describing possible geometries for the line picking
-#' problem. This function prints all possible problems.
+#' Problems are integers describing possible geometries
+#' for the line picking problem. This function prints 
+#' all possible problems.
 #' 
-#' @param df boolean if TRUE then data frame else a list
-#' @return Data frame or list with information on each problem
+#' @param print boolean if TRUE then prints out all the info
+#' @return list with information on each problem
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
 #' @examples
 #' LinePickingAllProblems()
-LinePickingAllProblems <- function(df=TRUE){
+LinePickingAllProblems <- function(print=TRUE){
   tmp <- .Call("rLinePickingAllProblems")
-  if(df){
-    npar <- GetMaxNpar(tmp)
-    tab <- NULL
+  if(print){
     for(i in 1:length(tmp)){
-      x <- ConvertListToDF(tmp[[i]],npar)
-      tab <- rbind(tab,x)
+      cat("Problem",i,'\n')
+      cat("==========\n")
+      FormatProblem(tmp[[i]])
     }
-    return(tab)
-  } else {
-    return(tmp)
   }
+  return(tmp)
 }

@@ -17,7 +17,7 @@
   other error. }
 }
 \description{
-  Problemss are integers describing possible geometries for
+  Problems are integers describing possible geometries for
   the line picking problem. This function takes a problem
   and a parameter vector and checks if valid
 }

@@ -1,25 +1,22 @@
 \name{LinePickingProblemLookup}
 \alias{LinePickingProblemLookup}
-\title{Gets information for a given problem}
+\title{Function to print out information about a given problem}
 \usage{
-  LinePickingProblemLookup(problem = 0)
+  LinePickingProblemLookup(problem = 1, print = TRUE)
 }
 \arguments{
   \item{problem}{see \code{\link{LinePickingPDF}}}
+
+  \item{print}{boolean if TRUE prints out problem nicely}
 }
 \value{
-  prints out information
+  list of problem info
 }
 \description{
-  Problemss are integers describing possible geometries for
-  the line picking problem. This function gives you the
-  information for a given problem.
-}
-\note{
-  August 25 2012
+  Uses internal function format list to print nice
 }
 \examples{
-LinePickingProblemLookup(problem=0)
+LinePickingProblemLookup(problem=1)
 }
 \author{
   Eric Parsonage, Matt Roughan, Jono Tuke
