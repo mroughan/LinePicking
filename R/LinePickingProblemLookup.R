@@ -1,27 +1,61 @@
-#' Gets information for a given problem
+#' List to data frame
 #'
-#' Problemss are integers describing possible geometries for the line picking
-#' problem. This function gives you the information for a given problem.
+#' Takes a list from LinePickingAllProblems and converts to data frame
+#' taking into account the mismatch in number of parameters.
+#' Interval function so avoid using.
+#'
+#' @param x problem list from LinePickingAllProblems c code
+#' @param npar Maximum number of parameters that are found in all 
+#' problems
+#' @return data frame or list
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
+ConvertListToDF <- function(x,npar){
+  n <- x$npar
+  x <- as.data.frame(x)
+  if(n < npar){
+    full.para <- rep(NA,npar-n)
+    x <- data.frame(x,full.para)
+  }
+  index <- (ncol(x)-npar+1):ncol(x)
+  colnames(x)[index] <- paste("P",1:npar,sep='')
+  return(x)
+}
+#' Get max number of parameters
+#'
+#' Takes a list of all problems in LinePicking and returns
+#' the maximum number of parameters.
+#' Internal function.
+#'
+#' @param x list of all problems from LinePickingAllProblems C code
+#' @return maximum number of parameters
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
+GetMaxNpar <- function(x){
+  return(max(sapply(x,function(x) return(x$npar))))
+}
+#' Function to return data frame or list of information for a given 
+#' problem. Problems are integers describing possible geometries 
+#' for the line picking problem. 
 #' 
 #' @param problem see \code{\link{LinePickingPDF}}
-#' @return prints out information
+#' @param df boolean if TRUE returns a formated data frame
+#' if FALSE returns list.
+#' @return returns information as either data frame or list
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
-#' @note August 25 2012
 #' @examples
-#' LinePickingProblemLookup(problem=0)
-LinePickingProblemLookup <- function(problem=0){
-  N <- LinePickingNparLookup(problem=problem)
-  if(N == -1){
-    stop("That problem is giving problems with number of parameters")
+#' LinePickingProblemLookup(problem=1)
+LinePickingProblemLookup <- function(problem=1,df=FALSE){
+  tmp <- .Call("EricsLinePickingAllProblems")
+  n <- length(tmp)
+  if (problem <= 0 | problem > n){
+    stop(paste("That problem does not exist,", 
+         "there are only problems 0 -",n,"\n"))
   }
-  tmp <- .C("LinePickingProblemLookup",
-            problem = as.integer(problem),
-            name = as.character(""),
-            description = as.character(""),
-            Npar = as.integer(0),
-            parameters = as.double(rep(1.0,N)))
-  return(tmp)
+  x <- tmp[[problem]]
+  if(df){
+    npar <- GetMaxNpar(tmp)
+    x <- ConvertListToDF(x,npar)
+  }
+  return(x) 
 }
-#LinePickingProblemLookup()

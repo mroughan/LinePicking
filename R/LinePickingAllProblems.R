@@ -3,23 +3,24 @@
 #' Problems are integers describing possible geometries for the line picking
 #' problem. This function prints all possible problems.
 #' 
-#' @param short_tab boolean is false gives description as well.
-#' @return Data frame with information on each problem
+#' @param df boolean if TRUE then data frame else a list
+#' @return Data frame or list with information on each problem
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
 #' @useDynLib LinePicking
-#' @note August 25 2012
 #' @examples
 #' LinePickingAllProblems()
-LinePickingAllProblems <- function(short_tab=TRUE){
-  N <- LinePickingNumberOfProblems()
-  tab <- NULL
-  for(i in 0:(N-1)){
-    tab <- rbind(tab,LinePickingProblemLookup(problem=i))
+LinePickingAllProblems <- function(df=TRUE){
+  tmp <- .Call("EricsLinePickingAllProblems")
+  if(df){
+    npar <- GetMaxNpar(tmp)
+    tab <- NULL
+    for(i in 1:length(tmp)){
+      x <- ConvertListToDF(tmp[[i]],npar)
+      tab <- rbind(tab,x)
+    }
+    return(tab)
+  } else {
+    return(tmp)
   }
-  tab <- data.frame(tab)
-  if(short_tab){
-    tab <- tab[,1:2]
-  }
-  return(tab)
 }

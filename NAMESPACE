@@ -1,6 +1,6 @@
 export(CreateLinePicking)
-export(EricsOtherLinePickingAllProblems)
 export(EricsLinePickingAllProblems)
+export(EricsOtherLinePickingAllProblems)
 export(LinePickingAllProblems)
 export(LinePickingCDF)
 export(LinePickingCheckParameters)
@@ -18,4 +18,3 @@ exportMethods(plot)
 exportMethods(problem)
 exportMethods(show)
 useDynLib(LinePicking)
-
