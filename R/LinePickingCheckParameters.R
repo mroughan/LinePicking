@@ -1,8 +1,9 @@
 #' Check that a problem and a set of parameters are valid
 #'
-#' Problemss are integers describing possible geometries for the line picking
-#' problem. This function takes a problem and a parameter vector and checks if 
-#' valid
+#' Problems are integers describing possible 
+#' geometries for the line picking problem. 
+#' This function takes a problem and a parameter 
+#' vector and checks if valid
 #' 
 #' @param problem see \code{\link{LinePickingPDF}}
 #' @param parameters numeric vector of parameter describing problem
