@@ -687,34 +687,45 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 
 
 /* this implementation returns a vector of 4 vectors one for each variable */
+
 SEXP EricsOtherLinePickingAllProblems(void)
 {
     
-    const char *var_names[4] = { "name", "description", "npar", "parameters" };
+    const char *var_names[] = {"problem", "name", "description", "Npar", "parameters" };
     int problem;
     int Npar;
     int parameter;
     int i;
     
-    /*  This is the cector we will return to R it will ve a vector of vectors*/ 
+    /*  This is the vector we will return to R it will ve a vector of vectors*/ 
     SEXP result = PROTECT(allocVector(VECSXP, elements(var_names)));
 
+    /* C problem numbers */
+    SEXP problems = PROTECT(allocVector(INTSXP, NUMBER_OF_PROBLEMS)); 
+    
+     /* the name of the problem */
     SEXP names = PROTECT(allocVector(STRSXP, NUMBER_OF_PROBLEMS));
     
+     /* descriptions of the problem */
     SEXP descriptions = PROTECT(allocVector(STRSXP, NUMBER_OF_PROBLEMS));
     
+    /* the number of parameters teh problem takes */
     SEXP Npars = PROTECT(allocVector(INTSXP, NUMBER_OF_PROBLEMS));
     
+     /* A default set of parameters for the problem */
     SEXP parameters = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
     
-    SET_VECTOR_ELT(result, 0, names);
-    SET_VECTOR_ELT(result, 1, descriptions);
-    SET_VECTOR_ELT(result, 2, Npars);
-    SET_VECTOR_ELT(result, 3, parameters);
+    
+    /* set the order the fields will appear in the output */
+    SET_VECTOR_ELT(result, 0, problems);
+    SET_VECTOR_ELT(result, 1, names);
+    SET_VECTOR_ELT(result, 2, descriptions);
+    SET_VECTOR_ELT(result, 3, Npars);
+    SET_VECTOR_ELT(result, 4, parameters);
     
     
+    /* name our variables */
     SEXP list_names = PROTECT(allocVector(STRSXP,elements(var_names)));
-    
     for(i = 0; i < elements(var_names); i++)
         SET_STRING_ELT(list_names,i,mkChar(var_names[i]));
     
@@ -729,6 +740,7 @@ SEXP EricsOtherLinePickingAllProblems(void)
         
         SET_VECTOR_ELT(parameters, problem, defaultParameters);
         
+        INTEGER(problems)[problem] = problem;
         
         SET_STRING_ELT(names, problem, 
                        mkChar(LinePickingFields[problem].DATA->name));
@@ -746,7 +758,7 @@ SEXP EricsOtherLinePickingAllProblems(void)
                                 DATA->DefaultParameters[parameter];    
         }
     }
-    UNPROTECT(6 + NUMBER_OF_PROBLEMS);
+    UNPROTECT(7 + NUMBER_OF_PROBLEMS);
     return result; 
 }
 
@@ -762,6 +774,10 @@ SEXP EricsLinePickingAllProblems(void)
     int parameter;
     int i;
     
+    SEXP list_names = PROTECT(allocVector(STRSXP,elements(names)));
+    for(i = 0; i < elements(names); i++)
+        SET_STRING_ELT(list_names,i,mkChar(names[i]));
+    
     /*  This is the cector we will return to R it will ve a vector of vectors*/ 
     SEXP result = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
     
@@ -773,12 +789,12 @@ SEXP EricsLinePickingAllProblems(void)
         /* this vector contains the parameters */
         SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
         /* and this one give us names for each of the fields */
-        SEXP list_names = PROTECT(allocVector(STRSXP,elements(names)));
+        ;
         
         SET_VECTOR_ELT(result, problem, problemData); 
         
-        SEXP name = mkChar(LinePickingFields[problem].DATA->name);
-        SEXP desc = mkChar(LinePickingFields[problem].DATA->description);
+        SEXP name = mkString(LinePickingFields[problem].DATA->name);
+        SEXP desc = mkString(LinePickingFields[problem].DATA->description);
         
         /* now fill in the fields */
         SET_VECTOR_ELT(problemData, 0, name);
@@ -793,13 +809,12 @@ SEXP EricsLinePickingAllProblems(void)
                                         DATA->DefaultParameters[parameter]));    
         }
         
-        for(i = 0; i < elements(names); i++)
-            SET_STRING_ELT(list_names,i,mkChar(names[i]));
+  
         
         setAttrib(problemData, R_NamesSymbol, list_names); 
     }
     
-    UNPROTECT(1 + 3 * NUMBER_OF_PROBLEMS);
+    UNPROTECT(2 + 2 * NUMBER_OF_PROBLEMS);
     return result; 
 }
 #endif

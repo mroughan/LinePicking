@@ -16,5 +16,5 @@
 EricsOtherLinePickingAllProblems <- function()
 {    
     tmp <- .Call("EricsOtherLinePickingAllProblems")
-    return(tmp)
+    return(data.frame(sapply(tmp, cbind)))
 }
