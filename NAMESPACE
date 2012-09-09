@@ -1,6 +1,4 @@
 export(CreateLinePicking)
-export(EricsLinePickingAllProblems)
-export(EricsOtherLinePickingAllProblems)
 export(LinePickingAllProblems)
 export(LinePickingCDF)
 export(LinePickingCheckParameters)

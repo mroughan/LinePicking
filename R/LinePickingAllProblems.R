@@ -11,7 +11,7 @@
 #' @examples
 #' LinePickingAllProblems()
 LinePickingAllProblems <- function(df=TRUE){
-  tmp <- .Call("EricsLinePickingAllProblems")
+  tmp <- .Call("rLinePickingAllProblems")
   if(df){
     npar <- GetMaxNpar(tmp)
     tab <- NULL

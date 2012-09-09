@@ -686,86 +686,9 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
  */
 
 
-/* this implementation returns a vector of 4 vectors one for each variable */
-
-SEXP EricsOtherLinePickingAllProblems(void)
-{
-    
-    const char *var_names[] = {"problem", "name", "description", "Npar", "parameters" };
-    int problem;
-    int Npar;
-    int parameter;
-    int i;
-    
-    /*  This is the vector we will return to R it will ve a vector of vectors*/ 
-    SEXP result = PROTECT(allocVector(VECSXP, elements(var_names)));
-
-    /* C problem numbers */
-    SEXP problems = PROTECT(allocVector(INTSXP, NUMBER_OF_PROBLEMS)); 
-    
-     /* the name of the problem */
-    SEXP names = PROTECT(allocVector(STRSXP, NUMBER_OF_PROBLEMS));
-    
-     /* descriptions of the problem */
-    SEXP descriptions = PROTECT(allocVector(STRSXP, NUMBER_OF_PROBLEMS));
-    
-    /* the number of parameters teh problem takes */
-    SEXP Npars = PROTECT(allocVector(INTSXP, NUMBER_OF_PROBLEMS));
-    
-     /* A default set of parameters for the problem */
-    SEXP parameters = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
-    
-    
-    /* set the order the fields will appear in the output */
-    SET_VECTOR_ELT(result, 0, problems);
-    SET_VECTOR_ELT(result, 1, names);
-    SET_VECTOR_ELT(result, 2, descriptions);
-    SET_VECTOR_ELT(result, 3, Npars);
-    SET_VECTOR_ELT(result, 4, parameters);
-    
-    
-    /* name our variables */
-    SEXP list_names = PROTECT(allocVector(STRSXP,elements(var_names)));
-    for(i = 0; i < elements(var_names); i++)
-        SET_STRING_ELT(list_names,i,mkChar(var_names[i]));
-    
-    setAttrib(result, R_NamesSymbol, list_names);
-    
-    
-    for (problem = 0;  problem  < NUMBER_OF_PROBLEMS; problem++)
-    {
-        Npar = LinePickingFields[problem].DATA->Npar;
-        
-        SEXP defaultParameters = PROTECT(allocVector(REALSXP, Npar));
-        
-        SET_VECTOR_ELT(parameters, problem, defaultParameters);
-        
-        INTEGER(problems)[problem] = problem;
-        
-        SET_STRING_ELT(names, problem, 
-                       mkChar(LinePickingFields[problem].DATA->name));
-        SET_STRING_ELT(descriptions, problem, 
-                       mkChar(LinePickingFields[problem].DATA->description));
-        
-       
-        INTEGER(Npars)[problem] = Npar;
-        
-        
-        for(parameter = 0; parameter < Npar; parameter++)
-        {
-            REAL(defaultParameters)[parameter] = 
-                           LinePickingFields[problem].
-                                DATA->DefaultParameters[parameter];    
-        }
-    }
-    UNPROTECT(7 + NUMBER_OF_PROBLEMS);
-    return result; 
-}
-
-
 /* This implementation returns a vector of NUMBER_OF_PROBLEMS vectors one
    for each record */ 
-SEXP EricsLinePickingAllProblems(void)
+SEXP rLinePickingAllProblems(void)
 {
   
     const char *names[4] = { "name", "description", "npar", "parameters" };
