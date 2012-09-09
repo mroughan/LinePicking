@@ -243,13 +243,13 @@ void HyperSphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, d
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
-	/* generate n normal random variables */
-	rand_normal(*Ncoords, normals);
-
-	/* normalize them so that they lie on the (n-1)-sphere */
-	sum = 0;
-	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-	for (j=0; j<*Ncoords; j++) points[i][j] = parameters[1]*normals[j]/sqrt(sum);
+        /* generate n normal random variables */
+        rand_normal(*Ncoords, normals);
+        
+        /* normalize them so that they lie on the (n-1)-sphere */
+        sum = 0;
+        for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
+        for (j=0; j<*Ncoords; j++) points[i][j] = parameters[1]*normals[j]/sqrt(sum);
     }
     free(normals);
 }

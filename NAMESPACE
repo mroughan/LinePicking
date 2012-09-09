@@ -1,4 +1,6 @@
 export(CreateLinePicking)
+export(LinePickingSimPoints)
+export(LinePickingSimDistances)
 export(LinePickingAllProblems)
 export(LinePickingCDF)
 export(LinePickingCheckParameters)

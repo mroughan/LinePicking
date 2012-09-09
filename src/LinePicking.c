@@ -679,6 +679,8 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 
 
 
+
+
 #ifndef _NOTR
 /*
  * R parts
@@ -687,10 +689,10 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 
 
 /* This implementation returns a vector of NUMBER_OF_PROBLEMS vectors one
-   for each record */ 
+ for each record */ 
 SEXP rLinePickingAllProblems(void)
 {
-  
+    
     const char *names[4] = { "name", "description", "npar", "parameters" };
     int problem;
     int Npar;
@@ -729,10 +731,10 @@ SEXP rLinePickingAllProblems(void)
         {
             SET_VECTOR_ELT(defaultParameters, parameter, 
                            ScalarReal(LinePickingFields[problem].
-                                        DATA->DefaultParameters[parameter]));    
+                                      DATA->DefaultParameters[parameter]));    
         }
         
-  
+        
         
         setAttrib(problemData, R_NamesSymbol, list_names); 
     }
@@ -740,6 +742,105 @@ SEXP rLinePickingAllProblems(void)
     UNPROTECT(2 + 2 * NUMBER_OF_PROBLEMS);
     return result; 
 }
+
+
+
+SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem, 
+                           SEXP sexpParameters, SEXP sexpSeed)            
+{    
+    
+	int Npoints = INTEGER(sexpNpoints)[0];		
+    int problem = INTEGER(sexpProblem)[0];                          
+    double parameters[MAX_PARAMETERS];
+    long int seed = INTEGER(sexpSeed)[0];
+    int Npar = length(sexpParameters);
+    int i;
+    SEXP sexpPoints, dim;
+    char *error_str;
+    int  result;
+    int Ncoords;
+    double **Points;
+    char *CoordSystem;
+    
+    for (i = 0; i < Npar; i++)
+        parameters[i] = REAL(VECTOR_ELT(sexpParameters, i))[0];
+    
+    srand48(seed); /* initialize random number generator */
+    
+    /* determine the correct number of coordinates */
+    LinePickingNcoords(&Ncoords, &CoordSystem, &problem, parameters, 
+                       &Npar, &result, &error_str);     
+    
+    /* something was wrong with parameters */
+    if (result != 0) error(error_str);
+    
+    /* setup the memory needed to store the points */
+    sexpPoints = PROTECT(allocVector(REALSXP, Ncoords * Npoints));
+
+    /* the way the points have been setup to prefer the Matlab 
+     * way of row major ordering means we are forced to return 
+     * Ncoords rows and Npoints colums in R this can be fixed 
+     * but requires fixing all the geometry files
+     */
+     
+    dim = PROTECT(allocVector(INTSXP, 2));
+    INTEGER(dim)[0] = Ncoords; 
+    INTEGER(dim)[1] = Npoints; 
+    setAttrib(sexpPoints, R_DimSymbol, dim);
+    
+    /* 
+     * oh why oh why are the functons implemented with the 
+     * points indexed in this fashion ? 
+     */
+    Points = (double **) malloc((size_t) sizeof(double)*(Npoints));
+    
+    for (i=0;i<Npoints;i++) 
+        Points[i] = REAL(sexpPoints) + (i * Ncoords);
+    
+    LinePickingSimPoints(Points, &Npoints, &Ncoords, &problem, parameters, 
+                         &Npar, &result, &error_str);
+    free(Points);
+    UNPROTECT(2);
+    
+    if (result != 0) 
+        error(error_str);
+    else
+        return sexpPoints;  
+}
+
+
+SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem, 
+                              SEXP sexpParameters, SEXP sexpSeed)            
+{    
+    
+	int N = INTEGER(sexpN)[0];		
+    int problem = INTEGER(sexpProblem)[0];                          
+    double parameters[MAX_PARAMETERS];
+    long int seed = INTEGER(sexpSeed)[0];
+    int Npar = length(sexpParameters);
+    int i;
+    SEXP sexpDistances;
+    char *error_str;
+    int  result;
+    
+    for (i = 0; i < Npar; i++)
+        parameters[i] = REAL(VECTOR_ELT(sexpParameters, i))[0];
+    
+    srand48(seed); /* initialize random number generator */
+    
+    /* allocate some memory in the R way for the distances */
+    sexpDistances = PROTECT(allocVector(REALSXP, N));
+    
+    /* call the function */
+    LinePickingSimDistances(REAL(sexpDistances), &N, &problem,parameters,
+                            &Npar, &result, &error_str);
+    UNPROTECT(1);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return sexpDistances;                        
+}
+
 #endif
 
 

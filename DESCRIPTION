@@ -28,3 +28,5 @@ Collate:
     'LinePickingNumberOfProblems.R'
     'package.R'
     'LinePickingProblemNparLookup.R'
+    'LinePickingSimDistances.R'
+    'LinePickingSimPoints.R'
