@@ -15,7 +15,7 @@ LinePickingAllProblems <- function(print=TRUE){
   tmp <- .Call("rLinePickingAllProblems")
   if(print){
     for(i in 1:length(tmp)){
-      cat("Problem",i-1,'\n')
+      cat("Problem",tmp[[i]]$problem,'\n')
       cat("==========\n")
       FormatProblem(tmp[[i]])
     }
