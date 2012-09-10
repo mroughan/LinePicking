@@ -751,7 +751,7 @@ SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem,
     
 	int Npoints = INTEGER(sexpNpoints)[0];		
     int problem = INTEGER(sexpProblem)[0];                          
-    double parameters[MAX_PARAMETERS];
+    double *parameters = REAL(sexpParameters);
     long int seed = INTEGER(sexpSeed)[0];
     int Npar = length(sexpParameters);
     int i;
@@ -762,8 +762,6 @@ SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem,
     double **Points;
     char *CoordSystem;
     
-    for (i = 0; i < Npar; i++)
-        parameters[i] = REAL(VECTOR_ELT(sexpParameters, i))[0];
     
     srand48(seed); /* initialize random number generator */
     
@@ -815,16 +813,13 @@ SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem,
     
 	int N = INTEGER(sexpN)[0];		
     int problem = INTEGER(sexpProblem)[0];                          
-    double parameters[MAX_PARAMETERS];
+    double *parameters = REAL(sexpParameters);
     long int seed = INTEGER(sexpSeed)[0];
     int Npar = length(sexpParameters);
     int i;
     SEXP sexpDistances;
     char *error_str;
     int  result;
-    
-    for (i = 0; i < Npar; i++)
-        parameters[i] = REAL(VECTOR_ELT(sexpParameters, i))[0];
     
     srand48(seed); /* initialize random number generator */
     

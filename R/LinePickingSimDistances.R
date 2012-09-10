@@ -1,4 +1,4 @@
-#' Get simulated distances between two random points
+#' Get simulated distances between two random points 
 #'
 #' Give the number of distances required
 #'
@@ -7,24 +7,25 @@
 #' and a seed for the random number generator this 
 #' function will return a list of distances.
 #'
-#' @inheritParams LinePickingPDF
-#' @return vector of probability density function values for each
-#' element in t.
+#' @param N the number of distances to generate.
+#' @param problem see \code{\link{LinePickingPDF}}.
+#' @param parameters numeric vector of parameter describing problem.
+#' @param seed a seed for the random number generator
+#' @return vector of N distances. 
 #' @author Eric Parsonage
 #' @export
 #' @useDynLib LinePicking
 #' @note September 9 2012
 #' @examples
-#' t <- seq(0,1,l=1000)
-#' y <- LinePickingCDF(t=t,problem=0,para=1)
-#' plot(t,y,type='l')
+#' t <- LinePickingSimDistances(10, 0 , list(1), 67)
 LinePickingSimDistances <-
   function(N, problem, parameters, seed)
   {
     tmp <- .Call('rLinePickingSimDistances',
               as.integer(N),
               as.integer(problem),
-              parameters,
+              as.double(parameters),
               as.integer(seed))
+    return(tmp)
       
   }
