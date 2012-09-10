@@ -127,10 +127,25 @@ double HyperSphereGeodesicDistanceMean(double* parameters)
  */
 double HyperSphereGeodesicDistanceVar(double* parameters)
 {
-    /*
-    double n = ceil(parameters[0]); 
-    */
-    return -1;
+    int dim = round(parameters[0]);
+    double r = parameters[1];
+    int n;
+    
+    double an2 = pow(r, 2) * pow(M_PI, 2) / 4.; 
+    double an1 = pow(r, 2) * pow(M_PI, 2) / 12.; 
+    double an = 0;
+    
+    if (dim == 0) return an2;
+    if (dim == 1) return an1;
+    
+    for (n = 2; n <= dim; n++)
+    {
+        an = an2 - 2 * (pow(r,2) / pow((n - 1),2));
+        an2 = an1;
+        an1 = an;
+    }
+    
+    return an;
 }
 
 
