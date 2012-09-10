@@ -23,8 +23,8 @@ LinePickingSimPoints <-
     tmp <- .Call('rLinePickingSimPoints',
               as.integer(NPoints),
               as.integer(problem),
-              as.double(parameters),
+              parameters,
               as.integer(seed))
-    return t(tmp)
+    return(t(tmp))
       
   }
