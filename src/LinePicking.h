@@ -59,8 +59,8 @@
 
 #ifndef _NOTR
 #include <R.h> /* only include this if we are compiling for R */
+#include <Rinternals.h>
 #endif
-
 
 #ifndef PRINT_STDOUT
 /* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
@@ -162,7 +162,7 @@ void LinePickingCDF(double *, double *, int *,
 /* primary function for calculating Mean line length for any region */
 void LinePickingMean(double *, int *, double*, int *, int*, char **);
 
-/* primary function for calculating Mean line length for any region */
+/* primary function for calculating Variance of line lengths for any region */
 void LinePickingVar(double *, int *, double*, int *, int*, char **);
 
 /* return the number of coordinates, and a description of the coordinate system */
@@ -180,6 +180,50 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 
 
 /** @}*/
+
+
+/** @defgroup rapi LinePicking [R] API 
+ *\addtogroup rapi 
+ *  @{
+ */
+#ifndef _NOTR
+
+/* return a list of all the problems with a description */
+SEXP rLinePickingAllProblems(void);
+
+/* check that a problem and a set of parameters are valid */
+SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters);
+
+/* compute support of the density */
+SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters);
+
+/* primary function for calculating PDF for any region 
+ * through a uniform interface, for multiple t values 
+ */
+SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
+
+/* primary function for calculating CDF for any region 
+ * through a uniform interface, for multiple t values 
+ */
+SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
+
+/* primary function for calculating Mean line length for any region */
+SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters);
+
+/* primary function for calculating Variance of line lengths for any region */
+SEXP rLinePickingVar(SEXP sexpProblem, SEXP sexpParameters);
+
+/* generate a set of points suitable for use in simulating a problem */
+SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem, 
+                           SEXP sexpParameters, SEXP sexpSeed);
+
+/* generate a set of distances by simulating a problem */
+SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem, 
+                              SEXP sexpParameters, SEXP sexpSeed);            
+
+/** @}*/
+#endif /* _NOTR */
+
 
 
 #ifdef _MEX

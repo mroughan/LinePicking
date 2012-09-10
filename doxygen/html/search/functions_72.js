@@ -26,5 +26,6 @@ var searchData=
   ['rectanglemaxdistancepdf',['RectangleMaxDistancePDF',['../_rectangle_max_8h.html#a9c33752d0602fa7bbe5314f728669d24',1,'RectangleMax.c']]],
   ['rectanglemaxdistancesimpoints',['RectangleMaxDistanceSimPoints',['../_rectangle_max_8h.html#ac726a47136e909539848330a8fe539d3',1,'RectangleMax.c']]],
   ['rectanglemaxdistancesupport',['RectangleMaxDistanceSupport',['../_rectangle_max_8h.html#ad7ab679ff8c9f83bfbe78aeaa4ee01f0',1,'RectangleMax.c']]],
-  ['rectanglemaxdistancevar',['RectangleMaxDistanceVar',['../_rectangle_max_8h.html#a5e0f082b20cf7ef198e57031cdbd2bea',1,'RectangleMax.c']]]
+  ['rectanglemaxdistancevar',['RectangleMaxDistanceVar',['../_rectangle_max_8h.html#a5e0f082b20cf7ef198e57031cdbd2bea',1,'RectangleMax.c']]],
+  ['rlinepickingallproblems',['rLinePickingAllProblems',['../group__rapi.html#ga02145a395d24bbe929ffa57688c72ef5',1,'rLinePickingAllProblems(void):&#160;LinePicking.c'],['../group__rapi.html#ga02145a395d24bbe929ffa57688c72ef5',1,'rLinePickingAllProblems(void):&#160;LinePicking.c']]]
 ];

@@ -213,8 +213,6 @@ void LinePickingPrintAllProblems(void)
  * with pointers to strings. 
  * @todo Implement dynamic memory allocation of string outputs and the 
  * array that points to them.
- * @bug possible array bounds exception if the size of the supplied arguments is 
- * incorrect.
  */
 void LinePickingAllProblems(char **names, char **descriptions,
                             int *Npars, double **parameters)
@@ -690,8 +688,13 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
  *
  */
 
-/* This implementation returns a vector of NUMBER_OF_PROBLEMS vectors one
- for each record */ 
+/**
+ * This function is called by .Call from R it takes no parameters and returns a 
+ * list of lists detailing the implemented problem set. The lists are returned 
+ * via the standard R SEXP pointer.
+ * @return a list of lists detailing the implemented problem set using an R 
+ * SEXP pointer.
+ */
 SEXP rLinePickingAllProblems(void)
 {
   
@@ -746,7 +749,24 @@ SEXP rLinePickingAllProblems(void)
   return result; 
 }
 
-
+/**
+ * This function is called by .Call from R. It checks that a problem and a 
+ * set of parameters are valid.
+ * Problems are integers describing possible 
+ * geometries for the line picking problem. 
+ * This function takes a problem and a parameter 
+ * vector and checks if valid
+ * 
+ * @param problem see \code{\link{LinePickingPDF}}
+ * @param parameters numeric vector of parameter describing problem
+ * @return exit code \itemize{
+ * \item 0: parameters are valid
+ * \item 1: unsupported problem
+ * \item 2: parameters out of range.
+ * \item 3: not enough parameters were entered.
+ * \item 4: other error.
+ * }
+ */
 SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)            
 {    
     
@@ -765,7 +785,17 @@ SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)
     return ScalarInteger(result);                        
 }
 
-
+/**
+ * This function is called by .Call from R. It returns support for pdf for 
+ * given problem and parameters
+ *
+ * Given a problem see rLinePickingPDF and parameters gives the range
+ * distance t such that the pdf is non-zero
+ * @param problem see LinePickingPDF
+ * @param parameters the parameter necessary to describe 
+ * the space given by problem.
+ * @return min and max values of support in a 1 x 2 vector
+ */
 SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters)            
 {    
     
@@ -789,7 +819,24 @@ SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters)
     return sexpt;                        
 }
 
-
+/**
+ * This function is called by .Call from R. It returns the pdf for distance 
+ * between two random points
+ *
+ * Give a shape (square, disk, ...) and 
+ * parameters defining the shape, this 
+ * function will give a the probability density
+ * function for the distances
+ * between two Poisson distributed points in the space.
+ *
+ * @param t vector of points to calculate pdf for. 
+ * @param problem  The number of the problem for which the PDF 
+ * will be calculated.
+ * @param parameters the parameter necessary to describe 
+ * the space given by problem.
+ * @return vector of probability density function values for each
+ * element in t.
+ */
 SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
 {    
 	double *t = REAL(sexpt);

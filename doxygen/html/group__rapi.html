@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LinePicking: HyperGeometric.h File Reference</title>
+<title>LinePicking: LinePicking [R] API</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,7 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -59,12 +59,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>Globals</span></a></li>
-    </ul>
-  </div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -79,83 +74,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">HyperGeometric.h File Reference</div>  </div>
+<div class="title">LinePicking [R] API</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Implements the Hypergeometric function.  
-<a href="#details">More...</a></p>
-
-<p><a href="_hyper_geometric_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a9052869448390df4205e72917cd7f00d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_geometric_8h.html#a9052869448390df4205e72917cd7f00d">hypergeometric2f1_</a> (double a, double b, double c, double x, int n)</td></tr>
-<tr class="separator:a9052869448390df4205e72917cd7f00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02145a395d24bbe929ffa57688c72ef5"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga02145a395d24bbe929ffa57688c72ef5">rLinePickingAllProblems</a> (void)</td></tr>
+<tr class="separator:ga02145a395d24bbe929ffa57688c72ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b3ba58aca598b6ee8f7239e87f3076c"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingCheckParameters</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSupport</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafe4502dd2e61ac946bfe6543fb38dd39"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingPDF</b> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac85aaf9284a29359e0d534ac1641b3f2"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingCDF</b> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4316d34063551a4121f4cc0b7959b166"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4316d34063551a4121f4cc0b7959b166"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingMean</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga4316d34063551a4121f4cc0b7959b166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac2d2e36336e7c32427a9e99ccc67d18e"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingVar</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf32b79fce86f86cedc7843775e163c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacf32b79fce86f86cedc7843775e163c3"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSimPoints</b> (SEXP sexpNpoints, SEXP sexpProblem, SEXP sexpParameters, SEXP sexpSeed)</td></tr>
+<tr class="separator:gacf32b79fce86f86cedc7843775e163c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d8792844b8fb2bfe583d80d7580938d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1d8792844b8fb2bfe583d80d7580938d"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSimDistances</b> (SEXP sexpN, SEXP sexpProblem, SEXP sexpParameters, SEXP sexpSeed)</td></tr>
+<tr class="separator:ga1d8792844b8fb2bfe583d80d7580938d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implements the Hypergeometric function. </p>
-<dl class="section author"><dt>Author</dt><dd>Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>3/09/2012 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a9052869448390df4205e72917cd7f00d"></a>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga02145a395d24bbe929ffa57688c72ef5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double hypergeometric2f1_ </td>
+          <td class="memname">SEXP rLinePickingAllProblems </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>b</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>c</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Computes the hypergeometric function using a series expansion. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">$a</td><td></td></tr>
-    <tr><td class="paramname">$b</td><td></td></tr>
-    <tr><td class="paramname">$c</td><td>The Hypergeometric function converges only for $c != 0, -1, -2, -3, ... </td></tr>
-    <tr><td class="paramname">$x</td><td>The Hypergeometric function converges only for |$x| &lt; 1 </td></tr>
-    <tr><td class="paramname">$n</td><td>Number of terms in the series to evaluate. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The result of evaluating the hypergeometric function. </dd></dl>
+<p>This function is called by .Call from R it takes no parameters and returns a list of lists detailing the implemented problem set. The lists are returned via the standard R SEXP pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>a list of lists detailing the implemented problem set using an R SEXP pointer. </dd></dl>
 
 </div>
 </div>

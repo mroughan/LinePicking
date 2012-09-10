@@ -113,6 +113,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="_hyper_sphere_8h_source.html">HyperSphere.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="_hyper_sphere_geodesic_8h_source.html">HyperSphereGeodesic.h</a>&quot;</code><br/>
 <code>#include &lt;R.h&gt;</code><br/>
+<code>#include &lt;Rinternals.h&gt;</code><br/>
 </div>
 <p><a href="_line_picking_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -171,6 +172,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingProblenNpa
 <tr class="separator:gad3880c7898c35953c9c55ced33beb222"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gade24923f75c83155e6cf15f3d7d7cb09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gade24923f75c83155e6cf15f3d7d7cb09">LinePickingSimDistances</a> (double *distances, int *N, int *problem, double *parameters, int *Npar, int *result, char **error_str)</td></tr>
 <tr class="separator:gade24923f75c83155e6cf15f3d7d7cb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02145a395d24bbe929ffa57688c72ef5"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga02145a395d24bbe929ffa57688c72ef5">rLinePickingAllProblems</a> (void)</td></tr>
+<tr class="separator:ga02145a395d24bbe929ffa57688c72ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b3ba58aca598b6ee8f7239e87f3076c"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingCheckParameters</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSupport</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafe4502dd2e61ac946bfe6543fb38dd39"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingPDF</b> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac85aaf9284a29359e0d534ac1641b3f2"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingCDF</b> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4316d34063551a4121f4cc0b7959b166"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga4316d34063551a4121f4cc0b7959b166"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingMean</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga4316d34063551a4121f4cc0b7959b166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac2d2e36336e7c32427a9e99ccc67d18e"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingVar</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacf32b79fce86f86cedc7843775e163c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gacf32b79fce86f86cedc7843775e163c3"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSimPoints</b> (SEXP sexpNpoints, SEXP sexpProblem, SEXP sexpParameters, SEXP sexpSeed)</td></tr>
+<tr class="separator:gacf32b79fce86f86cedc7843775e163c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1d8792844b8fb2bfe583d80d7580938d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga1d8792844b8fb2bfe583d80d7580938d"></a>
+SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSimDistances</b> (SEXP sexpN, SEXP sexpProblem, SEXP sexpParameters, SEXP sexpSeed)</td></tr>
+<tr class="separator:ga1d8792844b8fb2bfe583d80d7580938d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -240,7 +267,7 @@ Matthew Roughan <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Sep 7 2012 09:13:33 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 10 2012 23:13:07 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
