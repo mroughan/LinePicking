@@ -137,6 +137,9 @@ of powers and trig functions.
 \[ \Gamma(s) \Gamma(1-s) = \frac{\pi}{\sin \pi s} \]
 
 
+-- or evaluate numerically, and invert (Jonathan Borwein)
+
+
 Take $R=1$, then $t \in [0, \pi$ and 
 \begin{eqnarray}
 g_{R}^{n}(t) & = &   \frac{\Gamma\left(\frac{1+n}{2}\right) }
@@ -147,4 +150,56 @@ g_{R}^{n}(t) & = &   \frac{\Gamma\left(\frac{1+n}{2}\right) }
                       \sin(t)^{n-1} \nonumber \\
 \end{eqnarray}
 
+
+
+
+
+
+ANSWER: 2nd Moment
+\begin{eqnarray}
+  \label{eq:mean_nsphere_geo}
+  E\big[ X_{0,R}^2 \big] & = & R^2 \left( \frac{\pi}{2} \right)^2, \\ 
+  E\big[ X_{1,R}^2 \big] & = & R^2 \left( \frac{\pi}{2 \sqrt{3}} \right)^2, \\ 
+  E\big[ X_{n,R}^2 \big] & = & E\big[ X_{n-2,R}^2 \big] 
+                                   - \frac{2 R^2}{(n-1)^2}, \;\;\;
+                                   \mbox{ for } n > 1.
+\end{eqnarray}
+
+Variance = 2nd moment - 1st moment squared
+
+
+Written as a summation
+\begin{eqnarray}
+  \label{eq:mean_nsphere_geo}
+  E\big[ X_{n,R}^2 \big] & = & R^2 \times \left\{ \begin{array}{ll}
+      \displaystyle
+         \left( \frac{\pi}{2 \sqrt{3}} \right)^2
+        - 2 \sum_{k=1}^{(n-1)/2} \frac{1}{(2k)^2}, & 
+          \mbox{ for $n$ odd,} \\ 
+      \displaystyle
+         \left( \frac{\pi}{2} \right)^2 
+        - 2 \sum_{k=1}^{n/2} \frac{1}{(2k-1)^2}, &
+          \mbox{ for $n$ even,} \\ 
+    \end{array} \right.
+\end{eqnarray}
+where the summation terms are understood to be zero for $n=0, 1$.
+
+
+Now from \cite[0.234,2.(p.7)]{GandR} and \cite[0.233,3.(p.7)]{GandR}  we get
+\begin{eqnarray}
+  \sum_{k=1}^{\infty} \frac{1}{(2k-1)^2} & = & \frac{\pi^2}{8},  \\
+  \sum_{k=1}^{\infty} \frac{1}{(2k)^2}
+%            & = & \frac{2 \pi^2}{2} |B_2| - \frac{\pi^2}{8},
+           & = &  \sum_{k=1}^{\infty} \frac{1}{k^2} - \sum_{k=1}^{\infty} \frac{1}{(2k-1)^2}, \nonumber \\
+           & = & \frac{\pi^2}{6}  - \frac{\pi^2}{8}  , \nonumber \\
+           & = & \frac{\pi^2}{24} ,
+\end{eqnarray}
+so the limiting forms for large $n$ are both zero. Given the density
+integrates to one, but has variance approaching zero for large $n$, it
+is reasonable to think of it as a delta-function for large $n$. In
+this case, it would be natural to think of it as 
+
+% B_2 = Bernoulli number = 1/6, G&R, 9.61 or 
+% http://en.wikipedia.org/wiki/Bernoulli_number
+%   
 
