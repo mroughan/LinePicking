@@ -6,7 +6,9 @@
 #' @return prints out information nice-like
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 FormatProblem <- function(x){
+    
   cat('The problem name is',x$name,'\n\n') 
+  cat('Its number is:',x$problem,'\n\n') 
   cat("Its description is:\n",x$description,'\n\n')
   if (x$npar == 1){
     cat("It is defined by one parameter",
