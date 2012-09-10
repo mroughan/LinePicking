@@ -345,21 +345,21 @@ Taking $R=1/2$, we get $k$th moment is
 \begin{eqnarray}
 E[ X^k ] 
     & = & \int_0^1 s^k g^{n-{\rm sphere}}_{n,1/2}(s) \, ds \nonumber \\
-    & = & \frac{\Gamma\left[n\right]}{R \Gamma\left[\frac{n}{2}\right]^2} 
+    & = & \frac{2 \Gamma\left[n\right]}{\Gamma\left[\frac{n}{2}\right]^2} 
           \int_0^1 s^k s^{n-1}  \left(1 - s^2\right)^{\frac{1}{2} (n-2)}
                \, ds \nonumber \\
-    & = & \frac{\Gamma\left[n\right]}{2 R \Gamma\left[\frac{n}{2}\right]^2} 
+    & = & \frac{\Gamma\left[n\right]}{\Gamma\left[\frac{n}{2}\right]^2} 
           \int_0^1 u^{(k+n)/2-1}  \left(1 - u \right)^{n/2-1}
                \, du \nonumber \\
     & = & \frac{\Gamma\left[n\right] B\big( (k+n)/2,n/2 \big)}
-               {2 R \Gamma\left[\frac{n}{2}\right]^2}  \nonumber \\
+               {\Gamma\left[\frac{n}{2}\right]^2}  \nonumber \\
     & = & \frac{\Gamma\left[ n \right] \Gamma\left[ (k+n)/2 \right]}
-               {2 R \Gamma\left[\frac{n}{2}\right] \Gamma\left[ n+k/2 \right] } 
+               {\Gamma\left[\frac{n}{2}\right] \Gamma\left[ n+k/2 \right] } 
           \nonumber 
 \end{eqnarray}
 To obtain the general case for $R$, we multiply by $(2R)^k$ to get
 \begin{eqnarray}
 E[ X^k ] 
-    & = & \frac{(2R)^{k-1} \Gamma\left[ n \right] \Gamma\left[ (k+n)/2 \right]}
+    & = & \frac{(2R)^{k} \Gamma\left[ n \right] \Gamma\left[ (k+n)/2 \right]}
                {\Gamma\left[\frac{n}{2}\right] \Gamma\left[ n+k/2 \right] } 
 \end{eqnarray}
