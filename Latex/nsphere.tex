@@ -124,11 +124,17 @@ angular coordinate, i.e.,
               \cdots  
               \int_{0}^{\pi} \sin^{n-2}(\phi_2)  d\phi_{2}, \nonumber \\   
 \end{eqnarray}
-Now for $i>-1$, the integral % Wolfram alpha
+From \cite[3.621,5.(p.369)]{GandR}, the integral
+\begin{equation}
+  \int_0^{\pi/2} \sin^{n-1}(x) \, dx
+     = \frac{1}{2} B\left( n/2, 1/2 \right)
+     = \frac{1}{2} \frac{\Gamma(n/2) \Gamma(1/2)}{\Gamma((n+1)/2)},   
+\end{equation}
+or 
 \begin{equation}
   \label{eq:int_sin_n}
-  \int_0^{\pi} \sin^i(x) \, dx = 
-       \frac{\sqrt{\pi} \Gamma\big( i/2 + 1/2 \big)}{\Gamma\big( i/2+1 \big)}.
+  \int_0^{\pi} \sin^{n-1}(x) \, dx = 
+       \frac{\sqrt{\pi} \, \Gamma\big( n/2 \big)}{\Gamma\big( (n+1)/2 \big)}.
 \end{equation}
 Note that in each adjacent term in the product above, the Gamma
 functions in the numerators and denominators cancel so the final
@@ -141,35 +147,15 @@ product collapses down to
               \cdots  
               \int_{0}^{\pi} \sin^{n-2}(\phi_2)  d\phi_{2}, \nonumber \\   
       & = & 2 \pi \pi^{(n-2)/2} \sin^{n-1}(\phi_1)  
-                     \frac{\Gamma\big( 1/2 + 1/2 \big)}{\Gamma\big( (n-2)/2+1 \big)}
+                     \frac{\Gamma\big( 1 \big)}{\Gamma\big( n/2 \big)}
                  \nonumber \\   
-      & = & 2 \pi^{n/2} \sin^{n-1}(\phi_1)  
-                     \frac{\Gamma\big(1 \big)}{\Gamma\big( n/2 \big)}
-                 \nonumber \\   
-      & = &  2 \pi \sin^{n-1}(\phi_1)  
-                     \frac{2 \pi^{(n-2)/2}}{\Gamma\big( (n-2)/2+1 \big)}
-                 \nonumber \\   
-      & = &   2 \pi C_{n-2} \sin^{n-1}(\phi_1),
+      & = &  \frac{4 \pi^{n/2}}{\Gamma\big( n/2 \big)} \sin^{n-1}(\phi_1)  .
 \end{eqnarray}
-where $C_{n-2}$ is the coefficient for the generalized volume of an
-$n$-ball (see Section~\ref{sec:useful}).
-
-In order to make $f(\phi_1)$ into a probability density function we
-need to normalise it. This is achieved by dividing through by the
-result of integrating $f(\phi_1)$ over $[0, \pi]$ thus.
- \begin{equation}      
- h(\phi_1) = \int_0^{\pi}  f(\phi_1) \, d\phi_1
-           =  \frac{2 \pi ^{\frac{5}{2}-\frac{n}{2}} 
-            \Gamma\left(\frac{n}{2}\right)^2}{\Gamma\left(\frac{1+n}{2}\right)}.
-\end{equation}
-
-
-Now $g(\phi_1) =\frac{f(\phi_1)}{ h(\phi_1)}$ is the  probability
-density function for the distance between points on the surface of a
-sphere measured by $\phi_1$, which after some simplification can be
-written: 
+which we can see from \eqref{eq:int_sin_n} must result in
 \begin{equation}  
- g(\phi_1) = \frac{\Gamma\left(\frac{1+n}{2}\right) \sin(\phi )^{n - 1}}{\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}.
+ g(\phi) = \frac{\Gamma\left(\frac{1+n}{2}\right)}
+                  {\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)} 
+                      \sin(\phi )^{n - 1}.
 \end{equation} 
 We have have a function for $t$ the distance between two points in
 terms of $\phi_1$ so we can get  $\phi_1$ in terms of $t$ thus: 
@@ -206,7 +192,8 @@ Now using the Gauss multiplication formula:
 \end{equation}
 which for $m = 2$ and $z = n/2$ gives
 \begin{equation}
- 2^{-(n-1)}\sqrt{ \pi } \Gamma\left[n\right]=\Gamma\left[\frac{n+1}{2}\right] \Gamma\left[\frac{n}{2}\right].   \nonumber \\ 
+ 2^{-(n-1)}\sqrt{ \pi } \Gamma\left[n\right]=\Gamma\left[\frac{n+1}{2}\right] \Gamma\left[\frac{n}{2}\right].  
+  \label{eq:gamma_rel}
 \end{equation}
 so we get
 \begin{eqnarray}
