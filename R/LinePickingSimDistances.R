@@ -24,7 +24,7 @@ LinePickingSimDistances <-
     tmp <- .Call('rLinePickingSimDistances',
               as.integer(N),
               as.integer(problem),
-              parameters,
+              as.double(parameters),
               as.integer(seed))
     return(tmp)
       
