@@ -14,18 +14,11 @@
 #' LinePickingVar(problem=0,parameters=10)
 LinePickingVar <-
 function(problem=0,parameters){
-  tmp <- .C('LinePickingVar',
-            mean = as.double(0),
-            problem = as.integer(problem),
-            parameters = as.double(parameters),
-            Npar = as.integer(length(parameters)),
-            results = as.integer(99),
-            error_str = as.character(""))
-  if(tmp$results != 0 ){
-    stop(tmp$error_str)
-  } else {
-    return(tmp$mean)    
-  }
+  tmp <- .Call('rLinePickingVar',
+                as.integer(problem),
+                as.double(parameters))
+
+  return(tmp)    
 }
 
 # TODO add numerical for mean -1

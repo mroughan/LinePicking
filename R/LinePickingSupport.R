@@ -13,16 +13,8 @@
 #' @examples
 #' LinePickingSupport(problem=0,parameters=10)
 LinePickingSupport <- function(problem=0, parameters){
-  tmp <- .C("LinePickingSupport",
-            t = as.numeric(rep(0,2)),
-            problem = as.integer(problem),
-            parameters = as.numeric(parameters),
-            Npar = as.integer(length(parameters)),
-            results = as.integer(99),
-            error_str = as.character(""))
-  if(tmp$results != 0 ){
-    stop(tmp$error_str)
-  } else {
-    return(tmp$t)
-  }
+  tmp <- .Call("rLinePickingSupport",
+                as.integer(problem),
+                as.numeric(parameters))
+  return(tmp)
 }

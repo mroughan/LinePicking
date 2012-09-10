@@ -24,15 +24,8 @@
 #' LinePickingCheckParameters(problem=0, parameters=c(1,2))
 #' LinePickingCheckParameters(problem=3, parameters=c(1))
 LinePickingCheckParameters <- function(problem=0,parameters){
-  Npar <- length(parameters)
-  tmp <- .C("LinePickingCheckParameters",
-            problem = as.integer(problem),
-            parameters = as.numeric(parameters),
-            Npar = as.integer(Npar),
-            results = as.integer(0),
-            error_str = as.character(""))
-  if(tmp$results > 0){
-    cat(tmp$error_str,"\n")
-  }
-  return(tmp$results)
+  tmp <- .Call("rLinePickingCheckParameters",
+            as.integer(problem),
+            as.double(parameters))
+  return(tmp)
 }

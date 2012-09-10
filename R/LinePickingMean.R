@@ -11,21 +11,14 @@
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
+#' @todo add numerical for mean -1
 #' LinePickingMean(problem=0,parameters=10)
 LinePickingMean <-
 function(problem=0,parameters){
-  tmp <- .C('LinePickingMean',
-            mean = as.double(0),
-            problem = as.integer(problem),
-            parameters = as.double(parameters),
-            Npar = as.integer(length(parameters)),
-            results = as.integer(99),
-            error_str = as.character(""))
-  if(tmp$results != 0 ){
-    stop(tmp$error_str)
-  } else {
-    return(tmp$mean)    
-  }
+  tmp <- .Call('rLinePickingMean',
+               as.integer(problem),
+               parameters = as.double(parameters))
+  return(tmp)
 }
 
 # TODO add numerical for mean -1

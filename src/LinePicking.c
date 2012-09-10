@@ -687,63 +687,202 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
  *
  */
 
-
 /* This implementation returns a vector of NUMBER_OF_PROBLEMS vectors one
  for each record */ 
 SEXP rLinePickingAllProblems(void)
 {
+  
+  const char *names[] = { "problem", "name", "description", 
+    "npar", "parameters" };
+  int problem;
+  int Npar;
+  int parameter;
+  int i;
+  
+  SEXP list_names = PROTECT(allocVector(STRSXP,elements(names)));
+  for(i = 0; i < elements(names); i++)
+    SET_STRING_ELT(list_names,i,mkChar(names[i]));
+  
+  /*  This is the cector we will return to R it will ve a vector of vectors*/ 
+  SEXP result = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
+  
+  for (problem = 0;  problem  < NUMBER_OF_PROBLEMS; problem++)
+  {
+    /* this vector contains all the data for one problem */
+    Npar = LinePickingFields[problem].DATA->Npar;
+    SEXP problemData = PROTECT(allocVector(VECSXP, elements(names)));
+    /* this vector contains the parameters */
+    SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
     
-    const char *names[] = { "problem", "name", "description", 
-                            "npar", "parameters" };
-    int problem;
-    int Npar;
-    int parameter;
-    int i;
     
-    SEXP list_names = PROTECT(allocVector(STRSXP,elements(names)));
-    for(i = 0; i < elements(names); i++)
-        SET_STRING_ELT(list_names,i,mkChar(names[i]));
+    SET_VECTOR_ELT(result, problem, problemData); 
     
-    /*  This is the cector we will return to R it will ve a vector of vectors*/ 
-    SEXP result = PROTECT(allocVector(VECSXP, NUMBER_OF_PROBLEMS));
+    SEXP name = mkString(LinePickingFields[problem].DATA->name);
+    SEXP desc = mkString(LinePickingFields[problem].DATA->description);
     
-    for (problem = 0;  problem  < NUMBER_OF_PROBLEMS; problem++)
+    
+    SET_VECTOR_ELT(problemData, 0, ScalarInteger(problem));
+    SET_VECTOR_ELT(problemData, 1, name);
+    SET_VECTOR_ELT(problemData, 2, desc);
+    SET_VECTOR_ELT(problemData, 3, ScalarInteger(Npar));
+    SET_VECTOR_ELT(problemData, 4, defaultParameters);
+    
+    for(parameter = 0; parameter < Npar; parameter++)
     {
-        /* this vector contains all the data for one problem */
-        Npar = LinePickingFields[problem].DATA->Npar;
-        SEXP problemData = PROTECT(allocVector(VECSXP, elements(names)));
-        /* this vector contains the parameters */
-        SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
-    
-        
-        SET_VECTOR_ELT(result, problem, problemData); 
-        
-        SEXP name = mkString(LinePickingFields[problem].DATA->name);
-        SEXP desc = mkString(LinePickingFields[problem].DATA->description);
-        
-    
-        SET_VECTOR_ELT(problemData, 0, ScalarInteger(problem));
-        SET_VECTOR_ELT(problemData, 1, name);
-        SET_VECTOR_ELT(problemData, 2, desc);
-        SET_VECTOR_ELT(problemData, 3, ScalarInteger(Npar));
-        SET_VECTOR_ELT(problemData, 4, defaultParameters);
-        
-        for(parameter = 0; parameter < Npar; parameter++)
-        {
-            SET_VECTOR_ELT(defaultParameters, parameter, 
-                           ScalarReal(LinePickingFields[problem].
-                                      DATA->DefaultParameters[parameter]));    
-        }
-        
-        
-        
-        setAttrib(problemData, R_NamesSymbol, list_names); 
+      SET_VECTOR_ELT(defaultParameters, parameter, 
+                     ScalarReal(LinePickingFields[problem].
+                                DATA->DefaultParameters[parameter]));    
     }
     
-    UNPROTECT(2 + 2 * NUMBER_OF_PROBLEMS);
-    return result; 
+    
+    
+    setAttrib(problemData, R_NamesSymbol, list_names); 
+  }
+  
+  UNPROTECT(2 + 2 * NUMBER_OF_PROBLEMS);
+  return result; 
 }
 
+
+SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)            
+{    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    int Npar = length(sexpParameters);
+    
+    char *error_str;
+    int  result;
+    
+    LinePickingCheckParameters(&problem, parameters, 
+                               &Npar, &result, &error_str);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) warning(error_str);
+    return ScalarInteger(result);                        
+}
+
+
+SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters)            
+{    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    int Npar = length(sexpParameters);
+    
+    char *error_str;
+    int  result;
+    
+    /* allocate some memory in the R way for the support */
+    SEXP sexpt = PROTECT(allocVector(REALSXP, 2));
+    
+    LinePickingSupport(REAL(sexpt), &problem, parameters, 
+                               &Npar, &result, &error_str);
+    
+    UNPROTECT(1);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return sexpt;                        
+}
+
+
+SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
+{    
+	double *t = REAL(sexpt);
+    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    
+    int Npar = length(sexpParameters);
+    int N = length(sexpt);
+    char *error_str;
+    int  result;
+    
+    
+    /* allocate some memory in the R way for the distances */
+    SEXP sexpg = PROTECT(allocVector(REALSXP, N));
+    
+    /* call the function */
+    LinePickingPDF(REAL(sexpt), REAL(sexpg), &N, &problem, parameters,
+                   &Npar, &result, &error_str);
+    
+    UNPROTECT(1);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return sexpg;                        
+}
+
+
+SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
+{    
+	double *t = REAL(sexpt);
+    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    
+    int Npar = length(sexpParameters);
+    int N = length(sexpt);
+    char *error_str;
+    int  result;
+    
+    
+    /* allocate some memory in the R way for the distances */
+    SEXP sexpg = PROTECT(allocVector(REALSXP, N));
+    
+    /* call the function */
+    LinePickingCDF(REAL(sexpt), REAL(sexpg), &N, &problem, parameters,
+                   &Npar, &result, &error_str);
+    
+    UNPROTECT(1);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return sexpg;                        
+}
+
+
+SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters)            
+{    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    int Npar = length(sexpParameters);
+    double mean;
+    
+    char *error_str;
+    int  result;
+    
+    /* call the function */
+    LinePickingMean(&mean, &problem, parameters, &Npar, &result, &error_str);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return ScalarReal(mean);                        
+}
+
+
+SEXP rLinePickingVar(SEXP sexpProblem, SEXP sexpParameters)            
+{    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    int Npar = length(sexpParameters);
+    double var;
+    
+    char *error_str;
+    int  result;
+    
+    /* call the function */
+    LinePickingVar(&var, &problem, parameters, &Npar, &result, &error_str);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return ScalarReal(var);                        
+}
 
 
 SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem, 
@@ -817,7 +956,6 @@ SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem,
     double *parameters = REAL(sexpParameters);
     long int seed = INTEGER(sexpSeed)[0];
     int Npar = length(sexpParameters);
-    int i;
     SEXP sexpDistances;
     char *error_str;
     int  result;

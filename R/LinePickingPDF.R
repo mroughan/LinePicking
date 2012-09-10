@@ -32,19 +32,9 @@
 #' plot(t,y,type='l')
 LinePickingPDF <-
 function(t,problem=0,parameters){
-  n <- length(t)
-  tmp <- .C('LinePickingPDF',
-            t = as.double(t),
-            pdf = as.double(rep(0,n)),
-            n = as.integer(n),
-            problem = as.integer(problem),
-            parameters = as.double(parameters),
-            Npar = as.integer(length(parameters)),
-            results = as.integer(0),
-            error_str = as.character(""))
-  if(tmp$results != 0 ){
-    stop(tmp$error_str)
-  } else {
-    return(tmp$pdf)    
-  }
+  tmp <- .Call('rLinePickingPDF',
+            as.double(t),
+            as.integer(problem),
+            as.double(parameters))
+  return(tmp)
 }
