@@ -140,8 +140,6 @@ double HyperSphereDistanceMean(double* parameters)
  * Calculates the variance of distances between two random points on 
  * a hyper-sphere.
  *
- *
- * @todo Implement
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
  * @return The variance of distances between two random points on a hyper-sphere.
@@ -149,8 +147,10 @@ double HyperSphereDistanceMean(double* parameters)
 double HyperSphereDistanceVar(double* parameters)
 {
     double n = ceil(parameters[0]); 
+    double r = parameters[1];
     
-    return -1;
+    return (2 * r *tgamma(n) * tgamma((n / 2.) + 1)) / 
+                (tgamma(n / 2.) * tgamma(n + 1));
 }
 
 
