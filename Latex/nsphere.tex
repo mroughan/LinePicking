@@ -124,11 +124,17 @@ angular coordinate, i.e.,
               \cdots  
               \int_{0}^{\pi} \sin^{n-2}(\phi_2)  d\phi_{2}, \nonumber \\   
 \end{eqnarray}
-Now for $i>-1$, the integral % Wolfram alpha
+From \cite[3.621,5.(p.369)]{GandR}, the integral
+\begin{equation}
+  \int_0^{\pi/2} \sin^{n-1}(x) \, dx
+     = \frac{1}{2} B\left( n/2, 1/2 \right)
+     = \frac{1}{2} \frac{\Gamma(n/2) \Gamma(1/2)}{\Gamma((n+1)/2)},   
+\end{equation}
+or 
 \begin{equation}
   \label{eq:int_sin_n}
-  \int_0^{\pi} \sin^i(x) \, dx = 
-       \frac{\sqrt{\pi} \Gamma\big( i/2 + 1/2 \big)}{\Gamma\big( i/2+1 \big)}.
+  \int_0^{\pi} \sin^{n-1}(x) \, dx = 
+       \frac{\sqrt{\pi} \, \Gamma\big( n/2 \big)}{\Gamma\big( (n+1)/2 \big)}.
 \end{equation}
 Note that in each adjacent term in the product above, the Gamma
 functions in the numerators and denominators cancel so the final
@@ -141,35 +147,15 @@ product collapses down to
               \cdots  
               \int_{0}^{\pi} \sin^{n-2}(\phi_2)  d\phi_{2}, \nonumber \\   
       & = & 2 \pi \pi^{(n-2)/2} \sin^{n-1}(\phi_1)  
-                     \frac{\Gamma\big( 1/2 + 1/2 \big)}{\Gamma\big( (n-2)/2+1 \big)}
+                     \frac{\Gamma\big( 1 \big)}{\Gamma\big( n/2 \big)}
                  \nonumber \\   
-      & = & 2 \pi^{n/2} \sin^{n-1}(\phi_1)  
-                     \frac{\Gamma\big(1 \big)}{\Gamma\big( n/2 \big)}
-                 \nonumber \\   
-      & = &  2 \pi \sin^{n-1}(\phi_1)  
-                     \frac{2 \pi^{(n-2)/2}}{\Gamma\big( (n-2)/2+1 \big)}
-                 \nonumber \\   
-      & = &   2 \pi C_{n-2} \sin^{n-1}(\phi_1),
+      & = &  \frac{4 \pi^{n/2}}{\Gamma\big( n/2 \big)} \sin^{n-1}(\phi_1)  .
 \end{eqnarray}
-where $C_{n-2}$ is the coefficient for the generalized volume of an
-$n$-ball (see Section~\ref{sec:useful}).
-
-In order to make $f(\phi_1)$ into a probability density function we
-need to normalise it. This is achieved by dividing through by the
-result of integrating $f(\phi_1)$ over $[0, \pi]$ thus.
- \begin{equation}      
- h(\phi_1) = \int_0^{\pi}  f(\phi_1) \, d\phi_1
-           =  \frac{2 \pi ^{\frac{5}{2}-\frac{n}{2}} 
-            \Gamma\left(\frac{n}{2}\right)^2}{\Gamma\left(\frac{1+n}{2}\right)}.
-\end{equation}
-
-
-Now $g(\phi_1) =\frac{f(\phi_1)}{ h(\phi_1)}$ is the  probability
-density function for the distance between points on the surface of a
-sphere measured by $\phi_1$, which after some simplification can be
-written: 
+which we can see from \eqref{eq:int_sin_n} must result in
 \begin{equation}  
- g(\phi_1) = \frac{\Gamma\left(\frac{1+n}{2}\right) \sin(\phi )^{n - 1}}{\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}.
+ g(\phi) = \frac{\Gamma\left(\frac{1+n}{2}\right)}
+                  {\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)} 
+                      \sin(\phi )^{n - 1}.
 \end{equation} 
 We have have a function for $t$ the distance between two points in
 terms of $\phi_1$ so we can get  $\phi_1$ in terms of $t$ thus: 
@@ -199,8 +185,16 @@ Thus we can write:
              \Gamma\left[\frac{1+n}{2}\right]}{\sqrt{\pi } R \Gamma\left[\frac{n}{2}\right]}  
 \end{eqnarray}
 using the fact that $\sin\big( \cos^{-1}(x) \big) = \sqrt{1 - x^2}$.
-
-
+Now using the Gauss multiplication formula: 
+\begin{equation}
+(2\pi)^{((m-1)/2)}m^{(1/2-mz)} \Gamma\left[mz\right]=\Sigma_{k=0}^{m-1}\Gamma\left[z+\frac{k}{m}\right].  \nonumber \\ 
+\end{equation}
+which for $m = 2$ and $z = n/2$ gives
+\begin{equation}
+ 2^{-(n-1)}\sqrt{ \pi } \Gamma\left[n\right]=\Gamma\left[\frac{n+1}{2}\right] \Gamma\left[\frac{n}{2}\right].  
+  \label{eq:gamma_rel}
+\end{equation}
+so we get
 \begin{eqnarray}
   g^{n-{\rm sphere}}_{n,R}(t)
     & = & \frac{\left(\frac{t}{2R} \right)^{n-1}
@@ -351,21 +345,21 @@ Taking $R=1/2$, we get $k$th moment is
 \begin{eqnarray}
 E[ X^k ] 
     & = & \int_0^1 s^k g^{n-{\rm sphere}}_{n,1/2}(s) \, ds \nonumber \\
-    & = & \frac{\Gamma\left[n\right]}{R \Gamma\left[\frac{n}{2}\right]^2} 
+    & = & \frac{2 \Gamma\left[n\right]}{\Gamma\left[\frac{n}{2}\right]^2} 
           \int_0^1 s^k s^{n-1}  \left(1 - s^2\right)^{\frac{1}{2} (n-2)}
                \, ds \nonumber \\
-    & = & \frac{\Gamma\left[n\right]}{2 R \Gamma\left[\frac{n}{2}\right]^2} 
+    & = & \frac{\Gamma\left[n\right]}{\Gamma\left[\frac{n}{2}\right]^2} 
           \int_0^1 u^{(k+n)/2-1}  \left(1 - u \right)^{n/2-1}
                \, du \nonumber \\
     & = & \frac{\Gamma\left[n\right] B\big( (k+n)/2,n/2 \big)}
-               {2 R \Gamma\left[\frac{n}{2}\right]^2}  \nonumber \\
+               {\Gamma\left[\frac{n}{2}\right]^2}  \nonumber \\
     & = & \frac{\Gamma\left[ n \right] \Gamma\left[ (k+n)/2 \right]}
-               {2 R \Gamma\left[\frac{n}{2}\right] \Gamma\left[ n+k/2 \right] } 
+               {\Gamma\left[\frac{n}{2}\right] \Gamma\left[ n+k/2 \right] } 
           \nonumber 
 \end{eqnarray}
 To obtain the general case for $R$, we multiply by $(2R)^k$ to get
 \begin{eqnarray}
 E[ X^k ] 
-    & = & \frac{(2R)^{k-1} \Gamma\left[ n \right] \Gamma\left[ (k+n)/2 \right]}
+    & = & \frac{(2R)^{k} \Gamma\left[ n \right] \Gamma\left[ (k+n)/2 \right]}
                {\Gamma\left[\frac{n}{2}\right] \Gamma\left[ n+k/2 \right] } 
 \end{eqnarray}
