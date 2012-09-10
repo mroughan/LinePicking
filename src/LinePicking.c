@@ -714,8 +714,7 @@ SEXP rLinePickingAllProblems(void)
         SEXP problemData = PROTECT(allocVector(VECSXP, elements(names)));
         /* this vector contains the parameters */
         SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
-        /* and this one give us names for each of the fields */
-        ;
+    
         
         SET_VECTOR_ELT(result, problem, problemData); 
         
