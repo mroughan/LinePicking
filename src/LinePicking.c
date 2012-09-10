@@ -693,7 +693,8 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 SEXP rLinePickingAllProblems(void)
 {
     
-    const char *names[4] = { "name", "description", "npar", "parameters" };
+    const char *names[] = { "problem", "name", "description", 
+                            "npar", "parameters" };
     int problem;
     int Npar;
     int parameter;
@@ -710,7 +711,7 @@ SEXP rLinePickingAllProblems(void)
     {
         /* this vector contains all the data for one problem */
         Npar = LinePickingFields[problem].DATA->Npar;
-        SEXP problemData = PROTECT(allocVector(VECSXP, 4));
+        SEXP problemData = PROTECT(allocVector(VECSXP, elements(names)));
         /* this vector contains the parameters */
         SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
         /* and this one give us names for each of the fields */
@@ -721,11 +722,12 @@ SEXP rLinePickingAllProblems(void)
         SEXP name = mkString(LinePickingFields[problem].DATA->name);
         SEXP desc = mkString(LinePickingFields[problem].DATA->description);
         
-        /* now fill in the fields */
-        SET_VECTOR_ELT(problemData, 0, name);
-        SET_VECTOR_ELT(problemData, 1, desc);
-        SET_VECTOR_ELT(problemData, 2, ScalarInteger(Npar));
-        SET_VECTOR_ELT(problemData, 3, defaultParameters);
+    
+        SET_VECTOR_ELT(problemData, 0, ScalarInteger(problem));
+        SET_VECTOR_ELT(problemData, 1, name);
+        SET_VECTOR_ELT(problemData, 2, desc);
+        SET_VECTOR_ELT(problemData, 3, ScalarInteger(Npar));
+        SET_VECTOR_ELT(problemData, 4, defaultParameters);
         
         for(parameter = 0; parameter < Npar; parameter++)
         {
