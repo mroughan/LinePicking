@@ -2,7 +2,7 @@
 \alias{LinePickingProblemLookup}
 \title{Function to print out information about a given problem}
 \usage{
-  LinePickingProblemLookup(problem = 1, print = TRUE)
+  LinePickingProblemLookup(problem = 0, print = TRUE)
 }
 \arguments{
   \item{problem}{see \code{\link{LinePickingPDF}}}

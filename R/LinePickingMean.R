@@ -27,3 +27,5 @@ function(problem=0,parameters){
     return(tmp$mean)    
   }
 }
+
+# TODO add numerical for mean -1
