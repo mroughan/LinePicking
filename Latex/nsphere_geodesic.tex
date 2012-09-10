@@ -158,8 +158,8 @@ g_{R}^{n}(t) & = &   \frac{\Gamma\left(\frac{1+n}{2}\right) }
 ANSWER: 2nd Moment
 \begin{eqnarray}
   \label{eq:mean_nsphere_geo}
-  E\big[ X_{0,R}^2 \big] & = & R^2 \left( \frac{\pi}{2} \right)^2, \\ 
-  E\big[ X_{1,R}^2 \big] & = & R^2 \left( \frac{\pi}{2 \sqrt{3}} \right)^2, \\ 
+  E\big[ X_{0,R}^2 \big] & = & R^2 \frac{\pi^2}{4}, \\ 
+  E\big[ X_{1,R}^2 \big] & = & R^2 \frac{\pi^2}{12}, \\ 
   E\big[ X_{n,R}^2 \big] & = & E\big[ X_{n-2,R}^2 \big] 
                                    - \frac{2 R^2}{(n-1)^2}, \;\;\;
                                    \mbox{ for } n > 1.
@@ -183,6 +183,24 @@ Written as a summation
     \end{array} \right.
 \end{eqnarray}
 where the summation terms are understood to be zero for $n=0, 1$.
+
+Now from \cite[2.631,2.(p.183)]{GandR} 
+\begin{equation}
+  \int x^m \sin^n (x) \, dx 
+   = \frac{x^{m-1} \sin^{n-1}(x)}{n^2} \left[ m \sin x - n x \cos x \right]
+     + \frac{n-1}{n} \int x^m \sin^{n-2}(x) \, dx
+     - \frac{m(m-1)}{n^2} \int x^{m-2} \sin^n x \, dx 
+\end{equation}
+Take $m=2$, and integrate from 0 to $\pi$ and we get
+\begin{eqnarray}
+  \int_0^\pi x^2 \sin^n (x) \, dx 
+   & = & \left[ \frac{x \sin^{n-1}(x)}{n^2} \left[ 2 \sin x - n x \cos x \right] \right]_0^\pi
+     + \frac{n-1}{n} \int_0^\pi x^2 \sin^{n-2}(x) \, dx
+     - \frac{2}{n^2} \int_0^\pi \sin^n x \, dx  \nonumber \\
+   & = & \frac{n-1}{n} \int_0^\pi x^2 \sin^{n-2}(x) \, dx
+     - \frac{2}{n^2} \frac{\sqrt{\pi} \Gamma(n/2+1/2 ) }{\Gamma(n/2+1)} \nonumber \\
+\end{eqnarray}
+for $n>1$
 
 
 Now from \cite[0.234,2.(p.7)]{GandR} and \cite[0.233,3.(p.7)]{GandR}  we get
