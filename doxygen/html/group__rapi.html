@@ -86,14 +86,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Functions</h2></td></tr>
 <tr class="memitem:ga02145a395d24bbe929ffa57688c72ef5"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga02145a395d24bbe929ffa57688c72ef5">rLinePickingAllProblems</a> (void)</td></tr>
 <tr class="separator:ga02145a395d24bbe929ffa57688c72ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga9b3ba58aca598b6ee8f7239e87f3076c"></a>
-SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingCheckParameters</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="memitem:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga9b3ba58aca598b6ee8f7239e87f3076c">rLinePickingCheckParameters</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
 <tr class="separator:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"></a>
-SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSupport</b> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="memitem:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga6b30fc1bdbca2a3cc7f5340f1d8b44d5">rLinePickingSupport</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
 <tr class="separator:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafe4502dd2e61ac946bfe6543fb38dd39"></a>
-SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingPDF</b> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="memitem:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gafe4502dd2e61ac946bfe6543fb38dd39">rLinePickingPDF</a> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
 <tr class="separator:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gac85aaf9284a29359e0d534ac1641b3f2"></a>
 SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingCDF</b> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
@@ -126,15 +123,129 @@ SEXP&#160;</td><td class="memItemRight" valign="bottom"><b>rLinePickingSimDistan
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This function is called by .Call from R it takes no parameters and returns a list of lists detailing the implemented problem set. The lists are returned via the standard R SEXP pointer. </p>
-<dl class="section return"><dt>Returns</dt><dd>a list of lists detailing the implemented problem set using an R SEXP pointer. </dd></dl>
+<p>This function is called by .Call from R it takes no parameters and returns a list of lists detailing the implemented problem set. </p>
+<dl class="section return"><dt>Returns</dt><dd>A list of lists detailing the implemented problem set using an R SEXP pointer. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9b3ba58aca598b6ee8f7239e87f3076c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SEXP rLinePickingCheckParameters </td>
+          <td>(</td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpProblem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpParameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is called by .Call from R. It checks that a problem and a set of parameters are valid. Problems are integers describing possible geometries for the line picking problem. This function takes a problem and a parameter vector and checks if valid. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$sexpProblem</td><td>see LinePickingPDF </td></tr>
+    <tr><td class="paramname">$sexpParameters</td><td>numeric vector of parameter describing problem </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>exit code. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gafe4502dd2e61ac946bfe6543fb38dd39"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SEXP rLinePickingPDF </td>
+          <td>(</td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpProblem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpParameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is called by .Call from R. It returns the pdf for distance between two random points</p>
+<p>Give a shape (square, disk, ...) and parameters defining the shape, this function will give a the probability density function for the distances between two Poisson distributed points in the space.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>vector of points to calculate pdf for. </td></tr>
+    <tr><td class="paramname">problem</td><td>The number of the problem for which the PDF will be calculated. </td></tr>
+    <tr><td class="paramname">parameters</td><td>the parameter necessary to describe the space given by problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of probability density function values for each element in t. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SEXP rLinePickingSupport </td>
+          <td>(</td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpProblem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpParameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is called by .Call from R. It returns support for pdf for given problem and parameters</p>
+<p>Given a problem see rLinePickingPDF and parameters gives the range distance t such that the pdf is non-zero </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$sexpProblem</td><td>problem see LinePickingPDF </td></tr>
+    <tr><td class="paramname">$sexpParameters</td><td>the parameters necessary to describe the space given by problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>min and max values of support in a 1 x 2 vector </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 10 2012 23:13:07 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 10 2012 23:35:50 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

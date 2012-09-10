@@ -181,12 +181,12 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 
 /** @}*/
 
+#ifndef _NOTR
 
 /** @defgroup rapi LinePicking [R] API 
  *\addtogroup rapi 
  *  @{
  */
-#ifndef _NOTR
 
 /* return a list of all the problems with a description */
 SEXP rLinePickingAllProblems(void);
@@ -223,8 +223,6 @@ SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem,
 
 /** @}*/
 #endif /* _NOTR */
-
-
 
 #ifdef _MEX
 #include "mex.h"

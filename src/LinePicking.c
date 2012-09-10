@@ -690,9 +690,8 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
 
 /**
  * This function is called by .Call from R it takes no parameters and returns a 
- * list of lists detailing the implemented problem set. The lists are returned 
- * via the standard R SEXP pointer.
- * @return a list of lists detailing the implemented problem set using an R 
+ * list of lists detailing the implemented problem set.
+ * @return A list of lists detailing the implemented problem set using an R 
  * SEXP pointer.
  */
 SEXP rLinePickingAllProblems(void)
@@ -751,21 +750,12 @@ SEXP rLinePickingAllProblems(void)
 
 /**
  * This function is called by .Call from R. It checks that a problem and a 
- * set of parameters are valid.
- * Problems are integers describing possible 
+ * set of parameters are valid. Problems are integers describing possible 
  * geometries for the line picking problem. 
- * This function takes a problem and a parameter 
- * vector and checks if valid
- * 
- * @param problem see \code{\link{LinePickingPDF}}
- * @param parameters numeric vector of parameter describing problem
- * @return exit code \itemize{
- * \item 0: parameters are valid
- * \item 1: unsupported problem
- * \item 2: parameters out of range.
- * \item 3: not enough parameters were entered.
- * \item 4: other error.
- * }
+ * This function takes a problem and a parameter vector and checks if valid.
+ * @param $sexpProblem see LinePickingPDF
+ * @param $sexpParameters numeric vector of parameter describing problem
+ * @return exit code. 
  */
 SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)            
 {    
@@ -791,8 +781,8 @@ SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)
  *
  * Given a problem see rLinePickingPDF and parameters gives the range
  * distance t such that the pdf is non-zero
- * @param problem see LinePickingPDF
- * @param parameters the parameter necessary to describe 
+ * @param $sexpProblem problem see LinePickingPDF
+ * @param $sexpParameters the parameters necessary to describe 
  * the space given by problem.
  * @return min and max values of support in a 1 x 2 vector
  */

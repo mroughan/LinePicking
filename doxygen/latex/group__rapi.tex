@@ -6,14 +6,11 @@
 \item 
 S\-E\-X\-P \hyperlink{group__rapi_ga02145a395d24bbe929ffa57688c72ef5}{r\-Line\-Picking\-All\-Problems} (void)
 \item 
-\hypertarget{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-Check\-Parameters} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}
-
+S\-E\-X\-P \hyperlink{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}{r\-Line\-Picking\-Check\-Parameters} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
-\hypertarget{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-Support} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}
-
+S\-E\-X\-P \hyperlink{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}{r\-Line\-Picking\-Support} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
-\hypertarget{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-P\-D\-F} (S\-E\-X\-P sexpt, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}
-
+S\-E\-X\-P \hyperlink{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{r\-Line\-Picking\-P\-D\-F} (S\-E\-X\-P sexpt, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
 \hypertarget{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-C\-D\-F} (S\-E\-X\-P sexpt, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}
 
@@ -43,6 +40,69 @@ S\-E\-X\-P \hyperlink{group__rapi_ga02145a395d24bbe929ffa57688c72ef5}{r\-Line\-P
 \item[{void}]{}
 \end{DoxyParamCaption}
 )}}\label{group__rapi_ga02145a395d24bbe929ffa57688c72ef5}
-This function is called by .Call from R it takes no parameters and returns a list of lists detailing the implemented problem set. The lists are returned via the standard R S\-E\-X\-P pointer. \begin{DoxyReturn}{Returns}
-a list of lists detailing the implemented problem set using an R S\-E\-X\-P pointer. 
+This function is called by .Call from R it takes no parameters and returns a list of lists detailing the implemented problem set. \begin{DoxyReturn}{Returns}
+A list of lists detailing the implemented problem set using an R S\-E\-X\-P pointer. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Check\-Parameters@{r\-Line\-Picking\-Check\-Parameters}}
+\index{r\-Line\-Picking\-Check\-Parameters@{r\-Line\-Picking\-Check\-Parameters}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}
+This function is called by .Call from R. It checks that a problem and a set of parameters are valid. Problems are integers describing possible geometries for the line picking problem. This function takes a problem and a parameter vector and checks if valid. 
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-Problem} & see Line\-Picking\-P\-D\-F \\
+\hline
+{\em \$sexp\-Parameters} & numeric vector of parameter describing problem \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+exit code. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-P\-D\-F@{r\-Line\-Picking\-P\-D\-F}}
+\index{r\-Line\-Picking\-P\-D\-F@{r\-Line\-Picking\-P\-D\-F}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexpt, }
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}
+This function is called by .Call from R. It returns the pdf for distance between two random points
+
+Give a shape (square, disk, ...) and parameters defining the shape, this function will give a the probability density function for the distances between two Poisson distributed points in the space.
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & vector of points to calculate pdf for. \\
+\hline
+{\em problem} & The number of the problem for which the P\-D\-F will be calculated. \\
+\hline
+{\em parameters} & the parameter necessary to describe the space given by problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of probability density function values for each element in t. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Support@{r\-Line\-Picking\-Support}}
+\index{r\-Line\-Picking\-Support@{r\-Line\-Picking\-Support}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Support}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Support (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}
+This function is called by .Call from R. It returns support for pdf for given problem and parameters
+
+Given a problem see r\-Line\-Picking\-P\-D\-F and parameters gives the range distance t such that the pdf is non-\/zero 
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-Problem} & problem see Line\-Picking\-P\-D\-F \\
+\hline
+{\em \$sexp\-Parameters} & the parameters necessary to describe the space given by problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+min and max values of support in a 1 x 2 vector 
 \end{DoxyReturn}
