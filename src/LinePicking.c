@@ -121,12 +121,13 @@ void LinePickingProblemNparLookup(int *problem, int *Npar)
 
 
 /**
- * Problems are represented as integers. Given such a name, this finds the problem
- * corresponding to that name, if one exists
+ * Problems are represented as integers. Given such a name, this finds
+ * the problem corresponding to that name, if one exists
  * @param $problem Represents a problem. 
  * @param $name Address of a memory location to set to the address of a string
  * containing the name of the problem.
- * @return $problem returns the problem corresponding to the name, or -1 if none exists.
+ * @return $problem returns the problem corresponding to the name, 
+ * or -1 if none exists.
  */
 void LinePickingNameLookup(int *problem, char **name) 
 {
@@ -666,10 +667,12 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
     for (i=0; i<*N; i++) 
     {
 	/* generate a pair of points */
-	(*LinePickingFields[*problem].SIM_POINTS)(points, &Npoints, &Ncoords, parameters);
+	(*LinePickingFields[*problem].SIM_POINTS)
+        (points, &Npoints, &Ncoords, parameters);
 
 	/* compute the distances */
-	distances[i] = (*LinePickingFields[*problem].DISTANCE)(Ncoords, points[0], points[1], parameters);
+	distances[i] = (*LinePickingFields[*problem].DISTANCE)
+                        (Ncoords, points[0], points[1], parameters);
     }
     free(points[0]);
     free(points[1]);
@@ -1029,20 +1032,20 @@ void CheckProblem(int problem, char* entry_str)
 
 
 
-void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs, 
+                       const mxArray *prhs[], int *result, 
+                       char **error_str ,  int cmd)
 {
     double *t; /* points at which to calculate the distribution */
     double *g; /* value of the distribution at the points t */
     
     int N, M;    /* number of points */
-    int Npar;    /* number of parameters */				
-    int problem;    /* the type of region on which to calculate the distribution */
+    int Npar;    /* number of parameters */
+    /* the type of region on which to calculate the distribution */
+    int problem;    
     double *parameters; /*  input parameter vector  */ 
-                         
-                         /* LinePickingPDF returns the PDF for the problem. */
-    /* TODO the previous handling of default values 
-     * to be implemented in LinePickingPDF.m
-     */
+                        
+    /* LinePickingPDF returns the PDF for the problem. */
     
     N = (int) mxGetN(prhs[1]); 
     M = (int) mxGetM(prhs[1]); 
@@ -1050,18 +1053,15 @@ void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
         mexErrMsgTxt("LinePickingPDF entry point: "
                      "t should be an Nx1 matrix.");
     
-    /* input argument 1: t, a vector of points at which to calculate the PDF */
+
     t = mxGetPr(prhs[1]);
     
-    /* input argument 2: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[2]);
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
-    /* input argument 3: parameters, the parameters of the problem */
     Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
     parameters = mxGetPr(prhs[3]);
     
-    /* output argument 1: g, a vector containing the values g(t), of the PDF at the points t */
     plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
     g = mxGetPr(plhs[0]);
     
@@ -1071,19 +1071,18 @@ void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 
 
 
-void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, 
+                       const mxArray *prhs[], int *result, 
+                       char **error_str ,  int cmd)
 {
     double *t; /* points at which to calculate the distribution */
     double *g; /* value of the distribution at the points t */
     
     int N, M;       /* number of points */
-    int Npar;       /* number of parameters */				
-    int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
-    
-    
-    /* LinePickingCDF returns the CDF for the problem. */
+    int Npar;       /* number of parameters */
+    /* the type of region on which to calculate the distribution */
+    int problem;    
+    double *parameters; /* input parameter vector */
     
     N = (int) mxGetN(prhs[1]); 
     M = (int) mxGetM(prhs[1]); 
@@ -1091,26 +1090,16 @@ void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
         mexErrMsgTxt("LinePickingCDF entry point: "
                      "t should be an Nx1 matrix.");
     
-    /* input argument 1: t, a vector of points at which to calculate the CDF */
     t = mxGetPr(prhs[1]);
     
-    /* input argument 2: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[2]);
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
-    
-    /* input argument 3: parameters, the parameters of the problem */
     Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
     parameters = mxGetPr(prhs[3]);
     
-    
-
-    
-    /* output argument 1: G, a vector containing the values G(t), of the CDF at the points t */
     plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
     g = mxGetPr(plhs[0]);
-    
-   
     
     LinePickingCDF(t, g, &N, &problem, parameters, 
                    &Npar, result, error_str);
@@ -1118,28 +1107,27 @@ void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
 }
 
 
-void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs, 
+                        const mxArray *prhs[], int *result, 
+                        char **error_str ,  int cmd)
 {    
     
     double *g; /* mean of distribution*/
     
-    int Npar;    /* number of parameters */				
-    int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
+    int Npar;    /* number of parameters */
+    /* the type of region on which to calculate the distribution */
+    int problem; 
+    double *parameters; /*  input parameter vector */
     
     /* LinePickingMean returns the mean of the distribution. */
     
-    /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[1]);
     
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
-    /* input argument 2: parameters, the parameters of the problem */
     Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
     parameters = mxGetPr(prhs[2]);
     
-    /* output argument 1: mean, the mean of the distribution. */
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
     g = mxGetPr(plhs[0]);;
     
@@ -1148,27 +1136,24 @@ void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs
 }       
 
 
-void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)  
+void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs, 
+                       const mxArray *prhs[], int *result, 
+                       char **error_str ,  int cmd)  
 {
     double *g; /* variance of distribution*/
     
-    int Npar;    /* number of parameters */				
-    int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
+    int Npar;    /* number of parameters */
+    /* the type of region on which to calculate the distribution */
+    int problem;    
+    double *parameters; /*  input parameter vector */
     
-    /* LinePickingVar returns the variance of the distribution. */
-    
-    /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[1]);
     
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
-    /* input argument 2: parameters, the parameters of the problem */
     Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
     parameters = mxGetPr(prhs[2]);
     
-    /* output argument 1: var, the variance of the distribution. */
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
     g = mxGetPr(plhs[0]);;
     
@@ -1176,27 +1161,24 @@ void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[
                    error_str);
 }
 
-void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, 
+                           const mxArray *prhs[], int *result, 
+                           char **error_str ,  int cmd)
 {    
     
     double *g; /* value of the distribution at the points t */
     int Npar;    /* number of parameters */
-	int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
+    /* the type of region on which to calculate the distribution */
+	int problem;    
+    double *parameters; /*  input parameter vector */
     
-    /* LinePickingSupport returns the support of the PDF (i.e., the range of values for which it is non-zero).*/
-    
-    /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[1]);
     
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
-    /* input argument 2: parameters, the parameters of the problem */
     Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
     parameters = mxGetPr(prhs[2]);
     
-    /* output argument 1: support, a 1x2 vector containing the [min,max] support of the PDF. */
     plhs[0] = mxCreateDoubleMatrix(1, 2, mxREAL);
     g = mxGetPr(plhs[0]);
     
@@ -1204,7 +1186,9 @@ void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, const mxArray *p
                        error_str);
 }
 
-void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, 
+                              const mxArray *prhs[], int *result, 
+                              char **error_str ,  int cmd)
 {    
 
     char *name;
@@ -1212,9 +1196,8 @@ void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray
     int   problem;
     double *problem_return_val;
     char error_buffer[256];
-/* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
 
-    /* input argument 1: name, a string with the name of the problem */
+
     if (mxIsChar(prhs[1]) != 1)
     {
         sprintf(error_buffer, 
@@ -1224,11 +1207,11 @@ void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray
         mexErrMsgTxt(error_buffer);  
     }
 
-    /* Input must be a row vector. */
+
     if (mxGetM(prhs[1]) != 1)
 	mexErrMsgTxt("Input must be a row vector.");
     
-    /* Get the length of the input string. */
+
     name_len = (mxGetM(prhs[1]) * mxGetN(prhs[1])) + 1;
 
     /* Allocate memory for input and output strings. */
@@ -1250,10 +1233,13 @@ void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray
     *problem_return_val = problem;
 }
 
-void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, 
+                                 const mxArray *prhs[], int *result, 
+                                 char **error_str ,  int cmd)
 {
     
-    int problem;    /* the type of region on which to calculate the distribution */
+    /* the type of region on which to calculate the distribution */
+    int problem;    
     double *tmp;
     int j;
     char *name;
@@ -1261,15 +1247,10 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxAr
     int Npar;
     double parameters[MAX_PARAMETERS];
     
-    
-    /* LinePickingProblemLookup checks if a particular problem exists, and returns information about it.*/
-    
-    /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[1]);
     
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
-    
-    
+        
     LinePickingProblemLookup(&problem, &name, &description,
                              &Npar, parameters);
     
@@ -1289,39 +1270,40 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, const mxAr
 }
 
 
-void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], int nrhs, 
+                                    const mxArray *prhs[], int *result, 
+                                    char **error_str ,  int cmd)
 {    
-    /* LinePickingPrintAllProblems prints out the list of implemented problems. */
-    
+    /* LinePickingPrintAllProblems prints out a list of implemented problems */
     LinePickingPrintAllProblems();
 }    
 
 
-void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], int nrhs, 
+                                   const mxArray *prhs[], int *result, 
+                                   char **error_str ,  int cmd)
 {
     /*  LinePickingCheckParameters */
     
     
     double *g; /* value of the distribution at the points t */
     int Npar;    /* number of parameters */
-    int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
+     /* the type of region on which to calculate the distribution */
+    int problem;   
+    double *parameters; /*  input parameter vector */
     
-    /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
     problem = (int)mxGetScalar(prhs[1]);
     
-    /* input argument 2: parameters, the parameters of the problem */
     Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
     parameters = mxGetPr(prhs[2]);
     
     LinePickingCheckParameters(&problem, parameters, &Npar, result,  error_str);
     
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    /* output argument 1: result, an integer error code */
+
     g = mxGetPr(plhs[0]);
     g[0] = *result;
-    /* output argument 2: error_str, gives a message explaining the error */
+
     plhs[1] = mxCreateString(*error_str);
     
     /* reset it so we can carry on */
@@ -1329,12 +1311,17 @@ void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], int nrhs, const mx
 }
 
 
-void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, 
+                               const mxArray *prhs[], int *result, 
+                               char **error_str ,  int cmd)
 {   
     int i, j;
-    const mwSize dims[1] = {NUMBER_OF_PROBLEMS}; /* useful for creating arrays */
-    char *names[NUMBER_OF_PROBLEMS];       /* used to output a list of names of the problems */
-    char *descriptions[NUMBER_OF_PROBLEMS]; /* used to output a list of descriptions of the problems */
+    /* useful for creating arrays */
+    const mwSize dims[1] = {NUMBER_OF_PROBLEMS}; 
+    /* used to output a list of names of the problems */
+    char *names[NUMBER_OF_PROBLEMS];
+     /* used to output a list of descriptions of the problems */
+    char *descriptions[NUMBER_OF_PROBLEMS];
     int Npars[NUMBER_OF_PROBLEMS];
     double *parameters[NUMBER_OF_PROBLEMS];
     double *tmp;
@@ -1345,13 +1332,22 @@ void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArra
     /* output argument 1: names, a cell array of problem names */
     plhs[0] = mxCreateCellArray(1, dims);
     
-    /* output argument 2: descriptions, a cell array of brief descriptions of each problem */
+    /* 
+     * output argument 2: descriptions, a cell array 
+     * of brief descriptions of each problem 
+     */
     plhs[1] = mxCreateCellArray(1, dims);
 
-    /* output argument 3: Npar, a cell array of the number of parameters in of each problem */
+    /* 
+     * output argument 3: Npar, a cell array of the 
+     * number of parameters in of each problem 
+     */
     plhs[2] = mxCreateCellArray(1, dims);
 
-    /* output argument 4: parameters, a cell array of the number of parameters in of each problem */
+    /* 
+     * output argument 4: parameters, a cell array 
+     * of the number of parameters in of each problem 
+     */
     plhs[3] = mxCreateCellArray(1, dims);
 
     
@@ -1372,11 +1368,12 @@ void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArra
     
 }
 
-void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd) 
+void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], int nrhs, 
+                                    const mxArray *prhs[], int *result, 
+                                    char **error_str ,  int cmd) 
 {
     
     double *g; /* value of the distribution at the points t */
-    /* LinePickingNumberOfProblems returns the number of implemented problems. */
     
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
     
@@ -1387,26 +1384,30 @@ void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], int nrhs, const m
 
 
 
-void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)
+void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, 
+                             const mxArray *prhs[], int *result, 
+                             char **error_str ,  int cmd)
 {
 
     double **Points; /* used to return a set of simulated points */
     int Npar;    /* number of parameters */
-    int i;					
-    int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
+    int i;	
+     /* the type of region on which to calculate the distribution */
+    int problem;   
+    double *parameters; /*  input parameter vector */ 
+                        
     long int seed;
    
     int Ncoords, Npoints;
     char *CoordSystem;
     
-    /* LinePickingSimPoints simulates a set of points from the particular problem.*/
-    
     /* input argument 1: Npoints, the number of points to simulate */
     Npoints = (int)mxGetScalar(prhs[1]);
     
-    /* input argument 2: problem, the problem number (See LinePickingPrintAllProblems) */
+    /* 
+     * input argument 2: problem, the problem number 
+     * (See LinePickingPrintAllProblems) 
+     */
     problem = (int)mxGetScalar(prhs[2]);
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
@@ -1426,7 +1427,10 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
 	mexErrMsgTxt(*error_str);
     }    
 
-    /* output argument 1: points, returns a Ncoords x Npoints array containing the simulated points */
+    /* 
+     * output argument 1: points, returns a Ncoords x Npoints 
+     * array containing the simulated points 
+     */
     plhs[0] = mxCreateDoubleMatrix(Ncoords, Npoints, mxREAL);
     Points = (double **) malloc((size_t) sizeof(double)*(Npoints));
     for (i=0;i<Npoints;i++) 
@@ -1439,13 +1443,15 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, const mxArray 
     free(Points);
 }
 
-void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str ,  int cmd)            
+void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, 
+                                const mxArray *prhs[], int *result, 
+                                char **error_str ,  int cmd)            
 {    
   
-    int Npar;    /* number of parameters */					
-    int problem;    /* the type of region on which to calculate the distribution */
-    double *parameters; /*  input parameter vector  
-                         note that meaning of parameters depends on the problem */
+    int Npar;    /* number of parameters */	
+    /* the type of region on which to calculate the distribution */
+    int problem;    
+    double *parameters; /*  input parameter vector */
     long int seed;
     int N;;
     double *distances; /* used to return a set of simulated distances */
@@ -1455,7 +1461,10 @@ void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, const mxArr
     /* input argument 1: N, the number of distances to simulate */
     N = (int)mxGetScalar(prhs[1]);
     
-    /* input argument 2: problem, the problem number (See LinePickingPrintAllProblems) */
+    /* 
+     * input argument 2: problem, the problem 
+     * number (See LinePickingPrintAllProblems) 
+     */
     problem = (int)mxGetScalar(prhs[2]);
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
@@ -1467,7 +1476,10 @@ void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, const mxArr
     seed = (long int) mxGetScalar(prhs[4]);
     srand48(seed); /* initialize random number generator */
     
-    /* output argument 1: distances, returns a vector of the simulated distances */
+    /* 
+     * output argument 1: distances, returns 
+     * a vector of the simulated distances 
+     */
     plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
     distances = mxGetPr(plhs[0]);
     LinePickingSimDistances(distances, &N, &problem, parameters,
@@ -1538,8 +1550,9 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 static void 
 usage_LinePicking()
 {
-    fprintf(stderr, "Usage: LinePicking -f input_file -m problem -p parameter[0]"
-            " -q parameter[1] -s parameter[2] \n");
+    fprintf(stderr, "Usage: LinePicking -f input_file "
+                    "-m problem -p parameter[0]"
+                    " -q parameter[1] -s parameter[2] \n");
     fprintf(stderr, "           input_file contains a list of points t.\n");
     exit(1);
 }
@@ -1617,17 +1630,20 @@ int main(int argc, char *argv[])
     fprintf(stderr, "\n");
     
     /* check the problem and parameters are valid */
-    LinePickingCheckParameters(&problem, parameters, &Npar, &result, &error_str);
+    LinePickingCheckParameters(&problem, parameters, &Npar, 
+                               &result, &error_str);
     if (result != 0) 
     {
         fprintf(stderr, "LinePicking: %s\n", error_str);
         exit(1);
     }
     /* get the problem's name and description */
-    LinePickingProblemLookup(&problem, &Problems_name, &Problems_description, &Npar, 
+    LinePickingProblemLookup(&problem, &Problems_name, 
+                             &Problems_description, &Npar, 
                              DefaultParameters);
     fprintf(stderr, 
-            "%%  problem=%d, %s (%s)\n", problem, Problems_name, Problems_description);
+            "%%  problem=%d, %s (%s)\n", 
+            problem, Problems_name, Problems_description);
     
     /* calculate the mean and variance */
     LinePickingMean(&mean, &problem, parameters, &Npar, &result, &error_str);
