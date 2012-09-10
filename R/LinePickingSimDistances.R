@@ -18,14 +18,11 @@
 #' @note September 9 2012
 #' @examples
 #' t <- LinePickingSimDistances(10, 0 , list(1), 67)
-LinePickingSimDistances <-
-  function(N, problem, parameters, seed)
-  {
-    tmp <- .Call('rLinePickingSimDistances',
-              as.integer(N),
-              as.integer(problem),
-              as.double(parameters),
-              as.integer(seed))
-    return(tmp)
-      
-  }
+LinePickingSimDistances <-function(N, problem, parameters, seed){
+  tmp <- .Call('rLinePickingSimDistances',
+               as.integer(N),
+               as.integer(problem),
+               as.double(parameters),
+               as.integer(seed))
+  return(tmp)    
+}

@@ -5,7 +5,7 @@
   LinePickingNumberOfProblems()
 }
 \value{
-  N: number of problems
+  number of problems
 }
 \description{
   Problems are integers describing possible geometries for

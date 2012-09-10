@@ -1,23 +1,4 @@
-#' Clean printing of problem
-#' 
-#' Nice printing of problem list
-#'
-#' @param x problem list
-#' @return prints out information nice-like
-#' @author Eric Parsonage, Matt Roughan, Jono Tuke
-FormatProblem <- function(x){
-    
-  cat('The problem name is',x$name,'\n\n') 
-  cat('Its number is:',x$problem,'\n\n') 
-  cat("Its description is:\n",x$description,'\n\n')
-  if (x$npar == 1){
-    cat("It is defined by one parameter",
-        "whose default value is",as.numeric(x$parameters),'\n\n')
-  } else {
-    cat("It is defined by",x$npar,"parameters",
-        "whose default values are",as.numeric(x$parameters),'\n\n')
-  }
-}
+
 #' Function to print out information about a given problem
 #' 
 #' Uses internal function format list to print nice
@@ -40,7 +21,9 @@ LinePickingProblemLookup <- function(problem=0,print=TRUE){
     problem <- problem + 1; 
     x <- tmp[[problem]]
     if(print){
-        FormatProblem(x)
+      cat("Problem",problem-1,'\n')
+      cat("==========\n")
+      FormatProblem(x)
     }
     return(x)
 }
