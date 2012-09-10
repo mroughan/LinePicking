@@ -57,7 +57,9 @@ If $y = g(X)$ then the transform rule  is :
 thus 
 \begin{eqnarray}
 g_{R}^{n}(d) & = &  \left|\frac{1}{R}\right|  f\left(\frac{d}{R} \right)\\
- & = &\frac{\Gamma\left(\frac{1+n}{2}\right) \sin\left(\frac{d}{R}\right)^{n-1}}{\sqrt{\pi } R \Gamma\left(\frac{n}{2}\right)}
+            & = &   \frac{\Gamma\left(\frac{1+n}{2}\right) 
+                            \sin\left(\frac{d}{R}\right)^{n-1}}
+                        {\sqrt{\pi } R \Gamma\left(\frac{n}{2}\right)}
 \end{eqnarray}
 
 \subsubsection{CDF}
@@ -71,6 +73,78 @@ G_{R}^{n}(d)=\frac{1}{2}-\frac{\cos\left(\frac{d}{R}\right) \sin\left(\frac{d}{R
 E[g_{R}^{n}(d)]=\frac{\pi R}{2}
 \end{equation}
 
+The mean can be derived either by symmetry (noting that PDF is symmetric around
+$t = \pi R/2$, or directly using \cite[3.821,1.(p.446)]{GandR}
+\begin{equation}
+  \label{eq:sin_x_x}
+  \int_0^\pi x \sin^p x \, dx =
+       \frac{\pi^2}{2^{p+1}} \, \frac{\Gamma(p+1)}{ \Gamma\left(p/2+1 \right)^2 }, \mbox{ for } p>-1.
+\end{equation}
+The result is 
+\begin{eqnarray}
+  \label{eq:mean_nsphere_geo}
+ E[X] & = & \int_0^{\pi R} 
+                    s g_{R}^{n}(s)
+                   \, ds \nonumber \\
+      & = & \frac{\Gamma\left(\frac{1+n}{2}\right) }
+                        {\sqrt{\pi } R \Gamma\left(\frac{n}{2}\right)}
+            \int_0^{\pi R} 
+                    s  \sin \left( \frac{s}{R} \right)^{n-1}
+                   \, ds \nonumber \\
+      & = & \frac{\Gamma\left(\frac{1+n}{2}\right) }
+                        {\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}
+            \int_0^{\pi R} 
+                    (R u)  \sin \left( u \right)^{n-1}
+                   \, ds \nonumber \\
+      & = & \frac{R \Gamma\left(\frac{1+n}{2}\right) }
+                        {\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}
+            \int_0^{\pi R} 
+                    u \sin \left( u \right)^{n-1}
+                   \, ds \nonumber \\
+      & = & \frac{R \Gamma\left(\frac{1+n}{2}\right) }
+                        {\sqrt{\pi } \Gamma\left(\frac{n}{2}\right)}
+                \frac{\pi^2}{2^{n}} \, \frac{\Gamma(n)}{ \Gamma\left((n-1)/2-1 \right)^2 }
+             \nonumber \\
+       & = & \nonumber \\
+       & = & \frac{\pi R}{2}.
+\end{eqnarray}
 
+Higher order moments are harder: possible approaches:
+
+-- $n=2$ can use twice angle formula
+\[
+\sin^2 x = 1 - \cos^2 x = 1 - ( \cos 2 x +1)/2 = (1 - \cos 2x )/2 .
+\]
+and \cite[3.761 (p.421)]{GandR}, which gives various combinations
+of powers and trig functions.
+
+-- Fourier convolution, but don't know Fourier for higher powers of sin
+
+-- power series of $sin^n$
+\begin{equation}
+  \label{eq:sin^n_taylor}
+  \sin^{n-1}(x) = 
+\end{equation}
+
+-- expansion of $sin^n$ as a binomial of $exp$
+\begin{equation}
+  \label{eq:sin^n_taylor}
+  \sin^{n-1}(x) = \left[ \frac{e^{i x} - e^{-i x} }{2 i} \right]^{n-1}
+\end{equation}
+
+-- or maybe?
+
+\[ \Gamma(s) \Gamma(1-s) = \frac{\pi}{\sin \pi s} \]
+
+
+Take $R=1$, then $t \in [0, \pi$ and 
+\begin{eqnarray}
+g_{R}^{n}(t) & = &   \frac{\Gamma\left(\frac{1+n}{2}\right) }
+                         {\sqrt{\pi } R\Gamma\left(\frac{n}{2}\right)}  
+                      \sin(t)^{n-1} \nonumber \\
+   & = &   \frac{\Gamma\left(\frac{1+n}{2}\right) }
+                {\sqrt{\pi } R\Gamma\left(\frac{n}{2}\right)}  
+                      \sin(t)^{n-1} \nonumber \\
+\end{eqnarray}
 
 
