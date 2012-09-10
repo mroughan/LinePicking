@@ -87,10 +87,10 @@ double DiskDistanceCDF(double t, double* parameters)
     double t3 = t2 * t;
     
     return  (
-                -(sqrt(4 - t / R2) * (2 * R2 * t + t3)) / 4. + 
-                2 * R * t2 * acos(t / (2. * R)) + 
-                2 * R3 * asin(t / (2. * R))
-            ) / (M_PI * R3);
+             -(sqrt(4 - t / R2) * (2 * R2 * t + t3)) / 4. + 
+             2 * R * t2 * acos(t / (2. * R)) + 
+             2 * R3 * asin(t / (2. * R))
+             ) / (M_PI * R3);
 }
 
 
@@ -187,36 +187,41 @@ void DiskDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the diameter of the disk under
  * consideration. 
  */
-void DiskDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void DiskDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
+                           double* parameters)
 {
     int i, j;
     double *normals;
     double sum, u;
     
-    /* not the most efficient use of normal random number generation, but it should work for all nballs */
+    /* 
+     * not the most efficient use of normal random number generation, 
+     * but it should work for all nballs 
+     */
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
-	/* generate n normal random variables */
-	rand_normal(*Ncoords, normals);
-
-	/* normalize them so that they lie on the (n-1)-sphere */
-	sum = 0;
-	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-	for (j=0; j<*Ncoords; j++) points[i][j] = normals[j]/sqrt(sum);
-	
-	/* now distribute them through the disk */
-	u = pow(drand48(), 1.0 / *Ncoords);
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = parameters[0] * u * points[i][j];
-	}
+        /* generate n normal random variables */
+        rand_normal(*Ncoords, normals);
+        
+        /* normalize them so that they lie on the (n-1)-sphere */
+        sum = 0;
+        for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
+        for (j=0; j<*Ncoords; j++) points[i][j] = normals[j]/sqrt(sum);
+        
+        /* now distribute them through the disk */
+        u = pow(drand48(), 1.0 / *Ncoords);
+        for (j=0; j<*Ncoords; j++)
+        {
+            points[i][j] = parameters[0] * u * points[i][j];
+        }
     }
     free(normals);
 }
@@ -231,7 +236,8 @@ void DiskDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* 
  * consideration. 
  * @return The distance between the two points.
  */
-double DiskDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double DiskDistanceMetric(int Ncoords, double *point1, double* point2, 
+                          double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }

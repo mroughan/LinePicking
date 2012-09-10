@@ -83,13 +83,13 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
                   hypergeometric2f1_(0.5,1 - n / 2., 1.5, 
                                     pow(cos(t / r), 2), 100) *
                   pow(sin(t / r), n)) / 
-                    (pow(tgamma(0.5 * n), 2) * pow(pow(sin(t / r),2.),n/2.))); */
+                    (pow(tgamma(0.5 * n), 2) * pow(pow(sin(t / r),2.),n/2.)));*/
     /*
    return 0.5 - ((cos(t / r) * tgamma((1 + n) / 2.) *
                   hypergeometric2f1_(0.5, 1 - n / 2., 1.5, 
                                     pow(cos(t / r), 2), 100)
-                 * pow(sin(t/r),n))/
-                 (sqrt(M_PI)*tgamma(n / 2.) * pow(pow(sin(t / r), 2), n / 2.)));*/
+            * pow(sin(t/r),n))/
+            (sqrt(M_PI)*tgamma(n / 2.) * pow(pow(sin(t / r), 2), n / 2.)));*/
     
     return 0.5 - ((cos(t / r) * tgamma((1 + n)/2.) * 
                    hypergeometric2f1_(0.5, 1 - n / 2., 1.5, 
@@ -122,12 +122,14 @@ double HyperSphereGeodesicDistanceMean(double* parameters)
  * @todo Implement
  * @param $parameters $parameters[0] is the dimension of the hyper-sphere and 
  * $parameters[1] is the radius of the hyper-sphere. 
- * @return The variance of distances between two random points on a hyper-sphere.
+ * @return The variance of distances between two random points 
+ * on a hyper-sphere.
  */
 double HyperSphereGeodesicDistanceVar(double* parameters)
 {
+    /*
     double n = ceil(parameters[0]); 
-        
+    */
     return -1;
 }
 
@@ -196,28 +198,35 @@ void HyperSphereGeodesicDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void HyperSphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+void HyperSphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, 
+                                        double* parameters) 
 {
-    *Ncoords = parameters[0]+1; /* really this could be done with two coordinates, but life is easier this way */
-    *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+    *Ncoords = parameters[0]+1; 
+    /* We could use spherical coordinates, but why?" */
+    *CoordSystem="Euclidean"; 
 }
 
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[1] is the diameter of the hyper-sphere under
  * consideration. 
  */
-void HyperSphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void HyperSphereGeodesicDistanceSimPoints(double **points, int *Npoints, 
+                                          int *Ncoords, double* parameters)
 {
     int i, j;
     double *normals;
     double sum;
     
-    /* not the most efficient use of normal random number generation, but it should work for all nballs */
+    /* 
+     * not the most efficient use of normal random number 
+     * generation, but it should work for all n-spheres 
+     */
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
@@ -226,8 +235,10 @@ void HyperSphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Nc
 
 	/* normalize them so that they lie on the (n-1)-sphere */
 	sum = 0;
-	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-	for (j=0; j<*Ncoords; j++) points[i][j] = parameters[1]*normals[j]/sqrt(sum);
+	for (j=0; j<*Ncoords; j++) 
+        sum += normals[j]*normals[j];
+	for (j=0; j<*Ncoords; j++) 
+        points[i][j] = parameters[1]*normals[j]/sqrt(sum);
     }
     free(normals);
 }
@@ -243,7 +254,8 @@ void HyperSphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Nc
  * @return The distance between the two points
  * @todo Implement this.
  */
-double HyperSphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double HyperSphereGeodesicDistanceMetric(int Ncoords, double *point1, 
+                                         double* point2, double* parameters)
 {
     double d = DistanceEuclidean(Ncoords, point1, point2);
     return parameters[1] * 2 * asin(d/ (2 * parameters[1])); 

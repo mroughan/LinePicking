@@ -267,7 +267,8 @@ void RectangleDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, 
+                              double* parameters) 
 {
     *Ncoords=2;
     *CoordSystem="Euclidean";
@@ -276,13 +277,15 @@ void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, double* paramete
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates,in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates,
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
  * sides of the rectangle under consideration.
  */
-void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
+                                double* parameters)
 {
     int i, j;
     
@@ -306,7 +309,8 @@ void RectangleDistanceSimPoints(double **points, int *Npoints, int *Ncoords, dou
  * sides of the rectangle under consideration.
  * @return The distance between the two points.
  */
-double RectangleDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double RectangleDistanceMetric(int Ncoords, double *point1, double* point2, 
+                               double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }

@@ -28,7 +28,7 @@
 
 LinePickingData HyperballDistanceData =
 {
-   "hyper-ball",
+    "hyper-ball",
     "hyper-ball, with dimension parameters[0], and radius parameters[1]",
     2,
     {3, 1}
@@ -104,7 +104,7 @@ double HyperballDistanceCDF(double t, double* parameters)
      * also correct */
     Ix = beta_inc(p, q, x, &result);
     Bx = beta_inc(q+n/2, p, 1-x, &result) * beta(q+n/2, p) / beta(q,p);
-
+    
     return pow(2,n) * ( pow(t/(2*r), n) * Ix + Bx);
 }
 
@@ -127,8 +127,8 @@ double HyperballDistanceMean(double* parameters)
     double n = ceil(parameters[0]); 
     double m = 1;
     double tmp = pow((n / (n + m)), 2.0) * pow(parameters[1], m) *
-                    tgamma(n + m + 1.0) * tgamma(n / 2.0) / 
-                        (tgamma((n + m) / 2.0) * tgamma(n + 1 + m / 2.0));
+    tgamma(n + m + 1.0) * tgamma(n / 2.0) / 
+    (tgamma((n + m) / 2.0) * tgamma(n + 1 + m / 2.0));
     return tmp;
 }
 
@@ -152,9 +152,9 @@ double HyperballDistanceVar(double* parameters)
     double n = ceil(parameters[0]); 
     double m = 2;
     double tmp = pow((n / (n + m)), 2.0) * pow(parameters[1], m) *
-                    tgamma(n + m + 1.0) * 
-                    tgamma(n / 2.0) / 
-                    (tgamma((n + m) /2.0) * tgamma(n + 1 + m / 2.0));
+    tgamma(n + m + 1.0) * 
+    tgamma(n / 2.0) / 
+    (tgamma((n + m) /2.0) * tgamma(n + 1 + m / 2.0));
     
     return tmp - pow(HyperballDistanceMean(parameters),2.0);
 }
@@ -221,7 +221,8 @@ void HyperballDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem, 
+                              double* parameters) 
 {
     *Ncoords= (int) (parameters[0]);
     *CoordSystem="Euclidean"; /* We could use cicular coordinates, but why?" */
@@ -230,36 +231,41 @@ void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem, double* paramete
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[] is the diameter of the hyper-ball under
  * consideration.
  */
-void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
+                                double* parameters)
 {
     int i, j;
     double *normals;
     double sum, u;
     
-    /* not the most efficient use of normal random number generation, but it should work for all nballs */
+    /* 
+     * not the most efficient use of normal random number generation, 
+     * but it should work for all nballs 
+     */
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
-	/* generate n normal random variables */
-	rand_normal(*Ncoords, normals);
-
-	/* normalize them so that they lie on the (n-1)-sphere */
-	sum = 0;
-	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-	for (j=0; j<*Ncoords; j++) points[i][j] = normals[j]/sqrt(sum);
-	
-	/* now distribute them through the disk */
-	u = pow(drand48(), 1.0 / *Ncoords);
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = parameters[1] * u * points[i][j];
-	}
+        /* generate n normal random variables */
+        rand_normal(*Ncoords, normals);
+        
+        /* normalize them so that they lie on the (n-1)-sphere */
+        sum = 0;
+        for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
+        for (j=0; j<*Ncoords; j++) points[i][j] = normals[j]/sqrt(sum);
+        
+        /* now distribute them through the disk */
+        u = pow(drand48(), 1.0 / *Ncoords);
+        for (j=0; j<*Ncoords; j++)
+        {
+            points[i][j] = parameters[1] * u * points[i][j];
+        }
     }
     free(normals);
 }
@@ -274,7 +280,8 @@ void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, dou
  * consideration.
  * @return The distance between the two points.
  */
-double HyperballDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double HyperballDistanceMetric(int Ncoords, double *point1, double* point2, 
+                               double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }

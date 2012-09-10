@@ -270,7 +270,8 @@ double PrismGeodesicDistanceVar(double* parameters)
              384 * L6 * P5 * asin(P / (2 * L)) * log(2) - 
              12288 * L9 * P * sqrt(4 * L2 + P2) * asin(P / (2 * L)) * 
              log(2) + 384 * L6 * P4 * sqrt(4 * L2 + P2) * 
-             asin(P / (2 * L)) * log(2) - 24576 * L11 * M_PI * asin(P / (2 * L)) * log(2) - 
+             asin(P / (2 * L)) * log(2) - 24576 * L11 * M_PI * 
+             asin(P / (2 * L)) * log(2) - 
              12288 * L9 * P2 * M_PI * asin(P / (2 * L)) * log(2) - 
              1536 * L7 * P4 * M_PI * asin(P / (2 * L)) * log(2) - 
              64 * L7 * P3 * sqrt(4 * L2 + P2) * 
@@ -715,8 +716,10 @@ double PrismGeodesicDistanceVar(double* parameters)
               24 * L4 * log(L) * (-216 * L4 * P - 50 * L2 * P3 + 
                                   P5 - P4 * sqrt(4 * L2 + P2) + 
                                   128 * L5 * M_PI + 64 * L3 * P2 * M_PI + 
-                                  8 * L * P4 * M_PI + 8 * L4 * sqrt(4 * L2 + P2) * 
-                                  log(2) + 4 * L * P3 * sqrt(4 * L2 + P2) * log(P) - 
+                                  8 * L * P4 * M_PI + 8 * L4 * 
+                                  sqrt(4 * L2 + P2) * 
+                                  log(2) + 4 * L * P3 * sqrt(4 * L2 + P2) * 
+                                  log(P) - 
                                   4 * L * P3 * sqrt(4 * L2 + P2) * 
                                   log(2 * L + sqrt(4 * L2 + P2)) - 
                                   8 * L4 * sqrt(4 * L2 + P2) * 
@@ -812,8 +815,10 @@ double PrismGeodesicDistanceVar(double* parameters)
               24 * L4 * log(L) * (-216 * L4 * P - 50 * L2 * P3 + 
                                   P5 - P4 * sqrt(4 * L2 + P2) + 
                                   128 * L5 * M_PI + 64 * L3 * P2 * M_PI + 
-                                  8 * L * P4 * M_PI + 8 * L4 * sqrt(4 * L2 + P2) * 
-                                  log(2) + 4 * L * P3 * sqrt(4 * L2 + P2) * log(P) - 
+                                  8 * L * P4 * M_PI + 8 * L4 * 
+                                  sqrt(4 * L2 + P2) * 
+                                  log(2) + 4 * L * P3 * sqrt(4 * L2 + P2) * 
+                                  log(P) - 
                                   4 * L * P3 * sqrt(4 * L2 + P2) * 
                                   log(2 * L + sqrt(4 * L2 + P2)) - 
                                   8 * L4 * sqrt(4 * L2 + P2) * 
@@ -887,12 +892,11 @@ void PrismGeodesicDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, 
+                                  double* parameters) 
 {
-    /* WTF  so now I have 13 functions to remove */
-    
-    *Ncoords = 3; /* really this could be done with two coordinates, but life is easier this way */
-    *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+    *Ncoords = 3; 
+    *CoordSystem="Euclidean"; 
 }
 
 
@@ -904,7 +908,8 @@ double drand ( double low, double high )
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the length of the prism under 
@@ -912,14 +917,14 @@ double drand ( double low, double high )
  * under consideration.
  * @todo Implement this.
  */
-void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, 
+                                    int *Ncoords, double* parameters)
 {
     
-    int i, j;
+    int i;
     double normals[2];
     double length;
     
-    /* not the most efficient use of normal random number generation, but it should work for all nballs */
 
     for (i=0; i<*Npoints; i++)
     {
@@ -949,10 +954,13 @@ void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords,
  * @return The distance between the two points.
  * @todo Implement this.
  */
-double PrismGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double PrismGeodesicDistanceMetric(int Ncoords, double *point1, 
+                                   double* point2, double* parameters)
 {
-    double d= sqrt(pow(point1[0]-point2[0], 2.0) + pow(point1[1]-point2[1], 2.0));
-    double g = (parameters[1] / (2*M_PI)) * 2 * asin(d/ (2 * (parameters[1] / (2*M_PI))));
+    double d= sqrt(pow(point1[0]-point2[0], 2.0) + 
+                   pow(point1[1]-point2[1], 2.0));
+    double g = (parameters[1] / (2*M_PI)) * 2 * 
+                    asin(d/ (2 * (parameters[1] / (2*M_PI))));
     return  sqrt(pow(point1[2]-point2[2], 2) + pow(g, 2));
     
 }

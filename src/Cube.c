@@ -99,12 +99,12 @@ double CubeDistancePDF(double t, double* parameters)
 double CubeDistanceCDF(double t, double* parameters)
 
 {
- 
+    
     double t2;
     double t3;
     double t4;
     double t6;
-
+    
     t = t / parameters[0]; /* rescale points to unit cube */    
     
     t2 = t*t;
@@ -120,27 +120,27 @@ double CubeDistanceCDF(double t, double* parameters)
     else if (t <= M_SQRT2) 
     {
         return  (
-                    3 + 10 * t6 +24 * sqrt(-1 + t2) - 
-                    5 * M_PI * (3 + 2*t2*(-9 + 8*t)) + 
-                    t4 * (45 - 96 * sqrt(-1 + t2)) - 
-                    3 * t2 * (5 + 36 * sqrt(-1 + t2)) + 
-                    180 * t4 * acos(1 / t)
-                ) / 30.;
+                 3 + 10 * t6 +24 * sqrt(-1 + t2) - 
+                 5 * M_PI * (3 + 2*t2*(-9 + 8*t)) + 
+                 t4 * (45 - 96 * sqrt(-1 + t2)) - 
+                 3 * t2 * (5 + 36 * sqrt(-1 + t2)) + 
+                 180 * t4 * acos(1 / t)
+                 ) / 30.;
     } 
     else 
     {
-       
+        
         return  (
-                    3 * (9 + 5 * M_PI) + 15 * (-5 + 6 * M_PI) * t2 + 
-                    45 * (-1 + M_PI) * t4 - 5 * t6 + 
-                    12 * sqrt(-2 + t2) + 108 * t2 * sqrt(-2 + t2) + 
-                    48 * t4 * sqrt(-2 + t2) + 
-                    30 * atan((-2 + t) / sqrt(-2 + t2)) - 
-                    30 * atan((2 + t) / sqrt(-2 + t2)) - 
-                    20 * t2 * (8 * t * asin(1 / sqrt(2 - 2 / t2)) + 
-                    9 * (2 + t2) * atan(sqrt(-2 + t2)) - 
-                    8 * t * atan(t * sqrt(-2 + t2)))
-                ) / 30.;  
+                 3 * (9 + 5 * M_PI) + 15 * (-5 + 6 * M_PI) * t2 + 
+                 45 * (-1 + M_PI) * t4 - 5 * t6 + 
+                 12 * sqrt(-2 + t2) + 108 * t2 * sqrt(-2 + t2) + 
+                 48 * t4 * sqrt(-2 + t2) + 
+                 30 * atan((-2 + t) / sqrt(-2 + t2)) - 
+                 30 * atan((2 + t) / sqrt(-2 + t2)) - 
+                 20 * t2 * (8 * t * asin(1 / sqrt(2 - 2 / t2)) + 
+                            9 * (2 + t2) * atan(sqrt(-2 + t2)) - 
+                            8 * t * atan(t * sqrt(-2 + t2)))
+                 ) / 30.;  
     }
 }
 
@@ -244,22 +244,25 @@ void CubeDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters parameters[0] is the length of the sides of 
  * the cube under consideration.
  */
-void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
+                           double* parameters)
 {
     int i, j;
     
     for (i=0; i<*Npoints; i++)
     {
-	for (j=0; j<*Ncoords; j++)
-	{
-	    points[i][j] = parameters[0]*drand48(); /* mxArray is transpose of c matrix */
-	}
+        for (j=0; j<*Ncoords; j++)
+        {
+            /* mxArray is transpose of c matrix */
+            points[i][j] = parameters[0]*drand48(); 
+        }
     }
 }
 
@@ -273,7 +276,8 @@ void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* 
  * the cube under consideration.
  * @return The distance between the two points.
  */
-double CubeDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double CubeDistanceMetric(int Ncoords, double *point1, double* point2, 
+                          double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }
