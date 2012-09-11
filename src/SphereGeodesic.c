@@ -159,8 +159,7 @@ void SphereGeodesicDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void SphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, d
-                                   ouble* parameters) 
+void SphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
 {
     *Ncoords = 3; 
     /* We could use spherical coordinates, but why?" */
