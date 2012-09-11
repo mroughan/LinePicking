@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['linepicking_20api',['LinePicking API',['../group__api.html',1,'']]],
+  ['linepicking_20_5bc_5d_20api',['LinePicking [C] API',['../group__api.html',1,'']]],
   ['linepicking',['LinePicking',['../index.html',1,'']]],
   ['line_2eh',['Line.h',['../_line_8h.html',1,'']]],
   ['linedistancecdf',['LineDistanceCDF',['../_line_8h.html#a12f8b0167c0f458ea8afcfcb35a4c6e6',1,'Line.c']]],
@@ -24,10 +24,12 @@ var searchData=
   ['linepickingpdf',['LinePickingPDF',['../group__api.html#ga8feba9835984bd74f3d919f51389e573',1,'LinePickingPDF(double *t, double *g, int *N, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c'],['../group__api.html#ga8feba9835984bd74f3d919f51389e573',1,'LinePickingPDF(double *, double *, int *, int *, double *, int *, int *, char **):&#160;LinePicking.c']]],
   ['linepickingprintallproblems',['LinePickingPrintAllProblems',['../group__api.html#ga1a1c27d3c46da382a0443f810628a8ac',1,'LinePickingPrintAllProblems(void):&#160;LinePicking.c'],['../group__api.html#ga1a1c27d3c46da382a0443f810628a8ac',1,'LinePickingPrintAllProblems(void):&#160;LinePicking.c']]],
   ['linepickingproblemlookup',['LinePickingProblemLookup',['../group__api.html#gaab56d0ac9177e8ec90b87d0927220283',1,'LinePickingProblemLookup(int *problem, char **name, char **description, int *Npar, double *parameters):&#160;LinePicking.c'],['../group__api.html#gaab56d0ac9177e8ec90b87d0927220283',1,'LinePickingProblemLookup(int *, char **, char **, int *, double *):&#160;LinePicking.c']]],
+  ['linepickingproblemnparlookup',['LinePickingProblemNparLookup',['../group__api.html#ga5ac22934d32edfdf42075bff533e5ccb',1,'LinePickingProblemNparLookup(int *problem, int *Npar):&#160;LinePicking.c'],['../group__api.html#ga5ac22934d32edfdf42075bff533e5ccb',1,'LinePickingProblemNparLookup(int *problem, int *Npar):&#160;LinePicking.c']]],
   ['linepickingrec',['LinePickingRec',['../struct_line_picking_rec.html',1,'']]],
   ['linepickingsimdistances',['LinePickingSimDistances',['../group__api.html#gade24923f75c83155e6cf15f3d7d7cb09',1,'LinePickingSimDistances(double *distances, int *N, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c'],['../group__api.html#gade24923f75c83155e6cf15f3d7d7cb09',1,'LinePickingSimDistances(double *distances, int *N, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c']]],
   ['linepickingsimpoints',['LinePickingSimPoints',['../group__api.html#gad3880c7898c35953c9c55ced33beb222',1,'LinePickingSimPoints(double **points, int *Npoints, int *Ncoords, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c'],['../group__api.html#gad3880c7898c35953c9c55ced33beb222',1,'LinePickingSimPoints(double **points, int *Npoints, int *Ncoords, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c']]],
   ['linepickingsupport',['LinePickingSupport',['../group__api.html#ga0aec0b2f87903f4bf4ad3011a99b3446',1,'LinePickingSupport(double *t, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c'],['../group__api.html#ga0aec0b2f87903f4bf4ad3011a99b3446',1,'LinePickingSupport(double *, int *, double *, int *, int *, char **):&#160;LinePicking.c']]],
   ['linepickingvar',['LinePickingVar',['../group__api.html#ga08fecba488534373e8d1710f273bc49c',1,'LinePickingVar(double *var, int *problem, double *parameters, int *Npar, int *result, char **error_str):&#160;LinePicking.c'],['../group__api.html#ga08fecba488534373e8d1710f273bc49c',1,'LinePickingVar(double *, int *, double *, int *, int *, char **):&#160;LinePicking.c']]],
+  ['linepicking_20_5bmatlab_5d_20api',['LinePicking [Matlab] API',['../group__matlabapi.html',1,'']]],
   ['linepicking_20_5br_5d_20api',['LinePicking [R] API',['../group__rapi.html',1,'']]]
 ];

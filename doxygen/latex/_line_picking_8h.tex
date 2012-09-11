@@ -6,48 +6,12 @@
 Exposes to matlab and R a set of functions that implement P\-D\-F, C\-D\-F, mean and variance of the distance between two random points in various geometries.  
 
 
-{\ttfamily \#include $<$math.\-h$>$}\\*
-{\ttfamily \#include $<$stdlib.\-h$>$}\\*
-{\ttfamily \#include $<$stdint.\-h$>$}\\*
-{\ttfamily \#include $<$string.\-h$>$}\\*
-{\ttfamily \#include $<$stdio.\-h$>$}\\*
-{\ttfamily \#include \char`\"{}Line\-Picking\-Data.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Square.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Disk.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Hyperball.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Rectangle.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Line.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Cube.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Sphere.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Sphere\-Geodesic.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Prism\-Geodesic.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Rectangle\-Manhattan.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Rectangle\-Max.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Hyper\-Sphere.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}Hyper\-Sphere\-Geodesic.\-h\char`\"{}}\\*
-{\ttfamily \#include $<$R.\-h$>$}\\*
-{\ttfamily \#include $<$Rinternals.\-h$>$}\\*
 \subsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec}
-\end{DoxyCompactItemize}
-\subsection*{Macros}
-\begin{DoxyCompactItemize}
 \item 
-\hypertarget{_line_picking_8h_a2f07c1ea1fa674c2803d2563b5527500}{\#define {\bfseries \-\_\-\-L\-I\-N\-E\-P\-I\-C\-K\-I\-N\-G\-\_\-\-H}}\label{_line_picking_8h_a2f07c1ea1fa674c2803d2563b5527500}
-
-\item 
-\hypertarget{_line_picking_8h_ada3d93b92edae24e993803d0179d8eb7}{\#define {\bfseries P\-R\-I\-N\-T\-\_\-\-S\-T\-D\-O\-U\-T}(...)~Rprintf(\-\_\-\-\_\-\-V\-A\-\_\-\-A\-R\-G\-S\-\_\-\-\_\-)}\label{_line_picking_8h_ada3d93b92edae24e993803d0179d8eb7}
-
-\item 
-\#define {\bfseries Expand\-Fields}(\-\_\-x)
-\item 
-\hypertarget{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}{\#define {\bfseries elements}(x)~(sizeof(x) / sizeof(x\mbox{[}0\mbox{]}))}\label{_line_picking_8h_a7bb48b353069ee7a30bc6f43407c5133}
-
-\item 
-\hypertarget{_line_picking_8h_a16ab60dd0b76f3ea2a980558e7debd31}{\#define {\bfseries N\-U\-M\-B\-E\-R\-\_\-\-O\-F\-\_\-\-P\-R\-O\-B\-L\-E\-M\-S}~elements(Line\-Picking\-Fields)}\label{_line_picking_8h_a16ab60dd0b76f3ea2a980558e7debd31}
-
+struct \hyperlink{struct_matlab_call_rec}{Matlab\-Call\-Rec}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -62,8 +26,7 @@ void \hyperlink{group__api_ga17699721a1826bc3c2a2c3d80dff6f64}{Line\-Picking\-Na
 \item 
 void \hyperlink{group__api_gaab56d0ac9177e8ec90b87d0927220283}{Line\-Picking\-Problem\-Lookup} (int $\ast$, char $\ast$$\ast$, char $\ast$$\ast$, int $\ast$, double $\ast$)
 \item 
-\hypertarget{group__api_gad90607b321b23e25d238fc78cbd7ef04}{void {\bfseries Line\-Picking\-Problen\-Npar\-Lookup} (int $\ast$problem, int $\ast$Npar)}\label{group__api_gad90607b321b23e25d238fc78cbd7ef04}
-
+void \hyperlink{group__api_ga5ac22934d32edfdf42075bff533e5ccb}{Line\-Picking\-Problem\-Npar\-Lookup} (int $\ast$problem, int $\ast$Npar)
 \item 
 void \hyperlink{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{Line\-Picking\-Check\-Parameters} (int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
 \item 
@@ -100,6 +63,43 @@ S\-E\-X\-P \hyperlink{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}{r\-Line\-P
 S\-E\-X\-P \hyperlink{group__rapi_gacf32b79fce86f86cedc7843775e163c3}{r\-Line\-Picking\-Sim\-Points} (S\-E\-X\-P sexp\-Npoints, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)
 \item 
 S\-E\-X\-P \hyperlink{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}{r\-Line\-Picking\-Sim\-Distances} (S\-E\-X\-P sexp\-N, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)
+\item 
+void \hyperlink{group__matlabapi_ga415ab39c370dfeb66324d1a538a8bb7b}{mex\-Line\-Picking\-P\-D\-F} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
+\item 
+void \hyperlink{group__matlabapi_ga565be7534fefd6e5547869fdcb21b36f}{mex\-Line\-Picking\-C\-D\-F} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
+\item 
+void \hyperlink{group__matlabapi_ga6fe54a6aa7e3d2e51733dea1a443a1b2}{mex\-Line\-Picking\-Mean} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
+\item 
+void \hyperlink{group__matlabapi_gaceb40f4eec3174186785fca28818c09f}{mex\-Line\-Picking\-Var} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
+\item 
+void \hyperlink{group__matlabapi_gaa1d58f45751e79cccbc82eedccef460e}{mex\-Line\-Picking\-Support} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
+\item 
+\hypertarget{group__matlabapi_ga8b9723f66253c299cb2bd065c48d1d11}{void {\bfseries mex\-Line\-Picking\-Problem\-Lookup} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga8b9723f66253c299cb2bd065c48d1d11}
+
+\item 
+\hypertarget{group__matlabapi_ga0b420739ee82f52e6eb0a9f194708103}{void {\bfseries mex\-Line\-Picking\-Problem\-Name\-Lookup} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga0b420739ee82f52e6eb0a9f194708103}
+
+\item 
+\hypertarget{group__matlabapi_gac6aa898603e0bfeff24f7eb02492641f}{void {\bfseries mex\-Line\-Picking\-Print\-All\-Problems} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_gac6aa898603e0bfeff24f7eb02492641f}
+
+\item 
+\hypertarget{group__matlabapi_ga517627c493a1789dc8eeebdbeecd8a8d}{void {\bfseries mex\-Line\-Picking\-Check\-Parameters} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga517627c493a1789dc8eeebdbeecd8a8d}
+
+\item 
+\hypertarget{group__matlabapi_ga9566788e47662982902e53d2b80e9cf4}{void {\bfseries mex\-Line\-Picking\-All\-Problems} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga9566788e47662982902e53d2b80e9cf4}
+
+\item 
+\hypertarget{group__matlabapi_ga3049623df917340a56fa5df6278d06f6}{void {\bfseries mex\-Line\-Picking\-Number\-Of\-Problems} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga3049623df917340a56fa5df6278d06f6}
+
+\item 
+\hypertarget{group__matlabapi_ga339fe5ed825457a410e325d1aac7c1e5}{void {\bfseries mex\-Line\-Picking\-Sim\-Points} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga339fe5ed825457a410e325d1aac7c1e5}
+
+\item 
+\hypertarget{group__matlabapi_ga055cc9a6e9a046038ebc1d4fbe13cb74}{void {\bfseries mex\-Line\-Picking\-Sim\-Distances} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)}\label{group__matlabapi_ga055cc9a6e9a046038ebc1d4fbe13cb74}
+
+\item 
+\hypertarget{_line_picking_8h_a0ddf1224851353fc92bfbff6f499fa97}{int {\bfseries main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})}\label{_line_picking_8h_a0ddf1224851353fc92bfbff6f499fa97}
+
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -108,6 +108,8 @@ S\-E\-X\-P \hyperlink{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}{r\-Line\-P
 
 \item 
 \hyperlink{struct_line_picking_rec}{Line\-Picking\-Rec} {\bfseries Line\-Picking\-Fields} \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{struct_matlab_call_rec}{Matlab\-Call\-Rec} {\bfseries Matlab\-Call\-List} \mbox{[}$\,$\mbox{]}
 \end{DoxyCompactItemize}
 
 
@@ -120,24 +122,6 @@ Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roug
 \begin{DoxyDate}{Date}
 22/09/2012 
 \end{DoxyDate}
-
-
-\subsection{Macro Definition Documentation}
-\hypertarget{_line_picking_8h_a6d2b25c9cf223b79d7dd1dfd28d3f821}{\index{Line\-Picking.\-h@{Line\-Picking.\-h}!Expand\-Fields@{Expand\-Fields}}
-\index{Expand\-Fields@{Expand\-Fields}!LinePicking.h@{Line\-Picking.\-h}}
-\subsubsection[{Expand\-Fields}]{\setlength{\rightskip}{0pt plus 5cm}\#define Expand\-Fields(
-\begin{DoxyParamCaption}
-\item[{}]{\-\_\-x}
-\end{DoxyParamCaption}
-)}}\label{_line_picking_8h_a6d2b25c9cf223b79d7dd1dfd28d3f821}
-{\bfseries Value\-:}
-\begin{DoxyCode}
-&\_x##DistancePDF,&\_x##DistanceCDF,\(\backslash\)
-&\_x##DistanceMean,&\_x##DistanceVar,\(\backslash\)
-&\_x##DistanceSupport,&\_x##DistanceCheckParameters,\(\backslash\)
-&\_x##DistanceNcoords,&\_x##DistanceSimPoints,&\_x##DistanceMetric,\(\backslash\)
-&\_x##DistanceData
-\end{DoxyCode}
 
 
 \subsection{Variable Documentation}
@@ -161,5 +145,15 @@ Matthew Roughan \href{mailto:matthew.roughan@adelaide.edu.au}{\tt matthew.\-roug
     \{ExpandFields(RectangleMax)\}, 
     \{ExpandFields(HyperSphere)\},
     \{ExpandFields(HyperSphereGeodesic)\} 
+\}
+\end{DoxyCode}
+\hypertarget{_line_picking_8h_a5772ff887efc14e4f5a9df65eb080b04}{\index{Line\-Picking.\-h@{Line\-Picking.\-h}!Matlab\-Call\-List@{Matlab\-Call\-List}}
+\index{Matlab\-Call\-List@{Matlab\-Call\-List}!LinePicking.h@{Line\-Picking.\-h}}
+\subsubsection[{Matlab\-Call\-List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matlab\-Call\-Rec} Matlab\-Call\-List\mbox{[}$\,$\mbox{]}}}\label{_line_picking_8h_a5772ff887efc14e4f5a9df65eb080b04}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+=
+\{
+\textcolor{preprocessor}{#include "MatlabDefinitions.def"}
 \}
 \end{DoxyCode}

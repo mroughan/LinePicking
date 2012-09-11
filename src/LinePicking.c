@@ -1150,7 +1150,14 @@ void CheckProblem(int problem, char* entry_str)
 }
 
 
-
+/** 
+ * This function returns the PDF for the problem. 
+ * @param $prhs[1] A vector of points at which to calculate the PDF.
+ * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[3] the parameters of the problem. 
+ * @param $plhs[0] The output, a vector containing the values g(t) of the PDF 
+ * at the points t.
+ */
 void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs, 
                        const mxArray *prhs[], int *result, 
                        char **error_str ,  int cmd)
@@ -1189,7 +1196,14 @@ void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs,
 }
 
 
-
+/** 
+ * This function returns the CDF for the problem. 
+ * @param $prhs[1] A vector of points at which to calculate the CDF.
+ * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[3] The parameters of the problem. 
+ * @param $plhs[0] The output, a vector containing the values g(t) of the CDF 
+ * at the points t.
+ */
 void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, 
                        const mxArray *prhs[], int *result, 
                        char **error_str ,  int cmd)
@@ -1225,7 +1239,14 @@ void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs,
     
 }
 
-
+/** 
+ * This function returns the mean of the length of lines in a given
+ * line picking problem. 
+ * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[2] The parameters of the problem. 
+ * @param $plhs[0] The output, the mean of the length of lines in the given
+ * line picking problem.
+ */
 void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs, 
                         const mxArray *prhs[], int *result, 
                         char **error_str ,  int cmd)
@@ -1254,7 +1275,14 @@ void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs,
                     error_str); 
 }       
 
-
+/** 
+ * This function returns the variance of the length of lines in a given
+ * line picking problem. 
+ * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[2] The parameters of the problem. 
+ * @param $plhs[0] The output, the variance of the length of lines in the given
+ * line picking problem.
+ */
 void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs, 
                        const mxArray *prhs[], int *result, 
                        char **error_str ,  int cmd)  
@@ -1280,6 +1308,15 @@ void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs,
                    error_str);
 }
 
+
+/** 
+ * This function returns the support for the PDF and CDF of a given
+ * line picking problem
+ * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[2] The parameters of the problem. 
+ * @param $plhs[0] The output, the support for the PDF and CDF for a given 
+ * line picking problem
+ */
 void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, 
                            const mxArray *prhs[], int *result, 
                            char **error_str ,  int cmd)

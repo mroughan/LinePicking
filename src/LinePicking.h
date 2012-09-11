@@ -118,7 +118,7 @@ LinePickingRec LinePickingFields[] =
 #define NUMBER_OF_PROBLEMS elements(LinePickingFields)
 
 
-/** @defgroup api LinePicking API 
+/** @defgroup api LinePicking [C] API 
  *\addtogroup api 
  *  @{
  */
@@ -138,7 +138,7 @@ void LinePickingNameLookup(int *, char **);
 void LinePickingProblemLookup(int *, char**, char**,  int *, double *);
 
 /* given a problem lookup how many parameters it takes */
-void LinePickingProblenNparLookup(int *problem, int *Npar); 
+void LinePickingProblemNparLookup(int *problem, int *Npar); 
 
 
 /* check that a problem and a set of parameters are valid */
@@ -253,6 +253,7 @@ typedef struct
 int nrhs, const mxArray *prhs[], int *result, \
 char **error_str, int cmd);
 
+
 #include "MatlabDefinitions.def"
 
 /* 
@@ -271,6 +272,72 @@ MatlabCallRec MatlabCallList[] =
 
 
 #define NUMBER_OF_MATLAB_CMDS elements(MatlabCallList)
+/* 
+ * Note the following prototypes are already created by the def file 
+ * included above. However doxygen doesn't include them in the
+ * documentation unless they are explictly defined
+ */
+
+/** @defgroup matlabapi LinePicking [Matlab] API 
+ *\addtogroup matlabapi 
+ *  @{
+ */
+
+
+void mexLinePickingPDF(int nlhs, mxArray *plhs[], 
+                       int nrhs, const mxArray *prhs[], 
+                       int *result, char **error_str, int cmd);
+
+void mexLinePickingCDF(int nlhs, mxArray *plhs[], 
+                       int nrhs, const mxArray *prhs[], 
+                       int *result, char **error_str, int cmd);
+
+void mexLinePickingMean(int nlhs, mxArray *plhs[], 
+                        int nrhs, const mxArray *prhs[], 
+                        int *result, char **error_str, int cmd);
+
+void mexLinePickingVar(int nlhs, mxArray *plhs[], 
+                       int nrhs, const mxArray *prhs[], 
+                       int *result, char **error_str, int cmd);
+
+void mexLinePickingSupport(int nlhs, mxArray *plhs[], 
+                           int nrhs, const mxArray *prhs[], 
+                           int *result, char **error_str, int cmd);
+
+void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], 
+                                 int nrhs, const mxArray *prhs[], 
+                                 int *result, char **error_str, int cmd);
+
+void mexLinePickingProblemNameLookup(int nlhs, mxArray *plhs[], 
+                                     int nrhs, const mxArray *prhs[], 
+                                     int *result, char **error_str, int cmd);
+
+void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], 
+                                    int nrhs, const mxArray *prhs[], 
+                                    int *result, char **error_str, int cmd);
+
+void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], 
+                                   int nrhs, const mxArray *prhs[], 
+                                   int *result, char **error_str, int cmd);
+
+void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], 
+                               int nrhs, const mxArray *prhs[], 
+                               int *result, char **error_str, int cmd);
+
+void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], 
+                                    int nrhs, const mxArray *prhs[], 
+                                    int *result, char **error_str, int cmd);
+
+
+void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], 
+                             int nrhs, const mxArray *prhs[], 
+                             int *result, char **error_str, int cmd);
+
+void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], 
+                                int nrhs, const mxArray *prhs[], 
+                                int *result, char **error_str, int cmd);
+
+/** @}*/
 
 #endif /* _MEX */
 
