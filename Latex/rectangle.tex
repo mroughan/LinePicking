@@ -80,11 +80,19 @@ need consider the case $a \leq t \leq b$, where
     g^{\rm rect}_{a,b}(t)
         & = & \frac{4 t}{a^2 b^2} 
                   \left[ a b \sin^{-1} (a/t) - \frac{a^2}{2} - b t + b\sqrt{t^2 - a^2} \right] , \nonumber \\
+        & \simeq & \frac{4t }{a b} \sin^{-1} (a/t)
+                   - \frac{2 t}{b^2}
+                    + \frac{4 t}{a^2 b^2} \left[ -b t + b t - \frac{b a^2}{2 t} \right] , \nonumber \\
+        & \simeq & \frac{2}{b}
+                   - \frac{2 t}{b^2}, 
 \end{eqnarray}
-
-Where we have used the Taylor series
-\[ \sin^{-1}(x) = x + \frac{x^3}{6} + \frac{3 x^5}{40} + \cdots . \]
-
+where we have used the following Taylor series around $x=0$, dropping
+the higher order terms:
+\[ \sin^{-1}(x) = x + \frac{x^3}{6} + \cdots, 
+   \mbox{ and }
+   \sqrt{t^2 - x^2} = t - \frac{x^2}{2t} - \frac{x^4}{8 t^3} \cdots .
+\]
+The result just returns to the line-line picking PDF.
 
 \subsubsection{CDF}
 
