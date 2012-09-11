@@ -142,7 +142,7 @@ p2(1) = plot(Ss, y_exact,'k--', 'linewidth', 2);
 set(gca, 'ylim', [0 0.8]);
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
-legend(p2, legend_str);
+%legend(p2, legend_str);
 xlabel('s');
 ylabel('-G''(s)/G(s)');
 
