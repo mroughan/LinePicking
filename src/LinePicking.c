@@ -1156,7 +1156,7 @@ void CheckProblem(int problem, char* entry_str)
  * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
  * @param $prhs[3] the parameters of the problem. 
  * @param $plhs[0] The output, a vector containing the values g(t) of the PDF 
- * at the points t.
+ * at the points provided.
  */
 void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs, 
                        const mxArray *prhs[], int *result, 
@@ -1202,7 +1202,7 @@ void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs,
  * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
  * @param $prhs[3] The parameters of the problem. 
  * @param $plhs[0] The output, a vector containing the values g(t) of the CDF 
- * at the points t.
+ * at the points provided.
  */
 void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, 
                        const mxArray *prhs[], int *result, 
@@ -1452,9 +1452,19 @@ void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], int nrhs,
 {    
     /* LinePickingPrintAllProblems prints out a list of implemented problems */
     LinePickingPrintAllProblems();
-}    
+}  
 
 
+/** 
+ * This function checks that the the parameters supplied are valid input
+ * for a given line picking problem.
+ * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[2] The parameters of the problem. 
+ * @param $result The output, a non-zero value indicates a problem with 
+ * the supplied parameters.
+ * @param $error_str The output, a string describing the problem with 
+ * the supplied problem parameters.
+ */
 void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], int nrhs, 
                                    const mxArray *prhs[], int *result, 
                                    char **error_str ,  int cmd)
@@ -1486,7 +1496,16 @@ void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], int nrhs,
     result = 0;
 }
 
-
+/** 
+ * This function returns all the information the software holds about all the 
+ * problems it implements.
+ * @param $plhs[0] The output, a cell array of problem names.
+ * @param $plhs[1] The output, a cell array of descriptions. 
+ * @param $plhs[2] The output,  a cell array of integers giving the number of 
+ * parameters a problem requires to define the shape or region it is defined on. 
+ * @param $plhs[3] The output, a cell array containing a default set of 
+ * parameters for each problem. 
+ */
 void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs, 
                                const mxArray *prhs[], int *result, 
                                char **error_str ,  int cmd)
@@ -1544,6 +1563,14 @@ void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], int nrhs,
     
 }
 
+
+/** 
+ * This function returns the number of problems the software currently 
+ * implements.
+ * @param $plhs[0] The output, the number of line picking problems currently 
+ * implemented.
+ *
+ */
 void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], int nrhs, 
                                     const mxArray *prhs[], int *result, 
                                     char **error_str ,  int cmd) 
@@ -1559,7 +1586,15 @@ void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], int nrhs,
 }
 
 
-
+/** 
+ * This function returns a set of points from a simulation of a line picking 
+ * problem. 
+ * @param $prhs[1] The numebr oof distances to simulate.
+ * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[3] the parameters of the problem. 
+ * @param $plhs[0] The output, a vector containing a set of points 
+ * from a simulation of the line picking problem defined in the input.
+ */
 void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs, 
                              const mxArray *prhs[], int *result, 
                              char **error_str ,  int cmd)
@@ -1619,6 +1654,15 @@ void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], int nrhs,
     free(Points);
 }
 
+/** 
+ * This function returns a set of distances from a simulation of a line picking 
+ * problem. 
+ * @param $prhs[1] The numebr oof distances to simulate.
+ * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[3] the parameters of the problem. 
+ * @param $plhs[0] The output, a vector containing the lengths of lines 
+ * from a simulation of the line picking problem defined in the input.
+ */
 void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], int nrhs, 
                                 const mxArray *prhs[], int *result, 
                                 char **error_str ,  int cmd)            

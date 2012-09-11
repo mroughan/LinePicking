@@ -308,9 +308,9 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[],
                                  int nrhs, const mxArray *prhs[], 
                                  int *result, char **error_str, int cmd);
 
-void mexLinePickingProblemNameLookup(int nlhs, mxArray *plhs[], 
-                                     int nrhs, const mxArray *prhs[], 
-                                     int *result, char **error_str, int cmd);
+void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], 
+                              int nrhs, const mxArray *prhs[], 
+                              int *result, char **error_str, int cmd);
 
 void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], 
                                     int nrhs, const mxArray *prhs[], 
