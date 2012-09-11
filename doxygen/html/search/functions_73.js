@@ -13,7 +13,6 @@ var searchData=
   ['spheregeodesicdistancecheckparameters',['SphereGeodesicDistanceCheckParameters',['../_sphere_geodesic_8h.html#a2753f6846132cd3d18ffbe5cf281059f',1,'SphereGeodesic.c']]],
   ['spheregeodesicdistancemean',['SphereGeodesicDistanceMean',['../_sphere_geodesic_8h.html#ab4f11431d2e3f00883dfaa60375827fe',1,'SphereGeodesic.c']]],
   ['spheregeodesicdistancemetric',['SphereGeodesicDistanceMetric',['../_sphere_geodesic_8h.html#acc49218d74f89ce32f4517b99347badd',1,'SphereGeodesic.c']]],
-  ['spheregeodesicdistancencoords',['SphereGeodesicDistanceNcoords',['../_sphere_geodesic_8h.html#abcd3909296775f86691ff04e22f591ce',1,'SphereGeodesic.c']]],
   ['spheregeodesicdistancepdf',['SphereGeodesicDistancePDF',['../_sphere_geodesic_8h.html#a645f07d87003b80bdda7c2b207843a38',1,'SphereGeodesic.c']]],
   ['spheregeodesicdistancesimpoints',['SphereGeodesicDistanceSimPoints',['../_sphere_geodesic_8h.html#ac14fa79916cda995cf3b89959dbf0ff2',1,'SphereGeodesic.c']]],
   ['spheregeodesicdistancesupport',['SphereGeodesicDistanceSupport',['../_sphere_geodesic_8h.html#aa5edd08b36e87835366a0789ca247785',1,'SphereGeodesic.c']]],
