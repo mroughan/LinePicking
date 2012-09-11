@@ -469,7 +469,7 @@ xlabel('t');
 ylabel('G^{\rm square}(t)');
 filename = sprintf('%s/LinePicking_plot_square_cdf.%s', plotdir, suffix);
 print(device, filename);
-fprintf('Printed to %s\n'1, filename);
+fprintf('Printed to %s\n', filename);
 
 % compare sphere-line picking in different dimensions:
 %   
