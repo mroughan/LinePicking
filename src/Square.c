@@ -181,13 +181,15 @@ void SquareDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void SquareDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void SquareDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
+                             double* parameters)
 {
     int i, j;
     
@@ -195,7 +197,8 @@ void SquareDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double
     {
         for (j=0; j<*Ncoords; j++)
         {
-            points[i][j] = parameters[0]*drand48(); /* mxArray is transpose of c matrix */
+            /* mxArray is transpose of c matrix */
+            points[i][j] = parameters[0]*drand48(); 
         }
     }
 }
@@ -210,7 +213,8 @@ void SquareDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double
  * the square under consideration.
  * @return The distance between the two points.
  */
-double SquareDistanceMetric(int Ncoords, double *point1, double* point2 , double* parameters)
+double SquareDistanceMetric(int Ncoords, double *point1, double* point2, 
+                            double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }

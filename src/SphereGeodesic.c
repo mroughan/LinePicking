@@ -159,28 +159,31 @@ void SphereGeodesicDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void SphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+void SphereGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, d
+                                   ouble* parameters) 
 {
-    *Ncoords = 3; /* really this could be done with two coordinates, but life is easier this way */
-    *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+    *Ncoords = 3; 
+    /* We could use spherical coordinates, but why?" */
+    *CoordSystem="Euclidean"; 
 }
 
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the diameter of the sphere under
  * consideration. 
  */
-void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, 
+                                     int *Ncoords, double* parameters)
 {
     int i, j;
     double *normals;
     double sum;
     
-    /* not the most efficient use of normal random number generation, but it should work for all nballs */
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
@@ -189,8 +192,10 @@ void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords
         
         /* normalize them so that they lie on the (n-1)-sphere */
         sum = 0;
-        for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-        for (j=0; j<*Ncoords; j++) points[i][j] = parameters[0]*normals[j]/sqrt(sum);
+        for (j=0; j<*Ncoords; j++) 
+            sum += normals[j]*normals[j];
+        for (j=0; j<*Ncoords; j++) points[i][j] = 
+            parameters[0]*normals[j]/sqrt(sum);
     }
     free(normals);
 }
@@ -206,7 +211,8 @@ void SphereGeodesicDistanceSimPoints(double **points, int *Npoints, int *Ncoords
  * @return The distance between the two points.
  * @todo Implement this.
  */
-double SphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double SphereGeodesicDistanceMetric(int Ncoords, double *point1, double* point2, 
+                                    double* parameters)
 {
     double d = DistanceEuclidean(Ncoords, point1, point2);
     return parameters[0] * 2 * asin(d/ (2 * parameters[0])); 

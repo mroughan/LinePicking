@@ -162,26 +162,27 @@ void SphereDistanceCheckParameters(double *parameters, int *result,
  */
 void SphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
 {
-    *Ncoords = 3; /* really this could be done with two coordinates, but life is easier this way */
-    *CoordSystem="Euclidean"; /* We could use spherical coordinates, but why?" */
+    *Ncoords = 3; 
+    *CoordSystem="Euclidean";
 }
 
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the diameter of the sphere under
  * consideration.
  */
-void SphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void SphereDistanceSimPoints(double **points, int *Npoints, 
+                             int *Ncoords, double* parameters)
 {
     int i, j;
     double *normals;
     double sum;
     
-    /* not the most efficient use of normal random number generation, but it should work for all nballs */
     normals = (double *) malloc(sizeof(double)*(*Ncoords));
     for (i=0; i<*Npoints; i++)
     {
@@ -190,8 +191,10 @@ void SphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double
 
 	/* normalize them so that they lie on the (n-1)-sphere */
 	sum = 0;
-	for (j=0; j<*Ncoords; j++) sum += normals[j]*normals[j];
-	for (j=0; j<*Ncoords; j++) points[i][j] = parameters[0]*normals[j]/sqrt(sum);
+	for (j=0; j<*Ncoords; j++) 
+        sum += normals[j]*normals[j];
+	for (j=0; j<*Ncoords; j++) 
+        points[i][j] = parameters[0]*normals[j]/sqrt(sum);
     }
     free(normals);
 }
@@ -206,7 +209,8 @@ void SphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double
  * consideration.
  * @return The distance between the two points.
  */
-double SphereDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double SphereDistanceMetric(int Ncoords, double *point1, 
+                            double* point2, double* parameters)
 {
     return DistanceEuclidean(Ncoords, point1, point2);
 }

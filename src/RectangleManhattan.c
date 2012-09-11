@@ -223,7 +223,8 @@ void RectangleManhattanDistanceCheckParameters(double *parameters, int *result,
  * @param $parameters parameters[0] is the length of the sides of 
  * the square under consideration.
  */
-void RectangleManhattanDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
+void RectangleManhattanDistanceNcoords(int *Ncoords, char **CoordSystem, 
+                                       double* parameters) 
 {
     *Ncoords=2;
     *CoordSystem="Euclidean";
@@ -232,13 +233,15 @@ void RectangleManhattanDistanceNcoords(int *Ncoords, char **CoordSystem, double*
 /**
  * Simulate a set of points from the problem of interest.
  *
- * @param $points = Npoints x Ncoords array of coordinates, in the correct system.
+ * @param $points = Npoints x Ncoords array of coordinates, 
+ * in the correct system.
  * @param $Npoints = number of points to generate.
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
  * sides of the rectangle under consideration.
  */
-void RectangleManhattanDistanceSimPoints(double **points, int *Npoints, int *Ncoords, double* parameters)
+void RectangleManhattanDistanceSimPoints(double **points, int *Npoints, 
+                                         int *Ncoords, double* parameters)
 {
     int i, j;
     
@@ -262,7 +265,8 @@ void RectangleManhattanDistanceSimPoints(double **points, int *Npoints, int *Nco
  * sides of the rectangle under consideration.
  * @return The distance between the two points.
  */
-double RectangleManhattanDistanceMetric(int Ncoords, double *point1, double* point2, double* parameters)
+double RectangleManhattanDistanceMetric(int Ncoords, double *point1, 
+                                        double* point2, double* parameters)
 {
     return DistanceManhattan(Ncoords, point1, point2);
 }
