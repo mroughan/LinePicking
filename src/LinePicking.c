@@ -1311,11 +1311,11 @@ void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs,
 
 /** 
  * This function returns the support for the PDF and CDF of a given
- * line picking problem
+ * line picking problem.
  * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
  * @param $prhs[2] The parameters of the problem. 
  * @param $plhs[0] The output, the support for the PDF and CDF for a given 
- * line picking problem
+ * line picking problem.
  */
 void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs, 
                            const mxArray *prhs[], int *result, 
@@ -1342,6 +1342,13 @@ void mexLinePickingSupport(int nlhs, mxArray *plhs[], int nrhs,
                        error_str);
 }
 
+/** 
+ * This function returns the number of a problem given its name.
+ * line picking problem.
+ * @param $prhs[1] The problem name (See mexLinePickingPrintAllProblems).
+ * @param $plhs[0] The output, the number of the problem with a name
+ * that matches the input.
+ */
 void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs, 
                               const mxArray *prhs[], int *result, 
                               char **error_str ,  int cmd)
@@ -1389,6 +1396,16 @@ void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], int nrhs,
     *problem_return_val = problem;
 }
 
+/** 
+ * This function returns all the information the software holds about a given 
+ * problem.
+ * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $plhs[0] The output, the name of the problem.
+ * @param $plhs[1] The output, the description of the problem. 
+ * @param $plhs[2] The output, Number of parameters the problem requires to 
+ * define the shape or region it is defined on. 
+ * @param $plhs[3] The output, a default set of parameters for this problem. 
+ */
 void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs, 
                                  const mxArray *prhs[], int *result, 
                                  char **error_str ,  int cmd)
@@ -1426,6 +1443,9 @@ void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], int nrhs,
 }
 
 
+/** 
+ * This function prints a list of currently implemented problems.
+ */
 void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], int nrhs, 
                                     const mxArray *prhs[], int *result, 
                                     char **error_str ,  int cmd)
