@@ -689,10 +689,10 @@ void LinePickingSimDistances(double *distances, int *N, int *problem,
  */
 
 /**
- * This function is called by .Call from R it takes no parameters and returns a 
- * list of lists detailing the implemented problem set.
- * @return A list of lists detailing the implemented problem set using an R 
- * SEXP pointer.
+ * This function is called via the R .Call mechanism. It returns a
+ * list of lists detailing the currently implemented problem set.
+ * @return A list of lists in an R s-expression detailing the currently 
+ * implemented problem set.
  */
 SEXP rLinePickingAllProblems(void)
 {
@@ -749,12 +749,14 @@ SEXP rLinePickingAllProblems(void)
 }
 
 /**
- * This function is called by .Call from R. It checks that a problem and a 
- * set of parameters are valid. Problems are integers describing possible 
- * geometries for the line picking problem. 
- * This function takes a problem and a parameter vector and checks if valid.
- * @param $sexpProblem see LinePickingPDF
- * @param $sexpParameters numeric vector of parameter describing problem
+ * This function is called via the R .Call mechanism. It checks  
+ * that a set of parameters describing the space of a line picking problem
+ * are valid input for a given problem number.
+ *
+ * @param $sexpProblem an integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters a vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
  * @return exit code. 
  */
 SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)            
@@ -775,16 +777,21 @@ SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters)
     return ScalarInteger(result);                        
 }
 
+
+
 /**
- * This function is called by .Call from R. It returns support for pdf for 
- * given problem and parameters
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a vector of two reals that give the interval 
+ * of the support for the PDF and CDF of a line picking problem 
+ * for a given set of parameters.
  *
- * Given a problem see rLinePickingPDF and parameters gives the range
- * distance t such that the pdf is non-zero
- * @param $sexpProblem problem see LinePickingPDF
- * @param $sexpParameters the parameters necessary to describe 
- * the space given by problem.
- * @return min and max values of support in a 1 x 2 vector
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a 1 x 2 vector of reals containing the 
+ * minimum and maximum values of the support of the PDF and CDF for the 
+ * requested problem with the given parameters.
  */
 SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters)            
 {    
@@ -809,23 +816,22 @@ SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters)
     return sexpt;                        
 }
 
+
 /**
- * This function is called by .Call from R. It returns the pdf for distance 
- * between two random points
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a vector of reals which are the result 
+ * of evaluating the PDF of a given line picking problem at each of
+ * the values in the supplied input values.
  *
- * Give a shape (square, disk, ...) and 
- * parameters defining the shape, this 
- * function will give a the probability density
- * function for the distances
- * between two Poisson distributed points in the space.
- *
- * @param t vector of points to calculate pdf for. 
- * @param problem  The number of the problem for which the PDF 
- * will be calculated.
- * @param parameters the parameter necessary to describe 
- * the space given by problem.
- * @return vector of probability density function values for each
- * element in t.
+ * @param $sexpt A vector of reals contained in an R s-expression
+ * representing the points to evaluate the PDF at. 
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a vector of reals which are the result 
+ * of evaluating the PDF of a given line picking problem at each of
+ * the values supplied in $sexpt.
  */
 SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
 {    
@@ -856,6 +862,22 @@ SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)
 }
 
 
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a vector of reals which are the result 
+ * of evaluating the CDF of a given line picking problem at each of
+ * the values in the supplied input values.
+ *
+ * @param $sexpt A vector of reals contained in an R s-expression
+ * representing the points to evaluate the CDF at. 
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a vector of reals which are the result 
+ * of evaluating the CDF of a given line picking problem at each of
+ * the values supplied in $sexpt.
+ */
 SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
 {    
 	double *t = REAL(sexpt);
@@ -885,6 +907,18 @@ SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)
 }
 
 
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a real which is the mean length of lines  
+ * in a given line picking problem.
+ * 
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a real which is the mean length of 
+ * lines in a given line picking problem.
+ */
 SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters)            
 {    
     
@@ -904,7 +938,18 @@ SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters)
     return ScalarReal(mean);                        
 }
 
-
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a real which is the variance in the
+ * length of lines in a given line picking problem.
+ * 
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a real which is the variance in the 
+ * length of lines in a given line picking problem.
+ */
 SEXP rLinePickingVar(SEXP sexpProblem, SEXP sexpParameters)            
 {    
     
@@ -924,7 +969,25 @@ SEXP rLinePickingVar(SEXP sexpProblem, SEXP sexpParameters)
     return ScalarReal(var);                        
 }
 
-
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a vector of reals representing a set of 
+ * randomly selected points from a given line picking problem.
+ *
+ * 
+ * @param $sexpN An integer in an R s-expression giving the number of 
+ * points to simulate.
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @param $sexpSeed An integer in an R s-expression giving a seed for the
+ * random number generator.
+ * @return An R s-expression containing an M x $sexpN vector of reals 
+ * representing a set of randomly selected points from the given line picking
+ * problem (where M represents the number of dimesnions of the space in which
+ * the line picking problem is embedded.
+ */
 SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem, 
                            SEXP sexpParameters, SEXP sexpSeed)            
 {    
@@ -987,6 +1050,25 @@ SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem,
 }
 
 
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a vector of reals representing the 
+ * lengths of a set of lines randomly selecting from a given line 
+ * picking problem.
+ *
+ * 
+ * @param $sexpN An integer in an R s-expression giving the number of 
+ * lines to simulate.
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @param $sexpSeed An integer in an R s-expression giving a seed for the
+ * random number generator.
+ * @return An R s-expression containing a vector of reals representing the 
+ * lengths of a set of lines randomly selecting from the given line 
+ * picking problem.
+*/
 SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem, 
                               SEXP sexpParameters, SEXP sexpSeed)            
 {    

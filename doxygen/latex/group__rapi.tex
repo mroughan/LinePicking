@@ -12,20 +12,15 @@ S\-E\-X\-P \hyperlink{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}{r\-Line\-P
 \item 
 S\-E\-X\-P \hyperlink{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{r\-Line\-Picking\-P\-D\-F} (S\-E\-X\-P sexpt, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
-\hypertarget{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-C\-D\-F} (S\-E\-X\-P sexpt, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}
-
+S\-E\-X\-P \hyperlink{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}{r\-Line\-Picking\-C\-D\-F} (S\-E\-X\-P sexpt, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
-\hypertarget{group__rapi_ga4316d34063551a4121f4cc0b7959b166}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-Mean} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_ga4316d34063551a4121f4cc0b7959b166}
-
+S\-E\-X\-P \hyperlink{group__rapi_ga4316d34063551a4121f4cc0b7959b166}{r\-Line\-Picking\-Mean} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
-\hypertarget{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-Var} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)}\label{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}
-
+S\-E\-X\-P \hyperlink{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}{r\-Line\-Picking\-Var} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
-\hypertarget{group__rapi_gacf32b79fce86f86cedc7843775e163c3}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-Sim\-Points} (S\-E\-X\-P sexp\-Npoints, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)}\label{group__rapi_gacf32b79fce86f86cedc7843775e163c3}
-
+S\-E\-X\-P \hyperlink{group__rapi_gacf32b79fce86f86cedc7843775e163c3}{r\-Line\-Picking\-Sim\-Points} (S\-E\-X\-P sexp\-Npoints, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)
 \item 
-\hypertarget{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}{S\-E\-X\-P {\bfseries r\-Line\-Picking\-Sim\-Distances} (S\-E\-X\-P sexp\-N, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)}\label{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}
-
+S\-E\-X\-P \hyperlink{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}{r\-Line\-Picking\-Sim\-Distances} (S\-E\-X\-P sexp\-N, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)
 \end{DoxyCompactItemize}
 
 
@@ -40,8 +35,31 @@ S\-E\-X\-P \hyperlink{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{r\-Line\-P
 \item[{void}]{}
 \end{DoxyParamCaption}
 )}}\label{group__rapi_ga02145a395d24bbe929ffa57688c72ef5}
-This function is called by .Call from R it takes no parameters and returns a list of lists detailing the implemented problem set. \begin{DoxyReturn}{Returns}
-A list of lists detailing the implemented problem set using an R S\-E\-X\-P pointer. 
+This function is called via the R .Call mechanism. It returns a list of lists detailing the currently implemented problem set. \begin{DoxyReturn}{Returns}
+A list of lists in an R s-\/expression detailing the currently implemented problem set. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-C\-D\-F@{r\-Line\-Picking\-C\-D\-F}}
+\index{r\-Line\-Picking\-C\-D\-F@{r\-Line\-Picking\-C\-D\-F}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexpt, }
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_gac85aaf9284a29359e0d534ac1641b3f2}
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a vector of reals which are the result of evaluating the C\-D\-F of a given line picking problem at each of the values in the supplied input values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$sexpt} & A vector of reals contained in an R s-\/expression representing the points to evaluate the C\-D\-F at. \\
+\hline
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
+\hline
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An R s-\/expression containing a vector of reals which are the result of evaluating the C\-D\-F of a given line picking problem at each of the values supplied in \$sexpt. 
 \end{DoxyReturn}
 \hypertarget{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Check\-Parameters@{r\-Line\-Picking\-Check\-Parameters}}
 \index{r\-Line\-Picking\-Check\-Parameters@{r\-Line\-Picking\-Check\-Parameters}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
@@ -51,15 +69,37 @@ A list of lists detailing the implemented problem set using an R S\-E\-X\-P poin
 \item[{S\-E\-X\-P}]{sexp\-Parameters}
 \end{DoxyParamCaption}
 )}}\label{group__rapi_ga9b3ba58aca598b6ee8f7239e87f3076c}
-This function is called by .Call from R. It checks that a problem and a set of parameters are valid. Problems are integers describing possible geometries for the line picking problem. This function takes a problem and a parameter vector and checks if valid. 
+This function is called via the R .Call mechanism. It checks that a set of parameters describing the space of a line picking problem are valid input for a given problem number.
+
+
 \begin{DoxyParams}{Parameters}
-{\em \$sexp\-Problem} & see Line\-Picking\-P\-D\-F \\
+{\em \$sexp\-Problem} & an integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
 \hline
-{\em \$sexp\-Parameters} & numeric vector of parameter describing problem \\
+{\em \$sexp\-Parameters} & a vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 exit code. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_ga4316d34063551a4121f4cc0b7959b166}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Mean@{r\-Line\-Picking\-Mean}}
+\index{r\-Line\-Picking\-Mean@{r\-Line\-Picking\-Mean}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Mean (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_ga4316d34063551a4121f4cc0b7959b166}
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a real which is the mean length of lines in a given line picking problem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
+\hline
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An R s-\/expression containing a real which is the mean length of lines in a given line picking problem. 
 \end{DoxyReturn}
 \hypertarget{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-P\-D\-F@{r\-Line\-Picking\-P\-D\-F}}
 \index{r\-Line\-Picking\-P\-D\-F@{r\-Line\-Picking\-P\-D\-F}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
@@ -70,21 +110,71 @@ exit code.
 \item[{S\-E\-X\-P}]{sexp\-Parameters}
 \end{DoxyParamCaption}
 )}}\label{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}
-This function is called by .Call from R. It returns the pdf for distance between two random points
-
-Give a shape (square, disk, ...) and parameters defining the shape, this function will give a the probability density function for the distances between two Poisson distributed points in the space.
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a vector of reals which are the result of evaluating the P\-D\-F of a given line picking problem at each of the values in the supplied input values.
 
 
 \begin{DoxyParams}{Parameters}
-{\em t} & vector of points to calculate pdf for. \\
+{\em \$sexpt} & A vector of reals contained in an R s-\/expression representing the points to evaluate the P\-D\-F at. \\
 \hline
-{\em problem} & The number of the problem for which the P\-D\-F will be calculated. \\
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
 \hline
-{\em parameters} & the parameter necessary to describe the space given by problem. \\
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-vector of probability density function values for each element in t. 
+An R s-\/expression containing a vector of reals which are the result of evaluating the P\-D\-F of a given line picking problem at each of the values supplied in \$sexpt. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Sim\-Distances@{r\-Line\-Picking\-Sim\-Distances}}
+\index{r\-Line\-Picking\-Sim\-Distances@{r\-Line\-Picking\-Sim\-Distances}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Sim\-Distances}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Sim\-Distances (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-N, }
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters, }
+\item[{S\-E\-X\-P}]{sexp\-Seed}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_ga1d8792844b8fb2bfe583d80d7580938d}
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a vector of reals representing the lengths of a set of lines randomly selecting from a given line picking problem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-N} & An integer in an R s-\/expression giving the number of lines to simulate. \\
+\hline
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
+\hline
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
+\hline
+{\em \$sexp\-Seed} & An integer in an R s-\/expression giving a seed for the random number generator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An R s-\/expression containing a vector of reals representing the lengths of a set of lines randomly selecting from the given line picking problem. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_gacf32b79fce86f86cedc7843775e163c3}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Sim\-Points@{r\-Line\-Picking\-Sim\-Points}}
+\index{r\-Line\-Picking\-Sim\-Points@{r\-Line\-Picking\-Sim\-Points}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-Npoints, }
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters, }
+\item[{S\-E\-X\-P}]{sexp\-Seed}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_gacf32b79fce86f86cedc7843775e163c3}
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a vector of reals representing a set of randomly selected points from a given line picking problem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-N} & An integer in an R s-\/expression giving the number of points to simulate. \\
+\hline
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
+\hline
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
+\hline
+{\em \$sexp\-Seed} & An integer in an R s-\/expression giving a seed for the random number generator. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An R s-\/expression containing an M x \$sexp\-N vector of reals representing a set of randomly selected points from the given line picking problem (where M represents the number of dimesnions of the space in which the line picking problem is embedded. 
 \end{DoxyReturn}
 \hypertarget{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Support@{r\-Line\-Picking\-Support}}
 \index{r\-Line\-Picking\-Support@{r\-Line\-Picking\-Support}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
@@ -94,15 +184,35 @@ vector of probability density function values for each element in t.
 \item[{S\-E\-X\-P}]{sexp\-Parameters}
 \end{DoxyParamCaption}
 )}}\label{group__rapi_ga6b30fc1bdbca2a3cc7f5340f1d8b44d5}
-This function is called by .Call from R. It returns support for pdf for given problem and parameters
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a vector of two reals that give the interval of the support for the P\-D\-F and C\-D\-F of a line picking problem for a given set of parameters.
 
-Given a problem see r\-Line\-Picking\-P\-D\-F and parameters gives the range distance t such that the pdf is non-\/zero 
+
 \begin{DoxyParams}{Parameters}
-{\em \$sexp\-Problem} & problem see Line\-Picking\-P\-D\-F \\
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
 \hline
-{\em \$sexp\-Parameters} & the parameters necessary to describe the space given by problem. \\
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-min and max values of support in a 1 x 2 vector 
+An R s-\/expression containing a 1 x 2 vector of reals containing the minimum and maximum values of the support of the P\-D\-F and C\-D\-F for the requested problem with the given parameters. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Var@{r\-Line\-Picking\-Var}}
+\index{r\-Line\-Picking\-Var@{r\-Line\-Picking\-Var}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Var}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Var (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a real which is the variance in the length of lines in a given line picking problem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
+\hline
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An R s-\/expression containing a real which is the variance in the length of lines in a given line picking problem. 
 \end{DoxyReturn}
