@@ -140,7 +140,7 @@ ENDCODELET
 
 # create the code needed for inputting a 2D array (of doubles or integers)
 CODELET INPUT_2D_ARRAY
-
+   some code
 VARIABLES
 ENDCODELET
 
