@@ -45,6 +45,7 @@
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
 #include <R.h> /* only include this if we are compiling for R */
 #include <Rinternals.h>
+#define elements(x)  (sizeof(x) / sizeof(x[0]))
 
 
 /** @defgroup rapi LinePicking [R] API 

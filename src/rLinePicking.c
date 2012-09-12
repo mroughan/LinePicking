@@ -66,6 +66,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "LinePicking.h"
+#include "rLinePicking.h"
 
 
 #ifndef _NOTR
@@ -109,7 +110,9 @@ SEXP rLinePickingAllProblems(void)
   for (problem = 0;  problem  < number_of_problems; problem++)
   {
     /* this vector contains all the data for one problem */
-    Npar = LinePickingFields[problem].DATA->Npar;
+      
+    LinePickingData *data = LinePickingGetData(&problem);  
+    Npar = data->Npar;
     SEXP problemData = PROTECT(allocVector(VECSXP, elements(names)));
     /* this vector contains the parameters */
     SEXP defaultParameters = PROTECT(allocVector(VECSXP, Npar));
@@ -117,8 +120,8 @@ SEXP rLinePickingAllProblems(void)
     
     SET_VECTOR_ELT(result, problem, problemData); 
     
-    SEXP name = mkString(LinePickingFields[problem].DATA->name);
-    SEXP desc = mkString(LinePickingFields[problem].DATA->description);
+    SEXP name = mkString(data->name);
+    SEXP desc = mkString(data->description);
     
     
     SET_VECTOR_ELT(problemData, 0, ScalarInteger(problem));
@@ -130,8 +133,7 @@ SEXP rLinePickingAllProblems(void)
     for(parameter = 0; parameter < Npar; parameter++)
     {
       SET_VECTOR_ELT(defaultParameters, parameter, 
-                     ScalarReal(LinePickingFields[problem].
-                                DATA->DefaultParameters[parameter]));    
+                     ScalarReal(data->DefaultParameters[parameter]));    
     }
     
     
@@ -139,7 +141,7 @@ SEXP rLinePickingAllProblems(void)
     setAttrib(problemData, R_NamesSymbol, list_names); 
   }
   
-  UNPROTECT(2 + 2 * NUMBER_OF_PROBLEMS);
+  UNPROTECT(2 + 2 * number_of_problems);
   return result; 
 }
 

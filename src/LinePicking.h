@@ -65,6 +65,9 @@
 /* return the number of implemented problems */
 void LinePickingNumberOfProblems(int *);
 
+/* return a pointer to the data used by a problem */
+LinePickingData *LinePickingGetData(int *problem);
+
 /* print a list of problems to stdout */
 void LinePickingPrintAllProblems(void);
 

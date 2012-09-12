@@ -165,6 +165,18 @@ void LinePickingProblemNparLookup(int *problem, int *Npar)
 }
 
 
+LinePickingData *LinePickingGetData(int *problem) 
+{
+    
+	if (*problem < 0 || *problem  >= NUMBER_OF_PROBLEMS)
+	{
+		
+		return NULL;
+	}
+    
+	return  LinePickingFields[*problem].DATA;
+}
+
 /**
  * Problems are represented as integers. Given such a name, this finds
  * the problem corresponding to that name, if one exists
