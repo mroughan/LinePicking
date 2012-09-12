@@ -37,85 +37,24 @@
 #include <stdio.h>
 
 #include "LinePickingData.h"
-#include "Square.h"
-#include "Disk.h"
-#include "Hyperball.h"
-#include "Rectangle.h"
-#include "Line.h"	
-#include "Cube.h"
-#include "Sphere.h"
-#include "SphereGeodesic.h"
-#include "PrismGeodesic.h"
-#include "RectangleManhattan.h"
-#include "RectangleMax.h"
-#include "HyperSphere.h"
-#include "HyperSphereGeodesic.h"
-
-
 
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
 
 
-#ifndef _NOTR
-#include <R.h> /* only include this if we are compiling for R */
-#include <Rinternals.h>
-#endif
-
 #ifndef PRINT_STDOUT
 /* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
 #if defined(_MEX) /* MEX */
+#include "mex.h"
 #define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
 #elif defined(_NOTR) /* Standalone code or library */
 #define PRINT_STDOUT(...) fprintf(stdout, __VA_ARGS__)
 #else  /* R */
+#include <R.h> 
+#include <Rinternals.h>
 #define PRINT_STDOUT(...) Rprintf(__VA_ARGS__)
 #endif
 #endif
-
-/* a buffer available globally for errors */
-char global_error_str[256];
-
-typedef struct 
-{
-    double (* PDF)(double, double *); 
-    double (* CDF)(double, double *);
-    double (* MEAN)(double *);
-    double (* VAR)(double *);
-    void   (* SUPPORT)(double*, double *);
-    void   (* CHECK_PAR)(double*, int *, char *);
-    void   (* NCOORDS)(int *, char **, double *);
-    void   (* SIM_POINTS)(double **, int *, int *, double *);
-    double (* DISTANCE)(int, double *, double *, double *);
-    LinePickingData *DATA; 
-} LinePickingRec;
- 
-
-#define ExpandFields(_x) &_x##DistancePDF,&_x##DistanceCDF,\
-&_x##DistanceMean,&_x##DistanceVar,\
-&_x##DistanceSupport,&_x##DistanceCheckParameters,\
-&_x##DistanceNcoords,&_x##DistanceSimPoints,&_x##DistanceMetric,\
-&_x##DistanceData
-
-LinePickingRec LinePickingFields[] = 
-{ 
-    {ExpandFields(Square)},
-    {ExpandFields(Disk)},
-    {ExpandFields(Hyperball)},
-    {ExpandFields(Rectangle)},
-    {ExpandFields(Line)},
-    {ExpandFields(Cube)},
-    {ExpandFields(Sphere)}, 
-    {ExpandFields(SphereGeodesic)},
-    {ExpandFields(PrismGeodesic)},
-    {ExpandFields(RectangleManhattan)}, 
-    {ExpandFields(RectangleMax)}, 
-    {ExpandFields(HyperSphere)},
-    {ExpandFields(HyperSphereGeodesic)} 
-};
-
-#define elements(x)  (sizeof(x) / sizeof(x[0]))
-#define NUMBER_OF_PROBLEMS elements(LinePickingFields)
 
 
 /** @defgroup api LinePicking [C] API 
@@ -177,181 +116,6 @@ void LinePickingSimPoints(double **points, int *Npoints, int *Ncoords,
 void LinePickingSimDistances(double *distances, int *N, int *problem, 
  			     double* parameters, int *Npar, int *result, 
 			     char **error_str);
-
-
-/** @}*/
-
-#ifndef _NOTR
-
-/** @defgroup rapi LinePicking [R] API 
- *\addtogroup rapi 
- *  @{
- */
-
-/* return a list of all the problems with a description */
-SEXP rLinePickingAllProblems(void);
-
-/* check that a problem and a set of parameters are valid */
-SEXP rLinePickingCheckParameters(SEXP sexpProblem, SEXP sexpParameters);
-
-/* compute support of the density */
-SEXP rLinePickingSupport(SEXP sexpProblem, SEXP sexpParameters);
-
-/* primary function for calculating PDF for any region 
- * through a uniform interface, for multiple t values 
- */
-SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
-
-/* primary function for calculating CDF for any region 
- * through a uniform interface, for multiple t values 
- */
-SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
-
-/* primary function for calculating Mean line length for any region */
-SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters);
-
-/* primary function for calculating Variance of line lengths for any region */
-SEXP rLinePickingVar(SEXP sexpProblem, SEXP sexpParameters);
-
-/* generate a set of points suitable for use in simulating a problem */
-SEXP rLinePickingSimPoints(SEXP sexpNpoints, SEXP sexpProblem, 
-                           SEXP sexpParameters, SEXP sexpSeed);
-
-/* generate a set of distances by simulating a problem */
-SEXP rLinePickingSimDistances(SEXP sexpN, SEXP sexpProblem, 
-                              SEXP sexpParameters, SEXP sexpSeed);            
-
-/** @}*/
-#endif /* _NOTR */
-
-#ifdef _MEX
-#include "mex.h"
-#include "matrix.h"
-
-
-
-typedef struct 
-{
-    void (* CMD)(int nlhs, mxArray *plhs[], 
-                 int nrhs, const mxArray *prhs[], 
-                 int *result, char **error_str, int cmd);
-    char *MatlabCmdName;
-    int InputArgs;
-    int OutputArgs;
-} MatlabCallRec;
-
-
-/* 
- * define ExpandForMatlab in a way that produces function 
- * prototypes when MatlabDefinitions.def is included 
- */
-#ifdef ExpandForMatlab
-#undef ExpandForMatlab
-#endif
-
-#define ExpandForMatlab(_x, _in, _out) void mex##_x (int nlhs, mxArray *plhs[],\
-int nrhs, const mxArray *prhs[], int *result, \
-char **error_str, int cmd);
-
-
-#include "MatlabDefinitions.def"
-
-/* 
- * define ExpandForMatlab in a way that produces an array of  
- * MatlabCallRec structs when MatlabDefinitions.def is included 
- */
-#ifdef ExpandForMatlab
-#undef ExpandForMatlab
-#endif
-#define ExpandForMatlab(_x, _in, _out) { &mex##_x, #_x, _in, _out },
-
-MatlabCallRec MatlabCallList[] =
-{
-#include "MatlabDefinitions.def"
-};
-
-
-#define NUMBER_OF_MATLAB_CMDS elements(MatlabCallList)
-/* 
- * Note the following prototypes are already created by the def file 
- * included above. However doxygen doesn't include them in the
- * documentation unless they are explictly defined
- */
-
-/** @defgroup matlabapi LinePicking [Matlab] API 
- *\addtogroup matlabapi 
- *  @{
- */
-
-
-void mexLinePickingPDF(int nlhs, mxArray *plhs[], 
-                       int nrhs, const mxArray *prhs[], 
-                       int *result, char **error_str, int cmd);
-
-void mexLinePickingCDF(int nlhs, mxArray *plhs[], 
-                       int nrhs, const mxArray *prhs[], 
-                       int *result, char **error_str, int cmd);
-
-void mexLinePickingMean(int nlhs, mxArray *plhs[], 
-                        int nrhs, const mxArray *prhs[], 
-                        int *result, char **error_str, int cmd);
-
-void mexLinePickingVar(int nlhs, mxArray *plhs[], 
-                       int nrhs, const mxArray *prhs[], 
-                       int *result, char **error_str, int cmd);
-
-void mexLinePickingSupport(int nlhs, mxArray *plhs[], 
-                           int nrhs, const mxArray *prhs[], 
-                           int *result, char **error_str, int cmd);
-
-void mexLinePickingProblemLookup(int nlhs, mxArray *plhs[], 
-                                 int nrhs, const mxArray *prhs[], 
-                                 int *result, char **error_str, int cmd);
-
-void mexLinePickingNameLookup(int nlhs, mxArray *plhs[], 
-                              int nrhs, const mxArray *prhs[], 
-                              int *result, char **error_str, int cmd);
-
-void mexLinePickingPrintAllProblems(int nlhs, mxArray *plhs[], 
-                                    int nrhs, const mxArray *prhs[], 
-                                    int *result, char **error_str, int cmd);
-
-void mexLinePickingCheckParameters(int nlhs, mxArray *plhs[], 
-                                   int nrhs, const mxArray *prhs[], 
-                                   int *result, char **error_str, int cmd);
-
-void mexLinePickingAllProblems(int nlhs, mxArray *plhs[], 
-                               int nrhs, const mxArray *prhs[], 
-                               int *result, char **error_str, int cmd);
-
-void mexLinePickingNumberOfProblems(int nlhs, mxArray *plhs[], 
-                                    int nrhs, const mxArray *prhs[], 
-                                    int *result, char **error_str, int cmd);
-
-
-void mexLinePickingSimPoints(int nlhs, mxArray *plhs[], 
-                             int nrhs, const mxArray *prhs[], 
-                             int *result, char **error_str, int cmd);
-
-void mexLinePickingSimDistances(int nlhs, mxArray *plhs[], 
-                                int nrhs, const mxArray *prhs[], 
-                                int *result, char **error_str, int cmd);
-
-/** @}*/
-
-#endif /* _MEX */
-
-
-#ifdef _STANDALONE
-/*
- * bits needed to run this as a stand alone command-line function
- * 
- */
-static void usage_LinePicking();
-static void set_pars_LinePicking(int argc, char *argv[],
-                                 char **, int *, double *, int *);
-int main(int argc, char *argv[]);
-#endif /* _STANDALONE */
 
 
 #endif /* _LINEPICKING_H */

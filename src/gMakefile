@@ -115,7 +115,7 @@ $(STAND_ALONE): %: %.o $(O2)
 	$(CC) $< -o $@ $(O2) -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
-$(MEX): %.$(MATLAB_EXT): %.c $(O2) ${HEADERS} MatlabDefinitions.def
+$(MEX): %.$(MATLAB_EXT): mex%.c $(O2) ${HEADERS} MatlabDefinitions.def
 	$(MX)  $< $(O2) -D_MEX -D_NOTR
 
 # use to see output of preprocessor
