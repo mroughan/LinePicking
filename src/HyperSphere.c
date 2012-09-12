@@ -149,8 +149,9 @@ double HyperSphereDistanceVar(double* parameters)
     double n = ceil(parameters[0]); 
     double r = parameters[1];
     
-    return (pow(2 * r, 2)  *tgamma(n) * tgamma((n / 2.) + 1.)) / 
-                (tgamma(n / 2.) * tgamma(n + 1.));
+    return (pow(2 * r, 2)  *tgamma(n) * tgamma((n / 2.) + 1.))
+	/ (tgamma(n / 2.) * tgamma(n + 1.))
+	- pow(HyperSphereDistanceMean(parameters), 2);
 }
 
 
