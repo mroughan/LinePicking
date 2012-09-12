@@ -1,22 +1,25 @@
-# file defines "codelets", which are little blocks of code from
+# This is the file that defines "codelets", which are little blocks of code from
 # which to construct Matlab MEX functions
 #
-# each "CODELET" corresponds to a particular type of block refered 
+# Each "CODELET" corresponds to a particular type of block refered
 # to in make_mex.pl
-#   -- the main block of code is just written
+#   -- the main block of code is just written (with variable instantiation
 #   -- the VARIABLES block is added to the variables list to be included in the function
 #
-# each $variable is a perl variable created in make_mex.pl
-#    variables are replaced into the code block
-#    note that some variables are notionally inputs the define, but this is 
-#       purely for convenience, to make sure these are set correctly, 
-#       these are not functions, and all $variables, refer to what are
-#       effectively globals variables
-#    there is no checking that the generated code is reasonable, or that assumptions
-#    are correct.
+# The function also contains a perl hash to map between a CODELET block and 
+# the regexp to match the function arguments against
+#
+# Each $variable is a perl variable created in make_mex.pl
+#    Variables are replaced into the code block using simple string interpolation
+#    in perl. Nothing too fancy. Only variables defined in the perl code can be used
+#    (new ones can't be defined here). A list of the main ones is below.
+#    Note that the variables listed at the start of a CODELET block are purely for
+#    convenience at the moment -- they aren't parsed yet.
+#
+#    Note there is no real parsing or checking of code.
 #
 # current variables:
-#   $function_name is the name of the current C function
+#   $function is the name of the current C function
 #
 #   $arg_n is the number of an argument
 #      note that argument 0 is reserved for registering the entry point
@@ -24,29 +27,31 @@
 #      functions created by make_gateways.pl, i.e., the 1st argument of the
 #      C function is labelled 1, and so on
 #
-#   $arg is shorthand for $argument{$function_name}{$arg_n}
+#   $arg is shorthand for $argument{$function}{$arg_n}
 #
-#   $type is shorthand for $types{$function_name}{$arg_n}
+#   $type is shorthand for $types{$function}{$arg_n}
 #
-#   $var_list{$function_name} is a list (in C-syntax) of the
+#   $var_list{$function} is a list (in C-syntax) of the
 #      variables needed by a function to support its input and output
 #      arguments. It is created by instantiating the VARIABLES block
 #      of each required CODELET
 #
-#   $fn_desc{$function_name} is a brief (one line) description of the function
+#   $fn_desc{$function} is a brief (one line) description of the function
 #
+#   $desc{$function}{$arg_n} is a brieft (one line) description of the argument
 #
-#   $desc{$function_name}{$arg_n} is a brieft (one line) description of the argument
+#   $input_arguments{$function} is the collection of code blocks to create
+#          the functions input arguments
 #
-#   $
+#   $output_arguments{$function} is the collection of code blocks to create
+#          the functions output arguments
 #
-#   $
-#
+#   $arg_list{$function} is the list of function arguments in C syntax
 #
 #
 # current_code_blocks
-#    FUNCTION_START
-#    FUNCTION_END
+#    FUNCTION
+#    FUNCTION_H
 #    INPUT_SCALAR
 #    INPUT_STRING
 #    INPUT_1D_ARRAY (of int or double)
@@ -59,16 +64,42 @@
 # could add support other data types, or in-place variables
 #
 
-# create the start of the a MEX function
-CODELET FUNCTION_START($function_name)
+# code to execute related to the CODELETS below
+MATCH
+  $indent = "    ";
+  # create struct to map between the C-code codelets function arguments, and the codelets
+  @supported_types = ('double', 'int'); # list of types that are used in numerical arrays
+  $st = join('|', @supported_types);
+  @codelet_name = (
+		   'STRING',   # includes INPUT_STRING, OUTPUT_STRING
+		   'SCALAR',   # includes INPUT_1D_ARRAY, OUTPUT_1D_ARRAY and
+		               #    INPUT_SCALAR, OUTPUT_SCALAR
+                               #    note we can't tell the difference between a
+                               #    scalar and a vector just by function prototype
+		               #    we tell the difference by looking for a length arg.
+		   '2D_ARRAY', # includes INPUT_2D_ARRAY, OUTPUT_2D_ARRAY
+		  );
+  @codelet_regexp = (
+		     "char\s*\*\*",
+		     "($st)\s*\*",
+		     "($st)\s*\*\*",
+		    );
+  print "show the eval is working\n";
+ENDBLOCK
 
-void mex_FUNCTION_(int nlhs, mxArray *plhs[], 
-                   int nrhs, const mxArray *prhs[],
-		   int *result, char **error_str, int cmd)
+
+# create the start of the a MEX function
+CODELET FUNCTION($function)
+
+/*mex${function} calls $function,  $fn_desc{$function} */
+void mex${function}(int nlhs, mxArray *plhs[], 
+                    int nrhs, const mxArray *prhs[],
+		    int *result, char **error_str, int cmd)
 {
-/*mex_${function_name} calls $function_name,  $fn_desc{$function_name} */
-/*    This function was automagically generated by $version on $today. */
-/*    Edit by hand at your peril! */
+/*    This function was automagically generated by $version
+      on $today.
+      Edit by hand at your peril!
+ */
 
     int i,j; /* counters to be used where needed */
     double tmp; /* a place to store temporary values */
@@ -76,45 +107,52 @@ void mex_FUNCTION_(int nlhs, mxArray *plhs[],
     char buffer[256]; /* a place to store temporary strings, up to 255 chars in length */
 
     /* variables for input and output arguments */
-$var_list{$function_name}
+$var_list{$function}
 
-ENDCODELET
+    /* input arguments */
+$input_arguments{$function}
 
-# finish off the a MEX function
-CODELET FUNCTION_END($function_name)
+    /* output arguments */
+$output_arguments{$function}
 
     /* run the C function */
-    C_FUNCTION_CALL
-} /* end mex_FUNCTION_ */
+    $function($arg_list{$function});
 
-ENDCODELET
+} /* end mex${function} */
+
+ENDBLOCK
+
+
+# create the start of the a MEX function prototype
+CODELET FUNCTION_H($function)
+void mex${function}(int nlhs, mxArray *plhs[], 
+                     int nrhs, const mxArray *prhs[],
+		     int *result, char **error_str, int cmd);
+
+ENDBLOCK
+
 
 # create the code needed for inputting a scalar
-CODELET INPUT_SCALAR($function_name, $arg_n, $arg, $type, $default)
-    /* input parameter $arg_n = $arg, $desc{$function_name}{$arg_n} */
-
-    /* check the argument exists, or create a default value for the argument, if a default is defined */
-
-    $arg = ($type) mxGetScalar(prhs[$arg_n]);
+CODELET INPUT_SCALAR($function, $arg_n, $arg, $type, $default)
+    /* input parameter $arg_n = $arg, $desc{$function}{$arg_n} */
+    *$arg = ($type) mxGetScalar(prhs[$arg_n]);
 
 VARIABLES
-    $type $arg;
-ENDCODELET
+    $type *$arg;
+ENDBLOCK
 
 
 # create the code needed for inputting a string
-CODELET INPUT_STRING($function_name, $arg_n, $arg, $type, $default)
+CODELET INPUT_STRING($function, $arg_n, $arg, $type, $default)
     /*
-     * input parameter $arg_n = $arg, $desc{$function_name}{$arg_n} */
+     * input parameter $arg_n = $arg, $desc{$function}{$arg_n} */
      */
 
-    /* check the argument exists, or create a default value for the argument, if a default is defined */
-
-    /* check it is an char string */
+    /* check argument is an char string */
     if (mxIsChar(prhs[$arg_n]) != 1 || mxGetM(prhs[$arg_n]) != 1)
     {
         sprintf(error_buffer, 
-                "$function_name: Input $arg_n must be a row array of chars.", 
+                "$function: Input $arg_n must be a row array of chars.", 
                 MatlabCallList[cmd].MatlabCmdName);
         mexErrMsgTxt(error_buffer);
     }
@@ -129,41 +167,47 @@ CODELET INPUT_STRING($function_name, $arg_n, $arg, $type, $default)
 VARIABLES
     char *${arg}
     int ${arg}_len, ${arg}_status;
-ENDCODELET
+ENDBLOCK
 
 
 # create the code needed for inputting 1D array (of doubles or integers)
-CODELET INPUT_1D_ARRAY($function_name, $arg_n, $arg, $type)
-
+CODELET INPUT_1D_ARRAY($function, $arg_n, $arg, $type)
+  some code
 VARIABLES
-ENDCODELET
+  $type *$arg;
+ENDBLOCK
 
 # create the code needed for inputting a 2D array (of doubles or integers)
 CODELET INPUT_2D_ARRAY
-   some code
+  some code
 VARIABLES
-ENDCODELET
+  $type **$arg;
+ENDBLOCK
 
 # create the code needed for outputting a scalar (double or integer)
 CODELET OUTPUT_SCALAR
 
 VARIABLES
-ENDCODELET
+
+ENDBLOCK
 
 # create the code needed for outputting a string
 CODELET OUTPUT_STRING
 
 VARIABLES
-ENDCODELET
+
+ENDBLOCK
 
 # create the code needed for outputting a 1D array (of doubles or integers)
 CODELET OUTPUT_1D_ARRAY
 
 VARIABLES
-ENDCODELET
+
+ENDBLOCK
 
 # create the code needed for outputting a 2D array (of doubles or integers)
 CODELET OUTPUT_2D_ARRAY
 
 VARIABLES
-ENDCODELET
+
+ENDBLOCK
