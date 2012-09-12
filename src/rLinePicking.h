@@ -29,15 +29,6 @@
  */
 
 
-
-#include <math.h>
-#include <stdlib.h>
-#include <stdint.h> 
-#include <string.h>
-#include <stdio.h>
-#include "LinePicking.h"
-
-
 #ifndef _R_LINEPICKING_H
 #define _R_LINEPICKING_H
 
@@ -45,8 +36,6 @@
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
 #include <R.h> /* only include this if we are compiling for R */
 #include <Rinternals.h>
-#define elements(x)  (sizeof(x) / sizeof(x[0]))
-
 
 /** @defgroup rapi LinePicking [R] API 
  *\addtogroup rapi 

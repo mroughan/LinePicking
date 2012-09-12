@@ -58,12 +58,7 @@
  * @addtogroup api
  */
 
-
-#include <math.h>
-#include <stdlib.h>
-#include <stdint.h> 
 #include <string.h>
-#include <stdio.h>
 #include <unistd.h>
 #include "LinePicking.h"
 #include "beta.h" 
@@ -165,6 +160,13 @@ void LinePickingProblemNparLookup(int *problem, int *Npar)
 }
 
 
+/**
+ * Helper function returns a pointer to the LinePickingData struct 
+ * associated with a given problem.
+ * @param $problem Represents a problem. 
+ * @return Pointer to the LinePickingData struct associated with 
+ * the given problem, NULL if the problem is not implemented.
+ */
 LinePickingData *LinePickingGetData(int *problem) 
 {
     

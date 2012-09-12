@@ -115,8 +115,8 @@ $(STAND_ALONE): %: %.o $(O2)
 	$(CC) $< -o $@ $(O2) -lm -lstdc++ -D_STANDALONE -D_NOTR
 
 # use to create MEX library for MATLAB
-$(MEX): %.$(MATLAB_EXT): mex%.c $(O2) ${HEADERS} MatlabDefinitions.def
-	$(MX)  $< $(O2) -D_MEX -D_NOTR
+$(MEX): %.$(MATLAB_EXT): mexLinePicking.c $(O2) $(O) ${HEADERS} MatlabDefinitions.def
+	$(MX)  $< $(O2) $(O) -D_MEX -D_NOTR -output $(MEX)
 
 # use to see output of preprocessor
 # gcc -I /usr/local/matlab/extern/include -E -D_NOTR -D_MEX LinePicking.c > tmp

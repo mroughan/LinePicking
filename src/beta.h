@@ -35,6 +35,7 @@
 
 #ifndef PRINT_STDOUT 
 #if defined(_MEX) /* MEX */
+#include "mex.h"
 #define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
 #elif defined(_NOTR) /* Standalone code or library */
 #define PRINT_STDOUT(...) fprintf(stdout, __VA_ARGS__)

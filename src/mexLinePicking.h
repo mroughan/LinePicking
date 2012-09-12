@@ -45,7 +45,6 @@
 #include "mex.h"
 #include "matrix.h"
 
-
 typedef struct 
 {
     void (* CMD)(int nlhs, mxArray *plhs[], 

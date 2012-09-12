@@ -28,26 +28,17 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
-#include <math.h>
-#include <stdlib.h>
-#include <stdint.h> 
-#include <string.h>
-#include <stdio.h>
-
-#include "LinePickingData.h"
-
 #ifndef _LINEPICKING_H
 #define _LINEPICKING_H
-
+#include "LinePickingData.h"
 
 #ifndef PRINT_STDOUT
 /* http://gcc.gnu.org/onlinedocs/cpp/Variadic-Macros.html#Variadic-Macros */
 #if defined(_MEX) /* MEX */
-#include "mex.h"
+#include <mex.h>
 #define PRINT_STDOUT(...) mexPrintf(__VA_ARGS__)
 #elif defined(_NOTR) /* Standalone code or library */
+#include <stdio.h>
 #define PRINT_STDOUT(...) fprintf(stdout, __VA_ARGS__)
 #else  /* R */
 #include <R.h> 

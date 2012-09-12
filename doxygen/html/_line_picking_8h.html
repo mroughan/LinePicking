@@ -82,9 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">LinePicking.h File Reference</div>  </div>
 </div><!--header-->
@@ -95,17 +93,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="_line_picking_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_line_picking_rec.html">LinePickingRec</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_matlab_call_rec.html">MatlabCallRec</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:gab0e3cb9eaef2a9f040f1135eee394f28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gab0e3cb9eaef2a9f040f1135eee394f28">LinePickingNumberOfProblems</a> (int *)</td></tr>
 <tr class="separator:gab0e3cb9eaef2a9f040f1135eee394f28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc38ba0fac3fc19f94ed6278b0d77f0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_line_picking_data.html">LinePickingData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gafc38ba0fac3fc19f94ed6278b0d77f0f">LinePickingGetData</a> (int *problem)</td></tr>
+<tr class="separator:gafc38ba0fac3fc19f94ed6278b0d77f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga1a1c27d3c46da382a0443f810628a8ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga1a1c27d3c46da382a0443f810628a8ac">LinePickingPrintAllProblems</a> (void)</td></tr>
 <tr class="separator:ga1a1c27d3c46da382a0443f810628a8ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadb58de53bac5d2fe684019ce77be9896"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gadb58de53bac5d2fe684019ce77be9896">LinePickingAllProblems</a> (char **names, char **, int *, double **)</td></tr>
@@ -134,63 +127,6 @@ Functions</h2></td></tr>
 <tr class="separator:gad3880c7898c35953c9c55ced33beb222"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gade24923f75c83155e6cf15f3d7d7cb09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#gade24923f75c83155e6cf15f3d7d7cb09">LinePickingSimDistances</a> (double *distances, int *N, int *problem, double *parameters, int *Npar, int *result, char **error_str)</td></tr>
 <tr class="separator:gade24923f75c83155e6cf15f3d7d7cb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga02145a395d24bbe929ffa57688c72ef5"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga02145a395d24bbe929ffa57688c72ef5">rLinePickingAllProblems</a> (void)</td></tr>
-<tr class="separator:ga02145a395d24bbe929ffa57688c72ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga9b3ba58aca598b6ee8f7239e87f3076c">rLinePickingCheckParameters</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
-<tr class="separator:ga9b3ba58aca598b6ee8f7239e87f3076c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga6b30fc1bdbca2a3cc7f5340f1d8b44d5">rLinePickingSupport</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
-<tr class="separator:ga6b30fc1bdbca2a3cc7f5340f1d8b44d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gafe4502dd2e61ac946bfe6543fb38dd39">rLinePickingPDF</a> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
-<tr class="separator:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gac85aaf9284a29359e0d534ac1641b3f2">rLinePickingCDF</a> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
-<tr class="separator:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4316d34063551a4121f4cc0b7959b166"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga4316d34063551a4121f4cc0b7959b166">rLinePickingMean</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
-<tr class="separator:ga4316d34063551a4121f4cc0b7959b166"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gac2d2e36336e7c32427a9e99ccc67d18e">rLinePickingVar</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
-<tr class="separator:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacf32b79fce86f86cedc7843775e163c3"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gacf32b79fce86f86cedc7843775e163c3">rLinePickingSimPoints</a> (SEXP sexpNpoints, SEXP sexpProblem, SEXP sexpParameters, SEXP sexpSeed)</td></tr>
-<tr class="separator:gacf32b79fce86f86cedc7843775e163c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1d8792844b8fb2bfe583d80d7580938d"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga1d8792844b8fb2bfe583d80d7580938d">rLinePickingSimDistances</a> (SEXP sexpN, SEXP sexpProblem, SEXP sexpParameters, SEXP sexpSeed)</td></tr>
-<tr class="separator:ga1d8792844b8fb2bfe583d80d7580938d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga415ab39c370dfeb66324d1a538a8bb7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga415ab39c370dfeb66324d1a538a8bb7b">mexLinePickingPDF</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga415ab39c370dfeb66324d1a538a8bb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga565be7534fefd6e5547869fdcb21b36f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga565be7534fefd6e5547869fdcb21b36f">mexLinePickingCDF</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga565be7534fefd6e5547869fdcb21b36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6fe54a6aa7e3d2e51733dea1a443a1b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga6fe54a6aa7e3d2e51733dea1a443a1b2">mexLinePickingMean</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga6fe54a6aa7e3d2e51733dea1a443a1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaceb40f4eec3174186785fca28818c09f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#gaceb40f4eec3174186785fca28818c09f">mexLinePickingVar</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:gaceb40f4eec3174186785fca28818c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1d58f45751e79cccbc82eedccef460e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#gaa1d58f45751e79cccbc82eedccef460e">mexLinePickingSupport</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:gaa1d58f45751e79cccbc82eedccef460e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8b9723f66253c299cb2bd065c48d1d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga8b9723f66253c299cb2bd065c48d1d11">mexLinePickingProblemLookup</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga8b9723f66253c299cb2bd065c48d1d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga16f5b629e1c765d1e1166a406d67372e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga16f5b629e1c765d1e1166a406d67372e">mexLinePickingNameLookup</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga16f5b629e1c765d1e1166a406d67372e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac6aa898603e0bfeff24f7eb02492641f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#gac6aa898603e0bfeff24f7eb02492641f">mexLinePickingPrintAllProblems</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:gac6aa898603e0bfeff24f7eb02492641f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga517627c493a1789dc8eeebdbeecd8a8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga517627c493a1789dc8eeebdbeecd8a8d">mexLinePickingCheckParameters</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga517627c493a1789dc8eeebdbeecd8a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9566788e47662982902e53d2b80e9cf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga9566788e47662982902e53d2b80e9cf4">mexLinePickingAllProblems</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga9566788e47662982902e53d2b80e9cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3049623df917340a56fa5df6278d06f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga3049623df917340a56fa5df6278d06f6">mexLinePickingNumberOfProblems</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga3049623df917340a56fa5df6278d06f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga339fe5ed825457a410e325d1aac7c1e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga339fe5ed825457a410e325d1aac7c1e5">mexLinePickingSimPoints</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga339fe5ed825457a410e325d1aac7c1e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga055cc9a6e9a046038ebc1d4fbe13cb74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga055cc9a6e9a046038ebc1d4fbe13cb74">mexLinePickingSimDistances</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
-<tr class="separator:ga055cc9a6e9a046038ebc1d4fbe13cb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>main</b> (int argc, char *argv[])</td></tr>
-<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a757681dd88fcf4e33670599d66f4782a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a757681dd88fcf4e33670599d66f4782a"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>global_error_str</b> [256]</td></tr>
-<tr class="separator:a757681dd88fcf4e33670599d66f4782a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2215e439d645c546083e4ca5ededdb1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_line_picking_rec.html">LinePickingRec</a>&#160;</td><td class="memItemRight" valign="bottom"><b>LinePickingFields</b> []</td></tr>
-<tr class="separator:a2215e439d645c546083e4ca5ededdb1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5772ff887efc14e4f5a9df65eb080b04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_matlab_call_rec.html">MatlabCallRec</a>&#160;</td><td class="memItemRight" valign="bottom"><b>MatlabCallList</b> []</td></tr>
-<tr class="separator:a5772ff887efc14e4f5a9df65eb080b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Exposes to matlab and R a set of functions that implement PDF, CDF, mean and variance of the distance between two random points in various geometries. </p>
@@ -198,55 +134,10 @@ char&#160;</td><td class="memItemRight" valign="bottom"><b>global_error_str</b> 
 <dd>
 Matthew Roughan <a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'+'ro'+'ugh'+'an'+'@ad'+'el'+'aid'+'e.'+'edu'+'.a'+'u'; return false;">matth<span style="display: none;">.nosp@m.</span>ew.r<span style="display: none;">.nosp@m.</span>ougha<span style="display: none;">.nosp@m.</span>n@ad<span style="display: none;">.nosp@m.</span>elaid<span style="display: none;">.nosp@m.</span>e.ed<span style="display: none;">.nosp@m.</span>u.au</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>22/09/2012 </dd></dl>
-</div><h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a2215e439d645c546083e4ca5ededdb1e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_line_picking_rec.html">LinePickingRec</a> LinePickingFields[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= </div>
-<div class="line">{ </div>
-<div class="line">    {ExpandFields(Square)},</div>
-<div class="line">    {ExpandFields(Disk)},</div>
-<div class="line">    {ExpandFields(Hyperball)},</div>
-<div class="line">    {ExpandFields(Rectangle)},</div>
-<div class="line">    {ExpandFields(Line)},</div>
-<div class="line">    {ExpandFields(Cube)},</div>
-<div class="line">    {ExpandFields(Sphere)}, </div>
-<div class="line">    {ExpandFields(SphereGeodesic)},</div>
-<div class="line">    {ExpandFields(PrismGeodesic)},</div>
-<div class="line">    {ExpandFields(RectangleManhattan)}, </div>
-<div class="line">    {ExpandFields(RectangleMax)}, </div>
-<div class="line">    {ExpandFields(HyperSphere)},</div>
-<div class="line">    {ExpandFields(HyperSphereGeodesic)} </div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a5772ff887efc14e4f5a9df65eb080b04"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_matlab_call_rec.html">MatlabCallRec</a> MatlabCallList[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
-<div class="line"><span class="preprocessor">#include &quot;MatlabDefinitions.def&quot;</span></div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 12 2012 00:08:48 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 12 2012 20:04:26 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

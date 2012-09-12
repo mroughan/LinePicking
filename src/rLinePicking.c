@@ -58,22 +58,8 @@
  * @addtogroup api
  */
 
-
-#include <math.h>
-#include <stdlib.h>
-#include <stdint.h> 
-#include <string.h>
-#include <stdio.h>
-#include <unistd.h>
 #include "LinePicking.h"
 #include "rLinePicking.h"
-
-
-#ifndef _NOTR
-#include <R.h> /* only include this if we are compiling for R */
-#include <Rinternals.h>
-#endif
-
 
 #ifndef _NOTR
 /*
