@@ -5,7 +5,7 @@
 #
 #   In reads
 #        - the same definitions file as make_mex.pl
-#        - a template file for the .m file (by default named "${base_name}Template_h")
+#        - a template file for the .m file (by default named "Template_m")
 #        - a license file (if needed) to include in the template
 #
 #
@@ -36,7 +36,7 @@ print STDERR "running $version on $today\n";
 
 # get command line options
 sub usage {
-    "Usage: $0 [--help] [--Debug=i] [-t=template_file] -f=input_file.c -b=base_name -l=license_file\n";
+    "Usage: $0 [--help] [--Debug=i] [-t=template_file] [-l=license_file] -f=input_file.def -b=base_name\n";
 }
 
 use Getopt::Long;
@@ -77,7 +77,7 @@ if (!defined($base_name)) {
 
 
 if (!defined($template_file)) {
-  $template_file = "${base_name}Template_m";
+  $template_file = "Template_m";
 }
 print "\$template_file = $template_file\n";
 
