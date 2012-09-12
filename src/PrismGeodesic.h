@@ -35,7 +35,7 @@ extern LinePickingData PrismGeodesicDistanceData;
 
 double PrismGeodesicDistancePDF(double t, double* parameters);
 
-double PrismGeodesicDistanceCDF(double t, double* parameters);;
+double PrismGeodesicDistanceCDF(double t, double* parameters);
 
 double PrismGeodesicDistanceMean(double* parameters);
 
