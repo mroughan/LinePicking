@@ -8,5 +8,14 @@ var searchData=
   ['cubedistancepdf',['CubeDistancePDF',['../_cube_8h.html#a262fe199765102368f353b18c624c65c',1,'Cube.c']]],
   ['cubedistancesimpoints',['CubeDistanceSimPoints',['../_cube_8h.html#a4c30624eb7830602dd4d78cb967c9be1',1,'Cube.c']]],
   ['cubedistancesupport',['CubeDistanceSupport',['../_cube_8h.html#ab6515117628cc8d3e75be8f417ce5787',1,'Cube.c']]],
-  ['cubedistancevar',['CubeDistanceVar',['../_cube_8h.html#ac37d5ff3c99d8637fc414212ac041f18',1,'Cube.c']]]
+  ['cubedistancevar',['CubeDistanceVar',['../_cube_8h.html#ac37d5ff3c99d8637fc414212ac041f18',1,'Cube.c']]],
+  ['cylindricalsurfacedistancecdf',['CylindricalSurfaceDistanceCDF',['../_cylindrical_surface_8h.html#a87cb99abacc93b315975d6e483623057',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancecheckparameters',['CylindricalSurfaceDistanceCheckParameters',['../_cylindrical_surface_8h.html#afc3cf37a1e1141cc7bb7977697df517e',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancemean',['CylindricalSurfaceDistanceMean',['../_cylindrical_surface_8h.html#a545382429eb1caef4ad1b94ea081c5ff',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancemetric',['CylindricalSurfaceDistanceMetric',['../_cylindrical_surface_8h.html#ab8eb6a8fd607e2f9ee3d9c808cb1d5c1',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancencoords',['CylindricalSurfaceDistanceNcoords',['../_cylindrical_surface_8h.html#acc30d303705b59a7f0b7937639298f4d',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancepdf',['CylindricalSurfaceDistancePDF',['../_cylindrical_surface_8h.html#a3c408f0a46b5661588236c25d084ea71',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancesimpoints',['CylindricalSurfaceDistanceSimPoints',['../_cylindrical_surface_8h.html#a4ab275fc10df5941292287d8ce99907b',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancesupport',['CylindricalSurfaceDistanceSupport',['../_cylindrical_surface_8h.html#a057cef2ee76772bf2564d7abe41bb212',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacedistancevar',['CylindricalSurfaceDistanceVar',['../_cylindrical_surface_8h.html#a75ae68f76ede8f66bfae17c1de5b8e6e',1,'CylindricalSurface.c']]]
 ];

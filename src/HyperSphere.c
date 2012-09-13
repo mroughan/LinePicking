@@ -240,6 +240,7 @@ void HyperSphereDistanceNcoords(int *Ncoords, char **CoordSystem,
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[] is the diameter of the hyper-sphere under
  * consideration.
+ * @return The set of points.
  */
 void HyperSphereDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
                                   double* parameters)

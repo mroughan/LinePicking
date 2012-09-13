@@ -150,7 +150,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Implements the CDF of the distance between two random points on the surface of an upright prism (excluding the ends). The distance is measured around the the surface of the prism (i.e., a geodesic). Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000024">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$w</td><td>The distance to calculate the cumulative density for. </td></tr>
@@ -226,7 +226,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The mean distance between two random points on the surface of an upright prism (excluding the ends). </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">Todo:</a></b></dt><dd>re-derive the mean without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000027">Todo:</a></b></dt><dd>re-derive the mean without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
 
 </div>
 </div>
@@ -276,7 +276,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The distance between the two points. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000028">Todo:</a></b></dt><dd>Implement this. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000029">Todo:</a></b></dt><dd>Implement this. </dd></dl>
 
 </div>
 </div>
@@ -314,10 +314,11 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
     <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
-    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the prism under consideration and parameters[1] is the perimeter of the prism under consideration. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of coordinates used given input problem and parameters. </dd></dl>
 
 </div>
 </div>
@@ -345,7 +346,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Implements the PDF of the distance between two random points on the surface of an upright prism (excluding the ends). The distance is measured around the the surface of the prism (i.e., a geodesic). Derived by Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000023">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">Todo:</a></b></dt><dd>Write up the derivation. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$w</td><td>The distance to calculate the density for. </td></tr>
@@ -402,7 +403,7 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000027">Todo:</a></b></dt><dd>Implement this. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The set of points. </dd></dl>
 
 </div>
 </div>
@@ -463,14 +464,14 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The variance of distances between two random points on the surface of an upright prism (excluding the ends). </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">Todo:</a></b></dt><dd>re-derive the variance without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000028">Todo:</a></b></dt><dd>re-derive the variance without using the three part PDF as a basis I am sure a simpler result can be found using a similar methods to that used on the rectangle </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 12 2012 20:04:26 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 13 2012 16:59:06 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

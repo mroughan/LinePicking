@@ -15,7 +15,8 @@
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
+#include <math.h>
+#include <float.h> 
 #include "HyperGeometric.h"
 
 
@@ -52,6 +53,8 @@ double hypergeometric2f1_(double a, double  b, double c, double x, int n)
             (c + (m - 1));
         
         z = z + delta;
+        if ( fabs(delta) < (fabs(z) * DBL_EPSILON))
+            break;
         m = m + 1;
     }
     return z;

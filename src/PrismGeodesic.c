@@ -889,8 +889,10 @@ void PrismGeodesicDistanceCheckParameters(double *parameters, int *result,
  *
  * @param $Ncoords returns the number of coordinates
  * @param $CoordSystem returns a brief description of the coordinate system
- * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * @param $parameters parameters[0] is the length of the prism under 
+ * consideration and parameters[1] is the perimeter of the prism under
+ * consideration.
+ * @return The number of coordinates used given input problem and parameters.
  */
 void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, 
                                   double* parameters) 
@@ -915,7 +917,7 @@ double drand ( double low, double high )
  * @param $parameters $parameters[0] is the length of the prism under 
  * and $parameters[1] is the length of the perimeter of the prism 
  * under consideration.
- * @todo Implement this.
+ * @return The set of points.
  */
 void PrismGeodesicDistanceSimPoints(double **points, int *Npoints, 
                                     int *Ncoords, double* parameters)
@@ -936,10 +938,7 @@ void PrismGeodesicDistanceSimPoints(double **points, int *Npoints,
         points[i][0] = ((parameters[1]/ (2 *M_PI)) * normals[0]) / length;
         points[i][1] = ((parameters[1]/ (2 *M_PI)) * normals[1]) / length;
         points[i][2] = drand(0.0, parameters[0]);
-    }
-
-
-    
+    }    
 }
 
 /**

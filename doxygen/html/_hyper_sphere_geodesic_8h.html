@@ -200,7 +200,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Any error conditions are indicated by placing a value other than 0 in the location pointed to by $result and a message explaining the error is copied in to the location pointed to $error_str The only condition this function needs to check is that the dimesnion of the hyper-sphere consider is at least 1. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>check if the 1-sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>check if the 1-sphere is correct if not we need to either limit the parameter here to 2 or above or branch the code </dd></dl>
 
 </div>
 </div>
@@ -269,12 +269,12 @@ Variables</h2></td></tr>
     <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point. </td></tr>
     <tr><td class="paramname">$points1</td><td>= coordinates of first point. </td></tr>
     <tr><td class="paramname">$points2</td><td>= coordinates of second point. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[1] is the diameter of the hyper-sphere under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the dimension of the hyper-sphere and $parameters[1] is the radius of the hyper-sphere. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The distance between the two points </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Implement this. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>Implement this. </dd></dl>
 
 </div>
 </div>
@@ -312,10 +312,11 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
     <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
-    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the square under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the dimension of the hyper-sphere and $parameters[1] is the radius of the hyper-sphere. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of coordinates used given input problem and parameters. </dd></dl>
 
 </div>
 </div>
@@ -343,7 +344,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Implements the PDF of the distance between two random points on a hyper-sphere measured along a geodesic.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>reference us </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>reference us </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calculate the density for. </td></tr>
@@ -396,10 +397,11 @@ Variables</h2></td></tr>
     <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system. </td></tr>
     <tr><td class="paramname">$Npoints</td><td>= number of points to generate. </td></tr>
     <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[1] is the diameter of the hyper-sphere under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the dimension of the hyper-sphere and $parameters[1] is the radius of the hyper-sphere. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>The set of points. </dd></dl>
 
 </div>
 </div>
@@ -452,7 +454,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Calculates the variance of distances between two random points on a hyper-sphere measured along a geodesic.</p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Implement </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Implement </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$parameters</td><td>$parameters[0] is the dimension of the hyper-sphere and $parameters[1] is the radius of the hyper-sphere. </td></tr>
@@ -466,7 +468,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Sep 12 2012 20:04:25 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Sep 13 2012 16:59:05 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

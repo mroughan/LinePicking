@@ -227,13 +227,16 @@ void CubeDistanceCheckParameters(double *parameters, int *result,
     /* cube, side length parameters[0] */
     *result=0; 
 }
+
+
 /**
  * Returns the number of coordinates used given input problem and parameters.
  *
  * @param $Ncoords returns the number of coordinates
  * @param $CoordSystem returns a brief description of the coordinate system
  * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * the cube under consideration.
+ * @return The number of coordinates used given input problem and parameters.
  */
 void CubeDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
 {
@@ -250,6 +253,7 @@ void CubeDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters parameters[0] is the length of the sides of 
  * the cube under consideration.
+ * @return The set of points.
  */
 void CubeDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
                            double* parameters)

@@ -264,8 +264,8 @@ void RectangleDistanceCheckParameters(double *parameters, int *result,
  *
  * @param $Ncoords returns the number of coordinates
  * @param $CoordSystem returns a brief description of the coordinate system
- * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
+ * sides of the rectangle under consideration.
  */
 void RectangleDistanceNcoords(int *Ncoords, char **CoordSystem, 
                               double* parameters) 

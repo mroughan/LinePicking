@@ -1,0 +1,239 @@
+\hypertarget{_cylindrical_surface_8h}{\section{Cylindrical\-Surface.\-h File Reference}
+\label{_cylindrical_surface_8h}\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}}
+}
+
+
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a cylindrical surface.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{_cylindrical_surface_8h_a3c408f0a46b5661588236c25d084ea71}{Cylindrical\-Surface\-Distance\-P\-D\-F} (double t, double $\ast$parameters)
+\item 
+double \hyperlink{_cylindrical_surface_8h_a87cb99abacc93b315975d6e483623057}{Cylindrical\-Surface\-Distance\-C\-D\-F} (double t, double $\ast$parameters)
+\item 
+double \hyperlink{_cylindrical_surface_8h_a545382429eb1caef4ad1b94ea081c5ff}{Cylindrical\-Surface\-Distance\-Mean} (double $\ast$parameters)
+\item 
+double \hyperlink{_cylindrical_surface_8h_a75ae68f76ede8f66bfae17c1de5b8e6e}{Cylindrical\-Surface\-Distance\-Var} (double $\ast$parameters)
+\item 
+void \hyperlink{_cylindrical_surface_8h_a057cef2ee76772bf2564d7abe41bb212}{Cylindrical\-Surface\-Distance\-Support} (double $\ast$t, double $\ast$parameters)
+\item 
+void \hyperlink{_cylindrical_surface_8h_afc3cf37a1e1141cc7bb7977697df517e}{Cylindrical\-Surface\-Distance\-Check\-Parameters} (double $\ast$parameters, int $\ast$result, char $\ast$error\-\_\-str)
+\item 
+void \hyperlink{_cylindrical_surface_8h_acc30d303705b59a7f0b7937639298f4d}{Cylindrical\-Surface\-Distance\-Ncoords} (int $\ast$Ncoords, char $\ast$$\ast$Coord\-System, double $\ast$parameters)
+\item 
+void \hyperlink{_cylindrical_surface_8h_a4ab275fc10df5941292287d8ce99907b}{Cylindrical\-Surface\-Distance\-Sim\-Points} (double $\ast$$\ast$points, int $\ast$Npoints, int $\ast$Ncoords, double $\ast$parameters)
+\item 
+double \hyperlink{_cylindrical_surface_8h_ab8eb6a8fd607e2f9ee3d9c808cb1d5c1}{Cylindrical\-Surface\-Distance\-Metric} (int Ncoords, double $\ast$point1, double $\ast$point2, double $\ast$parameters)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_cylindrical_surface_8h_a309381974b2bffa9bf24347fec8c0ae2}{\hyperlink{struct_line_picking_data}{Line\-Picking\-Data} {\bfseries Cylindrical\-Surface\-Distance\-Data}}\label{_cylindrical_surface_8h_a309381974b2bffa9bf24347fec8c0ae2}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to provide P\-D\-F, C\-D\-F, mean and variance of the distance between two random points on a cylindrical surface. \begin{DoxyAuthor}{Author}
+Eric Parsonage \href{mailto:eric.parsonage@adelaide.edu.au}{\tt eric.\-parsonage@adelaide.\-edu.\-au} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+22/09/2012 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\hypertarget{_cylindrical_surface_8h_a87cb99abacc93b315975d6e483623057}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-C\-D\-F@{Cylindrical\-Surface\-Distance\-C\-D\-F}}
+\index{Cylindrical\-Surface\-Distance\-C\-D\-F@{Cylindrical\-Surface\-Distance\-C\-D\-F}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Cylindrical\-Surface\-Distance\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{w, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_a87cb99abacc93b315975d6e483623057}
+Implements the C\-D\-F of the distance between two random points on a cylindrical surface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$w} & The distance to calculate the cumulative density for. \\
+\hline
+{\em \$t} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cumulative density at \$w. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Implement. \end{DoxyRefDesc}
+\hypertarget{_cylindrical_surface_8h_afc3cf37a1e1141cc7bb7977697df517e}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Check\-Parameters@{Cylindrical\-Surface\-Distance\-Check\-Parameters}}
+\index{Cylindrical\-Surface\-Distance\-Check\-Parameters@{Cylindrical\-Surface\-Distance\-Check\-Parameters}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Check\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void Cylindrical\-Surface\-Distance\-Check\-Parameters (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_afc3cf37a1e1141cc7bb7977697df517e}
+Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as the calling function checks that the supplied parameters are positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+{\em \$result} & Pointer to storage for an integer indicating any errors in the supplied parameters. \\
+\hline
+{\em \$error\-\_\-str} & Pointer to storage for a message explaining any errors in the supplied parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Any error conditions are indicated by placing a value other than 0 in the location pointed to by \$result and a message explaining the error is copied in to the location pointed to \$error\-\_\-str 
+\end{DoxyReturn}
+\hypertarget{_cylindrical_surface_8h_a545382429eb1caef4ad1b94ea081c5ff}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Mean@{Cylindrical\-Surface\-Distance\-Mean}}
+\index{Cylindrical\-Surface\-Distance\-Mean@{Cylindrical\-Surface\-Distance\-Mean}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}double Cylindrical\-Surface\-Distance\-Mean (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_a545382429eb1caef4ad1b94ea081c5ff}
+Calculates the mean distance between two random points on a cylindrical surface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The mean distance between two random points on a cylindrical surface. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Implement. \end{DoxyRefDesc}
+\hypertarget{_cylindrical_surface_8h_ab8eb6a8fd607e2f9ee3d9c808cb1d5c1}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Metric@{Cylindrical\-Surface\-Distance\-Metric}}
+\index{Cylindrical\-Surface\-Distance\-Metric@{Cylindrical\-Surface\-Distance\-Metric}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Metric}]{\setlength{\rightskip}{0pt plus 5cm}double Cylindrical\-Surface\-Distance\-Metric (
+\begin{DoxyParamCaption}
+\item[{int}]{Ncoords, }
+\item[{double $\ast$}]{point1, }
+\item[{double $\ast$}]{point2, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_ab8eb6a8fd607e2f9ee3d9c808cb1d5c1}
+Calculate distance (using correct metric) between 2 points.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
+\hline
+{\em \$points1} & = coordinates of first point. \\
+\hline
+{\em \$points2} & = coordinates of second point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} and \$parameters\mbox{[}1\mbox{]} are the lengths of the sides of the cylindrical surface under consideration. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the two points. 
+\end{DoxyReturn}
+\hypertarget{_cylindrical_surface_8h_acc30d303705b59a7f0b7937639298f4d}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Ncoords@{Cylindrical\-Surface\-Distance\-Ncoords}}
+\index{Cylindrical\-Surface\-Distance\-Ncoords@{Cylindrical\-Surface\-Distance\-Ncoords}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Ncoords}]{\setlength{\rightskip}{0pt plus 5cm}void Cylindrical\-Surface\-Distance\-Ncoords (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{Ncoords, }
+\item[{char $\ast$$\ast$}]{Coord\-System, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_acc30d303705b59a7f0b7937639298f4d}
+Returns the number of coordinates used given input problem and parameters.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-Ncoords} & returns the number of coordinates \\
+\hline
+{\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_cylindrical_surface_8h_a3c408f0a46b5661588236c25d084ea71}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-P\-D\-F@{Cylindrical\-Surface\-Distance\-P\-D\-F}}
+\index{Cylindrical\-Surface\-Distance\-P\-D\-F@{Cylindrical\-Surface\-Distance\-P\-D\-F}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Cylindrical\-Surface\-Distance\-P\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_a3c408f0a46b5661588236c25d084ea71}
+Implements the P\-D\-F of the distance between two random points on a cylindrical surface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & The distance to calculate the density for. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The density at \$t. 
+\end{DoxyReturn}
+\hypertarget{_cylindrical_surface_8h_a4ab275fc10df5941292287d8ce99907b}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Sim\-Points@{Cylindrical\-Surface\-Distance\-Sim\-Points}}
+\index{Cylindrical\-Surface\-Distance\-Sim\-Points@{Cylindrical\-Surface\-Distance\-Sim\-Points}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Cylindrical\-Surface\-Distance\-Sim\-Points (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{points, }
+\item[{int $\ast$}]{Npoints, }
+\item[{int $\ast$}]{Ncoords, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_a4ab275fc10df5941292287d8ce99907b}
+Simulate a set of points from the problem of interest.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$points} & = Npoints x Ncoords array of coordinates, in the correct system. \\
+\hline
+{\em \$\-Npoints} & = number of points to generate. \\
+\hline
+{\em \$\-Ncoords} & = number of coordinates for each point. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_cylindrical_surface_8h_a057cef2ee76772bf2564d7abe41bb212}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Support@{Cylindrical\-Surface\-Distance\-Support}}
+\index{Cylindrical\-Surface\-Distance\-Support@{Cylindrical\-Surface\-Distance\-Support}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Cylindrical\-Surface\-Distance\-Support (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_a057cef2ee76772bf2564d7abe41bb212}
+Calculates the support for the P\-D\-F and C\-D\-F of the distance between two random points on a cylindrical surface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & Pointer to storage for lower and upper ends of the support for the P\-D\-F and C\-D\-F of the distance between two random points on a cylindrical surface. \\
+\hline
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower end of the interval is returned in \$t\mbox{[}0\mbox{]} and the upper end of the interval is returned in \$t\mbox{[}1\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{_cylindrical_surface_8h_a75ae68f76ede8f66bfae17c1de5b8e6e}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Var@{Cylindrical\-Surface\-Distance\-Var}}
+\index{Cylindrical\-Surface\-Distance\-Var@{Cylindrical\-Surface\-Distance\-Var}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
+\subsubsection[{Cylindrical\-Surface\-Distance\-Var}]{\setlength{\rightskip}{0pt plus 5cm}double Cylindrical\-Surface\-Distance\-Var (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{parameters}
+\end{DoxyParamCaption}
+)}}\label{_cylindrical_surface_8h_a75ae68f76ede8f66bfae17c1de5b8e6e}
+Calculates the variance of distances between two random points on a cylindrical surface.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The variance of distances between two random points on a cylindrical surface. 
+\end{DoxyReturn}

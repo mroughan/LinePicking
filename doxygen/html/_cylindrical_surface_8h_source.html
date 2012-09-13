@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LinePicking: Hyperball.h Source File</title>
+<title>LinePicking: CylindricalSurface.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -82,10 +82,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Hyperball.h</div>  </div>
+<div class="title">CylindricalSurface.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_hyperball_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
+<a href="_cylindrical_surface_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *     Copyright 2012 Eric Parsonage &lt;eric.parsonage@adelaide.edu.au&gt;</span></div>
@@ -103,33 +103,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> *     along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifndef _HYPERBALL_H</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _HYPERBALL_H</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifndef _CYLINDRICAL_SURFACE_H</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define _CYLINDRICAL_SURFACE_H</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct_line_picking_data.html">LinePickingData</a> HyperballDistanceData;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">double</span> HyperballDistancePDF(<span class="keywordtype">double</span> t, <span class="keywordtype">double</span>* parameters);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">double</span> HyperballDistanceCDF(<span class="keywordtype">double</span> t, <span class="keywordtype">double</span>* parameters);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">double</span> HyperballDistanceMean(<span class="keywordtype">double</span>* parameters);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">double</span> HyperballDistanceVar(<span class="keywordtype">double</span>* parameters);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> HyperballDistanceSupport(<span class="keywordtype">double</span> *t, <span class="keywordtype">double</span> *parameters);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keywordtype">void</span> HyperballDistanceCheckParameters(<span class="keywordtype">double</span> *parameters, <span class="keywordtype">int</span> *result, </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                      <span class="keywordtype">char</span> *error_str);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">void</span> HyperballDistanceNcoords(<span class="keywordtype">int</span> *Ncoords, <span class="keywordtype">char</span> **CoordSystem, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <a class="code" href="struct_line_picking_data.html">LinePickingData</a> CylindricalSurfaceDistanceData;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">double</span> CylindricalSurfaceDistancePDF(<span class="keywordtype">double</span> t, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">double</span> CylindricalSurfaceDistanceCDF(<span class="keywordtype">double</span> t, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keywordtype">double</span> CylindricalSurfaceDistanceMean(<span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keywordtype">double</span> CylindricalSurfaceDistanceVar(<span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> CylindricalSurfaceDistanceSupport(<span class="keywordtype">double</span> *t, <span class="keywordtype">double</span> *parameters);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> CylindricalSurfaceDistanceCheckParameters(<span class="keywordtype">double</span> *parameters, <span class="keywordtype">int</span> *result, </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                                <span class="keywordtype">char</span> *error_str);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keywordtype">void</span> CylindricalSurfaceDistanceNcoords(<span class="keywordtype">int</span> *Ncoords, <span class="keywordtype">char</span> **CoordSystem, </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                       <span class="keywordtype">double</span>* parameters);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> HyperballDistanceSimPoints(<span class="keywordtype">double</span> **points, <span class="keywordtype">int</span> *Npoints, <span class="keywordtype">int</span> *Ncoords, <span class="keywordtype">double</span>* parameters);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">double</span> HyperballDistanceMetric(<span class="keywordtype">int</span> Ncoords, <span class="keywordtype">double</span> *point1, <span class="keywordtype">double</span>* point2, <span class="keywordtype">double</span>* parameters);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _HYPERBALL_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">void</span> CylindricalSurfaceDistanceSimPoints(<span class="keywordtype">double</span> **points, <span class="keywordtype">int</span> *Npoints, </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                         <span class="keywordtype">int</span> *Ncoords, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">double</span> CylindricalSurfaceDistanceMetric(<span class="keywordtype">int</span> Ncoords, <span class="keywordtype">double</span> *point1, </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                        <span class="keywordtype">double</span>* point2, <span class="keywordtype">double</span>* parameters);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _CYLINDRICAL_SURFACE_H */</span><span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -131,7 +131,7 @@ Calculate distance (using correct metric) between 2 points.
 \hline
 {\em \$points2} & = coordinates of second point. \\
 \hline
-{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the line under consideration. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -154,9 +154,12 @@ Returns the number of coordinates used given input problem and parameters.
 \hline
 {\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the line under consideration. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of coordinates used given input problem and parameters. 
+\end{DoxyReturn}
 \hypertarget{_line_8h_a6bb12bb4fc56025afe7ad1e4c021dd89}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-P\-D\-F@{Line\-Distance\-P\-D\-F}}
 \index{Line\-Distance\-P\-D\-F@{Line\-Distance\-P\-D\-F}!Line.h@{Line.\-h}}
 \subsubsection[{Line\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Line\-Distance\-P\-D\-F (
@@ -200,9 +203,12 @@ Simulate a set of points from the problem of interest.
 \hline
 {\em \$\-Ncoords} & = number of coordinates for each point \\
 \hline
-{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the sides of. the square under consideration. \\
+{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the line under consideration. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The set of points. 
+\end{DoxyReturn}
 \hypertarget{_line_8h_a114af70fcbf9b173fba90b7a3c1c25a5}{\index{Line.\-h@{Line.\-h}!Line\-Distance\-Support@{Line\-Distance\-Support}}
 \index{Line\-Distance\-Support@{Line\-Distance\-Support}!Line.h@{Line.\-h}}
 \subsubsection[{Line\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Distance\-Support (

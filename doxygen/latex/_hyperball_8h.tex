@@ -131,7 +131,7 @@ Calculate distance (using correct metric) between 2 points.
 \hline
 {\em \$points2} & = coordinates of second point. \\
 \hline
-{\em \$parameters} & \$parameters\mbox{[}1\mbox{]} is the diameter of the hyper-\/ball under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -154,9 +154,12 @@ Returns the number of coordinates used given input problem and parameters.
 \hline
 {\em \$\-Coord\-System} & returns a brief description of the coordinate system \\
 \hline
-{\em \$parameters} & parameters\mbox{[}0\mbox{]} is the length of the sides of the square under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of coordinates used given input problem and parameters. 
+\end{DoxyReturn}
 \hypertarget{_hyperball_8h_ab8854ddf93c84fa6af1cb6629a5de99d}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-P\-D\-F@{Hyperball\-Distance\-P\-D\-F}}
 \index{Hyperball\-Distance\-P\-D\-F@{Hyperball\-Distance\-P\-D\-F}!Hyperball.h@{Hyperball.\-h}}
 \subsubsection[{Hyperball\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Hyperball\-Distance\-P\-D\-F (
@@ -203,11 +206,14 @@ Simulate a set of points from the problem of interest.
 \hline
 {\em \$\-Npoints} & = number of points to generate. \\
 \hline
-{\em \$\-Ncoords} & = number of coordinates for each point. \\
+{\em \$\-Ncoords} & = number of coo1rdinates for each point. \\
 \hline
-{\em \$parameters} & \$parameters\mbox{[}\mbox{]} is the diameter of the hyper-\/ball under consideration. \\
+{\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the dimension of the hyper-\/ball and \$parameters\mbox{[}1\mbox{]} is the radius of the hyper-\/ball. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The set of points. 
+\end{DoxyReturn}
 \hypertarget{_hyperball_8h_af7c90fe861ac1ab54c956b79b995b817}{\index{Hyperball.\-h@{Hyperball.\-h}!Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}}
 \index{Hyperball\-Distance\-Support@{Hyperball\-Distance\-Support}!Hyperball.h@{Hyperball.\-h}}
 \subsubsection[{Hyperball\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Hyperball\-Distance\-Support (

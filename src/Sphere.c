@@ -157,8 +157,9 @@ void SphereDistanceCheckParameters(double *parameters, int *result,
  *
  * @param $Ncoords returns the number of coordinates
  * @param $CoordSystem returns a brief description of the coordinate system
- * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * @param $parameters $parameters[0] is the diameter of the sphere under
+ * consideration.
+ * @return The number of coordinates used given input problem and parameters.
  */
 void SphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters) 
 {
@@ -175,6 +176,7 @@ void SphereDistanceNcoords(int *Ncoords, char **CoordSystem, double* parameters)
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the diameter of the sphere under
  * consideration.
+ * @return The set of points.
  */
 void SphereDistanceSimPoints(double **points, int *Npoints, 
                              int *Ncoords, double* parameters)

@@ -218,8 +218,9 @@ void HyperballDistanceCheckParameters(double *parameters, int *result,
  *
  * @param $Ncoords returns the number of coordinates
  * @param $CoordSystem returns a brief description of the coordinate system
- * @param $parameters parameters[0] is the length of the sides of 
- * the square under consideration.
+ * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
+ * $parameters[1] is the radius of the hyper-ball. 
+ * @return The number of coordinates used given input problem and parameters.
  */
 void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem, 
                               double* parameters) 
@@ -234,9 +235,10 @@ void HyperballDistanceNcoords(int *Ncoords, char **CoordSystem,
  * @param $points = Npoints x Ncoords array of coordinates, 
  * in the correct system.
  * @param $Npoints = number of points to generate.
- * @param $Ncoords = number of coordinates for each point.
- * @param $parameters $parameters[] is the diameter of the hyper-ball under
- * consideration.
+ * @param $Ncoords = number of coo1rdinates for each point.
+ * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
+ * $parameters[1] is the radius of the hyper-ball. 
+ * @return The set of points.
  */
 void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords, 
                                 double* parameters)
@@ -276,8 +278,8 @@ void HyperballDistanceSimPoints(double **points, int *Npoints, int *Ncoords,
  * @param $Ncoords = number of coordinates for each point.
  * @param $points1 = coordinates of first point.
  * @param $points2 = coordinates of second point.
- * @param $parameters $parameters[1] is the diameter of the hyper-ball under
- * consideration.
+ * @param $parameters $parameters[0] is the dimension of the hyper-ball and 
+ * $parameters[1] is the radius of the hyper-ball. 
  * @return The distance between the two points.
  */
 double HyperballDistanceMetric(int Ncoords, double *point1, double* point2, 

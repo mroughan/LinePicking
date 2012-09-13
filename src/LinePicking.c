@@ -75,6 +75,7 @@
 #include "RectangleMax.h"
 #include "HyperSphere.h"
 #include "HyperSphereGeodesic.h"
+#include "CylindricalSurface.h"
 
 
 /* a buffer available globally for errors */
@@ -116,7 +117,8 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(RectangleManhattan)}, 
     {ExpandFields(RectangleMax)}, 
     {ExpandFields(HyperSphere)},
-    {ExpandFields(HyperSphereGeodesic)} 
+    {ExpandFields(HyperSphereGeodesic)},
+    {ExpandFields(CylindricalSurface)}
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
