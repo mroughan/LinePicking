@@ -1,17 +1,21 @@
 \subsection{Rectangle-line picking}
 \label{sec:rectangle_line}
 
+Here we consider choosing lines from a rectangle with side lengths $a$
+and $b$, which we order $a \leq b$ (without loss of generality).  We
+also describe the problem by the aspect ratio of the rectangle, i.e.,
+$a \!: \!b$, assuming the length of the diagonal $L=\sqrt{a^2+b^2}$ is
+given. 
 
-Here we consider choosingp lines from a rectangle with side lengths
-$a$ and $b$, which we order $a \leq b$ without loss of generality. 
-We could also describe the problem by the aspect ratio of the
-rectangle, i.e., $a \!: \!b$.
+Chosing random end-points from the rectangle is no harder than for the
+square -- we simply choose (independently) $x_i \sim U(0,b)$, and $y_i
+\sim U(0,a)$. Figure~\ref{fig:rect_eg} shows an example.
 
-Figure~\ref{fig:rect_eg} shows a 2D example, Figure~\ref{fig:rect_pdf}
-shows the PDF for one rectangle, and Figure~\ref{fig:rect_pdf_var}
-shows the PDFs for various rectangles chosen such that $\sqrt{a^2 +
-  b^2} = 1$ to allow comparison (the choice means that the PDFs have
-the same support).
+Figure~\ref{fig:rect_pdf} shows the PDF for the rectangle,
+highlighting the different regions with shaded colours and
+Table~\ref{tab:summary_line} shows the basic statistics, though in
+some places the formulae are too complicated to fit in the table, and
+we only provide references.
 
 \begin{figure}[htbp]
   \begin{center}
@@ -34,8 +38,8 @@ the same support).
       Support            & $t \in [0, L]$ & \\
       PDF                & See \eqref{eqn:rectangle} and \eqref{eqn:rectangle2}   &
                              \cite{b.ghosh51:_random_rect,mathai_geom} \\
-      CDF                & See \eqref{eqn:rectangle_cdf} and \eqref{eqn:rectangle_cdf2} & 
-                             \cite{} \\
+      CDF                & See \eqref{eqn:rectangle_cdf}. & 
+                           \eqref{eqn:rectangle_cdf} \\
       $i$th Moment $m_i$ & First 4 are given in
       \eqref{eq:rect_moments}-\eqref{eq:rect_moments_end}. 
                         & \cite{b.ghosh51:_random_rect} \\
@@ -75,10 +79,7 @@ where
     \end{array} \right. 
   \label{eqn:rectangle2}   
 \end{equation}
-where the rectangle has sides of length $a \leq
-b$. Figure~\ref{fig:rect_pdf} shows these for various cases, chosen
-such that $\sqrt{a^2 + b^2} = 1$ to allow comparison. We label these
-rectangles by their aspect ratio $a: b$.
+where the rectangle has sides of length $a \leq b$.
 
 This is a rather complicated expression, but is easily evaluated
 numerically.  Naldi \cite{m.naldi05:_connec_of_waxman_graph}
@@ -87,12 +88,25 @@ requirements to numerically evaluate that function there hardly seems
 any advantage, though we shall see later that this would have been
 completely appropriate if the region have been a disk.
 
-We can also see that for longer, thinner rectangles, the PDF is
-comprised of two main segments: (i) a part approximating the shape of
-that for the square (though compressed into a short range of values of
-$t$), and (ii) an almost straight component, similar to the PDF for
-line-line picking problem. The reasons for this also seem relatively
-intuitive. 
+Figure~\ref{fig:rect_pdf_var} shows a comparison of the PDFs for
+rectangles with varying aspect ratios, chosen such that $L = \sqrt{a^2
+  + b^2} = 1$ to allow easy comparison. We can see that for longer,
+thinner rectangles, the PDF is comprised of two main segments: (i) a
+part approximating the shape of that for the square (though compressed
+into a short range of values of $t$), and (ii) an almost straight
+component, similar to the PDF for line-line picking problem. The
+reasons for this also seem relatively intuitive.
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.5\columnwidth]
+          {../Matlab/Plots/LinePicking_plot_rect.eps}
+    \caption{PDF of rectangles with various aspect
+              ratios (and fixed $L=1$).}
+    \label{fig:rect_pdf_var}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
 
 We can calculate the limit as $a \rightarrow 0$ to see the PDF for the
 line-line picking problem.  We keep $a^2 + b^2 = L^2$ so that the
@@ -116,22 +130,11 @@ the higher order terms:
 \]
 The result just returns to the line-line picking PDF.
 
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=0.4\columnwidth]
-          {../Matlab/Plots/LinePicking_plot_rect.eps}
-    \label{fig:rect_pdf_var}
-    \caption{PDF of rectangles with various aspect
-              ratios (and fixed $L=1$).}
-  \end{center} 
-\vspace{-4mm}
-\end{figure}
-
 \subsubsection{CDF}
 
-The CDF can be derived by integration of the PDF, but we derived it
-here more directly by 
-...
+The PDF has long been given, but as far as we can tell, the CDF has
+never been written explicitly.  The CDF can be derived by integration
+of the PDF, but we derived it here more directly by ...
 
 \begin{equation}
   G^{\rm rect}_{a,b}(t)  = \left\{
@@ -189,4 +192,5 @@ the line-length distribution for the rectangle
 where $L = \sqrt{a^2 + b^2}$, from which we can derive the special
 cases of the square and line (though these can also be derived
 directly). Obviously central moments such as mean, and variance, etc.,
-can be derived from these. 
+can be derived immediately from these, though the formulae are
+complicated and unelightening.
