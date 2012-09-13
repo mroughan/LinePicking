@@ -59,8 +59,6 @@ Implements the C\-D\-F of the distance between two random points on a cylindrica
 \begin{DoxyParams}{Parameters}
 {\em \$w} & The distance to calculate the cumulative density for. \\
 \hline
-{\em \$t} & The distance to calculate the density for. \\
-\hline
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
 \hline
 \end{DoxyParams}
@@ -157,6 +155,9 @@ Returns the number of coordinates used given input problem and parameters.
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of coordinates used given input problem and parameters. 
+\end{DoxyReturn}
 \hypertarget{_cylindrical_surface_8h_a3c408f0a46b5661588236c25d084ea71}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-P\-D\-F@{Cylindrical\-Surface\-Distance\-P\-D\-F}}
 \index{Cylindrical\-Surface\-Distance\-P\-D\-F@{Cylindrical\-Surface\-Distance\-P\-D\-F}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
 \subsubsection[{Cylindrical\-Surface\-Distance\-P\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}double Cylindrical\-Surface\-Distance\-P\-D\-F (
@@ -200,6 +201,9 @@ Simulate a set of points from the problem of interest.
 {\em \$parameters} & \$parameters\mbox{[}0\mbox{]} is the length of the cylindrical surface and \$parameters\mbox{[}1\mbox{]} is the radius. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The set of points. 
+\end{DoxyReturn}
 \hypertarget{_cylindrical_surface_8h_a057cef2ee76772bf2564d7abe41bb212}{\index{Cylindrical\-Surface.\-h@{Cylindrical\-Surface.\-h}!Cylindrical\-Surface\-Distance\-Support@{Cylindrical\-Surface\-Distance\-Support}}
 \index{Cylindrical\-Surface\-Distance\-Support@{Cylindrical\-Surface\-Distance\-Support}!CylindricalSurface.h@{Cylindrical\-Surface.\-h}}
 \subsubsection[{Cylindrical\-Surface\-Distance\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Cylindrical\-Surface\-Distance\-Support (
@@ -237,3 +241,5 @@ Calculates the variance of distances between two random points on a cylindrical 
 \begin{DoxyReturn}{Returns}
 The variance of distances between two random points on a cylindrical surface. 
 \end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000005}{Todo}]Implement. \end{DoxyRefDesc}

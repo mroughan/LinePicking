@@ -83,10 +83,10 @@ HEADERS = $(shell ls *.h)
 
 MEX = LinePicking.$(MATLAB_EXT)
 O = LinePicking.o
-O2 =  Rand.o beta.o metrics.o Square.o Disk.o Hyperball.o Rectangle.o Line.o Cube.o Sphere.o \
- SphereGeodesic.o PrismGeodesic.o RectangleManhattan.o RectangleMax.o \
- HyperSphere.o HyperSphereGeodesic.o HyperGeometric.o CylindricalSurface.o \
- EllipticF.o EllipticK.o
+O2 =  Rand.o beta.o metrics.o Square.o Disk.o Hyperball.o Rectangle.o Line.o \
+ Cube.o Sphere.o SphereGeodesic.o PrismGeodesic.o RectangleManhattan.o \
+ RectangleMax.o HyperSphere.o HyperSphereGeodesic.o HyperGeometric.o \
+ CylindricalSurface.o EllipticF.o EllipticK.o CylindricalSurfaceGeodesic.o
 SO = LinePicking.so beta.so metrics.so
 STAND_ALONE = LinePicking 
 

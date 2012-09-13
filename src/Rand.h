@@ -40,4 +40,5 @@
 
 void rand_normal(int N, double *normals);
 
+
 #endif

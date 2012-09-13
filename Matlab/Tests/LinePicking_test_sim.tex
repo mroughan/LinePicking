@@ -23,6 +23,8 @@
         \subfloat[3-sphere geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3sphere_geodesic.eps}}
         \subfloat[prism geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_prism_geodesic.eps}}
 
+        \subfloat[cylindrical surface]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylindrical surface.eps}}
+        \subfloat[cylindrical surface geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylindrical surface geodesic.eps}}
     \caption{\label{fig:sim_vs_exact}Comparisons of exactly calculated
       distributions and the distributions obtained by simulation. 
       1000000 simulated lines were used to draw the estimated PDF,
@@ -54,6 +56,8 @@ rectangle Manhattan (1:2) &   0.3333 &         0.3335 &   0.0309 &         0.030
           sphere geodesic &   0.7854 &         0.7857 &   0.1169 &         0.1170 \\
         3-sphere geodesic &   0.7854 &         0.7854 &   0.0806 &         0.0807 \\
            prism geodesic &   0.3645 &         0.3645 &   0.0436 &         0.0437 \\
+      cylindrical surface &  -1.0000 &         0.4479 &  -1.0000 &         0.0327 \\
+cylindrical surface geodesic &   0.4426 &         0.4426 &  -1.0000 &         0.0344 \\
   \end{tabular}
   \caption{Means and variances calculated exactly, and approximated by simulation.}
   \label{tab:mean_var_estimates}
@@ -85,6 +89,8 @@ rectangle Manhattan (1:2) & 0.9999999887 \\
           sphere geodesic & 1.0000000000 \\
         3-sphere geodesic & 1.0000000000 \\
            prism geodesic & 0.9999999249 \\
+      cylindrical surface & 0.9999977978 \\
+cylindrical surface geodesic & 0.9999996398 \\
   \end{tabular}
   \caption{Numerically integrated PDFs (integrated using Matlab's {\tt quadgk} function)}
   \label{tab:numerical_pdf_sum}

@@ -19,5 +19,15 @@ var searchData=
   ['cylindricalsurfacedistancepdf',['CylindricalSurfaceDistancePDF',['../_cylindrical_surface_8h.html#a3c408f0a46b5661588236c25d084ea71',1,'CylindricalSurface.c']]],
   ['cylindricalsurfacedistancesimpoints',['CylindricalSurfaceDistanceSimPoints',['../_cylindrical_surface_8h.html#a4ab275fc10df5941292287d8ce99907b',1,'CylindricalSurface.c']]],
   ['cylindricalsurfacedistancesupport',['CylindricalSurfaceDistanceSupport',['../_cylindrical_surface_8h.html#a057cef2ee76772bf2564d7abe41bb212',1,'CylindricalSurface.c']]],
-  ['cylindricalsurfacedistancevar',['CylindricalSurfaceDistanceVar',['../_cylindrical_surface_8h.html#a75ae68f76ede8f66bfae17c1de5b8e6e',1,'CylindricalSurface.c']]]
+  ['cylindricalsurfacedistancevar',['CylindricalSurfaceDistanceVar',['../_cylindrical_surface_8h.html#a75ae68f76ede8f66bfae17c1de5b8e6e',1,'CylindricalSurface.c']]],
+  ['cylindricalsurfacegeodesic_2eh',['CylindricalSurfaceGeodesic.h',['../_cylindrical_surface_geodesic_8h.html',1,'']]],
+  ['cylindricalsurfacegeodesicdistancecdf',['CylindricalSurfaceGeodesicDistanceCDF',['../_cylindrical_surface_geodesic_8h.html#a3dae4ac1d92551a685e6ea0faa08c3a4',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancecheckparameters',['CylindricalSurfaceGeodesicDistanceCheckParameters',['../_cylindrical_surface_geodesic_8h.html#afe04f2f761ad1867b57fd08bc7bb66d0',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancemean',['CylindricalSurfaceGeodesicDistanceMean',['../_cylindrical_surface_geodesic_8h.html#a19c13f8592dcc528d0aaef9ea939ea9e',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancemetric',['CylindricalSurfaceGeodesicDistanceMetric',['../_cylindrical_surface_geodesic_8h.html#a464625033216c9b60b3745b808c3f0a8',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancencoords',['CylindricalSurfaceGeodesicDistanceNcoords',['../_cylindrical_surface_geodesic_8h.html#aa4f19d022d0a4fad7e3e383e83c05b74',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancepdf',['CylindricalSurfaceGeodesicDistancePDF',['../_cylindrical_surface_geodesic_8h.html#a1af7ef997143d1401224d6e90a0e66b7',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancesimpoints',['CylindricalSurfaceGeodesicDistanceSimPoints',['../_cylindrical_surface_geodesic_8h.html#a6c1d9b412352f1fa47b5210ba00a630b',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancesupport',['CylindricalSurfaceGeodesicDistanceSupport',['../_cylindrical_surface_geodesic_8h.html#adaef24e0dfa1ab6fb7ef7fcb093141a2',1,'CylindricalSurfaceGeodesic.c']]],
+  ['cylindricalsurfacegeodesicdistancevar',['CylindricalSurfaceGeodesicDistanceVar',['../_cylindrical_surface_geodesic_8h.html#a6d5d130e133a07607923b92afa5bb1f6',1,'CylindricalSurfaceGeodesic.c']]]
 ];

@@ -67,6 +67,9 @@ test_problems = [...
     {'sphere geodesic', [R], 'sphere geodesic', 'sphere_geodesic'};
     {'hyper-sphere geodesic', [3 R], '3-sphere geodesic', '3sphere_geodesic'};
     {'prism geodesic', [b, a]/sqrt(b^2+(a/2)^2), 'prism geodesic', 'prism_geodesic'};
+    {'cylindrical surface', [b, R]/sqrt(b^2+(R * 2)^2), 'cylindrical surface', 'cylindrical surface'};
+    {'cylindrical surface geodesic', [b, R]/sqrt(b^2+(R * pi)^2), 'cylindrical surface geodesic', 'cylindrical surface geodesic'};
+
 		];
 
 % could porobably add a check of scaling in here as well
