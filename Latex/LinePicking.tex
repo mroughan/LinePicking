@@ -217,9 +217,6 @@ Scaling for CDFs is even simpler, we simply take
 \end{equation}
 
 
-\clearpage
-\input{useful}
-
 \section{Examples}
 \label{sec:known}
 
@@ -227,23 +224,13 @@ We go through a list of examples, some from the literature, and some
 derived here, though derivations are typically delayed until the
 appendices in order to make the flow easy.
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
   \begin{center}
 % Figures generated with ../Matlab/Examples/LinePicking_plot.m
-    \subfloat[\label{fig:rect_density}Density distribution of
-    rectangles, each chosen with a different aspect ratio $a/b$, but
-    fixed diagonal distance $\sqrt{a^2 + b^2} = 1$.]
-      {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_plot_rect.eps}}
-%
-    \subfloat[\label{fig:b_balls}Density distribution of $n$-D balls.]
-      {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_plot_nballs.eps}}
-%
+    \includegraphics[width=0.5\columnwidth]{../Matlab/Plots/LinePicking_plot_fix_area.eps}
 
-    \subfloat[\label{fig:various} Various densities distributions for
-    shapes with area fixed to 1.]
-      {\includegraphics[width=0.33\columnwidth]{../Matlab/Plots/LinePicking_plot_fix_area.eps}}
-
-    \caption{Example distance densities.}
+    \label{fig:various}
+    \caption{Example distance densities for shapes with area fixed to 1.}
   \end{center} 
 \vspace{-4mm}
 \end{figure}
@@ -345,6 +332,11 @@ limit n large for various spherical cases
 
 If distances are all similar as they seem to be, then Waxman
 approaches ER graph 
+
+\appendix
+
+\clearpage
+\input{useful}
 
 
 \setlength{\parskip}{1mm}

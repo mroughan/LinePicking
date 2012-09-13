@@ -20,10 +20,10 @@ statistics for the unit-square line picking problem.
 \begin{figure}[htbp]
   \begin{center}
     \subfloat[\label{fig:square_eg}Example.]
-       {\includegraphics[width=0.35\columnwidth]{../Matlab/Plots/LinePicking_eg_square.eps}} 
-    \hspace{3mm}
+       {\includegraphics[width=0.3\columnwidth]{../Matlab/Plots/LinePicking_eg_square.eps}} 
+       \hspace{0.075\columnwidth}
     \subfloat[\label{fig:square_pdf}PDF.]
-       {\includegraphics[width=0.4\columnwidth]{../Matlab/Plots/LinePicking_plot_square_pdf.eps}}
+       {\includegraphics[width=0.5\columnwidth]{../Matlab/Plots/LinePicking_plot_square_pdf.eps}}
     \caption{The unit-square line-picking problem.}
   \end{center} 
 \vspace{-4mm}
@@ -35,6 +35,7 @@ statistics for the unit-square line picking problem.
     \hline
     Statistic & Value & Source \\ 
     \hline
+      Support            & $t \in [0, \sqrt{2}]$ & \\
       PDF                & $\displaystyle 
   g^{\rm square}(t) = \left\{ \begin{array}{ll}
       2t (t^2-4t+\pi),
@@ -56,13 +57,15 @@ statistics for the unit-square line picking problem.
     \end{array} \right.
                                  $ & 
                              \cite{weisstein:_squar_line_picking} \\
-      $i$th Moment $m_i$ & $\displaystyle 
-                                 $ &
+      $i$th Moment $m_i$ & even moments given in\cite{weisstein:_squar_line_picking} &
                               \cite{weisstein:_squar_line_picking} \\
       Mean               & $\displaystyle \frac{2 \sqrt{2} + 5\sinh^{-1}(1)}{15}
                              = 0.521405433...$ &
-                             \cite{weisstein:_squar_line_picking} \\
-      Variance           & $\displaystyle \frac{}{225}
+                             \cite{weisstein:_squar_line_picking} \\[1.5ex]
+      Variance           & $\displaystyle \frac{69 - 4\sqrt{2} -
+                             10(2+\sqrt{2}) \sinh^{-1}(1)
+                             -25(\sinh^{-1}(1) )^2
+                            }{225}
                              = 0.061469...$ &
                              \cite{weisstein:_squar_line_picking} \\[1.5ex]
     \hline

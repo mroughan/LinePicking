@@ -13,26 +13,47 @@ shows the PDFs for various rectangles chosen such that $\sqrt{a^2 +
   b^2} = 1$ to allow comparison (the choice means that the PDFs have
 the same support).
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
   \begin{center}
-    \subfloat[\label{fig:rect_eg}Rectangle example.]{\includegraphics[width=0.28\columnwidth]
+    \subfloat[\label{fig:rect_eg}Example.]{\includegraphics[width=0.3\columnwidth]
           {../Matlab/Plots/LinePicking_eg_rect.eps}} 
-    \hspace{6mm}
-    \subfloat[\label{fig:rect_pdf}PDF of a rectangles with aspect
-    ratio 1:1.2 showing the three regions.]{\includegraphics[width=0.35\columnwidth]
+       \hspace{0.075\columnwidth}
+    \subfloat[\label{fig:rect_pdf}PDF (aspect ratio 1:1.2) showing regions.]{\includegraphics[width=0.5\columnwidth]
           {../Matlab/Plots/LinePicking_plot_rect_regions.eps}}
-    \subfloat[\label{fig:rect_pdf_var}PDF of rectangles with various aspect
-    ratios.]{\includegraphics[width=0.35\columnwidth]
-          {../Matlab/Plots/LinePicking_plot_rect.eps}}
-    \caption{The rectangle-line picking problem.}
+    \caption{The rectangle line-picking problem ($L=\sqrt{a^2+b^2}=\sqrt{2}$).}
   \end{center} 
 \vspace{-4mm}
 \end{figure}
 
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{|r|c|l|}
+    \hline
+    Statistic & Value & Source \\ 
+    \hline
+      Support            & $t \in [0, L]$ & \\
+      PDF                & See \eqref{eqn:rectangle} and \eqref{eqn:rectangle2}   &
+                             \cite{b.ghosh51:_random_rect,mathai_geom} \\
+      CDF                & See \eqref{eqn:rectangle_cdf} and \eqref{eqn:rectangle_cdf2} & 
+                             \cite{} \\
+      $i$th Moment $m_i$ & First 4 are given in
+      \eqref{eq:rect_moments}-\eqref{eq:rect_moments_end}. 
+                        & \cite{b.ghosh51:_random_rect} \\
+      Mean               & See \eqref{eq:rect_moments}. &
+                             \cite{} \\[1.5ex]
+      Variance           & $\displaystyle m_2 - m_1^2$ &
+                             \cite{} \\[1.5ex]
+    \hline
+  \end{tabular}
+  \caption{Summary of the rectangle-line picking problem for $L=\sqrt{a^2+b^2}$.}
+  \label{tab:summary_line}
+\end{table}
+
 \subsubsection{PDF}
 
-The PDF for the rectangle is given in \cite[Theorem
-2.4.4]{mathai_geom} and \cite[Theorem 2]{b.ghosh51:_random_rect}
+The PDF for the rectangle is given in 
+\cite[Theorem 2.4.4]{mathai_geom} and 
+\cite[Theorem 2]{b.ghosh51:_random_rect}
 \begin{equation}
   g^{\rm rect}_{a,b}(t) = \frac{4 t}{a^2 b^2} \phi_{a,b}(t),
   \label{eqn:rectangle}   
@@ -52,6 +73,7 @@ where
       0,
          & \mbox{ otherwise}, \\
     \end{array} \right. 
+  \label{eqn:rectangle2}   
 \end{equation}
 where the rectangle has sides of length $a \leq
 b$. Figure~\ref{fig:rect_pdf} shows these for various cases, chosen
@@ -94,34 +116,76 @@ the higher order terms:
 \]
 The result just returns to the line-line picking PDF.
 
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.4\columnwidth]
+          {../Matlab/Plots/LinePicking_plot_rect.eps}
+    \label{fig:rect_pdf_var}
+    \caption{PDF of rectangles with various aspect
+              ratios (and fixed $L=1$).}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
+
 \subsubsection{CDF}
+
+The CDF can be derived by integration of the PDF, or more directly by
+...
+
+\begin{equation}
+  G^{\rm rect}_{a,b}(t)  = \left\{
+    \begin{array}{ll}
+     \frac{t^2}{6 a^2 b^2} \left( 
+       6 a b \pi - 8(a+b) t + 3 t^2
+             \right),  
+         & \mbox{ for } t \leq a, \\
+     \frac{1}{6 a^2 b^2} \Big( 
+       (ab + 8 b \left( \sqrt{t^2 - a^2} -t \right) t^2
+          - a^2 \left( 6 t^2 - 4 b  \sqrt{t^2 - a^2} \right)
+          + 12 a b t^2 \sin^{-1}(a/t)
+             \Big),  
+         & \mbox{ for } a \leq t \leq b, \\
+     \frac{1}{6 a^2 b^2} \Big( 
+         a^4 + b^4
+        + 4 a \sqrt{t^2 - b^2} (b^2 + 2 t^2)
+        + a^2 (-6 t^2 + 4 b \sqrt{t^2 - a^2}) & \\
+        + \hspace{5mm} t^2 (-6 b^2 - 3 t^2 + 8 b \sqrt{t^2 - a^2})
+        + 12 a b t^2 \left( 
+                       \sin^{-1}(b/t) - \pi/2 + \sin^{-1}(a/t)
+                     \right)
+      \Big),
+         & \mbox{ for } b \leq t \leq \sqrt{a^2 + b^2}, \\
+    \end{array} \right. 
+  \label{eqn:rectangle_cdf}   
+\end{equation}
 
 
 \subsubsection{Moments}
 
 Ghosh \cite{b.ghosh51:_random_rect} gives the first four moments of
-the line-length distribution for the rectangle.
+the line-length distribution for the rectangle
 \begin{eqnarray}
   \label{eq:rect_moments} 
-  \alpha_1 & = & \frac{1}{6} \left[ 
-                        \frac{b^2}{a} \cosh^{-1}\left( M/b \right) +
-                        \frac{a^2}{b} \cosh^{-1}\left( M/a \right) 
+  m^{\rm rect}_1 & = & \frac{1}{6} \left[ 
+                        \frac{b^2}{a} \cosh^{-1}\left( L/b \right) +
+                        \frac{a^2}{b} \cosh^{-1}\left( L/a \right) 
                  \right]
                   + \frac{1}{15} \left[ \frac{a^3}{b^2} + \frac{b^3}{a^2} \right]
-                  - \frac{M}{15} \left[ \frac{a^2}{b^2} + \frac{b^2}{a^2} -3 \right],
+                  - \frac{L}{15} \left[ \frac{a^2}{b^2} + \frac{b^2}{a^2} -3 \right],
 \\
-  \alpha_2 & = & \frac{1}{6} M^2, \\
-  \alpha_3 & = & \frac{1}{20} \left[ 
-                        \frac{b^4}{a} \cosh^{-1}\left( M/b \right) +
-                        \frac{a^4}{b} \cosh^{-1}\left( M/a \right) 
+  m^{\rm rect}_2 & = & \frac{1}{6} L^2, \\
+  m^{\rm rect}_3 & = & \frac{1}{20} \left[ 
+                        \frac{b^4}{a} \cosh^{-1}\left( L/b \right) +
+                        \frac{a^4}{b} \cosh^{-1}\left( L/a \right) 
                  \right]
                   + \frac{2}{105} \left[ \frac{a^5}{b^2} + \frac{b^5}{a^2} \right]
-                  - \frac{2M}{105} \left[ \frac{a^4}{b^2} + \frac{b^4}{a^2}\right]
-                        - \frac{5}{84} M^3, 
+                  - \frac{2L}{105} \left[ \frac{a^4}{b^2} + \frac{b^4}{a^2}\right]
+                        - \frac{5}{84} L^3, 
 \\
-  \alpha_4 & = & \frac{1}{15} a^4 + \frac{1}{18} a^2 b^2 + \frac{1}{15} b^4,
+  m^{\rm rect}_4 & = & \frac{1}{15} a^4 + \frac{1}{18} a^2 b^2 + \frac{1}{15} b^4,
+  \label{eq:rect_moments_end} 
 \end{eqnarray}
-where $M = \sqrt{a^2 + b^2}$, from which we can derive the special
+where $L = \sqrt{a^2 + b^2}$, from which we can derive the special
 cases of the square and line (though these can also be derived
 directly). Obviously central moments such as mean, and variance, etc.,
 can be derived from these. 

@@ -4,11 +4,6 @@
 E.~Rosenberg, ``The expected length of a random line segment in a rectangle,''
   {\em Operations Research Letters}, vol.~32, no.~2, pp.~99--102, 2004.
 
-\bibitem{Abramowitz_and_Stegun}
-M.~Abramowitz and I.~Stegun, {\em Handbook of Mathematical Functions with
-  Formulas, Graphs, and Mathematical Tables}.
-\newblock Dover Publications, Inc., New York, 1964.
-
 \bibitem{weisstein:_line_line_picking}
 E.~W. Weisstein, ``Line line picking.'' From MathWorld--A Wolfram Web Resource.
   \url{http://mathworld.wolfram.com/LineLinePicking.html}.
@@ -25,6 +20,9 @@ J.~Philip, ``The probability distribution of the distance between two random
 \bibitem{weisstein:_squar_line_picking}
 E.~W. Weisstein, ``Square line picking.'' From MathWorld--A Wolfram Web
   Resource. \url{http://mathworld.wolfram.com/SquareLinePicking.html}.
+
+\bibitem{mathai_geom}
+A.~Mathai, {\em An Introduction to Geometrical Probability}.
 
 \bibitem{m.naldi05:_connec_of_waxman_graph}
 M.Naldi, ``Connectivity of {Waxman} graphs,'' {\em Computer Communications},
@@ -66,6 +64,11 @@ I.~Gradshteyn and I.~Ryzhik, {\em Table of integrals, series and products}.
 \bibitem{weisstein:_circle_line_picking}
 E.~W. Weisstein, ``Circle line picking.'' From MathWorld--A Wolfram Web
   Resource. \url{http://mathworld.wolfram.com/CircleLinePicking.html}.
+
+\bibitem{Abramowitz_and_Stegun}
+M.~Abramowitz and I.~Stegun, {\em Handbook of Mathematical Functions with
+  Formulas, Graphs, and Mathematical Tables}.
+\newblock Dover Publications, Inc., New York, 1964.
 
 \bibitem{weisstein:_sphere_line_picking}
 E.~W. Weisstein, ``Sphere line picking.'' From MathWorld--A Wolfram Web
