@@ -8,7 +8,7 @@ static const long double L_PI_2 =  1.5707963267948966192313216916397514L;
 static const long double L_PI   =  3.1415926535897932384626433832795029L; 
 
 
-void LandenTransform( long double phi, long double m,
+void LandenTransform(long double phi, long double m,
                      double *ellipticF, double *ellipticK) 
 { 
     
@@ -20,12 +20,12 @@ void LandenTransform( long double phi, long double m,
     pow2n = 1.0L;
     average = 1.0L;
     geometric_mean = sqrtl(1.0L - m);
+    
     do {
         tan2nphi = tanl(phi);
         pow2n += pow2n;
         phi += phi - atanl((average - geometric_mean) * tan2nphi / 
-                           (average + geometric_mean * 
-                            tan2nphi * tan2nphi));
+                           (average + geometric_mean * tan2nphi * tan2nphi));
         prev_geometric_mean = geometric_mean;
         prev_average = average;
         average = (prev_geometric_mean + prev_average) / 2.0L;
@@ -45,7 +45,7 @@ void EllipticIntegralF(long double phi, long double m,
     /* center phi around 0*/
     phi -= period * L_PI;
     period *= 2;
-    LandenTransform( fabsl(phi), m, ellipticF, ellipticK);
+    LandenTransform(fabsl(phi), m, ellipticF, ellipticK);
     *ellipticF = period * (*ellipticK) + 
                     ((phi < 0.0L) ? -(*ellipticF) : (*ellipticF)); 
     
@@ -72,12 +72,13 @@ double ModulusBig(double amplitude, long double k)
         phi = asinl(k * sin_phi);
     
     
-    LandenTransform( fabsl(phi), 1.0L / (k*k) , &ellipticF, &ellipticK);
+    LandenTransform( fabsl(phi), 1.0L / (k * k) , &ellipticF, &ellipticK);
     
     ellipticF = period * ellipticK + ((phi < 0.0L) ? -ellipticF : ellipticF); 
     
     return ellipticF/k;
 }
+
 
 double EllipticF(double amplitude,  double parameter)
 {
@@ -90,20 +91,20 @@ double EllipticF(double amplitude,  double parameter)
     k = sqrtl(fabsl(m));
     
     /* if the amplitude is 0 then the modulus has no effect */
-    if ( amplitude == 0.0 ) return 0.0;
+    if ( amplitude == 0.0) return 0.0;
     
     /* direction of amplitude */
     direction = (amplitude < 0.0) ? -1 : 1;
     
     /* corner cases */
 
-    if ( m == 0.0L) 
+    if (m == 0.0L) 
         return amplitude;
     
-    if ( m > 1.0L ) 
+    if (m > 1.0L) 
         return direction * ModulusBig(fabs(amplitude), k);
     
-    if ( m == 1.0L ) 
+    if (m == 1.0L) 
     {
         if (fabs(amplitude) >= M_PI_2) 
             return direction * DBL_MAX;
@@ -112,10 +113,10 @@ double EllipticF(double amplitude,  double parameter)
         return direction * (log(fabs(modulus) + sqrt(1.0 + modulus * modulus)));
     }
     
-    if (m < 0.0L ) 
+    if (m < 0.0L) 
     {
         phi = L_PI_2 - fabsl(amplitude);
-        EllipticIntegralF( fabsl(phi), fabsl(m / (1.0L - m)), 
+        EllipticIntegralF(fabsl(phi), fabsl(m / (1.0L - m)), 
                                   &ellipticF, &ellipticK);
         return (direction * 
                 (ellipticK + ((phi > L_PI_2) ? ellipticF : -ellipticF)) / 
@@ -123,7 +124,7 @@ double EllipticF(double amplitude,  double parameter)
         
     }
     
-    /*  m in (0,1) this is the main case wae are interested in */
+    /*  m in (0,1) this is the main case we are interested in */
     EllipticIntegralF(fabs(amplitude), m, &ellipticF, &ellipticK);
     return direction * ellipticF;
     

@@ -69,6 +69,7 @@ test_problems = [...
     {'prism geodesic', [b, a]/sqrt(b^2+(a/2)^2), 'prism geodesic', 'prism_geodesic'};
     {'cylindrical surface', [b, R]/sqrt(b^2+(R * 2)^2), 'cylindrical surface', 'cylindrical surface'};
     {'cylindrical surface geodesic', [b, R]/sqrt(b^2+(R * pi)^2), 'cylindrical surface geodesic', 'cylindrical surface geodesic'};
+    {'cylinder', [b, R]/sqrt(b^2+(R * 2)^2), 'cylinder', 'cylinder'};             
 
 		];
 

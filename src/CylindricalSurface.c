@@ -239,8 +239,8 @@ void CylindricalSurfaceDistanceSimPoints(double **points, int *Npoints,
  * @param $Ncoords = number of coordinates for each point.
  * @param $points1 = coordinates of first point.
  * @param $points2 = coordinates of second point.
- * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
- * sides of the cylindrical surface under consideration.
+ * @param $parameters $parameters[0] is the length of the cylinder
+ * and $parameters[1] is the radius.
  * @return The distance between the two points.
  */
 double CylindricalSurfaceDistanceMetric(int Ncoords, double *point1, 

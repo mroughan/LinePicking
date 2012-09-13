@@ -6,7 +6,7 @@ double EllipticK(double parameter)
 {
     /* 
      * This is defined in the same way as the Mathmatica 
-     * function of the same name so x = k^2
+     * function of the same name so parameter = k^2
      */
     
     long double average, prev_average; 
@@ -14,9 +14,8 @@ double EllipticK(double parameter)
     long double m = parameter; 
     
     /* deal with the extremes */
-    if(parameter <= 0.0) return M_PI_2;
-    
-    if(parameter >= 1.0) return DBL_MAX; 
+    if(0.0 >= parameter) return M_PI_2;
+    if(1.0 <= parameter) return DBL_MAX; 
     
     average = 1.0L;
     geometric_mean = sqrtl(1.0L - m);
