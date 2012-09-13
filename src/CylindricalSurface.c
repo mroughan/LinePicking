@@ -1,6 +1,5 @@
 /* CylindricalSurface.c	
  *
- *     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
  *     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au>
  *     This program is free software: you can redistribute it and/or modify
  *     it under the terms of the GNU General Public License as published by
@@ -34,7 +33,7 @@ LinePickingData CylindricalSurfaceDistanceData =
     "cylindrical surface",
     "cylindrical surface, length parameters[0], radius parameters[1]",
     2,
-    {4,1.5}
+    {2,0.5}
 };
 
 
@@ -92,7 +91,6 @@ double CylindricalSurfaceDistancePDF(double t, double* parameters)
  * cylindrical surface.
  * 
  * @param $w The distance to calculate the cumulative density for.
- * @param $t The distance to calculate the density for.
  * @param $parameters $parameters[0] is the length of the cylindrical surface
  * and $parameters[1] is the radius.  
  * @return The cumulative density at $w.
@@ -127,6 +125,7 @@ double CylindricalSurfaceDistanceMean(double* parameters)
  * and $parameters[1] is the radius.
  * @return The variance of distances between two random points on a 
  * cylindrical surface.
+ * @todo Implement.
  */
 double CylindricalSurfaceDistanceVar(double* parameters)
 {
@@ -193,6 +192,7 @@ void CylindricalSurfaceDistanceCheckParameters(double *parameters, int *result,
  * @param $CoordSystem returns a brief description of the coordinate system
  * @param $parameters $parameters[0] is the length of the cylindrical surface
  * and $parameters[1] is the radius.
+ * @return The number of coordinates used given input problem and parameters.
  */
 void CylindricalSurfaceDistanceNcoords(int *Ncoords, char **CoordSystem, 
                               double* parameters) 
@@ -210,6 +210,7 @@ void CylindricalSurfaceDistanceNcoords(int *Ncoords, char **CoordSystem,
  * @param $Ncoords = number of coordinates for each point.
  * @param $parameters $parameters[0] is the length of the cylindrical surface
  * and $parameters[1] is the radius.
+ * @return The set of points.
  */
 void CylindricalSurfaceDistanceSimPoints(double **points, int *Npoints, 
                                          int *Ncoords, double* parameters)
@@ -228,7 +229,7 @@ void CylindricalSurfaceDistanceSimPoints(double **points, int *Npoints,
         length = sqrt(pow(normals[0], 2) + pow(normals[1], 2));
         points[i][0] = (parameters[1] * normals[0]) / length;
         points[i][1] = (parameters[1] * normals[1]) / length;
-        points[i][2] = drand(0.0, parameters[0]);
+        points[i][2] = drand48() * parameters[0];
     }
 }
 
@@ -238,8 +239,8 @@ void CylindricalSurfaceDistanceSimPoints(double **points, int *Npoints,
  * @param $Ncoords = number of coordinates for each point.
  * @param $points1 = coordinates of first point.
  * @param $points2 = coordinates of second point.
- * @param $parameters $parameters[0] and $parameters[1] are the lengths of the 
- * sides of the cylindrical surface under consideration.
+ * @param $parameters $parameters[0] is the length of the cylinder
+ * and $parameters[1] is the radius.
  * @return The distance between the two points.
  */
 double CylindricalSurfaceDistanceMetric(int Ncoords, double *point1, 

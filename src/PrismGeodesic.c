@@ -902,10 +902,7 @@ void PrismGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem,
 }
 
 
-double drand ( double low, double high )
-{
-    return ( (double)rand() * ( high - low ) ) / (double)RAND_MAX + low;
-}
+
 
 /**
  * Simulate a set of points from the problem of interest.
@@ -937,7 +934,7 @@ void PrismGeodesicDistanceSimPoints(double **points, int *Npoints,
         length = sqrt(pow(normals[0], 2) + pow(normals[1], 2));
         points[i][0] = ((parameters[1]/ (2 *M_PI)) * normals[0]) / length;
         points[i][1] = ((parameters[1]/ (2 *M_PI)) * normals[1]) / length;
-        points[i][2] = drand(0.0, parameters[0]);
+        points[i][2] = drand48() * parameters[0];
     }    
 }
 
