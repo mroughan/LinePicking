@@ -78,6 +78,7 @@
 #include "CylindricalSurface.h"
 #include "CylindricalSurfaceGeodesic.h"
 #include "Cylinder.h"
+#include "CubeMax.h"
 
 
 /* a buffer available globally for errors */
@@ -122,7 +123,8 @@ LinePickingRec LinePickingFields[] =
     {ExpandFields(HyperSphereGeodesic)},
     {ExpandFields(CylindricalSurface)},
     {ExpandFields(CylindricalSurfaceGeodesic)},
-    {ExpandFields(Cylinder)}
+    {ExpandFields(Cylinder)},
+    {ExpandFields(CubeMax)},
 };
 
 #define elements(x)  (sizeof(x) / sizeof(x[0]))
