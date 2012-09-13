@@ -104,14 +104,57 @@ Motivation: examples of uses
 
 \end{itemize}
 
+Apart from a systematic survey of the line-picking problem, we have
+made several contributions in this paper:
+\begin{itemize}
+
+\item For many line-picking problems, there have been works that
+  determined the Probability Density Function (PDF), or Cumulative
+  Density Function (CDF), or just mean and/or variance. It should be
+  clear that give either the PDF or CDF the other quantities are all
+  obtainable numerically, however, we primarily focus here on
+  closed-form solutions, and we have provided such for many of the
+  currently absent cases, e.g., the CDF for the rectangle line-picking
+  problem. 
+
+\item We have extended the circle and sphere line-picking problems to
+  the $n$-sphere.
+
+\item We have extended the line-picking problem onto addition regions,
+  in particular the cylinder, ...
+
+\item We have extended the line-picking problem to consider different
+  notions of distance: for example, the Manhattanor the $L_{\infty}$
+  distance on the rectangle.
+
+\item We have extended the line-picking problem to geodesics on
+  certain surfaces, notable the cylinder and $n$-sphere.
+
+\end{itemize}
+
+
+
 \section{Problem Definition}
 
-A fairly general formulation of the {\em line-picking problem}
-consists of 3 components:
+Although, commonly called the ``line-picking'' problem, the problem is
+more often motivated in practical problems (such as those described
+above), by the problem of finding the distance between two random
+points. 
+
+This is a much better way to describe the problem. It avoids
+Bertrand's paradox, where (at least) three methods of choosing a chord
+of a circle at random leads to confusion and a ``paradox''.
+% http://www.sciencedirect.com/science/article/pii/S0167637703000725
+% http://en.wikipedia.org/wiki/Bertrand_paradox_%28probability%29
+So here we shall focus on lines determined by two IID end-points, but
+we shall generalize the problem substantially to motivate by the
+practical problems discussed above.
+
+We define a {\em line-picking problem} to consists of 3 components:
 \begin{itemize}
 
 \item Some space $\Omega$ (typically a subset of $R^n$), on which we
-  draw pairs of random points.
+  draw independent pairs of random points.
 
 \item The measure $\mu$ on $\Omega$ giving the probability of drawing
   points from given segments of $\Omega$. The most common measure, by
@@ -134,17 +177,6 @@ Given that the typical case of $\mu$ is uniform, and of $d$ is
 Euclidean, we ommit these from the problem statement when we use these
 simple defaults.
 
-There are other possibilities. In the formulation above, a line is
-defined by its two independently chosen end points, but there are
-choice of a random line could mean other things. For instance,
-Bertrand's paradox involves chosing a chord of a circle at random, and
-he presents three methods for doing so: one by choosing random end
-points, and two others involving more involved constructions. 
-% http://www.sciencedirect.com/science/article/pii/S0167637703000725
-% http://en.wikipedia.org/wiki/Bertrand_paradox_%28probability%29
-However, here we shall focus on lines determined by two IID
-end-points. 
-
 Figure~\ref{fig:eg} presents three examples: the disk-line-picking
 problem, the circle-line-picking problem and the cube-line-picking
 problem.
@@ -162,13 +194,6 @@ problem.
   \end{center} 
 \vspace{-4mm}
 \end{figure}
-
-Given one ofthese problems, there have been works that determined the
-Probability Density Function (PDF), or Cumulative Density Function
-(CDF), or just mean and/or variance. It should be clear that give
-either the PDF or CDF the other quantities are all obtainable
-numerically, however, we primarily focus here on closed-form
-solutions. 
 
 
 \section{General Properties}
