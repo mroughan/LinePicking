@@ -33,7 +33,7 @@ Figures ...
 
 Maybe too complicated to write here???
 
-Box and 4- and 54-cubes definitely are
+Box and 4- and 5-cubes definitely are
 
 
 \subsubsection{CDF}
@@ -42,7 +42,7 @@ Box and 4- and 54-cubes definitely are
 \subsubsection{Moments}
 
 The mean for the cube, known as the {\em Robbins constant}, is given
-in \cite{robbins78:_constant,weisstein:_cube_line_picking} as
+in \cite{robbins78:_constant,weisstein:_cube_line_picking,Bailey2007196} as
 \begin{equation}
    \label{eq:cube_mean}
  \mu^{\rm cube} = \frac{1}{105} \left[ 
@@ -54,11 +54,34 @@ in \cite{robbins78:_constant,weisstein:_cube_line_picking} as
 \end{equation}
 but a closed form for the variance does not appear (only even moments
 are reported). Even more complicated results appear for 4- and 5-Cubes in
-5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d}:
+5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d,Bailey2007196}:
 \begin{eqnarray}
  \mu^{\rm 4-cube} & = & 0.7776656535 ...    \label{eq:4-cube}, \\
- \mu^{\rm 4-cube} & = & 0.8785309152 ...     \label{eq:5-cube}.
+ \mu^{\rm 5-cube} & = & 0.8785309152 ...     \label{eq:5-cube}.
 \end{eqnarray}
 
-The variance does not seem to be given in closed form ...
+Higher order moments are considered as {\em box integrals} in
+\cite{Bailey2007196}. 
+% http://www.sciencedirect.com/science/article/pii/S0377042706004250
+
+The basic notion is to write the moment as an integral
+\begin{equation}
+  \label{eq:moment_n_cube}
+  \Delta_n(s) = \int_0^1 \cdots \int_0^1
+        \left[ \sum_{i=1}^n (x_i - y_i)^2 \right]^{s/2}
+        \, dx_1 \ldots  dx_n   \, dy_1 \ldots  dy_n  
+\end{equation}
+where $n$ is the dimension, and $s$ the moment in question.
+
+They present methods to evaluate the integral to high precision,
+though without an anlytic expression for the result.
+
+% The ability, however, to derive these to high precision presents the
+% ability to calculate the moment generating function of the $n$-cube
+% distances to high precision, and thence by numerical inversion (of the
+% Laplace transform used to obtain the MGF). 
+
+
+
+The paper notes high-dimensional approximations have been studied ...
 
