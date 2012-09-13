@@ -32,6 +32,32 @@ plotdir = '../Plots';
 LinePickingPrintAllProblems;
 
 %
+% line-line picking
+%
+problem = LinePickingNameLookup('line');
+L = 1;
+parameters = [L];
+name(problem+1) = {LinePickingProblemLookup(problem)};
+points1 = LinePickingSimPoints(M, problem, parameters, seed);
+points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+
+figure(problem+1)
+hold off
+plot([0 L], [0 0], 'k-');
+hold on
+plot([0 0], [-0.04 0.04], 'k-');
+plot([L L], [-0.04 0.04], 'k-');
+plot([points1(1,:); points2(1,:)], [1:M; 1:M]*(0.3/M), 'bo-');
+set(gca, 'xlim', [-0.1, L+0.1]);
+set(gca, 'ylim', [-0.1, L+0.1]);
+axis equal
+axis off
+filename = sprintf('%s/LinePicking_eg_line.%s', plotdir, suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('line-line picking example');
+
+%
 % square picking
 %
 problem = LinePickingNameLookup('square');
