@@ -11,7 +11,6 @@
 #' @useDynLib LinePicking
 #' @note August 25 2012
 #' @examples
-#' @todo add numerical for mean -1
 #' LinePickingMean(problem=0,parameters=10)
 LinePickingMean <-
 function(problem=0,parameters){

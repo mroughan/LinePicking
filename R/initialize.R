@@ -33,9 +33,7 @@ CreateLinePicking <- function(problem, parameters, n=1000){
                                    parameters=parameters), 
       t = t,
       pdf = LinePickingPDF(t=t,problem=problem,parameters=parameters),
-      cdf = LinePickingCDF_vector(t=t,
-                                  problem=problem,
-                                  parameters=parameters),
+      cdf = LinePickingCDF(t=t,problem=problem,parameters=parameters),
       mean = LinePickingMean(problem=problem,parameters=parameters),
       var = LinePickingVar(problem=problem,parameters=parameters))
 }

@@ -6,7 +6,7 @@
 #' and a seed for the random number generator this 
 #' function will return a list of points.
 #'
-#' @param Npoints the number of points to generate.
+#' @param NPoints the number of points to generate.
 #' @param problem see \code{\link{LinePickingPDF}}.
 #' @param parameters numeric vector of parameters describing problem.
 #' @param seed a seed for the random number generator

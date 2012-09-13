@@ -5,7 +5,7 @@
   LinePickingSimPoints(NPoints, problem, parameters, seed)
 }
 \arguments{
-  \item{Npoints}{the number of points to generate.}
+  \item{NPoints}{the number of points to generate.}
 
   \item{problem}{see \code{\link{LinePickingPDF}}.}
 
