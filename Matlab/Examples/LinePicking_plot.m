@@ -18,7 +18,6 @@
 %
 clear;
 path(path, '../');
-path(path, '../figure_inset');
 
 dt = 0.001;
 t = -0.1:dt:2.1;
@@ -167,25 +166,6 @@ plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
-if (exist('inset.m','file'))
-  % do a little inset picture in the plot
-  parameters = [a b];
-  M = 10;
-  seed = 1;
-  points1 = LinePickingSimPoints(M, problem, parameters, seed);
-  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
-  fig2=figure(181);
-  hold off
-  plot([0 b b 0 0], [0 0 a a 0], 'k-', 'linewidth', 2);
-  hold on
-  plot([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], 'bo-','linewidth',2);
-  axis equal
-  axis off
-  inset_size = 0.4; % 0.35 is the default
-  [h_m h_i] = inset(fig1,fig2,inset_size);
-else
-  fprintf('  installing inset.m will allow for better figures\n');
-end
 filename = sprintf('%s/LinePicking_plot_rect_regions.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
@@ -238,26 +218,6 @@ plot(t,g,'b-');
 set(gca, 'xlim', [-0.1 a+b+0.1]);
 xlabel('t');
 ylabel(sprintf('g_{%.1f:%.1f}(t)',a,b));
-if (exist('inset.m','file'))
-  % do a little inset picture in the plot
-  parameters = [a b];
-  M = 10;
-  seed = 1;
-  points1 = LinePickingSimPoints(M, problem, parameters, seed);
-  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
-  fig2=figure(191);
-  hold off
-  plot([0 b b 0 0], [0 0 a a 0], 'k-', 'linewidth', 2);
-  hold on
-  plot([points1(1,:); points2(1,:); points2(1,:)], [points1(2,:); points1(2,:); points2(2,:)], 'b-','linewidth',1);
-  plot([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], 'b.','linewidth',2);
-  axis equal
-  axis off
-  inset_size = 0.4; % 0.35 is the default
-  [h_m h_i] = inset(fig1,fig2,inset_size);
-else
-  fprintf('  installing inset.m will allow for better figures\n');
-end
 filename = sprintf('%s/LinePicking_plot_rect_man_regions.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
@@ -340,32 +300,6 @@ set(gca, 'xlim', [0 1]);
 legend(p9, legend_str9);
 xlabel('t');
 ylabel('g^{\rm cube}(t)');
-if (exist('inset.m','file'))
-  % do a little inset picture in the plot
-  parameters = [L];
-  M = 10;
-  seed = 1;
-  points1 = LinePickingSimPoints(M, problem, parameters, seed);
-  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
-  fig2=figure(111);
-  hold off
-  plot3(0,0,0);
-  hold on
-  plot3([0 L L 0 0], [0 0 L L 0], [0 0 0 0 0], 'k-', 'linewidth', 2);
-  plot3([0 L L 0 0], [0 0 L L 0], [L L L L L], 'k-', 'linewidth', 2);
-  plot3([0 L L 0 0], [0 0 0 0 0], [0 0 L L 0], 'k-', 'linewidth', 2);
-  plot3([0 L L 0 0], [L L L L L], [0 0 L L 0], 'k-', 'linewidth', 2);
-  plot3([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], [points1(3,:); points2(3,:)], 'bo-','linewidth',1);
-  set(gca, 'xlim', [-0.1, L+0.1]);
-  set(gca, 'ylim', [-0.1, L+0.1]);
-  set(gca, 'zlim', [-0.1, L+0.1]);
-  axis equal
-  axis off
-  inset_size = 0.4; % 0.35 is the default
-  [h_m h_i] = inset(fig1,fig2,inset_size);
-else
-  fprintf('  installing inset.m will allow for better figures\n');
-end
 filename = sprintf('%s/LinePicking_plot_cube_regions.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
@@ -429,29 +363,6 @@ plot(t,g_square,'color', 'b');
 set(gca, 'xlim', [0 sqrt(2)]);
 xlabel('t');
 ylabel('g^{\rm square}(t)');
-if (exist('inset.m','file'))
-  % do a little inset picture in the plot
-  problem = LinePickingNameLookup('square');
-  L = 1;
-  parameters = [L];
-  M = 10;
-  seed = 1;
-  points1 = LinePickingSimPoints(M, problem, parameters, seed);
-  points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
-  fig2=figure(100);
-  hold off
-  plot([0 L L 0 0], [0 0 L L 0], 'k-');
-  hold on
-  plot([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], 'bo-','linewidth',1);
-  set(gca, 'xlim', [-0.1, L+0.1]);
-  set(gca, 'ylim', [-0.1, L+0.1]);
-  axis equal
-  axis off
-  inset_size = 0.4; % 0.35 is the default
-  [h_m h_i] = inset(fig1,fig2,inset_size);
-else
-  fprintf('  installing inset.m will allow for better figures\n');
-end
 filename = sprintf('%s/LinePicking_plot_square_pdf.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
