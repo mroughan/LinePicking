@@ -202,6 +202,61 @@ print(device,filename);
 fprintf('printed to %s\n', filename);
 title('cube-line picking example');
 
+
+problem = LinePickingNameLookup('hyper-cube max');
+L = 1;
+parameters = [3, L];
+name(problem+1) = {LinePickingProblemLookup(problem)};
+points1 = LinePickingSimPoints(M, problem, parameters, seed);
+points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+figure(problem+1)
+hold off
+plot3(0,0,0);
+hold on
+plot3([0 L L 0 0], [0 0 L L 0], [0 0 0 0 0], 'k-', 'linewidth', 2);
+plot3([0 L L 0 0], [0 0 L L 0], [L L L L L], 'k-', 'linewidth', 2);
+plot3([0 L L 0 0], [0 0 0 0 0], [0 0 L L 0], 'k-', 'linewidth', 2);
+plot3([0 L L 0 0], [L L L L L], [0 0 L L 0], 'k-', 'linewidth', 2);
+
+
+%  this all works to colour the longest section of the manhattan path red
+% ie showing what is used for the max metric.
+
+k = abs(points1 - points2)
+j = k(1,:) == max(k)
+
+plot3([points1(1,j); points2(1,j)], [points1(2,j); points1(2,j)], [points1(3,j); points1(3,j)],'r-');
+j = k(1,:) < max(k)
+plot3([points1(1,j); points2(1,j)], [points1(2,j); points1(2,j)], [points1(3,j); points1(3,j)],'b-');
+
+j = k(2,:) == max(k)
+plot3([points2(1,j); points2(1,j)], [points1(2,j); points2(2,j)], [points1(3,j); points1(3,j)], 'r-');
+j = k(2,:) < max(k)
+plot3([points2(1,j); points2(1,j)], [points1(2,j); points2(2,j)], [points1(3,j); points1(3,j)], 'b-');
+
+j = k(3,:) == max(k)
+plot3([points2(1,j); points2(1,j)], [points2(2,j); points2(2,j)], [points1(3,j); points2(3,j)], 'r-');
+j = k(3,:) < max(k)
+plot3([points2(1,j); points2(1,j)], [points2(2,j); points2(2,j)], [points1(3,j); points2(3,j)], 'b-');
+
+
+plot3([points1(1,:); points1(1,:)], [points1(2,:); points1(2,:)], [points1(3,:); points1(3,:)], 'bo-');
+plot3([points2(1,:); points2(1,:)], [points2(2,:); points2(2,:)], [points2(3,:); points2(3,:)], 'bo-');
+
+
+
+set(gca, 'xlim', [-0.1, L+0.1]);
+set(gca, 'ylim', [-0.1, L+0.1]);
+set(gca, 'zlim', [-0.1, L+0.1]);
+axis equal
+az = -50; el = 25;
+view([az, el]);
+filename = sprintf('%s/LinePicking_eg_cubemax.%s', plotdir, suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('cubemax line picking example');
+
+
 %
 % sphere line picking
 %

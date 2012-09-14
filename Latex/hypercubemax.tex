@@ -1,6 +1,18 @@
 \subsection{Hypercube max line picking}
 \label{sec:hypercubemax_line}
 
+\begin{figure}[tbp]
+  \begin{center}
+    \subfloat[\label{fig:hypercubemax_eg}3-cube max metric example, max distances shown in red.]
+       {\includegraphics[width=0.4\columnwidth]{../Matlab/Plots/LinePicking_eg_cubemax.eps}} 
+    \hspace{6mm}
+    \subfloat[\label{fig:hypercubemax_pdf}PDF of $n$-cubes using max metric.]
+         {\includegraphics[width=0.48\columnwidth]{../Matlab/Plots/LinePicking_plot_ncubemax.eps}} 
+    \caption{The hyperball-line picking problem.}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
+
 The $n$-Dimensional hyper-cube (or just $n$-cube) with the {\em max} metric is particularly tractable.
 Lower order examples are:
 \begin{itemize}
@@ -47,7 +59,7 @@ E[ X^{k}_{n} ] & = &   n\left(\frac{2}{L}\right)^{n} \left(2L\right)^{k + n -1} 
 & = &   n 2^{2n + k} L^{k}\left[\beta\left(\frac{1}{2}; k + n, n\right) - 2\beta\left(\frac{1}{2}; k + n + 1, n\right)\right].  
 \end{eqnarray}
 
-Means are the first moment and using $\sigma = E[X^2] - E[X]^2$  we can calculate the  variance of these $n$-cubes:
+Means are the first moment and using $\sigma^2 = E[X^2] - E[X]^2$  we can calculate the  variance of these $n$-cubes:
 \begin{eqnarray}
  \mu^{\rm 1-cube max}  & = & \frac{L}{3} \nonumber\\
  \mu^{\rm 2-cube max}  & = & \frac{7L}{15} \nonumber\\
@@ -62,15 +74,15 @@ Means are the first moment and using $\sigma = E[X^2] - E[X]^2$  we can calculat
 \end{eqnarray}
 
 \begin{eqnarray}
- \sigma^{\rm 1-cube max}  & = & \frac{L^2}{18}\nonumber\\
- \sigma^{\rm 2-cube max}  & = & \frac{11L^2}{225} \nonumber\\
- \sigma^{\rm 3-cube max }  & = &  \frac{201L^2}{4900}\nonumber\\
- \sigma^{\rm 4-cube max }  & = & \frac{3461 L^2}{99225}\nonumber\\
- \sigma^{\rm 5-cube max}  & = &  \frac{29011 L^2}{960498}\nonumber\\
- \sigma^{\rm 6-cube max}  & = & \frac{239711 L^2}{9018009} \nonumber\\
- \sigma^{\rm 7-cube max}  & = &  \frac{7854793 L^2}{331273800}\nonumber\\
- \sigma^{\rm 8-cube max}  & = & \frac{255954401 L^2}{11967266025}\nonumber\\
- \sigma^{\rm 9-cube max}  & = & \frac{2077184013 L^2}{106671186050}\nonumber\\
- \sigma^{\rm 10-cube max} & = & \frac{16811419715 L^2}{940839860961} \nonumber
+ \sigma^2_{\rm 1-cube max}  & = & \frac{L^2}{18}\nonumber\\
+ \sigma^2_{\rm 2-cube max}  & = & \frac{11L^2}{225} \nonumber\\
+ \sigma^2_{\rm 3-cube max }  & = &  \frac{201L^2}{4900}\nonumber\\
+ \sigma^2_{\rm 4-cube max }  & = & \frac{3461 L^2}{99225}\nonumber\\
+ \sigma^2_{\rm 5-cube max}  & = &  \frac{29011 L^2}{960498}\nonumber\\
+ \sigma^2_{\rm 6-cube max}  & = & \frac{239711 L^2}{9018009} \nonumber\\
+ \sigma^2_{\rm 7-cube max}  & = &  \frac{7854793 L^2}{331273800}\nonumber\\
+ \sigma^2_{\rm 8-cube max}  & = & \frac{255954401 L^2}{11967266025}\nonumber\\
+ \sigma^2_{\rm 9-cube max}  & = & \frac{2077184013 L^2}{106671186050}\nonumber\\
+ \sigma^2_{\rm 10-cube max} & = & \frac{16811419715 L^2}{940839860961} \nonumber
 \end{eqnarray}
 

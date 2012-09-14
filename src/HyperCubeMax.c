@@ -29,7 +29,7 @@
 
 LinePickingData HyperCubeMaxDistanceData =
 {
-    "hyper-cube max metric",
+    "hyper-cube max",
     "hyper-cube, dimensions  parameters[0], side length parameters[1]",
     2,
     {3,1}
