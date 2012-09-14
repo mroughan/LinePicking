@@ -242,6 +242,43 @@ Scaling for CDFs is even simpler, we simply take
 \end{equation}
 
 
+\section{Cartesian products of spaces}
+
+Definitions and why its interesting
+
+
+Metrics
+
+\subsection{CDfs and PDFs}
+
+\subsection{Moments}
+
+In general we can compute the even moments $2k$ for a Cartesian
+product with a Euclidean product by noting the these will expand into
+a binomial in terms $X^2$ and $Y^2$, which are independent random
+variables, and so
+\begin{eqnarray}
+  E\left[ \left( \sqrt{ X^2 + Y^2} \right)^{2n} \right] 
+   & = & \sum_{i=0}^{n} \dbinom{n}{i} E[X^{2i}] E[Y^{2(n-i)}].
+\end{eqnarray}
+However, the odd moments are more difficult. 
+\begin{eqnarray}
+  E\left[ \left( \sqrt{ X^2 + Y^2} \right)^{2n+1} \right] 
+   & = &  \sum_{k=0}^{\infty}  \dbinom{(2n+1)/2}{k} E[X^{2k}] E[Y^{2n+1-2k}].
+\end{eqnarray}
+-- but  this may not work because of convergence?
+
+
+For the Manhattan distance metric, all of the moments a simple
+additive.
+
+
+For the Max distance, there is no simple relationship, but the
+simplicity of computing the PDF and CDF mean that computing the
+moments is often not hard.
+
+
+
 \section{Examples}
 \label{sec:known}
 
