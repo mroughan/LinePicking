@@ -1,0 +1,49 @@
+\subsection{Hypercube max line picking}
+\label{sec:hypercubemax_line}
+
+The $n$-Dimensional hyper-cube (or just $n$-cube) with the {\em max} metric is particularly tractable.
+Lower order examples are:
+\begin{itemize}
+
+\item A 1-cube is a line segment;
+
+\item A 2-cube is a square;
+
+\item A 3-cube is an ordinary cube.
+
+
+\subsubsection{CDF}
+
+We start by noting that the region is simply the cartesian product of $n$ lines and use the CDF method:
+
+\begin{eqnarray}
+ G^{n-{\rm cube max}}_L\left(t\right) & = & \int_{0}^{t} \ldots \int_{0}^{t}   g^{\rm line}_L\left(s_{1}\right)\ldots g^{\rm line}_L\left(s_{n}\right) \;ds_{1}\ldots ds_{n}, \nonumber \\
+ & = & \int_{0}^{t}  g^{\rm line}_L\left(s_{1}\right) \;ds_{1}   \ldots \int_{0}^{t} g^{\rm line}_L\left(s_{n}\right) \;ds_{n},\nonumber \\
+ & = & \left[\int_{0}^{t}  g^{\rm line}_L\left(s\right) \;ds \right]^{n},\nonumber \\
+ & = & \left[G^{\rm line}_L\left(t\right)\right]^{n} ,\nonumber \\
+ & = &  \left[\left(\frac{2}{L}\right)\left( t - \frac{t^2}{2L} \right)\right]^{n}.
+\end{eqnarray}
+
+\subsubsection{PDF}
+To get the PDF we simply differentiate the PDF with respect to $t$:
+
+\begin{eqnarray}
+ g^{n-{\rm cube max}}_L\left(t\right) & = & \frac{d G^{n-{\rm cube max}}_L\left(t\right)}{dt},\nonumber \\
+& = &  n\left[\left(\frac{2}{L}\right)\left( t - \frac{t^2}{2L} \right)\right]^{n-1} \left[\left(\frac{2}{L}\right)\left( 1 - \frac{t}{L} \right)\right],\nonumber \\
+& = &  n\left(\frac{2}{L}\right)^{n} \left( t - \frac{t^2}{2L} \right)^{n-1}\left( 1 - \frac{t}{L} \right), \nonumber \\
+\end{eqnarray} 
+ 
+\subsubsection{Moments}
+
+\begin{eqnarray}
+E[ X^{k}_{n} ]  & = & \int_0^L t^k  g^{n-{\rm cube max}}_L\left(t\right) \, dt, \nonumber \\
+& = &   n\left(\frac{2}{L}\right)^{n} \left(2L\right)^{k + n -1} \int_0^L \left(\frac{t}{2L}\right)^{k + n -1} \left( 1 - \frac{t}{2L} \right)^{n-1}\left( 1 - \frac{t}{L} \right) \; dt.
+\end{eqnarray} 
+
+Let $u = \frac{t}{2L}$ then $t = 2uL$ and $dt = du\; 2L$. Thus:
+\begin{eqnarray}
+E[ X^{k}_{n} ] & = &   n\left(\frac{2}{L}\right)^{n} \left(2L\right)^{k + n -1} \int_0^{\frac{1}{2}} u^{k + n -1} \left( 1 - u \right)^{n-1}\left( 1 - 2u} \right) \; du \; 2L, \nonumber \\
+& = &   n 2^{2n + k} L^{k}\left[ \int_0^{\frac{1}{2}} u^{k + n -1} \left( 1 - u \right)^{n-1} \; du\  - 2\int_0^{\frac{1}{2}} u^{1+ k + n -1} \left( 1 - u \right)^{n-1} \; du\right], \nonumber \\
+& = &   n 2^{2n + k} L^{k}\left[\beta\left(\frac{1}{2}; k + n, n\right) - 2\beta\left(\frac{1}{2}; k + n + 1, n\right)\right].  
+\end{eqnarray}
+
