@@ -52,7 +52,7 @@ $(PDF): %.pdf: %.ps
 	${PS2PDF} $^ $@ 
 	cp $@ ../inst/
 
-$(DVI): %.dvi: %.tex FORCE
+$(DVI): %.dvi: %.tex ${BIB} FORCE
 	${LATEX} $< 
 	${LATEX} $< 
 	-${BIBTEX} $(<:.tex=)

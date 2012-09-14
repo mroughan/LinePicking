@@ -21,6 +21,10 @@ J.~Philip, ``The probability distribution of the distance between two random
 E.~W. Weisstein, ``Square line picking.'' From MathWorld--A Wolfram Web
   Resource. \url{http://mathworld.wolfram.com/SquareLinePicking.html}.
 
+\bibitem{Bailey2007196}
+D.~Bailey, J.~Borwein, and R.~Crandall, ``Box integrals,'' {\em Journal of
+  Computational and Applied Mathematics}, vol.~206, no.~1, pp.~196--208, 2007.
+
 \bibitem{mathai_geom}
 A.~Mathai, {\em An Introduction to Geometrical Probability}.
 
@@ -43,6 +47,12 @@ J.~Philip, ``The distance between two random points in a 4- and 5-cube.''
 \bibitem{robbins78:_constant}
 D.~Robbins, ``Average distance between two points in a box,'' {\em American
   Mathematical Monthly}, vol.~85, p.~278, 1978.
+
+\bibitem{anderssen76:_concer}
+R.~S. Anderssen, R.~P. Brent, D.~J. Daley, and P.~A.~P. Moran, ``Concerning
+  $\int^1_0\cdots \in_0^1 (x^2_1 + ⋯ + x^2_k)^{1/2} dx_1 ⋯ dx_k$ and a
+  taylor series method,'' {\em SIAM Journal on Applied Mathematics}, vol.~30,
+  no.~1, pp.~22--30, 1976.
 
 \bibitem{tu00:_circle_line}
 S.-J. Tu and E.~Fischbach, ``A new geometric probability technique for an
