@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>LinePicking: CubeMax.h File Reference</title>
+<title>LinePicking: HyperCubeMax.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -85,53 +85,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">CubeMax.h File Reference</div>  </div>
+<div class="title">HyperCubeMax.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Functions to provide PDF, CDF, mean and variance of the distance between two random points within a cube using the max metric.  
+<p>Functions to provide PDF, CDF, mean and variance of the distance between two random points within a hyper-cube using the max metric.  
 <a href="#details">More...</a></p>
 
-<p><a href="_cube_max_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="_hyper_cube_max_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a385e544f237bdac03ff6fe8958f3c709"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#a385e544f237bdac03ff6fe8958f3c709">CubeMaxDistancePDF</a> (double t, double *parameters)</td></tr>
-<tr class="separator:a385e544f237bdac03ff6fe8958f3c709"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaa28fe4769d20329572c705385b8f0c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#aeaa28fe4769d20329572c705385b8f0c">CubeMaxDistanceCDF</a> (double a, double *b)</td></tr>
-<tr class="separator:aeaa28fe4769d20329572c705385b8f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8b621c848995bb69290c372a2529e48"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#ad8b621c848995bb69290c372a2529e48">CubeMaxDistanceMean</a> (double *parameters)</td></tr>
-<tr class="separator:ad8b621c848995bb69290c372a2529e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad49c6cede8ba0ba58f6d84bc832f2439"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#ad49c6cede8ba0ba58f6d84bc832f2439">CubeMaxDistanceVar</a> (double *parameters)</td></tr>
-<tr class="separator:ad49c6cede8ba0ba58f6d84bc832f2439"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af016e2cb89755c3a76d5968932ef9d77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#af016e2cb89755c3a76d5968932ef9d77">CubeMaxDistanceSupport</a> (double *t, double *parameters)</td></tr>
-<tr class="separator:af016e2cb89755c3a76d5968932ef9d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d65518946adde7f999e3a2a830b1fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#a7d65518946adde7f999e3a2a830b1fda">CubeMaxDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
-<tr class="separator:a7d65518946adde7f999e3a2a830b1fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf2b206f207a51493fb0f05b78ecf372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#abf2b206f207a51493fb0f05b78ecf372">CubeMaxDistanceNcoords</a> (int *Ncoords, char **CoordSystem, double *parameters)</td></tr>
-<tr class="separator:abf2b206f207a51493fb0f05b78ecf372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35e452d99a18879d6e28c49ca1fc4f9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#a35e452d99a18879d6e28c49ca1fc4f9e">CubeMaxDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
-<tr class="separator:a35e452d99a18879d6e28c49ca1fc4f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b4433f55fe0a1a2ed57511e4c014b48"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_cube_max_8h.html#a3b4433f55fe0a1a2ed57511e4c014b48">CubeMaxDistanceMetric</a> (int Ncoords, double *point1, double *point2, double *parameters)</td></tr>
-<tr class="separator:a3b4433f55fe0a1a2ed57511e4c014b48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c5a0f219287b55c83e01f3c4cd1595c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a9c5a0f219287b55c83e01f3c4cd1595c">HyperCubeMaxDistancePDF</a> (double t, double *parameters)</td></tr>
+<tr class="separator:a9c5a0f219287b55c83e01f3c4cd1595c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641c1458d626d6a537e3839d9dc05790"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a641c1458d626d6a537e3839d9dc05790">HyperCubeMaxDistanceCDF</a> (double a, double *b)</td></tr>
+<tr class="separator:a641c1458d626d6a537e3839d9dc05790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48329eda963978ba452469fab593c5d3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a48329eda963978ba452469fab593c5d3">HyperCubeMaxDistanceMean</a> (double *parameters)</td></tr>
+<tr class="separator:a48329eda963978ba452469fab593c5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4263f5daf366a3b8795a94ee3756b4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a1e4263f5daf366a3b8795a94ee3756b4">HyperCubeMaxDistanceVar</a> (double *parameters)</td></tr>
+<tr class="separator:a1e4263f5daf366a3b8795a94ee3756b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29fd7266491d4196ff7d0f85f1704ca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a29fd7266491d4196ff7d0f85f1704ca0">HyperCubeMaxDistanceSupport</a> (double *t, double *parameters)</td></tr>
+<tr class="separator:a29fd7266491d4196ff7d0f85f1704ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a708e23dbee12cdfd027540d8c0c5e32e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a708e23dbee12cdfd027540d8c0c5e32e">HyperCubeMaxDistanceCheckParameters</a> (double *parameters, int *result, char *error_str)</td></tr>
+<tr class="separator:a708e23dbee12cdfd027540d8c0c5e32e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea8ae53876074137ae30ca3fd42105e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#aea8ae53876074137ae30ca3fd42105e3">HyperCubeMaxDistanceNcoords</a> (int *Ncoords, char **CoordSystem, double *parameters)</td></tr>
+<tr class="separator:aea8ae53876074137ae30ca3fd42105e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9021480820e4563b9cb001776ad6ddab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#a9021480820e4563b9cb001776ad6ddab">HyperCubeMaxDistanceSimPoints</a> (double **points, int *Npoints, int *Ncoords, double *parameters)</td></tr>
+<tr class="separator:a9021480820e4563b9cb001776ad6ddab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99ec89c43b523e8425aae0f28c983c6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_hyper_cube_max_8h.html#ae99ec89c43b523e8425aae0f28c983c6">HyperCubeMaxDistanceMetric</a> (int Ncoords, double *point1, double *point2, double *parameters)</td></tr>
+<tr class="separator:ae99ec89c43b523e8425aae0f28c983c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a73278110edf889424ceed206384ae24a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73278110edf889424ceed206384ae24a"></a>
-<a class="el" href="struct_line_picking_data.html">LinePickingData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>CubeMaxDistanceData</b></td></tr>
-<tr class="separator:a73278110edf889424ceed206384ae24a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a325b0c28f289fa1caec006888f0edfe9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a325b0c28f289fa1caec006888f0edfe9"></a>
+<a class="el" href="struct_line_picking_data.html">LinePickingData</a>&#160;</td><td class="memItemRight" valign="bottom"><b>HyperCubeMaxDistanceData</b></td></tr>
+<tr class="separator:a325b0c28f289fa1caec006888f0edfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Functions to provide PDF, CDF, mean and variance of the distance between two random points within a cube using the max metric. </p>
+<div class="textblock"><p>Functions to provide PDF, CDF, mean and variance of the distance between two random points within a hyper-cube using the max metric. </p>
 <dl class="section author"><dt>Author</dt><dd>Eric Parsonage <a href="#" onclick="location.href='mai'+'lto:'+'eri'+'c.'+'par'+'so'+'nag'+'e@'+'ade'+'la'+'ide'+'.e'+'du.'+'au'; return false;">eric.<span style="display: none;">.nosp@m.</span>pars<span style="display: none;">.nosp@m.</span>onage<span style="display: none;">.nosp@m.</span>@ade<span style="display: none;">.nosp@m.</span>laide<span style="display: none;">.nosp@m.</span>.edu<span style="display: none;">.nosp@m.</span>.au</a> </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>15/09/2012 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>16/09/2012 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aeaa28fe4769d20329572c705385b8f0c"></a>
+<a class="anchor" id="a641c1458d626d6a537e3839d9dc05790"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double CubeMaxDistanceCDF </td>
+          <td class="memname">double HyperCubeMaxDistanceCDF </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -149,11 +149,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Implements the CDF of the distance between two random points within a cube using the max metric.</p>
+<p>Implements the CDF of the distance between two random points within a hyper-cube using the max metric.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calculate the cumulative density for. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -161,12 +161,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7d65518946adde7f999e3a2a830b1fda"></a>
+<a class="anchor" id="a708e23dbee12cdfd027540d8c0c5e32e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CubeMaxDistanceCheckParameters </td>
+          <td class="memname">void HyperCubeMaxDistanceCheckParameters </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>parameters</em>, </td>
@@ -193,7 +193,7 @@ Variables</h2></td></tr>
 <p>Intended to determine if the parameters supplied are valid input to the other functions implemented in this file. However as there is only one parameter and the calling function checks that it is positive this is merely a place holder to allow for a complete implementation in geometries that have more complex relationships between parameters.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
     <tr><td class="paramname">$result</td><td>Pointer to storage for an integer indicating any errors in the supplied parameters. </td></tr>
     <tr><td class="paramname">$error_str</td><td>Pointer to storage for a message explaining any errors in the supplied parameters. </td></tr>
   </table>
@@ -203,12 +203,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad8b621c848995bb69290c372a2529e48"></a>
+<a class="anchor" id="a48329eda963978ba452469fab593c5d3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double CubeMaxDistanceMean </td>
+          <td class="memname">double HyperCubeMaxDistanceMean </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>parameters</em></td><td>)</td>
@@ -216,10 +216,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the mean of the distance between two random points within a cube using the max metric.</p>
+<p>Calculates the mean of the distance between two random points within a hyper-cube using the max metric.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -227,12 +227,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3b4433f55fe0a1a2ed57511e4c014b48"></a>
+<a class="anchor" id="ae99ec89c43b523e8425aae0f28c983c6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double CubeMaxDistanceMetric </td>
+          <td class="memname">double HyperCubeMaxDistanceMetric </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>Ncoords</em>, </td>
@@ -268,7 +268,7 @@ Variables</h2></td></tr>
     <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point. </td></tr>
     <tr><td class="paramname">$points1</td><td>= coordinates of first point. </td></tr>
     <tr><td class="paramname">$points2</td><td>= coordinates of second point. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the cube under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -276,12 +276,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abf2b206f207a51493fb0f05b78ecf372"></a>
+<a class="anchor" id="aea8ae53876074137ae30ca3fd42105e3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CubeMaxDistanceNcoords </td>
+          <td class="memname">void HyperCubeMaxDistanceNcoords </td>
           <td>(</td>
           <td class="paramtype">int *&#160;</td>
           <td class="paramname"><em>Ncoords</em>, </td>
@@ -310,7 +310,7 @@ Variables</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">$Ncoords</td><td>returns the number of coordinates </td></tr>
     <tr><td class="paramname">$CoordSystem</td><td>returns a brief description of the coordinate system </td></tr>
-    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the cube under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -318,12 +318,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a385e544f237bdac03ff6fe8958f3c709"></a>
+<a class="anchor" id="a9c5a0f219287b55c83e01f3c4cd1595c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double CubeMaxDistancePDF </td>
+          <td class="memname">double HyperCubeMaxDistancePDF </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -341,11 +341,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Implements the PDF of the distance between two random points within a cube using the max metric.</p>
+<p>Implements the PDF of the distance between two random points within a hyper-cube using the max metric.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>The distance to calculate the density for. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -353,12 +353,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a35e452d99a18879d6e28c49ca1fc4f9e"></a>
+<a class="anchor" id="a9021480820e4563b9cb001776ad6ddab"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CubeMaxDistanceSimPoints </td>
+          <td class="memname">void HyperCubeMaxDistanceSimPoints </td>
           <td>(</td>
           <td class="paramtype">double **&#160;</td>
           <td class="paramname"><em>points</em>, </td>
@@ -394,7 +394,7 @@ Variables</h2></td></tr>
     <tr><td class="paramname">$points</td><td>= Npoints x Ncoords array of coordinates, in the correct system. </td></tr>
     <tr><td class="paramname">$Npoints</td><td>= number of points to generate. </td></tr>
     <tr><td class="paramname">$Ncoords</td><td>= number of coordinates for each point. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>parameters[0] is the length of the sides of the cube under consideration. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -402,12 +402,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af016e2cb89755c3a76d5968932ef9d77"></a>
+<a class="anchor" id="a29fd7266491d4196ff7d0f85f1704ca0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void CubeMaxDistanceSupport </td>
+          <td class="memname">void HyperCubeMaxDistanceSupport </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -425,11 +425,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the support for the PDF and CDF of the distance between two random points within a cube using the max metric.</p>
+<p>Calculates the support for the PDF and CDF of the distance between two random points within a hyper-cube using the max metric.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$t</td><td>Pointer to storage for lower and upper ends of the support for the PDF and CDF of the distance between two random points within a cube. </td></tr>
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube. (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -437,12 +437,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad49c6cede8ba0ba58f6d84bc832f2439"></a>
+<a class="anchor" id="a1e4263f5daf366a3b8795a94ee3756b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double CubeMaxDistanceVar </td>
+          <td class="memname">double HyperCubeMaxDistanceVar </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
           <td class="paramname"><em>parameters</em></td><td>)</td>
@@ -450,10 +450,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Calculates the variance of the distance between two random points within a cube using the max metric.</p>
+<p>Calculates the variance of the distance between two random points within a hyper-cube using the max metric.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">$parameters</td><td>$parameters[0] is the size of the cube (i.e., the length of any side). </td></tr>
+    <tr><td class="paramname">$parameters</td><td>$parameter[0] is the dimensions of the hyper-cube $parameters[1] is the size of the hyper-cube (i.e., the length of any side). </td></tr>
   </table>
   </dd>
 </dl>
@@ -464,7 +464,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 15 2012 02:21:02 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Sep 15 2012 02:21:03 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
