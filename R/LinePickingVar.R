@@ -17,8 +17,10 @@ function(problem=0,parameters){
   tmp <- .Call('rLinePickingVar',
                 as.integer(problem),
                 as.double(parameters))
-
+  if(tmp == -1){
+    EX <- GetNumMoment(problem=problem,parameters=parameters,k=1)
+    EX2 <- GetNumMoment(problem=problem,parameters=parameters,k=2)
+    tmp <- EX2 - EX^2
+  }
   return(tmp)    
 }
-
-# TODO add numerical for mean -1

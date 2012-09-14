@@ -1,4 +1,3 @@
-
 #' Function to print out information about a given problem
 #' 
 #' Uses internal function format list to print nice
@@ -14,14 +13,11 @@
 LinePickingProblemLookup <- function(problem=0,print=TRUE){
     tmp <- .Call("rLinePickingAllProblems")
     n <- length(tmp)
-    if (problem < 0 | problem >= n){
-        stop(paste("That problem does not exist,", 
-        "there are only problems 0 -",n - 1,"\n"))
-    }
-    problem <- problem + 1; 
-    x <- tmp[[problem]]
+    index <- FindProblem(x=tmp,problem=problem)
+    if(index==-1) stop()
+    x <- tmp[[index]]
     if(print){
-      cat("Problem",problem-1,'\n')
+      cat("Problem",x$problem,'\n')
       cat("==========\n")
       FormatProblem(x)
     }

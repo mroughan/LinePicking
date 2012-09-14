@@ -30,3 +30,5 @@ Collate:
     'LinePickingSimDistances.R'
     'LinePickingSimPoints.R'
     'FormatProblem.R'
+    'FindProblem.R'
+    'GetNumMoment.R'
