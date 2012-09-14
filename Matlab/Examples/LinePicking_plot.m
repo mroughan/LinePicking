@@ -274,6 +274,29 @@ print(device, filename);
 fprintf('Printed to %s\n', filename);
 
 
+% 
+% compare the three rectangels: Euclidean, Manhattan, and Max
+dt = 0.001;
+t = -0.1:dt:1.1;
+figure(123)
+hold off
+plot(0,0)
+hold on
+n = 2;
+[g_rect] = LinePickingPDF(t, LinePickingNameLookup('rectangle'), [n,1]/sqrt(n^2+1));
+p123(1) = plot(t,g_rect,'color', colors(1,:));
+[g_rect_man] = LinePickingPDF(t, LinePickingNameLookup('rectangle Manhattan'), [n,1]/(n+1));
+p123(2) = plot(t,g_rect_man,'color', colors(4,:));
+[g_rect_max] = LinePickingPDF(t, LinePickingNameLookup('rectangle max'), [n,1]/n);
+p123(3) = plot(t,g_rect_max,'color', colors(6,:));
+set(gca, 'xlim', [0 1]);
+legend(p123, 'Euclidean', 'Manhattan', 'Max');
+xlabel('t');
+ylabel('g_{a:b}(t)');
+filename = sprintf('%s/LinePicking_plot_rect_metrics.%s', plotdir, suffix);
+print(device, filename);
+fprintf('Printed to %s\n', filename);
+
 
 % 
 % do  plot for cube

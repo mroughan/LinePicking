@@ -50,14 +50,19 @@ in \cite{robbins78:_constant,weisstein:_cube_line_picking,Bailey2007196} as
                              21 \ln(1+\sqrt{2}) + 
                              42 \ln(2+\sqrt{3}) - 7 \pi
                       \right]
-	=	0.66170...
+	= 0.6617071822...
 \end{equation}
 but a closed form for the variance does not appear (only even moments
-are reported). Even more complicated results appear for 4- and 5-Cubes in
-5-Cubes~\cite{philip:_probab_distr_distan_between_two_4d,Bailey2007196}:
+are reported). Even more complicated results appear for 4- and
+5-Cubes~\cite{anderssen76:_concer,philip:_probab_distr_distan_between_two_4d,Bailey2007196}:
 \begin{eqnarray}
- \mu^{\rm 4-cube} & = & 0.7776656535 ...    \label{eq:4-cube}, \\
- \mu^{\rm 5-cube} & = & 0.8785309152 ...     \label{eq:5-cube}.
+ \mu^{\rm 4-cube}  & = & 0.7776656535 ...    \label{eq:4-cube-mean}, \\
+ \mu^{\rm 5-cube}  & = & 0.8785309152 ...     \label{eq:5-cube-mean}, \\
+ \mu^{\rm 6-cube}  & = & 0.96895 ...     \label{eq:6-cube-mean}, \\
+ \mu^{\rm 7-cube}  & = & 1.05159 ...     \label{eq:7-cube-mean}, \\
+ \mu^{\rm 8-cube}  & = & 1.12817 ...     \label{eq:8-cube-mean}, \\
+ \mu^{\rm 9-cube}  & = & 1.19985 ...     \label{eq:9-cube-mean}, \\
+ \mu^{\rm 10-cube} & = & 1.26748 ...     \label{eq:10-cube-mean}.
 \end{eqnarray}
 
 Higher order moments are considered as {\em box integrals} in
@@ -71,10 +76,10 @@ The basic notion is to write the moment as an integral
         \left[ \sum_{i=1}^n (x_i - y_i)^2 \right]^{s/2}
         \, dx_1 \ldots  dx_n   \, dy_1 \ldots  dy_n  
 \end{equation}
-where $n$ is the dimension, and $s$ the moment in question.
-
-They present methods to evaluate the integral to high precision,
-though without an anlytic expression for the result.
+where $n$ is the dimension, and $s$ the moment in
+question. Bailey~{\em et al.}~\cite{Bailey2007196} present methods to
+evaluate the integral to high precision, though without an analytic
+expression for the result, except for first moments. 
 
 % The ability, however, to derive these to high precision presents the
 % ability to calculate the moment generating function of the $n$-cube
@@ -85,3 +90,40 @@ though without an anlytic expression for the result.
 
 The paper notes high-dimensional approximations have been studied ...
 
+
+
+However, the second moment is not difficult, because for $s=2$ the box
+integral reduces to 
+\begin{equation}
+  \label{eq:moment_n_cube}
+  \Delta_n(s) = \int_0^1 \cdots \int_0^1
+        \left[ \sum_{i=1}^n (x_i - y_i)^2 \right]
+        \, dx_1 \ldots  dx_n   \, dy_1 \ldots  dy_n  
+\end{equation}
+
+Alternatively, we can see that for the $n$-cube
+\begin{equation}
+  E\left[ D^2 \right]
+           = E\left[ \left( \sqrt{\sum_{i=1}^n (x_i - y_i)^2} \right)^2 \right]
+           = \sum_{i=1}^n E\left[ D_i^2 \right]
+           = n  m_2^{\rm line}
+           = \frac{n}{6}.
+\end{equation}
+The mean distance for the $n$ cube is known to satisfy~\cite{anderssen76:_concer,weisstein:_cube_line_picking} 
+\begin{equation}
+  \frac{n}{9} \leq \left( \mu^{n-\mbox{cube}} \right)^2
+                    \leq  \frac{n}{18} 
+                               \left[ 1 + 2 \left(1-\frac{3}{5n}\right)^{1/2} \right]
+                        ,
+\end{equation}
+so the variance $\sigma^2_n = \frac{n}{6} - \left( \mu^{n-\mbox{cube}}
+\right)^2$ can be calculated to be 
+\begin{equation}
+  \frac{2n}{18}\left[ 1 - 2 \left(1-\frac{3}{5n}\right)^{1/2} \right]
+        \leq \sigma^2_n
+        \leq \frac{n}{18}.
+\end{equation}
+
+
+original for means of distances in cube...
+\cite{anderssen76:_concer}
