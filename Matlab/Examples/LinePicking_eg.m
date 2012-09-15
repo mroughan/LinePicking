@@ -1,7 +1,8 @@
 %
 % Generate plots showing examples.
 %
-% Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+%     Copyright 2012 Matthew Roughan <matthew.roughan@adelaide.edu.au>
+%     Copyright 2012 Eric Parsonage <eric.parsonage@adelaide.edu.au> 
 %     This program is free software: you can redistribute it and/or modify
 %     it under the terms of the GNU General Public License as published by
 %     the Free Software Foundation, either version 3 of the License, or
@@ -222,21 +223,21 @@ plot3([0 L L 0 0], [L L L L L], [0 0 L L 0], 'k-', 'linewidth', 2);
 %  this all works to colour the longest section of the manhattan path red
 % ie showing what is used for the max metric.
 
-k = abs(points1 - points2)
-j = k(1,:) == max(k)
+k = abs(points1 - points2);
 
+j = k(1,:) == max(k);
 plot3([points1(1,j); points2(1,j)], [points1(2,j); points1(2,j)], [points1(3,j); points1(3,j)],'r-');
-j = k(1,:) < max(k)
+j = k(1,:) < max(k);
 plot3([points1(1,j); points2(1,j)], [points1(2,j); points1(2,j)], [points1(3,j); points1(3,j)],'b-');
 
-j = k(2,:) == max(k)
+j = k(2,:) == max(k);
 plot3([points2(1,j); points2(1,j)], [points1(2,j); points2(2,j)], [points1(3,j); points1(3,j)], 'r-');
-j = k(2,:) < max(k)
+j = k(2,:) < max(k);
 plot3([points2(1,j); points2(1,j)], [points1(2,j); points2(2,j)], [points1(3,j); points1(3,j)], 'b-');
 
-j = k(3,:) == max(k)
+j = k(3,:) == max(k);
 plot3([points2(1,j); points2(1,j)], [points2(2,j); points2(2,j)], [points1(3,j); points2(3,j)], 'r-');
-j = k(3,:) < max(k)
+j = k(3,:) < max(k);
 plot3([points2(1,j); points2(1,j)], [points2(2,j); points2(2,j)], [points1(3,j); points2(3,j)], 'b-');
 
 
@@ -278,8 +279,8 @@ colormap(0.5*[1 1 1]);
 hidden off
 hold on
 % of = 1.001; % make dots just outside sphere
-% plot3(of*x1(m), of*y1(m), of*z1(m), 'b.', 'markersize', 15);
-% plot3(of*x2(m), of*y2(m), of*z2(m), 'b.', 'markersize', 15);
+% plot3(of*x1(m), of*y1(m), of*z1(m), 'b.', 'markersize', 20);
+% plot3(of*x2(m), of*y2(m), of*z2(m), 'b.', 'markersize', 20);
 plot3([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], [points1(3,:); points2(3,:)], 'bo-');
 set(gca, 'xlim', [-R-0.1, R+0.1]);
 set(gca, 'ylim', [-R-0.1, R+0.1]);
@@ -323,8 +324,8 @@ little_sphere_z = d*z/R;
 for i=1:size(v1,2)
   % surf(of*v1(1,i)+little_sphere_x,of*v1(2,i)+little_sphere_y,of*v1(3,i)+little_sphere_z);
   % seems to draw them better if we do it one by one
-  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 15);
-  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 15);
+  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 20);
+  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 20);
 end
 
 
@@ -422,13 +423,15 @@ title('circle-line picking example');
 
 %
 % cylinder cases 
-%    
+%
+
+
 %
 % cylinder geodesic picking
 %
 problem = LinePickingNameLookup('cylindrical surface geodesic');
 R = 0.5;
-L = 2
+L = 2;
 parameters = [L, R];
 points1 = LinePickingSimPoints(M, problem, parameters, seed + 7);
 points2 = LinePickingSimPoints(M, problem, parameters, seed + 8);
@@ -450,8 +453,8 @@ v2 = points2;
 of = 1.001; % make dots just outside sphere
 
 for i=1:size(v1,2)
-  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 25);
-  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 25);
+  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 20);
+  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 20);
 end
 
 
@@ -466,9 +469,9 @@ for i = 1:cols
  v3 = [0,-c;c,0]*v1(1:2,i); % v3 lies in plane of v1 and v2 and is orthog. to v1 
  v  = v1(1:2,i)*cos(a)+((norm(v1(1:2,i))/norm(v3))*v3)*sin(a); % Arc, center at (0,0)
  h = v2(3,i) - v1(3,i);
- b = linspace(0, h, n);
+ b = linspace(0, h, n); % vector of z differences.
  
- plot3(of*v(1,:),of*v(2,:), v1(3,i) + b, 'b-', 'linewidth', 2 ) % Plot arc, centered at P0
+ plot3(of*v(1,:),of*v(2,:), v1(3,i) + b, 'b-', 'linewidth', 2 ); % Plot arc, centered at P0
  
 end
 
@@ -481,9 +484,104 @@ view([az, el]);
 % axis off
 set(gca, 'linewidth', 2);
 set(gca, 'fontsize', 16);
-filename = sprintf('%s/LinePicking_eg_cylinder_geodesic.%s', plotdir, suffix);
+filename = sprintf('%s/LinePicking_eg_cylindrical_surface_geodesic.%s', plotdir, suffix);
 print(device,filename);
 fprintf('printed to %s\n', filename);
-title('cylinder-geodesic picking example');
+title('cylindrical surface geodesic picking example');
+
+
+%
+% cylindrical surface line picking
+%
+problem = LinePickingNameLookup('cylindrical surface');
+R = 0.5;
+L = 2;
+parameters = [L, R];
+points1 = LinePickingSimPoints(M, problem, parameters, seed + 1);
+points2 = LinePickingSimPoints(M, problem, parameters, seed + 2);
+
+figure(problem+1)
+hold off
+n = 12;
+[x,y,z] = cylinder;
+x = R*x;
+y = R*y; 
+z = L*z;
+h = mesh(x+0,y+0,z+0);
+colormap(0.5*[1 1 1]);
+hidden off
+hold on
+v1 = points1;
+v2 = points2;
+
+of = 1.001; % make dots just outside sphere
+
+for i=1:size(v1,2)
+  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 20);
+  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 20);
+end
+
+plot3([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], [points1(3,:); points2(3,:)], 'b-');
+
+set(gca, 'xlim', [-R-0.1, R+0.1]);
+set(gca, 'ylim', [-R-0.1, R+0.1]);
+set(gca, 'zlim', [-R-0.1, R+0.1]);
+axis equal
+az = -120; el = 20;
+view([az, el]);
+% axis off
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+filename = sprintf('%s/LinePicking_eg_cylindrical_surface.%s', plotdir, suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('cylindrical surface line picking example');
+
+
+%
+% cylinder line picking
+%
+problem = LinePickingNameLookup('cylinder');
+R = 0.5;
+L = 2;
+parameters = [L, R];
+points1 = LinePickingSimPoints(M, problem, parameters, seed + 19);
+points2 = LinePickingSimPoints(M, problem, parameters, seed + 20);
+
+figure(problem+1)
+hold off
+n = 12;
+[x,y,z] = cylinder;
+x = R*x;
+y = R*y; 
+z = L*z;
+h = mesh(x+0,y+0,z+0);
+colormap(0.5*[1 1 1]);
+hidden off
+hold on
+v1 = points1;
+v2 = points2;
+
+
+for i=1:size(v1,2)
+  plot3(v1(1,i),v1(2,i),v1(3,i),'b.', 'markersize', 20);
+  plot3(v2(1,i),v2(2,i),v2(3,i),'b.', 'markersize', 20);
+end
+
+plot3([points1(1,:); points2(1,:)], [points1(2,:); points2(2,:)], [points1(3,:); points2(3,:)], 'b-');
+
+set(gca, 'xlim', [-R-0.1, R+0.1]);
+set(gca, 'ylim', [-R-0.1, R+0.1]);
+set(gca, 'zlim', [-R-0.1, R+0.1]);
+axis equal
+az = -120; el = 20;
+view([az, el]);
+% axis off
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+filename = sprintf('%s/LinePicking_eg_cylinder.%s', plotdir, suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('cylinder line picking example');
 
 
