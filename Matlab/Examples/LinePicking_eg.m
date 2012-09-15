@@ -244,7 +244,6 @@ plot3([points1(1,:); points1(1,:)], [points1(2,:); points1(2,:)], [points1(3,:);
 plot3([points2(1,:); points2(1,:)], [points2(2,:); points2(2,:)], [points2(3,:); points2(3,:)], 'bo-');
 
 
-
 set(gca, 'xlim', [-0.1, L+0.1]);
 set(gca, 'ylim', [-0.1, L+0.1]);
 set(gca, 'zlim', [-0.1, L+0.1]);
@@ -431,8 +430,8 @@ problem = LinePickingNameLookup('cylindrical surface geodesic');
 R = 0.5;
 L = 2
 parameters = [L, R];
-points1 = LinePickingSimPoints(M, problem, parameters, seed);
-points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+points1 = LinePickingSimPoints(M, problem, parameters, seed + 7);
+points2 = LinePickingSimPoints(M, problem, parameters, seed + 8);
 
 figure(problem+1)
 hold off
@@ -449,30 +448,29 @@ v1 = points1;
 v2 = points2;
 
 of = 1.001; % make dots just outside sphere
-d = 0.1;
-little_sphere_x = d*x/R;
-little_sphere_y = d*y/R;
-little_sphere_z = d*z/R;
+
 for i=1:size(v1,2)
-  % surf(of*v1(1,i)+little_sphere_x,of*v1(2,i)+little_sphere_y,of*v1(3,i)+little_sphere_z);
-  % seems to draw them better if we do it one by one
-  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 15);
-  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 15);
+  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 25);
+  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 25);
 end
 
 
-% draw the great circle lines 
-%[rows cols] = size(v1);
-%for i = 1:cols
-%  % v3 lies in plane of v1 & v2 and is orthog. to v1 
-%  v3 = cross(cross(v1(:,i),v2(:,i)),v1(:,i)); 
-%  v3 = v3/norm(v3); % Make v3 of length r
-%  % Let t range through the inner angle between v1 and v2
-%  t = linspace(0,atan2(norm(cross(v1(:,i),v2(:,i))),dot(v1(:,i),v2(:,i))));
 
-%  v = v1(:,i)*cos(t)+v3*sin(t); % v traces great circle path, relative to center
-%  plot3(of*v(1,:),of*v(2,:),of*v(3,:),'b-', 'linewidth', 2); % Plot it in 3D
-%end
+% draw the great circle lines 
+[rows cols] = size(v1);
+for i = 1:cols
+ n = 100;   
+
+ c  = det([v1(1:2,i),v2(1:2,i)]); % "cross product" of v1 and v2
+ a  = linspace(0,atan2(abs(c),dot(v1(1:2,i),v2(1:2,i))),n); % Angle range
+ v3 = [0,-c;c,0]*v1(1:2,i); % v3 lies in plane of v1 and v2 and is orthog. to v1 
+ v  = v1(1:2,i)*cos(a)+((norm(v1(1:2,i))/norm(v3))*v3)*sin(a); % Arc, center at (0,0)
+ h = v2(3,i) - v1(3,i);
+ b = linspace(0, h, n);
+ 
+ plot3(of*v(1,:),of*v(2,:), v1(3,i) + b, 'b-', 'linewidth', 2 ) % Plot arc, centered at P0
+ 
+end
 
 set(gca, 'xlim', [-R-0.1, R+0.1]);
 set(gca, 'ylim', [-R-0.1, R+0.1]);
