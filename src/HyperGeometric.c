@@ -33,7 +33,7 @@
  */
 
 
-double hypergeometric2f1_(double a, double  b, double c, double x, int n)
+double HyperGeometric2F1(double a, double  b, double c, double x)
 {
     /* quick hack does series expansion up to n terms */
     

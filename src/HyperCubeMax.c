@@ -95,9 +95,9 @@ double HyperCubeMaxDistanceMean(double* parameters)
     return  pow(2, 2.0 * n + k) * pow (L, k) * n *
             (
                 (pow(0.5, k + n) / (k + n)) * 
-                hypergeometric2f1_(k + n, 1 - n, k + n + 1, 0.5, 100) -
+                HyperGeometric2F1(k + n, 1 - n, k + n + 1, 0.5) -
                 ((2.0 * pow(0.5, k + n + 1)) / (k + n + 1)) *
-                hypergeometric2f1_(k + n + 1, 1 - n, k + n + 2, 0.5, 100)
+                HyperGeometric2F1(k + n + 1, 1 - n, k + n + 2, 0.5)
              );
             
 }
@@ -128,9 +128,9 @@ double HyperCubeMaxDistanceVar(double* parameters)
     return  pow(2.0, 2.0 * n + k) * pow (L, k) * n *
             (
                 (pow(0.5, k + n) / (k + n)) * 
-                hypergeometric2f1_(k + n, 1 - n, k + n + 1, 0.5, 100) -
+                HyperGeometric2F1(k + n, 1 - n, k + n + 1, 0.5) -
                 ((2 * pow(0.5, k + n + 1)) / (k + n + 1)) *
-                hypergeometric2f1_(k + n + 1, 1 - n, k + n + 2, 0.5, 100)
+                HyperGeometric2F1(k + n + 1, 1 - n, k + n + 2, 0.5)
              ) - pow(mean, 2.0);
 }
 

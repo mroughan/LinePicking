@@ -207,8 +207,8 @@ problem = LinePickingNameLookup('hyper-cube max');
 L = 1;
 parameters = [3, L];
 name(problem+1) = {LinePickingProblemLookup(problem)};
-points1 = LinePickingSimPoints(M, problem, parameters, seed);
-points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+points1 = LinePickingSimPoints(M, problem, parameters, seed + 11);
+points2 = LinePickingSimPoints(M, problem, parameters, seed+ 12);
 figure(problem+1)
 hold off
 plot3(0,0,0);
@@ -422,7 +422,70 @@ title('circle-line picking example');
 
 
 %
-% hypersphere geodesic (general case) 
-%    don't bother
+% cylinder cases 
+%    
+%
+% cylinder geodesic picking
+%
+problem = LinePickingNameLookup('cylindrical surface geodesic');
+R = 0.5;
+L = 2
+parameters = [L, R];
+points1 = LinePickingSimPoints(M, problem, parameters, seed);
+points2 = LinePickingSimPoints(M, problem, parameters, seed+1);
+
+figure(problem+1)
+hold off
+n = 12;
+[x,y,z] = cylinder;
+x = R*x;
+y = R*y; 
+z = L*z;
+h = mesh(x+0,y+0,z+0);
+colormap(0.5*[1 1 1]);
+hidden off
+hold on
+v1 = points1;
+v2 = points2;
+
+of = 1.001; % make dots just outside sphere
+d = 0.1;
+little_sphere_x = d*x/R;
+little_sphere_y = d*y/R;
+little_sphere_z = d*z/R;
+for i=1:size(v1,2)
+  % surf(of*v1(1,i)+little_sphere_x,of*v1(2,i)+little_sphere_y,of*v1(3,i)+little_sphere_z);
+  % seems to draw them better if we do it one by one
+  plot3(of*v1(1,i),of*v1(2,i),of*v1(3,i),'b.', 'markersize', 15);
+  plot3(of*v2(1,i),of*v2(2,i),of*v2(3,i),'b.', 'markersize', 15);
+end
+
+
+% draw the great circle lines 
+%[rows cols] = size(v1);
+%for i = 1:cols
+%  % v3 lies in plane of v1 & v2 and is orthog. to v1 
+%  v3 = cross(cross(v1(:,i),v2(:,i)),v1(:,i)); 
+%  v3 = v3/norm(v3); % Make v3 of length r
+%  % Let t range through the inner angle between v1 and v2
+%  t = linspace(0,atan2(norm(cross(v1(:,i),v2(:,i))),dot(v1(:,i),v2(:,i))));
+
+%  v = v1(:,i)*cos(t)+v3*sin(t); % v traces great circle path, relative to center
+%  plot3(of*v(1,:),of*v(2,:),of*v(3,:),'b-', 'linewidth', 2); % Plot it in 3D
+%end
+
+set(gca, 'xlim', [-R-0.1, R+0.1]);
+set(gca, 'ylim', [-R-0.1, R+0.1]);
+set(gca, 'zlim', [-R-0.1, R+0.1]);
+axis equal
+az = -120; el = 20;
+view([az, el]);
+% axis off
+set(gca, 'linewidth', 2);
+set(gca, 'fontsize', 16);
+filename = sprintf('%s/LinePicking_eg_cylinder_geodesic.%s', plotdir, suffix);
+print(device,filename);
+fprintf('printed to %s\n', filename);
+title('cylinder-geodesic picking example');
 
 
