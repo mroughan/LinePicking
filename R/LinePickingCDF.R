@@ -23,5 +23,8 @@ function(t,problem=0,parameters){
     as.double(t),
     as.integer(problem),
     as.double(parameters))
+    if(-1 %in% tmp){
+      tmp <- GetNumCDF(problem=problem,parameters=parameters,t=t)
+    }
     return(tmp)
 }

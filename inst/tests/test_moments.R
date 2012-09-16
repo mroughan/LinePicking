@@ -10,7 +10,9 @@ test_that("Simulation mean equals LinePickingMean", {
     index <- which(problems==i)
     parameters<-as.numeric(tmp[[index]]$parameters)
     LP.mean <- LinePickingMean(problem=i,parameters=parameters)
-    sim.mean <- mean(LinePickingSimDistances(N,problem=i,parameters=parameters,seed=1121))
+    sim.mean <- mean(LinePickingSimDistances(N,problem=i,
+                                             parameters=parameters,
+                                             seed=1121))
     expect_that(LP.mean,equals(sim.mean,tolerance=0.01))
   }
 })
@@ -23,8 +25,8 @@ test_that("Simulation var equals LinePickingVar", {
     index <- which(problems==i)
     parameters<-as.numeric(tmp[[index]]$parameters)
     LP.var <- LinePickingVar(problem=i,parameters=parameters)
-    print(LP.var)
-    sim.var <- var(LinePickingSimDistances(N,problem=i,parameters=parameters,seed=1121))
+    sim.var <- var(LinePickingSimDistances(N,problem=i,
+                                           parameters=parameters,seed=1121))
     expect_that(LP.var,equals(sim.var,tolerance=0.01))
   }
 })
