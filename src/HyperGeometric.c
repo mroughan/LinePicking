@@ -33,9 +33,12 @@
  */
 
 
-double hypergeometric2f1_(double a, double  b, double c, double x, int n)
+double HyperGeometric2F1(double a, double  b, double c, double x)
 {
-    /* quick hack does series expansion up to n terms */
+    /* 
+     * does series expansion until the next term 
+     * would be too small to make any difference.
+     */
     
     int m;
     double z;
@@ -45,17 +48,15 @@ double hypergeometric2f1_(double a, double  b, double c, double x, int n)
     z = 0;
     delta = 1;
     
-    
-    while (m < n)
+    do  /* used to be while (m < n) */
     {
         if (m != 0)
             delta = delta * x * (a + (m - 1)) * (b + (m - 1)) / m / 
             (c + (m - 1));
         
         z = z + delta;
-        if ( fabs(delta) < (fabs(z) * DBL_EPSILON))
-            break;
         m = m + 1;
-    }
+    } while (fabs(delta) > (fabs(z) * DBL_EPSILON));
+
     return z;
 }

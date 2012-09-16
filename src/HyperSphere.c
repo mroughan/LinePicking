@@ -100,17 +100,16 @@ double HyperSphereDistanceCDF(double t, double* parameters)
             (((pow(M_PI, -0.5) / 2.) * pow(t,2) - 
                pow(M_PI, -0.5) * 
                pow(r,2)) * tgamma(0.5 + 0.5 * n) * tgamma(n / 2.) *
-               hypergeometric2f1_(0.5, 1. - 0.5 * n, 1.5, 
-                                 pow(1. - (0.5 * pow(t, 2)) / pow(r, 2), 2), 
-                                 100)
+               HyperGeometric2F1(0.5, 1. - 0.5 * n, 1.5, 
+                                 pow(1. - (0.5 * pow(t, 2)) / pow(r, 2), 2))
             ) / (pow(r, 2) * pow(tgamma(0.5 * n), 2));
     */
     /* newly derived version */
     
     return  (pow(pow(t, 2) / pow(r, 2) - pow(t, 4) / (4. * pow(r,4 )), n / 2.)*
              tgamma((1 + n)/2.) *
-             hypergeometric2f1_(1 - n / 2., n / 2., 1 + n / 2., 
-                                pow(t,2) / (4. * pow(r, 2)), 100)
+             HyperGeometric2F1(1 - n / 2., n / 2., 1 + n / 2., 
+                                pow(t,2) / (4. * pow(r, 2)))
             )/
             (n * sqrt(M_PI) * 
              pow(1 - pow(t, 2) / (4. * pow(r, 2)), n / 2.) * tgamma(n / 2.));

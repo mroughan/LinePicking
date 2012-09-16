@@ -62,6 +62,9 @@ filename = sprintf('%s/LinePicking_plot_nballs.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
 
+
+
+
 %
 % do  plots comparing sphere, line, disk and square
 %
@@ -444,6 +447,28 @@ legend(p17, legend_str,'location','NorthWest');
 xlabel('t');
 ylabel('g_n(t)');
 filename = sprintf('%s/LinePicking_plot_nspheres_geodesic.%s', plotdir, suffix);
+print(device, filename);
+fprintf('Printed to %s\n', filename);
+
+% compare cube max line picking in different dimensions:
+
+figure(18)
+dt = 0.001;
+t = 0:dt:1;
+hold off
+plot(0,0)
+hold on
+problem = LinePickingNameLookup('hyper-cube max');
+for n=1:8
+[g] = LinePickingPDF(t, problem, [n, 1]);
+p5(n) = plot(t,g,'color', colors(n,:));
+legend_str(n,:) = sprintf('n = %2d', n);
+end
+set(gca, 'xlim', [0 1]);
+legend(p5, legend_str);
+xlabel('t');
+ylabel('g_n(t)');
+filename = sprintf('%s/LinePicking_plot_ncubemax.%s', plotdir, suffix);
 print(device, filename);
 fprintf('Printed to %s\n', filename);
 

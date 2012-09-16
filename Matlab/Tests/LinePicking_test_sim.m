@@ -71,6 +71,7 @@ test_problems = [...
     {'cylindrical surface geodesic', [b, R]/sqrt(b^2+(R * pi)^2), 'cylindrical surface geodesic', 'cylindrical_surface_geodesic'};
     {'cylinder', [b, R]/sqrt(b^2+(R * 2)^2), 'cylinder', 'cylinder'};             
     {'cube max metric', [L1], 'cube max', 'cube_max'};
+    {'hyper-cube max', [4, L1], '4-cube max', '4-cube_max'};
 		];
 
 % could porobably add a check of scaling in here as well
