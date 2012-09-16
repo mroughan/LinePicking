@@ -35,7 +35,10 @@
 
 double HyperGeometric2F1(double a, double  b, double c, double x)
 {
-    /* quick hack does series expansion up to n terms */
+    /* 
+     * does series expansion until the next term 
+     * would be too small to make any difference.
+     */
     
     int m;
     double z;
