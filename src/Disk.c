@@ -83,14 +83,11 @@ double DiskDistanceCDF(double t, double* parameters)
     double R = parameters[0];
     double R2 = R*R;
     double R3 = R2 * R;
-    double t2 = t*t;			     
-    double t3 = t2 * t;
-    
-    return  (
-             -(sqrt(4 - t / R2) * (2 * R2 * t + t3)) / 4. + 
-             2 * R * t2 * acos(t / (2. * R)) + 
-             2 * R3 * asin(t / (2. * R))
-             ) / (M_PI * R3);
+    double t2 = t*t;		
+ 
+    return (8 * R3 * asin(t/(2*R)) - t * (2 * R * sqrt(4 * R2 - t2) + 
+            t2 * sqrt(4 - t2 / R2) - 8 * R * t * acos(t / (2 * R)))) /
+            (4. * M_PI * R3);
 }
 
 
