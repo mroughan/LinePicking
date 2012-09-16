@@ -32,3 +32,4 @@ Collate:
     'FormatProblem.R'
     'FindProblem.R'
     'GetNumMoment.R'
+    'GetNumCDF.R'

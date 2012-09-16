@@ -1,6 +1,7 @@
 export(CreateLinePicking)
 export(FindProblem)
 export(FormatProblem)
+export(GetNumCDF)
 export(GetNumMoment)
 export(LinePickingAllProblems)
 export(LinePickingCDF)
