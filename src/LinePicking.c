@@ -542,8 +542,7 @@ void LinePickingCDF(double *t, double *G, int *N, int *problem,
  *
  * Where there is a non-increasing segment, there are multiple possible
  * results, but as we compute the this only over the support, and all of 
- * our current CDFs (except the ) are strictly increasing over this region, 
- * so only this case fails.
+ * our current CDFs  are strictly increasing over their support.
  *
  * Also, where we don't know a closed form for the CDF, it returns -1, and so
  * therefore does this function.
@@ -593,7 +592,7 @@ void LinePickingInverseCDF(double *t, double *G, int *N, int *problem,
 	return;
     }
 
-    /* calculate the distribution */
+    /* calculate the inverse CDF */
     for (i=0; i<*N; i++) 
     {
         if (G[i] <= 0.0)
