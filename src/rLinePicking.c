@@ -58,6 +58,8 @@
  * @addtogroup api
  */
 
+#include <R.h> 
+#include <Rinternals.h>
 #include "LinePicking.h"
 #include "rLinePicking.h"
 
@@ -283,6 +285,52 @@ SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)
                    &Npar, &result, &error_str);
     
     UNPROTECT(1);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return sexpg;                        
+}
+
+
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a vector of reals which are the result 
+ * of evaluating the Inverse CDF of a given line picking problem at 
+ * each of the values in the supplied input values.
+ *
+ * @param $sexpt A vector of reals contained in an R s-expression
+ * representing the points to evaluate the Inverse CDF at. 
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a vector of reals which are the result 
+ * of evaluating the inverse CDF of a given line picking problem at each of
+ * the values supplied in $sexpt.
+ */
+SEXP rLinePickingInverseCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
+{    
+    
+	double *t = REAL(PROTECT(sexpt));
+    int problem = INTEGER(PROTECT(sexpProblem))[0];                          
+    double *parameters = REAL(PROTECT(sexpParameters));
+  
+    
+    int Npar = length(sexpParameters);
+    int N = length(sexpt);
+    char *error_str;
+    int  result;
+    
+    
+    /* allocate some memory in the R way for the distances */
+    SEXP sexpg = PROTECT(allocVector(REALSXP, N));
+    
+    /* call the function */
+    LinePickingInverseCDF(REAL(sexpt), REAL(sexpg), &N, &problem, parameters,
+                   &Npar, &result, &error_str);
+    
+    
+    UNPROTECT(4);
     
     /* if we got some error report it and stop */
     if (result != 0) error(error_str);

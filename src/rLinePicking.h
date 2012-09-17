@@ -61,6 +61,8 @@ SEXP rLinePickingPDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
  */
 SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
 
+SEXP rLinePickingInverseCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters); 
+
 /* primary function for calculating Mean line length for any region */
 SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters);
 
