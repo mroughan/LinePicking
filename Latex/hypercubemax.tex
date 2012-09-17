@@ -23,7 +23,8 @@ Lower order examples are:
 
 \item A 3-cube is an ordinary cube.
 
-
+\end{itemize}
+ 
 \subsubsection{CDF}
 
 We start by noting that the region is simply the cartesian product of $n$ lines and use the CDF method:
@@ -54,9 +55,18 @@ E[ X^{k}_{n} ]  & = & \int_0^L t^k  g^{n-{\rm cube max}}_L\left(t\right) \, dt, 
 
 Let $u = \frac{t}{2L}$ then $t = 2uL$ and $dt = du\; 2L$. Thus:
 \begin{eqnarray}
-E[ X^{k}_{n} ] & = &   n\left(\frac{2}{L}\right)^{n} \left(2L\right)^{k + n -1} \int_0^{\frac{1}{2}} u^{k + n -1} \left( 1 - u \right)^{n-1}\left( 1 - 2u} \right) \; du \; 2L, \nonumber \\
-& = &   n 2^{2n + k} L^{k}\left[ \int_0^{\frac{1}{2}} u^{k + n -1} \left( 1 - u \right)^{n-1} \; du\  - 2\int_0^{\frac{1}{2}} u^{1+ k + n -1} \left( 1 - u \right)^{n-1} \; du\right], \nonumber \\
-& = &   n 2^{2n + k} L^{k}\left[\beta\left(\frac{1}{2}; k + n, n\right) - 2\beta\left(\frac{1}{2}; k + n + 1, n\right)\right].  
+E[ X^{k}_{n} ] 
+   & = & n\left( \frac{2}{L} \right)^{n} 
+          \left( 2L \right)^{k + n -1} 
+          \int_0^{\frac{1}{2}} u^{k + n -1} \left( 1 - u \right)^{n-1}
+          \left( 1 - 2u \right) \; du \; 2L, \nonumber \\
+  & = & n 2^{2n + k} L^{k} \left[ \int_0^{\frac{1}{2}} u^{k + n -1} 
+                                \left( 1 - u \right)^{n-1} \; du\  
+                              - 2\int_0^{\frac{1}{2}} u^{1+ k + n -1} 
+                                 \left( 1 - u \right)^{n-1} \; du
+                        \right], \nonumber \\
+& = &   n 2^{2n + k} L^{k} \left[ \beta \left(\frac{1}{2}; k + n,  n\right)
+                                 - 2\beta\left(\frac{1}{2}; k + n + 1, n\right)\right].  
 \end{eqnarray}
 
 Means are the first moment and using $\sigma^2 = E[X^2] - E[X]^2$  we can calculate the  variance of these $n$-cubes:
