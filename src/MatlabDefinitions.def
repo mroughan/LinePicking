@@ -36,6 +36,13 @@ ExpandForMatlab(LinePickingCDF, 4, 1)
 /* input argument 3: parameters, the parameters of the problem */
 /* output argument 1: G, a vector containing the values G(t) of the CDF at the points t */
 
+ExpandForMatlab(LinePickingInverseCDF, 4, 1)
+/* LinePickingInverseCDF returns the inverse CDF for the problem. */
+/* input argument 1: G, a vector of CDF values  */
+/* input argument 2: problem, the problem number (See LinePickingPrintAllProblems) */
+/* input argument 3: parameters, the parameters of the problem */
+/* output argument 1: t, a vector containing values such that G = CDF(t)  */
+
 ExpandForMatlab(LinePickingMean, 3, 1)
 /* LinePickingMean returns the mean of the distribution. */
 /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */

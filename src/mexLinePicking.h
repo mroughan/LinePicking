@@ -106,6 +106,10 @@ void mexLinePickingCDF(int nlhs, mxArray *plhs[],
                        int nrhs, const mxArray *prhs[], 
                        int *result, char **error_str, int cmd);
 
+void mexLinePickingInverseCDF(int nlhs, mxArray *plhs[], 
+			      int nrhs, const mxArray *prhs[], 
+			      int *result, char **error_str, int cmd);
+
 void mexLinePickingMean(int nlhs, mxArray *plhs[], 
                         int nrhs, const mxArray *prhs[], 
                         int *result, char **error_str, int cmd);

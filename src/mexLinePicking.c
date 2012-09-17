@@ -173,7 +173,7 @@ void mexLinePickingPDF(int nlhs, mxArray *plhs[], int nrhs,
  * @param $prhs[1] A vector of points at which to calculate the CDF.
  * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
  * @param $prhs[3] The parameters of the problem. 
- * @param $plhs[0] The output, a vector containing the values g(t) of the CDF 
+ * @param $plhs[0] The output, a vector containing the values G(t) of the CDF 
  * at the points provided.
  */
 void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs, 
@@ -181,7 +181,7 @@ void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs,
                        char **error_str ,  int cmd)
 {
     double *t; /* points at which to calculate the distribution */
-    double *g; /* value of the distribution at the points t */
+    double *G; /* value of the distribution at the points t */
     
     int N, M;       /* number of points */
     int Npar;       /* number of parameters */
@@ -204,10 +204,55 @@ void mexLinePickingCDF(int nlhs, mxArray *plhs[], int nrhs,
     parameters = mxGetPr(prhs[3]);
     
     plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
-    g = mxGetPr(plhs[0]);
+    G = mxGetPr(plhs[0]);
     
-    LinePickingCDF(t, g, &N, &problem, parameters, 
+    LinePickingCDF(t, G, &N, &problem, parameters, 
                    &Npar, result, error_str);
+    
+}
+
+
+
+/** 
+ * This function returns the inverse CDF for the problem. 
+ * @param $prhs[1] A vector G of CDF values, for which we calculate distances
+ * @param $prhs[2] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[3] The parameters of the problem. 
+ * @param $plhs[0] The output, a vector containing the values t, such that CDF(t) = G
+ * at the points provided.
+ */
+void mexLinePickingInverseCDF(int nlhs, mxArray *plhs[], int nrhs, 
+			      const mxArray *prhs[], int *result, 
+			      char **error_str ,  int cmd)
+{
+    double *t; /* points at which to calculate the distribution */
+    double *G; /* value of the distribution at the points t */
+    
+    int N, M;       /* number of points */
+    int Npar;       /* number of parameters */
+    /* the type of region on which to calculate the distribution */
+    int problem;    
+    double *parameters; /* input parameter vector */
+    
+    N = (int) mxGetN(prhs[1]); 
+    M = (int) mxGetM(prhs[1]); 
+    if (N<1 || M>1) 
+        mexErrMsgTxt("LinePickingCDF entry point: "
+                     "t should be an Nx1 matrix.");
+    
+    G = mxGetPr(prhs[1]);
+    
+    problem = (int)mxGetScalar(prhs[2]);
+    CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
+    
+    Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
+    parameters = mxGetPr(prhs[3]);
+    
+    plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
+    t = mxGetPr(plhs[0]);
+    
+    LinePickingInverseCDF(t, G, &N, &problem, parameters, 
+			  &Npar, result, error_str);
     
 }
 
