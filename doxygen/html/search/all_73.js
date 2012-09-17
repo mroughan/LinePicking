@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['search',['search',['../group__api.html#ga52600fb2171b9b9ee5a9b78c1f1476dd',1,'search(double G, double *parameters, double *support, double(*CDF)(double, double *)):&#160;LinePicking.c'],['../group__api.html#ga52600fb2171b9b9ee5a9b78c1f1476dd',1,'search(double G, double *parameters, double *support, double(*CDF)(double, double *)):&#160;LinePicking.c']]],
   ['sphere_2eh',['Sphere.h',['../_sphere_8h.html',1,'']]],
   ['spheredistancecdf',['SphereDistanceCDF',['../_sphere_8h.html#a331848ac5648be96aafe20536177046b',1,'Sphere.c']]],
   ['spheredistancecheckparameters',['SphereDistanceCheckParameters',['../_sphere_8h.html#aff60610d8f08cd1568878e6a5dbff87d',1,'Sphere.c']]],

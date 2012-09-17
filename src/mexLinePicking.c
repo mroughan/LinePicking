@@ -251,7 +251,7 @@ void mexLinePickingInverseCDF(int nlhs, mxArray *plhs[], int nrhs,
     plhs[0] = mxCreateDoubleMatrix(1, N, mxREAL);
     t = mxGetPr(plhs[0]);
     
-    LinePickingInverseCDF(t, G, &N, &problem, parameters, 
+    LinePickingInverseCDF(G, t, &N, &problem, parameters, 
 			  &Npar, result, error_str);
     
 }

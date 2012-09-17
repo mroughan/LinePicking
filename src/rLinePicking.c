@@ -58,8 +58,6 @@
  * @addtogroup api
  */
 
-#include <R.h> 
-#include <Rinternals.h>
 #include "LinePicking.h"
 #include "rLinePicking.h"
 
@@ -308,33 +306,32 @@ SEXP rLinePickingCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)
  * of evaluating the inverse CDF of a given line picking problem at each of
  * the values supplied in $sexpt.
  */
-SEXP rLinePickingInverseCDF(SEXP sexpg, SEXP sexpProblem, SEXP sexpParameters)            
+
+SEXP rLinePickingInverseCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)            
 {    
-    
-	double *t = REAL(sexpg);
+	double *t = REAL(sexpt);
+     
     int problem = INTEGER(sexpProblem)[0];                          
     double *parameters = REAL(sexpParameters);
-  
     
     int Npar = length(sexpParameters);
-    int N = length(sexpg);
+    int N = length(sexpt);
     char *error_str;
     int  result;
     
     
     /* allocate some memory in the R way for the distances */
-    SEXP sexpt = PROTECT(allocVector(REALSXP, N));
+    SEXP sexpg = PROTECT(allocVector(REALSXP, N));
     
     /* call the function */
     LinePickingInverseCDF(REAL(sexpt), REAL(sexpg), &N, &problem, parameters,
                    &Npar, &result, &error_str);
     
-    
     UNPROTECT(1);
     
     /* if we got some error report it and stop */
     if (result != 0) error(error_str);
-    return sexpt;                        
+    return sexpg;                        
 }
 
 

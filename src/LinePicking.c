@@ -566,7 +566,7 @@ void LinePickingCDF(double *t, double *G, int *N, int *problem,
  * if a shorter array was passed.
  * @bug potential array bounds overrun.
  */
-void LinePickingInverseCDF(double *t, double *G, int *N, int *problem, 
+void LinePickingInverseCDF(double *G, double *t, int *N, int *problem, 
 			   double* parameters, int *Npar, int *result, 
 			   char **error_str) 
 
