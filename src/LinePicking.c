@@ -60,6 +60,7 @@
 
 #include <string.h>
 #include <unistd.h>
+#include <float.h>
 #include "LinePicking.h"
 #include "beta.h" 
 #include "Square.h"
@@ -610,7 +611,7 @@ void LinePickingInverseCDF(double *G, double *t, int *N, int *problem,
 
 
 /**
- * Simple line search used for implementing the inverse CDF. 
+ * Simple binary search used for implementing the inverse CDF. 
  * 
  * @param $G the CDF value to match
  * @param $parameters the parameters of the problem
@@ -620,29 +621,28 @@ void LinePickingInverseCDF(double *G, double *t, int *N, int *problem,
  * @return $t is such that CDF($t) = $G
  */
 double search(double G, double* parameters, double* support, 
-	      double (* CDF)(double, double *))
+              double (* CDF)(double, double *))
 {
+    static const int MAX_ITTERATIONS = 100; /* necessary ? */
     double t, Gi;
-    double epsilon = 1.0e-12;
-    int not_end = 1;
-    int i = 0;
+    int i;
     double lower_bound = support[0];
     double upper_bound = support[1];
-
-    while (not_end && i<100) {
-	t = (upper_bound + lower_bound)/2;
-	Gi = (*CDF)(t, parameters);
-	/* G[i] = (*LinePickingFields[*problem].CDF)(t[i], parameters); */
-	
-	if (fabs(G - Gi) < epsilon) 
-	    not_end = 0;
-	else if (Gi < G) 
-	    lower_bound = t;
-	else 
-	    upper_bound = t;
-	i++;
+   
+    
+    for(i = 0; i < MAX_ITTERATIONS; i ++) 
+    {
+        t = (upper_bound + lower_bound) / 2.0;
+        Gi = (*CDF)(t, parameters);
+               
+        if (fabs(G - Gi) < fabs(G * DBL_EPSILON)) 
+            break;
+            
+        if (Gi < G) 
+            lower_bound = t;
+        else 
+            upper_bound = t;
     }
-
     return t;
 }
 

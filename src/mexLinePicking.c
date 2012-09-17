@@ -235,14 +235,15 @@ void mexLinePickingInverseCDF(int nlhs, mxArray *plhs[], int nrhs,
     double *parameters; /* input parameter vector */
     
     N = (int) mxGetN(prhs[1]); 
-    M = (int) mxGetM(prhs[1]); 
-    if (N<1 || M>1) 
-        mexErrMsgTxt("LinePickingCDF entry point: "
+    M = (int) mxGetM(prhs[1]);
+    
+    if (N < 1 || M > 1) 
+        mexErrMsgTxt("LinePickingInverseCDF entry point: "
                      "t should be an Nx1 matrix.");
     
     G = mxGetPr(prhs[1]);
     
-    problem = (int)mxGetScalar(prhs[2]);
+    problem = (int) mxGetScalar(prhs[2]);
     CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
     
     Npar = (int) mxGetN(prhs[3]) * mxGetM(prhs[3]);
