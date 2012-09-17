@@ -578,34 +578,36 @@ void LinePickingInverseCDF(double *G, double *t, int *N, int *problem,
     /* now calculate the support of the distribution,
      which will incidentally check that the parameters are valid */
     LinePickingSupport(support, problem, parameters, Npar, result, error_str);
- 
-    if (*result != 0)
-    /* something was wrong with parameters */
+    
+     /* something was wrong with parameters */
+    if (*result != 0) return;
+    
+    /* if the CDF isn't implemented, returns -1 */
+    if (0 > (*LinePickingFields[*problem].CDF)
+                ((support[0] + support[1]) / 2, parameters))
+    {
+        for (i = 0; i < *N; i++) t[i] = -1;
         return;
-  
-    /* if the CDF isn't implemented, this returns -1 */
-    if ((*LinePickingFields[*problem].CDF)( (support[0]+support[1])/2 , parameters) < 0 )
-    {
-	for (i=0; i<*N; i++) 
-	{
-	    G[i] = -1;
-	}
-	return;
     }
-
+    
     /* calculate the inverse CDF */
-    for (i=0; i<*N; i++) 
+    for (i = 0; i < *N; i++) 
     {
-        if (G[i] <= 0.0)
-            t[i] = support[0];
-        else 
+        if (G[i] >= 1.0) 
         {
-            if (G[i] >= 1.0) 
-                t[i] = support[1];
-            else 
-		/* implement the inverse CDF using a search */
-		t[i] = search(G[i], parameters, support, *LinePickingFields[*problem].CDF);
+            t[i] = support[1];
+            continue;  
         }
+
+        if (G[i] <= 0.0)
+        {
+            t[i] = support[0];
+            continue; 
+        }
+
+        /* implement the inverse CDF using a search */
+        t[i] = search(G[i], parameters, support, 
+                      *LinePickingFields[*problem].CDF);
     }
 }
 
@@ -623,7 +625,7 @@ void LinePickingInverseCDF(double *G, double *t, int *N, int *problem,
 double search(double G, double* parameters, double* support, 
               double (* CDF)(double, double *))
 {
-    static const int MAX_ITTERATIONS = 100; /* necessary ? */
+    static const int MAX_ITTERATIONS = 100; /* necessary ?*/
     double t, Gi;
     int i;
     double lower_bound = support[0];
