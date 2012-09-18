@@ -1,7 +1,7 @@
-library('devtools')
-pkg <- as.package("~/Dropbox/LinePicking/")
-document(pkg)
+library("LinePicking")
 
-install(pkg)
-test(pkg)
-check(pkg)
+library("roxygen2")
+roxygenise(package.dir="~/Dropbox/LinePicking/")
+
+library("testthat")
+test_dir("~/Dropbox/LinePicking/inst/tests/")

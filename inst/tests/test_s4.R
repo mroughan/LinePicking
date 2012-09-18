@@ -2,6 +2,7 @@ library("LinePicking")
 
 context("Check LinePicking objects")
 
+pdf()
 test_that("Objects can be printed and plotted", {
   tmp <- LinePickingAllProblems(print=FALSE)
   problems <- sapply(tmp,function(x)x$problem)
@@ -13,3 +14,4 @@ test_that("Objects can be printed and plotted", {
     plot(LP,dist='CDF')
   }
 })
+dev.off()

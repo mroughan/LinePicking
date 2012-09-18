@@ -18,13 +18,16 @@
 #' y <- LinePickingCDF(t=t,problem=0,para=1)
 #' plot(t,y,type='l')
 LinePickingCDF <-
-function(t,problem=0,parameters){
+function(t,problem=0,parameters,trace=FALSE){
     tmp <- .Call('rLinePickingCDF',
     as.double(t),
     as.integer(problem),
     as.double(parameters))
     if(-1 %in% tmp){
       tmp <- GetNumCDF(problem=problem,parameters=parameters,t=t)
+      if(trace){
+        cat("Calculated numerically")
+      }
     }
     return(tmp)
 }

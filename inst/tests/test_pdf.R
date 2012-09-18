@@ -34,29 +34,29 @@ test_that("pdf >= 0 over support",{
 
 test_that("pdfs compared to simulated data", {
   tmp <- LinePickingAllProblems(print=FALSE)
-  N <- 10000
+  N <- 100000
   problems <- sapply(tmp,function(x)x$problem)
+  p <- seq(0,1,by=0.1)
   for (i in problems){
     index <- which(problems==i)
     parameters<-as.numeric(tmp[[index]]$parameters)
-    support <- LinePickingSupport(problem=i,parameters=parameters)
-    t <- seq(support[1],support[2],length=100)
     sim.data <- LinePickingSimDistances(N=N,
                                         problem=i,
                                         parameters=parameters,
                                         seed=1023)
-#     TODO change to quantiles
-    obs <- table(cut(sim.data,breaks=t))
-    expected <- LinePickingCDF(t=t,problem=i,parameters=parameters)
-    expected <- diff(expected)
-    expected <- expected / sum(expected)
-    expect_that(chisq.test(obs,p=expected)$p.value > 0.05, is_true())
-    if(chisq.test(obs,p=expected)$p.value <= 0.05){
-      print(i)
+    cuts <- LinePickingInverseCDF(t=p,problem=i,parameters=parameters)
+    obs <- table(cut(x=sim.data,breaks=cuts))
+    expected <- diff(p)
+    chi.pvalue <- chisq.test(obs,p=expected)$p.value
+    if(chi.pvalue <= 0.05){
+      print(tmp[[index]])
       print(chisq.test(obs,p=expected))
-      data <- rbind(prop.table(obs),expected)
-      print(data)
+      hist(sim.data,freq=FALSE)
+      x <- LinePickingSupport(problem=i,parameters=parameters)
+      x <- seq(x[1],x[2],l=100)
+      lines(x,LinePickingPDF(t=x,problem=i,parameters=parameters))
     }
+    expect_that(chisq.test(obs,p=expected)$p.value > 0.05, is_true())
   }
 })
 

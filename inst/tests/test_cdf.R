@@ -45,3 +45,19 @@ test_that("Numerical cdf is equal to cdf", {
     expect_that(diff, equals(1,tol=10-5))
   }
 })
+
+context("Check invCDF")
+
+test_that("InvCDF == CDF",{
+  tmp <- LinePickingAllProblems(print=FALSE)
+  p <- seq(0,1,by=0.1)
+  problems <- sapply(tmp,function(x)x$problem)
+  for (i in problems){
+    index <- which(problems==i)
+    parameters<-as.numeric(tmp[[index]]$parameters)
+    q <- LinePickingInverseCDF(t=p,problem=i, parameters=parameters)
+    p2 <- LinePickingCDF(t=q,problem=i, parameters=parameters)
+    diff <- sum((p-p2)^2)
+    expect_that(diff,equals(0))
+  }
+})

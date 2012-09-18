@@ -34,3 +34,4 @@ Collate:
     'GetNumMoment.R'
     'GetNumCDF.R'
     'LinePickingInverseCDF.R'
+    'GetNumInvCDF.R'

@@ -2,7 +2,7 @@
 \alias{LinePickingCDF}
 \title{Get cdf for distance between two random points}
 \usage{
-  LinePickingCDF(t, problem = 0, parameters)
+  LinePickingCDF(t, problem = 0, parameters, trace = FALSE)
 }
 \arguments{
   \item{t}{vector of points to calculate pdf for.}
