@@ -60,6 +60,7 @@
 
 #include <string.h>
 #include <unistd.h>
+#include <float.h>
 #include "LinePicking.h"
 #include "beta.h" 
 #include "Square.h"
@@ -483,8 +484,8 @@ void LinePickingPDF(double *t, double *g, int *N, int *problem,
  * given problem.
  *
  * 
- * @param $t An array of distances to calculate the cumulative density for.
- * @param $g An array in which the calculated cumulative densities are returned.
+ * @param $t An array of distances for which to calculate the CDF.
+ * @param $G An array in which the calculated cumulative densities are returned.
  * @param $N The value pointed to by $N is the number of entries in $T
  * @param $problem The number of the problem for which the PDF 
  * will be calculated. 
@@ -496,13 +497,13 @@ void LinePickingPDF(double *t, double *g, int *N, int *problem,
  * of the error is returned in $error_str. The integer values returned are 
  * described in @ref LinePickingCheckParameters.
  * @param $error_str A string describing the result of evaluating the function.
- * @return The required calculated cumulative densities are returned in $g.
+ * @return The required calculated cumulative densities are returned in $G.
  * @todo The matlab version allocates memory dynamically for the array 
  * of cumulative densities which is safe. The R version could go horribly wrong 
  * if a shorter array was passed.
  * @bug potential array bounds overrun.
  */
-void LinePickingCDF(double *t, double *g, int *N, int *problem, 
+void LinePickingCDF(double *t, double *G, int *N, int *problem, 
                     double* parameters, int *Npar, int *result, 
                     char **error_str) 
 
@@ -523,17 +524,129 @@ void LinePickingCDF(double *t, double *g, int *N, int *problem,
     for (i=0; i<*N; i++) 
     {
         if (t[i] <= support[0]) 
-            g[i] = 0.0;
+            G[i] = 0.0;
         else 
         {
             if (t[i] >= support[1]) 
-                g[i] = 1.0;
+                G[i] = 1.0;
             else 
-                g[i] = (*LinePickingFields[*problem].CDF)(t[i], parameters);
+                G[i] = (*LinePickingFields[*problem].CDF)(t[i], parameters);
         }
     }
 }
 
+
+/**
+ * Implements the InverseCDF of the distance between two random points for the 
+ * given problem. CDF's are monotonic non-decreasing, so inverting is simply
+ * a matter of searching.
+ *
+ * Where there is a non-increasing segment, there are multiple possible
+ * results, but as we compute the this only over the support, and all of 
+ * our current CDFs  are strictly increasing over their support.
+ *
+ * Also, where we don't know a closed form for the CDF, it returns -1, and so
+ * therefore does this function.
+ * 
+ * @param $t An array of returned distances, such that CDF($t) = $G.
+ * @param $G An array in which the calculated cumulative densities are input.
+ * @param $N The value pointed to by $N is the number of entries in $T
+ * @param $problem The number of the problem for which the PDF 
+ * will be calculated. 
+ * @param $parameters Pointer to the values required to describe 
+ * the geometry of the problem.
+ * @param $Npar The number of parameters that $parameters contains.
+ * @param $result Pointer so that the result of the evaluation can be returned. 
+ * A non-zero value indicates there was a problem in the input. A description 
+ * of the error is returned in $error_str. The integer values returned are 
+ * described in @ref LinePickingCheckParameters.
+ * @param $error_str A string describing the result of evaluating the function.
+ * @return The required calculated cumulative densities are returned in $g.
+ * @todo The matlab version allocates memory dynamically for the array 
+ * of cumulative densities which is safe. The R version could go horribly wrong 
+ * if a shorter array was passed.
+ * @bug potential array bounds overrun.
+ */
+void LinePickingInverseCDF(double *G, double *t, int *N, int *problem, 
+			   double* parameters, int *Npar, int *result, 
+			   char **error_str) 
+
+{
+    int i;
+    double support[2];
+    
+    /* now calculate the support of the distribution,
+     which will incidentally check that the parameters are valid */
+    LinePickingSupport(support, problem, parameters, Npar, result, error_str);
+    
+     /* something was wrong with parameters */
+    if (*result != 0) return;
+    
+    /* if the CDF isn't implemented, returns -1 */
+    if (0 > (*LinePickingFields[*problem].CDF)
+                ((support[0] + support[1]) / 2, parameters))
+    {
+        for (i = 0; i < *N; i++) t[i] = -1;
+        return;
+    }
+    
+    /* calculate the inverse CDF */
+    for (i = 0; i < *N; i++) 
+    {
+        if (G[i] >= 1.0) 
+        {
+            t[i] = support[1];
+            continue;  
+        }
+
+        if (G[i] <= 0.0)
+        {
+            t[i] = support[0];
+            continue; 
+        }
+
+        /* implement the inverse CDF using a search */
+        t[i] = search(G[i], parameters, support, 
+                      *LinePickingFields[*problem].CDF);
+    }
+}
+
+
+/**
+ * Simple binary search used for implementing the inverse CDF. 
+ * 
+ * @param $G the CDF value to match
+ * @param $parameters the parameters of the problem
+ * @param $support is the support of the PDF, 
+ * which is the range over which to search
+ * @param $CDF the CDF function of the problem
+ * @return $t is such that CDF($t) = $G
+ */
+double search(double G, double* parameters, double* support, 
+              double (* CDF)(double, double *))
+{
+    static const int MAX_ITTERATIONS = 100; /* necessary ?*/
+    double t, Gi;
+    int i;
+    double lower_bound = support[0];
+    double upper_bound = support[1];
+   
+    
+    for(i = 0; i < MAX_ITTERATIONS; i ++) 
+    {
+        t = (upper_bound + lower_bound) / 2.0;
+        Gi = (*CDF)(t, parameters);
+               
+        if (fabs(G - Gi) < fabs(G * DBL_EPSILON)) 
+            break;
+            
+        if (Gi < G) 
+            lower_bound = t;
+        else 
+            upper_bound = t;
+    }
+    return t;
+}
 
 
 /**

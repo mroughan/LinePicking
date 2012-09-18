@@ -33,3 +33,4 @@ Collate:
     'FindProblem.R'
     'GetNumMoment.R'
     'GetNumCDF.R'
+    'LinePickingInverseCDF.R'

@@ -88,6 +88,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga415ab39c370dfeb66324d1a538a8bb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga565be7534fefd6e5547869fdcb21b36f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga565be7534fefd6e5547869fdcb21b36f">mexLinePickingCDF</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
 <tr class="separator:ga565be7534fefd6e5547869fdcb21b36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7f5402e478356fda7514c795d131ecfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga7f5402e478356fda7514c795d131ecfc">mexLinePickingInverseCDF</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
+<tr class="separator:ga7f5402e478356fda7514c795d131ecfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6fe54a6aa7e3d2e51733dea1a443a1b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga6fe54a6aa7e3d2e51733dea1a443a1b2">mexLinePickingMean</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
 <tr class="separator:ga6fe54a6aa7e3d2e51733dea1a443a1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaceb40f4eec3174186785fca28818c09f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#gaceb40f4eec3174186785fca28818c09f">mexLinePickingVar</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
@@ -238,7 +240,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">$prhs[1]</td><td>A vector of points at which to calculate the CDF. </td></tr>
     <tr><td class="paramname">$prhs[2]</td><td>The problem number (See mexLinePickingPrintAllProblems). </td></tr>
     <tr><td class="paramname">$prhs[3]</td><td>The parameters of the problem. </td></tr>
-    <tr><td class="paramname">$plhs[0]</td><td>The output, a vector containing the values g(t) of the CDF at the points provided. </td></tr>
+    <tr><td class="paramname">$plhs[0]</td><td>The output, a vector containing the values G(t) of the CDF at the points provided. </td></tr>
   </table>
   </dd>
 </dl>
@@ -305,6 +307,72 @@ Functions</h2></td></tr>
     <tr><td class="paramname">$prhs[2]</td><td>The parameters of the problem. </td></tr>
     <tr><td class="paramname">$result</td><td>The output, a non-zero value indicates a problem with the supplied parameters. </td></tr>
     <tr><td class="paramname">$error_str</td><td>The output, a string describing the problem with the supplied problem parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7f5402e478356fda7514c795d131ecfc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mexLinePickingInverseCDF </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nlhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>plhs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nrhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const mxArray *&#160;</td>
+          <td class="paramname"><em>prhs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cmd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function returns the inverse CDF for the problem. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$prhs[1]</td><td>A vector G of CDF values, for which we calculate distances </td></tr>
+    <tr><td class="paramname">$prhs[2]</td><td>The problem number (See mexLinePickingPrintAllProblems). </td></tr>
+    <tr><td class="paramname">$prhs[3]</td><td>The parameters of the problem. </td></tr>
+    <tr><td class="paramname">$plhs[0]</td><td>The output, a vector containing the values t, such that CDF(t) = G at the points provided. </td></tr>
   </table>
   </dd>
 </dl>
@@ -958,7 +1026,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 15 2012 02:21:03 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 17 2012 16:12:28 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

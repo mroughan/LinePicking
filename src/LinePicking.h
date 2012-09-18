@@ -92,6 +92,14 @@ void LinePickingPDF(double *, double *, int *,
 void LinePickingCDF(double *, double *, int *,
                     int *, double*, int *, int*, char **);
 
+/* primary function for calculating an inverse CDF */
+void LinePickingInverseCDF(double *t, double *g, int *N, int *problem, 
+			   double* parameters, int *Npar, int *result, 
+			   char **error_str);
+/* simple search used in the above function */
+double search(double G, double* parameters, double* support, 
+	      double (* CDF)(double, double *));
+
 /* primary function for calculating Mean line length for any region */
 void LinePickingMean(double *, int *, double*, int *, int*, char **);
 

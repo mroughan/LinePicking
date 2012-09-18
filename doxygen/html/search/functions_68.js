@@ -18,7 +18,7 @@ var searchData=
   ['hypercubemaxdistancesimpoints',['HyperCubeMaxDistanceSimPoints',['../_hyper_cube_max_8h.html#a9021480820e4563b9cb001776ad6ddab',1,'HyperCubeMax.c']]],
   ['hypercubemaxdistancesupport',['HyperCubeMaxDistanceSupport',['../_hyper_cube_max_8h.html#a29fd7266491d4196ff7d0f85f1704ca0',1,'HyperCubeMax.c']]],
   ['hypercubemaxdistancevar',['HyperCubeMaxDistanceVar',['../_hyper_cube_max_8h.html#a1e4263f5daf366a3b8795a94ee3756b4',1,'HyperCubeMax.c']]],
-  ['hypergeometric2f1_5f',['hypergeometric2f1_',['../_hyper_geometric_8h.html#a9052869448390df4205e72917cd7f00d',1,'HyperGeometric.c']]],
+  ['hypergeometric2f1',['HyperGeometric2F1',['../_hyper_geometric_8h.html#abcaea189c645a2e03b06ccb59bbeba0e',1,'HyperGeometric.c']]],
   ['hyperspheredistancecdf',['HyperSphereDistanceCDF',['../_hyper_sphere_8h.html#ae5411ac6ba2485c1e033760ac2245e74',1,'HyperSphere.c']]],
   ['hyperspheredistancecheckparameters',['HyperSphereDistanceCheckParameters',['../_hyper_sphere_8h.html#a1fd054315809f3be16b79fc198a2a9b8',1,'HyperSphere.c']]],
   ['hyperspheredistancemean',['HyperSphereDistanceMean',['../_hyper_sphere_8h.html#a650d9f6bdb5043a287c9ed5e67419941',1,'HyperSphere.c']]],

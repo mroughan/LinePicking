@@ -26,6 +26,10 @@ void \hyperlink{group__api_ga8feba9835984bd74f3d919f51389e573}{Line\-Picking\-P\
 \item 
 void \hyperlink{group__api_ga445ba2c007d60d789747cecbd5f874b9}{Line\-Picking\-C\-D\-F} (double $\ast$, double $\ast$, int $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
 \item 
+void \hyperlink{group__api_ga6e3fe73fe16dd15ec1c503e3623de040}{Line\-Picking\-Inverse\-C\-D\-F} (double $\ast$t, double $\ast$g, int $\ast$N, int $\ast$problem, double $\ast$parameters, int $\ast$Npar, int $\ast$result, char $\ast$$\ast$error\-\_\-str)
+\item 
+double \hyperlink{group__api_ga52600fb2171b9b9ee5a9b78c1f1476dd}{search} (double G, double $\ast$parameters, double $\ast$support, double($\ast$C\-D\-F)(double, double $\ast$))
+\item 
 void \hyperlink{group__api_ga39879835a11f7af8bf65699f9d83a5cb}{Line\-Picking\-Mean} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
 \item 
 void \hyperlink{group__api_ga08fecba488534373e8d1710f273bc49c}{Line\-Picking\-Var} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
@@ -44,11 +48,11 @@ This section documents the A\-P\-I exposed for the use of other programs. These 
 
 
 This section documents the A\-P\-I exposed for the use of other programs. These are the functions called by the R and Matlab wrappers included in this package. \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000031}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000032}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
 
 
 This section documents the A\-P\-I exposed for the use of other programs. These are the functions called by the R and Matlab wrappers included in this package. \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000046}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000047}{Todo}]Add some more preamble about the A\-P\-I.\end{DoxyRefDesc}
 
 
 \subsection{Function Documentation}
@@ -79,7 +83,7 @@ The two uninitialised arrays passed to the function are initialised with pointer
 \subsubsection[{Line\-Picking\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-C\-D\-F (
 \begin{DoxyParamCaption}
 \item[{double $\ast$}]{t, }
-\item[{double $\ast$}]{g, }
+\item[{double $\ast$}]{G, }
 \item[{int $\ast$}]{N, }
 \item[{int $\ast$}]{problem, }
 \item[{double $\ast$}]{parameters, }
@@ -92,9 +96,9 @@ Implements the C\-D\-F of the distance between two random points for the given p
 
 
 \begin{DoxyParams}{Parameters}
-{\em \$t} & An array of distances to calculate the cumulative density for. \\
+{\em \$t} & An array of distances for which to calculate the C\-D\-F. \\
 \hline
-{\em \$g} & An array in which the calculated cumulative densities are returned. \\
+{\em \$\-G} & An array in which the calculated cumulative densities are returned. \\
 \hline
 {\em \$\-N} & The value pointed to by \$\-N is the number of entries in \$\-T \\
 \hline
@@ -110,7 +114,7 @@ Implements the C\-D\-F of the distance between two random points for the given p
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The required calculated cumulative densities are returned in \$g. 
+The required calculated cumulative densities are returned in \$\-G. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000027}{Todo}]The matlab version allocates memory dynamically for the array of cumulative densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
@@ -167,6 +171,52 @@ Helper function returns a pointer to the \hyperlink{struct_line_picking_data}{Li
 \begin{DoxyReturn}{Returns}
 Pointer to the \hyperlink{struct_line_picking_data}{Line\-Picking\-Data} struct associated with the given problem, N\-U\-L\-L if the problem is not implemented. 
 \end{DoxyReturn}
+\hypertarget{group__api_ga6e3fe73fe16dd15ec1c503e3623de040}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Inverse\-C\-D\-F@{Line\-Picking\-Inverse\-C\-D\-F}}
+\index{Line\-Picking\-Inverse\-C\-D\-F@{Line\-Picking\-Inverse\-C\-D\-F}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
+\subsubsection[{Line\-Picking\-Inverse\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Inverse\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{t, }
+\item[{double $\ast$}]{G, }
+\item[{int $\ast$}]{N, }
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga6e3fe73fe16dd15ec1c503e3623de040}
+Implements the Inverse\-C\-D\-F of the distance between two random points for the given problem. C\-D\-F's are monotonic non-\/decreasing, so inverting is simply a matter of searching.
+
+Where there is a non-\/increasing segment, there are multiple possible results, but as we compute the this only over the support, and all of our current C\-D\-Fs are strictly increasing over their support.
+
+Also, where we don't know a closed form for the C\-D\-F, it returns -\/1, and so therefore does this function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$t} & An array of returned distances, such that C\-D\-F(\$t) = \$\-G. \\
+\hline
+{\em \$\-G} & An array in which the calculated cumulative densities are input. \\
+\hline
+{\em \$\-N} & The value pointed to by \$\-N is the number of entries in \$\-T \\
+\hline
+{\em \$problem} & The number of the problem for which the P\-D\-F will be calculated. \\
+\hline
+{\em \$parameters} & Pointer to the values required to describe the geometry of the problem. \\
+\hline
+{\em \$\-Npar} & The number of parameters that \$parameters contains. \\
+\hline
+{\em \$result} & Pointer so that the result of the evaluation can be returned. A non-\/zero value indicates there was a problem in the input. A description of the error is returned in \$error\-\_\-str. The integer values returned are described in \hyperlink{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{Line\-Picking\-Check\-Parameters}. \\
+\hline
+{\em \$error\-\_\-str} & A string describing the result of evaluating the function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The required calculated cumulative densities are returned in \$g. 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000028}{Todo}]The matlab version allocates memory dynamically for the array of cumulative densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000004}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_ga39879835a11f7af8bf65699f9d83a5cb}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Mean@{Line\-Picking\-Mean}}
 \index{Line\-Picking\-Mean@{Line\-Picking\-Mean}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
 \subsubsection[{Line\-Picking\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Mean (
@@ -249,9 +299,9 @@ The number of coordinates.  A description of the coordinate system being used.
 The required points are returned in \$g. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000028}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000029}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
-\item[\hyperlink{bug__bug000004}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
+\item[\hyperlink{bug__bug000005}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_gab0e3cb9eaef2a9f040f1135eee394f28}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Number\-Of\-Problems@{Line\-Picking\-Number\-Of\-Problems}}
 \index{Line\-Picking\-Number\-Of\-Problems@{Line\-Picking\-Number\-Of\-Problems}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
 \subsubsection[{Line\-Picking\-Number\-Of\-Problems}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Number\-Of\-Problems (
@@ -397,9 +447,9 @@ Generate a set of distances by simulating a problem
 The required calculated densities are returned in \$g. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000030}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000031}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
-\item[\hyperlink{bug__bug000006}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
+\item[\hyperlink{bug__bug000007}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_gad3880c7898c35953c9c55ced33beb222}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Sim\-Points@{Line\-Picking\-Sim\-Points}}
 \index{Line\-Picking\-Sim\-Points@{Line\-Picking\-Sim\-Points}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
 \subsubsection[{Line\-Picking\-Sim\-Points}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Sim\-Points (
@@ -437,9 +487,9 @@ Generate a set of points suitable for use in simulating a problem
 The required points are returned in \$g. 
 \end{DoxyReturn}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000029}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000030}{Todo}]The matlab version allocates memory dynamically for the array of densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
-\item[\hyperlink{bug__bug000005}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
+\item[\hyperlink{bug__bug000006}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
 \hypertarget{group__api_ga0aec0b2f87903f4bf4ad3011a99b3446}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Support@{Line\-Picking\-Support}}
 \index{Line\-Picking\-Support@{Line\-Picking\-Support}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
 \subsubsection[{Line\-Picking\-Support}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Support (
@@ -507,4 +557,30 @@ Calculates the variance of the distances between two random points for the given
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The required calculated variance is returned in \$var. 
+\end{DoxyReturn}
+\hypertarget{group__api_ga52600fb2171b9b9ee5a9b78c1f1476dd}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!search@{search}}
+\index{search@{search}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
+\subsubsection[{search}]{\setlength{\rightskip}{0pt plus 5cm}double search (
+\begin{DoxyParamCaption}
+\item[{double}]{G, }
+\item[{double $\ast$}]{parameters, }
+\item[{double $\ast$}]{support, }
+\item[{double($\ast$)(double, double $\ast$)}]{C\-D\-F}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga52600fb2171b9b9ee5a9b78c1f1476dd}
+Simple line search used for implementing the inverse C\-D\-F.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$\-G} & the C\-D\-F value to match \\
+\hline
+{\em \$parameters} & the parameters of the problem \\
+\hline
+{\em \$support} & is the support of the P\-D\-F, which is the range over which to search \\
+\hline
+{\em \$\-C\-D\-F} & the C\-D\-F function of the problem \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\$t is such that C\-D\-F(\$t) = \$\-G 
 \end{DoxyReturn}

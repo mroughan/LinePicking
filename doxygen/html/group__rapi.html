@@ -94,6 +94,8 @@ Functions</h2></td></tr>
 <tr class="separator:gafe4502dd2e61ac946bfe6543fb38dd39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gac85aaf9284a29359e0d534ac1641b3f2">rLinePickingCDF</a> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
 <tr class="separator:gac85aaf9284a29359e0d534ac1641b3f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga853c8dab80e2bdd284dba4f5e957811a"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga853c8dab80e2bdd284dba4f5e957811a">rLinePickingInverseCDF</a> (SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters)</td></tr>
+<tr class="separator:ga853c8dab80e2bdd284dba4f5e957811a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4316d34063551a4121f4cc0b7959b166"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#ga4316d34063551a4121f4cc0b7959b166">rLinePickingMean</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
 <tr class="separator:ga4316d34063551a4121f4cc0b7959b166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac2d2e36336e7c32427a9e99ccc67d18e"><td class="memItemLeft" align="right" valign="top">SEXP&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rapi.html#gac2d2e36336e7c32427a9e99ccc67d18e">rLinePickingVar</a> (SEXP sexpProblem, SEXP sexpParameters)</td></tr>
@@ -197,6 +199,48 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>exit code. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga853c8dab80e2bdd284dba4f5e957811a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SEXP rLinePickingInverseCDF </td>
+          <td>(</td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpProblem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SEXP&#160;</td>
+          <td class="paramname"><em>sexpParameters</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function is called via the R .Call mechanism. It returns an R s-expession containing a vector of reals which are the result of evaluating the Inverse CDF of a given line picking problem at each of the values in the supplied input values.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$sexpt</td><td>A vector of reals contained in an R s-expression representing the points to evaluate the Inverse CDF at. </td></tr>
+    <tr><td class="paramname">$sexpProblem</td><td>An integer in an R s-expression referencing one of the problerms implemented in this software. </td></tr>
+    <tr><td class="paramname">$sexpParameters</td><td>A vector of reals in an R s-expresssion providing the parameters necessary to describe the space for a given problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>An R s-expression containing a vector of reals which are the result of evaluating the inverse CDF of a given line picking problem at each of the values supplied in $sexpt. </dd></dl>
 
 </div>
 </div>
@@ -448,7 +492,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Sep 15 2012 02:21:03 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Sep 17 2012 16:12:28 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

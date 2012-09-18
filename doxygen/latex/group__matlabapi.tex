@@ -8,6 +8,8 @@ void \hyperlink{group__matlabapi_ga415ab39c370dfeb66324d1a538a8bb7b}{mex\-Line\-
 \item 
 void \hyperlink{group__matlabapi_ga565be7534fefd6e5547869fdcb21b36f}{mex\-Line\-Picking\-C\-D\-F} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
 \item 
+void \hyperlink{group__matlabapi_ga7f5402e478356fda7514c795d131ecfc}{mex\-Line\-Picking\-Inverse\-C\-D\-F} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
+\item 
 void \hyperlink{group__matlabapi_ga6fe54a6aa7e3d2e51733dea1a443a1b2}{mex\-Line\-Picking\-Mean} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
 \item 
 void \hyperlink{group__matlabapi_gaceb40f4eec3174186785fca28818c09f}{mex\-Line\-Picking\-Var} (int nlhs, mx\-Array $\ast$plhs\mbox{[}$\,$\mbox{]}, int nrhs, const mx\-Array $\ast$prhs\mbox{[}$\,$\mbox{]}, int $\ast$result, char $\ast$$\ast$error\-\_\-str, int cmd)
@@ -81,7 +83,7 @@ This function returns the C\-D\-F for the problem.
 \hline
 {\em \$prhs\mbox{[}3\mbox{]}} & The parameters of the problem. \\
 \hline
-{\em \$plhs\mbox{[}0\mbox{]}} & The output, a vector containing the values g(t) of the C\-D\-F at the points provided. \\
+{\em \$plhs\mbox{[}0\mbox{]}} & The output, a vector containing the values G(t) of the C\-D\-F at the points provided. \\
 \hline
 \end{DoxyParams}
 \hypertarget{group__matlabapi_ga517627c493a1789dc8eeebdbeecd8a8d}{\index{Line\-Picking \mbox{[}\-Matlab\mbox{]} A\-P\-I@{Line\-Picking [Matlab] A\-P\-I}!mex\-Line\-Picking\-Check\-Parameters@{mex\-Line\-Picking\-Check\-Parameters}}
@@ -106,6 +108,30 @@ This function checks that the the parameters supplied are valid input for a give
 {\em \$result} & The output, a non-\/zero value indicates a problem with the supplied parameters. \\
 \hline
 {\em \$error\-\_\-str} & The output, a string describing the problem with the supplied problem parameters. \\
+\hline
+\end{DoxyParams}
+\hypertarget{group__matlabapi_ga7f5402e478356fda7514c795d131ecfc}{\index{Line\-Picking \mbox{[}\-Matlab\mbox{]} A\-P\-I@{Line\-Picking [Matlab] A\-P\-I}!mex\-Line\-Picking\-Inverse\-C\-D\-F@{mex\-Line\-Picking\-Inverse\-C\-D\-F}}
+\index{mex\-Line\-Picking\-Inverse\-C\-D\-F@{mex\-Line\-Picking\-Inverse\-C\-D\-F}!LinePicking [Matlab] API@{Line\-Picking \mbox{[}\-Matlab\mbox{]} A\-P\-I}}
+\subsubsection[{mex\-Line\-Picking\-Inverse\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}void mex\-Line\-Picking\-Inverse\-C\-D\-F (
+\begin{DoxyParamCaption}
+\item[{int}]{nlhs, }
+\item[{mx\-Array $\ast$}]{plhs\mbox{[}$\,$\mbox{]}, }
+\item[{int}]{nrhs, }
+\item[{const mx\-Array $\ast$}]{prhs\mbox{[}$\,$\mbox{]}, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str, }
+\item[{int}]{cmd}
+\end{DoxyParamCaption}
+)}}\label{group__matlabapi_ga7f5402e478356fda7514c795d131ecfc}
+This function returns the inverse C\-D\-F for the problem. 
+\begin{DoxyParams}{Parameters}
+{\em \$prhs\mbox{[}1\mbox{]}} & A vector G of C\-D\-F values, for which we calculate distances \\
+\hline
+{\em \$prhs\mbox{[}2\mbox{]}} & The problem number (See mex\-Line\-Picking\-Print\-All\-Problems). \\
+\hline
+{\em \$prhs\mbox{[}3\mbox{]}} & The parameters of the problem. \\
+\hline
+{\em \$plhs\mbox{[}0\mbox{]}} & The output, a vector containing the values t, such that C\-D\-F(t) = G at the points provided. \\
 \hline
 \end{DoxyParams}
 \hypertarget{group__matlabapi_ga6fe54a6aa7e3d2e51733dea1a443a1b2}{\index{Line\-Picking \mbox{[}\-Matlab\mbox{]} A\-P\-I@{Line\-Picking [Matlab] A\-P\-I}!mex\-Line\-Picking\-Mean@{mex\-Line\-Picking\-Mean}}
