@@ -688,6 +688,47 @@ void LinePickingMean(double *mean, int *problem,
     return;
 }
 
+/**
+* Calculates the median distance between two random points for the 
+* given problem.
+*
+* 
+* @param $median A pointer to the location where the mean will be stored.
+* @param $problem The number of the problem for which the mean 
+* will be calculated. 
+* @param $parameters Pointer to the values required to describe 
+* the geometry of the problem.
+* @param $Npar The number of parameters that $parameters contains.
+* @param $result Pointer so that the result of the evaluation can be returned. 
+* A non-zero value indicates there was a problem in the input. A description 
+* of the error is returned in $error_str. The integer values returned are 
+* described in @ref LinePickingCheckParameters.
+* @param $error_str A string describing the result of evaluating the function.
+* @return The required calculated mean is returned in $median.
+*/
+void LinePickingMedian(double *median, int *problem, 
+		       double* parameters, int *Npar, int *result, 
+		       char **error_str) 
+
+{
+    double support[2];
+    double G = 0.5;
+    int N = 1;
+    
+    /* now calculate the support of the distribution,
+     which will incidentally check that the parameters are valid
+     */
+    LinePickingSupport(support, problem, parameters, Npar, result, error_str);
+    if (*result != 0) 
+    /* something was wrong with parameters */
+        return; 
+    
+    /* calculate the median, by looking at the 50th percentile */
+    LinePickingInverseCDF(&G, median, &N, problem, parameters, Npar, result, error_str);
+
+    return;
+}
+
 
 /**
  * Calculates the variance of the distances between two random points for the 

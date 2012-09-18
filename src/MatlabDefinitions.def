@@ -49,6 +49,12 @@ ExpandForMatlab(LinePickingMean, 3, 1)
 /* input argument 2: parameters, the parameters of the problem */
 /* output argument 1: mean, the mean of the distribution. */
 
+ExpandForMatlab(LinePickingMedian, 3, 1)
+/* LinePickingMedian returns the median of the distribution. */
+/* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */
+/* input argument 2: parameters, the parameters of the problem */
+/* output argument 1: median, the median of the distribution. */
+
 ExpandForMatlab(LinePickingVar, 3, 1)
 /* LinePickingVar returns the variance of the distribution. */
 /* input argument 1: problem, the problem number (See LinePickingPrintAllProblems) */

@@ -90,6 +90,7 @@ MatlabCallRec MatlabCallList[] =
  * Note the following prototypes are already created by the def file 
  * included above. However doxygen doesn't include them in the
  * documentation unless they are explictly defined
+ *
  */
 
 /** @defgroup matlabapi LinePicking [Matlab] API 
@@ -113,6 +114,10 @@ void mexLinePickingInverseCDF(int nlhs, mxArray *plhs[],
 void mexLinePickingMean(int nlhs, mxArray *plhs[], 
                         int nrhs, const mxArray *prhs[], 
                         int *result, char **error_str, int cmd);
+
+void mexLinePickingMedian(int nlhs, mxArray *plhs[], 
+			  int nrhs, const mxArray *prhs[], 
+			  int *result, char **error_str, int cmd);
 
 void mexLinePickingVar(int nlhs, mxArray *plhs[], 
                        int nrhs, const mxArray *prhs[], 
