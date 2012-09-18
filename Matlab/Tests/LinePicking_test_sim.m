@@ -143,18 +143,18 @@ fid = fopen('LinePicking_test_sim.tex', 'w');
 
 %
 %
-% output a figure to import directly into LaTex document
+% output two figures to import directly into LaTex document
 %
 % 
 fprintf(fid,'\n\n\n');
 fprintf(fid,'\\begin{figure}[tbp]\n');
 fprintf(fid,'  \\begin{center}\n');
-for i=1:length(test_problems)
+for i=1:12
   file_str = char(test_problems(i,4));
   filename = sprintf('LinePicking_test_sim_%s.%s', file_str, suffix);
-  fprintf(fid,'        \\subfloat[%s]{\\includegraphics[width=0.24\\columnwidth]{../Matlab/Plots/%s}}\n', ...
+  fprintf(fid,'        \\subfloat[%s]{\\includegraphics[width=0.32\\columnwidth]{../Matlab/Plots/%s}}\n', ...
 	  char(test_problems(i,3)), filename);
-  if (mod(i,4) == 0)
+  if (mod(i,3) == 0)
     fprintf(fid,'\n');
   end
 end
@@ -166,6 +166,25 @@ fprintf(fid,'  \\end{center} \n');
 fprintf(fid,'\\vspace{-4mm}\n');
 fprintf(fid,'\\end{figure}\n');
 
+fprintf(fid,'\n\n\n');
+fprintf(fid,'\\begin{figure}[tbp]\n');
+fprintf(fid,'  \\begin{center}\n');
+for i=13:length(test_problems)
+  file_str = char(test_problems(i,4));
+  filename = sprintf('LinePicking_test_sim_%s.%s', file_str, suffix);
+  fprintf(fid,'        \\subfloat[%s]{\\includegraphics[width=0.32\\columnwidth]{../Matlab/Plots/%s}}\n', ...
+	  char(test_problems(i,3)), filename);
+  if (mod(i,3) == 0)
+    fprintf(fid,'\n');
+  end
+end
+fprintf(fid,'    \\caption{\\label{fig:sim_vs_exact2}Comparisons of exactly calculated\n');
+fprintf(fid,'      distributions and the distributions obtained by simulation. \n');
+fprintf(fid,'      %.0f simulated lines were used to draw the estimated PDF,\n', M);
+fprintf(fid,'      which are binned into %0.f equally spaced bins.}\n', N);
+fprintf(fid,'  \\end{center} \n');
+fprintf(fid,'\\vspace{-4mm}\n');
+fprintf(fid,'\\end{figure}\n');
 
 %
 %

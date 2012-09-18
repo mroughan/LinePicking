@@ -3,33 +3,47 @@
 
 \begin{figure}[tbp]
   \begin{center}
-        \subfloat[line]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_line.eps}}
-        \subfloat[square]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_square.eps}}
-        \subfloat[cube]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cube.eps}}
-        \subfloat[rectangle (1:2)]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect.eps}}
+        \subfloat[line]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_line.eps}}
+        \subfloat[square]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_square.eps}}
+        \subfloat[cube]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cube.eps}}
 
-        \subfloat[rectangle Manhattan (1:2)]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect_manhattan.eps}}
-        \subfloat[rectangle max (1:2)]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rectangle_max.eps}}
-        \subfloat[disk (2-ball)]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_disk.eps}}
-        \subfloat[3-ball]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3ball.eps}}
+        \subfloat[rectangle (1:2)]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect.eps}}
+        \subfloat[rectangle Manhattan (1:2)]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rect_manhattan.eps}}
+        \subfloat[rectangle max (1:2)]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_rectangle_max.eps}}
 
-        \subfloat[4-ball]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_4ball.eps}}
-        \subfloat[circle (1-sphere)]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_circle.eps}}
-        \subfloat[2-sphere]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_2-sphere.eps}}
-        \subfloat[3-sphere]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3sphere.eps}}
+        \subfloat[disk (2-ball)]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_disk.eps}}
+        \subfloat[3-ball]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3ball.eps}}
+        \subfloat[4-ball]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_4ball.eps}}
 
-        \subfloat[circle geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_circle_geodesic.eps}}
-        \subfloat[sphere geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_sphere_geodesic.eps}}
-        \subfloat[3-sphere geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3sphere_geodesic.eps}}
-        \subfloat[prism geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_prism_geodesic.eps}}
+        \subfloat[circle (1-sphere)]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_circle.eps}}
+        \subfloat[2-sphere]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_2-sphere.eps}}
+        \subfloat[3-sphere]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3sphere.eps}}
 
-        \subfloat[cylindrical surface]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylindrical_surface.eps}}
-        \subfloat[cylindrical surface geodesic]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylindrical_surface_geodesic.eps}}
-        \subfloat[cylinder]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylinder.eps}}
-        \subfloat[cube max]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cube_max.eps}}
-
-        \subfloat[4-cube max]{\includegraphics[width=0.24\columnwidth]{../Matlab/Plots/LinePicking_test_sim_4-cube_max.eps}}
     \caption{\label{fig:sim_vs_exact}Comparisons of exactly calculated
+      distributions and the distributions obtained by simulation. 
+      1000000 simulated lines were used to draw the estimated PDF,
+      which are binned into 30 equally spaced bins.}
+  \end{center} 
+\vspace{-4mm}
+\end{figure}
+
+
+
+\begin{figure}[tbp]
+  \begin{center}
+        \subfloat[circle geodesic]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_circle_geodesic.eps}}
+        \subfloat[sphere geodesic]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_sphere_geodesic.eps}}
+        \subfloat[3-sphere geodesic]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_3sphere_geodesic.eps}}
+
+        \subfloat[prism geodesic]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_prism_geodesic.eps}}
+        \subfloat[cylindrical surface]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylindrical_surface.eps}}
+        \subfloat[cylindrical surface geodesic]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylindrical_surface_geodesic.eps}}
+
+        \subfloat[cylinder]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cylinder.eps}}
+        \subfloat[cube max]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_cube_max.eps}}
+        \subfloat[4-cube max]{\includegraphics[width=0.32\columnwidth]{../Matlab/Plots/LinePicking_test_sim_4-cube_max.eps}}
+
+    \caption{\label{fig:sim_vs_exact2}Comparisons of exactly calculated
       distributions and the distributions obtained by simulation. 
       1000000 simulated lines were used to draw the estimated PDF,
       which are binned into 30 equally spaced bins.}
