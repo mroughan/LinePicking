@@ -169,7 +169,7 @@ double CylindricalSurfaceGeodesicDistanceMean(double* parameters)
              log(2 * L + sqrt(4 * L2 + P2)) + 
              8 * L4 * sqrt(4 * L2 + P2) * 
              log(P + sqrt(4 * L2 + P2))) / 
-    (48. * L2 * P * sqrt(4 * L2 + P2));
+             (48. * L2 * P * sqrt(4 * L2 + P2));
 }
 
 
@@ -186,7 +186,33 @@ double CylindricalSurfaceGeodesicDistanceMean(double* parameters)
  */
 double CylindricalSurfaceGeodesicDistanceVar(double* parameters)
 {
-    return -1;
+    double L = parameters[0];
+    double P = parameters[1] * 2 * M_PI;
+    double L2 = L * L;
+    double L3 = L2 * L;
+    double L4 = L3 * L;
+
+    
+    double P2 = P * P;
+    double P3 = P2 * P;
+    double P4 = P3 * P;
+
+
+    return (8 * L * P * (2 * L2 + P2) - 3 * pow(4 * L2 + P2,2) * M_PI + 
+            6 * pow(4 * L2 + P2,2) * 
+            (asin((2 * L)/sqrt(4 * L2 + P2)) + 
+            asin(P/sqrt(4 * L2 + P2))))/(96. * L * P) - 
+            pow(P4 * sqrt(4 * L2 + P2) - 
+            4 * L * pow(4 * L2 + P2,2) * M_PI + 
+            (4 * L2 + P2) * 
+            (6 * L2 * P - P3 + 8 * L * (4 * L2 + P2) * 
+                (asin((2 * L)/sqrt(4 * L2 + P2)) + asin(P/sqrt(4 * L2 + P2)))
+            ) + 4 * L * P3 * sqrt(4 * L2 + P2) * 
+            log((2 * L + sqrt(4 * L2 + P2))/P) - 
+            L4 * sqrt(4 * L2 + P2) * 
+            log((256 * pow(L,8))/pow(P + sqrt(4 * L2 + P2),8)),2)/
+            (2304. * L4 * P2 * (4 * L2 + P2));
+  
 }
 
 
@@ -239,7 +265,7 @@ void CylindricalSurfaceGeodesicDistanceCheckParameters(double *parameters,
     *result=4;
     sprintf(error_str,
             "\nLinePickingCheckParameters: For the cylindrical surface region "
-            "we must have (Pi * parameter[1]  <= parameter[0]).\n"
+            "we must have (M_PI * parameter[1]  <= parameter[0]).\n"
             "i.e., The length of the cylinder must be >= "
             " half rhe circumfrence of the cylinder\n"); 
 }

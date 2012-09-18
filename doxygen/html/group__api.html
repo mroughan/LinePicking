@@ -110,8 +110,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga6e3fe73fe16dd15ec1c503e3623de040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga52600fb2171b9b9ee5a9b78c1f1476dd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga52600fb2171b9b9ee5a9b78c1f1476dd">search</a> (double G, double *parameters, double *support, double(*CDF)(double, double *))</td></tr>
 <tr class="separator:ga52600fb2171b9b9ee5a9b78c1f1476dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39879835a11f7af8bf65699f9d83a5cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga39879835a11f7af8bf65699f9d83a5cb">LinePickingMean</a> (double *, int *, double *, int *, int *, char **)</td></tr>
-<tr class="separator:ga39879835a11f7af8bf65699f9d83a5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7adc002dc3befadc19caed80117b386f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga7adc002dc3befadc19caed80117b386f">LinePickingMean</a> (double *mean, int *problem, double *parameters, int *Npar, int *result, char **error_str)</td></tr>
+<tr class="separator:ga7adc002dc3befadc19caed80117b386f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9d1066615a332ab4f68281836ed4ca46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga9d1066615a332ab4f68281836ed4ca46">LinePickingMedian</a> (double *median, int *problem, double *parameters, int *Npar, int *result, char **error_str)</td></tr>
+<tr class="separator:ga9d1066615a332ab4f68281836ed4ca46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga08fecba488534373e8d1710f273bc49c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga08fecba488534373e8d1710f273bc49c">LinePickingVar</a> (double *, int *, double *, int *, int *, char **)</td></tr>
 <tr class="separator:ga08fecba488534373e8d1710f273bc49c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga89bd29435ffe1826e97dafb2b0536de1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__api.html#ga89bd29435ffe1826e97dafb2b0536de1">LinePickingNcoords</a> (int *, char **, int *, double *, int *, int *, char **)</td></tr>
@@ -351,13 +353,13 @@ Functions</h2></td></tr>
           <td class="memname">void LinePickingInverseCDF </td>
           <td>(</td>
           <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>t</em>, </td>
+          <td class="paramname"><em>G</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double *&#160;</td>
-          <td class="paramname"><em>G</em>, </td>
+          <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -424,7 +426,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga39879835a11f7af8bf65699f9d83a5cb"></a>
+<a class="anchor" id="ga7adc002dc3befadc19caed80117b386f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -484,6 +486,69 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The required calculated mean is returned in $mean. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9d1066615a332ab4f68281836ed4ca46"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinePickingMedian </td>
+          <td>(</td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>median</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>problem</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>parameters</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>Npar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculates the median distance between two random points for the given problem.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$median</td><td>A pointer to the location where the mean will be stored. </td></tr>
+    <tr><td class="paramname">$problem</td><td>The number of the problem for which the mean will be calculated. </td></tr>
+    <tr><td class="paramname">$parameters</td><td>Pointer to the values required to describe the geometry of the problem. </td></tr>
+    <tr><td class="paramname">$Npar</td><td>The number of parameters that $parameters contains. </td></tr>
+    <tr><td class="paramname">$result</td><td>Pointer so that the result of the evaluation can be returned. A non-zero value indicates there was a problem in the input. A description of the error is returned in $error_str. The integer values returned are described in <a class="el" href="group__api.html#gac55d1d166b33c8906ceccbb37010ddb0">LinePickingCheckParameters</a>. </td></tr>
+    <tr><td class="paramname">$error_str</td><td>A string describing the result of evaluating the function. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The required calculated mean is returned in $median. </dd></dl>
 
 </div>
 </div>
@@ -1117,7 +1182,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Simple line search used for implementing the inverse CDF.</p>
+<p>Simple binary search used for implementing the inverse CDF.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">$G</td><td>the CDF value to match </td></tr>
@@ -1134,7 +1199,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 17 2012 16:12:28 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 19 2012 02:43:20 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

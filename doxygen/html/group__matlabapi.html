@@ -92,6 +92,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga7f5402e478356fda7514c795d131ecfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6fe54a6aa7e3d2e51733dea1a443a1b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga6fe54a6aa7e3d2e51733dea1a443a1b2">mexLinePickingMean</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
 <tr class="separator:ga6fe54a6aa7e3d2e51733dea1a443a1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8324c9ba8352696a66ca32b4ddd289f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#ga8324c9ba8352696a66ca32b4ddd289f8">mexLinePickingMedian</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
+<tr class="separator:ga8324c9ba8352696a66ca32b4ddd289f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaceb40f4eec3174186785fca28818c09f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#gaceb40f4eec3174186785fca28818c09f">mexLinePickingVar</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
 <tr class="separator:gaceb40f4eec3174186785fca28818c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaa1d58f45751e79cccbc82eedccef460e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matlabapi.html#gaa1d58f45751e79cccbc82eedccef460e">mexLinePickingSupport</a> (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[], int *result, char **error_str, int cmd)</td></tr>
@@ -438,6 +440,71 @@ Functions</h2></td></tr>
     <tr><td class="paramname">$prhs[1]</td><td>The problem number (See mexLinePickingPrintAllProblems). </td></tr>
     <tr><td class="paramname">$prhs[2]</td><td>The parameters of the problem. </td></tr>
     <tr><td class="paramname">$plhs[0]</td><td>The output, the mean of the length of lines in the given line picking problem. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8324c9ba8352696a66ca32b4ddd289f8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mexLinePickingMedian </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nlhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>plhs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nrhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const mxArray *&#160;</td>
+          <td class="paramname"><em>prhs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>error_str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cmd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function returns the median of the length of lines in a given line picking problem. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">$prhs[1]</td><td>The problem number (See mexLinePickingPrintAllProblems). </td></tr>
+    <tr><td class="paramname">$prhs[2]</td><td>The parameters of the problem. </td></tr>
+    <tr><td class="paramname">$plhs[0]</td><td>The output, the median of the length of lines in the given line picking problem. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1026,7 +1093,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Sep 17 2012 16:12:28 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Sep 19 2012 02:43:20 for LinePicking by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

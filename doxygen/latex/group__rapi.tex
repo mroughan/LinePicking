@@ -18,6 +18,8 @@ S\-E\-X\-P \hyperlink{group__rapi_ga853c8dab80e2bdd284dba4f5e957811a}{r\-Line\-P
 \item 
 S\-E\-X\-P \hyperlink{group__rapi_ga4316d34063551a4121f4cc0b7959b166}{r\-Line\-Picking\-Mean} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
+S\-E\-X\-P \hyperlink{group__rapi_gab5df1a048f574d55cfa6d609fd33d436}{r\-Line\-Picking\-Median} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
+\item 
 S\-E\-X\-P \hyperlink{group__rapi_gac2d2e36336e7c32427a9e99ccc67d18e}{r\-Line\-Picking\-Var} (S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters)
 \item 
 S\-E\-X\-P \hyperlink{group__rapi_gacf32b79fce86f86cedc7843775e163c3}{r\-Line\-Picking\-Sim\-Points} (S\-E\-X\-P sexp\-Npoints, S\-E\-X\-P sexp\-Problem, S\-E\-X\-P sexp\-Parameters, S\-E\-X\-P sexp\-Seed)
@@ -87,7 +89,7 @@ exit code.
 \index{r\-Line\-Picking\-Inverse\-C\-D\-F@{r\-Line\-Picking\-Inverse\-C\-D\-F}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
 \subsubsection[{r\-Line\-Picking\-Inverse\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Inverse\-C\-D\-F (
 \begin{DoxyParamCaption}
-\item[{S\-E\-X\-P}]{sexpg, }
+\item[{S\-E\-X\-P}]{sexpt, }
 \item[{S\-E\-X\-P}]{sexp\-Problem, }
 \item[{S\-E\-X\-P}]{sexp\-Parameters}
 \end{DoxyParamCaption}
@@ -125,6 +127,26 @@ This function is called via the R .Call mechanism. It returns an R s-\/expession
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 An R s-\/expression containing a real which is the mean length of lines in a given line picking problem. 
+\end{DoxyReturn}
+\hypertarget{group__rapi_gab5df1a048f574d55cfa6d609fd33d436}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-Median@{r\-Line\-Picking\-Median}}
+\index{r\-Line\-Picking\-Median@{r\-Line\-Picking\-Median}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}
+\subsubsection[{r\-Line\-Picking\-Median}]{\setlength{\rightskip}{0pt plus 5cm}S\-E\-X\-P r\-Line\-Picking\-Median (
+\begin{DoxyParamCaption}
+\item[{S\-E\-X\-P}]{sexp\-Problem, }
+\item[{S\-E\-X\-P}]{sexp\-Parameters}
+\end{DoxyParamCaption}
+)}}\label{group__rapi_gab5df1a048f574d55cfa6d609fd33d436}
+This function is called via the R .Call mechanism. It returns an R s-\/expession containing a real which is the median length of lines in a given line picking problem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$sexp\-Problem} & An integer in an R s-\/expression referencing one of the problerms implemented in this software. \\
+\hline
+{\em \$sexp\-Parameters} & A vector of reals in an R s-\/expresssion providing the parameters necessary to describe the space for a given problem. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An R s-\/expression containing a real which is the median length of lines in a given line picking problem. 
 \end{DoxyReturn}
 \hypertarget{group__rapi_gafe4502dd2e61ac946bfe6543fb38dd39}{\index{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I@{Line\-Picking [R] A\-P\-I}!r\-Line\-Picking\-P\-D\-F@{r\-Line\-Picking\-P\-D\-F}}
 \index{r\-Line\-Picking\-P\-D\-F@{r\-Line\-Picking\-P\-D\-F}!LinePicking [R] API@{Line\-Picking \mbox{[}\-R\mbox{]} A\-P\-I}}

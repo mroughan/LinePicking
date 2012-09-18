@@ -30,7 +30,9 @@ void \hyperlink{group__api_ga6e3fe73fe16dd15ec1c503e3623de040}{Line\-Picking\-In
 \item 
 double \hyperlink{group__api_ga52600fb2171b9b9ee5a9b78c1f1476dd}{search} (double G, double $\ast$parameters, double $\ast$support, double($\ast$C\-D\-F)(double, double $\ast$))
 \item 
-void \hyperlink{group__api_ga39879835a11f7af8bf65699f9d83a5cb}{Line\-Picking\-Mean} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
+void \hyperlink{group__api_ga7adc002dc3befadc19caed80117b386f}{Line\-Picking\-Mean} (double $\ast$mean, int $\ast$problem, double $\ast$parameters, int $\ast$Npar, int $\ast$result, char $\ast$$\ast$error\-\_\-str)
+\item 
+void \hyperlink{group__api_ga9d1066615a332ab4f68281836ed4ca46}{Line\-Picking\-Median} (double $\ast$median, int $\ast$problem, double $\ast$parameters, int $\ast$Npar, int $\ast$result, char $\ast$$\ast$error\-\_\-str)
 \item 
 void \hyperlink{group__api_ga08fecba488534373e8d1710f273bc49c}{Line\-Picking\-Var} (double $\ast$, int $\ast$, double $\ast$, int $\ast$, int $\ast$, char $\ast$$\ast$)
 \item 
@@ -175,8 +177,8 @@ Pointer to the \hyperlink{struct_line_picking_data}{Line\-Picking\-Data} struct 
 \index{Line\-Picking\-Inverse\-C\-D\-F@{Line\-Picking\-Inverse\-C\-D\-F}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
 \subsubsection[{Line\-Picking\-Inverse\-C\-D\-F}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Inverse\-C\-D\-F (
 \begin{DoxyParamCaption}
-\item[{double $\ast$}]{t, }
 \item[{double $\ast$}]{G, }
+\item[{double $\ast$}]{t, }
 \item[{int $\ast$}]{N, }
 \item[{int $\ast$}]{problem, }
 \item[{double $\ast$}]{parameters, }
@@ -217,7 +219,7 @@ The required calculated cumulative densities are returned in \$g.
 \item[\hyperlink{todo__todo000028}{Todo}]The matlab version allocates memory dynamically for the array of cumulative densities which is safe. The R version could go horribly wrong if a shorter array was passed. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Bug}
 \item[\hyperlink{bug__bug000004}{Bug}]potential array bounds overrun. \end{DoxyRefDesc}
-\hypertarget{group__api_ga39879835a11f7af8bf65699f9d83a5cb}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Mean@{Line\-Picking\-Mean}}
+\hypertarget{group__api_ga7adc002dc3befadc19caed80117b386f}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Mean@{Line\-Picking\-Mean}}
 \index{Line\-Picking\-Mean@{Line\-Picking\-Mean}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
 \subsubsection[{Line\-Picking\-Mean}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Mean (
 \begin{DoxyParamCaption}
@@ -228,7 +230,7 @@ The required calculated cumulative densities are returned in \$g.
 \item[{int $\ast$}]{result, }
 \item[{char $\ast$$\ast$}]{error\-\_\-str}
 \end{DoxyParamCaption}
-)}}\label{group__api_ga39879835a11f7af8bf65699f9d83a5cb}
+)}}\label{group__api_ga7adc002dc3befadc19caed80117b386f}
 Calculates the mean distance between two random points for the given problem.
 
 
@@ -248,6 +250,38 @@ Calculates the mean distance between two random points for the given problem.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 The required calculated mean is returned in \$mean. 
+\end{DoxyReturn}
+\hypertarget{group__api_ga9d1066615a332ab4f68281836ed4ca46}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Median@{Line\-Picking\-Median}}
+\index{Line\-Picking\-Median@{Line\-Picking\-Median}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
+\subsubsection[{Line\-Picking\-Median}]{\setlength{\rightskip}{0pt plus 5cm}void Line\-Picking\-Median (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{median, }
+\item[{int $\ast$}]{problem, }
+\item[{double $\ast$}]{parameters, }
+\item[{int $\ast$}]{Npar, }
+\item[{int $\ast$}]{result, }
+\item[{char $\ast$$\ast$}]{error\-\_\-str}
+\end{DoxyParamCaption}
+)}}\label{group__api_ga9d1066615a332ab4f68281836ed4ca46}
+Calculates the median distance between two random points for the given problem.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \$median} & A pointer to the location where the mean will be stored. \\
+\hline
+{\em \$problem} & The number of the problem for which the mean will be calculated. \\
+\hline
+{\em \$parameters} & Pointer to the values required to describe the geometry of the problem. \\
+\hline
+{\em \$\-Npar} & The number of parameters that \$parameters contains. \\
+\hline
+{\em \$result} & Pointer so that the result of the evaluation can be returned. A non-\/zero value indicates there was a problem in the input. A description of the error is returned in \$error\-\_\-str. The integer values returned are described in \hyperlink{group__api_gac55d1d166b33c8906ceccbb37010ddb0}{Line\-Picking\-Check\-Parameters}. \\
+\hline
+{\em \$error\-\_\-str} & A string describing the result of evaluating the function. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The required calculated mean is returned in \$median. 
 \end{DoxyReturn}
 \hypertarget{group__api_ga17699721a1826bc3c2a2c3d80dff6f64}{\index{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I@{Line\-Picking [C] A\-P\-I}!Line\-Picking\-Name\-Lookup@{Line\-Picking\-Name\-Lookup}}
 \index{Line\-Picking\-Name\-Lookup@{Line\-Picking\-Name\-Lookup}!LinePicking [C] API@{Line\-Picking \mbox{[}\-C\mbox{]} A\-P\-I}}
@@ -568,7 +602,7 @@ The required calculated variance is returned in \$var.
 \item[{double($\ast$)(double, double $\ast$)}]{C\-D\-F}
 \end{DoxyParamCaption}
 )}}\label{group__api_ga52600fb2171b9b9ee5a9b78c1f1476dd}
-Simple line search used for implementing the inverse C\-D\-F.
+Simple binary search used for implementing the inverse C\-D\-F.
 
 
 \begin{DoxyParams}{Parameters}
