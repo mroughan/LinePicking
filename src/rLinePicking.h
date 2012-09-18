@@ -66,6 +66,9 @@ SEXP rLinePickingInverseCDF(SEXP sexpt, SEXP sexpProblem, SEXP sexpParameters);
 /* primary function for calculating Mean line length for any region */
 SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters);
 
+/* primary function for calculating Median line length for any region */
+SEXP rLinePickingMedian(SEXP sexpProblem, SEXP sexpParameters); 
+
 /* primary function for calculating Variance of line lengths for any region */
 SEXP rLinePickingVar(SEXP sexpProblem, SEXP sexpParameters);
 

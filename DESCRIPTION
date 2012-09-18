@@ -16,6 +16,7 @@ Collate:
     'LinePickingCheckParameters.R'
     'LinePickingCDF.R'
     'LinePickingMean.R'
+    'LinePickingMedian.R'
     'LinePickingSupport.R'
     'LinePickingVar.R'
     'LPclasses.R'

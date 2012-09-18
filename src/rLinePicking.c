@@ -366,6 +366,40 @@ SEXP rLinePickingMean(SEXP sexpProblem, SEXP sexpParameters)
     return ScalarReal(mean);                        
 }
 
+
+/**
+ * This function is called via the R .Call mechanism. It returns an 
+ * R s-expession containing a real which is the median length of lines  
+ * in a given line picking problem.
+ * 
+ * @param $sexpProblem An integer in an R s-expression referencing one 
+ * of the problerms implemented in this software.
+ * @param $sexpParameters A vector of reals in an R s-expresssion providing
+ * the parameters necessary to describe the space for a given problem.
+ * @return An R s-expression containing a real which is the median length of 
+ * lines in a given line picking problem.
+ */
+SEXP rLinePickingMedian(SEXP sexpProblem, SEXP sexpParameters)            
+{    
+    
+    int problem = INTEGER(sexpProblem)[0];                          
+    double *parameters = REAL(sexpParameters);
+    int Npar = length(sexpParameters);
+    double median;
+    
+    char *error_str;
+    int  result;
+    
+    /* call the function */
+    LinePickingMedian(&median, &problem, parameters, &Npar, &result, 
+                      &error_str);
+    
+    /* if we got some error report it and stop */
+    if (result != 0) error(error_str);
+    return ScalarReal(median);                        
+}
+
+
 /**
  * This function is called via the R .Call mechanism. It returns an 
  * R s-expession containing a real which is the variance in the

@@ -712,7 +712,7 @@ void LinePickingMedian(double *median, int *problem,
 
 {
     double support[2];
-    double G = 0.5;
+    double p = 0.5;
     int N = 1;
     
     /* now calculate the support of the distribution,
@@ -724,9 +724,9 @@ void LinePickingMedian(double *median, int *problem,
         return; 
     
     /* calculate the median, by looking at the 50th percentile */
-    LinePickingInverseCDF(&G, median, &N, problem, parameters, Npar, result, error_str);
+    LinePickingInverseCDF(&p, median, &N, problem, parameters, Npar, 
+                          result, error_str);
 
-    return;
 }
 
 
@@ -763,8 +763,6 @@ void LinePickingVar(double *var, int *problem,
     
     /* calculate the variance */
     *var = (*LinePickingFields[*problem].VAR)(parameters);
-    
-    return;
 }
 
 
