@@ -30,26 +30,7 @@
   Eric Parsonage, Matt Roughan, Jono Tuke
 }
 \references{
-  see \url{http://arxiv.org/abs/math-ph/0004021}
-
-  see \url{http://dlmf.nist.gov/8.17}
-
-  see \url{http://doi.acm.org/10.1145/131766.131776}
-
-  see
-  \url{http://mathworld.wolfram.com/BallLinePicking.html}
-
-  see
-  \url{http://mathworld.wolfram.com/CubeLinePicking.html}
-
-  see
-  \url{http://mathworld.wolfram.com/SphereLinePicking.html}
-
-  see
-  \url{http://mathworld.wolfram.com/SquareLinePicking.html
-  }
-
-  see
-  \url{http://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html}
+  For further information and the manual see
+  \url{https://github.com/mroughan/LinePicking}
 }
 

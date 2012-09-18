@@ -4,7 +4,7 @@ context("Check LinePicking CDF")
 
 test_that("CDF less than lower support is 0", {
   epi <- 1
-  tmp <- LinePickingAllProblems(print=FALSE)
+  tmp <- LinePicking::LinePickingAllProblems(print=FALSE)
   problems <- sapply(tmp,function(x)x$problem)
   for (i in problems){
     index <- which(problems==i)

@@ -18,14 +18,7 @@
 #'  understand the entry points documented in the api.
 #'  
 #' @name LinePicking
-#' @references see \url{http://arxiv.org/abs/math-ph/0004021}
-#' @references see \url{http://dlmf.nist.gov/8.17}
-#' @references see \url{http://doi.acm.org/10.1145/131766.131776}
-#' @references see \url{http://mathworld.wolfram.com/BallLinePicking.html}
-#' @references see \url{http://mathworld.wolfram.com/CubeLinePicking.html}
-#' @references see \url{http://mathworld.wolfram.com/SphereLinePicking.html}
-#' @references see \url{http://mathworld.wolfram.com/SquareLinePicking.html }
-#' @references see \url{http://www.boost.org/doc/libs/1_38_0/libs/math/doc/sf_and_dist/html/math_toolkit/special/sf_beta/ibeta_function.html}
+#' @references For further information and the manual see \url{https://github.com/mroughan/LinePicking}
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @useDynLib LinePicking
 #' @docType package
