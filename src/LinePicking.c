@@ -684,8 +684,6 @@ void LinePickingMean(double *mean, int *problem,
     
     /* calculate the mean */
     *mean = (*LinePickingFields[*problem].MEAN)(parameters);
-
-    return;
 }
 
 /**
