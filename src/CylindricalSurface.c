@@ -21,6 +21,8 @@
 #include <stdio.h>
 #include "EllipticK.h"
 #include "EllipticF.h"
+#include "EllipticE1.h"
+#include "EllipticE2.h"
 
 #include "LinePickingData.h"
 #include "metrics.h"
@@ -35,8 +37,6 @@ LinePickingData CylindricalSurfaceDistanceData =
     2,
     {2,0.5}
 };
-
-
 
 
 /**
@@ -60,29 +60,22 @@ double CylindricalSurfaceDistancePDF(double t, double* parameters)
     
     /* three cases */
     if (t <=  D)
-    {
-        
+    {   
         return (4 * t * (L * EllipticK(t2 / D2) - (D * asin(t / D)))) / 
                 (D * L2 * M_PI);
-        
     } 
     else if (t <= L) 
     {
-        
-        return (4 * EllipticK(D2 / t2)) / (L * M_PI) - (2 * t) / L2;
-        
+        return (4 * EllipticK(D2 / t2)) / (L * M_PI) - (2 * t) / L2;   
     } 
     else 
     {
- 
         result = (-4 * (t * acos(sqrt(t2 - L2) / D) + 
                         L * EllipticF( asin(sqrt(t2 - L2) / D), D2 / t2) - 
                         L * EllipticK(D2 / t2))) / (L2 * M_PI);
         
-        return (result > 0.0) ? result : 0; 
-        
+        return (result > 0.0) ? result : 0;     
     }
-    
 }
 
 
@@ -90,15 +83,43 @@ double CylindricalSurfaceDistancePDF(double t, double* parameters)
  * Implements the CDF of the distance between two random points on a 
  * cylindrical surface.
  * 
- * @param $w The distance to calculate the cumulative density for.
+ * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the length of the cylindrical surface
  * and $parameters[1] is the radius.  
- * @return The cumulative density at $w.
- * @todo Implement.
+ * @return The cumulative density at $t.
  */
-double CylindricalSurfaceDistanceCDF(double w, double* parameters)
+double CylindricalSurfaceDistanceCDF(double t, double* parameters)
 {
-    return -1;
+    
+    double L = parameters[0];
+    double D = parameters[1] * 2.;
+    double L2 = L * L;
+    double D2 = D * D;
+    double t2 = t * t;
+
+    /* three cases */
+    if (t <  D) /* first part of the cdf doesn't exist at D */
+    {
+        return (D * (D2 - 2 * t2) * asin(t / D) - 
+                D * t * sqrt(D2 - t2) +
+                4 * D2 * L * EllipticE1(t2 / D2) + 
+                4 * L * (t2 - D2) * EllipticK(t2 / D2)) /
+                    (D * L2 * M_PI);   
+    } 
+    else if (t <= L)
+    {    
+        return (D2 * M_PI - 2 * M_PI * t2 + 8 * L * t * EllipticE1(D2 / t2)) /
+                    (2. * L2 * M_PI);
+    } 
+    else 
+    {
+        
+        return (D2 * M_PI - 2 * M_PI * t2 + 8 * L * t * EllipticE1(D2 / t2) - 
+                  2 * (-sqrt((D2 + L2 - t2) * (t2 - L2)) + 
+                  (D2 - 2 * (L2 + t2)) * asin(sqrt(t2 - L2)/ D) + 
+                  4 * L * t * EllipticE2(asin(sqrt(-L2 + t2) /D), D2 / t2))) / 
+                    (2. * L2 * M_PI);
+    }
 }
 
 
