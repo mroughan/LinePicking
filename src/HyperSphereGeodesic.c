@@ -51,12 +51,6 @@ double HyperSphereGeodesicDistancePDF(double t, double* parameters)
     double n = ceil(parameters[0]); 
     double r = parameters[1];
     
-   
-   /* return (pow(M_PI, -1. / 2.) * 
-           tgamma((1. + n) / 2.) * 
-           tgamma(n / 2.) * 
-           pow(sin(t / r), n - 1)) / (r * pow(tgamma(n / 2.), 2.)); */
-    
     return (tgamma((1 + n) / 2.) * pow(sin(t / r), n - 1)) /
             (sqrt(M_PI) * r * tgamma(n/2.));
 }
@@ -75,21 +69,6 @@ double HyperSphereGeodesicDistanceCDF(double t, double* parameters)
 {    
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    
-    
-   /* return 0.5 - ((pow(M_PI, -0.5) * cos(t / r) * 
-                  tgamma(0.5 + 0.5 * n) *
-                  tgamma(n / 2.) *
-                  HyperGeometric2F1(0.5,1 - n / 2., 1.5, 
-                                    pow(cos(t / r), 2)) *
-                  pow(sin(t / r), n)) / 
-                    (pow(tgamma(0.5 * n), 2) * pow(pow(sin(t / r),2.),n/2.)));*/
-    /*
-   return 0.5 - ((cos(t / r) * tgamma((1 + n) / 2.) *
-                  HyperGeometric2F1(0.5, 1 - n / 2., 1.5, 
-                                    pow(cos(t / r), 2))
-            * pow(sin(t/r),n))/
-            (sqrt(M_PI)*tgamma(n / 2.) * pow(pow(sin(t / r), 2), n / 2.)));*/
     
     return 0.5 - ((cos(t / r) * tgamma((1 + n)/2.) * 
                    HyperGeometric2F1(0.5, 1 - n / 2., 1.5, 

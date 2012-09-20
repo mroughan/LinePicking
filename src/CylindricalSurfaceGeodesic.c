@@ -262,7 +262,7 @@ void CylindricalSurfaceGeodesicDistanceCheckParameters(double *parameters,
     *result=0;
     if (M_PI * parameters[1] <= parameters[0]) return;
     
-    *result=4;
+    *result = 4;
     sprintf(error_str,
             "\nLinePickingCheckParameters: For the cylindrical surface region "
             "we must have (M_PI * parameter[1]  <= parameter[0]).\n"
@@ -283,8 +283,8 @@ void CylindricalSurfaceGeodesicDistanceCheckParameters(double *parameters,
 void CylindricalSurfaceGeodesicDistanceNcoords(int *Ncoords, char **CoordSystem, 
                                                double* parameters) 
 {
-    *Ncoords=3;
-    *CoordSystem="Euclidean";
+    *Ncoords = 3;
+    *CoordSystem = "Euclidean";
 }
 
 /**
@@ -307,7 +307,7 @@ void CylindricalSurfaceGeodesicDistanceSimPoints(double **points, int *Npoints,
     double length;
     
     
-    for (i=0; i<*Npoints; i++)
+    for (i = 0; i < *Npoints; i++)
     {
         /* generate 2 normal random variables */
         rand_normal(2, normals);
@@ -334,8 +334,8 @@ double CylindricalSurfaceGeodesicDistanceMetric(int Ncoords, double *point1,
                                                 double* point2, 
                                                 double* parameters)
 {
-    double d= sqrt(pow(point1[0]-point2[0], 2.0) + 
-                   pow(point1[1]-point2[1], 2.0));
-    double g = parameters[1] * 2 * asin(d/ (2 * parameters[1]));
+    double d= sqrt(pow(point1[0] - point2[0], 2.0) + 
+                   pow(point1[1] - point2[1], 2.0));
+    double g = parameters[1] * 2 * asin(d / (2 * parameters[1]));
     return  sqrt(pow(point1[2]-point2[2], 2) + pow(g, 2));
 }
