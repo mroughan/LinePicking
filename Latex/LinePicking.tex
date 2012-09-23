@@ -244,33 +244,152 @@ Scaling for CDFs is even simpler, we simply take
 
 \section{Cartesian products of spaces}
 
-Definitions and why its interesting
+One of the aspects of the line-picking problem that doesn't seem
+generally considered is how to derive results for constructed
+space. Perhaps the simplest example of which is the Cartesian product
+of two spaces.
 
+The Cartesian product is defined by
+\begin{equation}
+ S \times T = \{ (s,t) | s \in S, t \in T \}. 
+\end{equation}
+For instance, the square, which is the Cartesian product of two lines
+segments, has been as extensively considered as any line-picking
+problem, but this basic constructivist approach is not used, except
+implicitly. 
 
-Metrics
+The useful feature of the Cartesian product is that if we take two
+independent random variables $X \in S$ and $Y \in T$, each uniformly
+distributed over their respective spaces, then the random varible
+$(X,Y)$ will be uniformly distributed over the space $S \times T$. As
+a result, we easily can construct uniformly distributed points from
+these component spaces. 
 
-\subsection{CDfs and PDFs}
+The reason it is interesting is because we can construct many common
+example from Cartesian products. It also helps us to extend the notion
+of the line-picking problem to spaces with alternative metrics, and
+even combined metrics. For instance, assume we have distance metric
+$d_S$ on $S$ and $d_T$ on $T$, we can form a new distance metric on $S
+\times T$ by taking
+\begin{equation}
+  d_{S \times T}\Big( (X_1,Y_1), (X_2,Y_2)  \Big)
+ = \left\{ \begin{array}{ll}
+      \sqrt{ d_S(X_1,X_2)^2 +  d_T(Y_1,Y_2)^2}, \\
+      | d_S(X_1,X_2) +  d_T(Y_1,Y_2)|, \\
+      \max\{ d_S(X_1,X_2) +  d_T(Y_1,Y_2) \}, \\
+    \end{array}
+  \right.
+\end{equation}
+for the Euclidean, $\ell_1$ and $\ell_{\infty}$ distances,
+respectively (though note that there is no real requirement that the
+distances $d_S$ and $d_T$ match, or that they match the combining
+operation, in order to create a valid metric. Moreover, there are some
+interesting cases where they don't match.
 
-\subsection{Moments}
+Given we know the distribution of the distances on $S$ and $T$, we
+should therefore be able to construct statistics for the distance
+distribution on the product space, without deriving this from first
+principles. We do so below for each of these cases. However, the order
+in which we derive information (e.g., PDFs, CDFs, moments, etc.) may
+vary depending on the metric, so we consider each below separately. 
 
-In general we can compute the even moments $2k$ for a Cartesian
-product with a Euclidean product by noting the these will expand into
-a binomial in terms $X^2$ and $Y^2$, which are independent random
-variables, and so
+\subsection{The Euclidean metric}
+
+The classic Euclidean distance metric is actually one of the hardest
+to work with, but there are several useful results.
+
+The even moments $2k$ expand into a binomial, and we can exploit this
+to derive formulae for the moments in terms of the moments of the
+component spaces. For instance, given distances $X$ and $Y$ in each
+space, then $X^2$ and $Y^2$ are independent random variables, and so
 \begin{eqnarray}
-  E\left[ \left( \sqrt{ X^2 + Y^2} \right)^{2n} \right] 
-   & = & \sum_{i=0}^{n} \dbinom{n}{i} E[X^{2i}] E[Y^{2(n-i)}].
+  E\left[ \left( \sqrt{ X^2 + Y^2} \right)^{2k} \right] 
+   & = & \sum_{i=0}^{k} \dbinom{k}{i} E[X^{2i}] E[Y^{2(n-i)}].
 \end{eqnarray}
-However, the odd moments are more difficult. 
+
+
+
+% In general we can compute 
+% However, the odd moments are more difficult. 
+% \begin{eqnarray}
+%   E\left[ \left( \sqrt{ X^2 + Y^2} \right)^{2n+1} \right] 
+%    & = &  \sum_{k=0}^{\infty}  \dbinom{(2n+1)/2}{k} E[X^{2k}] E[Y^{2n+1-2k}].
+% \end{eqnarray}
+% -- but  this may not work because of convergence?
+
+
+
+We can also derive useful relationships for the PDF in the same
+way. As above, it is  to work with squared distances, which will have
+PDFs 
 \begin{eqnarray}
-  E\left[ \left( \sqrt{ X^2 + Y^2} \right)^{2n+1} \right] 
-   & = &  \sum_{k=0}^{\infty}  \dbinom{(2n+1)/2}{k} E[X^{2k}] E[Y^{2n+1-2k}].
+  \label{eq:h_g}
+  h_{X^2}(u) & = & g_X(\sqrt{u})/(2\sqrt{u}), \\
+  h_{Y^2}(u) & = & g_Y(\sqrt{u})/(2\sqrt{u}), \\
 \end{eqnarray}
--- but  this may not work because of convergence?
+The PDF for the sum of independent random variables is
+obtained by taking the convolution of their PDFs, and we can see that
+the squared distances add here, so
+\begin{eqnarray}
+  \label{eq:add_euclidean}
+  h_{X^2+y^2}(u) & = & \int_{-\infty}^\infty h_{X^2}(s)  h_{Y^2}(u-s) \, ds
+\end{eqnarray}
+This convolution can then be computed directly, or by taking Laplace
+tranforms (and noting that this results in a product in the Laplace
+domain).  The chief difficulty in computing this convolution is often
+simply that the support for most of the PDFs considered here is
+finite, and therefore, the integral often breaks into different
+pieces.
+
+We can then transform back to obtain the PDF of the actual distances
+by noting that
+\begin{equation}
+  \label{eq:g_h}
+  g_{\sqrt{X^2+Y^2}}(t) 
+     =  2 t \, h_{X^2+y^2}(t^2).
+\end{equation}
+
+If it is easier to compute this directly, then it may be easier to
+compute moments by integrating the PDF, rather than integrating
+variables directly, or using other techniques describe above.
 
 
-For the Manhattan distance metric, all of the moments a simple
-additive.
+\subsection{Manhattan distance}
+
+In the case of the Manhattan distance, i.e., where we combine
+submetrics using the sub of their absolute values, we can note that
+the submetrics are guaranteed to be non-negative, and hence we are
+simply adding independent random variables. Hence computing the
+moments is almost trivial, i.e., 
+\begin{eqnarray}
+  E\left[ \left( X + Y \right)^{k} \right] 
+   & = & \sum_{i=0}^{k} \dbinom{k}{i} E[X^{i}] E[Y^{(n-i)}].
+\end{eqnarray}
+The cross-terms of the second central moment cancel, and so the mean
+and variance are simply the sum of the mean and variance of the
+relevant submoments.
+
+We can construct the PDF using convolutions as above, though without
+the transforms between squared variables and back, or we could
+construct them (at least numerically) by using the above moment
+construction, and then inverting the moment generating function:
+
+....
+
+
+\subsection{Max metric}
+
+When working with the maxx-metric, there is no simple relationship
+between moments of the Cartesian product and its components. However,
+the CDF is almost trivial to construct, as it is simply given by
+\begin{equation}
+  \label{eq:cdf_construction}
+  G_{\max\{X,Y\}}(t)
+    = \mbox{Prob}\{ \max\{X,Y\} \leq t \}
+    = \mbox{Prob}\{ X \leq t \mbox{ and } Y \leq t \}
+    = \mbox{Prob}\{ X \leq t \} \times \mbox{Prob}\{ Y \leq t \}
+    = G_X(t) G_Y(t). 
+\end{equation}
 
 
 For the Max distance, there is no simple relationship, but the
