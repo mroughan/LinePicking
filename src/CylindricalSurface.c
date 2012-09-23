@@ -70,6 +70,7 @@ double CylindricalSurfaceDistancePDF(double t, double* parameters)
     } 
     else 
     {
+ 
         result = (-4 * (t * acos(sqrt(t2 - L2) / D) + 
                         L * EllipticF( asin(sqrt(t2 - L2) / D), D2 / t2) - 
                         L * EllipticK(D2 / t2))) / (L2 * M_PI);

@@ -10,7 +10,7 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[     45934,       1084]
+NotebookDataLength[     45923,       1084]
 NotebookOptionsPosition[     43875,       1010]
 NotebookOutlinePosition[     44331,       1028]
 CellTagsIndexPosition[     44288,       1025]
@@ -1029,7 +1029,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[545, 20, 7464, 125, 148, "Input"],
 Cell[CellGroupData[{
-Cell[8034, 149, 910, 21, 33, InheritFromParent],
+Cell[8034, 149, 910, 21, 33, "Input"],
 Cell[8947, 172, 1217, 39, 73, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
@@ -1050,7 +1050,7 @@ Cell[17473, 413, 444, 13, 74, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[17954, 431, 4700, 87, 167, "Input"],
-Cell[22657, 520, 2047, 63, 213, "Output"]
+Cell[22657, 520, 2047, 63, 143, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[24741, 588, 394, 10, 33, "Input"],
@@ -1058,27 +1058,27 @@ Cell[25138, 600, 1105, 35, 82, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[26280, 640, 127, 2, 33, "Input"],
-Cell[26410, 644, 356, 8, 112, "Output"]
+Cell[26410, 644, 356, 8, 98, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[26803, 657, 129, 2, 33, "Input"],
-Cell[26935, 661, 216, 5, 64, "Output"]
+Cell[26935, 661, 216, 5, 50, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[27188, 671, 126, 2, 33, "Input"],
-Cell[27317, 675, 521, 11, 145, "Output"]
+Cell[27317, 675, 521, 11, 131, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[27875, 691, 126, 2, 33, "Input"],
-Cell[28004, 695, 201, 5, 64, "Output"]
+Cell[28004, 695, 201, 5, 50, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[28242, 705, 126, 2, 33, "Input"],
-Cell[28371, 709, 180, 4, 47, "Output"]
+Cell[28371, 709, 180, 4, 33, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[28588, 718, 126, 2, 33, "Input"],
-Cell[28717, 722, 323, 7, 96, "Output"]
+Cell[28717, 722, 323, 7, 82, "Output"]
 }, Open  ]],
 Cell[29055, 732, 92, 1, 33, "Input"],
 Cell[CellGroupData[{
