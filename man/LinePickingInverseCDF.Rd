@@ -1,22 +1,35 @@
 \name{LinePickingInverseCDF}
 \alias{LinePickingInverseCDF}
-\title{Get inverse cdf for distance between two random points}
+\title{Get inverse CDF for LinePicking problems}
 \usage{
   LinePickingInverseCDF(t, problem = 0, parameters,
     trace = FALSE)
 }
+\arguments{
+  \item{t}{number between 0 and 1, can also be a vector}
+
+  \item{problem}{see \link{LinePickingCDF}}
+
+  \item{parameters}{values to describe the problem}
+
+  \item{trace}{boolean, if true gives some extra info.
+  Default is false}
+}
+\value{
+  points x
+}
 \description{
-  Get inverse cdf for distance between two random points
+  Takes a point, t, between 0 and 1 and returns point x
+  such that P(X <= x) = t
 }
 \note{
-  September 17 2012
+  September 18 2012
 }
 \examples{
-t <- seq(0,1,l=1000)
-y <- InverseLinePickingCDF(t=t,problem=0,para=1)
-plot(t,y,type='l')
+t <- seq(0,1,by=0.1)
+LinePickingInverseCDF(t = t, problem = 0,parameters=1)
 }
 \author{
-  Eric Parsonage
+  Eric Parsonage, Matt Roughan, Jono Tuke
 }
 

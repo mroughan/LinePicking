@@ -36,6 +36,8 @@ test_that("pdfs compared to simulated data", {
   tmp <- LinePickingAllProblems(print=FALSE)
   N <- 100000
   problems <- sapply(tmp,function(x)x$problem)
+  #Adjust for multiple testing
+  cutoff <- 0.05 / length(tmp)
   p <- seq(0,1,by=0.1)
   for (i in problems){
     index <- which(problems==i)
@@ -48,7 +50,7 @@ test_that("pdfs compared to simulated data", {
     obs <- table(cut(x=sim.data,breaks=cuts))
     expected <- diff(p)
     chi.pvalue <- chisq.test(obs,p=expected)$p.value
-    if(chi.pvalue <= 0.05){
+    if(chi.pvalue <= cutoff){
       print(tmp[[index]])
       print(chisq.test(obs,p=expected))
       hist(sim.data,freq=FALSE)
@@ -56,8 +58,6 @@ test_that("pdfs compared to simulated data", {
       x <- seq(x[1],x[2],l=100)
       lines(x,LinePickingPDF(t=x,problem=i,parameters=parameters))
     }
-    expect_that(chisq.test(obs,p=expected)$p.value > 0.05, is_true())
+    expect_that(chisq.test(obs,p=expected)$p.value > cutoff, is_true())
   }
 })
-
-# TODO add check that cdf >=0

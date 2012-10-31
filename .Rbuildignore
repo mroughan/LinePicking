@@ -4,3 +4,5 @@ Template_c
 Doxyfile
 ^\.Rproj\.user$
 MatlabDefinitions.def
+.Rhistory
+^.*\.Rproj$

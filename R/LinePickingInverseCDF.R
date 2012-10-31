@@ -1,12 +1,19 @@
-#' Get inverse cdf for distance between two random points
-#' @author Eric Parsonage
+#' Get inverse CDF for LinePicking problems
+#' 
+#' Takes a point, t, between 0 and 1 and returns point x such that 
+#' P(X <= x) = t
+#'
+#' @param t number between 0 and 1, can also be a vector
+#' @param problem see \link{LinePickingCDF}
+#' @param parameters values to describe the problem
+#' @param trace boolean, if true gives some extra info. Default is false
+#' @return points x
+#' @author Eric Parsonage, Matt Roughan, Jono Tuke
 #' @export
-#' @useDynLib LinePicking
-#' @note September 17 2012
+#' @note September 18 2012
 #' @examples
-#' t <- seq(0,1,l=1000)
-#' y <- InverseLinePickingCDF(t=t,problem=0,para=1)
-#' plot(t,y,type='l')
+#' t <- seq(0,1,by=0.1)
+#' LinePickingInverseCDF(t = t, problem = 0,parameters=1)
 LinePickingInverseCDF <-
 function(t,problem=0,parameters,trace=FALSE){
     tmp <- .Call('rLinePickingInverseCDF',

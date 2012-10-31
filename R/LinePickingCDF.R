@@ -7,6 +7,7 @@
 #' between two Poisson distributed points in the space.
 #'
 #' @inheritParams LinePickingPDF
+#' @param trace boolean gives more info if true
 #' @return vector of probability density function values for each
 #' element in t.
 #' @author Eric Parsonage, Matt Roughan, Jono Tuke

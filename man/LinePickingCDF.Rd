@@ -5,6 +5,8 @@
   LinePickingCDF(t, problem = 0, parameters, trace = FALSE)
 }
 \arguments{
+  \item{trace}{boolean gives more info if true}
+
   \item{t}{vector of points to calculate pdf for.}
 
   \item{problem}{\itemize{ \item 0 Square, with side length
