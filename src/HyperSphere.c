@@ -54,27 +54,10 @@ double Cn(double n)
  */
 double HyperSphereDistancePDF(double t, double* parameters)
 {
-    /** @todo check if the 1-sphere is correct if not we
-     * need to either limit the parameter here to 2 or above or branch 
-     * the code 
-     */
-    
+
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-    /* this is equivalent to the single line below
-    double theta = acos(1. - ((t * t) / (2. * r * r)));
-    double dtheta = fabs(2.0 / sqrt((4.0 * r * r) - (t * t)));
-    double c = (2 * pow(M_PI, 2.5 - 0.5 * n) * pow(tgamma(n / 2.), 2.)) /
-                tgamma((1. + n) / 2.);
-    return ((2 * M_PI * pow(sin(theta), n - 1 ) / Cn(n - 2)) * dtheta) / c; 
-    
-    */
-    /*
-    return (pow (M_PI, -1. /2.)* t * pow(1 - pow(1. - (pow(t,2) / 2.) / 
-        pow(r,2),2), (n - 2) / 2.) * tgamma((n + 1.) / 2.) * tgamma(n / 2.)) /
-        (pow(r,2)*pow(tgamma(n / 2.),2)); */
    
-    /* simpler again now matches derivation in paper */
     return (t * pow(-pow(t, 4) / (4. * pow(r, 4)) + 
                     pow(t, 2) / pow(r, 2),(n - 2) / 2.) * 
                     tgamma((1 + n) / 2.)) /
@@ -95,16 +78,6 @@ double HyperSphereDistanceCDF(double t, double* parameters)
 {    
     double n = ceil(parameters[0]); 
     double r = parameters[1];
-/*
-    return 0.5 + 
-            (((pow(M_PI, -0.5) / 2.) * pow(t,2) - 
-               pow(M_PI, -0.5) * 
-               pow(r,2)) * tgamma(0.5 + 0.5 * n) * tgamma(n / 2.) *
-               HyperGeometric2F1(0.5, 1. - 0.5 * n, 1.5, 
-                                 pow(1. - (0.5 * pow(t, 2)) / pow(r, 2), 2))
-            ) / (pow(r, 2) * pow(tgamma(0.5 * n), 2));
-    */
-    /* newly derived version */
     
     return  (pow(pow(t, 2) / pow(r, 2) - pow(t, 4) / (4. * pow(r,4 )), n / 2.)*
              tgamma((1 + n)/2.) *
@@ -148,9 +121,9 @@ double HyperSphereDistanceVar(double* parameters)
     double n = ceil(parameters[0]); 
     double r = parameters[1];
     
-    return (pow(2 * r, 2)  *tgamma(n) * tgamma((n / 2.) + 1.))
-	/ (tgamma(n / 2.) * tgamma(n + 1.))
-	- pow(HyperSphereDistanceMean(parameters), 2);
+    return (pow(2 * r, 2)  * tgamma(n) * tgamma((n / 2.) + 1.))
+            / (tgamma(n / 2.) * tgamma(n + 1.))
+                - pow(HyperSphereDistanceMean(parameters), 2);
 }
 
 
@@ -194,10 +167,7 @@ void HyperSphereDistanceSupport(double *t, double *parameters)
 void HyperSphereDistanceCheckParameters(double *parameters, int *result, 
                                       char *error_str)
 {
-    /** @todo check if the 1-sphere is correct if not we
-     * need to either limit the parameter here to 2 or above or branch 
-     * the code 
-     */
+
     *result=0;
     /* hyper-shpere, with dimension parameters[0], and radius parameters[1] */
     if (parameters[0] < 1) 

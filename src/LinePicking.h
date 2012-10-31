@@ -101,7 +101,14 @@ double search(double G, double* parameters, double* support,
 	      double (* CDF)(double, double *));
 
 /* primary function for calculating Mean line length for any region */
-void LinePickingMean(double *, int *, double*, int *, int*, char **);
+void LinePickingMean(double *mean, int *problem, 
+		     double* parameters, int *Npar, int *result, 
+		     char **error_str);
+
+/* primary function for calculating Median line length for any region */
+void LinePickingMedian(double *median, int *problem, 
+		       double* parameters, int *Npar, int *result, 
+		       char **error_str);
 
 /* primary function for calculating Variance of line lengths for any region */
 void LinePickingVar(double *, int *, double*, int *, int*, char **);

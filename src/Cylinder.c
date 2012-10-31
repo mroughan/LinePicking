@@ -63,7 +63,13 @@ double CylinderDistancePDF(double t, double* parameters)
     /* three cases */
     if (t <=  D)
     {
-        
+        /*
+        (4*t*(3*D2*t*Sqrt((D - t)*(D + t)) + 6*Power(t,3)*Sqrt((D - t)*(D + t)) + 
+              12*D2*t*(L*Pi - t*ArcCos(t/D)) - 3*D4*ArcSin(t/D) + 
+              16*D*L*(-((D2 + t2)*EllipticE(t2/D2)) + 
+                       (D - t)*(D + t)*EllipticK(t2/D2))))/
+        (3.*D4*L2*Pi)
+        */
         return (4 * t * (3 * D2 * t * sqrt(D2 - t2) + 
                          6 * t * t2 * sqrt(D2 - t2) + 
                          12 * D2 * t * (L * M_PI - t * acos(t / D)) - 
@@ -74,13 +80,34 @@ double CylinderDistancePDF(double t, double* parameters)
     } 
     else if (t <= L) 
     {
+        /*
+        (-2*t*(3*D2*Pi*(D2 - 8*L*t) + 
+               32*L*t*((D2 + t2)*EllipticE(D2/t2) + 
+                       (D - t)*(D + t)*EllipticK(D2/t2))))/
+        (3.*D2 * D2*L2*Pi)
+        */
+        
         return (-2 * t * (3 * D2 * M_PI * (D2 - 8 * L * t) + 
                           32 * L * t * ((D2 + t2) * EllipticE1(D2 / t2) + 
                                         (D2 - t2) * EllipticK(D2 / t2))))/
                 (3. * D2 * D2 * L2 * M_PI);
+        
+        
     } 
     else 
     {
+        /*
+        (4*t*(-(Sqrt(-((L - t)*(L + t)*(D2 + L2 - t2)))*
+                (3*D2 + 2*L2 + 6*t2)) - 
+              3*D2*(D2 - 4*(L2 + t2))*
+              ArcSec(D/Sqrt(-L2 + t2)) + 
+              16*L*t*(-((D2 + t2)*EllipticE(D2/t2)) + 
+                      (D2 + t2)*
+                      EllipticE(ArcCsc(D/Sqrt(-L2 + t2)),D2/t2) + 
+                      (D - t)*(D + t)*(EllipticF(ArcCsc(D/Sqrt(-L2 + t2)),
+                                                   D2/t2) - EllipticK(D2/t2)))))/
+        (3.*D2*D2*L2*Pi)
+        */
         result = (2 * t * (-2 * sqrt(-((L2 - t2 ) * (D2 + L2 - t2))) *
                            (3 * D2 + 2 * L2 + 6 * t2) - 
                            6 * D2 * (D2 - 4 * (L2 + t2)) * 
@@ -105,14 +132,77 @@ double CylinderDistancePDF(double t, double* parameters)
  * Implements the CDF of the distance between two random points in a 
  * cylinder.
  * 
- * @param $w The distance to calculate the cumulative density for.
+ * @param $t The distance to calculate the cumulative density for.
  * @param $parameters $parameters[0] is the length of the cylinder
  * and $parameters[1] is the radius.  
- * @return The cumulative density at $w.
- * @todo Implement.
+ * @return The cumulative density at $t.
  */
-double CylinderDistanceCDF(double w, double* parameters)
+double CylinderDistanceCDF(double t, double* parameters)
 {
+    double L = parameters[0];
+    double D = parameters[1] * 2.;
+   /* double L2 = L * L;
+    double L4 = L2 * L2;
+    double D2 = D * D;
+    double D3 = D2 * D;
+    double D4 = D2 * D2;
+    double D5 = 
+    double t2 = t * t;
+    double t3 = t2 * t;
+    double t4 = t2 * t2;*/
+    /* three cases */
+    
+    /*
+    if (t <=  D)
+    {
+        (15*(-3*D4*t*Sqrt((D - t)*(D + t)) + 8*Power(t,5)*Sqrt((D - t)*(D + t)) + 
+             2*D2*Power(t,3)*(16*L*Pi + 5*Sqrt((D - t)*(D + t))) - 
+             24*D2*Power(t,4)*ArcCos(t/D) + 
+             3*D4*(D2 - 4*t2)*ArcSin(t/D)) + 
+         128*D*L*((2*D4 - 7*D2*t2 - 3*Power(t,4))*
+                   EllipticE(t2/D2) - 
+                   2*(D4 - 4*D2*t2 + 3*Power(t,4))*
+                   EllipticK(t2/D2)))/(90.*D4*L2*Pi)
+    } 
+    else if (t <= L) 
+    {
+        (15*D2*Pi*(3*D4 - 12*D2*t2 + 64*L*Power(t,3)) + 
+         256*L*t*((2*D4 - 7*D2*t2 - 3*Power(t,4))*
+                  EllipticE(D2/t2) - 
+                  (D4 + 2*D2*t2 - 3*Power(t,4))*
+                  EllipticK(D2/t2)))/(180.*D4*L2*Pi)
+        
+    } 
+    else 
+    {        
+        (45*Power(D,6)*(-L2 + t2) - 
+         24*Power(L - t,2)*Power(L + t,2)*(L2 - 5*t2)*
+         (L2 + t2) + 2*D2*(L - t)*(L + t)*
+         (29*L2 - 5*t2)*(L2 + 3*t2) + 
+         D4*(37*Power(L,4) - 195*Power(t,4) + 
+                      2*L2*(79*t2 + 
+                                    45*Pi*Sqrt(-((L - t)*(L + t)*(D2 + L2 - t2))))) - 
+         15*D2*Sqrt(-((L - t)*(L + t)*(D2 + L2 - t2)))*
+         (-3*D4 + 12*D2*(L2 + t2) + 
+          8*(Power(L,4) - 6*L2*t2 - 3*Power(t,4)))*
+         ArcSec(D/Sqrt(-L2 + t2)) - 
+         128*L*t*Sqrt(-((L - t)*(L + t)*(D2 + L2 - t2)))*
+         ((-2*D4 + 7*D2*t2 + 3*Power(t,4))*
+          EllipticE(D2/t2) + 
+          (2*D4 - 7*D2*t2 - 3*Power(t,4))*
+          EllipticE(ArcCsc(D/Sqrt(-L2 + t2)),D2/t2) - 
+          2*D*Power(t,3)*EllipticF(ArcCos(L/t),t2/D2) - 
+          D4*EllipticF(ArcCsc(D/Sqrt(-L2 + t2)),
+                                D2/t2) + 3*Power(t,4)*
+          EllipticF(ArcCsc(D/Sqrt(-L2 + t2)),D2/t2) + 
+          (D4 + 2*D2*t2 - 3*Power(t,4))*
+          EllipticK(D2/t2)))/
+        (90.*D4*L2*Pi*Sqrt(-((L - t)*(L + t)*
+                                              (D2 + L2 - t2))))   
+     
+        
+    }
+     */
     return -1;
 }
 

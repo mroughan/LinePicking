@@ -78,7 +78,7 @@ double LineDistanceCDF(double t, double* parameters)
 double LineDistanceMean(double* parameters)
 {
     double L = parameters[0];
-    return(L*1.0/3.0);
+    return(L * 1.0 / 3.0);
 }
 
 
@@ -94,7 +94,7 @@ double LineDistanceMean(double* parameters)
 double LineDistanceVar(double* parameters)
 {
     double L = parameters[0];
-    return(L*L*1.0/18.0);
+    return(L * L * 1.0 / 18.0);
 }
 
 /**

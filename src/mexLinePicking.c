@@ -270,7 +270,7 @@ void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs,
                         char **error_str ,  int cmd)
 {    
     
-    double *g; /* mean of distribution*/
+    double *mean; /* mean of distribution*/
     
     int Npar;    /* number of parameters */
     /* the type of region on which to calculate the distribution */
@@ -287,10 +287,46 @@ void mexLinePickingMean(int nlhs, mxArray *plhs[], int nrhs,
     parameters = mxGetPr(prhs[2]);
     
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    g = mxGetPr(plhs[0]);;
+    mean = mxGetPr(plhs[0]);;
     
-    LinePickingMean(g, &problem, parameters, &Npar, result, 
+    LinePickingMean(mean, &problem, parameters, &Npar, result, 
                     error_str); 
+}       
+
+/** 
+ * This function returns the median of the length of lines in a given
+ * line picking problem. 
+ * @param $prhs[1] The problem number (See mexLinePickingPrintAllProblems).
+ * @param $prhs[2] The parameters of the problem. 
+ * @param $plhs[0] The output, the median of the length of lines in the given
+ * line picking problem.
+ */
+void mexLinePickingMedian(int nlhs, mxArray *plhs[], int nrhs, 
+			  const mxArray *prhs[], int *result, 
+			  char **error_str ,  int cmd)
+{    
+    
+    double *median; /* median of distribution*/
+    
+    int Npar;    /* number of parameters */
+    /* the type of region on which to calculate the distribution */
+    int problem; 
+    double *parameters; /*  input parameter vector */
+    
+    /* LinePickingMedian returns the median of the distribution. */
+    
+    problem = (int)mxGetScalar(prhs[1]);
+    
+    CheckProblem(problem, MatlabCallList[cmd].MatlabCmdName);
+    
+    Npar = (int) mxGetN(prhs[2]) * mxGetM(prhs[2]);
+    parameters = mxGetPr(prhs[2]);
+    
+    plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
+    median = mxGetPr(plhs[0]);;
+    
+    LinePickingMedian(median, &problem, parameters, &Npar, result, 
+		      error_str); 
 }       
 
 /** 
@@ -305,7 +341,7 @@ void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs,
                        const mxArray *prhs[], int *result, 
                        char **error_str ,  int cmd)  
 {
-    double *g; /* variance of distribution*/
+    double *var; /* variance of distribution*/
     
     int Npar;    /* number of parameters */
     /* the type of region on which to calculate the distribution */
@@ -320,9 +356,9 @@ void mexLinePickingVar(int nlhs, mxArray *plhs[], int nrhs,
     parameters = mxGetPr(prhs[2]);
     
     plhs[0] = mxCreateDoubleMatrix(1, 1, mxREAL);
-    g = mxGetPr(plhs[0]);;
+    var = mxGetPr(plhs[0]);;
     
-    LinePickingVar(g, &problem, parameters, &Npar, result, 
+    LinePickingVar(var, &problem, parameters, &Npar, result, 
                    error_str);
 }
 
