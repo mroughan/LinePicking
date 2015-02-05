@@ -1,0 +1,48 @@
+\subsection{Right Cylinder geodesic-line picking}
+\label{sec:prism_geodesic_line}
+
+Let the random variable $W$ describe the shortest distance (measured across the surface geodesically)between two points chosen randomly on the lateral surface of a right cylinder of length $L$ and perimeter $P$ with $L >P$ (note the bases of the cylinder need not be circles hence we derive in terms of the length of the perimeter of the base).  
+
+
+Then $W$ has $p.d.f$
+\begin{equation}
+ \text{f}{w}(w) =
+ \begin{cases}
+  \frac{2 w (\pi  L-2 w)}{L^2 P} & 0 \le w < P \\
+ \frac{4 w \arcsin\left(\frac{P}{2 w}\right)}{L P}-\frac{2 w}{L^2}& P\le w <  L \\
+ \frac{4 w \sqrt{w^2-L^2}}{L^2 P}-\frac{2 w}{L^2}-\frac{4w \left( \arccos\left(\frac{L}{w}\right)- \arcsin\left(\frac{P}{2 w}\right)\right)}{L P} & L \le w < \sqrt{\left(\frac{P}{2}\right)^2+L^2}\\
+ 0 & \mbox{otherwise}
+ \end{cases}
+\end{equation}
+
+
+
+\begin{align*}
+I_{1}= & \intop_{0}^{w}\intop_{0}^{\sqrt{w^{2}-r^{2}}}\!\frac{4(1-\frac{d}{L})}{PL}\, dd\, dr,\\
+= & \intop_{0}^{w}\!\left[\frac{4d}{PL}-\frac{2d^{2}}{PL^{2}}\right]_{0}^{\sqrt{w^{2}-r^{2}}}\, dr,\\
+= & \intop_{0}^{w}\!\frac{4\sqrt{w^{2}-r^{2}}}{PL}-\frac{2(w^{2}-r^{2})}{PL^{2}}\, dr,\\
+= & \frac{4}{PL}\intop_{0}^{w}\!\sqrt{w^{2}-r^{2}}\, dr+\frac{2}{PL^{2}}\intop_{0}^{w}\! r^{2}-w^{2}\, dr,\\
+= & \frac{4w^{2}}{PL}\left[\frac{\arcsin(\frac{r}{w})}{2}+\frac{r\sqrt{1-(\frac{r}{w})^{2}}}{2w}\right]_{0}^{w}+\frac{2}{PL^{2}}\left[\frac{r^{3}}{3}-w^{2}r\right]_{0}^{w},\\
+= & \frac{\pi w^{2}}{PL}-\frac{4w^{3}}{3PL^{2}}.\end{align*}
+
+
+Now the second integral
+
+\begin{align*}
+I_{2}= & \intop_{0}^{\frac{P}{2}}\intop_{\sqrt{\left(\frac{P}{2}\right)^{2}-r^{2}}}^{\sqrt{w^{2}-r^{2}}}\!\frac{4(1-\frac{d}{L})}{PL}\, dd\, dr,\\
+= & \intop_{0}^{\frac{P}{2}}\!\left[\frac{4d}{PL}-\frac{2d^{2}}{PL^{2}}\right]_{\sqrt{\left(\frac{P}{2}\right)^{2}-r^{2}}}^{\sqrt{w^{2}-r^{2}}}\, dr,\\
+= & \intop_{0}^{\frac{P}{2}}\!\frac{4\sqrt{w^{2}-r^{2}}}{PL}-\frac{2\left(w^{2}-r^{2}\right)}{PL^{2}}-\frac{4\sqrt{\left(\frac{P}{2}\right)^{2}-r^{2}}}{PL}+\frac{2\left(\left(\frac{P}{2}\right)^{2}-r^{2}\right)}{PL^{2}}\, dr,\\
+= & \frac{4}{PL}\intop_{0}^{\frac{P}{2}}\!\sqrt{w^{2}-r^{2}}\, dr-\frac{4}{PL}\intop_{0}^{\frac{P}{2}}\!\sqrt{\left(\frac{P}{2}\right)^{2}-r^{2}}\,\, dr+\frac{2}{PL^{2}}\intop_{0}^{\frac{P}{2}}\!\left(\frac{P}{2}\right)^{2}-w^{2}\, dr,\\
+= & \frac{4}{PL}w^{2}\left[\frac{\arcsin\left(\frac{r}{w}\right)}{2}+\frac{r\sqrt{1-\left(\frac{r}{w}\right)^{2}}}{2w}\right]_{0}^{\frac{P}{2}}-\frac{P}{L}\left[\frac{\arcsin\left(\frac{2r}{P}\right)}{2}+\frac{r\sqrt{1-\left(\frac{2r}{P}\right)^{2}}}{P}\right]_{0}^{\frac{P}{2}}\\
+& +\frac{2}{PL^{2}}\left[\left(\frac{P}{2}\right)^{2}r-w^{2}r\right]_{0}^{\frac{P}{2}},\\
+= & \frac{2w^{2}\arcsin\left(\frac{P}{2w}\right)}{PL}+\frac{\sqrt{4w^{2}-P^{2}}}{2L}-\frac{\pi P}{4L}+\frac{\left(P^{2}-4w^{2}\right)}{4L^{2}}.\end{align*}
+
+
+\begin{align*}
+I_{3}= & \intop_{L}^{w}\intop_{0}^{\sqrt{w^{2}-d^{2}}}\!\frac{4(1-\frac{d}{L})}{PL}\, dr\, dd,\\
+= & \intop_{L}^{w}\!\left[\frac{4r(L-d)}{PL^{2}}\right]_{0}^{\sqrt{w^{2}-d^{2}}}\, dd,\\
+= & \frac{4}{PL}\intop_{L}^{w}\!\sqrt{w^{2}-d^{2}}\, dd-\frac{4}{PL^{2}}\intop_{L}^{w}\! d\sqrt{w^{2}-d^{2}}\, dd,\\
+= & \frac{4w^{2}}{PL}\left[\frac{\arcsin\left(\frac{d}{w}\right)}{2}+\frac{d\sqrt{1-\left(\frac{d}{w}\right)^{2}}}{2w}\right]_{L}^{w}+\frac{4}{3PL^{2}}\left[(w^{2}-d^{2})\sqrt{w^{2}-d^{2}}\right]_{L}^{w},\\
+= & \frac{\pi w^{2}}{PL}-\frac{2w^{2}\arcsin\left(\frac{L}{w}\right)}{PL}-\frac{2\sqrt{w^{2}-L^{2}}}{P}-\frac{4w^{2}\sqrt{w^{2}-L^{2}}}{3PL^{2}}+\frac{4\sqrt{w^{2}-L^{2}}}{3P},\\
+\\= & \frac{2w^{2}\arccos\left(\frac{L}{w}\right)}{PL}-\frac{2\sqrt{w^{2}-L^{2}}}{3P}-\frac{4w^{2}\sqrt{w^{2}-L^{2}}}{3PL^{2}}.\end{align*}
+
