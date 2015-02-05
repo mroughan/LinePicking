@@ -1,0 +1,271 @@
+\subsection{Right Cylinder line picking}
+\label{sec:cylinder_line}
+
+Let the random variable $W$ describe the shortest distance (measured across tbetween two points chosen randomly on the lateral surface of a right cylinder of length $L$ and diameter $D$ with $L >D$ 
+
+
+\begin{align*}
+f_{d}(d)=&\frac{2 \left(1-\frac{d}{L}\right)}{L}\\
+f_{r}(r)=&\frac{2}{\pi  \sqrt{\text{D}^2-r^2}}\\
+f_{r,d}(r,d)=&\frac{4 \left(1-\frac{d}{L}\right)}{\pi  L \sqrt{\text{D}^2-r^2}}
+\end{align*}
+
+\begin{align*}
+I_{1}=&\intop_{0}^{w}
+\intop_{0}^{\sqrt{w^{2}-r^{2}}}\!\!\!\!\!\!
+\frac{4 \left(1-\frac{d}{L}\right)}{\pi  L \sqrt{\text{D}^2-r^2}}\,dd\,dr\\
+%different factor
+=&\intop_{0}^{w}
+\intop_{0}^{\sqrt{w^{2}-r^{2}}}\!\!\!\!\!\!
+\frac{4}{\pi  L \sqrt{\text{D}^2-r^2}} 
+-\frac{4 d}{\pi  L^{2} \sqrt{\text{D}^2-r^2}}
+\,dd\,dr\\
+%integrate inner 
+=&\intop_{0}^{w}
+\left[
+\frac{4 d}{\pi  L \sqrt{\text{D}^2-r^2}} 
+-\frac{2 d^{2}}{\pi  L^{2} \sqrt{\text{D}^2-r^2}}
+\right]_{0}^{\sqrt{w^{2}-r^{2}}}
+\,dr\\
+% substitute in upper and lower limits
+=&
+\intop_{0}^{w}\!
+\frac{4 \sqrt{w^2-r^2}}{\pi  L\sqrt{\text{D}^2-r^2}}
+-\frac{2 w^2}{\pi  L^2 \sqrt{\text{D}^2-r^2}}
++\frac{2 r^2}{\pi  L^2\sqrt{\text{D}^2-r^2}}
+\,dr\\
+%break into integrals we know how to deal with
+=&
+\frac{4}{\pi  L}\!\!
+\intop_{0}^{w}\!
+\frac{\sqrt{w^2-r^2}}{\sqrt{\text{D}^2-r^2}}
+\,dr
+-\frac{2 w^2}{\pi  L^2 }\!\!
+\intop_{0}^{w}\!
+\frac{1}{\sqrt{\text{D}^2-r^2}}
+\,dr
++\frac{2}{\pi  L^2}\!\!
+\intop_{0}^{w}\!
+\frac{r^2}{\sqrt{\text{D}^2-r^2}}
+\,dr\\
+%Further manipilation to get that first integral in the form of an elliptic integral
+=&
+\frac{4 w}{\pi  L \text{D}}\!\!
+\intop_{0}^{w}\!
+\frac{\sqrt{1-\left(\frac{r}{w}\right)^2}}{\sqrt{1-\left(\frac{r}{\text{D}}\right)^2}}
+% second integral use http://www.integral-table.com/ equation 33
+-\frac{2 w^2}{\pi  L^2 }\left[
+\arcsin\left(\frac{r}{\text{D}}\right)
+\right]_{0}^{w}
+% third integral use http://www.integral-table.com/ equation 37 and use arctan(x) = arcsin(XXXXX) identity  from http://en.wikipedia.org/wiki/
++\frac{1}{\pi  L^2}\left[
+\text{D}^{2}\arcsin\left(\frac{r}{\text{D}}\right)
+-r\sqrt{\text{D}^2-r^2}
+\right]_{0}^{w}\!\\
+\end{align*}
+
+For the first integrand let $s=\frac{r}{\text{D}}$ so $ds=\frac{1}{\text{D}}\,dr$ thus 
+
+% get the first integral in the form of an elliptic integral of the second kind
+\begin{align*}
+I_{1}=&
+\frac{4 w}{\pi  L }\!\!
+\intop_{0}^{\frac{w}{\text{D}}}\!
+\frac{\sqrt{1-\left(\frac{\text{D}}{w}\right)^{2}s^{2}}}{\sqrt{1-s^2}}
+\,ds
+% now substitute in the upper and lower bounds in the remaining integrals
+-\frac{2 w^2}{\pi  L^2 }
+\arcsin\left(\frac{w}{\text{D}}\right)
++\frac{\text{D}^{2}}{\pi  L^2 }\arcsin\left(\frac{w}{\text{D}}\right)
+-\frac{w}{\pi  L^2}\sqrt{\text{D}^2-w^2}\\
+% first integral is in the form of an elliptic integral of the second kind see  http://mathworld.wolfram.com/EllipticIntegraloftheSecondKind.html
+=&\frac{4 w}{\pi  L }E\left(\arcsin\left(\frac{w}{\text{D}}\right),\frac{\text{D}^{2}}{w^{2}}\right)
++\frac{\text{D}^{2}-2 w^2}{\pi  L^2 }\arcsin\left(\frac{w}{\text{D}}\right)
+-\frac{w}{\pi  L^2}\sqrt{\text{D}^2-w^2}\\
+% now using the identity at http://functions.wolfram.com/EllipticIntegrals/EllipticE2/03/01/02/0004/ we get the incomplete elliptic integral of the second type in terms of complete elliptic integrals of the first and second type
+=&\frac{4 \text{D}}{\pi  L }
+\left(E\left(\frac{w^2}{\text{D}^2}\right)+\left(\frac{w^2}{\text{D}^2}-1\right)K\left(\frac{\text{D}^2}{w^2}\right)\right)
+% second and third term combined
++\frac{\text{D}^{2}-2 w^2}{\pi  L^2 }\arcsin\left(\frac{w}{\text{D}}\right)
+-\frac{w}{\pi  L^2}\sqrt{\text{D}^2-w^2}\\
+\end{align*}
+
+Now we do the second integral
+
+\begin{align*}
+I_{2}=&\intop_{0}^{\text{D}}
+\intop_{\sqrt{\text{D}^{2}-r^{2}}}^{\sqrt{w^{2}-r^{2}}}\!\!\!
+\frac{4 \left(1-\frac{d}{L}\right)}{\pi  L \sqrt{\text{D}^2-r^2}}\,dd\,dr\\
+%different factor
+=&\intop_{0}^{\text{D}}
+\intop_{\sqrt{\text{D}^{2}-r^{2}}}^{\sqrt{w^{2}-r^{2}}}\!\!\!
+\frac{4}{\pi  L \sqrt{\text{D}^2-r^2}} 
+-\frac{4 d}{\pi  L^{2} \sqrt{\text{D}^2-r^2}}
+\,dd\,dr\\
+%integrate inner 
+=&\intop_{0}^{\text{D}}
+\left[
+\frac{4 d}{\pi  L \sqrt{\text{D}^2-r^2}} 
+-\frac{2 d^{2}}{\pi  L^{2} \sqrt{\text{D}^2-r^2}}
+\right]_{\sqrt{\text{D}^{2}-r^{2}}}^{\sqrt{w^{2}-r^{2}}}
+\,dr\\
+% substitute in lower and upper limits and do a pile of simplification
+=&
+\intop_{0}^{\text{D}}\!
+\frac{4 \sqrt{w^2-r^2}}{\pi  L\sqrt{\text{D}^2-r^2}}
++\frac{2 \left(\text{D}^2-w^2\right)}{\pi  L^2\sqrt{\text{D}^2-r^2}}
+-\frac{4}{\pi  L}
+\,dr\\
+% split it up into parts suitable for using integrals from tables on
+=&
+\frac{4}{\pi  L}
+\intop_{0}^{\text{D}}\!
+\frac{\sqrt{w^2-r^2}}{\sqrt{\text{D}^2-r^2}}
+\,dr
++\frac{2 \left(\text{D}^2-w^2\right)}{\pi  L^2}\!\!
+\intop_{0}^{\text{D}}\!
+\frac{1}{\sqrt{\text{D}^2-r^2}}
+\,dr
+-\frac{4}{\pi  L}
+\intop_{0}^{\text{D}}\!
+1
+\,dr\\
+%Further manipilation to get that first integral in the form of an elliptic integral
+=&
+\frac{4 w}{\pi  L \text{D}}\!\!
+\intop_{0}^{\text{D}}\!
+\frac{\sqrt{1-\left(\frac{r}{w}\right)^2}}{\sqrt{1-\left(\frac{r}{\text{D}}\right)^2}}
+\,dr
+% second integral use http://www.integral-table.com/ equation 33
++\frac{2 \left(\text{D}^2-w^2\right)}{\pi  L^2}\left[
+\arcsin\left(\frac{r}{\text{D}}\right)
+\right]_{0}^{\text{D}}
+% third integral no tables required
+-\frac{4}{\pi  L}\left[
+r
+\right]_{0}^{\text{D}}
+\end{align*}
+
+For the first integrand let $s=\frac{r}{\text{D}}$ so $ds=\frac{1}{\text{D}}\,dr$ thus
+% get the first integral in the form of an elliptic integral of the second kind
+\begin{align*}
+I_{2}=&
+\frac{4 w}{\pi  L }\!\!
+\intop_{0}^{1}\!
+\frac{\sqrt{1-\left(\frac{\text{D}}{w}\right)^{2}s^{2}}}{\sqrt{1-s^2}}
+\,ds
++\frac{\left(\text{D}^2-w^2\right)}{ L^2}
+-\frac{4 \text{D}}{\pi  L}\\
+=&\frac{4 w}{\pi  L }E\left(\frac{\text{D}^2}{w^2}\right)
++\frac{\left(\text{D}^2-w^2\right)}{ L^2}
+-\frac{4 \text{D}}{\pi  L}
+\end{align*}
+
+And the third integral
+
+\begin{align*}
+I_{3}=&\intop_{0}^{\sqrt{w^2-L^2}}
+\intop_{L}^{\sqrt{w^{2}-r^{2}}}\!\!\!
+\frac{4 \left(1-\frac{d}{L}\right)}{\pi  L \sqrt{\text{D}^2-r^2}}\,dd\,dr\\
+%different factor
+=&\intop_{0}^{\sqrt{w^2-L^2}}
+\intop_{L}^{\sqrt{w^{2}-r^{2}}}\!\!\!
+\frac{4}{\pi  L \sqrt{\text{D}^2-r^2}} 
+-\frac{4 d}{\pi  L^{2} \sqrt{\text{D}^2-r^2}}
+\,dd\,dr\\
+%integrate inner 
+=&\intop_{0}^{\sqrt{w^2-L^2}}
+\left[
+\frac{4 d}{\pi  L \sqrt{\text{D}^2-r^2}} 
+-\frac{2 d^{2}}{\pi  L^{2} \sqrt{\text{D}^2-r^2}}
+\right]_{L}^{\sqrt{w^{2}-r^{2}}}
+\,dr\\
+% substitute in lower and upper limits and do a pile of simplification 
+=&\intop_{0}^{\sqrt{w^2-L^2}}\!
+\frac{4 \sqrt{w^2-r^2}}{\pi  L\sqrt{\text{D}^2-r^2}}
+-\frac{2 w^2}{\pi  L^2\sqrt{\text{D}^2-r^2}}
++\frac{2 r^2}{\pi  L^2\sqrt{\text{D}^2-r^2}}
+-\frac{2}{\pi  \sqrt{\text{D}^2-r^2}}
+\,dr\\
+% split it up into parts suitable for using integrals from tables on
+=&
+\frac{4}{\pi  L}\!\!\!
+\intop_{0}^{\sqrt{w^2-L^2}}\!\!\!
+\frac{\sqrt{w^2-r^2}}{\sqrt{\text{D}^2-r^2}}
+\,dr
+-\frac{2 w^2}{\pi  L^2}\!\!
+\intop_{0}^{\sqrt{w^2-L^2}}\!\!\!\!\!
+\frac{1}{\sqrt{\text{D}^2-r^2}}
+\,dr
++\frac{2}{\pi  L^2}\!\!
+\intop_{0}^{\sqrt{w^2-L^2}}\!\!\!\!\!
+\frac{r^2}{\sqrt{\text{D}^2-r^2}}
+\,dr
+-\frac{2}{\pi}
+\intop_{0}^{\sqrt{w^2-L^2}}\!\!\!\!\!
+\frac{1}{\sqrt{\text{D}^2-r^2}}
+\,dr\\
+%Further manipilation to get that first integral in the form of an elliptic integral
+=&
+\frac{4 w}{\pi  L \text{D}}\!\!
+\intop_{0}^{\sqrt{w^2-L^2}}\!\!\!\!\!
+\frac{\sqrt{1-\left(\frac{r}{w}\right)^2}}{\sqrt{1-\left(\frac{r}{\text{D}}\right)^2}}
+\,dr
+% second integral use http://www.integral-table.com/ equation 33
+-\frac{2 w^2}{\pi  L^2}\left[
+\arcsin\left(\frac{r}{\text{D}}\right)
+\right]_{0}^{\sqrt{w^2-L^2}}\\
+% third integral use http://www.integral-table.com/ equation 37 and use arctan(x) = arcsin(XXXXX) identity  from http://en.wikipedia.org/wiki/
+&+\frac{1}{\pi  L^2}\left[
+\text{D}^{2}\arcsin\left(\frac{r}{\text{D}}\right)
+-r\sqrt{\text{D}^2-r^2}
+\right]_{0}^{\sqrt{w^2-L^2}}
+% fourth integral use http://www.integral-table.com/ equation 33
+-\frac{2}{\pi}\left[
+\arcsin\left(\frac{r}{\text{D}}\right)
+\right]_{0}^{\sqrt{w^2-L^2}}
+\end{align*}
+\\
+For the first integrand let $s=\frac{r}{\text{D}}$ so $ds=\frac{1}{\text{D}}\,dr$ thus
+
+\begin{align*}
+%Further manipilation to get that first integral in the form of an elliptic integral
+I_{3}=&
+\frac{4 w}{\pi  L }\!\!
+\intop_{0}^{\frac{\sqrt{w^2-L^2}}{\text{D}}}
+\!
+\frac{\sqrt{1-\left(\frac{\text{D}}{w}\right)^{2}s^{2}}}{\sqrt{1-s^2}}
+\,ds
+% second integral use http://www.integral-table.com/ equation 33
++\frac{\text{D}^{2}-2 w^2-2L^2}{\pi  L^2}\left[
+\arcsin\left(\frac{r}{\text{D}}\right)
+\right]_{0}^{\sqrt{w^2-L^2}}
+% third integral 
+-\frac{1}{\pi  L^2}\left[
+r\sqrt{\text{D}^2-r^2}
+\right]_{0}^{\sqrt{w^2-L^2}}\\
+%Write the elliptical integral as E
+=&\frac{4 w}{\pi  L }E\left(\arcsin\left(\frac{\sqrt{w^2-L^2}}{\text{D}}\right),\frac{\text{D}^{2}}{w^{2}}\right)
++\frac{\text{D}^{2}-2 w^2-2L^2}{\pi  L^2 }\arcsin\left(\frac{\sqrt{w^2-L^2}}{\text{D}}\right)\\
+&-\frac{\sqrt{\left(w^2-L^2\right) \left(\text{D}^2+L^2-w^2\right)}}{\pi  L^2}
+\\
+=&-\frac{4 w \sqrt{-\left(L^2-w^2\right) \left(D^2+L^2-w^2\right)}}{\pi 
+   D^2 L^2}-\frac{4 \left(3 D^4 w \sec
+   ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)+16 D^2 L w^2
+   K\left(\frac{D^2}{w^2}\right)-16 L w^4
+   K\left(\frac{D^2}{w^2}\right)-12 D^2 L^2 w \sec
+   ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)-16 D^2 L w^2 F\left(\csc
+   ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)|\frac{D^2}{w^2}\right)-16
+   D^2 L w^2 E\left(\csc
+   ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)|\frac{D^2}{w^2}\right)+16
+   L w^4 F\left(\csc
+   ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)|\frac{D^2}{w^2}\right)-16
+   L w^4 E\left(\csc
+   ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)|\frac{D^2}{w^2}\right)-12
+   D^2 w^3 \sec ^{-1}\left(\frac{D}{\sqrt{w^2-L^2}}\right)+16
+   D^2 L w^2 E\left(\frac{D^2}{w^2}\right)+16 L w^4
+   E\left(\frac{D^2}{w^2}\right)\right)}{3 \pi  D^4 L^2}-\frac{8 w
+   \sqrt{-\left(L^2-w^2\right) \left(D^2+L^2-w^2\right)}}{3 \pi 
+   D^4}-\frac{8 w^3 \sqrt{-\left(L^2-w^2\right)
+   \left(D^2+L^2-w^2\right)}}{\pi  D^4 L^2}
+\end{align*}
